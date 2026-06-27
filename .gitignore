@@ -14,6 +14,7 @@ data/xView2 Challenge Dataset - train and test/
 # # Ignore final local training dataset artifacts (keep jsonl out of git if it gets large)
 # dataset/*.jsonl
 
+cse499
 
 # =========================================================================
 # PYTHON & MACHINE LEARNING CLEANUP
@@ -86,3 +87,6 @@ $RECYCLE.BIN/
 # Crash logs
 pip-log.txt
 pip-delete-this-directory.txt
+
+# --- Keep Requirements ---
+!requirements.txt
