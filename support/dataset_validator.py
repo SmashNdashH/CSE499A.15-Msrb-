@@ -138,8 +138,10 @@ class ZoomCanvas(ctk.CTkCanvas):
         """Scale image so it fits the canvas on first load, then centre it."""
         if self._pil_image is None:
             return
-        cw = self.winfo_width()  or 800
-        ch = self.winfo_height() or 700
+        cw = self.winfo_width()
+        ch = self.winfo_height()
+        if cw <= 1 or ch <= 1:
+            cw, ch = 800, 700
         iw, ih = self._pil_image.size
         self._scale = min(cw / iw, ch / ih, 1.0)
         self._offset_x = (cw - iw * self._scale) / 2
@@ -211,6 +213,7 @@ class QAValidatorApp(ctk.CTk):
 
         self._load_data()
         self._build_ui()
+        self.update()  # Force window rendering to get correct canvas dimensions
         self._load_sample()
 
     # ── data layer ──────────────────────────────────────────────────────────
