@@ -34,6 +34,7 @@ Dependencies
 
 import os
 import json
+from datetime import datetime, timezone
 import customtkinter as ctk
 from tkinter import messagebox
 from PIL import Image, ImageTk
@@ -47,6 +48,7 @@ PROJECT_ROOT = os.path.dirname(SUPPORT_DIR)
 
 INPUT_DATASET  = os.path.join(PROJECT_ROOT, "dataset", "train_dataset.jsonl")
 OUTPUT_DATASET = os.path.join(PROJECT_ROOT, "dataset", "verified_dataset.jsonl")
+EDIT_LOG_FILE  = os.path.join(PROJECT_ROOT, "dataset", "qa_edit_log.jsonl")
 IMAGE_BASE_DIR = os.path.join(PROJECT_ROOT, "data")
 
 # ─────────────────────────────────────────────
@@ -210,6 +212,14 @@ class QAValidatorApp(ctk.CTk):
         self.samples        : list[dict] = []
         self.verified_rows  : list[dict] = []   # in-memory mirror of the output file
         self.current_index  : int        = 0    # index into self.samples
+        
+        # Withdraw main window while dialog is shown
+        self.withdraw()
+        dialog = ctk.CTkInputDialog(text="Enter your Editor ID (e.g., your name):", title="Editor ID")
+        self.editor_id = dialog.get_input()
+        if not self.editor_id:
+            self.editor_id = "anonymous"
+        self.deiconify()
 
         self._load_data()
         self._build_ui()
@@ -342,6 +352,19 @@ class QAValidatorApp(ctk.CTk):
         )
         self.text_box.pack(fill="both", expand=True, padx=16, pady=(6, 10))
 
+        # ── EDIT REASON DROPDOWN ─────────────────────────────────────────────
+        edit_reason_frame = ctk.CTkFrame(right, fg_color="transparent")
+        edit_reason_frame.pack(fill="x", padx=16, pady=(0, 10))
+        
+        ctk.CTkLabel(edit_reason_frame, text="Edit Reason:").pack(side="left", padx=(0, 10))
+        self.edit_reason_var = ctk.StringVar(value="None")
+        self.edit_reason_menu = ctk.CTkOptionMenu(
+            edit_reason_frame,
+            variable=self.edit_reason_var,
+            values=["None", "Placeholder removed", "Specificity added", "Hazard corrected", "Schema fixed", "Other"]
+        )
+        self.edit_reason_menu.pack(side="left", fill="x", expand=True)
+
         # ── BUTTON STRIP ─────────────────────────────────────────────────────
         btn_strip = ctk.CTkFrame(right, fg_color="transparent")
         btn_strip.pack(fill="x", padx=16, pady=(0, 16))
@@ -458,7 +481,26 @@ class QAValidatorApp(ctk.CTk):
         verified index, overwrite that entry rather than appending.
         """
         sample = dict(self.samples[self.current_index])   # shallow copy
-        sample["response"] = self.text_box.get("1.0", "end").strip()
+        original_text = sample.get("response", "").strip()
+        edited_text = self.text_box.get("1.0", "end").strip()
+        
+        if original_text != edited_text:
+            reason = self.edit_reason_var.get()
+            log_entry = {
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "editor_id": self.editor_id,
+                "image": sample.get("image", ""),
+                "edit_reason": reason,
+                "original_text": original_text,
+                "edited_text": edited_text
+            }
+            with open(EDIT_LOG_FILE, "a", encoding="utf-8") as f_log:
+                f_log.write(json.dumps(log_entry, ensure_ascii=False) + "\n")
+                
+        # reset dropdown
+        self.edit_reason_var.set("None")
+        
+        sample["response"] = edited_text
 
         # How many verified rows correspond to indices 0 … current_index-1?
         # Because Undo removes the last verified row, len(verified_rows) tells

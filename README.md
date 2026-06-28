@@ -32,11 +32,12 @@ We formulate each training sample as an `image-instruction-response` triplet ali
 ### 2. Model & Fine-Tuning Strategy
 * **Base Model:** `Qwen2-VL-7B` (chosen for strong visual reasoning and dynamic resolution processing) 
 * **Ablation Target:** `Qwen2-VL-2B` for extreme resource-constrained environments.
+* **Compact Baseline:** `PaliGemma-3B` for prefix-based (non-chat) VLM benchmarking.
 * **Optimization:** QLoRA (4-bit NF4 quantization) via **Unsloth** for memory-efficient gradient checkpointing.
 * **Hardware:** Fine-tuned on Kaggle dual-T4 GPUs (2x16GB VRAM).
 
 ### 3. Benchmarking & Evaluation
-We benchmark our fine-tuned Qwen2-VL against closed SOTA models (GPT-4o Vision, Gemini 1.5 Flash) and open-source baselines (LLaVA-1.5-7B, InternVL2-8B, untuned Qwen2-VL).
+We benchmark our fine-tuned Qwen2-VL against closed SOTA models (GPT-4o Vision, Gemini 1.5 Flash) and open-source baselines (LLaVA-1.5-7B, InternVL2-8B, PaliGemma-3B, untuned Qwen2-VL).
 * **Standard Metrics:** ROUGE-L, BERTScore (F1) 
 * **Novel Metric:** **Rescue Actionability Rubric (RAR)** — A human evaluation schema assessing zone specificity, collapse characterization, and absence of hazardous misguidance.
 
