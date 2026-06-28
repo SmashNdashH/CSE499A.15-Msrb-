@@ -13,7 +13,7 @@ python -m venv venv
 
 ### 3. Install Project Dependencies
 ```powershell
-pip install -r requirements.txt
+Pip Install -R Requirements.txt
 ```
 *(Note: `generate_ground_truth.py` is self-bootstrapping and will automatically install its own missing dependencies, but this step ensures your entire workspace is ready).*
 

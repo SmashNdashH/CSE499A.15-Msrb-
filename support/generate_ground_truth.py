@@ -45,7 +45,7 @@ MODELS = [
     'gemini-3.5-flash',
     'gemini-2.5-flash'
 ]
-TARGET_SAMPLE_COUNT = 130  # The script will stop automatically once this total is reached
+TARGET_SAMPLE_COUNT = 220  # The script will stop automatically once this total is reached
 
 # --- SYSTEM PROMPT ---
 SYSTEM_INSTRUCTION = """
