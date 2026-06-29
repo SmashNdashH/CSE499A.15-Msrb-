@@ -1,4 +1,4 @@
-] *Handing off a reproducible architecture to a data team. It documents exactly what I built today, why I built it, and exactly how they need to alter it to process the other datasets on your list.
+*Handing off a reproducible architecture to a data team. It documents exactly what I built today, why I built it, and exactly how they need to alter it to process the other datasets on your list.
 
 Synthetic VLM Dataset Generation Pipeline
 

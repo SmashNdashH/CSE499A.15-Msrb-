@@ -47,7 +47,7 @@ MODELS = [
     'gemini-3.5-flash',
     'gemini-2.5-flash'
 ]
-TARGET_SAMPLE_COUNT = 350  # Global target size for the dataset
+TARGET_SAMPLE_COUNT = 500  # Global target size for the dataset
 
 # --- SYSTEM PROMPT & AUGMENTATION ---
 SYSTEM_INSTRUCTION = """
@@ -175,7 +175,7 @@ def passes_qa_gates(response_text: str) -> bool:
     if len(response_text.split()) < 120:
         print("    -> QA Failed: Under 120 words")
         return False
-    first_person_pattern = re.compile(r"\b(i|i'm|i cannot|as an ai|i apologize|i'm sorry)\b", re.IGNORECASE)
+    first_person_pattern = re.compile(r"\b(i)(?!\.e\b)\b|\b(i'm|i cannot|as an ai|i apologize|i'm sorry)\b", re.IGNORECASE)
     if first_person_pattern.search(response_text):
         print("    -> QA Failed: First-person or apology language detected")
         return False

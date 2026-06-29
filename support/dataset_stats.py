@@ -178,9 +178,10 @@ def has_placeholders(text: str) -> bool:
 
 
 def has_first_person(text: str) -> bool:
-    patterns = ["I ", "I'm ", "I cannot", "As an AI", "I apologize", "I'm sorry"]
-    text_lower = text.lower()
-    return any(p.lower() in text_lower for p in patterns)
+    # Use word boundary checks to avoid matching sub-words (like 'tsunami ') 
+    # and a negative lookahead to ignore 'i.e.' which technically has word boundaries.
+    first_person_pattern = re.compile(r"\b(i)(?!\.e\b)\b|\b(i'm|i cannot|as an ai|i apologize|i'm sorry)\b", re.IGNORECASE)
+    return bool(first_person_pattern.search(text))
 
 
 # ---------------------------------------------------------------------------
