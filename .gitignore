@@ -8,14 +8,14 @@ data/xView2 Challenge Dataset - train and test/
 data/AIDER/
 data/aider_processed_images/
 # data/aider_processed_labels/
-# data/aider_processed_tracker.txt
+data/aider_processed_tracker.txt
 
 # Ignore your locally generated standardized images and label copies (xBD)
 data/processed_images/
 # data/processed_labels/
 
 # # Ignore the local state tracker (prevents git merge conflicts within the team)
-# data/processed_tracker.txt
+data/processed_tracker.txt
 
 # # Ignore final local training dataset artifacts (keep jsonl out of git if it gets large)
 # dataset/*.jsonl
