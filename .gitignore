@@ -4,6 +4,8 @@
 # Ignore the raw unzipped heavy xView2 dataset
 data/xView2 Challenge Dataset - train and test/
 
+# Ignore the heavy AIDER dataset
+data/AIDER/
 # Ignore your locally generated standardized images and label copies
 data/processed_images/
 # data/processed_labels/
