@@ -20,6 +20,9 @@ data/processed_tracker.txt
 # dataset/*.jsonl
 data/raw_dataset/AIDER
 cse499
+SAMPLE_UPDATE-MinhajCSE499A_update2.pdf
+
+
 
 # =========================================================================
 # PYTHON & MACHINE LEARNING CLEANUP
@@ -97,3 +100,17 @@ pip-delete-this-directory.txt
 
 # --- Keep Requirements ---
 !requirements.txt
+
+# =========================================================================
+# PROJECT SPECIFICATIONS & DOCUMENTATION (Kept local only)
+# =========================================================================
+AIDER_PIPELINE_SPEC.md
+claude sonnet 4.6 web reponse for sanitization.txt
+DATASET_QUALITY_SPEC.md
+dataset_validator_guide.md
+eda_disaster_vlm_spec.md
+Handing off a reproducible architec.txt
+implementation_plan.md
+pipeline_fix_spec.md
+list gemini models.py
+walkthrough.md
