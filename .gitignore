@@ -88,9 +88,10 @@ Desktop.ini
 ehthumbs.db
 $RECYCLE.BIN/
 
-# VS Code / Cursor workspace configurations
+# VS Code / Cursor / Antigravity workspace configurations
 .vscode/
 !.vscode/extensions.json
+.antigravity/
 .history/
 *.code-workspace
 
