@@ -124,4 +124,6 @@ disasterinsight_methodology.md
 disasterm3_methodology.md
 implementation_plan for replaction of disasterM3 and disasterinsight.md
 literature_review.md
-others/lit review_research papers
+others/lit review_research papers/*
+!others/lit review_research papers/Shakya_From_Pixels_to_Semantics_A_Multi-Stage_AI_Framework_for_Structural_CVPRW_2026_paper-1.pdf
+!others/lit review_research papers/NeurIPS-2025-disasterm3-a-remote-sensing-vision-language-dataset-for-disaster-damage-assessment-and-response-Paper-Datasets_and_Benchmarks_Track.pdf
