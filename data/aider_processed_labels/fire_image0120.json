@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "dataset": "AIDER",
+    "disaster_type": "fire"
+  },
+  "features": {
+    "xy": [
+      {
+        "properties": {
+          "feature_type": "train_bridge",
+          "subtype": "destroyed"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "train",
+          "subtype": "destroyed"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "vegetation",
+          "subtype": "destroyed"
+        }
+      }
+    ]
+  }
+}

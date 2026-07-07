@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "dataset": "AIDER",
+    "disaster_type": "fire"
+  },
+  "features": {
+    "xy": [
+      {
+        "properties": {
+          "feature_type": "tree line",
+          "subtype": "destroyed"
+        }
+      }
+    ]
+  }
+}

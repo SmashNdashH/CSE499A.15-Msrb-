@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "dataset": "AIDER",
+    "disaster_type": "fire"
+  },
+  "features": [
+    {
+      "properties": {
+        "feature_type": "building",
+        "subtype": "un-classified"
+      }
+    },
+    {
+      "properties": {
+        "feature_type": "building",
+        "subtype": "no-damage"
+      }
+    },
+    {
+      "properties": {
+        "feature_type": "vegetation",
+        "subtype": "minor-damage"
+      }
+    }
+  ]
+}

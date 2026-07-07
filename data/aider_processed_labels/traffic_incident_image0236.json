@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "dataset": "AIDER",
+    "disaster_type": "traffic_incident"
+  },
+  "features": {
+    "xy": [
+      {
+        "properties": {
+          "feature_type": "road",
+          "subtype": "un-classified"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "emergency_vehicle",
+          "subtype": "no-damage"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "vehicle",
+          "subtype": "un-classified"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "traffic_light",
+          "subtype": "no-damage"
+        }
+      }
+    ]
+  }
+}

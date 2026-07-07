@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "dataset": "AIDER",
+    "disaster_type": "collapsed_building"
+  },
+  "features": {
+    "xy": [
+      {
+        "properties": {
+          "feature_type": "building",
+          "subtype": "destroyed"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "building",
+          "subtype": "major-damage"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "vehicle",
+          "subtype": "no-damage"
+        }
+      }
+    ]
+  }
+}

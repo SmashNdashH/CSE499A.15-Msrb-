@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "dataset": "AIDER",
+    "disaster_type": "traffic_incident"
+  },
+  "features": {
+    "xy": [
+      {
+        "properties": {
+          "feature_type": "vehicle",
+          "subtype": "major-damage"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "road",
+          "subtype": "no-damage"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "vegetation",
+          "subtype": "no-damage"
+        }
+      }
+    ]
+  }
+}

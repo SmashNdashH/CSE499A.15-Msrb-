@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "dataset": "AIDER",
+    "disaster_type": "traffic_incident"
+  },
+  "features": [
+    {
+      "properties": {
+        "feature_type": "vehicle",
+        "subtype": "destroyed"
+      }
+    },
+    {
+      "properties": {
+        "feature_type": "vehicle",
+        "subtype": "major-damage"
+      }
+    },
+    {
+      "properties": {
+        "feature_type": "vehicle",
+        "subtype": "minor-damage"
+      }
+    },
+    {
+      "properties": {
+        "feature_type": "vehicle",
+        "subtype": "no-damage"
+      }
+    }
+  ]
+}

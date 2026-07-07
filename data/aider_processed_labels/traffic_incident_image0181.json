@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "dataset": "AIDER",
+    "disaster_type": "traffic_incident"
+  },
+  "features": {
+    "xy": [
+      {
+        "properties": {
+          "feature_type": "road",
+          "subtype": "major-damage"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "vehicle",
+          "subtype": "un-classified"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "floodwater",
+          "subtype": "un-classified"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "utility_pole",
+          "subtype": "no-damage"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "vegetation",
+          "subtype": "no-damage"
+        }
+      }
+    ]
+  }
+}

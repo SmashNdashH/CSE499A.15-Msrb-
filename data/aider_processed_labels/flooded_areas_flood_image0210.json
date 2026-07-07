@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "dataset": "AIDER",
+    "disaster_type": "flood"
+  },
+  "features": [
+    {
+      "properties": {
+        "feature_type": "building",
+        "subtype": "major-damage"
+      }
+    },
+    {
+      "properties": {
+        "feature_type": "road",
+        "subtype": "minor-damage"
+      }
+    },
+    {
+      "properties": {
+        "feature_type": "building",
+        "subtype": "major-damage"
+      }
+    },
+    {
+      "properties": {
+        "feature_type": "vegetation",
+        "subtype": "minor-damage"
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "dataset": "AIDER",
+    "disaster_type": "flood"
+  },
+  "features": {
+    "xy": [
+      {
+        "properties": {
+          "feature_type": "building",
+          "subtype": "major-damage"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "road",
+          "subtype": "un-classified"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "tree",
+          "subtype": "un-classified"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "vehicle",
+          "subtype": "major-damage"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "green_area",
+          "subtype": "major-damage"
+        }
+      }
+    ]
+  }
+}

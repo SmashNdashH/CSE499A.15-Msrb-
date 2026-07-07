@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "dataset": "AIDER",
+    "disaster_type": "traffic_incident"
+  },
+  "features": {
+    "xy": [
+      {
+        "properties": {
+          "feature_type": "road",
+          "subtype": "major-damage"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "crashed vehicles",
+          "subtype": "major-damage"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "stopped vehicles",
+          "subtype": "no-damage"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "snowy embankment",
+          "subtype": "no-damage"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "tree line",
+          "subtype": "no-damage"
+        }
+      }
+    ]
+  }
+}

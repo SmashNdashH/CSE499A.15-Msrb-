@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "dataset": "AIDER",
+    "disaster_type": "fire"
+  },
+  "features": {
+    "xy": [
+      {
+        "properties": {
+          "feature_type": "forest",
+          "subtype": "destroyed"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "vegetation",
+          "subtype": "destroyed"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "smoke_plume",
+          "subtype": "un-classified"
+        }
+      }
+    ]
+  }
+}

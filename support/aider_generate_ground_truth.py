@@ -31,7 +31,12 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 load_dotenv(os.path.join(PROJECT_ROOT, '.env'))
 PROCESSED_LABEL_DIR = os.path.join(PROJECT_ROOT, "data", "aider_processed_labels")
 PROCESSED_IMG_DIR = os.path.join(PROJECT_ROOT, "data", "aider_processed_images")
-DATASET_OUT_PATH = os.path.join(PROJECT_ROOT, "dataset", "aider_train_dataset.jsonl")
+
+# --- TEAM DELEGATION CONFIGURATION ---
+TOTAL_WORKERS = 5  # Total number of people running the script (Abrar, Aryan, Ridita, Tamanna, Noman)
+WORKER_ID = 0      # 0=You, 1=Aryan, 2=Ridita, 3=Tamanna, 4=Noman (Change this before running!)
+
+DATASET_OUT_PATH = os.path.join(PROJECT_ROOT, "dataset", f"aider_train_dataset_worker_{WORKER_ID}.jsonl")
 os.makedirs(os.path.dirname(DATASET_OUT_PATH), exist_ok=True)
 
 # --- API KEY CONFIGURATION ---
@@ -153,7 +158,14 @@ def parse_synthetic_json(json_path):
     metadata = data.get('metadata', {})
     dtype = metadata.get('disaster_type', 'unknown')
 
-    features = data.get('features', {}).get('xy', [])
+    features_obj = data.get('features', {})
+    if isinstance(features_obj, dict):
+        features = features_obj.get('xy', [])
+    elif isinstance(features_obj, list):
+        features = features_obj
+    else:
+        features = []
+        
     total_features = len(features)
 
     damage_counts = {'no-damage': 0, 'minor-damage': 0, 'major-damage': 0, 'destroyed': 0, 'un-classified': 0}
@@ -219,6 +231,10 @@ def generate_dataset():
     if not json_files:
         print("No JSON files found! Run aider_synthesize_metadata.py first.")
         return
+
+    # VERY IMPORTANT: Lock random seed so the execution queue is identical every run
+    # This prevents the queue from shifting if the script is interrupted and restarted.
+    random.seed(42)
 
     # --- 1. 1D Inventory Pre-Processing (EDA-Informed) ---
     print("Building 1D Stratified Inventory (by Disaster Class)...")
