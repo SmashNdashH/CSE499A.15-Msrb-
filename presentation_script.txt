@@ -1,0 +1,97 @@
+Abrar's Update 2 Presentation Script
+======================================
+
+
+1. DisasterM3 Literature Review & Presentation
+-----------------------------------------------
+
+- So this week I REVIEWED the DISASTERM3 paper — Wang et al., published at NEURIPS 2025
+- Also DESIGNED and will be PRESENTING our group's SLIDES 2 THROUGH 5 on this paper
+- DisasterM3 is basically the FIRST GLOBAL-SCALE remote sensing VLM DATASET that combines everything into one:
+    - MULTI-HAZARD — covers 10 DISASTER TYPES
+    - MULTI-SENSOR — uses both OPTICAL imagery (from XBD, BRIGHT, MAXAR) and SAR radar data (from CAPELLA and UMBRA)
+    - MULTI-TASK — defines 9 DISTINCT TASKS to evaluate VLMs on
+- The SCALE is massive:
+    - 26,988 BI-TEMPORAL satellite images
+    - 123,010 INSTRUCTION PAIRS
+    - Spanning 36 HISTORICAL DISASTERS across 5 CONTINENTS
+- Their 9-TASK TAXONOMY goes from simple to complex:
+    - RECOGNITION — scene type, disaster type, bearing body identification
+    - QUANTIFICATION — counting destroyed buildings using POLYGON MASKS, estimating FLOODED ROAD AREA
+    - LOCALIZATION — REFERRING SEGMENTATION with bounding boxes
+    - REPORTING — DISASTER CAPTIONING and RESTORATION ADVICE aligned with UNITAR/FEMA guidelines
+    - REASONING — SPATIAL/CAUSAL RELATIONSHIPS between damaged objects
+- How they built their GROUND TRUTH — a HYBRID HUMAN-AI PIPELINE:
+    - GPT-4O generated the QUESTION PROMPTS
+    - HUMAN DISASTER EXPERTS manually ANNOTATED the correct answers and DRAFTED FEMA-aligned reports
+    - GPT-4O then POLISHED those drafts
+    - Followed by MULTI-ROUND HUMAN VERIFICATION
+- Their FINE-TUNING RESULTS are strong:
+    - Trained QWEN2.5-VL-7B and INTERNVL3-8B on a 92K-PAIR Instruct Set
+    - Used GPT-4.1-AS-JUDGE for evaluation
+    - Got +10.4% QA accuracy, +2.1 report score improvement, +40.8% segmentation mIoU
+- LIMITATIONS I identified:
+    - OVERFITTING on LOW-DENSITY counting scenes
+    - Unresolved OPTICAL-VS-SAR cross-sensor PERFORMANCE GAP
+    - Confirms that DOMAIN-SPECIFIC INSTRUCTION TUNING is mandatory — generic VLMs just can't do this
+- DIRECT RELEVANCE to our project:
+    - Their GPT-4.1 RUBRIC validates our planned RAR EVALUATION METRIC
+    - Their QWEN2.5-VL + LORA architecture on XBD DATA is STRUCTURALLY IDENTICAL to what we're building with QLORA
+
+
+2. Unified AIDER Processing Pipeline
+--------------------------------------
+
+- I built an END-TO-END JUPYTER NOTEBOOK pipeline — aider_pipeline.ipynb
+- It UNIFIES THREE PROCESSING STAGES for the AIDER DATASET into one sequential workflow
+- All three stages CLOSELY MIRROR the DATASET CONSTRUCTION PIPELINE from the DISASTERM3 paper I just reviewed
+    - Directly ADDRESSING several of their 9-TASK TAXONOMY items — specifically SCENE RECOGNITION, DISASTER TYPE RECOGNITION, BEARING BODY RECOGNITION, and RESTORATION ADVICE
+- But right now we're running this on a DELIBERATELY SMALL POOL of images
+    - The idea is to PILOT AND VALIDATE each mechanism BEFORE SCALING UP
+    - NEW TECHNIQUES we discover — like better PROMPT STRUCTURES, CLASS-BALANCING, QA FILTERING — will be MERGED into our MAIN PRODUCTION PIPELINE
+- The notebook sets up SHARED CONFIGURATION:
+    - WORKER_ID SHARDING across 5 TEAM MEMBERS
+    - MULTI-KEY GEMINI API ROTATION with MODEL FALLBACK — gemini-3.5-flash falls back to gemini-2.5-flash
+    - CLASS EXCLUSION FILTERS to skip normal/undamaged images
+- STAGE 1 — IMAGE STANDARDIZATION:
+    - Processes all 6,433 RAW AIDER images
+    - Forces RGB color space, caps the LONGEST EDGE AT 1280PX using LANCZOS resampling
+    - REJECTS anything below 256PX
+    - Saves optimized JPEGS AT QUALITY 95
+    - Runs PIL.VERIFY() for INTEGRITY CHECKS
+    - Computes MD5 HASHES for DEDUPLICATION
+    - Keeps a RESUME-SAFE TRACKER file so you can stop and restart without redoing work
+
+
+3. Synthetic Metadata Generation (Stage 2)
+--------------------------------------------
+
+- This is where we BRIDGE THE GAP between AIDER's simple class labels and the XBD-STYLE METADATA our pipeline needs
+- Queries the GEMINI API with a STRUCTURED SYSTEM PROMPT to generate PSEUDO-XBD JSON metadata for each image
+- Each image gets 1 TO 5 INSTANCE-LEVEL FEATURES, each with:
+    - A FEATURE_TYPE — like building, road, vehicle
+    - A DAMAGE SUBTYPE from the XBD SEVERITY SCALE — destroyed, major-damage, minor-damage, no-damage, un-classified
+- Has CLASS-BALANCED TARGETING via PER-CLASS QUOTAS
+- Uses WORKER-LEVEL SHARDING so each team member processes their own slice
+- Includes AUTOMATIC JSON VALIDATION and a MULTI-LAYER RETRY ENGINE
+    - Handles 503 and 429 ERRORS with API KEY ROTATION and MODEL FALLBACK
+
+
+4. Tactical Ground Truth Augmentation (Stage 3)
+-------------------------------------------------
+
+- This is the FINAL STAGE — combines SYNTHESIZED METADATA with the STANDARDIZED IMAGES to generate actual TRAINING DATA
+- Produces TACTICAL RESCUE INSTRUCTION-RESPONSE PAIRS formatted for QLORA FINE-TUNING
+- Parses each SYNTHETIC JSON to extract DISASTER TYPE, FEATURE COUNTS, and MAXIMUM SEVERITY
+- Generates responses across FOUR AUGMENTATION PERSPECTIVES:
+    - STRUCTURAL — collapse-mode analysis, void spaces
+    - TRIAGE — survivor prioritization, medical urgency
+    - LOGISTICS — blocked roads, landing zones, approach corridors
+    - ENVIRONMENTAL — fire spread, flood extent, chemical spills
+- Each perspective gets DISASTER-SPECIFIC EMPHASIS PROMPTS — so a fire image focuses on BURN PERIMETERS, a flood image focuses on WATER DEPTH ESTIMATION
+- Has STRICT QA GATES:
+    - Must follow a 3-SECTION SCHEMA (Priority Zones, Structural Damage, Hazard Avoidance)
+    - Minimum 120+ WORDS
+    - REJECTS any first-person or AI language
+- Uses PERSPECTIVE-BASED DEDUPLICATION so we don't generate the same angle twice for one image
+- End result: 117 VERIFIED INSTRUCTION-RESPONSE PAIRS written to aider_train_dataset_worker_0.jsonl
