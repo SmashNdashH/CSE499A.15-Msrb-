@@ -1,0 +1,90 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=0.75in]{geometry}
+\usepackage{enumitem}
+\setlist{itemsep=0pt, parsep=0pt, topsep=0pt, partopsep=0pt} % Reduces space between all bullet points
+\usepackage{booktabs}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{hyperref}
+\usepackage{multicol} % Added for IEEE two-column style in the body
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
+\Urlmuskip=0mu plus 1mu
+\emergencystretch=1.5em
+
+\titleformat{\section}{\large\bfseries}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.5ex}{0.5ex} % Reduces space around sections
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+\titlespacing*{\subsection}{0pt}{1ex}{0.5ex} % Reduces space around subsections
+
+\begin{document}
+
+
+
+\noindent\begin{minipage}[t]{0.46\textwidth}
+\vspace{-3em}
+{\large\bfseries Post-Disaster Rescue Guidance via VLM Fine-Tuning\par}
+\vspace{1em}
+{\ CSE499A -- Section 15, Group 5, Proposed Solution\par}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.50\textwidth}
+\vspace{-4.5em}
+\raggedleft
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Name} & \textbf{Student ID} \\
+\midrule
+Abdullah Al Noman & 2022095042\\
+Tamanna Akter Mou & 2211951042\\
+Aryan Sami & 2231407042\\
+Ridita Afrin Riya & 2211622042\\
+Abrar Mohammed Tanzim Alam & 2222864042\\
+\bottomrule
+\end{tabular}
+\end{minipage}
+
+\vspace{2em}
+\begin{center}
+    {\Large\bfseries Proposed Solution Report: Cost-Effective, Fine-Tuned VLMs for Disaster Damage Assessment}
+\end{center}
+\vspace{1em}
+
+\begin{multicols}{2}
+
+\section*{1. Abstract}
+Recent advancements in Large Vision-Language Models (LVLMs) have shown potential in post-disaster analysis. However, current systems struggle with a dichotomy: open-source models lack disaster-specific domain knowledge, while commercial API-based orchestrators are prone to hallucinations, rate limits, and high costs. To address this, we propose a \textbf{Two-Tiered Hybrid Framework} for automated disaster response. The system integrates a locally fine-tuned \textbf{Qwen2.5-VL-7B} (optimized via 4-bit QLoRA on a single T4 GPU) for precise, edge-capable damage assessment, coupled with \textbf{DisasTeller}, a multi-agent orchestration framework (powered by CrewAI and Gemini 3.1 Flash-Lite) that automates public alerting, resource deployment, and strategic recovery planning.
+
+\section*{2. Background and Motivation}
+In the immediate aftermath of natural disasters, rapid and coordinated decision-making is vital to minimize casualties. Traditional human coordination often suffers from information bottlenecks and delays. While recent AI pipelines and LVLMs have been proposed, they reveal substantial research gaps. 
+
+For instance, Dietrich et al. (2026) explored using medium-resolution Copernicus satellite imagery (SAR and optical) to map building damage via semantic segmentation. However, they concluded that building localization remains the weakest component of the pipeline at medium resolutions, and complex geospatial foundation models provided little practical benefit over basic U-Nets, ultimately failing to generate high-level semantic insights. To compensate for low-resolution imagery and the lack of semantic depth in traditional vision, Shakya et al. (2026) proposed a computationally massive three-stage pipeline utilizing Video Restoration Transformers for upscaling, YOLOv11 for building cropping, and zero-shot VLM reasoning. Because they relied on zero-shot inference with unadapted foundation models, they suffered from degraded visual feature interpretation on cropped patches and were forced to employ a slow, expensive ``VLM-as-a-Jury'' validation system to mitigate severe hallucination risks.
+
+These works highlight a clear dichotomy: standard segmentation models lack semantic reasoning, while zero-shot VLM pipelines are too computationally bloated and unreliable for rapid edge deployment. Our motivation is to bridge this gap by designing a unified, resource-efficient system. We hypothesize that by fine-tuning a lightweight 7B VLM via QLoRA, we can achieve native structural reasoning without the computational bloat of a jury, and by coupling it with the DisasTeller orchestrator, we move beyond simple pixel-segmentation to deliver actionable, automated emergency logistics. This claim forms the core of our proposed hybrid pipeline, which we intend to rigorously benchmark and validate following our implementation phase.
+
+\section*{3. Proposed Methodology}
+Our framework resolves the computational and operational bottlenecks of disaster response through two synergistic components:
+
+\subsection*{3.1 Resource-Efficient VLM Fine-Tuning (Edge Perception)}
+To achieve accurate visual perception without hallucination, we fine-tune Qwen2.5-VL-7B using \textbf{4-bit NF4 QLoRA}. We migrate training from 4$\times$H100 clusters to a highly accessible \textbf{single T4 GPU} using gradient accumulation. The training utilizes the DisasterM3 Instruct set with strict data-validity exclusions—purging 40\% of noisy referring segmentation paths to stabilize the loss curve. We cap dynamic visual resolutions to 512$\times$28$\times$28 to prevent Out-Of-Memory crashes. Furthermore, LoRA adapters are explicitly restricted to the LLM linear layers, keeping the vision tower frozen to preserve pre-trained geospatial feature extraction.
+
+\subsection*{3.2 DisasTeller Multi-Agent Orchestration (Command Center)}
+To translate visual assessments into actionable logistics, we deploy \textbf{DisasTeller}, a CrewAI-based framework utilizing Gemini 3.1 Flash-Lite. To bypass strict free-tier rate limits, the orchestrator utilizes a global \texttt{max\_rpm=2} constraint. The pipeline orchestrates four specialized agents in a sequential workflow:
+\begin{itemize}
+    \item \textbf{Expert Team:} Ingests local damage imagery and retrieves semantic guidelines to grade destruction (e.g., G1 to G5 scale).
+    \item \textbf{Alerts Team:} Evaluates global maps to define hazard zones and generate public social media warnings.
+    \item \textbf{Emergency Service Team:} Allocates temporary field shelters and recommends triage centers.
+    \item \textbf{Assignment Team:} Drafts human resource deployments (paramedics, engineers) and government reconstruction budgets.
+\end{itemize}
+
+\section*{4. Expected Results and Evaluation}
+Our hybrid system is evaluated both quantitatively and qualitatively. For the fine-tuned perception tier, we rely on \textbf{Multiple-Choice Question (MCQ)} accuracy metrics to bypass the subjective variations and extreme costs of ``LLM-as-a-judge'' evaluation. We expect a substantial 10--15\% accuracy improvement over zero-shot baselines in tasks like Disaster Scene Recognition and Damaged Building Counting. For the orchestration tier, DisasTeller successfully generates six structured reports (Damage Assessment, Social Media Alerts, Medical Staging, HR Allocation, Public Advisories, and Reconstruction Plans) that explicitly align with standard humanitarian workflows.
+
+\section*{5. Novelty and Contribution}
+The primary novelty of this work lies in unifying targeted, localized VLM fine-tuning with a multi-agent generative workflow. Unlike prior models that optimize exclusively for either raw bounding-box extraction or zero-shot chat interfaces, our system establishes a complete pipeline—from raw pixel assessment to municipal reconstruction drafting. Additionally, our architectural adaptations (QLoRA on 1$\times$T4, RPM-throttled API agents) democratize disaster AI, proving that high-tier operational readiness does not require massive corporate compute budgets.
+
+\section*{6. Conclusion}
+This proposed solution significantly advances AI-driven crisis management by delivering a robust, end-to-end framework. By grounding visual perception in a domain-specifically fine-tuned model and delegating strategic logistics to the specialized agents of DisasTeller, we overcome the limitations of both isolated computer vision tools and hallucination-prone generic LLMs. This dual-tier approach guarantees a scalable, cost-efficient, and highly deployable architecture for real-world disaster response.
+
+\end{multicols}
+\end{document}
