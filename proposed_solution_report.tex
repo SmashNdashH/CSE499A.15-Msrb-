@@ -8,6 +8,7 @@
 \usepackage{parskip}
 \usepackage{hyperref}
 \usepackage{multicol} % Added for IEEE two-column style in the body
+\usepackage{graphicx} % Added for mermaid diagram
 \hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
 \Urlmuskip=0mu plus 1mu
 \emergencystretch=1.5em
@@ -63,6 +64,14 @@ For instance, Dietrich et al. (2026) explored using medium-resolution Copernicus
 These works highlight a clear dichotomy: standard segmentation models lack semantic reasoning, while zero-shot VLM pipelines are too computationally bloated and unreliable for rapid edge deployment. Our motivation is to bridge this gap by designing a unified, resource-efficient system. We hypothesize that by fine-tuning a lightweight 7B VLM via QLoRA, we can achieve native structural reasoning without the computational bloat of a jury, and by coupling it with the DisasTeller orchestrator, we move beyond simple pixel-segmentation to deliver actionable, automated emergency logistics. This claim forms the core of our proposed hybrid pipeline, which we intend to rigorously benchmark and validate following our implementation phase.
 
 \section*{3. Proposed Methodology}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=\textwidth]{mermaid-diagram-2026-07-13-031309.png}
+    \caption{Proposed Two-Tiered Hybrid Framework: Integrating QLoRA Edge Perception with DisasTeller Multi-Agent Orchestration.}
+    \label{fig:pipeline}
+\end{figure*}
+
 Our framework resolves the computational and operational bottlenecks of disaster response through two synergistic components:
 
 \subsection*{3.1 Resource-Efficient VLM Fine-Tuning (Edge Perception)}
@@ -85,6 +94,17 @@ The primary novelty of this work lies in unifying targeted, localized VLM fine-t
 
 \section*{6. Conclusion}
 This proposed solution significantly advances AI-driven crisis management by delivering a robust, end-to-end framework. By grounding visual perception in a domain-specifically fine-tuned model and delegating strategic logistics to the specialized agents of DisasTeller, we overcome the limitations of both isolated computer vision tools and hallucination-prone generic LLMs. This dual-tier approach guarantees a scalable, cost-efficient, and highly deployable architecture for real-world disaster response.
+
+\section*{References}
+\begin{enumerate}[label={[\arabic*]}, leftmargin=*]
+    \item O. Dietrich, M. Alfredsson, E. Arens, N. Metzger, T. Peters, L. Scheibenreif, J. D. Wegner, and K. Schindler, ``The Potential of Copernicus Satellites for Disaster Response: Retrieving Building Damage from Sentinel-1 and Sentinel-2,'' \textit{arXiv preprint arXiv:2511.05461v2}, 2026.
+    
+    \item B. Shakya, C. Hoier, and K. M. Ahmed, ``From Pixels to Semantics: A Multi-Stage AI Framework for Structural Damage Detection in Satellite Imagery,'' in \textit{Proc. IEEE/CVF CVPR Workshops}, 2026, pp. 9305--9311.
+    
+    \item J. Wang, W. Xuan, H. Qi, Z. Liu, et al., ``DisasterM3: A Remote Sensing Vision-Language Dataset for Disaster Damage Assessment and Response,'' \textit{Advances in Neural Information Processing Systems (NeurIPS)}, Datasets and Benchmarks Track, 2025.
+    
+    \item P. N. Tehrani, F. Zhou, C. Jiang, Z. Zhang, and X. Zhang, ``DisasterInsight: A Function-Aware Multi-Modal Dataset for Building-Centered Disaster Analysis,'' \textit{Advances in Neural Information Processing Systems (NeurIPS)}, Datasets and Benchmarks Track, 2026.
+\end{enumerate}
 
 \end{multicols}
 \end{document}
