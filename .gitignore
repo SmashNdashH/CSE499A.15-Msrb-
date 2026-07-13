@@ -20,6 +20,9 @@ data/processed_tracker.txt
 # dataset/*.jsonl
 data/raw_dataset/AIDER
 cse499
+SAMPLE_UPDATE-MinhajCSE499A_update2.pdf
+
+
 
 # =========================================================================
 # PYTHON & MACHINE LEARNING CLEANUP
@@ -74,7 +77,7 @@ venv.bak/
 
 # Conda environment files (if exported locally to the folder)
 .conda/
-
+presentation_script.txt
 
 # =========================================================================
 # IDEs, EDITORS, & OS SPECIFICS (Windows / VS Code / Cursor)
@@ -85,9 +88,10 @@ Desktop.ini
 ehthumbs.db
 $RECYCLE.BIN/
 
-# VS Code / Cursor workspace configurations
+# VS Code / Cursor / Antigravity workspace configurations
 .vscode/
 !.vscode/extensions.json
+.antigravity/
 .history/
 *.code-workspace
 
@@ -97,3 +101,38 @@ pip-delete-this-directory.txt
 
 # --- Keep Requirements ---
 !requirements.txt
+
+# =========================================================================
+# PROJECT SPECIFICATIONS & DOCUMENTATION (Kept local only)
+# =========================================================================
+AIDER_PIPELINE_SPEC.md
+claude sonnet 4.6 web reponse for sanitization.txt
+DATASET_QUALITY_SPEC.md
+dataset_validator_guide.md
+eda_disaster_vlm_spec.md
+Handing off a reproducible architec.txt
+implementation_plan.md
+pipeline_fix_spec.md
+list gemini models.py
+walkthrough.md
+output.png
+CSE499A_update_1.tex
+CSE499A_update_2.tex
+CSE499A_update_3.tex
+CSE499A_update_4.tex
+CSE499A_update_5.tex
+CSE499A_update_6.tex
+Update_Report_Abrar (shortened version).md
+Update_Report_Abrar.md
+
+# Newly requested files to ignore
+disasterinsight_methodology.md
+disasterm3_methodology.md
+disasterm3_methodology_implementation.md
+implementation_plan for replaction of disasterM3 and disasterinsight.md
+literature_review.md
+others/lit review_research papers/*
+!others/lit review_research papers/Shakya_From_Pixels_to_Semantics_A_Multi-Stage_AI_Framework_for_Structural_CVPRW_2026_paper-1.pdf
+!others/lit review_research papers/NeurIPS-2025-disasterm3-a-remote-sensing-vision-language-dataset-for-disaster-damage-assessment-and-response-Paper-Datasets_and_Benchmarks_Track.pdf
+
+!others/lit review_research papers/The Potential of Copernicus Satellites for Disaster Response Retrieving Building Damage from Sentinel-1 and Sentinel-2.pdf

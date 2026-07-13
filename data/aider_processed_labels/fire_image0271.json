@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "dataset": "AIDER",
+    "disaster_type": "fire"
+  },
+  "features": {
+    "xy": [
+      {
+        "properties": {
+          "feature_type": "fire",
+          "subtype": "destroyed"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "vegetation",
+          "subtype": "destroyed"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "building",
+          "subtype": "major-damage"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "road",
+          "subtype": "un-classified"
+        }
+      }
+    ]
+  }
+}

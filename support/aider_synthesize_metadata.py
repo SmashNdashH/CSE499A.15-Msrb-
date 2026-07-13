@@ -35,6 +35,10 @@ TARGET_SYNTHESIS_COUNT = 100  # Set to 50, 100, or len(img_files)
 # Exclude non-disaster imagery based on EDA (same as ground truth generation)
 EXCLUDE_CLASSES = ['normal']
 
+# --- TEAM DELEGATION CONFIGURATION ---
+TOTAL_WORKERS = 5  # Total number of people running the script (Abrar, Aryan, Ridita, Tamanna, Noman)
+WORKER_ID = 0      # 0=You, 1=Aryan, 2=Ridita, 3=Tamanna, 4=Noman (Change this before running!)
+
 # --- API KEY CONFIGURATION ---
 load_dotenv(os.path.join(WORKSPACE, '.env'))
 GEMINI_API_KEYS = [v.strip() for k, v in os.environ.items() 
@@ -82,6 +86,10 @@ def main():
         print(f"No images found in {INPUT_IMG_DIR}. Please run aider_image_standardizer.py first!")
         return
 
+    # VERY IMPORTANT: Lock random seed so the execution queue is identical every run
+    # This prevents the queue from shifting if the script is interrupted and restarted.
+    random.seed(42)
+
     # --- Build 1D Stratified Inventory ---
     print("Building inventory for metadata synthesis...")
     inventory = defaultdict(list)
@@ -103,7 +111,11 @@ def main():
     for cls in active_classes:
         paths = inventory[cls]
         random.shuffle(paths)
-        selected = paths[:per_class_quota]
+        
+        # SHARDING: Slice only this worker's share of this specific class
+        my_shard = paths[WORKER_ID::TOTAL_WORKERS]
+        
+        selected = my_shard[:per_class_quota]
         execution_queue.extend(selected)
 
     random.shuffle(execution_queue)

@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "dataset": "AIDER",
+    "disaster_type": "collapsed_building"
+  },
+  "features": {
+    "xy": [
+      {
+        "properties": {
+          "feature_type": "building",
+          "subtype": "major-damage"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "building",
+          "subtype": "minor-damage"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "construction materials",
+          "subtype": "un-classified"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "vehicle",
+          "subtype": "un-classified"
+        }
+      },
+      {
+        "properties": {
+          "feature_type": "tree line",
+          "subtype": "no-damage"
+        }
+      }
+    ]
+  }
+}
