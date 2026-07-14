@@ -1,86 +1,55 @@
 # Post-Disaster Rescue Guidance via VLM Fine-Tuning
 
-[![Hugging Face Space](https://img.shields.io/badge/🤗%20Hugging%20Face-Live%20Demo-blue)](https://huggingface.co/spaces/)
-[![Model: Qwen2-VL-7B](https://img.shields.io/badge/Model-Qwen2--VL--7B-orange)](https://huggingface.co/Qwen)
-[![Framework: Unsloth](https://img.shields.io/badge/Framework-Unsloth-green)](https://github.com/unslothai/unsloth)
+> **CSE499A -- Section 15, Group 5, Update 3**
+> 
+> **Team:** 
+> - Abdullah Al Noman (2022095042)
+> - Tamanna Akter Mou (2211951042)
+> - Aryan Sami (2231407042)
+> - Ridita Afrin Riya (2211622042)
+> - Abrar Mohammed Tanzim Alam (2222864042)
 
-> **CSE499A/EEE499A/ETE499A - Senior Design 1, Section 15 Project Group 5**
-> **Team:** Abdullah Al Noman, Tamanna Akter Mou, Aryan Sami, Ridita Afrin Riya, Abrar Mohammed Tanzim Alam
+## Work Done by Abrar Mohammed Tanzim Alam
 
-## Project Overview
+My primary objective this week was to reproduce the fine-tuning and evaluation pipeline of the DisasterM3 (DM3) paper (Wang et al., NeurIPS 2025), whose released repository provides only benchmarking code—no training scripts. This required self-assembling the full training, merging, and evaluation infrastructure from scratch on Kaggle's single-T4 hardware, matching the hyperparameters in Appendix B.3. The implementation spans six sequential notebooks:
 
-During the first 72 hours of a natural disaster—the "golden rescue window"—coordinators must make high-stakes deployment decisions. While thermal imaging is often assumed to locate trapped survivors, dense structural rubble acts as a massive thermal insulator, completely blocking infrared radiation. Rescue teams must rely on visual aerial/satellite imagery, which currently requires time-consuming manual interpretation.
+1. **Dataset Inspection (`disasterm3_dataset_inspection.ipynb`):** Audited the 87 MB `train_release.json` manifest. Found 37,204 Referring Expression Segmentation entries had empty `training_answer` fields (ground truth is a mask path, not text)—invalid for text generation. Curated effective set: **55,764 valid instruction pairs** across 8 tasks.
+2. **Dataset Mirroring (`disasterm3_dataset_mirror.ipynb`):** Transferred the full 44 GB DM3 dataset from Hugging Face to a permanent private Kaggle Dataset, staging through `/tmp` (~70 GB) to bypass the 20 GB `/kaggle/working` cap—eliminating repeated multi-hour downloads.
+3. **QLoRA Fine-Tuning (`train_qwen_disasterm3.ipynb`):** Built the training pipeline (`transformers`+`peft`+`trl` SFTTrainer) for a single T4 (16 GB VRAM), replacing the paper's 4xH100 full-precision setup with 4-bit NF4 QLoRA, fp16, SDPA attention, and grad-accum 256. Fixed a LoRA misconfig where the vision tower wrongly received adapters. Ran 5 checkpoint-resume sessions, reaching step 102/217, loss 0.83→0.54; backed up adapter weights to Kaggle Dataset + HF Hub (`AbrarAlam/disasterm3-qwen25vl7b-qlora`).
+4. **LoRA Merge (`1_merge_and_push_model.ipynb`):** Merged the QLoRA adapter with base Qwen2.5-VL-7B in FP16, pushed the fused 15 GB checkpoint to HF. Required an isolated session to avoid `numpy`/`scipy` ABI mismatches and `triton` crashes.
+5. **Benchmark Mirroring (`2_dataset_creation.ipynb`):** Downloaded all 22,381 benchmark assets from HF's `DisasterM3_Bench` folder (11 GB), packaged into a permanent Kaggle Dataset. Overcame authenticated rate-limiting and `snapshot_download` deadlocks via token-injection and cache-bypass fallback.
+6. **vLLM Evaluation (`3_vllm_evaluation.ipynb`):** Configured the paper's official eval script with vLLM serving to benchmark the merged model on the 6 MCQ tasks from Table 2.
 
-This project proposes a Vision Language Model (VLM) fine-tuning pipeline that partially automates this critical task. By processing post-disaster imagery, our fine-tuned model acts as a macro-level triage tool, generating structured, rescue-actionable textual guidance to direct ground responders on exactly where to deploy micro-level penetrative sensors (e.g., sonar, radar).
+## Work Done by Tamanna Akter Mou
 
-### The Core Transformation
-Instead of traditional computer vision tasks (like generating segmentation masks or bounding boxes), our model is trained to "speak in rescue guidance":
+1. **Proposed-Solution-Report:** After observing the implementation progress of the team, I organized the project narrative into the proposed-solution report. I connected each member's implementation to the final two-tier framework so the report does not look like separate unrelated tasks.
+2. **Orchestration and Evaluation Writing:** I expanded the command-center side of the paper by describing practical outputs such as damage reports, social media alerts, medical staging, HR allocation, public advisories, and reconstruction plans. I also emphasized rescue-actionability evaluation so the generated text is judged by safety and usefulness, not only by text similarity. This helped align the update paper with the proposed-solution report and made the weekly progress easier to defend during presentation.
 
-**Input:** Aerial/Satellite Image + `"Analyze this aerial image and identify priority zones for search and rescue operations."`
-**Output:** > *"Zone A (NE quadrant): pancake collapse, 3-4 floors. Extract at column intersections. Zone B (centre): lean-over, void likely on south face. Avoid SW full collapse, secondary risk high."* ---
+## Work Done by Abdullah Al Noman
 
-## Technical Architecture & Pipeline
+1. **Super-Resolution Implementation:** Implemented the super-resolution model (from last week's presented paper, *Shakya-From Pixels to Semantics*) to enhance visual fidelity and structural detail of post-disaster AIDER dataset.
+2. **Data Engineering and Tensor Construction:** Built `prep_vrt_input.py` to satisfy the Video Restoration Transformer's (VRT) spatial-temporal tensor requirement. Replicated the static 1024x1024 frame four times, emulating a zero-motion pseudo-video clip to produce the required 5D tensor.
+3. **Weight Configuration and Mapping:** Downloaded the pre-trained mathematical weight configurations matching the `001_VRT_videosr_bi_REDS_6frames`. Mapped the weights to the codebase's strict local pathway to ensure proper structural state-dict binding.
+4. **Inference and Memory Optimization:** The massive computational overhead of generating a 4096x4096 output array was mitigated by partitioning the 1024px input space into small, sequential spatial tiles of 256x256 pixels.
+5. **Execution and Output Generation:** Overlapping tile margins were seamlessly fused together using a recurrent blending utility to eliminate block artifacts across the upscaled geography. Generated the final 4X super-resolved structural assessment asset directly to the disk with a crisp, verified resolution of exactly 4096x4096 pixels.
 
-### 1. Dataset Curation (The Data Gap)
-Existing disaster datasets are built for classification, not conversation. We curate a multi-source instruction-following dataset from established repositories:
-* **xBD (xView2):** Satellite imagery, multi-disaster 
-* **FloodNet:** UAV imagery, flood assessment 
-* **AIDER & RescueNet:** Aerial drone imagery, multi-disaster & rescue-oriented 
+## Work Done by Aryan Sami
 
-![Dataset Distribution and Exploratory Data Analysis](output.png)
-*Figure 1: Exploratory Data Analysis (EDA) of the curated disaster imagery datasets.*
+1. **Resolution and Localization Gaps Identified:** Documented how 10m ground sampling distance limits fine-grained damage detection in dense urban settings, with building localization remaining the weakest pipeline stage.
+2. **Multi-Source Data Integration Rationale:** Outlined how combining pre-/post-event optical (Sentinel-2) and radar (Sentinel-1) imagery improves robustness to cloud cover and lighting versus single-source approaches.
+3. **Dataset-to-Model Mapping:** Mapped the xBD-S12 dataset against our rescue-oriented instruction-response format, clarifying how satellite comparisons and damage classifications convert into training-ready multimodal examples.
+4. **Area of Interest and Acquisition Setup:** Defined the fire-affected extent for the Jan 2025 Palisades wildfire; configured acquisition for Sentinel-1 and Sentinel-2 L2A, pulling matched pre/post scenes.
+5. **Multi-Sensor Co-Registration:** Reprojected all four rasters onto a shared 4m grid for pixel-level alignment across sensors and time steps, making optical and radar streams directly comparable.
+6. **Model Inference Execution:** Ran the pretrained two-step ensemble from HF Hub on the co-registered Palisades imagery, producing a 3-class damage map matching the xBD-S12 label schema.
+7. **Output Validation:** Verified the damage map by overlaying it on post-event optical imagery to confirm correspondence with the visible burn scar.
 
-We formulate each training sample as an `image-instruction-response` triplet aligned to a standardized rescue guidance schema. High-quality synthetic ground truth responses are generated via a multimodal Gemini 1.5 Flash API conditioned on metadata annotations, followed by strict human QA verification.
+## Work Done by Ridita Afrin Riya
 
-### 2. Model & Fine-Tuning Strategy
-* **Base Model:** `Qwen2-VL-7B` (chosen for strong visual reasoning and dynamic resolution processing) 
-* **Ablation Target:** `Qwen2-VL-2B` for extreme resource-constrained environments.
-* **Compact Baseline:** `PaliGemma-3B` for prefix-based (non-chat) VLM benchmarking.
-* **Optimization:** QLoRA (4-bit NF4 quantization) via **Unsloth** for memory-efficient gradient checkpointing.
-* **Hardware:** Fine-tuned on Kaggle dual-T4 GPUs (2x16GB VRAM).
-
-### 3. Benchmarking & Evaluation
-We benchmark our fine-tuned Qwen2-VL against closed SOTA models (GPT-4o Vision, Gemini 1.5 Flash) and open-source baselines (LLaVA-1.5-7B, InternVL2-8B, PaliGemma-3B, untuned Qwen2-VL).
-* **Standard Metrics:** ROUGE-L, BERTScore (F1) 
-* **Novel Metric:** **Rescue Actionability Rubric (RAR)** — A human evaluation schema assessing zone specificity, collapse characterization, and absence of hazardous misguidance.
+1. **System Architecture and Pipeline Development:** Designed and implemented "DisasTeller," an autonomous, multi-agent AI framework utilizing CrewAI, LangChain, and Large Vision-Language Models (Google Gemini 3.1 Flash-Lite).
+2. **Specialized Multi-Agent Orchestration:** Divided complex disaster response workloads across four specialized agents: the *Expert Team* for visual damage grading, the *Alerts Team* for hazard warnings, the *Emergency Team* for staging triage shelters, and the *Assignment Team* for managing HR logistics and budgets.
+3. **API Mitigation and System Stabilization:** Addressed critical system crashes caused by multi-agent parallel querying that rapidly exhausted Gemini's free-tier limits. Migrated to the highly efficient `gemini-3.1-flash-lite` model and implemented a strict `max_rpm=2` constraint within CrewAI to act as a pacing mechanism.
+4. **Simulation Testing and Validation:** Executed and validated a full-scale simulation based on the Wajima Earthquake scenario. Demonstrated the system's ability to autonomously analyze field images, correctly identify a severed bridge as a "Grade 5 Total Collapse," route 80 Search and Rescue personnel, and strategically coordinate a nearby medical triage center.
 
 ---
 
-## Repository Structure
-
-```text
-disaster-vlm-project/
-+--- data
-|   +--- AIDER                                     # Raw AIDER imagery
-|   +--- aider_processed_images
-|   +--- aider_processed_labels
-|   +--- processed_images                          # Standardized xBD JPEGs (Max edge 1280px)
-|   +--- processed_labels                          # Paired xBD JSON metadata
-|   +--- xView2 Challenge Dataset - train and test # Raw xBD satellite imagery
-|   +--- aider_processed_tracker.txt
-|   \--- processed_tracker.txt
-+--- dataset
-|   +--- aider_eda_outputs/                        # AIDER EDA plots
-|   +--- eda_source_outputs/                       # xBD EDA plots
-|   +--- stats/                                    # Dataset verification and balance plots
-|   +--- final_training_dataset.jsonl              # Scrubbed, finetune-ready master file
-|   +--- train_dataset.jsonl                       # Raw generated pairs
-|   \--- verified_dataset.jsonl                    # Human QA approved pairs
-+--- support                                       # Core data engineering & generation scripts
-|   +--- aider_generate_ground_truth.py            
-|   +--- aider_image_standardizer.py
-|   +--- aider_synthesize_metadata.py              # Gemini synth script for AIDER
-|   +--- balance_dataset.py
-|   +--- dataset_split.py
-|   +--- dataset_stats.py
-|   +--- dataset_validator.py                      # Tkinter GUI for human-in-the-loop QA
-|   +--- generate_ground_truth.py                  # Gemini multimodal text generator (xBD)
-|   +--- image_standardizer.py
-|   \--- sanitize_dataset.py                       # Cleans AI-isms and enforces boundaries
-+--- Proposal Presentation.pptx
-+--- Proposal Report.pdf
-+--- README.md
-+--- aider_eda.ipynb                               # AIDER exploratory analysis
-+--- xview_eda.ipynb                               # xBD exploratory analysis
-+--- Instructions.md                               # Setup and pipeline execution steps
-\--- requirements.txt                              # Python dependencies
+**Next Week's Plan:** Complete the remaining training steps (102/217 -> 217/217) and execute the vLLM evaluation pipeline against the 6 MCQ benchmark tasks. Report accuracy metrics (DSR, DTR, BBR, BDC, DRE, ORR) and compare against the paper's published baselines to quantify the impact of our hardware-constrained QLoRA adaptation.
