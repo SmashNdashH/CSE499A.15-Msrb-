@@ -1,0 +1,71 @@
+# Emergency Service Team Human Resource Allocation Report
+
+## 1. Introduction
+This report delineates the human resource allocation strategy following the recent high-magnitude earthquake in the Wajima region. The disaster has resulted in a highly heterogeneous landscape, with some areas remaining structurally sound (G1) while others have suffered catastrophic collapse (G5). The primary goal of this allocation plan is to maximize life-saving potential while ensuring the safety of emergency personnel, utilizing the stable G1 zones as a logistics hub to manage operations in the compromised districts.
+
+## 2. Current Situation
+The damage assessment has classified the area into six distinct zones. The destruction of the **Concrete Bridge (G5)** represents the most critical immediate challenge, effectively bifurcating the disaster area and hindering the mobilization of heavy equipment to the southern sector. 
+
+*   **Critical Need:** Search and Rescue (SAR) operations in South Central Asaichi Street (G5).
+*   **Infrastructure Need:** Engineering task forces for the Concrete Bridge.
+*   **Medical Need:** Trauma care and surge capacity at the Wajima Drama Memorial Hall (G1).
+*   **Logistics Need:** Clearing of debris at Hama Street (G4) to open secondary access corridors.
+
+## 3. Human Resource Requirements
+Based on historical disaster data—including lessons from the 2011 Tohoku earthquake and similar urban seismic events—resource allocation must prioritize a mix of specialized rapid response and sustained support teams.
+
+| Category | Requirement | Primary Focus |
+| :--- | :--- | :--- |
+| **Search & Rescue (SAR)** | 120 Personnel | Heavy rescue, structural stabilization, and canine units. |
+| **Medical Personnel** | 80 Personnel | Trauma surgeons, nurses, paramedics, and mental health support. |
+| **Engineering & Construction** | 60 Personnel | Bridge repair, heavy equipment operators, structural engineers. |
+| **Logistics & Coordination** | 40 Personnel | Supply chain, traffic management, and communication. |
+| **Public Safety & Security** | 50 Personnel | Cordon enforcement, crowd control, and safety of shelters. |
+
+## 4. Allocation Plan
+
+### Area A: Central Hubs (Wajima Drama Memorial Hall & Central Nishikigawa Street - G1)
+*   **Status:** Stable; designated as the command and triage center.
+*   **Resources:**
+    *   **Medical:** 60 personnel (Trauma surgeons and nurses).
+    *   **Logistics/Admin:** 30 personnel.
+    *   **Security:** 20 personnel to maintain the "Emergency Exclusive Route."
+*   **Deployment Status:** Fully established.
+
+### Area B: South Central Asaichi Street (G5)
+*   **Status:** Total devastation, uninhabitable.
+*   **Resources:**
+    *   **SAR:** 80 personnel (Specialized in deep rubble extraction).
+    *   **Medical:** 10 personnel (On-site stabilization paramedics).
+    *   **Security:** 15 personnel (Ensuring unauthorized personnel do not enter).
+*   **Deployment Status:** Priority 1 active search zone.
+
+### Area C: Concrete Bridge & Hama Street (G5/G4)
+*   **Status:** Critical infrastructure bottleneck.
+*   **Resources:**
+    *   **Engineering:** 60 personnel (Structural engineers and bridge-building teams).
+    *   **SAR:** 40 personnel (Secondary search teams working on the perimeter).
+    *   **Security/Logistics:** 15 personnel (Traffic diversion and site cordoning).
+*   **Deployment Status:** Operational site for infrastructure repair.
+
+### Area D: North Asaichi Street (G3)
+*   **Status:** Moderate risk, requiring ongoing monitoring.
+*   **Resources:**
+    *   **Medical:** 10 personnel (Mobile outreach clinics).
+    *   **Security:** 15 personnel (Warning and evacuation guidance).
+*   **Deployment Status:** Ongoing surveillance and risk assessment.
+
+## 5. Challenges and Considerations
+*   **Logistical Bottlenecks:** The severance of the Concrete Bridge forces a reliance on alternative routes, increasing travel times for emergency vehicles by an estimated 40%.
+*   **Atmospheric Hazards:** Dust and debris at G5 sites pose long-term health risks to SAR personnel; adequate PPE supply chains must be maintained.
+*   **Personnel Fatigue:** Disaster management is high-stress. A rotation system (12-hour shifts) is required to prevent decision-making degradation.
+*   **Local Restrictions:** Cordoned-off areas must be strictly maintained; public resistance to exclusion zones remains a potential challenge that requires clear communication from the alerts team.
+
+## 6. Recommendations
+*   **Shift to Rapid Bridge Repair:** Immediately transition 20% of the SAR workforce to support the engineering teams if bridge restoration stalls, as infrastructure is the multiplier for all other rescue efforts.
+*   **Mobile Triage Units:** Deploy mobile medical units to the perimeter of the North Asaichi Street (G3) zone to reduce the strain on the Wajima Drama Memorial Hall triage center.
+*   **Psychological Support:** Include mental health professionals in the initial rotation of personnel; trauma experienced during the SAR process in G5 zones is significant.
+*   **Expansion of Secure Communications:** Increase the number of communication staff to maintain a real-time common operating picture as the situation evolves.
+
+## 7. Conclusion
+The current human resource allocation strategy prioritizes the structural stability of the G1 command hubs while aggressively targeting the G5 disaster zones for search and rescue. The immediate recovery of the Concrete Bridge is the pivot point for all future operations. By maintaining a disciplined deployment of personnel across the four identified areas and adhering to strict safety protocols in the G5 and G4 zones, we aim to stabilize the region efficiently. Continued evaluation of G3 zones and the expansion of secondary medical outreach will be our next strategic focus as we transition from life-saving to community recovery phases.
