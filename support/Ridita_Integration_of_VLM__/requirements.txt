@@ -1,0 +1,12 @@
+langchain==0.2.7 
+crewai==0.36.0 
+crewai-tools==0.4.8
+duckduckgo-search 
+beautifulsoup4 
+python-dotenv 
+requests
+google-generativeai 
+langchain-google-genai 
+langchain-community 
+pypdf 
+pillow
