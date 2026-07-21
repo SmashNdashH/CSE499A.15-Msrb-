@@ -4,7 +4,7 @@ import shutil
 # 1. Let Python automatically look for your image in the workspace
 possible_paths = [
     '/content/sample_data/AIDAR_collapsed_building_image0464.jpg',
-    '/content/VRT/sample_data/AIDAR_collapsed_building_image0464.jpg',
+    '/content/VRT/sample_data/disaster_image.jpg',
     'sample_data/AIDAR_collapsed_building_image0464.jpg'
 ]
 
