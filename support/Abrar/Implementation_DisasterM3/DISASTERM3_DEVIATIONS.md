@@ -108,6 +108,12 @@ dynamics equivalent to an uninterrupted run up to dataloader-order edge cases.
 | 3 | 2026-07-12 | 55/217 | ~6.6 s/sample | Account 1 quota exhausted. Loss dropped 0.62 → 0.618. HF backup OK. |
 | 4 | 2026-07-13 | 78/217 | ~6.0 s/sample | Resumed from ckpt-55 (Account 2). Early stop due to quota limit (~25 min/step). Loss dropped 0.618 → 0.589. Backed up ckpt-78 to Kaggle & HF. |
 | 5 | 2026-07-13 | 102/217 | ~6.0 s/sample | Resumed from ckpt-78 (Account 2). No manual early stop (TimeLimitCallback stopped it cleanly). Loss dropped 0.589 → ~0.54. Backed up ckpt-102 to Kaggle & HF. |
+| 6 | 2026-07-14 | 118/217 | ~6.0 s/sample | Resumed from ckpt-102. Backed up ckpt-118 to Kaggle & HF. |
+| 7 | 2026-07-17 | 140/217 | ~6.0 s/sample | Resumed from ckpt-118. Backed up ckpt-140 to Kaggle & HF. |
+| 8 | 2026-07-19 | 161/217 | ~6.0 s/sample | Resumed from ckpt-140. Backed up ckpt-161 to Kaggle & HF. |
+| 9 | 2026-07-20 | 173/217 | ~6.0 s/sample | Resumed from ckpt-161. Backed up ckpt-173 to Kaggle & HF. |
+| 10 | 2026-07-21 | 198/217 | ~6.0 s/sample | Resumed from ckpt-173. Backed up ckpt-198 to Kaggle & HF. |
+| 11 (Final) | 2026-07-21 | 217/217 (100%) | ~6.0 s/sample | Resumed from ckpt-198. Full epoch completed! Ran from 23:23 to 08:05. Initial HF push hit a quota limit, but local checkpoint survived safely. After manual space cleanup, re-ran the cell and checkpoint-217 + final adapter successfully pushed to HF with no corruption. |
 
 ## D8. Evaluation scope: MCQ tasks only (from the implementation plan)
 
@@ -151,5 +157,14 @@ and start training from scratch with the fixed notebook.
 **Symptom:** `ModuleNotFoundError: No module named 'numpy.strings'` (or `numpy.char`) on `from transformers import Qwen2_5_VLForConditionalGeneration` — surfaced via transformers' generation utils → optional sklearn import → scipy's array_api_compat layer, which requires NumPy ≥2.0's `numpy.strings` submodule.
 **Cause:** Attempting to force-install older pinned training dependencies (like `torchvision==0.19.0`) silently downgraded NumPy to `1.26.4` on disk. The running Kaggle session still expected NumPy 2.x for its pre-compiled C-extensions (like SciPy), triggering an ABI mismatch crash.
 **Fix:** Adopted a two-session workflow to permanently isolate the merge and evaluation environments. 
-- **Session 1 (Merge):** Clean installation of only `transformers`, `peft`, and `accelerate` (no `vllm` or `bitsandbytes` to avoid `triton.ops` crashes). Model merged and pushed to HF.
+- **Session 1 (Merge):** Clean installation of only `transformers`, `peft`, and `accelerate` (no `vllm` or `bitsandbytes` to avoid `triton.ops` crashes). Modified `1_merge_and_push_model.ipynb` to dynamically target the completed `checkpoints/checkpoint-217` subfolder instead of the hardcoded intermediate `checkpoint-102`. Model merged and pushed to HF.
 - **Session 2 (Evaluate):** Factory reset to wipe the corrupted disk. Clean installation of *only* `vllm`, utilizing the intelligent fallback logic to load the merged model directly from Hugging Face.
+
+
+## D13. VLLM Evaluation performed in FP16 (No BitsAndBytes) via Tensor Parallelism
+
+**Symptom 1:** `ModuleNotFoundError: No module named 'triton.ops'` during VLLM initialization when trying to load the 4-bit `bitsandbytes` quantizer.
+**Symptom 2:** `torch.OutOfMemoryError: CUDA out of memory` during vLLM weight loading when attempting native FP16 on a single T4.
+**Cause:** `vllm>=0.6.3` strictly requires `bitsandbytes>=0.48.1`, which conflicts with Kaggle's `triton` environment, breaking 4-bit loading. Attempting to load the 7B parameter model in native FP16 consumes ~14GB VRAM for weights alone, which exceeds the usable capacity of a single 16GB T4 GPU when accounting for vLLM engine overhead.
+**Fix:** Modified `3_vllm_evaluation.ipynb` to completely remove `bitsandbytes`. To accommodate the 14GB FP16 weights, the Kaggle environment was switched to **GPU T4 x2**, and `tensor_parallel_size=2` was injected into the `run_vllm.py` patched arguments. This pools the 30GB VRAM across two GPUs, allowing vLLM to comfortably load the native FP16 model without OOMing.
+**Expected effect:** FP16 evaluation is theoretically more accurate than 4-bit quantized evaluation since no precision is discarded at inference time. The results should be exactly representative of the merged model's true capabilities.

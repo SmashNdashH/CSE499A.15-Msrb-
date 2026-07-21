@@ -1,0 +1,856 @@
+{"id": "bearing_body_0", "response": "B, F, G"}
+{"id": "bearing_body_1", "response": "B, E, F, G"}
+{"id": "bearing_body_2", "response": "F, G, H"}
+{"id": "bearing_body_3", "response": "F, G"}
+{"id": "bearing_body_4", "response": "H, B, E, G, F"}
+{"id": "bearing_body_5", "response": "H, B"}
+{"id": "bearing_body_6", "response": "A, E, G, H"}
+{"id": "bearing_body_7", "response": "A, E, G"}
+{"id": "bearing_body_8", "response": "G, H"}
+{"id": "bearing_body_9", "response": "B, E"}
+{"id": "bearing_body_10", "response": "E, D"}
+{"id": "bearing_body_11", "response": "B, E, G"}
+{"id": "bearing_body_12", "response": "A, B, E, H, F"}
+{"id": "bearing_body_13", "response": "E, F, H"}
+{"id": "bearing_body_14", "response": "G, H"}
+{"id": "bearing_body_15", "response": "H, G"}
+{"id": "bearing_body_16", "response": "F, D, H"}
+{"id": "bearing_body_17", "response": "G, F, E"}
+{"id": "bearing_body_18", "response": "G, E"}
+{"id": "bearing_body_19", "response": "F, H"}
+{"id": "bearing_body_20", "response": "F, H"}
+{"id": "bearing_body_21", "response": "E, F"}
+{"id": "bearing_body_22", "response": "A, D, E, G"}
+{"id": "bearing_body_23", "response": "B, D, E"}
+{"id": "bearing_body_24", "response": "B, C, E, G"}
+{"id": "bearing_body_25", "response": "E, F, H"}
+{"id": "bearing_body_26", "response": "D, E, F"}
+{"id": "bearing_body_27", "response": "C, F, H"}
+{"id": "bearing_body_28", "response": "C, F, H"}
+{"id": "bearing_body_29", "response": "C, D, H"}
+{"id": "bearing_body_30", "response": "C, H"}
+{"id": "bearing_body_31", "response": "G, E, B"}
+{"id": "bearing_body_32", "response": "B, G, H"}
+{"id": "bearing_body_33", "response": "A, B, E"}
+{"id": "bearing_body_34", "response": "A, B, E, G"}
+{"id": "bearing_body_35", "response": "G, H"}
+{"id": "bearing_body_36", "response": "G, H"}
+{"id": "bearing_body_37", "response": "H, F"}
+{"id": "bearing_body_38", "response": "A, F, H"}
+{"id": "bearing_body_39", "response": "F, G, H"}
+{"id": "bearing_body_40", "response": "F, G, H"}
+{"id": "bearing_body_41", "response": "A, D, F"}
+{"id": "bearing_body_42", "response": "A, D, F"}
+{"id": "bearing_body_43", "response": "B, D, G"}
+{"id": "bearing_body_44", "response": "B, D, G"}
+{"id": "bearing_body_45", "response": "F, H"}
+{"id": "bearing_body_46", "response": "H, F"}
+{"id": "bearing_body_47", "response": "E, F, H"}
+{"id": "bearing_body_48", "response": "F, H"}
+{"id": "bearing_body_49", "response": "B, G, F, D"}
+{"id": "bearing_body_50", "response": "G, F"}
+{"id": "bearing_body_51", "response": "A, E"}
+{"id": "bearing_body_52", "response": "E, G, H"}
+{"id": "bearing_body_53", "response": "A, C, F, H"}
+{"id": "bearing_body_54", "response": "C, F"}
+{"id": "bearing_body_55", "response": "E, B"}
+{"id": "bearing_body_56", "response": "F, G"}
+{"id": "bearing_body_57", "response": "E, G"}
+{"id": "bearing_body_58", "response": "C, E, G"}
+{"id": "bearing_body_59", "response": "F, G, H"}
+{"id": "bearing_body_60", "response": "F, G"}
+{"id": "bearing_body_61", "response": "G, H"}
+{"id": "bearing_body_62", "response": "G, H"}
+{"id": "bearing_body_63", "response": "G, B"}
+{"id": "bearing_body_64", "response": "B, G"}
+{"id": "bearing_body_65", "response": "A, F, H"}
+{"id": "bearing_body_66", "response": "H"}
+{"id": "bearing_body_67", "response": "A, C, E"}
+{"id": "bearing_body_68", "response": "C, E, F, G, H"}
+{"id": "bearing_body_69", "response": "E, B, C"}
+{"id": "bearing_body_70", "response": "A, B, C, E"}
+{"id": "bearing_body_71", "response": "F, H"}
+{"id": "bearing_body_72", "response": "F, H"}
+{"id": "bearing_body_73", "response": "G, D"}
+{"id": "bearing_body_74", "response": "F, G"}
+{"id": "bearing_body_75", "response": "A, D"}
+{"id": "bearing_body_76", "response": "D, G"}
+{"id": "bearing_body_77", "response": "D, E, F"}
+{"id": "bearing_body_78", "response": "D, E"}
+{"id": "bearing_body_79", "response": "B, D, E"}
+{"id": "bearing_body_80", "response": "E, F"}
+{"id": "bearing_body_81", "response": "F, C"}
+{"id": "bearing_body_82", "response": "F"}
+{"id": "bearing_body_83", "response": "F, C"}
+{"id": "bearing_body_84", "response": "B, C, E, F"}
+{"id": "bearing_body_85", "response": "A, F"}
+{"id": "bearing_body_86", "response": "B, F"}
+{"id": "bearing_body_87", "response": "A, F, G"}
+{"id": "bearing_body_88", "response": "A, F"}
+{"id": "bearing_body_89", "response": "B, H"}
+{"id": "bearing_body_90", "response": "B, H"}
+{"id": "bearing_body_91", "response": "B, G, H"}
+{"id": "bearing_body_92", "response": "B, G"}
+{"id": "bearing_body_93", "response": "D, E, H"}
+{"id": "bearing_body_94", "response": "D, E, H"}
+{"id": "bearing_body_95", "response": "B, D, F"}
+{"id": "bearing_body_96", "response": "E, F"}
+{"id": "bearing_body_97", "response": "D, H"}
+{"id": "bearing_body_98", "response": "D, H, A"}
+{"id": "bearing_body_99", "response": "F, H"}
+{"id": "bearing_body_100", "response": "F, B, D, H"}
+{"id": "bearing_body_101", "response": "A, E, G"}
+{"id": "bearing_body_102", "response": "A, E"}
+{"id": "bearing_body_103", "response": "E, G"}
+{"id": "bearing_body_104", "response": "E, C, G"}
+{"id": "bearing_body_105", "response": "D, E, H"}
+{"id": "bearing_body_106", "response": "D, E, H"}
+{"id": "bearing_body_107", "response": "A, E"}
+{"id": "bearing_body_108", "response": "C, D"}
+{"id": "bearing_body_109", "response": "A, D"}
+{"id": "bearing_body_110", "response": "B, D"}
+{"id": "bearing_body_111", "response": "F, C"}
+{"id": "bearing_body_112", "response": "F, C"}
+{"id": "bearing_body_113", "response": "F, G"}
+{"id": "bearing_body_114", "response": "B, G"}
+{"id": "bearing_body_115", "response": "B, D, H"}
+{"id": "bearing_body_116", "response": "B, D, H"}
+{"id": "bearing_body_117", "response": "C, F, G"}
+{"id": "bearing_body_118", "response": "G, H"}
+{"id": "bearing_body_119", "response": "C, B, F"}
+{"id": "bearing_body_120", "response": "C, F, H"}
+{"id": "bearing_body_121", "response": "D, C, H"}
+{"id": "bearing_body_122", "response": "C, H"}
+{"id": "bearing_body_123", "response": "C, B"}
+{"id": "bearing_body_124", "response": "C, H"}
+{"id": "bearing_body_125", "response": "C, E, F"}
+{"id": "bearing_body_126", "response": "C, D, F"}
+{"id": "bearing_body_127", "response": "H, F"}
+{"id": "bearing_body_128", "response": "A, B, G"}
+{"id": "bearing_body_129", "response": "H, E, D, B"}
+{"id": "bearing_body_130", "response": "A, B, E"}
+{"id": "bearing_body_131", "response": "H, D, F"}
+{"id": "bearing_body_132", "response": "C, E"}
+{"id": "bearing_body_133", "response": "D, E"}
+{"id": "bearing_body_134", "response": "F, G, H"}
+{"id": "bearing_body_135", "response": "D, H"}
+{"id": "bearing_body_136", "response": "D, F, C"}
+{"id": "bearing_body_137", "response": "A, F, H"}
+{"id": "bearing_body_138", "response": "B, E"}
+{"id": "bearing_body_139", "response": "C, D, E"}
+{"id": "bearing_body_140", "response": "F, A, B"}
+{"id": "bearing_body_141", "response": "F, D, H"}
+{"id": "bearing_body_142", "response": "G, H"}
+{"id": "bearing_body_143", "response": "D, H"}
+{"id": "bearing_body_144", "response": "E, G"}
+{"id": "bearing_body_145", "response": "D, E, G"}
+{"id": "bearing_body_146", "response": "C, E, H"}
+{"id": "bearing_body_147", "response": "F, G, D"}
+{"id": "bearing_body_148", "response": "H, D"}
+{"id": "bearing_body_149", "response": "A, B, E"}
+{"id": "bearing_body_150", "response": "G, H"}
+{"id": "bearing_body_151", "response": "H, G, A, F"}
+{"id": "bearing_body_152", "response": "A, F, G"}
+{"id": "bearing_body_153", "response": "C, F, G, H"}
+{"id": "bearing_body_154", "response": "C, D, E"}
+{"id": "bearing_body_155", "response": "A, B, F"}
+{"id": "bearing_body_156", "response": "B, G"}
+{"id": "bearing_body_157", "response": "C, E"}
+{"id": "bearing_body_158", "response": "E, D, F"}
+{"id": "bearing_body_159", "response": "C, F, G"}
+{"id": "bearing_body_160", "response": "A, E, F, D"}
+{"id": "bearing_body_161", "response": "E, F, H"}
+{"id": "bearing_body_162", "response": "A, B, C, D"}
+{"id": "bearing_body_163", "response": "C, D, F"}
+{"id": "bearing_body_164", "response": "B"}
+{"id": "bearing_body_165", "response": "F, D"}
+{"id": "bearing_body_166", "response": "E, F"}
+{"id": "bearing_body_167", "response": "E, F"}
+{"id": "bearing_body_168", "response": "H, G"}
+{"id": "bearing_body_169", "response": "D, G"}
+{"id": "bearing_body_170", "response": "D, F, H"}
+{"id": "bearing_body_171", "response": "C, F, H"}
+{"id": "bearing_body_172", "response": "B, D, F, G"}
+{"id": "bearing_body_173", "response": "C, H"}
+{"id": "bearing_body_174", "response": "C, G, H"}
+{"id": "bearing_body_175", "response": "H, F, E, C"}
+{"id": "bearing_body_176", "response": "A, E"}
+{"id": "bearing_body_177", "response": "D, F, H"}
+{"id": "bearing_body_178", "response": "C, E"}
+{"id": "bearing_body_179", "response": "G, F"}
+{"id": "bearing_body_180", "response": "B, C, E, G"}
+{"id": "bearing_body_181", "response": "B, D, G, H"}
+{"id": "bearing_body_182", "response": "A, F"}
+{"id": "bearing_body_183", "response": "H"}
+{"id": "bearing_body_184", "response": "E, F, H"}
+{"id": "bearing_body_185", "response": "D, G"}
+{"id": "bearing_body_186", "response": "D, H"}
+{"id": "bearing_body_187", "response": "D, G, H"}
+{"id": "bearing_body_188", "response": "A, F, H"}
+{"id": "bearing_body_189", "response": "F, H"}
+{"id": "bearing_body_190", "response": "B, E"}
+{"id": "bearing_body_191", "response": "A, F"}
+{"id": "bearing_body_192", "response": "D, F, C"}
+{"id": "bearing_body_193", "response": "E, H"}
+{"id": "bearing_body_194", "response": "D, E"}
+{"id": "bearing_body_195", "response": "F, G, H"}
+{"id": "bearing_body_196", "response": "C, F, G, H"}
+{"id": "bearing_body_197", "response": "C, E, F"}
+{"id": "bearing_body_198", "response": "B, E, H"}
+{"id": "bearing_body_199", "response": "A, F, G"}
+{"id": "bearing_body_200", "response": "A, C, E, G"}
+{"id": "bearing_body_201", "response": "A, B, F, H"}
+{"id": "bearing_body_202", "response": "A, H"}
+{"id": "bearing_body_203", "response": "A, B, C, E"}
+{"id": "bearing_body_204", "response": "D, F, H"}
+{"id": "bearing_body_205", "response": "C, F"}
+{"id": "bearing_body_206", "response": "C, G"}
+{"id": "bearing_body_207", "response": "F, G, H"}
+{"id": "bearing_body_208", "response": "G, H"}
+{"id": "bearing_body_209", "response": "D, E"}
+{"id": "bearing_body_210", "response": "B, H"}
+{"id": "bearing_body_211", "response": "D, H"}
+{"id": "bearing_body_212", "response": "D, G, E"}
+{"id": "bearing_body_213", "response": "E, G, H"}
+{"id": "bearing_body_214", "response": "G, B"}
+{"id": "bearing_body_215", "response": "D, E, G"}
+{"id": "bearing_body_216", "response": "B, C, H"}
+{"id": "bearing_body_217", "response": "A, F"}
+{"id": "bearing_body_218", "response": "E, B"}
+{"id": "bearing_body_219", "response": "A, B, C, D, E, G"}
+{"id": "bearing_body_220", "response": "E, G"}
+{"id": "bearing_body_221", "response": "A, D, E"}
+{"id": "bearing_body_222", "response": "D, E"}
+{"id": "bearing_body_223", "response": "A, F"}
+{"id": "bearing_body_224", "response": "D, E"}
+{"id": "bearing_body_225", "response": "A, E, F"}
+{"id": "bearing_body_226", "response": "F, G"}
+{"id": "bearing_body_227", "response": "C, G"}
+{"id": "bearing_body_228", "response": "A, B, C, E, G"}
+{"id": "bearing_body_229", "response": "B, C, H"}
+{"id": "bearing_body_230", "response": "H, F"}
+{"id": "bearing_body_231", "response": "G, D, H"}
+{"id": "bearing_body_232", "response": "F, H"}
+{"id": "bearing_body_233", "response": "C, D, H"}
+{"id": "bearing_body_234", "response": "B, F"}
+{"id": "bearing_body_235", "response": "A, D, E"}
+{"id": "bearing_body_236", "response": "E, F, G"}
+{"id": "bearing_body_237", "response": "H, C, G"}
+{"id": "bearing_body_238", "response": "C, D, H"}
+{"id": "bearing_body_239", "response": "B, D, H"}
+{"id": "bearing_body_240", "response": "A, F, G"}
+{"id": "bearing_body_241", "response": "F, E"}
+{"id": "bearing_body_242", "response": "A, F, G"}
+{"id": "bearing_body_243", "response": "A, C, F, G, H"}
+{"id": "bearing_body_244", "response": "F, D"}
+{"id": "bearing_body_245", "response": "D, E, F, G"}
+{"id": "bearing_body_246", "response": "F, C"}
+{"id": "bearing_body_247", "response": "C, H"}
+{"id": "bearing_body_248", "response": "A, D, F, E"}
+{"id": "bearing_body_249", "response": "H, F, D, B"}
+{"id": "bearing_body_250", "response": "E, F"}
+{"id": "bearing_body_251", "response": "C, C, H, G"}
+{"id": "bearing_body_252", "response": "B, C, F, H"}
+{"id": "bearing_body_253", "response": "B, E, H"}
+{"id": "bearing_body_254", "response": "G, E, B"}
+{"id": "bearing_body_255", "response": "B, E"}
+{"id": "bearing_body_256", "response": "D, F"}
+{"id": "bearing_body_257", "response": "B, E, F"}
+{"id": "bearing_body_258", "response": "C, E"}
+{"id": "bearing_body_259", "response": "A, B, F"}
+{"id": "bearing_body_260", "response": "C, E, H"}
+{"id": "bearing_body_261", "response": "C, F, H"}
+{"id": "bearing_body_262", "response": "B, F, H"}
+{"id": "bearing_body_263", "response": "F, G"}
+{"id": "bearing_body_264", "response": "H, E"}
+{"id": "bearing_body_265", "response": "B, E, H"}
+{"id": "bearing_body_266", "response": "D, F, H"}
+{"id": "bearing_body_267", "response": "F, E, C"}
+{"id": "bearing_body_268", "response": "A, B, E, F"}
+{"id": "bearing_body_269", "response": "G"}
+{"id": "bearing_body_270", "response": "A, B, D, F, G"}
+{"id": "bearing_body_271", "response": "D, E, G"}
+{"id": "bearing_body_272", "response": "D, F, H"}
+{"id": "bearing_body_273", "response": "B, D, G"}
+{"id": "bearing_body_274", "response": "F, G, D, E, C"}
+{"id": "bearing_body_275", "response": "E, F, D"}
+{"id": "bearing_body_276", "response": "B, C, G, H"}
+{"id": "bearing_body_277", "response": "G, H"}
+{"id": "bearing_body_278", "response": "B, D, E, H"}
+{"id": "bearing_body_279", "response": "D, E"}
+{"id": "bearing_body_280", "response": "C, F"}
+{"id": "bearing_body_281", "response": "A, C, H"}
+{"id": "bearing_body_282", "response": "C, B, G"}
+{"id": "bearing_body_283", "response": "B, C, F, G"}
+{"id": "bearing_body_284", "response": "G, B, F, E"}
+{"id": "bearing_body_285", "response": "D, F, H"}
+{"id": "bearing_body_286", "response": "D, E, H"}
+{"id": "bearing_body_287", "response": "D, F, G"}
+{"id": "bearing_body_288", "response": "C, F"}
+{"id": "bearing_body_289", "response": "A, D, F"}
+{"id": "bearing_body_290", "response": "D, F, H"}
+{"id": "bearing_body_291", "response": "F, H"}
+{"id": "bearing_body_292", "response": "G, B"}
+{"id": "bearing_body_293", "response": "B, F, G"}
+{"id": "bearing_body_294", "response": "D, E"}
+{"id": "bearing_body_295", "response": "A, B, F, G"}
+{"id": "bearing_body_296", "response": "G, E"}
+{"id": "bearing_body_297", "response": "B, C, H"}
+{"id": "bearing_body_298", "response": "C, H, E, F"}
+{"id": "bearing_body_299", "response": "D, G, H"}
+{"id": "bearing_body_300", "response": "G, B"}
+{"id": "bearing_body_301", "response": "E, F, G"}
+{"id": "bearing_body_302", "response": "C, H"}
+{"id": "bearing_body_303", "response": "G, E, F"}
+{"id": "bearing_body_304", "response": "F, G"}
+{"id": "bearing_body_305", "response": "D, H"}
+{"id": "bearing_body_306", "response": "D, B, C, E"}
+{"id": "bearing_body_307", "response": "G, H"}
+{"id": "bearing_body_308", "response": "B, C, E"}
+{"id": "bearing_body_309", "response": "B, C, E"}
+{"id": "bearing_body_310", "response": "G, B"}
+{"id": "bearing_body_311", "response": "C, E"}
+{"id": "bearing_body_312", "response": "H, F"}
+{"id": "bearing_body_313", "response": "B, C, D, F, G"}
+{"id": "bearing_body_314", "response": "G, B, D"}
+{"id": "bearing_body_315", "response": "C, G, E"}
+{"id": "bearing_body_316", "response": "G, H"}
+{"id": "bearing_body_317", "response": "F, G, H"}
+{"id": "bearing_body_318", "response": "F, G"}
+{"id": "bearing_body_319", "response": "C, H"}
+{"id": "bearing_body_320", "response": "B, E"}
+{"id": "bearing_body_321", "response": "B, D, E, H"}
+{"id": "bearing_body_322", "response": "D, E"}
+{"id": "bearing_body_323", "response": "C, D, G, E"}
+{"id": "bearing_body_324", "response": "A, C, E, F, G"}
+{"id": "bearing_body_325", "response": "E, F"}
+{"id": "bearing_body_326", "response": "A, B, C, H"}
+{"id": "bearing_body_327", "response": "B, C, F, E"}
+{"id": "bearing_body_328", "response": "B, H"}
+{"id": "bearing_body_329", "response": "B, F"}
+{"id": "bearing_body_330", "response": "B"}
+{"id": "bearing_body_331", "response": "H"}
+{"id": "bearing_body_332", "response": "A, G, H"}
+{"id": "bearing_body_333", "response": "E, H"}
+{"id": "bearing_body_334", "response": "C, E, F, H"}
+{"id": "bearing_body_335", "response": "D, G"}
+{"id": "bearing_body_336", "response": "E, F, G"}
+{"id": "bearing_body_337", "response": "C, E, F"}
+{"id": "bearing_body_338", "response": "C, D, F, G"}
+{"id": "bearing_body_339", "response": "H, F"}
+{"id": "bearing_body_340", "response": "F, H"}
+{"id": "bearing_body_341", "response": "C, F, H"}
+{"id": "bearing_body_342", "response": "A, E, F"}
+{"id": "bearing_body_343", "response": "G, B, F, E"}
+{"id": "bearing_body_344", "response": "A, B, F, G, H"}
+{"id": "bearing_body_345", "response": "B, H"}
+{"id": "bearing_body_346", "response": "D, E, F"}
+{"id": "bearing_body_347", "response": "D, E, G"}
+{"id": "bearing_body_348", "response": "C, D, E"}
+{"id": "bearing_body_349", "response": "G, H"}
+{"id": "bearing_body_350", "response": "D, H"}
+{"id": "bearing_body_351", "response": "A, F"}
+{"id": "bearing_body_352", "response": "E, F, G"}
+{"id": "bearing_body_353", "response": "C, G"}
+{"id": "bearing_body_354", "response": "A, B, F, G"}
+{"id": "bearing_body_355", "response": "H, B, D, E"}
+{"id": "bearing_body_356", "response": "A, C, E, H"}
+{"id": "bearing_body_357", "response": "D, E, G, H"}
+{"id": "bearing_body_358", "response": "G, B, C, H"}
+{"id": "bearing_body_359", "response": "G, F, B, H"}
+{"id": "bearing_body_360", "response": "A, B"}
+{"id": "bearing_body_361", "response": "G, H, C, D"}
+{"id": "bearing_body_362", "response": "C, G"}
+{"id": "bearing_body_363", "response": "E, D"}
+{"id": "bearing_body_364", "response": "A, B, E, F"}
+{"id": "bearing_body_365", "response": "D, E, G"}
+{"id": "bearing_body_366", "response": "B, F, G, H"}
+{"id": "bearing_body_367", "response": "A, G, F"}
+{"id": "bearing_body_368", "response": "A, D, G"}
+{"id": "bearing_body_369", "response": "A, B, C, G"}
+{"id": "bearing_body_370", "response": "B, D, F, E"}
+{"id": "bearing_body_371", "response": "A, E, F, G"}
+{"id": "bearing_body_372", "response": "D, F"}
+{"id": "bearing_body_373", "response": "E, F, G"}
+{"id": "bearing_body_374", "response": "D, E, F, H"}
+{"id": "bearing_body_375", "response": "H, F"}
+{"id": "bearing_body_376", "response": "B, C, D, F, H"}
+{"id": "bearing_body_377", "response": "D, E"}
+{"id": "bearing_body_378", "response": "A, E, F, H"}
+{"id": "bearing_body_379", "response": "F, B, E, G"}
+{"id": "bearing_body_380", "response": "A, B, C, D, E, F"}
+{"id": "bearing_body_381", "response": "F, G, H"}
+{"id": "bearing_body_382", "response": "B, H, C, G"}
+{"id": "bearing_body_383", "response": "B, C, H"}
+{"id": "bearing_body_384", "response": "A, B, E, H"}
+{"id": "bearing_body_385", "response": "H, E, C"}
+{"id": "bearing_body_386", "response": "B, D"}
+{"id": "bearing_body_387", "response": "C, H"}
+{"id": "bearing_body_388", "response": "A, D, E"}
+{"id": "bearing_body_389", "response": "C, D, E, G"}
+{"id": "bearing_body_390", "response": "A, B, D, G"}
+{"id": "bearing_body_391", "response": "B, D, E, H"}
+{"id": "bearing_body_392", "response": "B, C, H"}
+{"id": "bearing_body_393", "response": "A, B, F"}
+{"id": "bearing_body_394", "response": "C, E, F"}
+{"id": "bearing_body_395", "response": "D, H"}
+{"id": "bearing_body_396", "response": "H, G"}
+{"id": "bearing_body_397", "response": "B, C, H"}
+{"id": "bearing_body_398", "response": "C, G"}
+{"id": "bearing_body_399", "response": "B, E"}
+{"id": "bearing_body_400", "response": "D, G, H"}
+{"id": "bearing_body_401", "response": "A, D, E, F, H"}
+{"id": "bearing_body_402", "response": "B, F"}
+{"id": "bearing_body_403", "response": "F, D, E"}
+{"id": "bearing_body_404", "response": "F, H"}
+{"id": "bearing_body_405", "response": "B, E, F"}
+{"id": "bearing_body_406", "response": "B, F, H"}
+{"id": "bearing_body_407", "response": "C, E, F"}
+{"id": "bearing_body_408", "response": "D, G, H"}
+{"id": "bearing_body_409", "response": "E, F"}
+{"id": "bearing_body_410", "response": "C, E, G, H"}
+{"id": "bearing_body_411", "response": "B, E"}
+{"id": "bearing_body_412", "response": "E, G"}
+{"id": "bearing_body_413", "response": "C, H"}
+{"id": "bearing_body_414", "response": "A, B, D, G"}
+{"id": "bearing_body_415", "response": "B, G"}
+{"id": "bearing_body_416", "response": "F, B, D, E"}
+{"id": "bearing_body_417", "response": "B, C, E"}
+{"id": "bearing_body_418", "response": "A, H"}
+{"id": "bearing_body_419", "response": "C, H"}
+{"id": "bearing_body_420", "response": "H, C"}
+{"id": "bearing_body_421", "response": "C, F, E"}
+{"id": "bearing_body_422", "response": "C, F"}
+{"id": "bearing_body_423", "response": "E, D, H"}
+{"id": "bearing_body_424", "response": "D, E, F"}
+{"id": "bearing_body_425", "response": "C, D, E"}
+{"id": "bearing_body_426", "response": "A, B, H"}
+{"id": "bearing_body_427", "response": "H, B"}
+{"id": "bearing_body_428", "response": "B, C, D"}
+{"id": "bearing_body_429", "response": "C, D, H"}
+{"id": "bearing_body_430", "response": "E, F, G"}
+{"id": "bearing_body_431", "response": "D, B"}
+{"id": "bearing_body_432", "response": "B, E, G, T, D, F, I"}
+{"id": "bearing_body_433", "response": "B, D"}
+{"id": "bearing_body_434", "response": "E, B, H"}
+{"id": "bearing_body_435", "response": "C, D, E, F"}
+{"id": "bearing_body_436", "response": "G, E"}
+{"id": "bearing_body_437", "response": "E, F, H"}
+{"id": "bearing_body_438", "response": "C, G, F"}
+{"id": "bearing_body_439", "response": "A, B, G"}
+{"id": "bearing_body_440", "response": "F, B, G"}
+{"id": "bearing_body_441", "response": "A, B, E, G"}
+{"id": "bearing_body_442", "response": "A, B, F"}
+{"id": "bearing_body_443", "response": "B, C, D, H"}
+{"id": "bearing_body_444", "response": "B, D, E"}
+{"id": "bearing_body_445", "response": "F, B, E"}
+{"id": "bearing_body_446", "response": "D, F, H"}
+{"id": "bearing_body_447", "response": "E, G"}
+{"id": "bearing_body_448", "response": "D, G, H"}
+{"id": "bearing_body_449", "response": "A, E, F"}
+{"id": "bearing_body_450", "response": "B, G"}
+{"id": "bearing_body_451", "response": "H"}
+{"id": "bearing_body_452", "response": "E, F, G, H"}
+{"id": "bearing_body_453", "response": "A, E, F, H"}
+{"id": "bearing_body_454", "response": "A, E"}
+{"id": "bearing_body_455", "response": "B, D, G"}
+{"id": "bearing_body_456", "response": "C, D, G"}
+{"id": "bearing_body_457", "response": "D, H"}
+{"id": "bearing_body_458", "response": "D, F"}
+{"id": "bearing_body_459", "response": "A, B, D, G"}
+{"id": "bearing_body_460", "response": "F, G"}
+{"id": "bearing_body_461", "response": "H, D"}
+{"id": "bearing_body_462", "response": "G, B, F"}
+{"id": "bearing_body_463", "response": "C, B, F"}
+{"id": "bearing_body_464", "response": "C, G, H"}
+{"id": "bearing_body_465", "response": "C, F, G"}
+{"id": "bearing_body_466", "response": "A, D, F, G, H"}
+{"id": "bearing_body_467", "response": "D, F, H"}
+{"id": "bearing_body_468", "response": "C, D, G, H"}
+{"id": "bearing_body_469", "response": "B, D, E, G"}
+{"id": "bearing_body_470", "response": "E, G"}
+{"id": "bearing_body_471", "response": "H, G, F"}
+{"id": "bearing_body_472", "response": "D, B, C, A"}
+{"id": "bearing_body_473", "response": "B, D, H"}
+{"id": "bearing_body_474", "response": "A, C, F"}
+{"id": "bearing_body_475", "response": "C, F"}
+{"id": "bearing_body_476", "response": "C, E, H"}
+{"id": "bearing_body_477", "response": "D, F, G"}
+{"id": "bearing_body_478", "response": "E, H, F"}
+{"id": "bearing_body_479", "response": "F, E"}
+{"id": "bearing_body_480", "response": "C, E, H"}
+{"id": "bearing_body_481", "response": "B, C, F, H"}
+{"id": "bearing_body_482", "response": "H, G, A"}
+{"id": "bearing_body_483", "response": "A, E, F"}
+{"id": "bearing_body_484", "response": "A, B, C, E, G"}
+{"id": "bearing_body_485", "response": "B, E, G"}
+{"id": "bearing_body_486", "response": "C, F"}
+{"id": "bearing_body_487", "response": "C, B, A, G"}
+{"id": "bearing_body_488", "response": "H, G"}
+{"id": "bearing_body_489", "response": "E, H, D"}
+{"id": "bearing_body_490", "response": "A, B, C, G"}
+{"id": "bearing_body_491", "response": "C, D, H"}
+{"id": "bearing_body_492", "response": "A, B, C, D"}
+{"id": "bearing_body_493", "response": "H, G, D"}
+{"id": "bearing_body_494", "response": "B, G"}
+{"id": "bearing_body_495", "response": "A, D, H"}
+{"id": "bearing_body_496", "response": "D, E, H"}
+{"id": "bearing_body_497", "response": "C, E, G"}
+{"id": "bearing_body_498", "response": "B, D, E, G, H"}
+{"id": "bearing_body_499", "response": "E, F, H"}
+{"id": "bearing_body_500", "response": "D, E, G"}
+{"id": "bearing_body_501", "response": "A, F"}
+{"id": "bearing_body_502", "response": "G, D"}
+{"id": "bearing_body_503", "response": "E, H"}
+{"id": "bearing_body_504", "response": "A, B, C, D"}
+{"id": "bearing_body_505", "response": "B, C, G"}
+{"id": "bearing_body_506", "response": "B, C, D, H"}
+{"id": "bearing_body_507", "response": "E, B, D"}
+{"id": "bearing_body_508", "response": "H, G, E, B, C"}
+{"id": "bearing_body_509", "response": "D, H"}
+{"id": "bearing_body_510", "response": "H, F, D, A"}
+{"id": "bearing_body_511", "response": "E, B, F"}
+{"id": "bearing_body_512", "response": "C, E, G, H"}
+{"id": "bearing_body_513", "response": "E, H"}
+{"id": "bearing_body_514", "response": "B, E"}
+{"id": "bearing_body_515", "response": "B, E, H"}
+{"id": "bearing_body_516", "response": "A, F, C"}
+{"id": "bearing_body_517", "response": "E, F, G, H"}
+{"id": "bearing_body_518", "response": "B, D, E"}
+{"id": "bearing_body_519", "response": "H, C"}
+{"id": "bearing_body_520", "response": "B, E, F"}
+{"id": "bearing_body_521", "response": "C, B"}
+{"id": "bearing_body_522", "response": "A, G"}
+{"id": "bearing_body_523", "response": "D, E, H"}
+{"id": "bearing_body_524", "response": "D, F"}
+{"id": "bearing_body_525", "response": "E, F"}
+{"id": "bearing_body_526", "response": "B, C, D, E, F"}
+{"id": "bearing_body_527", "response": "A, E, G"}
+{"id": "bearing_body_528", "response": "H, F, G, A"}
+{"id": "bearing_body_529", "response": "D, F"}
+{"id": "bearing_body_530", "response": "A, B, C, F"}
+{"id": "bearing_body_531", "response": "D, B"}
+{"id": "bearing_body_532", "response": "D, H"}
+{"id": "bearing_body_533", "response": "A, D, E"}
+{"id": "bearing_body_534", "response": "A, D, H"}
+{"id": "bearing_body_535", "response": "B, D, H"}
+{"id": "bearing_body_536", "response": "A, C, H, F"}
+{"id": "bearing_body_537", "response": "A, C, D"}
+{"id": "bearing_body_538", "response": "C, D, E"}
+{"id": "bearing_body_539", "response": "E, G, H"}
+{"id": "bearing_body_540", "response": "H, G"}
+{"id": "bearing_body_541", "response": "H, G"}
+{"id": "bearing_body_542", "response": "H, G, E, F"}
+{"id": "bearing_body_543", "response": "E, H"}
+{"id": "bearing_body_544", "response": "D, E, F, G"}
+{"id": "bearing_body_545", "response": "D, E"}
+{"id": "bearing_body_546", "response": "B, F, G"}
+{"id": "bearing_body_547", "response": "B, F, G"}
+{"id": "bearing_body_548", "response": "C, D, H"}
+{"id": "bearing_body_549", "response": "F"}
+{"id": "bearing_body_550", "response": "E, H"}
+{"id": "bearing_body_551", "response": "E, G"}
+{"id": "bearing_body_552", "response": "C, D, G"}
+{"id": "bearing_body_553", "response": "C, G"}
+{"id": "bearing_body_554", "response": "E, G"}
+{"id": "bearing_body_555", "response": "B, E"}
+{"id": "bearing_body_556", "response": "A, F"}
+{"id": "bearing_body_557", "response": "A, F"}
+{"id": "bearing_body_558", "response": "C, E"}
+{"id": "bearing_body_559", "response": "D, G"}
+{"id": "bearing_body_560", "response": "D, H"}
+{"id": "bearing_body_561", "response": "H, R, D"}
+{"id": "bearing_body_562", "response": "F, G"}
+{"id": "bearing_body_563", "response": "A, F"}
+{"id": "bearing_body_564", "response": "B, F"}
+{"id": "bearing_body_565", "response": "B, C, E, H"}
+{"id": "bearing_body_566", "response": "G, H"}
+{"id": "bearing_body_567", "response": "E, H"}
+{"id": "bearing_body_568", "response": "E, H"}
+{"id": "bearing_body_569", "response": "D, H"}
+{"id": "bearing_body_570", "response": "H, F, E"}
+{"id": "bearing_body_571", "response": "D, E, G"}
+{"id": "bearing_body_572", "response": "A, D, E"}
+{"id": "bearing_body_573", "response": "F, H"}
+{"id": "bearing_body_574", "response": "F, H"}
+{"id": "bearing_body_575", "response": "E, F"}
+{"id": "bearing_body_576", "response": "A, E, H"}
+{"id": "bearing_body_577", "response": "D, E, H"}
+{"id": "bearing_body_578", "response": "D, E, H"}
+{"id": "bearing_body_579", "response": "B, D, G"}
+{"id": "bearing_body_580", "response": "G, H"}
+{"id": "bearing_body_581", "response": "C, F"}
+{"id": "bearing_body_582", "response": "C, F, G"}
+{"id": "bearing_body_583", "response": "C, E, F, G"}
+{"id": "bearing_body_584", "response": "C, F, G, H"}
+{"id": "bearing_body_585", "response": "E, D, H"}
+{"id": "bearing_body_586", "response": "A, E"}
+{"id": "bearing_body_587", "response": "C, H"}
+{"id": "bearing_body_588", "response": "C, F, H"}
+{"id": "bearing_body_589", "response": "D, F, A, B"}
+{"id": "bearing_body_590", "response": "A, F"}
+{"id": "bearing_body_591", "response": "H"}
+{"id": "bearing_body_592", "response": "E, C, H"}
+{"id": "bearing_body_593", "response": "B, C, G, H"}
+{"id": "bearing_body_594", "response": "B, C, G"}
+{"id": "bearing_body_595", "response": "A, C, E, G"}
+{"id": "bearing_body_596", "response": "C, E, G"}
+{"id": "bearing_body_597", "response": "F, B"}
+{"id": "bearing_body_598", "response": "B, F"}
+{"id": "bearing_body_599", "response": "A, B, C, E, F"}
+{"id": "bearing_body_600", "response": "E, F"}
+{"id": "bearing_body_601", "response": "C, D, H"}
+{"id": "bearing_body_602", "response": "C, E, H"}
+{"id": "bearing_body_603", "response": "H"}
+{"id": "bearing_body_604", "response": "A, H"}
+{"id": "bearing_body_605", "response": "C, D, H"}
+{"id": "bearing_body_606", "response": "A, C, D, H"}
+{"id": "bearing_body_607", "response": "C, E, F"}
+{"id": "bearing_body_608", "response": "C, E, F, G"}
+{"id": "bearing_body_609", "response": "C, G"}
+{"id": "bearing_body_610", "response": "A, C, G"}
+{"id": "bearing_body_611", "response": "D, H"}
+{"id": "bearing_body_612", "response": "H, A, D, B"}
+{"id": "bearing_body_613", "response": "B, D, E, H"}
+{"id": "bearing_body_614", "response": "B, D, E, H"}
+{"id": "bearing_body_615", "response": "G"}
+{"id": "bearing_body_616", "response": "G, D"}
+{"id": "bearing_body_617", "response": "D, F"}
+{"id": "bearing_body_618", "response": "A, D"}
+{"id": "bearing_body_619", "response": "B, C"}
+{"id": "bearing_body_620", "response": "B, C"}
+{"id": "bearing_body_621", "response": "D, E"}
+{"id": "bearing_body_622", "response": "A, E, F"}
+{"id": "bearing_body_623", "response": "E, F"}
+{"id": "bearing_body_624", "response": "F, E"}
+{"id": "bearing_body_625", "response": "L, F"}
+{"id": "bearing_body_626", "response": "A, E, F, G"}
+{"id": "bearing_body_627", "response": "G, E"}
+{"id": "bearing_body_628", "response": "E, G"}
+{"id": "bearing_body_629", "response": "D, H"}
+{"id": "bearing_body_630", "response": "C, D, H"}
+{"id": "bearing_body_631", "response": "A, F"}
+{"id": "bearing_body_632", "response": "D, F"}
+{"id": "bearing_body_633", "response": "B, G"}
+{"id": "bearing_body_634", "response": "B, G"}
+{"id": "bearing_body_635", "response": "C, G"}
+{"id": "bearing_body_636", "response": "A, C"}
+{"id": "bearing_body_637", "response": "E, G"}
+{"id": "bearing_body_638", "response": "B, E, G"}
+{"id": "bearing_body_639", "response": "E, D"}
+{"id": "bearing_body_640", "response": "B, E"}
+{"id": "bearing_body_641", "response": "B, G, C"}
+{"id": "bearing_body_642", "response": "C, G, H"}
+{"id": "bearing_body_643", "response": "A, E, G"}
+{"id": "bearing_body_644", "response": "A, G, E"}
+{"id": "bearing_body_645", "response": "D, G, F"}
+{"id": "bearing_body_646", "response": "D, G, F"}
+{"id": "bearing_body_647", "response": "E, F, G"}
+{"id": "bearing_body_648", "response": "E, F, G"}
+{"id": "bearing_body_649", "response": "B, C, D"}
+{"id": "bearing_body_650", "response": "B, C, F"}
+{"id": "bearing_body_651", "response": "A, F, B"}
+{"id": "bearing_body_652", "response": "A, B, F"}
+{"id": "bearing_body_653", "response": "H, F"}
+{"id": "bearing_body_654", "response": "C, H"}
+{"id": "bearing_body_655", "response": "C, F"}
+{"id": "bearing_body_656", "response": "B, D, H"}
+{"id": "bearing_body_657", "response": "D, F, G"}
+{"id": "bearing_body_658", "response": "G, C"}
+{"id": "bearing_body_659", "response": "H"}
+{"id": "bearing_body_660", "response": "H"}
+{"id": "bearing_body_661", "response": "B, F"}
+{"id": "bearing_body_662", "response": "H, C, E"}
+{"id": "bearing_body_663", "response": "G, H"}
+{"id": "bearing_body_664", "response": "H, C"}
+{"id": "bearing_body_665", "response": "C, E"}
+{"id": "bearing_body_666", "response": "H, D, C, E"}
+{"id": "bearing_body_667", "response": "F, G"}
+{"id": "bearing_body_668", "response": "E, G"}
+{"id": "bearing_body_669", "response": "H, G"}
+{"id": "bearing_body_670", "response": "D, G"}
+{"id": "bearing_body_671", "response": "H, E"}
+{"id": "bearing_body_672", "response": "F, G"}
+{"id": "bearing_body_673", "response": "A, C"}
+{"id": "bearing_body_674", "response": "C, F"}
+{"id": "bearing_body_675", "response": "H, D"}
+{"id": "bearing_body_676", "response": "G, F, C, D, E"}
+{"id": "bearing_body_677", "response": "D, F, H"}
+{"id": "bearing_body_678", "response": "F, G"}
+{"id": "bearing_body_679", "response": "F, G, H"}
+{"id": "bearing_body_680", "response": "D, G, F"}
+{"id": "bearing_body_681", "response": "E, G"}
+{"id": "bearing_body_682", "response": "E, B, F, H"}
+{"id": "bearing_body_683", "response": "E, F, C"}
+{"id": "bearing_body_684", "response": "D, F, G"}
+{"id": "bearing_body_685", "response": "D, E, G, H"}
+{"id": "bearing_body_686", "response": "G, A"}
+{"id": "bearing_body_687", "response": "E, D, B"}
+{"id": "bearing_body_688", "response": "A, B"}
+{"id": "bearing_body_689", "response": "E, G"}
+{"id": "bearing_body_690", "response": "D, E, H"}
+{"id": "bearing_body_691", "response": "F, B"}
+{"id": "bearing_body_692", "response": "H, G"}
+{"id": "bearing_body_693", "response": "C, F, E"}
+{"id": "bearing_body_694", "response": "G, H"}
+{"id": "bearing_body_695", "response": "D, F, G, H"}
+{"id": "bearing_body_696", "response": "F, G"}
+{"id": "bearing_body_697", "response": "B, E, G"}
+{"id": "bearing_body_698", "response": "B, E"}
+{"id": "bearing_body_699", "response": "C, E, H"}
+{"id": "bearing_body_700", "response": "G, H"}
+{"id": "bearing_body_701", "response": "A, H"}
+{"id": "bearing_body_702", "response": "A"}
+{"id": "bearing_body_703", "response": "B, C, G"}
+{"id": "bearing_body_704", "response": "E, C"}
+{"id": "bearing_body_705", "response": "B, C"}
+{"id": "bearing_body_706", "response": "A, G"}
+{"id": "bearing_body_707", "response": "C, G"}
+{"id": "bearing_body_708", "response": "C, D, H"}
+{"id": "bearing_body_709", "response": "E, G"}
+{"id": "bearing_body_710", "response": "B, G, F, H"}
+{"id": "bearing_body_711", "response": "B, G"}
+{"id": "bearing_body_712", "response": "C, D, E"}
+{"id": "bearing_body_713", "response": "C, F"}
+{"id": "bearing_body_714", "response": "B, F"}
+{"id": "bearing_body_715", "response": "D, E, F"}
+{"id": "bearing_body_716", "response": "A, B, E, H"}
+{"id": "bearing_body_717", "response": "E, D"}
+{"id": "bearing_body_718", "response": "B, C, E"}
+{"id": "bearing_body_719", "response": "E, D"}
+{"id": "bearing_body_720", "response": "D, G"}
+{"id": "bearing_body_721", "response": "E, G"}
+{"id": "bearing_body_722", "response": "A, G"}
+{"id": "bearing_body_723", "response": "B, G"}
+{"id": "bearing_body_724", "response": "F, B"}
+{"id": "bearing_body_725", "response": "A, G, F"}
+{"id": "bearing_body_726", "response": "A, B, D, F"}
+{"id": "bearing_body_727", "response": "E"}
+{"id": "bearing_body_728", "response": "H"}
+{"id": "bearing_body_729", "response": "D, E, H"}
+{"id": "bearing_body_730", "response": "C, D"}
+{"id": "bearing_body_731", "response": "E, F, G"}
+{"id": "bearing_body_732", "response": "D, G"}
+{"id": "bearing_body_733", "response": "C, F, E"}
+{"id": "bearing_body_734", "response": "B, C, D, E, F"}
+{"id": "bearing_body_735", "response": "F, G"}
+{"id": "bearing_body_736", "response": "H, G"}
+{"id": "bearing_body_737", "response": "C, G"}
+{"id": "bearing_body_738", "response": "C, D, E, H"}
+{"id": "bearing_body_739", "response": "C, H"}
+{"id": "bearing_body_740", "response": "E, F, H, A"}
+{"id": "bearing_body_741", "response": "A, F, E"}
+{"id": "bearing_body_742", "response": "H, G"}
+{"id": "bearing_body_743", "response": "H, E"}
+{"id": "bearing_body_744", "response": "E, H"}
+{"id": "bearing_body_745", "response": "B, C, H"}
+{"id": "bearing_body_746", "response": "H, F"}
+{"id": "bearing_body_747", "response": "A, B, E"}
+{"id": "bearing_body_748", "response": "D, H"}
+{"id": "bearing_body_749", "response": "C, H"}
+{"id": "bearing_body_750", "response": "D, E"}
+{"id": "bearing_body_751", "response": "C, H"}
+{"id": "bearing_body_752", "response": "H, E"}
+{"id": "bearing_body_753", "response": "D, H"}
+{"id": "bearing_body_754", "response": "B, C, D"}
+{"id": "bearing_body_755", "response": "C, E"}
+{"id": "bearing_body_756", "response": "D, E, G"}
+{"id": "bearing_body_757", "response": "B, E, G"}
+{"id": "bearing_body_758", "response": "C, F"}
+{"id": "bearing_body_759", "response": "A, F"}
+{"id": "bearing_body_760", "response": "F, G, H"}
+{"id": "bearing_body_761", "response": "A, D, F, H"}
+{"id": "bearing_body_762", "response": "F, G, C"}
+{"id": "bearing_body_763", "response": "B, D, E, G"}
+{"id": "bearing_body_764", "response": "E, D"}
+{"id": "bearing_body_765", "response": "H, G"}
+{"id": "bearing_body_766", "response": "B, G"}
+{"id": "bearing_body_767", "response": "B, C, F, G"}
+{"id": "bearing_body_768", "response": "A, F, G"}
+{"id": "bearing_body_769", "response": "D, F, E"}
+{"id": "bearing_body_770", "response": "G, D"}
+{"id": "bearing_body_771", "response": "B, C"}
+{"id": "bearing_body_772", "response": "B, C, E, H"}
+{"id": "bearing_body_773", "response": "B, E, G"}
+{"id": "bearing_body_774", "response": "B, F, G"}
+{"id": "bearing_body_775", "response": "G, D"}
+{"id": "bearing_body_776", "response": "C, F, G"}
+{"id": "bearing_body_777", "response": "B, G"}
+{"id": "bearing_body_778", "response": "E, F"}
+{"id": "bearing_body_779", "response": "C, F"}
+{"id": "bearing_body_780", "response": "H, C, F"}
+{"id": "bearing_body_781", "response": "B, C, H"}
+{"id": "bearing_body_782", "response": "B, D, H"}
+{"id": "bearing_body_783", "response": "A, E, H"}
+{"id": "bearing_body_784", "response": "A, B, C, D, E"}
+{"id": "bearing_body_785", "response": "E, H"}
+{"id": "bearing_body_786", "response": "C, D, G, H"}
+{"id": "bearing_body_787", "response": "D, H"}
+{"id": "bearing_body_788", "response": "F, G"}
+{"id": "bearing_body_789", "response": "G, F"}
+{"id": "bearing_body_790", "response": "F, G, H"}
+{"id": "bearing_body_791", "response": "G, H"}
+{"id": "bearing_body_792", "response": "H, D"}
+{"id": "bearing_body_793", "response": "H, F, A"}
+{"id": "bearing_body_794", "response": "B, C, D"}
+{"id": "bearing_body_795", "response": "A, E"}
+{"id": "bearing_body_796", "response": "D, F, B"}
+{"id": "bearing_body_797", "response": "H"}
+{"id": "bearing_body_798", "response": "H, E"}
+{"id": "bearing_body_799", "response": "A, B, F, G"}
+{"id": "bearing_body_800", "response": "B, D, G"}
+{"id": "bearing_body_801", "response": "H, E"}
+{"id": "bearing_body_802", "response": "B, F, C, E"}
+{"id": "bearing_body_803", "response": "E, F, G, H"}
+{"id": "bearing_body_804", "response": "A, B, E, F"}
+{"id": "bearing_body_805", "response": "G, H"}
+{"id": "bearing_body_806", "response": "C, E, F, G"}
+{"id": "bearing_body_807", "response": "C, E"}
+{"id": "bearing_body_808", "response": "D, H"}
+{"id": "bearing_body_809", "response": "B, C, F"}
+{"id": "bearing_body_810", "response": "B, C, G"}
+{"id": "bearing_body_811", "response": "A, G"}
+{"id": "bearing_body_812", "response": "B, C, D"}
+{"id": "bearing_body_813", "response": "C, D, F"}
+{"id": "bearing_body_814", "response": "H, C"}
+{"id": "bearing_body_815", "response": "H, G"}
+{"id": "bearing_body_816", "response": "E, G, H"}
+{"id": "bearing_body_817", "response": "A, B, E"}
+{"id": "bearing_body_818", "response": "B, D, C"}
+{"id": "bearing_body_819", "response": "D, E, F"}
+{"id": "bearing_body_820", "response": "D, E, F, G, H"}
+{"id": "bearing_body_821", "response": "C, F"}
+{"id": "bearing_body_822", "response": "H, G, B, F"}
+{"id": "bearing_body_823", "response": "H, G"}
+{"id": "bearing_body_824", "response": "C, F, H"}
+{"id": "bearing_body_825", "response": "G, H"}
+{"id": "bearing_body_826", "response": "C, E, G"}
+{"id": "bearing_body_827", "response": "H, F"}
+{"id": "bearing_body_828", "response": "B, E, H"}
+{"id": "bearing_body_829", "response": "B, E"}
+{"id": "bearing_body_830", "response": "E, H"}
+{"id": "bearing_body_831", "response": "A, B, C"}
+{"id": "bearing_body_832", "response": "B, C, G"}
+{"id": "bearing_body_833", "response": "E, F"}
+{"id": "bearing_body_834", "response": "B, E, F"}
+{"id": "bearing_body_835", "response": "A, B, C, D, F"}
+{"id": "bearing_body_836", "response": "G, F, H"}
+{"id": "bearing_body_837", "response": "A, B, G"}
+{"id": "bearing_body_838", "response": "C, G"}
+{"id": "bearing_body_839", "response": "A, D, G"}
+{"id": "bearing_body_840", "response": "G, F, H"}
+{"id": "bearing_body_841", "response": "E, F, G"}
+{"id": "bearing_body_842", "response": "A, D"}
+{"id": "bearing_body_843", "response": "H, F, E"}
+{"id": "bearing_body_844", "response": "B, E"}
+{"id": "bearing_body_845", "response": "G, F"}
+{"id": "bearing_body_846", "response": "E, A, H"}
+{"id": "bearing_body_847", "response": "F, D, E"}
+{"id": "bearing_body_848", "response": "B, E, F"}
+{"id": "bearing_body_849", "response": "H, E"}
+{"id": "bearing_body_850", "response": "B, C, D, H"}
+{"id": "bearing_body_851", "response": "A, B, E, H"}
+{"id": "bearing_body_852", "response": "B, D, E, H"}
+{"id": "bearing_body_853", "response": "B, C, D, G"}
+{"id": "bearing_body_854", "response": "C, D, F, H"}
+{"id": "bearing_body_855", "response": "A, D, G"}

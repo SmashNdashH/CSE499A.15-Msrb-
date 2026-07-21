@@ -1,0 +1,1682 @@
+[
+    {
+        "id": "disaster_type_0",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_1",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_2",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_3",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_4",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_5",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_6",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_7",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_8",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_9",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_10",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_11",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_12",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_13",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_14",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_15",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_16",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_17",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_18",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_19",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_20",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_21",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_22",
+        "response": "C."
+    },
+    {
+        "id": "disaster_type_23",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_24",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_25",
+        "response": "B."
+    },
+    {
+        "id": "disaster_type_26",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_27",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_28",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_29",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_30",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_31",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_32",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_33",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_34",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_35",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_36",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_37",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_38",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_39",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_40",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_41",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_42",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_43",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_44",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_45",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_46",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_47",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_48",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_49",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_50",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_51",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_52",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_53",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_54",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_55",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_56",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_57",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_58",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_59",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_60",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_61",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_62",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_63",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_64",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_65",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_66",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_67",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_68",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_69",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_70",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_71",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_72",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_73",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_74",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_75",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_76",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_77",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_78",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_79",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_80",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_81",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_82",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_83",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_84",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_85",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_86",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_87",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_88",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_89",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_90",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_91",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_92",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_93",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_94",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_95",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_96",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_97",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_98",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_99",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_100",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_101",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_102",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_103",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_104",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_105",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_106",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_107",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_108",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_109",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_110",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_111",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_112",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_113",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_114",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_115",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_116",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_117",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_118",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_119",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_120",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_121",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_122",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_123",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_124",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_125",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_126",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_127",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_128",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_129",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_130",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_131",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_132",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_133",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_134",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_135",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_136",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_137",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_138",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_139",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_140",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_141",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_142",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_143",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_144",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_145",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_146",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_147",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_148",
+        "response": "A."
+    },
+    {
+        "id": "disaster_type_149",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_150",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_151",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_152",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_153",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_154",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_155",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_156",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_157",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_158",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_159",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_160",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_161",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_162",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_163",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_164",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_165",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_166",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_167",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_168",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_169",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_170",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_171",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_172",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_173",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_174",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_175",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_176",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_177",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_178",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_179",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_180",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_181",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_182",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_183",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_184",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_185",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_186",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_187",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_188",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_189",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_190",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_191",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_192",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_193",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_194",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_195",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_196",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_197",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_198",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_199",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_200",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_201",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_202",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_203",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_204",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_205",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_206",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_207",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_208",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_209",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_210",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_211",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_212",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_213",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_214",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_215",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_216",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_217",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_218",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_219",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_220",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_221",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_222",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_223",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_224",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_225",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_226",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_227",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_228",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_229",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_230",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_231",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_232",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_233",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_234",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_235",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_236",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_237",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_238",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_239",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_240",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_241",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_242",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_243",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_244",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_245",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_246",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_247",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_248",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_249",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_250",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_251",
+        "response": "B."
+    },
+    {
+        "id": "disaster_type_252",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_253",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_254",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_255",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_256",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_257",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_258",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_259",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_260",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_261",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_262",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_263",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_264",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_265",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_266",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_267",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_268",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_269",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_270",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_271",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_272",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_273",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_274",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_275",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_276",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_277",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_278",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_279",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_280",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_281",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_282",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_283",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_284",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_285",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_286",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_287",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_288",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_289",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_290",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_291",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_292",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_293",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_294",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_295",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_296",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_297",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_298",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_299",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_300",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_301",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_302",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_303",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_304",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_305",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_306",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_307",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_308",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_309",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_310",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_311",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_312",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_313",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_314",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_315",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_316",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_317",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_318",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_319",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_320",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_321",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_322",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_323",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_324",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_325",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_326",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_327",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_328",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_329",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_330",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_331",
+        "response": "E."
+    },
+    {
+        "id": "disaster_type_332",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_333",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_334",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_335",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_336",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_337",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_338",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_339",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_340",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_341",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_342",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_343",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_344",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_345",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_346",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_347",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_348",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_349",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_350",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_351",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_352",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_353",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_354",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_355",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_356",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_357",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_358",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_359",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_360",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_361",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_362",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_363",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_364",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_365",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_366",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_367",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_368",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_369",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_370",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_371",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_372",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_373",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_374",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_375",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_376",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_377",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_378",
+        "response": "D."
+    },
+    {
+        "id": "disaster_type_379",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_380",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_381",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_382",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_383",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_384",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_385",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_386",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_387",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_388",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_389",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_390",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_391",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_392",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_393",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_394",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_395",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_396",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_397",
+        "response": "A."
+    },
+    {
+        "id": "disaster_type_398",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_399",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_400",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_401",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_402",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_403",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_404",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_405",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_406",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_407",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_408",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_409",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_410",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_411",
+        "response": "B"
+    },
+    {
+        "id": "disaster_type_412",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_413",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_414",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_415",
+        "response": "E"
+    },
+    {
+        "id": "disaster_type_416",
+        "response": "D"
+    },
+    {
+        "id": "disaster_type_417",
+        "response": "C"
+    },
+    {
+        "id": "disaster_type_418",
+        "response": "A"
+    },
+    {
+        "id": "disaster_type_419",
+        "response": "C"
+    }
+]
