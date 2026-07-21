@@ -1,0 +1,7 @@
+path: ./datasets/xView/sliced/
+train: buildings/images/train
+val: buildings/images/val
+#test: val_images/val_images
+nc: 1
+names:
+  0: Building
