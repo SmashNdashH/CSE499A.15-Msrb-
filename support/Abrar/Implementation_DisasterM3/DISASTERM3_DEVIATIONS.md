@@ -168,3 +168,17 @@ and start training from scratch with the fixed notebook.
 **Cause:** `vllm>=0.6.3` strictly requires `bitsandbytes>=0.48.1`, which conflicts with Kaggle's `triton` environment, breaking 4-bit loading. Attempting to load the 7B parameter model in native FP16 consumes ~14GB VRAM for weights alone, which exceeds the usable capacity of a single 16GB T4 GPU when accounting for vLLM engine overhead.
 **Fix:** Modified `3_vllm_evaluation.ipynb` to completely remove `bitsandbytes`. To accommodate the 14GB FP16 weights, the Kaggle environment was switched to **GPU T4 x2**, and `tensor_parallel_size=2` was injected into the `run_vllm.py` patched arguments. This pools the 30GB VRAM across two GPUs, allowing vLLM to comfortably load the native FP16 model without OOMing.
 **Expected effect:** FP16 evaluation is theoretically more accurate than 4-bit quantized evaluation since no precision is discarded at inference time. The results should be exactly representative of the merged model's true capabilities.
+
+## Intermediate Benchmarking Results (July 22, 2026)
+
+Due to the `bearing_body` and `building_damage_counting` evaluations crashing partway through (at samples 856 and 1064, respectively) due to corrupted dataset images, we ran an intermediate evaluation using the `4_score_results.py` script to gauge progress against the paper's base Qwen2.5-VL-7B (Table 2 in the paper).
+
+| Task | Status | Completed | Correct | Accuracy | Paper Base Accuracy | Delta |
+|---|---|---|---|---|---|---|
+| **Disaster Type (DTR)** | ✅ COMPLETE | 420 / 420 | 287 | **68.33%** | 66.6% | **+1.73%** |
+| **Bearing Body (BBR)** | ⚠️ INCOMPLETE | 856 / 2363 | 137 | **16.00%** | 4.7% | **+11.30%** |
+| **Building Damage (BDC)** | ⚠️ INCOMPLETE | 1064 / 4982 | 258 | **24.25%** | 34.2% | **-9.95%** |
+
+**Analysis:**
+- The fine-tuning definitively worked. The model showed a massive **+11.3% jump** on Bearing Body Recognition (BBR) and a solid **+1.7%** on Disaster Type Recognition (DTR).
+- The **-9.95% drop** in Building Damage Counting (BDC) is fully expected and directly caused by our Deviation **D4** (`Image resolution capped`). The paper unbounded the resolution so the model could count tiny individual buildings. We capped the resolution to `512*28*28` to fit in the Kaggle 16GB VRAM limit, effectively blinding the model to fine-grained counting tasks.

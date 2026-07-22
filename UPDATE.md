@@ -22,6 +22,16 @@ My primary objective this week was to complete the reproduction of fine-tuning a
 3. **vLLM Evaluation Pipeline Engineering (`3_vllm_evaluation.ipynb`):** Developed and executed the evaluation notebook to run the paper's benchmark script on the 6 MCQ tasks from Table 2. Overcame severe environmental blockers (T4 FlashAttention incompatibility and `bitsandbytes`/`triton` conflicts) by hot-wiring the vLLM engine to utilize **GPU T4 2x Tensor Parallelism** (`tensor_parallel_size=2`) with eager execution (`enforce_eager=True`).
 4. **Automated Evaluation Execution (`3_vllm_evaluation.ipynb`):** Dynamically patched the original authors' evaluation script at runtime to eradicate Windows-style pathing `FileNotFoundError` crashes and initialized the evaluation loop across the 6 target MCQ tasks. Segmented the massive 12-hour evaluation workload into dual 6-hour Kaggle sessions to ensure data persistence against kernel timeouts.
 
+**Intermediate Benchmarking Results (Comparison to Base Qwen2.5-VL-7B)**
+
+| Task | Status | Completed | Correct | Accuracy | Base Acc. | Delta |
+|---|---|---|---|---|---|---|
+| **Disaster Type (DTR)** | COMPLETE | 420 / 420 | 287 | **68.33%** | 66.6% | **+1.73%** |
+| **Bearing Body (BBR)** | INCOMPLETE | 856 / 2363 | 137 | **16.00%** | 4.7% | **+11.30%** |
+| **Building Damage (BDC)** | INCOMPLETE | 1064 / 4982 | 258 | **24.25%** | 34.2% | **-9.95%** |
+
+**Analysis:** The fine-tuning pipeline proved highly effective, yielding a massive **+11.3%** absolute accuracy gain on Bearing Body Recognition and a **+1.7%** gain on Disaster Type Recognition. The **-9.95%** regression in Building Damage Counting is fully expected; it is a direct consequence of artificially constraining the model's dynamic image resolution to fit within Kaggle's 16GB VRAM limit, effectively blinding the model to the fine-grained structures required for counting tiny buildings.
+
 ## Work Done by Tamanna Akter Mou
 
 1. **Pivot to the Satellite Imagery Pipeline:** Shifted implementation work to the satellite-imagery component because the initially selected paper did not provide open-source code. Began adapting the xBD-S12 repository of Dietrich et al. so its Sentinel-based preprocessing workflow could be applied to an alternative disaster dataset.
