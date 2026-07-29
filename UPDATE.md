@@ -4,7 +4,7 @@
 
 # Post-Disaster Rescue Guidance via VLM Fine-Tuning
 
-> **CSE499A – Section 15, Group 5, Update 4**
+> **CSE499A – Section 15, Group 5, Update 5**
 > 
 > **Team:** 
 > - Abdullah Al Noman (2022095042)
@@ -15,41 +15,37 @@
 
 ## Work Done by Abrar Mohammed Tanzim Alam
 
-My primary objective this week was to complete the reproduction of fine-tuning and evaluation pipeline of the DisasterM3 (DM3) paper (Wang et al., NeurIPS 2025), whose released repository provides only benchmarking code—no training scripts. This required self-assembling the full training, merging, and evaluation infrastructure from scratch on Kaggle's single-T4 hardware, matching the hyperparameters in Appendix B.3. This week's milestones focused on finalizing the training and deploying the evaluation infrastructure:
-
 1. **Completed QLoRA Fine-Tuning (`train_qwen_disasterm3.ipynb`):** Successfully executed the 11th and final checkpoint-resume session on Kaggle's 12-hour constrained hardware, reaching 100% completion (217/217 steps) of the 1-epoch fine-tuning schedule. The final QLoRA adapter weights were securely backed up to the Hugging Face Hub (`AbrarAlam/disasterm3-qwen25vl7b-qlora`).
 2. **Model Merging and FP16 Precision Push (`1_merge_and_push_model.ipynb`):** Engineered an isolated session environment to merge the QLoRA adapter with the base Qwen2.5-VL-7B model, actively circumventing `numpy`/`scipy` ABI mismatch crashes. The final fused 15 GB checkpoint was successfully deployed to Hugging Face (`AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP`) in native FP16 precision.
 3. **vLLM Evaluation Pipeline Engineering (`3_vllm_evaluation.ipynb`):** Developed and executed the evaluation notebook to run the paper's benchmark script on the 6 MCQ tasks from Table 2. Overcame severe environmental blockers (T4 FlashAttention incompatibility and `bitsandbytes`/`triton` conflicts) by hot-wiring the vLLM engine to utilize **GPU T4 2x Tensor Parallelism** (`tensor_parallel_size=2`) with eager execution (`enforce_eager=True`).
 4. **Automated Evaluation Execution (`3_vllm_evaluation.ipynb`):** Dynamically patched the original authors' evaluation script at runtime to eradicate Windows-style pathing `FileNotFoundError` crashes and initialized the evaluation loop across the 6 target MCQ tasks. Segmented the massive 12-hour evaluation workload into dual 6-hour Kaggle sessions to ensure data persistence against kernel timeouts.
 
-**Intermediate Benchmarking Results (Comparison to Base Qwen2.5-VL-7B)**
-
-| Task | Status | Completed | Correct | Accuracy | Base Acc. | Delta |
+**Final Benchmarking Results (Comparison to Base & Fine-Tuned Qwen2.5-VL-7B)**
+| Task | Status | Our Acc. | Base Acc. | Δ vs Base | Paper FT | Δ vs FT |
 |---|---|---|---|---|---|---|
-| **Disaster Type (DTR)** | COMPLETE | 420 / 420 | 287 | **68.33%** | 66.6% | **+1.73%** |
-| **Bearing Body (BBR)** | INCOMPLETE | 856 / 2363 | 137 | **16.00%** | 4.7% | **+11.30%** |
-| **Building Damage (BDC)** | INCOMPLETE | 1064 / 4982 | 258 | **24.25%** | 34.2% | **-9.95%** |
+| **Disaster Type (DTR)** | COMPLETE | **68.33%** | 66.6% | +1.73% | 83.6% | **-15.27%** |
+| **Bearing Body (BBR)** | DONE* | **16.39%** | 4.7% | +11.69% | 21.5% | **-5.11%** |
+| **Building Damage (BDC)** | DONE* | **23.58%** | 34.2% | -10.62% | 34.3% | **-10.72%** |
+| **Road Damage (DRE)** | DONE* | **26.24%** | 29.3% | -3.06% | 29.4% | **-3.16%** |
+| **Landuse (DSR)** | DONE* | **31.31%** | 28.3% | +3.01% | 37.7% | **-6.39%** |
+| **Relational Reasoning (ORR)** | COMPLETE | **22.50%** | 23.9% | -1.40% | 36.2% | **-13.70%** |
 
-**Analysis:** The fine-tuning pipeline proved highly effective, yielding a massive **+11.3%** absolute accuracy gain on Bearing Body Recognition and a **+1.7%** gain on Disaster Type Recognition. The **-9.95%** regression in Building Damage Counting is fully expected; it is a direct consequence of artificially constraining the model's dynamic image resolution to fit within Kaggle's 16GB VRAM limit, effectively blinding the model to the fine-grained structures required for counting tiny buildings.
+**Analysis:** *vs Base (unfine-tuned Qwen2.5-VL-7B):* Our fine-tuning yielded improvements on classification tasks — Bearing Body Recognition (BBR) (**+11.69%**, trained on 7,766 samples), Landuse / Disaster Scene Recognition (DSR) (**+3.01%**, trained on 7,090 samples), and Disaster Type Recognition (DTR) (**+1.73%**, trained on 1,627 samples). However, it caused regressions on counting and spatial reasoning tasks: Building Damage Counting (BDC) (**-10.62%**), Road Damage Estimation (DRE) (**-3.06%**), and Object Relational Reasoning (ORR) (**-1.40%**). *vs Paper's Fine-Tuned Model (4x H100, full BF16, unbounded resolution):* We underperform on **all 6 tasks**, with gaps ranging from -3.16% (DRE) to -15.27% (DTR). This confirms that our hardware-constrained reproduction (QLoRA on 1x T4) is not competitive with the paper's full-resource fine-tune, which is the expected outcome. These regressions are fully explained by Deviation **D4** (image resolution capped to 512 x 28 x 28 pixels) and Deviation **D2** (4-bit NF4 QLoRA instead of full BF16 LoRA).
+
+**Data Skipping Justification:** A total of 9 dataset items (2 in BBR, 4 in BDC, 2 in RDC, and 1 in Landuse) were intentionally skipped and excluded from the final metrics. This was handled via a `try...except` safety block inside the patched `run_vllm.py`. The underlying raw `.png` files for these specific items in the Kaggle dataset mirror were fundamentally corrupted (throwing `PIL.UnidentifiedImageError`). Because the vision encoder physically could not load the byte data, they were gracefully skipped to prevent fatal engine crashes, resulting in the completed predictions being marginally lower than the theoretical benchmark totals.
 
 ## Work Done by Tamanna Akter Mou
 
-1. **Pivot to the Satellite Imagery Pipeline:** Shifted implementation work to the satellite-imagery component because the initially selected paper did not provide open-source code. Began adapting the xBD-S12 repository of Dietrich et al. so its Sentinel-based preprocessing workflow could be applied to an alternative disaster dataset.
-2. **Pipeline Troubleshooting and Code Review:** Investigated failed execution attempts caused by complex environment dependencies and read-only directory restrictions. Collaborated with Aryan to trace the repository's data flow, configuration requirements, preprocessing stages, and expected intermediate outputs.
-3. **Implementation Mechanics Documentation:** Mapped the Copernicus Sentinel-1 and Sentinel-2 processing pipeline in detail. Documented how building footprints are used as Ground Control Points (GCPs) to correct image georeferencing and how the aligned Sentinel patches are resampled to a uniform 128x128 resolution using Lanczos interpolation, providing a clear basis for adapting the pipeline to the new dataset.
-
-## Work Done by Abdullah Al Noman
-
-1. **Super-Resolution Implementation:** Implemented the super-resolution model (from last week's presented paper, *Shakya-From Pixels to Semantics*) to enhance post-disaster AIDER dataset imagery. To satisfy the Video Restoration Transformer's (VRT) temporal dependency constraints, I built a custom script (`prep_vrt_input.py`) that structured a REDS-compliant directory (`/testsets/custom_disaster/LQ/000`) and replicated a static 1024x1024 frame four times (`0000.png--0003.png`) to generate the required 5D tensor format [B,T,C,H,W] = [1,4,3,1024,1024].
-2. **Inference and Memory Optimization:** The massive computational overhead of generating a 4096x4096 output array was mitigated by partitioning the 1024px input space into small, sequential spatial tiles of 256x256 pixels. The runtime command locked the temporal processing slice to 4 frames (`--tile 40 256 256`) and implemented a strict 20-pixel overlapping boundary padding (`--tile_overlap 2 20 20`) to insulate the data loader from threading instability while managing the free-tier GPU constraints.
-3. **Execution, Fusion, and Visual Evaluation:** Fused overlapping tile margins via a recurrent blending utility to eliminate grid seams, successfully generating a crisp 4096x4096 asset at `/results/.../000/0000.png`. Furthermore, I wrote a verification script (`test.py`) utilizing Matplotlib to dynamically extract and contrast 100px center crops from the original and upscaled assets side-by-side, confirming the successful recovery of sharp micro-structural textures over pixelated blur.
+1. **Literature and Framework Integration Review:** Analyzed the AnyDisasterMapping repository, which provides a unified benchmark and processing pipeline for multi-hazard disaster-mapping tasks. Documented how integrating its pretrained geospatial backbone, specifically the SegFormer MiT-B2 architecture, can address the localization and reasoning gaps identified in our previous updates by providing a stronger visual feature extractor than standard baseline U-Nets.
 
 ## Work Done by Aryan Sami
 
-1. **Label Conversion Script (`json_to_mask.py`):** Developed a preprocessing script to convert xView2 (xBD) polygon annotations into pixel-level masks. The script parses only post-disaster JSON files, extracts building polygons and their damage labels (no damage, minor damage, major damage, and destroyed), maps them to integer class values from 0 to 4, and uses OpenCV's `fillPoly` function to draw the polygons on blank 1024x1024 canvases. The resulting PNG masks are saved in a dedicated `masks_png` folder and are ready for model training.
-2. **Dataset Loading Pipeline (`data_loader.py`):** Implemented `OriginalXBDDataset`, a custom PyTorch `Dataset` that pairs post-disaster PNG images with their corresponding masks. Images are normalized from the 0–255 range to 0.0–1.0, converted to tensors, and reordered to `[Channels, Height, Width]`. Following Section 2.1.3 of the paper, labels are simplified into three classes: background (0), intact/no damage (1), and damaged/minor, major, or destroyed (2). The data loader supplies correctly paired batches of four samples during training.
-3. **Model Architecture (`model.py`):** Implemented a U-Net semantic-segmentation model with an ImageNet-pretrained ResNet34 backbone. In accordance with the paper's ablation findings, only `layer1`, `layer2`, and `layer3` are used in the encoder to reduce disaster-specific overfitting. A decoder composed of `ConvTranspose2d` layers progressively restores spatial resolution, while a final 1x1 convolution produces three output channels for background, intact, and damaged classes. Bilinear interpolation ensures that the output damage map exactly matches the 1024x1024 input resolution.
-4. **Training Pipeline (`train.py`):** Integrated the dataset loader and segmentation model into a complete training pipeline with automatic CUDA detection and CPU fallback. Training uses pixel-wise `CrossEntropyLoss`, the AdamW optimizer with a learning rate of 5x10^-4 and weight decay of 1x10^-4, and a `CosineAnnealingLR` scheduler over 40 epochs. For every batch, the pipeline performs prediction, loss calculation, backpropagation, and model-weight updates using real xBD satellite image–mask pairs.
+1. **Paper Review Objective:** Reviewed *DisasterInsight: A Multimodal Benchmark for Function-Aware and Grounded Disaster Assessment* by Tehrani, Xu, Haglund, Berg, and Felsberg (Linköping University). The work is currently available as an arXiv preprint (arXiv:2601.18493v1, cs.CV, January 2026) and has not yet been accepted at a peer-reviewed venue.
+2. **Benchmark Structure Audit:** Reviewed how DisasterInsight restructures xBD into 112,507 building-centered instances by dividing scenes into patches and pairing each building with its own bounding box. This lightweight instance-construction approach is worth comparing with DisasterM3's mask-based entries, 40% of which were found unusable during our earlier dataset audit.
+3. **Function-Label Pipeline:** Studied the benchmark's method for deriving building-function labels—such as hospital, school, and residential—from OpenStreetMap tags and consolidating them into eight categories. This provides a possible direction for extending our xBD-S12/Palisades pipeline beyond its current three-class, damage-only schema.
+4. **Report-Generation Design:** Examined the paper's two-tier report format, consisting of a short situational summary and a longer risk-and-recovery narrative. Its use of BLEU-4, ROUGE-L, and BERTScore rather than exact-match metrics is relevant to our rescue-actionability evaluation approach for command-center advisories.
+5. **LoRA Configuration Comparison:** Compared the paper's fine-tuning setup—LoRA rank r=64 and α=128 on TeoChat/Qwen2.5-VL with a frozen vision encoder—with our QLoRA configuration of r=64 and α=16. The substantially higher α/r ratio may partly explain its larger reported performance gains.
+6. **Shared Failure Mode:** Identified that building-function classification remained weak after fine-tuning, achieving approximately 18% F1. This aligns with our finding that coarse satellite-image resolution, rather than model architecture alone, is the principal bottleneck for fine-grained classification in our pipeline.
 
 ## Work Done by Ridita Afrin Riya
 
