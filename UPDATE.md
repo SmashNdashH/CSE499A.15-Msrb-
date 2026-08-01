@@ -46,6 +46,7 @@
 4. **Report-Generation Design:** Examined the paper's two-tier report format, consisting of a short situational summary and a longer risk-and-recovery narrative. Its use of BLEU-4, ROUGE-L, and BERTScore rather than exact-match metrics is relevant to our rescue-actionability evaluation approach for command-center advisories.
 5. **LoRA Configuration Comparison:** Compared the paper's fine-tuning setup—LoRA rank r=64 and α=128 on TeoChat/Qwen2.5-VL with a frozen vision encoder—with our QLoRA configuration of r=64 and α=16. The substantially higher α/r ratio may partly explain its larger reported performance gains.
 6. **Shared Failure Mode:** Identified that building-function classification remained weak after fine-tuning, achieving approximately 18% F1. This aligns with our finding that coarse satellite-image resolution, rather than model architecture alone, is the principal bottleneck for fine-grained classification in our pipeline.
+7. **U-Net V2 Fine-Tuning Breakthrough:** Successfully executed a second U-Net fine-tuning run implementing AMP optimizations and a corrected 4-class mapping architecture (Background, Intact, Damaged, Destroyed). This resolved previous gradient scaling bugs and propelled the model to a new state-of-the-art **Mean IoU of 0.4619** and a Mean F1 of 0.5808, significantly outperforming the V1 baseline (0.4286).
 
 ## Work Done by Ridita Afrin Riya
 
