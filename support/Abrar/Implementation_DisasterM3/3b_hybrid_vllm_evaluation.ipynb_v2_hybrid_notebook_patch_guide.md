@@ -41,7 +41,7 @@ unet_model = smp.Unet(
 
 print("Downloading best_model.pth from Hugging Face...")
 weights_path = hf_hub_download(
-    repo_id="AbrarAlam/disasterm3-unet-checkpoints-2", 
+    repo_id="AbrarAlam/disasterm3-unet-checkpoints", 
     filename="best_model.pth"
 )
 unet_model.load_state_dict(torch.load(weights_path, map_location=device))
@@ -180,15 +180,13 @@ Copy the code below and completely replace the contents of Cell 8:
 ```python
 # ── Run Evaluation ──
 import os
+import gc
 
 # Subsets that need the 3x3 Cropped Collage to fix VLM degradation
 hybrid_subsets = ["bearing_body", "relational_reasoning_qa"]
 
 # --- SPLIT 1: Run these first ---
-subsets = ["bearing_body", "disaster_type", "road_damage_counting"] 
-
-# --- SPLIT 2: Next session, comment out Split 1 and uncomment Split 2 ---
-# subsets = ["landuse", "relational_reasoning_qa"]
+subsets = ["bearing_body", "disaster_type", "road_damage_counting", "landuse", "relational_reasoning_qa"] 
 
 hf_token_val = os.environ.get("HF_TOKEN", "")
 safe_model_name = model_path.replace("/", "--")
@@ -197,7 +195,7 @@ img_base = "/tmp/data/images"
 for subset in subsets:
     print(f"\n{'='*50}\nEvaluating {subset}...\n{'='*50}")
 
-    # DYNAMIC SWITCH: Swap in the collages only if the task needs it!
+    # 1. DYNAMIC SWITCH: Swap in the collages only if the task needs it!
     if subset in hybrid_subsets:
         !mv {img_base}/test_images {img_base}/test_images_temp
         !mv {img_base}/test_images_cropped {img_base}/test_images
@@ -207,10 +205,15 @@ for subset in subsets:
     with open(f"{save_dir}/finished.jsonl", "a") as f:
         pass
 
+    # 2. RUN QWEN
     !HF_TOKEN={hf_token_val} PYTHONPATH={repo_path} python {repo_path}/pyscripts/run_vllm.py --model_id {model_path} --subset {subset} --image_size 512
 
-    # SWITCH BACK: Restore original uncropped images so Disaster Type doesn't lose context!
+    # 3. SWITCH BACK: Restore original uncropped images so Disaster Type doesn't lose context!
     if subset in hybrid_subsets:
         !mv {img_base}/test_images {img_base}/test_images_cropped
         !mv {img_base}/test_images_temp {img_base}/test_images
+
+    # 4. KAGGLE CRASH PREVENTION: Wipe leaked shared memory between runs!
+    !rm -rf /dev/shm/*
+    gc.collect()
 ```
