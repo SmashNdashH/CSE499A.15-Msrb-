@@ -1,0 +1,127 @@
+{
+  "SA-1": {
+    "crisis_info_type": "situational_awareness",
+    "category_name": "Hazard Type & Severity",
+    "definition": "Identify hazard/disaster type or visible hazard indicators (e.g., flooding visible, smoke present).",
+    "framework_references": [
+      "MIRA Guidance – crisis impact (scope/scale, severity) and humanitarian profile",
+      "IASC Cluster Approach – inter-cluster coordination baseline (OCHA/HC-led)",
+      "Sphere Handbook – CHS / assessment as a foundation for response quality",
+      "FEMA National Response Framework – ESF construct (incl. ESF #5 Information & Planning)"
+    ]
+  },
+  "SA-2": {
+    "crisis_info_type": "situational_awareness",
+    "category_name": "Built Environment Damage",
+    "definition": "Damage level/condition of buildings, roads, bridges, dams/levees (collapsed, cracked, washed out).",
+    "framework_references": [
+      "IASC Cluster Approach – Shelter Cluster; Early Recovery (damage informs shelter/recovery priorities)",
+      "Sphere Handbook – Shelter & Settlement standards (safety/habitability, site risk)",
+      "MIRA Guidance – crisis impact / severity and priority needs implications",
+      "FEMA Public Assistance – Permanent Work categories (C–G) and infrastructure restoration framing"
+    ]
+  },
+  "SA-3": {
+    "crisis_info_type": "situational_awareness",
+    "category_name": "Utilities Status & Damage",
+    "definition": "Visible damage/status of power, water systems, telecom infrastructure (downed pole, broken lines).",
+    "framework_references": [
+      "IASC Cluster Approach – WASH Cluster (water systems) + Emergency Telecommunications Cluster (comms)",
+      "Sphere Handbook – WASH minimum standards (service continuity, water safety)",
+      "MIRA Guidance – service disruption as severity/impact indicator",
+      "FEMA Public Assistance – Category F (Utilities) framing"
+    ]
+  },
+  "SA-4": {
+    "crisis_info_type": "situational_awareness",
+    "category_name": "Access & Inaccessibility",
+    "definition": "Passability and obstructions on routes/sites (blocked/partially blocked; debris/rocks/water/vehicles obstructing; “can vehicles pass?”).",
+    "framework_references": [
+      "MIRA Guidance – operational constraints / humanitarian access",
+      "IASC Cluster Approach – Logistics Cluster (access routes, supply lines, constraints)",
+      "Sphere Handbook – CHS foundations (feasibility, safe access, coordination)",
+      "FEMA National Response Framework – ESF construct (transport/access functions)"
+    ]
+  },
+  "SA-5": {
+    "crisis_info_type": "situational_awareness",
+    "category_name": "Movement Restrictions & Controls",
+    "definition": "Barriers, cones, cordons, checkpoints, closures, restricted zones.",
+    "framework_references": [
+      "MIRA Guidance – humanitarian access constraints (restrictions/checkpoints/closures)",
+      "IASC Cluster Approach – Protection Cluster (civilian safety/rights) + Logistics Cluster (operational access)",
+      "Sphere Handbook – Protection Principles (safety, dignity, avoid harm)",
+      "FEMA National Response Framework – ESF construct (public safety/security functions)"
+    ]
+  },
+  "SA-6": {
+    "crisis_info_type": "situational_awareness",
+    "category_name": "Population & Asset Exposure",
+    "definition": "Presence/count/type of people, vehicles, assets; stranded/damaged vehicles (when framed as observation).",
+    "framework_references": [
+      "MIRA Guidance – humanitarian profile / affected population status",
+      "IASC Cluster Approach – Protection Cluster; (context-dependent) CCCM Cluster for displacement/collective sites",
+      "Sphere Handbook – Protection Principles + CHS foundations (identify who is affected/vulnerable)",
+      "FEMA National Response Framework – ESF construct (mass care / human services functions)"
+    ]
+  },
+  "SA-7": {
+    "crisis_info_type": "situational_awareness",
+    "category_name": "Water & Flood Characteristics",
+    "definition": "Floodwater depth/extent/coverage/flow; inundation area; standing vs moving water.",
+    "framework_references": [
+      "IASC Cluster Approach – WASH Cluster (water safety/contamination/drainage) + Shelter Cluster (site risk)",
+      "Sphere Handbook – WASH standards (water safety/drainage) + Shelter & Settlement (site selection risk)",
+      "MIRA Guidance – hazard impact characteristics and compounding risks",
+      "FEMA Public Assistance – Category D (Water Control Facilities) framing"
+    ]
+  },
+  "SA-8": {
+    "crisis_info_type": "situational_awareness",
+    "category_name": "Environmental/Terrain Context",
+    "definition": "Terrain/setting context (mountainous, coastal, hillside, forest) used for situational understanding.",
+    "framework_references": [
+      "MIRA Guidance – drivers/underlying factors shaping impacts and needs",
+      "IASC Cluster Approach – Shelter Cluster (site planning constraints); Food Security/Agriculture linkages where relevant",
+      "Sphere Handbook – Shelter & Settlement (context/risk-informed planning)"
+    ]
+  },
+  "AT-1": {
+    "crisis_info_type": "actionable_task",
+    "category_name": "Search and Rescue",
+    "definition": "Rescue need, trapped persons, evacuation feasibility/requirements.",
+    "framework_references": [
+      "INSARAG Guidelines – international USAR coordination methodology/standards",
+      "Sphere Handbook – Protection Principles (life-saving, do-no-harm) + Health linkages for trauma care pathways",
+      "MIRA Guidance – immediate life-saving priorities in early analysis",
+      "FEMA Public Assistance – Category B (Emergency Protective Measures) framing"
+    ]
+  },
+  "AT-2": {
+    "crisis_info_type": "actionable_task",
+    "category_name": "Debris Clearance & Earthmoving",
+    "definition": "Clearing debris/rocks/mud; need for machinery or clearance operations.",
+    "framework_references": [
+      "IASC Cluster Approach – Early Recovery (cleanup/rehabilitation) + Logistics Cluster (opening access routes)",
+      "MIRA Guidance – operational constraints and access restoration priorities",
+      "FEMA Public Assistance – Category A (Debris Removal) framing"
+    ]
+  },
+  "AT-3": {
+    "crisis_info_type": "actionable_task",
+    "category_name": "Firefighting",
+    "definition": "Fire suppression/containment actions; wildfire response.",
+    "framework_references": [
+      "Sphere Handbook – Protection Principles (life safety; avoid harm) + shelter safety considerations",
+      "MIRA Guidance – evolving risks / immediate life-saving priorities",
+      "FEMA Public Assistance – Category B (Emergency Protective Measures) framing",
+      "FEMA National Response Framework – ESF construct (firefighting functions)"
+    ]
+  },
+  "OT-1": {
+    "crisis_info_type": "other",
+    "category_name": "Other Useful Information",
+    "framework_references": [],
+    "definition": "Information useful for disaster response analysis that does not fit into the final SA/AT categories (e.g., misc contextual cues)."
+  }
+}

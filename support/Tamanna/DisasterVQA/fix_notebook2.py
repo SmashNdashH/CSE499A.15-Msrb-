@@ -1,0 +1,290 @@
+import json
+
+notebook_path = r'c:\Users\taman\Desktop\CSE499AB\CSE499A.15-Msrb--1\support\Tamanna\DisasterVQA\disastervqa.ipynb'
+
+cells = [
+    {
+        "cell_type": "markdown",
+        "metadata": {},
+        "source": [
+            "## 1. Setup Environment\n",
+            "Install required libraries for Qwen2.5-VL and Hugging Face datasets."
+        ]
+    },
+    {
+        "cell_type": "code",
+        "execution_count": None,
+        "metadata": {},
+        "outputs": [],
+        "source": [
+            "!pip install -q git+https://github.com/huggingface/transformers\n",
+            "!pip install -q accelerate datasets evaluate\n",
+            "!pip install -q qwen-vl-utils torchvision\n",
+            "!pip install -q google-genai"
+        ]
+    },
+    {
+        "cell_type": "markdown",
+        "metadata": {},
+        "source": [
+            "## 2. Load DisasterVQA Dataset\n",
+            "Using the Hugging Face `datasets` library to load `QCRI/DisasterVQA`."
+        ]
+    },
+    {
+        "cell_type": "code",
+        "execution_count": None,
+        "metadata": {},
+        "outputs": [],
+        "source": [
+            "from datasets import load_dataset\n",
+            "import json\n",
+            "\n",
+            "dataset = load_dataset(\"QCRI/DisasterVQA\", split=\"train\")\n",
+            "print(f\"Total QA pairs loaded: {len(dataset)}\")"
+        ]
+    },
+    {
+        "cell_type": "markdown",
+        "metadata": {},
+        "source": [
+            "## 3. Load Abrar's Qwen2.5-VL Model\n",
+            "Load `AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP`. We use `sdpa` for memory efficiency without needing flash-attention."
+        ]
+    },
+    {
+        "cell_type": "code",
+        "execution_count": None,
+        "metadata": {},
+        "outputs": [],
+        "source": [
+            "import torch\n",
+            "from transformers import Qwen2_5_VLForConditionalGeneration, AutoProcessor\n",
+            "\n",
+            "model_id = \"AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP\"\n",
+            "\n",
+            "model = Qwen2_5_VLForConditionalGeneration.from_pretrained(\n",
+            "    model_id, \n",
+            "    torch_dtype=torch.bfloat16, \n",
+            "    device_map=\"auto\",\n",
+            "    attn_implementation=\"sdpa\"\n",
+            ")\n",
+            "processor = AutoProcessor.from_pretrained(model_id)"
+        ]
+    },
+    {
+        "cell_type": "markdown",
+        "metadata": {},
+        "source": [
+            "## 4. Dataset Inference Loop\n",
+            "Run the model on the evaluation data."
+        ]
+    },
+    {
+        "cell_type": "code",
+        "execution_count": None,
+        "metadata": {},
+        "outputs": [],
+        "source": [
+            "from datasets import load_dataset\n",
+            "from qwen_vl_utils import process_vision_info\n",
+            "from tqdm.notebook import tqdm\n",
+            "import json\n",
+            "import torch\n",
+            "\n",
+            "results = []\n",
+            "limit = 100 \n",
+            "eval_dataset = dataset.select(range(min(limit, len(dataset))))\n",
+            "\n",
+            "for item in tqdm(eval_dataset, desc=\"Running Inference\"):\n",
+            "    try:\n",
+            "        image = item[\"image\"].convert(\"RGB\")\n",
+            "        question = item[\"question\"]\n",
+            "        q_type = item[\"question_type\"]\n",
+            "        category = item.get(\"crisis_info_type\", \"General\")\n",
+            "        \n",
+            "        if q_type == \"Multiple-Choice\":\n",
+            "            choices = item.get(\"choices\", {})\n",
+            "            choices_str = \"\\n\".join([f\"{k}: {v}\" for k, v in choices.items() if v])\n",
+            "            instruction = f\"{question}\\nChoices:\\n{choices_str}\\nAnswer with the correct option letter.\"\n",
+            "            gt_list = item.get(\"groundtruth_answer\")\n",
+            "            ground_truth = str(gt_list[0]) if gt_list else \"\"\n",
+            "        else:\n",
+            "            instruction = f\"{question}\\nProvide a concise and accurate answer.\"\n",
+            "            gt_list = item.get(\"groundtruth_answer\")\n",
+            "            ground_truth = str(gt_list[0]) if gt_list else \"\"\n",
+            "            \n",
+            "        messages = [\n",
+            "            {\n",
+            "                \"role\": \"user\",\n",
+            "                \"content\": [\n",
+            "                    {\"type\": \"image\", \"image\": image},\n",
+            "                    {\"type\": \"text\", \"text\": instruction},\n",
+            "                ],\n",
+            "            }\n",
+            "        ]\n",
+            "        \n",
+            "        text = processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)\n",
+            "        image_inputs, video_inputs = process_vision_info(messages)\n",
+            "    \n",
+            "        inputs = processor(\n",
+            "            text=[text],\n",
+            "            images=image_inputs,\n",
+            "            videos=video_inputs,\n",
+            "            padding=True,\n",
+            "            return_tensors=\"pt\"\n",
+            "        ).to(\"cuda\")\n",
+            "    \n",
+            "        with torch.no_grad():\n",
+            "            generated_ids = model.generate(**inputs, max_new_tokens=128)\n",
+            "            generated_ids_trimmed = [\n",
+            "                out_ids[len(in_ids):] for in_ids, out_ids in zip(inputs.input_ids, generated_ids)\n",
+            "            ]\n",
+            "            output_text = processor.batch_decode(\n",
+            "                generated_ids_trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False\n",
+            "            )[0]\n",
+            "    \n",
+            "        results.append({\n",
+            "            \"id\": item[\"question_id\"],\n",
+            "            \"instruction\": instruction,\n",
+            "            \"ground_truth\": ground_truth,\n",
+            "            \"question_type\": q_type,\n",
+            "            \"humanitarian_category\": category,\n",
+            "            \"model_output\": output_text.strip()\n",
+            "        })\n",
+            "    except Exception as e:\n",
+            "        print(f\"Error processing item {item.get('question_id')}: {e}\")\n",
+            "        continue\n",
+            "\n",
+            "with open(\"vqa_predictions.jsonl\", \"w\") as f:\n",
+            "    for item in results:\n",
+            "        f.write(json.dumps(item) + \"\\n\")\n",
+            "\n",
+            "print(\"Inference completed! Predictions saved to vqa_predictions.jsonl\")"
+        ]
+    },
+    {
+        "cell_type": "markdown",
+        "metadata": {},
+        "source": [
+            "## 5. Evaluation using Gemini Judge & Exact Match"
+        ]
+    },
+    {
+        "cell_type": "code",
+        "execution_count": None,
+        "metadata": {},
+        "outputs": [],
+        "source": [
+            "import json\n",
+            "import pandas as pd\n",
+            "import time\n",
+            "from google import genai\n",
+            "from google.genai import types\n",
+            "from kaggle_secrets import UserSecretsClient\n",
+            "from tqdm.notebook import tqdm\n",
+            "\n",
+            "try:\n",
+            "    user_secrets = UserSecretsClient()\n",
+            "    api_key = user_secrets.get_secret(\"GEMINI_API_KEY\")\n",
+            "except Exception as e:\n",
+            "    print(\"Could not find GEMINI_API_KEY. Add it to Kaggle Secrets.\")\n",
+            "    api_key = \"\"\n",
+            "\n",
+            "if api_key:\n",
+            "    client = genai.Client(api_key=api_key)\n",
+            "\n",
+            "def evaluate_open_ended(question, ground_truth, model_output):\n",
+            "    if not api_key: return 0\n",
+            "    prompt = f\"\"\"\n",
+            "    You are an expert disaster response evaluator.\n",
+            "    Question: {question}\n",
+            "    Ground Truth Answer: {ground_truth}\n",
+            "    Model Predicted Answer: {model_output}\n",
+            "    Is the Model Predicted Answer semantically equivalent and factually consistent with the Ground Truth Answer?\n",
+            "    Respond ONLY with a JSON object: {{\"verdict\": \"CORRECT\"}} or {{\"verdict\": \"INCORRECT\"}}\n",
+            "    \"\"\"\n",
+            "    try:\n",
+            "        response = client.models.generate_content(\n",
+            "            model=\"gemini-2.5-flash\",\n",
+            "            contents=prompt,\n",
+            "            config=types.GenerateContentConfig(response_mime_type=\"application/json\"),\n",
+            "        )\n",
+            "        res_json = json.loads(response.text)\n",
+            "        return 1 if res_json.get(\"verdict\") == \"CORRECT\" else 0\n",
+            "    except Exception as e:\n",
+            "        time.sleep(2)\n",
+            "        return 0\n",
+            "\n",
+            "try:\n",
+            "    with open(\"vqa_predictions.jsonl\", \"r\") as f:\n",
+            "        results = [json.loads(line) for line in f]\n",
+            "except FileNotFoundError:\n",
+            "    print(\"vqa_predictions.jsonl not found. Please run the inference loop first.\")\n",
+            "    results = []\n",
+            "\n",
+            "if len(results) > 0:\n",
+            "    print(\"Evaluating answers...\")\n",
+            "    for pred in tqdm(results, desc=\"Evaluating\"):\n",
+            "        q_type = pred.get(\"question_type\", \"\")\n",
+            "        gt = str(pred.get(\"ground_truth\", \"\")).strip().lower()\n",
+            "        out = str(pred.get(\"model_output\", \"\")).strip().lower()\n",
+            "        \n",
+            "        if q_type == \"Yes/No\" or q_type == \"Binary\":\n",
+            "            if (\"yes\" in gt and \"yes\" in out) or (\"no\" in gt and \"no\" in out):\n",
+            "                pred[\"is_correct\"] = 1\n",
+            "            else:\n",
+            "                pred[\"is_correct\"] = 0\n",
+            "        elif q_type == \"Multiple-Choice\":\n",
+            "            if len(out) > 0 and len(gt) > 0 and out[0] == gt[0]:\n",
+            "                pred[\"is_correct\"] = 1\n",
+            "            else:\n",
+            "                pred[\"is_correct\"] = 0\n",
+            "        else:\n",
+            "            pred[\"is_correct\"] = evaluate_open_ended(pred.get(\"instruction\", \"\"), gt, out)\n",
+            "    \n",
+            "    with open(\"vqa_predictions_evaluated.jsonl\", \"w\") as f:\n",
+            "        for pred in results:\n",
+            "            f.write(json.dumps(pred) + \"\\n\")\n",
+            "    print(\"✓ Saved evaluated predictions to 'vqa_predictions_evaluated.jsonl'\")\n",
+            "    \n",
+            "    df = pd.DataFrame(results)\n",
+            "    \n",
+            "    if 'humanitarian_category' not in df.columns:\n",
+            "        df['humanitarian_category'] = 'General'\n",
+            "    else:\n",
+            "        df['humanitarian_category'] = df['humanitarian_category'].fillna('General')\n",
+            "    \n",
+            "    if 'question_type' not in df.columns:\n",
+            "        df['question_type'] = 'Unknown'\n",
+            "    else:\n",
+            "        df['question_type'] = df['question_type'].fillna('Unknown')\n",
+            "    \n",
+            "    summary = (\n",
+            "        df.groupby(['humanitarian_category', 'question_type'])['is_correct']\n",
+            "        .agg(\n",
+            "            Total='count',\n",
+            "            Correct='sum',\n",
+            "            Accuracy=lambda x: (x.sum() / x.count()) * 100 if x.count() > 0 else 0\n",
+            "        )\n",
+            "        .reset_index()\n",
+            "    )\n",
+            "    \n",
+            "    print(\"\\n=== DisasterVQA Category Breakdown ===\")\n",
+            "    print(summary.to_string(index=False))\n",
+            "    \n",
+            "    summary.to_csv(\"disastervqa_category_metrics.csv\", index=False)\n",
+            "    print(\"\\n✓ Successfully saved 'disastervqa_category_metrics.csv'!\")"
+        ]
+    }
+]
+
+with open(notebook_path, 'r', encoding='utf-8') as f:
+    nb = json.load(f)
+
+nb['cells'] = cells
+
+with open(notebook_path, 'w', encoding='utf-8') as f:
+    json.dump(nb, f, indent=1)
+
+print('Successfully cleaned and consolidated the notebook!')

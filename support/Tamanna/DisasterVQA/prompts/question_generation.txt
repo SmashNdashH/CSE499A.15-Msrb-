@@ -1,0 +1,34 @@
+You are an expert emergency responder analyzing images captured during natural disaster scenarios to support rapid decision-making and disaster response operations. Your task is to generate insightful questions and accurate answers about the provided image. Questions should specifically help emergency responders extract critical situational awareness and actionable intelligence. Include questions focusing explicitly on visual tasks commonly addressed in computer vision, such as classification (e.g., identifying the disaster type), object detection, segmentation, object counting, and recognizing conditions relevant to rescue efforts.
+ 
+Carefully examine the provided disaster-related image and perform the following tasks:
+ 
+- Generate three Yes/No questions.
+Questions must directly inquire about visible aspects related to emergency response and computer vision tasks. Questions can be similar to these examples but are not limited to them: (e.g., "Are there any people trapped under debris?", "Is flooding visible in the image?", "Are emergency vehicles present?").
+ 
+- Generate three Multiple-Choice questions.
+Provide exactly four possible answer choices (labeled as A, B, C, D). Questions should be relevant for extracting critical visual information and may include classification or detection tasks (e.g., disaster type, severity level, identifying specific objects). Answers could be more than one option.
+ 
+- Generate three Open-Ended questions.
+Ensure the answers to these questions can be provided in one or two words, focusing explicitly on detection, counting, or simple classification tasks. Questions can be similar to these examples but are not limited to them: (e.g., "How many vehicles are visible? Answer with one or two words", "What type of building is damaged? Answer with one or two words", "Name an object blocking the road. Answer with one or two words"). Provide your answer with a list of possible synonyms.
+ 
+Provide your response in the following structured JSON format:
+{
+  "questions": [
+    {
+      "type": "Yes/No",
+      "question": "string",
+      "answer": "Yes or No"
+    },
+    {
+      "type": "Multiple-Choice",
+      "question": "string",
+      "choices": {"A": "option", "B": "option", "C": "option", "D": "option"},
+      "answer": "A, B, C, or D"
+    },
+    {
+      "type": "Open-Ended",
+      "question": "string",
+      "answer": [] #list of possible synonyms
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+We asked another LLM to answer some binary (Yes/No) questions, where the model was instructed to provide its answers in a json format as the following: {{"Model_answer": <model_output>}} 
+Your job as a judge is to extract and parse a binary answer from the given output and decide whether it is “Yes” or “No.”
+
+Input:
+  Question: {question}
+  Model Output: {model_output}
+
+Instructions:
+- Read the question and the model’s output.
+- Extract the model answer from the raw text either yes or no. 
+- Output exactly one word: either “Yes” or “No”, with no additional commentary.
+
+

@@ -1,0 +1,21 @@
+We asked another LLM to answer a set of multiple‑choice questions, where the model was instructed to provide its answers in a json format as the following: {{"Model_answer": <model_output>}} 
+Your job as a judge is to read its raw output and parse which choice(s) it selected. Specifically, your only task is to extract the letter(s) corresponding to the model’s answer and return them as a JSON-style list.
+
+Input:
+  Question: {question}
+  Choices:
+    {choices_formatted}
+  Model Output: {model_output}
+
+Instructions:
+- Read the question, the lettered choices, and the model’s output.
+- Identify which choice(s) (A, B, C, D) the model’s output corresponds to.
+- If more than one option applies, include all matching letters.
+- Output only a JSON-style list of uppercase letters, for example:
+    ["A"]
+    ["A","C"]
+    ["B","D","E"]
+- Do not include any extra text or formatting only the JSON array.
+
+
+

@@ -1,0 +1,23 @@
+We asked another LLM to answer open‑ended questions, where the model was instructed to provide its answers in a json format as the following: {{"Model_answer": <model_output>}}  
+Your job as a judge is to check whether the model’s exact answer phrase has the same meaning as any of the ground‑truth answers.
+
+Input:
+  Question: {question}
+  Model Output: {model_output}
+  Ground‑Truth Answers: {ground_truth}
+
+Instructions:
+  - Read the question, model output, and the groundtruth answers.
+  - Extract the exact answer phrase from the model’s raw output.
+  - Map the extracted phrase to its core meaning, matching:
+      • Synonyms  
+      • Number words vs. digits  
+      • Multi‑word equivalents  
+      • Combinations of ground‑truth terms (e.g., “building structure” matches both “building” and “structure”)
+  - Compare the mapped meaning against the ground‑truth answers.
+  - Decide “Right” if there is a match, otherwise “Wrong”.
+  - Output exactly one JSON object with:
+    {{"decision": "<Right|Wrong>", "answer": "<the exact answer phrase>"}}
+  - Do not include any additional text or explanation.
+
+
