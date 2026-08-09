@@ -232,7 +232,9 @@ def evaluate_row(row):
 
 
 def write_csv(rows, output_path):
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    out_dir = os.path.dirname(output_path)
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
     fieldnames = [
         "image",
         "disaster_type",

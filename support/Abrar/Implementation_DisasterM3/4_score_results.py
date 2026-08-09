@@ -6,7 +6,7 @@ def main():
     # Setup paths relative to the current script
     current_dir = os.path.dirname(os.path.abspath(__file__))
     bench_file = os.path.join(current_dir, "benchmark_release.json")
-    results_dir = os.path.join(current_dir, "DisasterM3 Evaluation Results")
+    results_dir = os.path.join(current_dir, "DisasterM3 Evaluation Results (1)")
     safe_model = "AbrarAlam--disasterm3-qwen2.5vl7b-mergedFP"
     
     # 1. Check if the user has downloaded the benchmark file locally
@@ -72,7 +72,8 @@ def main():
             gt_answer = str(gt_by_id.get(pred_id, ""))
             
             # Normalize: robustly extract only the option letters (A-Z) to ignore periods/brackets
-            pred_set = set(re.findall(r'[A-Z]', pred_response.upper()))
+            pred_clean = pred_response.upper().replace("THE ANSWER IS", "").replace("OPTION", "")
+            pred_set = set(re.findall(r'[A-Z]', pred_clean))
             gt_set = set(re.findall(r'[A-Z]', gt_answer.upper()))
             
             if pred_set == gt_set:
