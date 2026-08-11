@@ -4,9 +4,9 @@
 
 # Post-Disaster Rescue Guidance via VLM Fine-Tuning
 
-[![Hugging Face Space](https://img.shields.io/badge/🤗%20Hugging%20Face-Live%20Demo-blue)](https://huggingface.co/spaces/)
-[![Model: Qwen2-VL-7B](https://img.shields.io/badge/Model-Qwen2--VL--7B-orange)](https://huggingface.co/Qwen)
-[![Framework: Unsloth](https://img.shields.io/badge/Framework-Unsloth-green)](https://github.com/unslothai/unsloth)
+[![Kaggle: Live Demo](https://img.shields.io/badge/Kaggle-Live%20Demo-blue)](https://www.kaggle.com/code/abrarmohammedtanzim/test-qwen-disasterm3-interactive)
+[![Model: Finetuned Qwen2.5-VL-7B](https://img.shields.io/badge/Model-DisasterM3_Qwen2.5--VL--7B-orange)](https://huggingface.co/AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP)
+<!-- [![Framework: Unsloth](https://img.shields.io/badge/Framework-Unsloth-green)](https://github.com/unslothai/unsloth) -->
 
 > **CSE499A/EEE499A/ETE499A - Senior Design 1, Section 15 Project Group 5**
 > **Team:** Abdullah Al Noman, Tamanna Akter Mou, Aryan Sami, Ridita Afrin Riya, Abrar Mohammed Tanzim Alam
