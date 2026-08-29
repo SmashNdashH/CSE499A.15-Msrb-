@@ -137,3 +137,41 @@ others/lit review_research papers/*
 !others/lit review_research papers/NeurIPS-2025-disasterm3-a-remote-sensing-vision-language-dataset-for-disaster-damage-assessment-and-response-Paper-Datasets_and_Benchmarks_Track.pdf
 
 !others/lit review_research papers/The Potential of Copernicus Satellites for Disaster Response Retrieving Building Damage from Sentinel-1 and Sentinel-2.pdf
+
+# Additional requested files to ignore
+CSE499A_Final_report.tex
+system_architecture.png
+my convo with google ai.txt
+hybrid_pipeline_flowchart.png
+unet_training_plot.png
+Output_disaster_image (noman).png
+QLORA_fine-Tuning_Loss_Curve_from_train_qwen_disasterm3.ipynb.png
+references.bib
+Mushfiq_IEEE_Building_Segmentation_Paper-3.pdf
+project_extension_analysis.md
+hybrid_approach_audit.md
+corrected_qlora_training_notebook_documentation.md
+Screenshot 2026-08-14 022552.png
+Screenshot 2026-08-14 022533.png
+Screenshot 2026-08-14 022502.png
+Screenshot 2026-08-14 022427.png
+Screenshot 2026-08-14 022419.png
+Screenshot 2026-08-14 022410.png
+Screenshot 2026-08-14 022013.png
+pathways to still try (Consolidated_Audit_Report).md
+hybrid_evaluation_report.md
+v2_hybrid_notebook_patch_guide.md
+hybrid_intermediate_results.md
+hybrid_inference_guide.md
+3_vllm_evaluation_step c cell output.txt
+edgev_se_methodology.md
+script_group_contribution.txt
+script_abrar_work.txt
+proposed_solution_report_2pg_v2.tex
+proposed_solution_report_4pg.tex
+proposed_solution_report_2pg.tex
+mermaid-diagram-2026-07-13-031309.png
+disasteller_implementation_report.md
+SAMPLE_UPDATE-MinhajCSE499A_Literature Review Solution.pdf
+CONVERSATION_SUMMARY.md
+CONTEXT.md
