@@ -1,4 +1,4 @@
->  **[Main Project Overview](README.md)** |  **[Latest Team Update](UPDATE.md)**
+>  **[Main Project Overview](README.md)** |  **[Latest Team Update](UPDATE.md)** |  **[Final Report](others/CSE499A_Final_report.pdf)**
 
 ---
 
