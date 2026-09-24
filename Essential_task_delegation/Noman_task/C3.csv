@@ -1,0 +1,2 @@
+experiment_id,variable,value,miou,bg_iou,intact_iou,damaged_iou,destroyed_iou,precision,recall,f1,train_time_hrs,notes
+MEMBER_X_EXP_Y,architecture,UnetPlusPlus_resnet34,0.52027601,0.94595027,0.529159844,0.333322465,0.272671372,0.605302691,0.70760262,0.648201704,2.433639659,
