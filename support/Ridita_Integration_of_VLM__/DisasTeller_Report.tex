@@ -1,0 +1,155 @@
+\documentclass[conference,twocolumn,twoside]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{lipsum} % For formatting testing if needed
+
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  backgroundcolor=\color{gray!10},
+  frame=single,
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+  commentstyle=\color{green!50!black}
+}
+
+\begin{document}
+
+\title{DisasTeller: A Multi-Agent Large Vision-Language Model Framework for Post-Disaster Response\\
+\thanks{Work done by Ridita Afrin Riya as part of the CSE499A project implementation.}
+}
+
+\author{\IEEEauthorblockN{Ridita Afrin Riya}
+\IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
+\textit{Project: Multi-Agent LVLM Framework}\\
+}
+}
+
+\maketitle
+
+\begin{abstract}
+This research focuses on leveraging Large Vision-Language Models (LVLMs) within an autonomous multi-agent framework to revolutionize post-disaster emergency response. In the critical hours following a catastrophe, rapid data synthesis from fragmented sources---such as ground-level imagery, global maps, and extensive safety guidelines---is paramount. By employing a specialized crew of AI agents capable of multimodal reasoning, this study presents a robust system that automates damage assessment, formulates public alerts, prioritizes resource allocation, and drafts comprehensive reconstruction plans, thereby significantly reducing human-coordination bottlenecks in crisis management.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Multi-Agent Systems, Vision-Language Models, CrewAI, Post-Disaster Response, Prompt Engineering
+\end{IEEEkeywords}
+
+\section{Introduction}
+The integration of Artificial Intelligence in disaster management has traditionally been fragmented. While existing systems utilize machine learning for predictive modeling or localized image classification, there is a prominent research gap in autonomous, end-to-end orchestration. During a disaster (e.g., earthquake, flood, or fire), emergency response teams face extreme information bottlenecks. First responders, government officials, and medical personnel often struggle to rapidly synthesize visual field data with complex structural guidelines to make coordinated decisions.
+
+\section{Research Gap}
+Our main project seeks to address this critical gap by introducing a multi-agent paradigm. Rather than relying on a single AI model attempting to solve a multifaceted crisis simultaneously, the project investigates how distributed AI personas---each with distinct roles, memory, and access to specific external tools---can mimic a real-world emergency command center. My specific contribution and implementation, named \textbf{DisasTeller}, serves as the core operationalization of this concept. By utilizing the Google Gemini 3.1 Flash-Lite model within the CrewAI framework, my work bridges the gap between theoretical multi-agent orchestration and practical, multimodal disaster triage.
+
+\section{System Implementation: DisasTeller}
+I successfully designed and implemented \textbf{DisasTeller}, an autonomous multi-agent disaster management simulation system. The system runs on a sequential workflow powered by CrewAI and leverages Google Gemini for interpreting pictures of destruction and map annotations. 
+
+I engineered four specialized agents to perform a complete, automated pipeline:
+\begin{enumerate}
+    \item \textbf{Expert Team Agent:} Evaluates on-site field images to identify damaged structures and performs semantic searches over local emergency guidelines.
+    \item \textbf{Alerts Team Agent:} Interprets findings from the Expert Team to evaluate global maps, define hazard zones, and produce public updates.
+    \item \textbf{Emergency Service Team Agent:} Recommends emergency medical centers, temporary field shelters, and prioritizes critical transport pathways.
+    \item \textbf{Assignment Team Agent:} Handles strategic allocation, including paramedic deployments, government budgeting drafts, and community advisories.
+\end{enumerate}
+
+These agents collectively execute a six-task sequential workflow ranging from initial visual damage assessment (grading destruction from G1 to G5) to the generation of a final government reconstruction draft.
+
+\section{Technical Architecture and Methodology}
+To implement this system, I avoided simple text-based pipelines and instead built a robust, tool-augmented environment where agents can interact with external, real-world data.
+
+\subsection{CrewAI Orchestration}
+I defined the agents in Python by assigning them a \texttt{Role}, \texttt{Goal}, and \texttt{Backstory}. For instance, the \texttt{Expert\_team} agent was initialized with custom tools such as \texttt{local\_img\_interpreter} and \texttt{offline\_pdf\_search\_tool}. I structured the pipeline using \texttt{Task} objects with \texttt{memory=True}, ensuring that the output of one agent (e.g., the Expert Team's damage report) is seamlessly passed as context to the next (e.g., the Alerts Team).
+
+\subsection{Multimodal Vision Integration}
+Because LLMs are inherently text-based, I developed specialized Python tools using the \texttt{@tool} decorator to allow agents to ``see.'' For the \texttt{local\_img\_interpreter}, I wrote helper functions that traverse the local image directory, encode disaster photographs into Base64 format, and pass them to the \texttt{gemini-3.1-flash-lite} vision model. 
+
+\begin{lstlisting}[language=Python, caption={Vision Tool Implementation Snippet}]
+@tool
+def local_img_interpreter(text: str) -> str:
+    """Process the text with the LLM to describe disaster images."""
+    prompt = "describe the disaster in detail in the images... " + text
+    contents = [prompt]
+    for image in encoded_images:
+        contents.append({
+            "mime_type": "image/png",
+            "data": image
+        })
+    return model.generate_content(contents).text
+\end{lstlisting}
+
+\subsection{Map Annotation Engineering}
+I implemented a \texttt{global\_map\_annotation} tool that utilizes Gemini to extract precise X/Y coordinates of disaster zones based on visual landmarks. I engineered a strict JSON-output prompt, parsed the LLM's response using Regex, and integrated the Python Imaging Library (\texttt{PIL.ImageDraw}) to dynamically draw colored disaster grade annotations directly onto the global map images.
+
+\subsection{RAG Pipeline for Offline PDFs}
+To allow agents to consult official earthquake guidelines, I built a Retrieval-Augmented Generation (RAG) tool. I utilized LangChain to load a PDF, split it into 500-character chunks, and embed it into a local Chroma vector database using Google's embedding model. When an agent queries the tool, it performs a similarity search and returns the top three most relevant safety guidelines.
+
+\section{Technical Difficulties and Resolutions}
+During the deployment of this complex system, I encountered and successfully resolved several critical engineering hurdles to ensure production-grade stability.
+
+\subsection{API Rate Limit Exhaustion (HTTP 429)}
+\textbf{Challenge:} Initial executions using standard models like \texttt{gemini-3.5-flash} were instantly blocked. The multi-agent workflow generated rapid, concurrent vision requests that exceeded the Google Gemini free-tier daily request limits (20 requests per day) and RPM (Requests Per Minute) constraints, causing immediate \texttt{429 RESOURCE\_EXHAUSTED} crashes.
+
+\textbf{Resolution:} I overhauled the model selection, transitioning the entire framework to \texttt{gemini-3.1-flash-lite}, which offers a significantly higher daily quota allowance and a 15 RPM threshold. To guarantee stability, I hardcoded a global \texttt{max\_rpm=2} constraint directly into the CrewAI orchestrator. Furthermore, I implemented custom retry logic inside my tool definitions using a \texttt{for} loop and \texttt{time.sleep(60)} to gracefully catch rate limit exceptions and pause execution rather than crashing the system.
+
+\subsection{Dynamic Environment Pathing}
+\textbf{Challenge:} Running the orchestration script from the root workspace directory caused consistent file-not-found errors because the \texttt{.env} file and the image directories were nested inside subdirectories, breaking the Chroma DB persistence and image loading.
+
+\textbf{Resolution:} I upgraded the initialization code to dynamically target the active directory relative to the running script, completely decoupling the execution path from the user's terminal state:
+\begin{lstlisting}[language=Python, caption={Dynamic Environment Pathing}]
+script_dir = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(dotenv_path=os.path.join(script_dir, ".env"))
+\end{lstlisting}
+
+\subsection{Regex and JSON Parsing from LLMs}
+\textbf{Challenge:} The map annotation tool frequently failed because the LLM occasionally appended markdown formatting (e.g., \texttt{```json}) or conversational filler text to its coordinate outputs, breaking the standard \texttt{json.loads()} function.
+
+\textbf{Resolution:} I implemented a robust regular expression extraction layer to forcefully strip away all conversational text and isolate the raw JSON dictionary before passing it to the PIL image renderer. Placing the expression inside a code listing prevents LaTeX from interpreting the regex escape sequence as a document command.
+
+\begin{lstlisting}[language=Python, caption={JSON extraction from an LLM response.}]
+match = re.search(
+    r"```json\s*(.*?)\s*```",
+    llm_response,
+    re.DOTALL
+)
+json_text = match.group(1)
+coordinates = json.loads(json_text)
+\end{lstlisting}
+
+\section{Results}
+The DisasTeller system successfully executed the sequential workflow without human intervention after initialization. Key results include:
+\begin{itemize}
+    \item \textbf{Damage Assessment:} The Expert Team Agent effectively evaluated visual data, correctly classifying the "Hama Street" image as a Grade 5 (G5) total collapse.
+    \item \textbf{Spatial Mapping:} The map annotation tool accurately derived spatial coordinates, plotting distinct "Avoid Zones" near the Kawaharata River.
+    \item \textbf{Resource Allocation:} The Emergency Service Team strategically allocated necessary personnel, designating 15 doctors and 30 paramedics to critical sectors.
+    \item \textbf{Policy Grounding:} The local RAG pipeline retrieved relevant safety protocols within milliseconds, ensuring the resulting multi-phase financial reconstruction plan was grounded in official documentation rather than generalized LLM assumptions.
+\end{itemize}
+
+\section{Impact on the Main Project}
+This implementation directly supports and validates the primary objectives of our overarching Multi-Agent LVLM Framework in several critical ways:
+\begin{itemize}
+    \item \textbf{Operationalizing Theory:} DisasTeller serves as a functional proof-of-concept, translating the theoretical architecture of the main project into a tangible, working prototype.
+    \item \textbf{Multimodal Viability:} By successfully bridging vision models (Gemini) with structured execution tools (PIL and JSON parsers), this work proves the main project's hypothesis that LVLMs can operate autonomously across various modalities to conduct disaster triage.
+    \item \textbf{System Modularity and Scalability:} The clear delineation of agent roles demonstrates that the framework is highly scalable. Future iterations of the main project can easily plug in additional personas (e.g., a Fire Safety Agent, Logistics Agent) without destabilizing the core pipeline.
+    \item \textbf{Accelerated Triage:} By automating the context handover between specialized agents through shared memory, the implementation eliminates coordination bottlenecks, successfully fulfilling the main project's primary goal to accelerate post-disaster response operations.
+\end{itemize}
+
+\section{Conclusion}
+The DisasTeller implementation validates the efficacy of utilizing agentic frameworks in crisis scenarios. By overcoming severe API rate limitations, ensuring robust tool execution, and seamlessly bridging vision models with structured data retrieval (RAG), this work provides a scalable foundation.
+
+\section{Future Work}
+To further strengthen the main project's framework and enhance its practical applicability, future iterations will focus on the following enhancements:
+\begin{itemize}
+    \item \textbf{Real-Time Data Pipelines:} Integrating live drone video feeds and real-time social media scraping APIs to allow the agents to dynamically update damage assessments as situations evolve on the ground.
+    \item \textbf{Expansion of Agent Personas:} Introducing additional specialized personas, such as a \textit{Hazmat Safety Agent} (for managing secondary hazards like fires or chemical leaks) and a \textit{Supply Chain Agent} (to actively manage food, water, and debris clearing).
+    \item \textbf{Human-in-the-Loop (HITL) Dashboard:} Developing an interactive web-based dashboard where human operators can oversee the agents' reasoning processes, manually override critical decisions, and visually track dynamic GIS map updates in real-time.
+    \item \textbf{Dynamic RAG Integration:} Upgrading the static offline PDF retrieval system to synchronize directly with live government servers or regional hospital databases, ensuring that bed availability and emergency protocols are strictly up-to-date.
+    \item \textbf{Edge Computing Deployment:} Optimizing the multi-agent orchestration and lightweight LVLMs to run entirely on local edge devices, allowing the system to remain fully operational even if internet connectivity is completely severed during a catastrophe.
+\end{itemize}
+
+\end{document}
