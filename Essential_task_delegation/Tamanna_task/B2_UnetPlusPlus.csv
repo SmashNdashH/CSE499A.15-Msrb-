@@ -1,0 +1,2 @@
+experiment_id,variable,value,miou,bg_iou,intact_iou,damaged_iou,destroyed_iou,precision,recall,f1,train_time_hrs,notes
+B2_UnetPlusPlus,architecture,B2_UnetPlusPlus,0.44051918387413025,0.9141492247581482,0.4713653326034546,0.2458362877368927,0.1307259500026703,0.478935569524765,0.7866422533988953,0.5554362535476685,4.793065359261301,"ResNet-34 backbone, CE+Dice, 40 epochs, batch 16"

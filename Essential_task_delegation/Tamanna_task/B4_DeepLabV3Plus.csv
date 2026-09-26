@@ -1,0 +1,2 @@
+experiment_id,variable,value,miou,bg_iou,intact_iou,damaged_iou,destroyed_iou,precision,recall,f1,train_time_hrs,notes
+B4_DeepLabV3Plus,architecture,B4_DeepLabV3Plus,0.40520599484443665,0.8967711329460144,0.4382569193840027,0.19346609711647034,0.09232985228300095,0.4451504945755005,0.7940133810043335,0.5120660662651062,2.0573686544100442,"ResNet-34 backbone, CE+Dice, 40 epochs, batch 16"
