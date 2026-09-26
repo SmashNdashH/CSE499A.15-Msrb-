@@ -1,0 +1,2 @@
+experiment_id,variable,value,miou,bg_iou,intact_iou,damaged_iou,destroyed_iou,precision,recall,f1,train_time_hrs,notes
+A_augment_copypaste,augmentation,CopyPaste_p0.5_max3,0.40767499999999995,0.8982,0.4393,0.1906,0.1026,0.44685,0.7937,0.515775,,"10 epochs, CopyPasteAugDataset (paste_prob=0.5, max_paste=3), instances extracted: Damaged=44969, Destroyed=18125"
