@@ -1,0 +1,2 @@
+experiment_id,variable,value,miou,bg_iou,intact_iou,damaged_iou,destroyed_iou,precision,recall,f1,train_time_hrs,notes
+C4_phased_ft_lovasz,loss_function,Phased_FocalTversky_Lovasz,0.523341477,0.950750828,0.537829995,0.332577229,0.272207767,0.626430273,0.679495037,0.650324583,2.447824135,"ResNet-34, Phased Loss (FT 32 ep -> 0.6*FT + 0.4*Lovasz 8 ep), 40 epochs"

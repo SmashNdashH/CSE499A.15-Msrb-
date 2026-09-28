@@ -1,0 +1,20 @@
+member,experiment_id,category,variable,value,miou,bg_iou,intact_iou,damaged_iou,destroyed_iou,precision,recall,f1,train_time_hrs,notes
+Aryan (A),A1_baseline,Data Imbalance,sampling,uniform_shuffle,0.3978,0.8892,0.429,0.1831,0.0898,0.4376,0.8059,0.5041,0.5,"10 epochs, uniform DataLoader shuffle (Baseline screening)"
+Aryan (A),A2_weighted_sampler,Data Imbalance,sampling,WeightedRandomSampler,0.4051,0.8994,0.4409,0.1783,0.1017,0.445,0.7915,0.5116,0.55,"10 epochs, WeightedRandomSampler (Destroyed 10x, Damaged 5x, Intact/BG 1x)"
+Aryan (A),A3_copy_paste,Data Imbalance,augmentation,CopyPasteAugDataset,0.4077,0.8982,0.4393,0.1906,0.1026,0.4468,0.7937,0.5158,0.6,"10 epochs, CopyPasteAugDataset, 44.9k Damaged & 18.1k Destroyed cutouts (TASK_A3.csv)"
+Tamanna/Lead (B),B1_baseline,Architecture,architecture,Unet_resnet34,0.4619,0.94,0.485,0.284,0.152,0.582,0.641,0.609,2.2,"40 epochs, standard U-Net with ResNet-34, CE+Dice loss (Baseline reference)"
+Tamanna/Lead (B),B2_UnetPlusPlus,Architecture,architecture,UnetPlusPlus_resnet34,0.4405,0.9141,0.4714,0.2458,0.1307,0.4789,0.7866,0.5554,4.79,"40 epochs, U-Net++ nested skip connections, ResNet-34, CE+Dice (High recall: 78.66%)"
+Tamanna/Lead (B),B3_UnetPlusPlus_scse,Architecture,architecture,UnetPlusPlus_scSE_resnet34,0.4367,0.9135,0.4772,0.2311,0.1252,0.4741,0.7924,0.5497,8.03,"40 epochs, U-Net++ with scSE spatial/channel attention, ResNet-34, CE+Dice (Peak recall: 79.24%)"
+Tamanna/Lead (B),B4_DeepLabV3Plus,Architecture,architecture,DeepLabV3Plus_resnet34,0.4052,0.8968,0.4383,0.1935,0.0923,0.4452,0.794,0.5121,2.06,"40 epochs, DeepLabV3+ with ASPP atrous pyramid pooling, ResNet-34, CE+Dice"
+Tamanna/Lead (B),B5_MAnet,Architecture,architecture,MAnet_resnet34,0.2314,0.9255,0.0,0.0,0.0,0.2314,0.25,0.2403,2.11,"40 epochs, MA-Net dual self-attention, ResNet-34, CE+Dice (Mode collapse: background only)"
+Noman (C),C2_focal_tversky_1,Loss Function,loss_function,FocalTversky_0.3_0.7_2.0,0.5181,0.9479,0.537,0.3306,0.2568,0.6018,0.7012,0.6444,2.43,"40 epochs, ResNet-34, Focal Tversky (alpha=0.3, beta=0.7, gamma=2.0)"
+Noman (C),C3_focal_tversky_2,Loss Function,loss_function,FocalTversky_0.25_0.75_1.33,0.5203,0.946,0.5292,0.3333,0.2727,0.6053,0.7076,0.6482,2.43,"40 epochs, ResNet-34, Focal Tversky (alpha=0.25, beta=0.75, gamma=1.33)"
+Noman (C),C4_phased_ft_lovasz,Loss Function,loss_function,Phased_FocalTversky_Lovasz,0.5233,0.9508,0.5378,0.3326,0.2722,0.6264,0.6795,0.6503,2.45,"40 epochs, ResNet-34, Phased Loss: 32 ep FT -> 8 ep (0.6 FT + 0.4 Lovasz-Softmax)"
+Noman (C),C5_resnet50_phased,Backbone,backbone,resnet50_phased_loss,0.5296,0.9521,0.5502,0.3372,0.279,0.6324,0.687,0.6565,2.94,CURRENT CHAMPION BACKBONE: ResNet-50 + Phased FT->Lovasz (Peak mIoU 0.5296)
+Noman (C),C6_efficientnet_b4_phased,Backbone,backbone,efficientnet_b4_phased_loss,0.5257,0.9509,0.5441,0.3355,0.2725,0.6212,0.6921,0.6526,4.01,"40 epochs, EfficientNet-B4 + Phased Loss (High accuracy but 36% slower than ResNet-50)"
+Ridita (D),D1a_baseline_resize,Resolution,crop_size,Resize_1024to512,0.46,0.94,0.485,0.284,0.152,0.582,0.641,0.609,4.0,"40 epochs, Resize 1024 to 512 baseline"
+Ridita (D),D1b_random_crop_512,Resolution,crop_size,RandomCrop_512x512,0.4452,0.9164,0.4947,0.2628,0.107,0.4856,0.827,0.557,5.5,"40 epochs, batch 16, native random crop 512"
+Ridita (D),D1b_with_TTA,Inference / TTA,tta,TTA_8_transforms_512,0.454,0.9215,0.4972,0.275,0.1222,0.4965,0.835,0.568,5.5,+0.88% free boost via 8-view softmax voting on 512 crops
+Ridita (D),D1c_random_crop_768,Resolution,crop_size,RandomCrop_768x768,0.4757,0.931,0.5047,0.2904,0.1768,0.518,0.849,0.5964,7.9,"40 epochs, batch 8, native crop 768 (+59.8% rel Destroyed IoU gain over 512)"
+Ridita (D),D1c_with_TTA,Inference / TTA,tta,TTA_8_transforms_768,0.4902,0.9316,0.5146,0.3192,0.1953,0.532,0.855,0.6105,7.9,+1.45% free boost via 8-view TTA on 768 crops (TTA Mean IoU 0.4902)
+Ridita (D),D3_sliding_window_1024,Inference / Tiling,tiling,SlidingWindow_Native1024,0.4819,0.9303,0.51,0.3021,0.1853,0.528,0.84,0.6025,5.5,"+2.19% free boost over baseline via native 1024x1024 sliding window (512 crop, 128 overlap)"

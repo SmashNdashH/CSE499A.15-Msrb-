@@ -1,0 +1,2 @@
+experiment_id,variable,value,miou,bg_iou,intact_iou,damaged_iou,destroyed_iou,precision,recall,f1,train_time_hrs,notes
+C2_focal_tversky_03_07,loss_function,FocalTversky_alpha0.3_beta0.7_gamma2.0,0.518094957,0.947923303,0.537028432,0.330640227,0.256787926,0.601776004,0.701239288,0.644414783,2.426730628,"ResNet-34, Focal Tversky (a=0.3, b=0.7, g=2.0), 40 epochs"

@@ -1,0 +1,2 @@
+experiment_id,variable,value,miou,bg_iou,intact_iou,damaged_iou,destroyed_iou,precision,recall,f1,train_time_hrs,notes
+C5_backbone_resnet50,backbone,resnet50,0.529624104,0.952098489,0.550165534,0.337247491,0.278984934,0.632403016,0.687026918,0.656481802,2.943644401,"ResNet-50 backbone, Phased Loss (FT->Lovasz), 40 epochs"
