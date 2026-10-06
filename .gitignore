@@ -178,3 +178,12 @@ CONTEXT.md
 *.pth
 *.zip
 *.mp4
+# Local-only or regenerable files
+**/minority_instances/
+train_release.json
+others/review_deck_skill_comparison/
+others/*.md
+others/Segmentation Ablation Study (1).html
+CSE499B_Review_report.tex
+google ai studio api keys.txt
+!others/CSE499A/CSE499A_1-min_video_demonstration.mp4

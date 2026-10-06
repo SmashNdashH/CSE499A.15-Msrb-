@@ -14,9 +14,6 @@
 | Review presentation (PowerPoint) | [CSE499B_Review_Presentation.pptx](others/CSE499B_Review_Presentation.pptx) |
 | Review presentation (HTML, opens in a browser) | [CSE499B Review Presentation (2).html](<others/CSE499B Review Presentation (2).html>) |
 | Review report (PDF) | [CSE499B_Review_report.pdf](others/CSE499B_Review_report.pdf) |
-| Review report (LaTeX source) | [CSE499B_Review_report.tex](CSE499B_Review_report.tex) |
-| Presentation script (English) | [CSE499B_Review_Script_English.md](others/CSE499B_Review_Script_English.md) |
-| Presentation script (Banglish) | [CSE499B_Review_Script_Banglish.md](others/CSE499B_Review_Script_Banglish.md) |
 | Team updates (updated as the semester progresses) | [UPDATE.md](UPDATE.md) |
 
 ## Current State (October 2026)
@@ -91,7 +88,7 @@ The section below is the CSE499A README as it stood at the end of Senior Design 
 
 ### 1-Minute Live Demonstration
 
-https://github.com/Tonumou/CSE499A.15-Msrb-/raw/main/others/CSE499A/CSE499A_1-min_video_demonstration.mp4
+[Watch the 1-minute demonstration (MP4)](others/CSE499A/CSE499A_1-min_video_demonstration.mp4)
 
 ### Project Overview
 
