@@ -1,0 +1,29 @@
+{
+  "experiment": "R8",
+  "arch": "Unet",
+  "encoder": "resnet50",
+  "crop": 768,
+  "batch": 8,
+  "accum": 1,
+  "ft_alpha": 0.3,
+  "ft_beta": 0.7,
+  "ft_gamma": 2.0,
+  "lovasz_start_frac": 0.8,
+  "lovasz_weight": 0.4,
+  "use_copy_paste": false,
+  "paste_prob": 0.5,
+  "max_paste": 3,
+  "use_sampler": false,
+  "sampler_weights": [
+    1.0,
+    1.0,
+    5.0,
+    10.0
+  ],
+  "use_enhanced_aug": true,
+  "seed": 42,
+  "epochs": 40,
+  "lr": 0.0001,
+  "weight_decay": 1e-05,
+  "eval_only": false
+}

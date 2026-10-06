@@ -41,7 +41,7 @@ The master empirical leaderboard consolidating all 19 experiments is recorded in
 
 * **Folder:** [`Essential_task_delegation/Aryan_Task/`](file:///d:/CSE499AB_project/Essential_task_delegation/Aryan_Task)
 * **Assigned Mission:** Address catastrophic class imbalance (Destroyed: 0.4%, Damaged: 1.3%, Intact: 5.9%, Background: 92.4%) using batch-level sampling and instance-level copy-paste augmentation.
-* **Key Artifacts:** [`TASK_A3.csv`](file:///d:/CSE499AB_project/Essential_task_delegation/Aryan_Task/TASK_A3.csv), [`A_sampling_baseline (1).csv`](file:///d:/CSE499AB_project/Essential_task_delegation/Aryan_Task/A_sampling_baseline%20(1).csv), [`A_sampling_weighted_random (1).csv`](file:///d:/CSE499AB_project/Essential_task_delegation/Aryan_Task/A_sampling_weighted_random%20(1).csv), [`segmentation-model-a3 (3).ipynb`](file:///d:/CSE499AB_project/Essential_task_delegation/Aryan_Task/segmentation-model-a3%20(3).ipynb).
+* **Key Artifacts:** [`A3_augmentation_copypaste.ipynb`](file:///d:/CSE499AB_project/Essential_task_delegation/Aryan_Task/A3_augmentation_copypaste.ipynb), metric CSVs ([`A1_sampling_baseline.csv`](file:///d:/CSE499AB_project/Essential_task_delegation/Aryan_Task/A1_sampling_baseline.csv), [`A2_sampling_weighted_random.csv`](file:///d:/CSE499AB_project/Essential_task_delegation/Aryan_Task/A2_sampling_weighted_random.csv), [`A3_augmentation_copypaste.csv`](file:///d:/CSE499AB_project/Essential_task_delegation/Aryan_Task/A3_augmentation_copypaste.csv)), and distribution plot ([`A1_dataset_class_distribution.png`](file:///d:/CSE499AB_project/Essential_task_delegation/Aryan_Task/A1_dataset_class_distribution.png)).
 
 ### 1. Findings & Validation
 1. **10-Epoch Screening Protocol:** Aryan adhered strictly to lines 330–337 of `team_task_assignments.md`, running 10-epoch fast-screening ablations.
@@ -86,7 +86,7 @@ The master empirical leaderboard consolidating all 19 experiments is recorded in
 
 * **Folder:** [`Essential_task_delegation/Ridita_Task/`](file:///d:/CSE499AB_project/Essential_task_delegation/Ridita_Task)
 * **Assigned Mission:** Evaluate high-resolution feature retention ($512$ vs $768$ vs $1024$), 8-view Test-Time Augmentation (TTA), and sliding window inference.
-* **Key Artifacts:** [`TaskD1(b)__RandomCrop512.ipynb`](file:///d:/CSE499AB_project/Essential_task_delegation/Ridita_Task/TaskD1%28b%29__RandomCrop512.ipynb), [`TaskD1(c)__RandomCrop768.ipynb`](file:///d:/CSE499AB_project/Essential_task_delegation/Ridita_Task/TaskD1%28c%29__RandomCrop768.ipynb), [`TaskD3__SlidingWindow.ipynb`](file:///d:/CSE499AB_project/Essential_task_delegation/Ridita_Task/TaskD3__SlidingWindow.ipynb), [`deliverable_D2_tta.md`](file:///d:/CSE499AB_project/Essential_task_delegation/Ridita_Task/deliverable_D2_tta.md), [`deliverable_D3_sliding_window.md`](file:///d:/CSE499AB_project/Essential_task_delegation/Ridita_Task/deliverable_D3_sliding_window.md).
+* **Key Artifacts:** Notebooks ([`D1b_resolution_randomcrop512.ipynb`](file:///d:/CSE499AB_project/Essential_task_delegation/Ridita_Task/D1b_resolution_randomcrop512.ipynb), [`D1c_resolution_randomcrop768.ipynb`](file:///d:/CSE499AB_project/Essential_task_delegation/Ridita_Task/D1c_resolution_randomcrop768.ipynb), [`D3_inference_sliding_window.ipynb`](file:///d:/CSE499AB_project/Essential_task_delegation/Ridita_Task/D3_inference_sliding_window.ipynb)) and reports ([`D1_resolution_ablation_report.md`](file:///d:/CSE499AB_project/Essential_task_delegation/Ridita_Task/D1_resolution_ablation_report.md), [`D2_test_time_augmentation_report.md`](file:///d:/CSE499AB_project/Essential_task_delegation/Ridita_Task/D2_test_time_augmentation_report.md), [`D3_sliding_window_report.md`](file:///d:/CSE499AB_project/Essential_task_delegation/Ridita_Task/D3_sliding_window_report.md)).
 
 ### 1. Verified Results
 1. **768 Resolution Retains Critical Spatial Details (D1c):**
@@ -95,7 +95,7 @@ The master empirical leaderboard consolidating all 19 experiments is recorded in
    * Ridita implemented an 8-geometric transformation pipeline with exact inverse mappings (horizontal flips, vertical flips, 90°/180°/270° rotations).
    * By averaging in softmax probability space, TTA provided a **free +1.45% mIoU lift** (reaching **0.4902 mIoU** on 768 crops) with zero retraining.
 3. **Sliding Window Inference Verified (D3):**
-   * The initial placeholder issue in `deliverable_D3_sliding_window.md` has been fully resolved and empirically verified via `TaskD3__SlidingWindow.ipynb`.
+   * The initial placeholder issue in `D3_sliding_window_report.md` has been fully resolved and empirically verified via `D3_inference_sliding_window.ipynb`.
    * Evaluating full native $1024\times 1024$ satellite images using overlapping $512\times 512$ sliding windows (128-pixel overlap) achieved **0.4819 mIoU** (**+2.19% free boost** over standard resize).
 
 ---

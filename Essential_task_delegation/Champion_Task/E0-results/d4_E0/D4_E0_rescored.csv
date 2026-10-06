@@ -1,0 +1,11 @@
+member,experiment_id,category,variable,value,miou,bg_iou,intact_iou,damaged_iou,destroyed_iou,precision,recall,f1,f2,destroyed_precision,destroyed_recall,destroyed_f2,train_time_hrs,seed,notes
+Champion (D4),E0_B1_baseline_unet_r34,E-protocol,experiment,Unet+resnet34,0.4619,0.9255,0.4929,0.2632,0.1658,0.5014,0.7905,0.5807,0.6741,0.1812,0.6611,0.4322,,,"re-scored, input_mode=resize512"
+Champion (D4),E0_B1_baseline_unet_r34_TTA,E-protocol,experiment,Unet+resnet34,0.4689,0.9267,0.4999,0.2729,0.1763,0.5076,0.8049,0.5892,0.6851,0.1905,0.7016,0.4566,,,"re-scored, input_mode=resize512"
+Champion (D4),E0_B2_UnetPlusPlus,E-protocol,experiment,UnetPlusPlus+resnet34,0.4405,0.9141,0.4715,0.2455,0.1308,0.4789,0.7867,0.5554,0.6517,0.1399,0.6679,0.3806,,,"re-scored, input_mode=resize512"
+Champion (D4),E0_B2_UnetPlusPlus_TTA,E-protocol,experiment,UnetPlusPlus+resnet34,0.4467,0.9159,0.4767,0.2544,0.1397,0.4848,0.7932,0.5632,0.6604,0.1497,0.6774,0.3973,,,"re-scored, input_mode=resize512"
+Champion (D4),E0_B3_UnetPlusPlus_scse,E-protocol,experiment,UnetPlusPlus+resnet34,0.4367,0.9135,0.4773,0.2308,0.1251,0.474,0.7924,0.5496,0.6477,0.1329,0.6791,0.3728,,,"re-scored, input_mode=resize512"
+Champion (D4),E0_B3_UnetPlusPlus_scse_TTA,E-protocol,experiment,UnetPlusPlus+resnet34,0.4413,0.9149,0.4823,0.2388,0.1294,0.4783,0.7997,0.5553,0.6545,0.1374,0.692,0.3828,,,"re-scored, input_mode=resize512"
+Champion (D4),E0_B4_DeepLabV3Plus,E-protocol,experiment,DeepLabV3Plus+resnet34,0.4052,0.8968,0.4384,0.1934,0.0923,0.4451,0.7942,0.5121,0.6091,0.095,0.7609,0.3168,,,"re-scored, input_mode=resize512"
+Champion (D4),E0_B4_DeepLabV3Plus_TTA,E-protocol,experiment,DeepLabV3Plus+resnet34,0.4083,0.8985,0.4429,0.1993,0.0925,0.448,0.7924,0.5156,0.6119,0.0954,0.7542,0.3168,,,"re-scored, input_mode=resize512"
+Champion (D4),E0_B5_MAnet,E-protocol,experiment,MAnet+resnet34,0.2314,0.9255,0.0,0.0,0.0,0.2314,0.25,0.2403,0.246,0.0,0.0,0.0,,,"re-scored, input_mode=resize512"
+Champion (D4),E0_B5_MAnet_TTA,E-protocol,experiment,MAnet+resnet34,0.2314,0.9255,0.0,0.0,0.0,0.2314,0.25,0.2403,0.246,0.0,0.0,0.0,,,"re-scored, input_mode=resize512"

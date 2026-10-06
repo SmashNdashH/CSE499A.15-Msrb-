@@ -1,0 +1,3 @@
+member,experiment_id,category,variable,value,miou,bg_iou,intact_iou,damaged_iou,destroyed_iou,precision,recall,f1,f2,destroyed_precision,destroyed_recall,destroyed_f2,train_time_hrs,seed,notes
+Champion (D4),D4_R8,E-protocol,experiment,"Unet+resnet50, crop768, bs8x1, FT(0.3/0.7/2.0)->+Lovasz@0.8, copy_paste=False, sampler=False, enhanced_aug=True, 40 ep",0.5342,0.953,0.5638,0.3498,0.2703,0.6313,0.6976,0.6602,0.6814,0.4019,0.4522,0.4411,6.3,42,"E-protocol, last epoch"
+Champion (D4),D4_R8_TTA,E-protocol,experiment,"Unet+resnet50, crop768, bs8x1, FT(0.3/0.7/2.0)->+Lovasz@0.8, copy_paste=False, sampler=False, enhanced_aug=True, 40 ep",0.5374,0.9534,0.5662,0.3585,0.2714,0.6363,0.6988,0.6635,0.6835,0.4026,0.4545,0.443,6.3,42,"E-protocol, last epoch, 8-view dihedral TTA"

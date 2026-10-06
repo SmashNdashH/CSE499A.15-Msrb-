@@ -195,13 +195,13 @@ Recent xBD/xView2 literature (2024-2025) strongly favors a **two-stage approach*
 **Stage 2: Damage Classification** (within detected buildings only)
 - Crop the detected building regions from Stage 1
 - Train a classifier (or a second, smaller segmenter) on just 3 classes: Intact, Damaged, Destroyed
-- The class distribution *within buildings* is much more balanced: ~58% Intact, ~14.5% Damaged, ~4.5% Destroyed (vs the original 93/5.9/1.05/0.33)
+- The class distribution *within buildings* is much more balanced: ~81% Intact, ~14.5% Damaged, ~4.6% Destroyed (5.86 / 1.05 / 0.33 out of the 7.24% of pixels that are buildings; vs the original 93/5.9/1.05/0.33)
 
 **Why this helps:**
 - Eliminates the 93% background dominance entirely from Stage 2
 - Each stage can use its own optimized loss function
 - Stage 2 can use higher resolution crops since you're only looking at building regions
-- This is exactly what the xView2 competition winners used (DeepDamageNet, 2024)
+- This is how the top two xView2 solutions worked (the challenge ran in 2019): 1st place (Victor Durnov) and 2nd place (Selim Seferbekov) found buildings first, then graded damage with Siamese networks that compare the pre- and post-disaster images. Places 3–5 (Eugene Khvedchenya, Zhuo Zheng, SI Analytics) used single networks that fuse pre and post features. *(Corrected 6 Oct 2026: earlier versions credited "DeepDamageNet, 2024", which was not an xView2 winner.)*
 
 > [!WARNING]
 > The two-stage approach requires more engineering effort and introduces error propagation (if Stage 1 misses a building, Stage 2 can never recover it). For your capstone timeline, the single-stage U-Net++ with better loss functions is the safer bet. The two-stage approach is a strong "Phase 2" upgrade.
