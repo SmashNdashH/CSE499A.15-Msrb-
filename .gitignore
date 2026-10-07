@@ -178,6 +178,8 @@ CONTEXT.md
 *.pth
 *.zip
 *.mp4
+others/CSE499B_Review_Script_English.html
+others/CSE499B_Review_Script_Banglish.html
 # Local-only or regenerable files
 **/minority_instances/
 train_release.json
