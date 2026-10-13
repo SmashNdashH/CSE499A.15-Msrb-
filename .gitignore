@@ -10,6 +10,13 @@ data/aider/
 data/aider_processed_images/
 data/aider_processed_tracker.txt
 
+# Ignore BRIGHT dataset (raw and processed) and DisasterM3 raw dataset
+data/BRIGHT/
+data/bright_processed/
+dataset/DisasterM3 Dataset/
+*.tif
+*.tiff
+
 # Ignore your locally generated standardized images and label copies (xBD and AIDER)
 data/processed_images/
 data/aider/processed_images/
