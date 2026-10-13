@@ -212,7 +212,7 @@ Image 3×1024×1024
 
 **Why one model handles 768 crops and full 1024 images:** U-Net is *fully convolutional*, so it accepts any input whose sides are divisible by 32. We train on 768×768 crops and evaluate on the whole image, padded to a multiple of 32. That is why the D4 notebook needs no sliding window.
 
-**Other architectures the team tried** keep the encoder idea and change the decoder: U-Net++ (nested, denser skips; B2/B3, and the planned R4), DeepLabV3+ (atrous convolutions; B4) and MAnet (attention blocks; B5).
+**Other architectures the team tried** keep the encoder idea and change the decoder: U-Net++ (nested, denser skips; B2/B3, then re-tested in R4 under the better loss and still below the U-Net), DeepLabV3+ (atrous convolutions; B4) and MAnet (attention blocks; B5).
 
 ---
 
@@ -292,7 +292,7 @@ The **forward pass** (encoder, then decoder with skips, then head) is identical 
 | Weighted sampler | Training | What the weights learn | R5 |
 | Copy-paste | Training | What the weights learn | R2 |
 | Enhanced augmentation | Training | What the weights learn | R8 |
-| Decoder architecture | Training (and model shape) | What the weights learn | R4 (planned) |
+| Decoder architecture | Training (and model shape) | What the weights learn | R4 |
 | Seed | Training | Random choices only; measures noise | R6 |
 | TTA | Inference only | How the same frozen weights are used. Added +0.003 to +0.007 mIoU in every D4 run. | all D4 runs (TTA row) |
 | Evaluation protocol (full image vs centre crop, last vs best epoch) | Scoring only | The **number**, not the model | E-protocol vs older runs |

@@ -2,6 +2,8 @@
 
 Drafted 2026-10-05, while R4, R5 and R8 are still running. Nothing here needs those runs to finish except the final champion.
 
+> **Update 2026-10-08:** R4, R5 and R8 have finished: R4 (U-Net++) 0.5267 / 0.2551, R5 (sampler) 0.5354 / **0.2898** (0.2917 with TTA), R8 0.5342 / 0.2703. None passed the R7 rule, so R7 is the R1 recipe. The best Destroyed IoU is 0.2917 (R5 with TTA), so the gap to 0.30 is now about **+0.008**. Two combination runs are in progress, R9 (sampler + copy-paste) and R10 (sampler + R3 loss). Phase 2 is still needed unless one of them passes and a second seed confirms it.
+
 ## 1. Why Phase 2 is (almost certainly) needed
 
 The Phase Gate needs **mIoU > 0.52 and Destroyed IoU > 0.30** on the 645 validation images (E-protocol).

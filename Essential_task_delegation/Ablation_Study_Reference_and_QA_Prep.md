@@ -77,7 +77,7 @@ Class imbalance: Background 93.0%, Intact 5.9%, Damaged 1.05%, **Destroyed 0.33%
 - **U-Net++ has no meaningful recall advantage.** Earlier claims of "64% → 79%" used a wrong B1 row; see Errata #1.
 - DeepLabV3+ has the highest Destroyed recall, but with very low precision (.095).
 - MA-Net collapsed to all-background under CE + Dice.
-- Open question: do these architectures behave differently under a better loss? D4 run R4 tests U-Net++.
+- Do these architectures behave differently under a better loss? Answered by D4 run R4 (October 2026): U-Net++ still scored below the U-Net (0.5267 vs 0.5374 mIoU).
 
 ### Member C — Noman: Loss function & backbone (40 epochs, Resize 512)
 
@@ -189,6 +189,8 @@ No. Under CE + Dice its Destroyed recall (0.668) is the same as the U-Net's (0.6
 
 R2–R6 are independent, so run them in parallel on several Kaggle accounts. Run R1 and R6 first. Expect about 10 h per ResNet-50 run at 768; the notebook resumes across sessions from a per-experiment HF repo.
 
+**Results (8 October 2026, mIoU / Destroyed IoU, standard evaluation):** R1 0.5374 / 0.2686 · R1 repeat with the same seed 0.5427 / 0.2796 · R6 0.5402 / 0.2815 · R2 0.5369 / 0.2681 · R3 0.5402 / 0.2790 · R4 0.5267 / 0.2551 · R5 0.5354 / **0.2898** · R8 0.5342 / 0.2703. No change passed the R7 rule, so R7 is the R1 recipe. Actual run times were 6–7 GPU-hours for the U-Net runs and about 20 for U-Net++. Two Destroyed-focused combinations are running: R9 (sampler + copy-paste) and R10 (sampler + R3 loss).
+
 ---
 
 ## 7b. Plan vs. reality (`team_task_assignments.md` + `segmentation_improvement_guide.md`)
@@ -258,7 +260,7 @@ R2–R6 are independent, so run them in parallel on several Kaggle accounts. Run
 - `BATCH_SIZE = 8` (baseline 16)
 - no gradient accumulation at all, despite the audit doc's "batch 8 (grad accum 2)"
 
-So U-Net++'s lower mIoU, and possibly MA-Net's collapse, may come from 5× the learning rate rather than the architecture. D4 run R4 re-tests U-Net++ with everything else held equal.
+So U-Net++'s lower mIoU, and possibly MA-Net's collapse, may come from 5× the learning rate rather than the architecture. D4 run R4 re-tested U-Net++ with the loss and learning rate held equal (batch 4 × 2 accumulation to fit the T4): it still scored lower, 0.5267 vs 0.5374 mIoU, so the gap is not only the learning rate.
 
 **`Team_task_ablation_audit_and_lead_execution_plan.md` (dated Sep 28) — claims that don't hold:**
 

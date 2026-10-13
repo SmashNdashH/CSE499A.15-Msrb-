@@ -2,7 +2,7 @@
 
 **Context:** A record of the October 2026 discussion on what to do once segmentation fine-tuning stopped producing gains. It covers five structural options, current top-venue work in our domain, an assessment of six candidate techniques (RAG, agents, diffusion, PNNs, LLMs, edge devices), the xView2 winners, an explainer on foundation models and SAM, a SAM 3-based design with a test plan, and how that design compares with GeoPixel and BDAChat. Use it for the 499B report's related-work and future-work sections, and for viva questions.
 
-**Last updated:** 6 October 2026. Venues and figures were checked against the papers, project pages or official repositories (links in [Sources](#11-sources)). Items marked *preprint* are not yet peer-reviewed; check them before citing. Our own numbers come from the D4 champion notebooks in `Champion_Task/`.
+**Last updated:** 8 October 2026. Venues and figures were checked against the papers, project pages or official repositories (links in [Sources](#11-sources)). Items marked *preprint* are not yet peer-reviewed; check them before citing. Our own numbers come from the D4 champion notebooks in `Champion_Task/`.
 
 **Related docs:** [Segmentation_Model_Explained.md](Segmentation_Model_Explained.md) (how our U-Net and dataset work) · [segmentation_improvement_guide.md](segmentation_improvement_guide.md) (Tiers 1–6) · [team_task_assignments.md](team_task_assignments.md) (Phase Gate, Task D5) · [Ablation_Study_Reference_and_QA_Prep.md](Ablation_Study_Reference_and_QA_Prep.md) (verified sprint numbers and errata).
 
@@ -28,17 +28,18 @@ The D4 champion runs changed one setting at a time from the R1 recipe (U-Net + R
 | Run | Change from R1 | mIoU | Destroyed IoU |
 |---|---|---|---|
 | R1 | reference | 0.5374 | 0.2686 |
-| R1b | same config and seed, run again (this was meant to be R4, see §10) | 0.5427 | 0.2796 |
+| R1b | same config and seed, run again (an accidental repeat, see §10) | 0.5427 | 0.2796 |
 | R6 | seed 7 | 0.5402 | 0.2815 |
 | R2 | copy-paste | 0.5369 | 0.2681 |
 | R3 | Focal Tversky 0.25 / 0.75 / 1.33 | 0.5402 | 0.2790 |
+| R4 | U-Net++ decoder (batch 4 × 2) | 0.5267 | 0.2551 |
 | R5 | weighted sampler | 0.5354 | **0.2898** |
 | R8 | enhanced augmentation | 0.5342 | 0.2703 |
 
 What this shows:
-- **Every run lands between 0.534 and 0.543 mIoU.** Two runs with the identical config and seed differ by 0.005, and Destroyed IoU varies by about 0.013 between identical recipes. All the differences are within noise.
+- **Every U-Net run lands between 0.534 and 0.543 mIoU, and U-Net++ (R4) is lower still at 0.527.** Two runs with the identical config and seed differ by 0.005, and Destroyed IoU varies by about 0.013 between identical recipes. All the differences are within noise.
 - **The sampler (R5) is the only change that clearly helped Destroyed IoU.** It lowered Intact IoU in exchange.
-- **No run passes the Phase Gate's Destroyed IoU > 0.30.**
+- **No run passes the Phase Gate's Destroyed IoU > 0.30,** and no change passes the R7 rule, so R7 is the R1 recipe. Two Destroyed-focused combinations started on 8 October: R9 (sampler + copy-paste) and R10 (sampler + the R3 loss).
 
 **Conclusion:** more tuning of losses, sampling or augmentation is unlikely to help. Bigger gains need *structural* changes: what the model sees, how the problem is framed, what data it learns from, or what the project contributes.
 
@@ -326,6 +327,7 @@ We can borrow BDAChat's strength cheaply: after the classifier grades a building
 ---
 
 ## 9. Recommended order for the rest of 499B
+0. **Finish R9 and R10** (running since 8 October). If either reaches Destroyed IoU above about 0.30, confirm it with a second seed.
 1. **SAM 3 steps S0–S1** (about 2 days, no training). They decide whether the SAM 3 direction is viable.
 2. **A pre + post input run** for the U-Net (lever 1). It's one change, tested with the same noise-bar method as R1–R8.
 3. **An edge benchmark**: INT8 U-Net and 4-bit 3B VLM, with latency, memory and accuracy.
@@ -340,7 +342,7 @@ We can borrow BDAChat's strength cheaply: after the classifier grades a building
   - The two-stage section credited the xView2 winners to "DeepDamageNet, 2024". The challenge ran in 2019 and DeepDamageNet is an unrelated 2024 preprint. It now names the real winners (§4).
   - The class mix inside buildings read "~58% intact", which didn't add up to 100%. It's ~81% intact, 14.5% damaged and 4.6% destroyed (5.86 / 1.05 / 0.33 out of the 7.24% of pixels that are buildings).
   - `Ablation_Study_Reference_and_QA_Prep.md` notes both fixes. Copies inside `.kilo/worktrees/` were not changed.
-- **R4 never ran U-Net++.** Its notebook still had `EXPERIMENT = "R1"`, so it trained R1 again (R1b in §1). It also likely pushed to the R1 Hugging Face repo. A real R4 run is still needed.
+- **R4's first run never trained U-Net++.** Its notebook still had `EXPERIMENT = "R1"`, so it trained R1 again (R1b in §1). U-Net++ was then run properly on 6–7 October, resumed from an epoch-21 checkpoint over two sessions (about 20 GPU-hours): 0.5267 mIoU / 0.2551 Destroyed IoU, lower than every U-Net run.
 - **FULLSTACK's Destroyed IoU of 0.3013 isn't comparable with D4.** It was scored on a 768 centre crop using the best epoch, while D4 scores full images using the last epoch. It does not pass the Phase Gate.
 - **BDAChat's segmentation:** an earlier note called it "SAM with prompts"; the abstract only says a *modified SAM*.
 
