@@ -196,3 +196,5 @@ others/Segmentation Ablation Study (1).html
 CSE499B_Review_report.tex
 google ai studio api keys.txt
 !others/CSE499A/CSE499A_1-min_video_demonstration.mp4
+# Ignore all LaTeX sources under others/ (including subfolders)
+others/**/*.tex
