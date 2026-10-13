@@ -1,10 +1,10 @@
->  **[Main Project Overview](README.md)** |  **[Latest Team Update](UPDATE.md)**
+>  **[Main Project Overview](README.md)** |  **[Latest Team Update](UPDATE.md)** | **[Update 1 Report (PDF)](others/CSE499B_update_1.pdf)**
 
 ---
 
-# Post-Disaster Rescue Guidance via VLM Fine-Tuning
+# Post-Disaster Damage Assessment and Rescue Guidance
 
-> **CSE499A – Section 15, Group 5, Update 5**
+> **CSE499B – Section 15, Group 5, Update 1**
 > 
 > **Team:** 
 > - Abdullah Al Noman (2022095042)
@@ -13,49 +13,82 @@
 > - Ridita Afrin Riya (2211622042)
 > - Abrar Mohammed Tanzim Alam (2222864042)
 
-## Work Done by Abrar Mohammed Tanzim Alam
+*Earlier CSE499A updates (1 to 5) are archived as PDFs in [others/CSE499A/](others/CSE499A/).*
 
-1. **Completed QLoRA Fine-Tuning (`train_qwen_disasterm3.ipynb`):** Successfully executed the 11th and final checkpoint-resume session on Kaggle's 12-hour constrained hardware, reaching 100% completion (217/217 steps) of the 1-epoch fine-tuning schedule. The final QLoRA adapter weights were securely backed up to the Hugging Face Hub (`AbrarAlam/disasterm3-qwen25vl7b-qlora`).
-2. **Model Merging and FP16 Precision Push (`1_merge_and_push_model.ipynb`):** Engineered an isolated session environment to merge the QLoRA adapter with the base Qwen2.5-VL-7B model, actively circumventing `numpy`/`scipy` ABI mismatch crashes. The final fused 15 GB checkpoint was successfully deployed to Hugging Face (`AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP`) in native FP16 precision.
-3. **vLLM Evaluation Pipeline Engineering (`3_vllm_evaluation.ipynb`):** Developed and executed the evaluation notebook to run the paper's benchmark script on the 6 MCQ tasks from Table 2. Overcame severe environmental blockers (T4 FlashAttention incompatibility and `bitsandbytes`/`triton` conflicts) by hot-wiring the vLLM engine to utilize **GPU T4 2x Tensor Parallelism** (`tensor_parallel_size=2`) with eager execution (`enforce_eager=True`).
-4. **Automated Evaluation Execution (`3_vllm_evaluation.ipynb`):** Dynamically patched the original authors' evaluation script at runtime to eradicate Windows-style pathing `FileNotFoundError` crashes and initialized the evaluation loop across the 6 target MCQ tasks. Segmented the massive 12-hour evaluation workload into dual 6-hour Kaggle sessions to ensure data persistence against kernel timeouts.
-5. **Interactive VLM UI (`gradio_app.py` & `test_qwen_disasterm3_interactive.ipynb`):** Built and deployed a live interactive Gradio dashboard to test the fine-tuned model. You can explore the live demo on Kaggle here: [Interactive Kaggle Demo](https://www.kaggle.com/code/abrarmohammedtanzim/test-qwen-disasterm3-interactive)
+## Weekly Update
 
-**Final Benchmarking Results (Comparison to Base & Fine-Tuned Qwen2.5-VL-7B)**
-| Task | Status | Our Acc. | Base Acc. | Δ vs Base | Paper FT | Δ vs FT |
-|---|---|---|---|---|---|---|
-| **Disaster Type (DTR)** | COMPLETE | **68.33%** | 66.6% | +1.73% | 83.6% | **-15.27%** |
-| **Bearing Body (BBR)** | DONE* | **16.39%** | 4.7% | +11.69% | 21.5% | **-5.11%** |
-| **Building Damage (BDC)** | DONE* | **23.58%** | 34.2% | -10.62% | 34.3% | **-10.72%** |
-| **Road Damage (DRE)** | DONE* | **26.24%** | 29.3% | -3.06% | 29.4% | **-3.16%** |
-| **Landuse (DSR)** | DONE* | **31.31%** | 28.3% | +3.01% | 37.7% | **-6.39%** |
-| **Relational Reasoning (ORR)** | COMPLETE | **22.50%** | 23.9% | -1.40% | 36.2% | **-13.70%** |
+This week we started a parallel ablation study to improve our DisasterM3 baseline segmentation model (U-Net with a ResNet-34 encoder and CE+Dice loss). In our short 10-epoch screening runs this model reaches only 0.3978 mean Intersection over Union (mIoU), and with full 40-epoch training it plateaus at 0.4619 mIoU. Our phase-gate targets are an mIoU above 0.52 and a Destroyed-class IoU above 0.30. The main obstacle is class imbalance: about 93% of all pixels are background. We planned a 15-day sprint split into four tracks: data sampling, architecture, loss function, and resolution/inference. Each track changes one main variable against the shared baseline so that its effect on minority-class IoU can be measured; where a run also had to change the batch size or the evaluation crops, this is stated below. The best setting from each track will then be combined into a single Champion Model. All results are single runs on our 90/10 validation split (645 images).
 
-**Analysis:** *vs Base (unfine-tuned Qwen2.5-VL-7B):* Our fine-tuning yielded improvements on classification tasks — Bearing Body Recognition (BBR) (**+11.69%**, trained on 7,766 samples), Landuse / Disaster Scene Recognition (DSR) (**+3.01%**, trained on 7,090 samples), and Disaster Type Recognition (DTR) (**+1.73%**, trained on 1,627 samples). However, it caused regressions on counting and spatial reasoning tasks: Building Damage Counting (BDC) (**-10.62%**), Road Damage Estimation (DRE) (**-3.06%**), and Object Relational Reasoning (ORR) (**-1.40%**). *vs Paper's Fine-Tuned Model (4x H100, full BF16, unbounded resolution):* We underperform on **all 6 tasks**, with gaps ranging from -3.16% (DRE) to -15.27% (DTR). This confirms that our hardware-constrained reproduction (QLoRA on 1x T4) is not competitive with the paper's full-resource fine-tune, which is the expected outcome. These regressions are fully explained by Deviation **D4** (image resolution capped to 512 x 28 x 28 pixels) and Deviation **D2** (4-bit NF4 QLoRA instead of full BF16 LoRA).
+## Results Summary
 
-**Data Skipping Justification:** A total of 9 dataset items (2 in BBR, 4 in BDC, 2 in RDC, and 1 in Landuse) were intentionally skipped and excluded from the final metrics. This was handled via a `try...except` safety block inside the patched `run_vllm.py`. The underlying raw `.png` files for these specific items in the Kaggle dataset mirror were fundamentally corrupted (throwing `PIL.UnidentifiedImageError`). Because the vision encoder physically could not load the byte data, they were gracefully skipped to prevent fatal engine crashes, resulting in the completed predictions being marginally lower than the theoretical benchmark totals.
+| Track | Configuration (change vs. baseline) | mIoU | Destroyed IoU | Δ mIoU |
+|---|---|---:|---:|---:|
+| – | Baseline: U-Net, ResNet-34, CE+Dice, resize 512, batch 16, 40 epochs | 0.4619 | 0.152 | – |
+| Data (a) | Uniform shuffle (10-epoch reference) | 0.3978 | 0.090 | – |
+| Data (a) | WeightedRandomSampler (10/5/1 weights) | 0.4051 | 0.102 | +0.0073 |
+| Architecture (b) | U-Net++ | 0.4405 | 0.131 | −0.0214 |
+| Architecture (b) | U-Net++ with scSE attention | 0.4367 | 0.125 | −0.0252 |
+| Loss | Focal Tversky (α/β/γ = 0.3/0.7/2.0) | 0.5181 | 0.257 | +0.0562 |
+| Loss | Focal Tversky (α/β/γ = 0.25/0.75/1.33) | 0.5203 | **0.273** | +0.0584 |
+| Loss | Phased: Focal Tversky → + Lovász-Softmax | **0.5233** | 0.272 | **+0.0614** |
+| Resolution (c) | RandomCrop 512×512 | 0.4452 | 0.107 | −0.0167 |
+| Resolution (c) | RandomCrop 768×768 (batch 8) | 0.4757 | 0.177 | +0.0138 |
+| Inference (d) | 768 model + 8-view TTA | 0.4902 | 0.195 | +0.0145 |
+| Inference (d) | 768 model (second run) + sliding window | 0.4819 | 0.185 | −0.0005 |
 
-## Work Done by Tamanna Akter Mou
+(a) 10-epoch screening runs; Δ against the 10-epoch uniform reference. (b) Batch size 8. (c) Validated on random crops, not whole resized images. (d) No retraining; Δ against the same model without TTA or sliding window.
 
-1. **Literature and Framework Integration Review:** Analyzed the AnyDisasterMapping repository, which provides a unified benchmark and processing pipeline for multi-hazard disaster-mapping tasks. Documented how integrating its pretrained geospatial backbone, specifically the SegFormer MiT-B2 architecture, can address the localization and reasoning gaps identified in our previous updates by providing a stronger visual feature extractor than standard baseline U-Nets.
+## Work Done by Aryan Sami (Data Sampling)
 
-## Work Done by Aryan Sami
+1. **Dataset Audit and Pixel Distribution Analysis:**
+   - Wrote an OpenCV audit script that reads the ground-truth mask of every image in the dataset (6,443 images) and records per-class pixel counts and per-image class presence.
+   - Pixel shares: Background 92.77%, Intact 5.86%, Damaged 1.05%, Destroyed 0.33%.
+   - Destroyed buildings appear in 37% of images (2,385 of 6,443); the other 63% contain no Destroyed pixels at all. The histogram of Destroyed pixels per image is heavily skewed: most images that contain the class hold only a small patch of it. So Destroyed pixels do reach most batches, but they make up a tiny share of each batch's loss, which gives the class a weak gradient signal.
+2. **Class-Balanced Sampling Pipeline Integration:**
+   - Pre-computed one weight per training image from its mask: 10 if it contains Destroyed pixels, 5 if it contains Damaged but no Destroyed pixels, and 1 otherwise. These weights feed a PyTorch `WeightedRandomSampler` (with replacement) that replaces `shuffle=True` in the `DataLoader`.
+   - The batch size stays at 16, so BatchNorm statistics are unaffected. The sampler makes minority-class images much more frequent in each batch, although it does not guarantee one in every batch.
+   - 10-epoch screening run against uniform shuffling: mIoU rose from 0.3978 to 0.4051 and Destroyed IoU from 0.090 to 0.102 (+13% relative), with recall slightly lower (80.6% to 79.2%).
 
-1. **Paper Review Objective:** Reviewed *DisasterInsight: A Multimodal Benchmark for Function-Aware and Grounded Disaster Assessment* by Tehrani, Xu, Haglund, Berg, and Felsberg (Linköping University). The work is currently available as an arXiv preprint (arXiv:2601.18493v1, cs.CV, January 2026) and has not yet been accepted at a peer-reviewed venue.
-2. **Benchmark Structure Audit:** Reviewed how DisasterInsight restructures xBD into 112,507 building-centered instances by dividing scenes into patches and pairing each building with its own bounding box. This lightweight instance-construction approach is worth comparing with DisasterM3's mask-based entries, 40% of which were found unusable during our earlier dataset audit.
-3. **Function-Label Pipeline:** Studied the benchmark's method for deriving building-function labels—such as hospital, school, and residential—from OpenStreetMap tags and consolidating them into eight categories. This provides a possible direction for extending our xBD-S12/Palisades pipeline beyond its current three-class, damage-only schema.
-4. **Report-Generation Design:** Examined the paper's two-tier report format, consisting of a short situational summary and a longer risk-and-recovery narrative. Its use of BLEU-4, ROUGE-L, and BERTScore rather than exact-match metrics is relevant to our rescue-actionability evaluation approach for command-center advisories.
-5. **LoRA Configuration Comparison:** Compared the paper's fine-tuning setup—LoRA rank r=64 and α=128 on TeoChat/Qwen2.5-VL with a frozen vision encoder—with our QLoRA configuration of r=64 and α=16. The substantially higher α/r ratio may partly explain its larger reported performance gains.
-6. **Shared Failure Mode:** Identified that building-function classification remained weak after fine-tuning, achieving approximately 18% F1. This aligns with our finding that coarse satellite-image resolution, rather than model architecture alone, is the principal bottleneck for fine-grained classification in our pipeline.
-7. **U-Net V2 Fine-Tuning Breakthrough:** Successfully executed a second U-Net fine-tuning run implementing AMP optimizations and a corrected 4-class mapping architecture (Background, Intact, Damaged, Destroyed). This resolved previous gradient scaling bugs and propelled the model to a new state-of-the-art **Mean IoU of 0.4619** and a Mean F1 of 0.5808, significantly outperforming the V1 baseline (0.4286).
+## Work Done by Abrar Mohammed Tanzim Alam (Architecture & Orchestration)
 
-## Work Done by Ridita Afrin Riya
+1. **Baseline Validation and U-Net++ Implementation:**
+   - Set up the baseline with the `segmentation_models_pytorch` (SMP) API: a U-Net with an ImageNet-pretrained ResNet-34 encoder, trained for 40 epochs, reached 0.4619 mIoU (Destroyed IoU 0.152, recall 64.1%).
+   - Trained U-Net++, whose nested dense skip connections bridge the gap between the encoder's high-resolution features and the decoder's semantic features, with the same encoder, loss and 40 epochs. These runs used a batch size of 8 instead of the baseline's 16, so batch size is a second difference.
+   - U-Net++ raised recall to 78.7%, but mIoU fell to 0.4405 (Destroyed IoU 0.131): under CE+Dice it over-predicts damage regions, which lowers precision (0.48).
+2. **Attention Mechanism Integration (scSE) and ASPP Exploration:**
+   - Added concurrent spatial and channel squeeze-and-excitation (scSE) attention blocks to the U-Net++ decoder, with everything else unchanged from the U-Net++ run.
+   - scSE did not help under CE+Dice: mIoU 0.4367 (Destroyed IoU 0.125) against 0.4405 for plain U-Net++, with recall of 79.2%. Training time rose from 4.8 to 8.0 hours.
+   - Started integrating DeepLabV3+ with Atrous Spatial Pyramid Pooling (ASPP) for multi-scale context; its full evaluation is scheduled for next week.
+3. **Planning and Orchestration:**
+   - Planned and orchestrated the whole ablation sprint: track design, task delegation and the phase-gate criteria.
+   - Created and provided all experiment notebooks used by every track; each member ran and reported their own track.
 
-1. **Local Environment Setup and Model Optimization:** Installed the Ollama framework locally to enable running large Vision-Language Models (VLMs) offline for image analysis. Transitioned to the LLaVA (Large Language-and-Vision Assistant) model to mitigate significant performance bottlenecks and high inference times caused by local hardware constraints when processing image pairs.
-2. **Pipeline Codebase Synchronization and Debugging:** Synchronized the local workspace with the remote repository by pulling the latest changes to ensure the implementation utilized the most up-to-date scripts. Investigated the `VLM_Damage_Assessment.py` script and iteratively modified the codebase to process smaller data subsets (scaling from the hardcoded 227 pairs down to 10, 5, and finally 2 data points) to accommodate hardware limitations and facilitate rapid testing.
-3. **Damage Assessment Pipeline Execution:** Executed the pipeline flow to load `pre_disaster.png` and `post_disaster.png` image pairs from folders within the `./data/images/` directory. Prompted the local LLaVA model to act as a damage assessment expert, categorizing structural damage on a 1–4 scale and streaming an analysis of building conditions and potential hazards.
-4. **Output Generation and Formatting:** Formatted the model's analysis to save dynamically as detailed `.txt` reports into the `./results/vlm_assessments/llava/` directory. Applied a strict naming convention corresponding to the specific data point (e.g., `00000000_assessment.txt`).
+## Work Done by Abdullah Al Noman (Loss Function)
+
+1. **Focal Tversky Loss Experimentation:**
+   - Replaced the baseline CE+Dice loss with SMP's Focal Tversky loss, which penalises false negatives more than false positives. For disaster response, missing a destroyed building costs more than a false alarm. Architecture (U-Net, ResNet-34), data, batch size (16) and 40 epochs were unchanged.
+   - Trial 1 (α=0.3, β=0.7, γ=2.0): 0.5181 mIoU, Destroyed IoU 0.257. Trial 2 (α=0.25, β=0.75, γ=1.33), which weights false negatives even more heavily: 0.5203 mIoU, Destroyed IoU 0.273.
+   - Both trials beat the 0.4619 baseline by about 0.06 mIoU and raise Destroyed IoU by roughly 70–80% relative. Trial 2 changed α, β and γ together, so the effect of γ alone has not been isolated.
+2. **Phased Compound Loss Scheduler Development:**
+   - Wrote an epoch-aware loss module (`PhasedCompoundLoss`) that the training loop updates every epoch through `set_epoch()`.
+   - For the first 80% of epochs (1–32 of 40) it uses Focal Tversky loss alone (α=0.3, β=0.7, γ=2.0) to build up a stable gradient signal for the minority classes.
+   - For the final 20% (epochs 33–40) it switches to 0.6 × Focal Tversky + 0.4 × Lovász-Softmax. Lovász-Softmax is a convex surrogate of the IoU (Jaccard index), so the last epochs optimise the evaluation metric more directly. Result: 0.5233 mIoU, Destroyed IoU 0.272, the best mIoU so far.
+
+## Work Done by Ridita Afrin Riya (Resolution & Inference)
+
+1. **Resolution and Cropping Ablation Pipeline:**
+   - Compared training-resolution strategies with the Albumentations library, keeping the architecture (U-Net, ResNet-34), CE+Dice loss and uniform sampling fixed.
+   - Resize 1024→512 (baseline): 0.4619 mIoU, Destroyed IoU 0.152. Native-resolution RandomCrop 512×512: 0.4452, Destroyed IoU 0.107, which is worse than the baseline. RandomCrop 768×768: 0.4757, Destroyed IoU 0.177, the best of the three. Native-resolution crops therefore helped only once the crops were large enough.
+   - The 768×768 run needed the batch size cut from 16 to 8 to fit in Kaggle T4 VRAM (no gradient accumulation was used). The crop runs were also validated on random crops of the validation images, while the baseline is validated on whole resized images, so these comparisons are indicative rather than exact.
+2. **Test-Time Augmentation (TTA) and Sliding Window Inference:**
+   - Built a TTA function that predicts on 8 geometric views of each batch (identity, horizontal flip, vertical flip, both flips, 90°/180°/270° rotations, and 90° rotation plus horizontal flip), maps each prediction back with the inverse transform, and averages the softmax maps. The double flip equals the 180° rotation, so 7 of the views are distinct.
+   - Without any retraining, TTA raised the 768-crop model from 0.4757 to 0.4902 mIoU (+0.0145) and the 512-crop model from 0.4452 to 0.4540.
+   - Implemented sliding-window inference with 512×512 windows and a 128-pixel overlap (plus edge-anchored windows), averaging overlapping predictions with equal weight, so that crop-trained models can predict on full 1024×1024 images. Its first test ran on 768×768 validation crops rather than full images and gave no gain: 0.4819 against 0.4824 for standard inference on the same model (0.4864 with TTA).
 
 ---
 
-**Next Week's Plan:** Evaluate strategies to mitigate high model running times—such as batching, resizing images, or utilizing cloud compute if local hardware remains insufficient—and scale up the analysis to process the full dataset once performance is properly optimized.
+## Next Week's Strategic Roadmap
+
+- **Phase 1 Completion:** Run the remaining isolated experiments: Copy-Paste instance augmentation (Aryan), full DeepLabV3+ and MA-Net evaluations (Abrar), ResNet-50 against EfficientNet-B4 backbones with the phased loss (Noman), and full-resolution 1024×1024 sliding-window evaluation with a fixed validation protocol for the crop runs (Ridita).
+- **Champion Model Integration:** Combine the best setting from each track into a single "Champion Model", train it for 40 epochs, and report its mIoU and Destroyed IoU against the 0.4619 baseline.
+- **Contingency Phase 2 Activation:** If the Champion Model does not reach both targets (mIoU above 0.52 and Destroyed IoU above 0.30), we will start Phase 2: survey external disaster damage datasets, convert their labels to our four classes, and add them to the training data to supplement the minority classes.

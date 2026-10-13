@@ -1,4 +1,4 @@
-> **[Main Project Overview](README.md)** | **[Latest Team Update](UPDATE.md)** | **[CSE499B Review Presentation](others/CSE499B_Review_Presentation.pptx)** | **[CSE499B Review Report](others/CSE499B_Review_report.pdf)** | **[CSE499A Archive](#cse499a-senior-design-i-archived-readme)**
+> **[Main Project Overview](README.md)** | **[Latest Team Update](UPDATE.md)** | **[CSE499B Update 1](others/CSE499B_update_1.pdf)** | **[CSE499B Review Presentation](others/CSE499B_Review_Presentation.pptx)** | **[CSE499B Review Report](others/CSE499B_Review_report.pdf)** | **[CSE499A Archive](#cse499a-senior-design-i-archived-readme)**
 
 ---
 
@@ -7,10 +7,11 @@
 > **CSE499B/EEE499B/ETE499B - Senior Design II, Section 15, Project Group 5**
 > **Team:** Abdullah Al Noman, Tamanna Akter Mou, Aryan Sami, Ridita Afrin Riya, Abrar Mohammed Tanzim Alam
 
-## Current Review Documents
+## Current Documents
 
 | Document | Link |
 |---|---|
+| Update 1 report (PDF): ablation sprint results | [CSE499B_update_1.pdf](others/CSE499B_update_1.pdf) |
 | Review presentation (PowerPoint) | [CSE499B_Review_Presentation.pptx](others/CSE499B_Review_Presentation.pptx) |
 | Review presentation (HTML, opens in a browser) | [CSE499B Review Presentation (2).html](<others/CSE499B Review Presentation (2).html>) |
 | Review report (PDF) | [CSE499B_Review_report.pdf](others/CSE499B_Review_report.pdf) |
@@ -23,7 +24,7 @@ Responders need to know where buildings collapsed, and how many, within hours, o
 | Stage | Status |
 |---|---|
 | Segmentation ablation sprint (tracks A to D) | Done. The Focal Tversky loss was the biggest lever (+0.056 mIoU); the best run reached 0.5296 mIoU and 0.279 Destroyed IoU, passing the mIoU target (0.52) but not yet the Destroyed target (0.30). |
-| Controlled U-Net re-runs (one change per run) | In progress |
+| Controlled U-Net re-runs (one change per run) | Single changes done: none beat the reference, and the U-Net++ re-test also scored lower. Two combination runs in progress. |
 | SAM 3 feasibility test | Next |
 | Before/after input and two-stage grading | Planned |
 | VLM agent with offline DisasTeller reports | Planned |
@@ -32,12 +33,14 @@ Responders need to know where buildings collapsed, and how many, within hours, o
 
 ### What each sprint track tests
 
-| Track | What it tests | Why it matters | Result |
-|---|---|---|---|
-| A. Data imbalance | Weighted sampler (rare-class images drawn 10x / 5x as often) and copy-paste of rare buildings | 63% of images contain no destroyed pixel | The sampler gave the clearest Destroyed gain; copy-paste was neutral |
-| B. Architecture | UNet++, UNet++ with scSE attention, DeepLabV3+ and MA-Net against the plain U-Net | Richer skip connections might keep small rubble | None beat the U-Net under CE + Dice; MA-Net collapsed |
-| C. Loss and backbone | Focal Tversky (two settings), Lovasz phase-in, ResNet-50 and EfficientNet-B4 encoders | Cross-entropy is swamped by 93% background pixels | The biggest lever: +0.056 mIoU; best run 0.5296 mIoU |
-| D. Resolution and inference | Native 512 and 768 crops instead of resizing, 8-view test-time augmentation, sliding window | Shrinking 1024 to 512 discards 75% of the pixels | 768 crops raised Destroyed IoU 65% over 512; TTA added up to 0.015 |
+The sprint plan, task delegation and all experiment notebooks were created by Abrar Mohammed Tanzim Alam; each member ran their own track.
+
+| Track | Owner | What it tests | Why it matters | Result |
+|---|---|---|---|---|
+| A. Data imbalance | Aryan Sami | Weighted sampler (rare-class images drawn 10x / 5x as often) and copy-paste of rare buildings | 63% of images contain no destroyed pixel | The sampler gave the clearest Destroyed gain; copy-paste was neutral |
+| B. Architecture | Abrar Mohammed Tanzim Alam | UNet++, UNet++ with scSE attention, DeepLabV3+ and MA-Net against the plain U-Net | Richer skip connections might keep small rubble | None beat the U-Net under CE + Dice; MA-Net collapsed |
+| C. Loss and backbone | Abdullah Al Noman | Focal Tversky (two settings), Lovasz phase-in, ResNet-50 and EfficientNet-B4 encoders | Cross-entropy is swamped by 93% background pixels | The biggest lever: +0.056 mIoU; best run 0.5296 mIoU |
+| D. Resolution and inference | Ridita Afrin Riya | Native 512 and 768 crops instead of resizing, 8-view test-time augmentation, sliding window | Shrinking 1024 to 512 discards 75% of the pixels | 768 crops raised Destroyed IoU 65% over 512; TTA added up to 0.015 |
 
 ### Future directions and proposed architecture
 
