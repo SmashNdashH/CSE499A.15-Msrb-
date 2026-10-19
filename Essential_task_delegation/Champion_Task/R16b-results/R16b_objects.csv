@@ -1,0 +1,7 @@
+grades,true_grade,buildings,precision,recall,f1,graded_intact,graded_damaged,graded_destroyed
+R16 (equal shares),Intact,31112,0.9671,0.7424,0.84,23098,4475,3539
+R16 (equal shares),Damaged,6410,0.501,0.7239,0.5922,738,4640,1032
+R16 (equal shares),Destroyed,1524,0.2254,0.8727,0.3582,48,146,1330
+R16b (real shares),Intact,31112,0.9385,0.8957,0.9166,27867,1745,1500
+R16b (real shares),Damaged,6410,0.6792,0.6315,0.6545,1711,4048,651
+R16b (real shares),Destroyed,1524,0.3659,0.8143,0.5049,116,167,1241

@@ -2,7 +2,7 @@
 
 **Purpose:** One place to look up what each member did, what the results *actually* were, and how to answer supervisor questions. Every number here was checked against the **saved outputs of the member notebooks**, not only against `all_members_ablation_summary.csv`. That CSV contains several errors, listed in [§8 Errata](#8-errata--do-not-quote-these-numbers).
 
-**Champion work (Task D4):** [`Champion_Task/D4_champion_model.ipynb`](Champion_Task/D4_champion_model.ipynb). See [§7](#7-pre-d4-ablations-and-the-champion-model).
+**Champion work (Task D4):** [`Champion_Task/D4_champion_model.ipynb`](Champion_Task/D4_champion_model.ipynb). See [§7](#7-pre-d4-ablations-and-the-champion-model). **Status (18 October 2026):** all D4 runs are finished and fine-tuning is closed. mIoU passes the Phase Gate, but Destroyed IoU doesn't: the best recipe, R9, averages 0.2971 with TTA over two seeds.
 
 ---
 
@@ -163,6 +163,19 @@ No. Under CE + Dice its Destroyed recall (0.668) is the same as the U-Net's (0.6
 **Q: How do you know the results aren't seed luck?**
 - R6 re-runs R1 with another seed.
 - A component counts only if it beats R1 by more than |R1 − R6|.
+- Before claiming the Phase Gate we re-ran the best recipe with another seed (R9s7), and it showed that R9's 0.3001 was partly luck.
+
+**Q: Did you pass the Phase Gate?**
+- **mIoU:** passed in every run, at 0.527–0.543, or up to 0.545 with TTA.
+- **Destroyed IoU:** not passed. The best single run reached 0.3001 with TTA (R9, seed 42), but the same recipe with seed 7 gave 0.2941. Our rule needs two seeds, so we report the gate as missed by 0.003 (two-seed mean 0.2971).
+- That's why the plan moves to structural changes: before + after input, more destroyed examples, and two-stage grading.
+
+**Q: Why not just report R9's 0.3001?**
+It passes by 0.0001, while Destroyed IoU moves by about 0.013 from the seed alone. The repeat with seed 7 scored 0.2941, so 0.3001 isn't a reliable result.
+
+**Q: Which model do you use downstream?**
+- R9's seed-42 model, for counts, heatmaps and reports. It has the best Destroyed IoU and recall at the same mIoU as R1.
+- R1 stays the mIoU reference.
 
 ---
 
@@ -186,17 +199,50 @@ No. Under CE + Dice its Destroyed recall (0.668) is the same as the U-Net's (0.6
 | R6 | seed 7 | Noise bar |
 | R8 | + guide's enhanced augmentation (HSV, CLAHE, Elastic, GridDistortion, CoarseDropout) | Planned Tier-2 item, never run |
 | R7 | R1 + every R2–R5/R8 change that beats R1 by more than \|R1 − R6\| without lowering Destroyed IoU | **Champion** (+ 8-view TTA) |
+| R9 | + sampler + copy-paste (R5 + R2) | Destroyed-focused combination |
+| R10 | + sampler + FT α.25 β.75 γ1.33 (R5 + R3) | Destroyed-focused combination |
+| R9s7 | R9 with seed 7 | Second-seed check before claiming the Phase Gate |
 
 R2–R6 are independent, so run them in parallel on several Kaggle accounts. Run R1 and R6 first. Expect about 10 h per ResNet-50 run at 768; the notebook resumes across sessions from a per-experiment HF repo.
 
-**Results (8 October 2026, mIoU / Destroyed IoU, standard evaluation):** R1 0.5374 / 0.2686 · R1 repeat with the same seed 0.5427 / 0.2796 · R6 0.5402 / 0.2815 · R2 0.5369 / 0.2681 · R3 0.5402 / 0.2790 · R4 0.5267 / 0.2551 · R5 0.5354 / **0.2898** · R8 0.5342 / 0.2703. No change passed the R7 rule, so R7 is the R1 recipe. Actual run times were 6–7 GPU-hours for the U-Net runs and about 20 for U-Net++. Two Destroyed-focused combinations are running: R9 (sampler + copy-paste) and R10 (sampler + R3 loss).
+**Final results (18 October 2026; E-protocol, last epoch; checked against every run's CSV):**
+
+| Run | Change | mIoU | Damaged IoU | Destroyed IoU | Destroyed recall | mIoU with TTA | Destroyed IoU with TTA | GPU-h |
+|---|---|---|---|---|---|---|---|---|
+| R1 | reference (seed 42) | 0.5374 | 0.3578 | 0.2686 | 0.467 | 0.5440 | 0.2822 | 7.2 |
+| R1b | R1 repeated, same seed | 0.5427 | 0.3602 | 0.2796 | 0.482 | 0.5452 | 0.2832 | 7.3 |
+| R6 | seed 7 | 0.5402 | 0.3542 | 0.2815 | 0.486 | 0.5443 | 0.2839 | 6.5 |
+| R2 | copy-paste | 0.5369 | 0.3564 | 0.2681 | 0.432 | 0.5415 | 0.2676 | 6.5 |
+| R3 | FT 0.25 / 0.75 / 1.33 | 0.5402 | **0.3635** | 0.2790 | 0.507 | 0.5444 | 0.2845 | 6.2 |
+| R4 | U-Net++ | 0.5267 | 0.3416 | 0.2551 | 0.464 | 0.5324 | 0.2628 | 20.1 |
+| R5 | sampler | 0.5354 | 0.3460 | 0.2898 | **0.524** | 0.5391 | 0.2917 | 6.2 |
+| R8 | enhanced augmentation | 0.5342 | 0.3498 | 0.2703 | 0.452 | 0.5374 | 0.2714 | 6.3 |
+| R9 | sampler + copy-paste | 0.5373 | 0.3471 | **0.2921** | 0.500 | 0.5440 | **0.3001** | 6.1 |
+| R10 | sampler + R3 loss | 0.5345 | 0.3433 | 0.2891 | 0.520 | 0.5406 | 0.2969 | 6.7 |
+| R9s7 | R9 with seed 7 | 0.5382 | 0.3500 | 0.2847 | 0.503 | **0.5453** | 0.2941 | 6.4 |
+
+**The two candidate recipes, averaged over seeds:**
+
+| Recipe | Runs | mIoU | Damaged IoU | Destroyed IoU | Destroyed recall | mIoU with TTA | Destroyed IoU with TTA |
+|---|---|---|---|---|---|---|---|
+| R1 recipe | R1, R1b, R6 | 0.5401 | 0.3574 | 0.2766 | 0.478 | 0.5445 | 0.2831 |
+| R9 recipe (sampler + copy-paste) | R9, R9s7 | 0.5378 | 0.3486 | 0.2884 | 0.502 | 0.5447 | **0.2971** |
+| Difference | | −0.002 | −0.009 | +0.012 | +0.023 | +0.000 | +0.014 |
+
+**Decision:**
+- **mIoU:** the Phase Gate's mIoU target is met by every run. No change beat R1 by more than the noise, so **R7 is the R1 recipe**.
+- **Destroyed IoU:** the target is **not met**. R9 reached 0.3001 with TTA on seed 42, but its seed-7 repeat scored 0.2941. The two-seed mean, 0.2971, misses 0.30 by 0.003. A third seed would need 0.3058 or more, so it isn't worth running.
+- **Best recipe for destroyed buildings:** R9, the sampler plus copy-paste. Its gain over the R1 recipe (+0.012, or +0.014 with TTA) is right at the noise level. It also finds more destroyed pixels (recall +0.023) but gives up some Damaged IoU (−0.009). Copy-paste alone (R2) and the R3 loss added to the sampler (R10) gave nothing.
+- **Status: fine-tuning is closed.** Phase 2 continues with structural changes; see `Phase2_Plan.md` and `Next_Steps_Roadmap.md`.
+- **Run time:** the U-Net runs took 6–7 GPU-hours each, and U-Net++ about 20.
 
 ---
 
 ## 7b. Plan vs. reality (`team_task_assignments.md` + `segmentation_improvement_guide.md`)
 
 **Phase Gate (Day 10).** The plan requires the champion to reach **mIoU > 0.52 and Destroyed IoU > 0.30**. If it misses either, Phase 2 is triggered (Task D5: external datasets such as xBD).
-- Best so far: C5, with mIoU 0.5296 ✓ but **Destroyed IoU 0.279 ✗**.
+- Sprint best: C5, with mIoU 0.5296 ✓ but **Destroyed IoU 0.279 ✗**.
+- Final D4 outcome (18 October 2026): mIoU ✓ in every run. Destroyed IoU ✗: the best recipe, R9, averages 0.2971 with TTA over two seeds (§7). Phase 2 is triggered.
 - The guide (Tier 5) says the **two-stage pipeline** is the lever to pull when Destroyed IoU stays below 0.30.
 - The guide's contour-counting threshold for the hybrid pipeline is also 0.30 per class.
 - The D4 notebook prints the gate verdict automatically.

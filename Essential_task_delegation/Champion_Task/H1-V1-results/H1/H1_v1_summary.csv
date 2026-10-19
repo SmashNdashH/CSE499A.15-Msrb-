@@ -1,0 +1,13 @@
+group,questions,accuracy_%,median_count_error_%
+all,4982,22.26,69.2
+class intact,2671,16.66,58.3
+class damaged,1345,27.36,100.0
+class destroyed,966,30.64,89.6
+Optical after-image,3583,26.54,54.5
+SAR after-image,1399,11.29,100.0
+"Optical, intact",1880,21.33,45.0
+"SAR, intact",791,5.56,100.0
+"Optical, damaged",974,31.62,75.0
+"SAR, damaged",371,16.17,100.0
+"Optical, destroyed",729,33.2,83.3
+"SAR, destroyed",237,22.78,100.0

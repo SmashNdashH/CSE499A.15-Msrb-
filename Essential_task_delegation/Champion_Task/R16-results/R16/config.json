@@ -1,0 +1,33 @@
+{
+ "task": "R16",
+ "smoke_test": false,
+ "train_images": 5798,
+ "val_images": 645,
+ "sam3_dir": "/kaggle/input/notebooks/abrarmohammedtanzim/e3-sam3-building-finding/E3/masks/pre_grid2",
+ "unet": "R11",
+ "unet_checkpoint": "/root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-d4-R11/snapshots/31974dacfee2125a66639858433a113704edf9b3/final_model.pth",
+ "unet_reproduces_csv": "yes",
+ "crop": 96,
+ "margin": 16,
+ "min_area": 20,
+ "max_intact_per_image": 12,
+ "epochs": 10,
+ "batch": 256,
+ "lr": 0.0003,
+ "weight_decay": 0.0001,
+ "seed": 42,
+ "train_buildings": {
+  "Intact": 42814,
+  "Damaged": 41781,
+  "Destroyed": 18121
+ },
+ "grader_minutes": 9.6,
+ "validation_minutes": 8.7,
+ "missing_sam3_maps": 0,
+ "true_buildings_macro_f1": 0.6562,
+ "keep": {
+  "R16_sam3": false,
+  "R16_sam3+r11": false,
+  "R16_vote": false
+ }
+}

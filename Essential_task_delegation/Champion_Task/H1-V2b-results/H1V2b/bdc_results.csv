@@ -1,0 +1,6 @@
+answerer,bdc_%
+U-Net counter (H1 V1),22.26
+7B plain (greedy),30.51
+7B with facts (greedy),26.6
+"Our 7B, 499A (sampled)",23.58
+Base Qwen2.5-VL-7B,34.2

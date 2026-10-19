@@ -1,0 +1,4 @@
+grade,buildings,precision,recall,f1,graded_intact,graded_damaged,graded_destroyed
+Intact,19624,0.9709,0.7512,0.847,14742,2958,1924
+Damaged,4370,0.5169,0.7588,0.6149,400,3316,654
+Destroyed,1600,0.3547,0.8856,0.5065,42,141,1417

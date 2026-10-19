@@ -2,7 +2,7 @@
 
 **Context:** A record of the October 2026 discussion on what to do once segmentation fine-tuning stopped producing gains. It covers five structural options, current top-venue work in our domain, an assessment of six candidate techniques (RAG, agents, diffusion, PNNs, LLMs, edge devices), the xView2 winners, an explainer on foundation models and SAM, a SAM 3-based design with a test plan, and how that design compares with GeoPixel and BDAChat. Use it for the 499B report's related-work and future-work sections, and for viva questions.
 
-**Last updated:** 8 October 2026. Venues and figures were checked against the papers, project pages or official repositories (links in [Sources](#11-sources)). Items marked *preprint* are not yet peer-reviewed; check them before citing. Our own numbers come from the D4 champion notebooks in `Champion_Task/`.
+**Last updated:** 18 October 2026 (final fine-tuning results in §1 and §9; BDAChat repo details in §8). Venues and figures were checked against the papers, project pages or official repositories (links in [Sources](#11-sources)). Items marked *preprint* are not yet peer-reviewed; check them before citing. Our own numbers come from the D4 champion notebooks in `Champion_Task/`.
 
 **Related docs:** [Segmentation_Model_Explained.md](Segmentation_Model_Explained.md) (how our U-Net and dataset work) · [segmentation_improvement_guide.md](segmentation_improvement_guide.md) (Tiers 1–6) · [team_task_assignments.md](team_task_assignments.md) (Phase Gate, Task D5) · [Ablation_Study_Reference_and_QA_Prep.md](Ablation_Study_Reference_and_QA_Prep.md) (verified sprint numbers and errata).
 
@@ -35,11 +35,14 @@ The D4 champion runs changed one setting at a time from the R1 recipe (U-Net + R
 | R4 | U-Net++ decoder (batch 4 × 2) | 0.5267 | 0.2551 |
 | R5 | weighted sampler | 0.5354 | **0.2898** |
 | R8 | enhanced augmentation | 0.5342 | 0.2703 |
+| R9 | sampler + copy-paste | 0.5373 | **0.2921** (0.3001 with TTA) |
+| R10 | sampler + Focal Tversky 0.25 / 0.75 / 1.33 | 0.5345 | 0.2891 |
+| R9s7 | R9 repeated with seed 7 | 0.5382 | 0.2847 (0.2941 with TTA) |
 
-What this shows:
-- **Every U-Net run lands between 0.534 and 0.543 mIoU, and U-Net++ (R4) is lower still at 0.527.** Two runs with the identical config and seed differ by 0.005, and Destroyed IoU varies by about 0.013 between identical recipes. All the differences are within noise.
-- **The sampler (R5) is the only change that clearly helped Destroyed IoU.** It lowered Intact IoU in exchange.
-- **No run passes the Phase Gate's Destroyed IoU > 0.30,** and no change passes the R7 rule, so R7 is the R1 recipe. Two Destroyed-focused combinations started on 8 October: R9 (sampler + copy-paste) and R10 (sampler + the R3 loss).
+What this shows (final, 18 October 2026):
+- **Every U-Net run lands between 0.534 and 0.543 mIoU, and U-Net++ (R4) is lower still at 0.527.** Two runs with the identical config and seed differ by 0.005, and Destroyed IoU varies by about 0.013 between identical recipes. All the mIoU differences are within noise.
+- **The sampler is the only change that clearly helped Destroyed IoU,** alone (R5) or with copy-paste (R9, the best). It also raised Destroyed recall (about 0.48 to 0.50), but lowered Intact and Damaged IoU in exchange, so mIoU didn't move. Adding the R3 loss on top (R10) gave nothing extra.
+- **No recipe passes the Phase Gate's Destroyed IoU > 0.30.** R9 reached 0.3001 with TTA on seed 42, but its seed-7 repeat scored 0.2941, so the two-seed mean (0.2971) misses by 0.003. No change passes the R7 rule either, so R7 is the R1 recipe. Fine-tuning closed on 18 October 2026.
 
 **Conclusion:** more tuning of losses, sampling or augmentation is unlikely to help. Bigger gains need *structural* changes: what the model sees, how the problem is framed, what data it learns from, or what the project contributes.
 
@@ -222,19 +225,22 @@ SAM 3 connects four earlier ideas: the pre-disaster image, the two-stage pipelin
 | Lever 4: foundation models | SAM 3 is frozen and adds **zero** settings to tune; only one small classifier is trained. |
 | Agentic workflow + RAG | The VLM is the SAM 3 Agent "brain". DisasterM3 contains these questions, e.g. "Segment intact buildings near the flooding (within 100m)", and building counting, where our VLM alone fell 10.62 points in 499A. |
 | Edge devices | Two deployment tiers, matching Grace's satellite-and-ground split. SAM 3 can act as a teacher whose pseudo-labels train small field models. |
+| 7B → 3B distillation | The field 3B learns short checked answers and, as a second skill, explanations on request. It doesn't reason before every answer, which would slow every field answer. Decided 19 October 2026: [Paper_Audit §5.3](Paper_Audit_and_Integration_Plan.md#53-decided-how-the-distilled-3b-learns-19-october-2026), roadmap tasks L2 and L2b. |
 
 ### 7.4 Test plan, cheapest steps first
 
 | Step | What | Training? | Effort | Pass check |
 |---|---|---|---|---|
-| **S0** | Request Hugging Face access. Smoke-test SAM 3 on a Kaggle T4: does a 1024×1024 image fit in memory, and how long does it take? | No | ½ day | Runs on a T4 (otherwise 2×T4 or EfficientSAM3) |
-| **S1** | Prompt "building" on the 645 validation images, **both pre and post**. Measure building IoU against the combined ground-truth masks and per-image building counts, and compare with R1's building-vs-background IoU. | No | 1 day | SAM 3 on the pre image ≥ R1 → it becomes stage 1 |
+| **E3**, part 1 | Request Hugging Face access. Smoke-test SAM 3 on a Kaggle T4: does a 1024×1024 image fit in memory, and how long does it take? | No | ½ day | Runs on a T4 (otherwise 2×T4 or EfficientSAM3) |
+| **E3**, part 2 | Prompt "building" on the 645 validation images, **both pre and post**. Measure building IoU against the combined ground-truth masks and per-image building counts, and compare with R1's building-vs-background IoU. | No | 1 day | SAM 3 on the pre image ≥ R1 → it becomes stage 1 |
 | **S2** | Zero-shot damage prompts on post images ("destroyed building", "collapsed building", "rubble"). Compare Destroyed IoU with R1's 0.27. | No | ½ day | Likely to fail; a clear negative result is still worth reporting |
-| **S3** | Stage 2: train a Siamese ResNet-18 on pre+post crops of training buildings. On validation, classify the buildings SAM 3 found and score with our full-image protocol **and** the xView2 metric. | Small model only | 2–3 days | Destroyed IoU beats R1 by more than the noise bar (0.013) |
+| **R16** | Stage 2: train a Siamese ResNet-18 on pre+post crops of training buildings. On validation, classify the buildings SAM 3 found and score with our full-image protocol **and** the xView2 metric. | Small model only | 2–3 days | Destroyed IoU beats R1 by more than the noise bar (0.013) |
 | **S4** | Connect the VLM as the agent. Evaluate on DisasterM3's counting and referring-segmentation questions against our 499A scores (34.2% base, 23.58% fine-tuned). | No | 2–3 days | Counting beats the 34.2% base model (objective O2) |
-| **S5** | Edge tier: EfficientSAM3 vs SAM 3 accuracy and latency, or distil SAM 3's pseudo-labels into our U-Net. | Optional | 2 days | A measured trade-off table for the report |
+| **L4** | Edge tier: EfficientSAM3 vs SAM 3 accuracy and latency, or distil SAM 3's pseudo-labels into our U-Net. | Optional | 2 days | A measured trade-off table for the report |
 
-S0 and S1 take about two days and need no training. They decide whether the whole direction is viable.
+E3 takes about two days and needs no training. It decides whether the whole direction is viable.
+
+Step IDs match the task names in [Next_Steps_Roadmap.md](Next_Steps_Roadmap.md). S2 and S4 have no task ID yet: S2 is optional, and S4 is partly covered by tasks H1 and H2.
 
 ### 7.5 Risks
 1. **Gated access** is denied.
@@ -271,20 +277,21 @@ What's still missing:
 
 ### 8.2 Three-way comparison
 
-BDAChat details come from its abstract and search summaries; ScienceDirect blocks automated access to the full text. Cells marked *not stated* need checking in the PDF (try NSU library access).
+BDAChat details come from its abstract and its [official GitHub repo](https://github.com/WangYong921/BDAChat) (README and training scripts, checked 17 October 2026; a copy is in `others/lit review_research papers/BDAChat_repo/`). The full text is paywalled on ScienceDirect and NSU doesn't subscribe to the journal (checked 18 October 2026), so anything still marked *not stated* needs the PDF from the corresponding authors (Jiawei Cui and Changhai Zhai; DOI 10.1016/j.aei.2026.104320), ResearchGate, or an NSU interlibrary loan.
 
 | | **GeoPixel-style** (ICML 2025) | **BDAChat framework** (Adv. Eng. Informatics 2026) | **Our SAM 3 design** |
 |---|---|---|---|
 | Overall shape | One big model does everything | Modular: modified SAM → pair each building's pre/post views → temporal VLM | Modular: SAM 3 → per-building classifier → VLM agent |
-| Who finds buildings | The model itself | A **modified SAM** (prompting *not stated*) | **SAM 3, text prompt "building", frozen**, on the pre image |
+| Who finds buildings | The model itself | A **modified SAM**: SAM ViT-B + adapter + LinkNet decoder + Multi-LoRA, **fine-tuned** on building and road masks at 1024 px. No prompts; it works like a normal segmenter. | **SAM 3, text prompt "building", frozen**, on the pre image |
 | Uses pre + post | No, single image | **Yes**, paired per building | **Yes**: pre to find, pre + post to grade |
-| Who grades damage | Not damage-specific | **The VLM itself**, per building | **A small Siamese CNN**; the VLM doesn't grade |
+| Who grades damage | Not damage-specific | **The VLM itself**, per building: Video-LLaVA-7B fine-tuned with LoRA (rank 128) in 8-bit. Each building's pre and post crops go in as a two-frame "video" (an idea taken from TEOChat). | **A small Siamese CNN**; the VLM doesn't grade |
 | Explanations | Text with masks attached | **Its main strength**: causal reasoning on *why* a building is damaged, plus disaster recognition | VLM report + EMS-98 retrieval → grades and rescue advice |
-| Counting | Estimated by the model | Possible from per-building output; *not stated* as a focus | **Explicit goal**: counts from masks |
-| Training needed | Fine-tune a large pixel-grounding model | Modified SAM + fine-tuned VLM on a new dataset | SAM 3 frozen; one small classifier; reuse our Qwen fine-tune |
-| Data | Their own grounding dataset (GeoPixelD) | A new dataset they built (OLBDA): bi-temporal, multi-hazard, object-level | DisasterM3 (NeurIPS 2025): 9 tasks, including counting and referring segmentation |
-| Hardware / offline | Heavy | *Not stated* | **Designed for it**: T4, plus a field tier, offline |
-| Complex questions | Partly | *Not stated* | **Yes**, via the SAM-3-Agent-style brain |
+| Counting | Estimated by the model | Possible from per-building output, but not a focus in the repo. Its map outputs are a fine-grained damage map and a damage-aware heatmap. | **Explicit goal**: counts from masks |
+| Training needed | Fine-tune a large pixel-grounding model | Fine-tune the modified SAM (buildings and roads) **and** the 7B VLM on a new dataset | SAM 3 frozen; one small classifier; reuse our Qwen fine-tune |
+| Data | Their own grounding dataset (GeoPixelD) | A new dataset they built from xBD (OLBDA): bi-temporal, multi-hazard, object-level, with xBD's four levels (no, minor, major, destroyed). The dataset and both models' weights are on Baidu Netdisk; the code is MIT-licensed. | DisasterM3 (NeurIPS 2025): 9 tasks, including counting and referring segmentation |
+| Reported result | Not damage-specific | **Macro F1 0.763 on xBD** at object level, plus a test on an unseen event; case studies of the Lahaina wildfire and Hurricane Ian | To be measured (E3 and R16). The R16 grader can be scored with the same object-level xView2 metric for a direct comparison. |
+| Hardware / offline | Heavy | Training uses DeepSpeed ZeRO-3 with CPU offload and batch 8 per GPU, so it's multi-GPU (GPU type *not stated*). Inference runs a 7B VLM on every building. Offline use isn't discussed. | **Designed for it**: T4, plus a field tier, offline |
+| Complex questions | Partly | Per-building question answering: damage class, disaster type and a causal explanation. Scene-level questions (counts, "buildings near the flood") aren't shown. | **Yes**, via the SAM-3-Agent-style brain |
 
 How it fits our principles (GeoPixel vs our SAM 3 design):
 
@@ -310,11 +317,13 @@ We can borrow BDAChat's strength cheaply: after the classifier grades a building
 **We cannot claim** to be the first to combine SAM with a VLM for building damage. BDAChat already does object-level segmentation plus a temporal VLM. Cite it directly.
 
 **Defensible contributions:**
-1. **No training and no manual prompts to find buildings**: SAM 3 works from the text "building". Check that BDAChat's modified SAM doesn't already do this.
-2. **Resource efficiency**: free T4, two-tier deployment, distilled 3B, quantisation. This is the title's core claim.
+1. **No training and no manual prompts to find buildings**: SAM 3 works from the text "building". BDAChat's modified SAM doesn't do this: per its official repo, it's fine-tuned (adapter + Multi-LoRA) on labelled building masks.
+2. **Resource efficiency**: free T4, two-tier deployment, distilled 3B, quantisation. This is the title's core claim. BDAChat, by contrast, runs a 7B VLM on every building and trains it on multiple GPUs with DeepSpeed ZeRO-3.
 3. **Reliable counting** from masks, measured on DisasterM3's counting task.
 4. **Agent-style questions** combining several concepts (e.g. buildings near flooding).
 5. **Offline, rescue-oriented output**: EMS-98-grounded reports instead of a cloud API.
+
+**A number to compare against:** BDAChat reports macro F1 0.763 on xBD at object level. Score our R16 grader with the same object-level xView2 metric so the two can be compared directly; mIoU alone can't be compared with it.
 
 **Draft related-work sentence:**
 > *BDAChat (2026) showed that segmenting buildings and grading them with a fine-tuned temporal VLM yields interpretable object-level damage assessment. We pursue the same object-level formulation under a resource constraint: buildings are found zero-shot by a text-prompted foundation model (SAM 3), damage is graded by a lightweight bi-temporal classifier, and a distilled VLM is reserved for reasoning and reporting, enabling offline deployment on free or edge hardware.*
@@ -327,12 +336,12 @@ We can borrow BDAChat's strength cheaply: after the classifier grades a building
 ---
 
 ## 9. Recommended order for the rest of 499B
-0. **Finish R9 and R10** (running since 8 October). If either reaches Destroyed IoU above about 0.30, confirm it with a second seed.
-1. **SAM 3 steps S0–S1** (about 2 days, no training). They decide whether the SAM 3 direction is viable.
+0. **Done (18 October): R9, R10 and R9's second seed.** R9 (sampler + copy-paste) is the best Destroyed recipe, but its two-seed mean is 0.2971 with TTA, so the gate is not claimed and fine-tuning is closed. Next is the E1 diagnosis (Phase2_Plan §3), which needs no training.
+1. **SAM 3 test E3** (about 2 days, no training). It decides whether the SAM 3 direction is viable.
 2. **A pre + post input run** for the U-Net (lever 1). It's one change, tested with the same noise-bar method as R1–R8.
 3. **An edge benchmark**: INT8 U-Net and 4-bit 3B VLM, with latency, memory and accuracy.
 4. **RAG plus the agent layer**, to build the offline DisasTeller (O3).
-5. **Two-stage object-level damage** (SAM 3 S3), if S1 passes.
+5. **Two-stage object-level damage** (R16), if E3 passes.
 6. **Diffusion-generated data and PNNs** as future work in the report.
 
 ---

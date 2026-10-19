@@ -1,0 +1,22 @@
+{
+ "task": "D5b",
+ "smoke_test": false,
+ "labels_dir": "D:\\CSE499AB_project\\dataset\\xView2 Challenge Dataset - Tier 3 Data\\tier3\\labels",
+ "benchmark": "D:\\CSE499AB_project\\support\\Abrar\\Implementation_DisasterM3\\benchmark_release.json",
+ "tier3_post_labels": 6369,
+ "overlap_tiles_checked": 2635,
+ "new_tiles": 3734,
+ "converted_benchmark_tiles": 612,
+ "left_out_tiles": 3122,
+ "bdc_questions_on_converted": 1045,
+ "lut": [
+  0,
+  1,
+  2,
+  2,
+  3,
+  255
+ ],
+ "same_lut_as_d5": true,
+ "run_time_min": 2.3
+}

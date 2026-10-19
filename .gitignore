@@ -14,6 +14,7 @@ data/aider_processed_tracker.txt
 data/BRIGHT/
 data/bright_processed/
 dataset/DisasterM3 Dataset/
+dataset/xView2 Challenge Dataset - Tier 3 Data/
 *.tif
 *.tiff
 
@@ -142,6 +143,13 @@ literature_review.md
 others/lit review_research papers/*
 !others/lit review_research papers/Shakya_From_Pixels_to_Semantics_A_Multi-Stage_AI_Framework_for_Structural_CVPRW_2026_paper-1.pdf
 !others/lit review_research papers/NeurIPS-2025-disasterm3-a-remote-sensing-vision-language-dataset-for-disaster-damage-assessment-and-response-Paper-Datasets_and_Benchmarks_Track.pdf
+!others/lit review_research papers/GeoPixel Pixel Grounding Large Multimodal Model in Remote Sensing.pdf
+!others/lit review_research papers/TEOChat A Large Vision-Language Assistant for Temporal Earth Observation Data.pdf
+!others/lit review_research papers/Grace Enabling Near-realtime Remote Sensing via Satellite-Ground Collaboration of Large Vision-Language Models.pdf
+!others/lit review_research papers/QLoRA Efficient Finetuning of Quantized LLMs.pdf
+!others/lit review_research papers/AWQ Activation-aware Weight Quantization for LLM Compression and Acceleration.pdf
+!others/lit review_research papers/EfficientSAM3 Progressive Hierarchical Distillation for Video Concept Segmentation from SAM1, 2, and 3.pdf
+!others/lit review_research papers/ImageRAG Enhancing Ultra High Resolution Remote Sensing Imagery Analysis with ImageRAG.pdf
 
 !others/lit review_research papers/The Potential of Copernicus Satellites for Disaster Response Retrieving Building Damage from Sentinel-1 and Sentinel-2.pdf
 
@@ -183,6 +191,7 @@ SAMPLE_UPDATE-MinhajCSE499A_Literature Review Solution.pdf
 CONVERSATION_SUMMARY.md
 CONTEXT.md
 *.pth
+*.onnx
 *.zip
 *.mp4
 others/CSE499B_Review_Script_English.html
@@ -198,3 +207,26 @@ google ai studio api keys.txt
 !others/CSE499A/CSE499A_1-min_video_demonstration.mp4
 # Ignore all LaTeX sources under others/ (including subfolders)
 others/**/*.tex
+
+# =========================================================================
+# CHAMPION TASK OUTPUTS (19 Oct 2026): what stays local
+# Each run's README, CSVs and JSONs are committed, and so are the masks a local
+# notebook or a re-run needs: E1 gt and preds (T1, R16b), E3 pre_grid2 (R16),
+# D5 and D5b masks (R12), T1-v3 maps (T2, T3) and R16's per-building table (R16b).
+# =========================================================================
+# L2 step 1's training file (71 MB): step 2 reads the Kaggle output instead
+Essential_task_delegation/Champion_Task/L2-stage1-results/disasterm3_distillation_cot_train.json
+# Superseded maps and masks that no notebook reads from here
+Essential_task_delegation/Champion_Task/H1-V1-results/H1/masks/
+Essential_task_delegation/Champion_Task/T1-results/T1/maps/
+Essential_task_delegation/Champion_Task/T1-results/T1-v2/maps/
+Essential_task_delegation/Champion_Task/E3-results/E3/masks/pre_grid1/
+Essential_task_delegation/Champion_Task/E3-results/E3/masks/post_grid1/
+
+# Claude Code's local settings and scheduler lock
+.claude/
+
+# Personal samples and the next report's draft, kept local like the files above
+Minhaj_sample_*
+Sample_Abrar_*
+CSE499B_Review_report_update.tex

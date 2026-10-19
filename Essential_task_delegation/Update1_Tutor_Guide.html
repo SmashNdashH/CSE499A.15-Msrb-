@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Update 1 Tutor Guide</title>
+<style>
+:root{
+  --bg:#f7f7f5; --fg:#1d1d1f; --muted:#5b5b60; --card:#ffffff; --border:#dcdcd8;
+  --accent:#2457c5; --accent-soft:#e8eefb; --good:#1f7a3f; --good-soft:#e5f4ea;
+  --bad:#b42318; --bad-soft:#fbe9e7; --warn:#8a5a00; --warn-soft:#fdf3dc; --code:#f0f0ec;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141416; --fg:#ececef; --muted:#a3a3ab; --card:#1d1d21; --border:#34343a;
+    --accent:#8fb0ff; --accent-soft:#1f2a44; --good:#6fd394; --good-soft:#16301f;
+    --bad:#ff8a7a; --bad-soft:#3a1c18; --warn:#f2c065; --warn-soft:#352a12; --code:#26262b;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141416; --fg:#ececef; --muted:#a3a3ab; --card:#1d1d21; --border:#34343a;
+  --accent:#8fb0ff; --accent-soft:#1f2a44; --good:#6fd394; --good-soft:#16301f;
+  --bad:#ff8a7a; --bad-soft:#3a1c18; --warn:#f2c065; --warn-soft:#352a12; --code:#26262b;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1040px;margin:0 auto;padding:24px 16px 80px}
+h1{font-size:1.9rem;line-height:1.2;margin:8px 0 4px}
+h2{font-size:1.3rem;margin:0}
+h3{font-size:1.1rem;margin:28px 0 8px}
+h4{font-size:1rem;margin:20px 0 6px}
+p{margin:8px 0}
+a{color:var(--accent)}
+.sub{color:var(--muted);margin:0 0 16px}
+nav.steps{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--border);padding:8px 0;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:6px}
+nav.steps a{font-size:.85rem;text-decoration:none;padding:4px 10px;border:1px solid var(--border);border-radius:999px;background:var(--card);color:var(--fg)}
+nav.steps a:hover{border-color:var(--accent)}
+details.step{background:var(--card);border:1px solid var(--border);border-radius:12px;margin:14px 0;padding:0 18px}
+details.step>summary{cursor:pointer;list-style:none;padding:16px 0;display:flex;align-items:center;gap:10px}
+details.step>summary::-webkit-details-marker{display:none}
+details.step>summary::before{content:"▸";color:var(--muted);transition:transform .15s}
+details.step[open]>summary::before{transform:rotate(90deg)}
+details.step[open]{padding-bottom:18px}
+.num{display:inline-block;min-width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;text-align:center;line-height:28px;font-size:.9rem}
+.box{border:1px solid var(--border);border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:8px;padding:10px 14px;margin:12px 0}
+.box.bad{border-left-color:var(--bad);background:var(--bad-soft)}
+.box.warn{border-left-color:var(--warn);background:var(--warn-soft)}
+.box.good{border-left-color:var(--good);background:var(--good-soft)}
+.box p:first-child{margin-top:0}.box p:last-child{margin-bottom:0}
+.tbl{overflow-x:auto;margin:10px 0;border:1px solid var(--border);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{border-bottom:1px solid var(--border);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:var(--code);font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+code{background:var(--code);padding:1px 5px;border-radius:4px;font-size:.86em;font-family:ui-monospace,Consolas,monospace}
+pre{background:var(--code);border:1px solid var(--border);border-radius:8px;padding:12px;overflow-x:auto;font:13px/1.45 ui-monospace,Consolas,monospace;margin:10px 0}
+.tag{display:inline-block;font-size:.75rem;font-weight:700;padding:1px 8px;border-radius:999px;margin-right:6px;white-space:nowrap}
+.ok{background:var(--good-soft);color:var(--good)}.no{background:var(--bad-soft);color:var(--bad)}.un{background:var(--warn-soft);color:var(--warn)}
+.concept{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:10px 0}
+.concept>div{border:1px solid var(--border);border-radius:8px;padding:10px 12px;background:var(--bg)}
+.concept h4{margin:0 0 4px}
+ol li,ul li{margin:4px 0}
+.next{display:inline-block;margin-top:14px;padding:6px 14px;border-radius:8px;background:var(--accent);color:var(--bg);text-decoration:none;font-weight:600;border:none;cursor:pointer;font-size:.9rem}
+.muted{color:var(--muted)}
+.qa dt{font-weight:600;margin-top:12px}.qa dd{margin:4px 0 0 0}
+.theme{float:right;font-size:.8rem;border:1px solid var(--border);background:var(--card);color:var(--fg);border-radius:6px;padding:3px 8px;cursor:pointer}
+@media (max-width:600px){h1{font-size:1.5rem} details.step{padding:0 12px}}
+</style>
+</head>
+<body>
+<main>
+<button class="theme" onclick="toggleTheme()">Light / dark</button>
+<h1>Update 1 Tutor Guide</h1>
+<p class="sub">Every experiment in CSE499B Update 1, explained simply and checked against the notebooks. Written for Abrar, to explain and defend the whole update, not just Track B.</p>
+
+<div class="box">
+<p><b>How to use this page.</b> There are 8 steps. Open one at a time and press <b>Next step</b> when you are ready. Step 8 is a quiz; its answers are hidden at the very bottom.</p>
+<p><b>Where the numbers come from.</b> Every number is copied from a notebook output or a results CSV in <code>Essential_task_delegation/</code>. <b>"computed"</b> means I worked it out from printed values. <b>"not found"</b> means there is no code or output for it in the repo. "Cell #N" means the N-th cell in the notebook file, counting text and code cells from the top.</p>
+</div>
+
+<div class="box bad">
+<p><b>Read this first: 5 statements in the current report do not match the code.</b> (I put some of these in myself when I copied numbers from the audit doc. They are not in any notebook output.)</p>
+<ol>
+<li><b>Baseline Destroyed IoU.</b> The report says 0.152. The baseline notebook prints <b>0.1658</b>.</li>
+<li><b>Baseline recall 64.1%.</b> Not found anywhere. The baseline's mean recall over the 4 classes is <b>0.791</b> (computed); its Destroyed recall is 0.661.</li>
+<li><b>"U-Net++ raised recall to 78.7%."</b> Wrong direction. Baseline mean recall is 0.791, U-Net++ is 0.787. What really changed is precision: 0.501 → 0.479.</li>
+<li><b>"Raise Destroyed IoU by roughly 70–80% relative"</b> (Track C). With the real baseline (0.1658) it is <b>+55%</b> (Trial 1) and <b>+64%</b> (Trial 2).</li>
+<li><b>Track D "Resize baseline … Destroyed IoU 0.152".</b> Should be 0.1658. RandomCrop 512 is still worse (0.107); RandomCrop 768 is only slightly better (0.177).</li>
+</ol>
+<p>Two smaller notes: every "CE+Dice" model in this update actually uses <b>class-weighted</b> cross-entropy plus Dice; and the Track B CSV notes say "batch 16", but the runs used batch 8.</p>
+</div>
+
+<nav class="steps">
+<a href="#s1">1 Map</a><a href="#s2">2 Basics</a><a href="#s3">3 Track by track</a><a href="#s4">4 Your track</a><a href="#s5">5 Claims vs code</a><a href="#s6">6 Champion</a><a href="#s7">7 Viva prep</a><a href="#s8">8 Quiz</a>
+</nav>
+
+<!-- ============================ STEP 1 ============================ -->
+<details class="step" id="s1" open>
+<summary><span class="num">1</span><h2>Map: which notebook does what</h2></summary>
+
+<div class="tbl"><table>
+<tr><th>Notebook (in Essential_task_delegation/)</th><th>Track / experiment</th><th>What it does</th></tr>
+<tr><td><code>segmentation-model (1).ipynb</code></td><td>Baseline (shared by all tracks)</td><td>U-Net + ResNet-34, class-weighted CE + Dice, resize to 512, batch 16, 40 epochs. Prints the final per-class scores (mIoU 0.4619).</td></tr>
+<tr><td><i>not found</i></td><td>A · Pixel audit</td><td>Only its output picture is saved: <code>Aryan_Task/A1_dataset_class_distribution.png</code>.</td></tr>
+<tr><td><i>not found</i></td><td>A · 10-epoch uniform reference + WeightedRandomSampler</td><td>Only the result CSVs are saved: <code>A1_sampling_baseline.csv</code>, <code>A2_sampling_weighted_random.csv</code>. The sampler recipe is in <code>team_task_assignments.md</code> (Task A2).</td></tr>
+<tr><td><code>Aryan_Task/A3_augmentation_copypaste.ipynb</code></td><td>A · Copy-Paste (listed as next week in the report)</td><td>10-epoch copy-paste run (0.4077 in its CSV). Not part of Update 1's results.</td></tr>
+<tr><td><code>Tamanna_task/B2_UnetPlusPlus.ipynb</code></td><td>B · U-Net++</td><td>Architecture selector set to U-Net++. Batch 8, learning rate 5e-4.</td></tr>
+<tr><td><code>Tamanna_task/B3_UnetPlusPlus_scse.ipynb</code></td><td>B · U-Net++ + scSE</td><td>Same as B2, plus scSE attention in the decoder.</td></tr>
+<tr><td><code>Tamanna_task/B4_DeepLabV3Plus.ipynb</code></td><td>B · DeepLabV3+ (ASPP)</td><td>A finished 40-epoch run (0.4052 in its CSV), even though the report says only "started".</td></tr>
+<tr><td><code>Tamanna_task/B5_MAnet.ipynb</code></td><td>B · MA-Net (next week in the report)</td><td>Finished run, 0.2314: it predicts only background. Not in Update 1.</td></tr>
+<tr><td><code>Noman_task/C_loss_and_backbone_ablation.ipynb</code></td><td>C · all loss runs (C2–C4) and backbones (C5–C6)</td><td>One notebook, edited for each run. The saved version is the <b>last</b> run (C6, EfficientNet-B4, 0.5257). C2–C4 results exist only in CSVs.</td></tr>
+<tr><td><code>Ridita_Task/D1b_resolution_randomcrop512.ipynb</code></td><td>D · RandomCrop 512 + TTA</td><td>Trains a 512-crop model; scores it normally and with TTA.</td></tr>
+<tr><td><code>Ridita_Task/D1c_resolution_randomcrop768.ipynb</code></td><td>D · RandomCrop 768 + TTA</td><td>Trains a 768-crop model (batch 8); scores it normally and with TTA.</td></tr>
+<tr><td><code>Ridita_Task/D3_inference_sliding_window.ipynb</code></td><td>D · Sliding window</td><td>Trains a <b>second, separate</b> 768-crop model with the same settings, then scores it normally, with TTA, and with sliding window.</td></tr>
+<tr><td><code>Champion_Task/*</code>, <code>Aryan_Task/combined-attempt (1).ipynb</code></td><td>After Update 1</td><td>Champion-model runs. Out of scope here.</td></tr>
+</table></div>
+<p class="muted">The Track B notebooks live in a folder named <code>Tamanna_task</code>, while the report credits Track B to you. Be ready to explain that if asked.</p>
+<button class="next" onclick="go('s2')">Next step →</button>
+</details>
+
+<!-- ============================ STEP 2 ============================ -->
+<details class="step" id="s2">
+<summary><span class="num">2</span><h2>Basics, in plain English</h2></summary>
+
+<div class="box good"><p><b>One analogy for everything: sorting rice for stones.</b> You have a huge tray of rice with a few small stones mixed in. Your job is to mark every grain as "rice" or one of three kinds of "stone". Keep this picture in mind for every term below.</p></div>
+
+<div class="concept">
+<div><h4>Semantic segmentation</h4><p>Give every pixel a class label. Here the classes are Background, Intact, Damaged and Destroyed. <i>Rice: you label every single grain.</i></p></div>
+<div><h4>IoU (Intersection over Union)</h4><p>For one class: the overlap between what you marked and what is true, divided by everything either of you marked. 1 is perfect, 0 is no overlap. <code>IoU = TP / (TP + FP + FN)</code>.</p></div>
+<div><h4>mIoU (mean IoU)</h4><p>The average IoU over the 4 classes. <b>Background is included</b>, and it scores about 0.93, which lifts the average. A small mIoU change can hide a big Destroyed change.</p></div>
+<div><h4>Precision</h4><p>Of the pixels you called Destroyed, how many really are. <i>Of the "stones" you picked out, how many are real stones.</i> Low precision = many false alarms.</p></div>
+<div><h4>Recall</h4><p>Of the truly Destroyed pixels, how many you found. <i>Of all the stones in the tray, how many you caught.</i> Low recall = many misses.</p></div>
+<div><h4>Class imbalance</h4><p>92.77% of pixels are Background and only 0.33% are Destroyed. A model can look "accurate" by saying Background everywhere. <i>A tray that is 93% rice.</i></p></div>
+<div><h4>Ablation study</h4><p>Change one thing, keep everything else the same, and measure the effect. <i>Try better light, then a finer sieve, one at a time, so you know which one helped.</i></p></div>
+<div><h4>Baseline</h4><p>The reference model that every experiment is compared with. Here: U-Net + ResNet-34, class-weighted CE + Dice, mIoU 0.4619. <i>Your normal sorting method.</i></p></div>
+<div><h4>Phase gate</h4><p>A decision rule agreed in advance: if the model reaches mIoU &gt; 0.52 <b>and</b> Destroyed IoU &gt; 0.30, move on; if not, start Phase 2 (more data). <i>"If you still miss too many stones by Friday, buy a new tool."</i></p></div>
+</div>
+
+<h4>A tiny made-up example</h4>
+<p>There are 100 truly Destroyed pixels. The model marks 150 pixels as Destroyed, and 60 of them are right.</p>
+<ul>
+<li>TP (true positives) = 60, FP (false alarms) = 150 − 60 = 90, FN (misses) = 100 − 60 = 40.</li>
+<li>Precision = 60 / 150 = 0.40. Recall = 60 / 100 = 0.60. IoU = 60 / (60 + 90 + 40) = 0.32.</li>
+</ul>
+<p>IoU punishes <b>both</b> false alarms and misses. That is why a model with high recall can still have a low IoU.</p>
+<button class="next" onclick="go('s3')">Next step →</button>
+</details>
+
+<!-- ============================ STEP 3 ============================ -->
+<details class="step" id="s3">
+<summary><span class="num">3</span><h2>Track by track: concepts, reasoning, and every experiment</h2></summary>
+
+<p>Baseline per-class scores (from <code>segmentation-model (1).ipynb</code>, cell #11). Every experiment below is compared with these numbers.</p>
+<div class="tbl"><table>
+<tr><th>Class</th><th>IoU</th><th>Precision</th><th>Recall</th></tr>
+<tr><td>Background</td><td class="n">0.9255</td><td class="n">0.9935</td><td class="n">0.9312</td></tr>
+<tr><td>Intact</td><td class="n">0.4926</td><td class="n">0.5357</td><td class="n">0.8596</td></tr>
+<tr><td>Damaged</td><td class="n">0.2636</td><td class="n">0.2955</td><td class="n">0.7101</td></tr>
+<tr><td>Destroyed</td><td class="n">0.1658</td><td class="n">0.1812</td><td class="n">0.6613</td></tr>
+<tr><td><b>Mean of 4</b></td><td class="n"><b>0.4619</b></td><td class="n">0.501 (computed)</td><td class="n">0.791 (computed)</td></tr>
+</table></div>
+
+<div class="box warn"><p><b>A fact that shapes every track.</b> The baseline's cross-entropy is <b>class-weighted</b> (cell #8). The weights are computed from the audit's pixel counts: Background 0.0103, Intact 0.1628, Damaged 0.9122, Destroyed 2.9147 (computed from the code's formula). A Destroyed pixel counts about <b>283×</b> a Background pixel. So the baseline already over-predicts the rare classes: high recall, low precision.</p></div>
+
+<!-- Track A -->
+<h3>Track A — Data sampling (Aryan Sami)</h3>
+<div class="concept">
+<div><h4>Concept: two kinds of imbalance</h4><p><b>Pixel level:</b> Destroyed is 0.33% of pixels. <b>Image level:</b> Destroyed appears in 37% of images (2,385 of 6,443). So most batches do contain some Destroyed pixels, just very few of them.</p></div>
+<div><h4>Concept: weighted sampling</h4><p>Instead of drawing every image equally often, draw images with rare classes more often (with replacement). It changes <i>what</i> the model sees, not <i>how</i> mistakes are scored.</p></div>
+<div><h4>Reasoning</h4><p>Fix the data before touching the model. If rare buildings are seen more often, every later track benefits. Keep batch size 16 so BatchNorm (layers that normalise using batch statistics) stays stable.</p></div>
+</div>
+<div class="tbl"><table>
+<tr><th>What changed</th><th>Why we tried it</th><th>Where in the code</th><th>Result vs baseline</th><th>What it means</th><th>Confound</th></tr>
+<tr><td>Nothing in the model. Counted pixels per class over every mask.</td><td>To measure how rare each class really is.</td><td>Notebook <i>not found</i>. Output: <code>A1_dataset_class_distribution.png</code>. The same counts are hard-coded in the baseline loss (cell #8) to build class weights.</td><td>Background 92.77%, Intact 5.86%, Damaged 1.05%, Destroyed 0.33%. 63% of images have no Destroyed pixel.</td><td>Destroyed is tiny at pixel level and mostly appears as small patches.</td><td>Counted over all 6,443 images, validation included. Using these counts for class weights lets a little validation information into training (minor).</td></tr>
+<tr><td>Shuffle → WeightedRandomSampler (weights 10 / 5 / 1 per image).</td><td>Show images with Destroyed (10×) and Damaged (5×) more often.</td><td>Notebook <i>not found</i>. Recipe: <code>team_task_assignments.md</code>, Task A2. Result: <code>A2_sampling_weighted_random.csv</code>.</td><td>10-epoch runs: mIoU 0.3978 → 0.4051 (+0.0073). Destroyed IoU 0.090 → 0.102. Mean recall 0.806 → 0.792, mean precision 0.438 → 0.445.</td><td>A small gain. It sits on top of a loss that already weights Destroyed 283×.</td><td>10 epochs, not 40: compare only with the 10-epoch reference. Single run. Learning rate etc. <i>not found</i> (no notebook).</td></tr>
+</table></div>
+
+<!-- Track B -->
+<h3>Track B — Architecture (Abrar Mohammed Tanzim Alam)</h3>
+<div class="concept">
+<div><h4>Concept: encoder and decoder</h4><p>The <b>encoder</b> (ResNet-34) shrinks the image into rich features. The <b>decoder</b> grows them back to a full-size mask. <b>Skip connections</b> pass fine detail from encoder to decoder.</p></div>
+<div><h4>Concept: what an architecture change can do</h4><p>A better decoder can keep small details (rubble, roof edges) or add context (what surrounds a building). It cannot fix a loss that rewards the wrong thing.</p></div>
+<div><h4>Reasoning</h4><p>Hold the loss constant (class-weighted CE + Dice) and swap only the decoder, so any change is due to the architecture. (In practice batch size and learning rate also changed; see the Confound column.)</p></div>
+</div>
+<div class="tbl"><table>
+<tr><th>What changed</th><th>Why we tried it</th><th>Where in the code</th><th>Result vs baseline</th><th>What it means</th><th>Confound</th></tr>
+<tr><td>U-Net → U-Net++</td><td>Nested skip paths might keep small rubble that a plain U-Net loses.</td><td><code>B2_UnetPlusPlus.ipynb</code> cell #3 (<code>EXPERIMENT_ID</code>, <code>BATCH_SIZE = 8</code>, <code>LEARNING_RATE = 5e-4</code>), cell #7 (<code>smp.UnetPlusPlus</code>), cell #9 (metrics + CSV).</td><td>mIoU 0.4405 (−0.0214). Destroyed IoU 0.131 vs 0.166. Mean recall 0.787 vs 0.791 (same). Mean precision 0.479 vs 0.501 (lower).</td><td>Worse here, mainly because of more false alarms. Destroyed precision fell 0.181 → 0.140.</td><td>Batch 8 vs 16, learning rate 5e-4 vs 1e-4, weight decay 1e-4 vs 1e-5. Single run.</td></tr>
+<tr><td>+ scSE attention in the decoder</td><td>Let the decoder boost useful channels and pixels and mute noisy ones.</td><td><code>B3_UnetPlusPlus_scse.ipynb</code> cell #3 and cell #7 (<code>decoder_attention_type="scse"</code>).</td><td>mIoU 0.4367 (−0.0252; −0.0038 vs U-Net++). Destroyed IoU 0.125. Training time 8.0 h vs 4.8 h.</td><td>No gain, and much slower. The −0.0038 vs U-Net++ is smaller than run-to-run noise (0.0067, see Step 5).</td><td>vs baseline: same as U-Net++. vs U-Net++: a clean single change, but one run each.</td></tr>
+<tr><td>U-Net → DeepLabV3+ (ASPP)</td><td>ASPP looks at several context sizes at once, which may help buildings of different sizes.</td><td><code>B4_DeepLabV3Plus.ipynb</code> cell #7 (<code>smp.DeepLabV3Plus</code>).</td><td>Report: "started". The notebook has a finished run: mIoU 0.4052, Destroyed IoU 0.092 (CSV).</td><td>Worse than the baseline under these settings.</td><td>Same as U-Net++ (batch 8, learning rate 5e-4). Not reported in Update 1.</td></tr>
+</table></div>
+
+<!-- Track C -->
+<h3>Track C — Loss function (Abdullah Al Noman)</h3>
+<div class="concept">
+<div><h4>Concept: the loss decides what "wrong" costs</h4><p>The loss is the score the model tries to lower during training. If misses and false alarms cost different amounts, the model learns a different balance.</p></div>
+<div><h4>Concept: Tversky index</h4><p><code>TI = TP / (TP + α·FP + β·FN)</code>. With β &gt; α, a miss costs more than a false alarm. With α = β = 0.5 it is plain Dice. It is computed per class and averaged, so every class counts equally, no matter how few pixels it has.</p></div>
+<div><h4>Concept: Lovász-Softmax</h4><p>A smooth stand-in for IoU that the model can learn from directly (a "convex surrogate"). It brings the training goal closer to the score we report.</p></div>
+<div><h4>Reasoning</h4><p>Imbalance is mostly a scoring problem: plain cross-entropy is dominated by the 93% Background. Change only the loss, keep U-Net + ResNet-34, resize 512, batch 16, 40 epochs.</p></div>
+</div>
+<div class="tbl"><table>
+<tr><th>What changed</th><th>Why we tried it</th><th>Where in the code</th><th>Result vs baseline</th><th>What it means</th><th>Confound</th></tr>
+<tr><td>Weighted CE + Dice → Focal Tversky (α 0.3, β 0.7, γ 2.0)</td><td>Penalise misses (β) and give each class equal say.</td><td>Loss cell #7 of <code>C_loss_and_backbone_ablation.ipynb</code> (saved version shows these values inside <code>PhasedCompoundLoss</code>). The exact C2 cell was overwritten. Result: <code>C2_loss_focal_tversky_gamma1.csv</code>.</td><td>mIoU 0.5181 (+0.0562). Destroyed IoU 0.257 (+55%). Mean precision 0.602 (vs 0.501), mean recall 0.701 (vs 0.791).</td><td>Big gain, but it came from <b>fewer false alarms</b>, not more recall. The weighted-CE baseline over-predicted; this loss stopped that.</td><td>The class weights were also dropped (part of the swap). Single run. The CSV file name says "gamma1", but its content says γ = 2.0.</td></tr>
+<tr><td>Focal Tversky (α 0.25, β 0.75, γ 1.33)</td><td>Weight misses even more, with a smaller γ.</td><td>Same cell, values changed (not saved). Result: <code>C3_loss_focal_tversky_gamma2.csv</code>.</td><td>mIoU 0.5203 (+0.0584). Destroyed IoU 0.273 (+64%). Precision 0.605, recall 0.708.</td><td>Best Destroyed IoU in the update. Only +0.0022 mIoU over Trial 1, which is within noise.</td><td>Three settings changed at once (α, β, γ). The file name says "gamma2", but its content says γ = 1.33.</td></tr>
+<tr><td>Phased: Focal Tversky for epochs 1–32, then 0.6·FT + 0.4·Lovász for epochs 33–40</td><td>Learn rare classes first, then fine-tune directly towards IoU.</td><td>Cell #7: <code>class PhasedCompoundLoss</code>, <code>lovasz_start_epoch = int(40 × 0.8) = 32</code>. Cell #9 calls <code>criterion.set_epoch(epoch)</code> each epoch. Result: <code>C4_loss_phased_compound.csv</code>.</td><td>mIoU 0.5233 (+0.0614). Destroyed IoU 0.272. Precision 0.626, recall 0.680.</td><td>Best mIoU in the update. vs Trial 1 (same α, β, γ): +0.0052.</td><td>Single run; +0.003 over Trial 2 is not meaningful (see Step 5).</td></tr>
+</table></div>
+
+<!-- Track D -->
+<h3>Track D — Resolution and inference (Ridita Afrin Riya)</h3>
+<div class="concept">
+<div><h4>Concept: detail vs context</h4><p>Images are 1024×1024. Resizing to 512 keeps only 25% of the pixels, so small rubble blurs. Cropping keeps full detail but shows less of the scene (less context).</p></div>
+<div><h4>Concept: test-time augmentation (TTA)</h4><p>Predict on flipped and rotated copies of the image, undo each change, and average. Satellite images have no "up", so every view is equally valid. Averaging smooths out one-off mistakes.</p></div>
+<div><h4>Concept: sliding window</h4><p>A model trained on small crops can still label a big image: slide a window across it, predict each window, and average where windows overlap.</p></div>
+<div><h4>Reasoning</h4><p>Resolution is cheap to test and needs no new model. TTA and sliding window are "free" gains: no retraining, only extra prediction time.</p></div>
+</div>
+<div class="tbl"><table>
+<tr><th>What changed</th><th>Why we tried it</th><th>Where in the code</th><th>Result vs baseline</th><th>What it means</th><th>Confound</th></tr>
+<tr><td>Resize 512 → RandomCrop 512 at native resolution</td><td>Keep full pixel detail.</td><td><code>D1b_...512.ipynb</code> cell #6: train <b>and</b> validation transforms use <code>A.RandomCrop</code>.</td><td>mIoU 0.4452 (−0.0167). Destroyed IoU 0.107; Destroyed precision 0.109, recall 0.847.</td><td>Worse. This model floods the image with Destroyed predictions (very high recall, very low precision).</td><td>Validated on random 512 crops, not whole resized images, so it scores different pixels from the baseline. Single run.</td></tr>
+<tr><td>RandomCrop 768</td><td>More detail and more context per crop.</td><td><code>D1c_...768.ipynb</code> cell #3 (<code>IMAGE_SIZE = 768</code>, <code>BATCH_SIZE = 8</code>), cell #6.</td><td>mIoU 0.4757 (+0.0138). Destroyed IoU 0.177 vs 0.166.</td><td>A small gain. A second identical run (D3) scored 0.4824, so the gain is about the size of the noise.</td><td>Batch 8 vs 16. Random-crop validation. No gradient accumulation.</td></tr>
+<tr><td>+ 8-view TTA</td><td>Free boost by averaging views.</td><td>Cell #10, <code>predict_with_tta</code> (same in D1b, D1c, D3).</td><td>D1c 0.4757 → 0.4902 (+0.0145). D1b 0.4452 → 0.4540 (+0.0088). D3 0.4824 → 0.4864 (+0.0040).</td><td>Always positive, but the size varies a lot between runs.</td><td>Each evaluation pass draws <b>new random crops</b>, so the TTA pass and the normal pass score different pixels. Only 7 of the 8 views are distinct.</td></tr>
+<tr><td>+ Sliding window (512 windows, 128 overlap)</td><td>Let crop-trained models label full 1024 images.</td><td><code>D3_...sliding_window.ipynb</code> cell #10, <code>sliding_window_predict</code>: plain average of overlapping logits, no centre weighting.</td><td>0.4819 vs 0.4824 standard (−0.0005).</td><td>No gain yet. It ran on 768 validation crops (4 windows each), not on full 1024 images, despite the printed label.</td><td>Windows (512) are smaller than the training crops (768), so the model sees less context than it was trained on. Random crops again.</td></tr>
+</table></div>
+<button class="next" onclick="go('s4')">Next step →</button>
+</details>
+
+<!-- ============================ STEP 4 ============================ -->
+<details class="step" id="s4">
+<summary><span class="num">4</span><h2>Your track in depth, and the logic of your sprint</h2></summary>
+
+<h3>U-Net vs U-Net++</h3>
+<p><b>U-Net:</b> one long skip connection per level. Fine detail from the encoder jumps straight to the decoder.</p>
+<pre>
+U-Net
+ enc1 ─────────────────────────────► dec1 ──► mask
+   ↓                                  ↑
+ enc2 ───────────────────► dec2 ──────┘
+   ↓                        ↑
+ enc3 ─────────► dec3 ──────┘
+   ↓              ↑
+ enc4 ──► bottleneck
+</pre>
+<p><b>U-Net++:</b> the long jumps are replaced by a grid of small decoder nodes. Each node takes <b>all earlier nodes on its row</b> plus an upsampled node from the row below. Encoder features are refined step by step before they meet the decoder, which narrows the "semantic gap" (the difference between raw edges and meaningful features).</p>
+<pre>
+U-Net++   (→ = dense skip along the row,  ↗ = upsample from the row below)
+ X00 ──► X01 ──► X02 ──► X03 ──► X04 ──► mask
+  ↓     ↗       ↗       ↗       ↗
+ X10 ──► X11 ──► X12 ──► X13
+  ↓     ↗       ↗       ↗
+ X20 ──► X21 ──► X22
+  ↓     ↗       ↗
+ X30 ──► X31
+  ↓     ↗
+ X40
+</pre>
+
+<h3>scSE (concurrent spatial and channel squeeze-and-excitation)</h3>
+<p>A small attention block that learns <b>how much to trust</b> each channel and each pixel, and scales them up or down. It sits inside each decoder block.</p>
+<pre>
+feature map  (C channels × H × W)
+   ├─► cSE: average each channel over H×W ─► tiny MLP ─► one weight per channel (0..1)
+   │        ─► multiply each channel by its weight         ("which features matter")
+   └─► sSE: 1×1 conv over channels ─► one weight per pixel (0..1)
+            ─► multiply each pixel by its weight            ("where to look")
+ output = cSE result + sSE result     (SMP adds the two)
+</pre>
+
+<h3>ASPP (atrous spatial pyramid pooling, used in DeepLabV3+)</h3>
+<p>Several convolutions look at the same features with different "hole" spacing (dilation), so each branch sees a different context size. Then the branches are joined.</p>
+<pre>
+encoder features
+   ├─ 1×1 conv                      (very local)
+   ├─ 3×3 conv, dilation 12         (medium context)
+   ├─ 3×3 conv, dilation 24         (wide context)
+   ├─ 3×3 conv, dilation 36         (very wide context)
+   └─ global average pool           (whole image)
+   ─► concatenate ─► 1×1 conv ─► decoder (+ one low-level skip) ─► mask
+</pre>
+
+<h3>Why did U-Net++ lower precision and mIoU?</h3>
+<div class="box warn"><p><b>Correction first:</b> U-Net++ did <b>not</b> raise recall. Mean recall is 0.787 against the baseline's 0.791. Per class, Intact recall went up (0.860 → 0.884), Destroyed stayed about the same (0.661 → 0.668), and Damaged went down (0.710 → 0.677).</p></div>
+<p>What clearly changed is <b>precision</b>. It fell in all three building classes: Intact 0.536 → 0.503, Damaged 0.296 → 0.279, Destroyed 0.181 → 0.140. More false alarms mean a lower IoU, so mIoU dropped (0.4619 → 0.4405).</p>
+<p><b>Likely reasons</b> (hypotheses, not proven):</p>
+<ol>
+<li>The loss rewards over-prediction. With Destroyed weighted 283×, any model is pushed to paint rare classes generously. Extra fine-detail paths give it more ways to do that, such as speckles on textured roofs and roads.</li>
+<li>Training settings also changed: batch 8 instead of 16 and learning rate 5e-4 instead of 1e-4. Noisier, faster training alone could cost precision. With one run each, we cannot separate these effects.</li>
+</ol>
+
+<h3>Why didn't scSE help?</h3>
+<ol>
+<li>Attention only re-weights features. It cannot change what the loss rewards, and the loss still rewards over-prediction.</li>
+<li>The difference from plain U-Net++ (−0.0038) is smaller than run-to-run noise (0.0067), so "no measurable effect" is the honest summary.</li>
+<li>It cost a lot: 8.0 h vs 4.8 h of training.</li>
+</ol>
+<p>Fair next test: U-Net++ (with and without scSE) using the <b>Focal Tversky / phased loss</b> and the baseline's batch size and learning rate.</p>
+
+<h3>The logic of your sprint design</h3>
+<div class="concept">
+<div><h4>One variable per track</h4><p>If two things change together, you cannot tell which one caused the result. One change per run lets you <b>attribute</b> the gain. Lesson from Update 1: tracks B and D also changed batch size or learning rate, which weakens their conclusions.</p></div>
+<div><h4>Four tracks in parallel</h4><p>Kaggle gives about 30 GPU hours per person per week, and a 40-epoch run takes hours. Four people testing four different levers at once covers the space in about two weeks.</p></div>
+<div><h4>Phase gates</h4><p>The targets (mIoU &gt; 0.52, Destroyed &gt; 0.30) were fixed <b>before</b> seeing results. That stops "moving the goalposts" and makes the decision (Phase 2 or not) objective.</p></div>
+<div><h4>Champion Model</h4><p>Each track finds its best lever alone. The Champion combines the winners, because the real question is whether the gains <b>add up</b>, cancel out, or clash.</p></div>
+</div>
+<button class="next" onclick="go('s5')">Next step →</button>
+</details>
+
+<!-- ============================ STEP 5 ============================ -->
+<details class="step" id="s5">
+<summary><span class="num">5</span><h2>Check our claims against the code</h2></summary>
+
+<h3>a) 0.32 vs 0.4619 — which baseline is right?</h3>
+<p><span class="tag ok">CORRECT</span> <b>0.4619</b> is printed by the baseline notebook (<code>segmentation-model (1).ipynb</code>, cell #11: "Mean IoU: 0.4619").</p>
+<p><span class="tag no">WRONG</span> <b>0.32</b> does not appear in any notebook output or CSV. The current report no longer uses it; it now says 0.3978 for the 10-epoch screening run (matches <code>A1_sampling_baseline.csv</code>) and 0.4619 for full training.</p>
+
+<h3>b) How is γ applied in our Focal Tversky code?</h3>
+<p>The notebooks install <code>segmentation-models-pytorch==0.3.4</code>. In that version, <code>TverskyLoss</code> does this:</p>
+<pre>
+# simplified from SMP 0.3.4
+TI_c   = TP_c / (TP_c + alpha*FP_c + beta*FN_c)   # per class; alpha → false alarms, beta → misses
+loss_c = 1 - TI_c                                 # classes absent from the batch get 0, but still count in the mean
+loss   = mean(loss_c over the 4 classes) ** gamma # gamma is applied ONCE, after averaging
+</pre>
+<p><span class="tag no">NOT THE PAPER</span> The original Focal Tversky paper (Abraham &amp; Khan, 2019) uses <code>Σ_c (1 − TI_c)^(1/γ)</code>: per class, with exponent 1/γ. With γ = 4/3 that exponent is 0.75. Ours is neither per class nor 1/γ: it is the <b>class average raised to γ</b>.</p>
+<p><b>What γ = 1.33 actually does here.</b> Raising the loss to a power above 1 scales the gradient by <code>γ · L^(γ−1)</code>, which <b>shrinks as the loss gets smaller</b>. Worked example (made-up loss values):</p>
+<div class="tbl"><table>
+<tr><th>Averaged loss L</th><th>Gradient scale, γ = 2.0</th><th>Gradient scale, γ = 1.33</th><th>Paper style, exponent 0.75</th></tr>
+<tr><td class="n">0.5</td><td class="n">1.00</td><td class="n">1.06</td><td class="n">0.89</td></tr>
+<tr><td class="n">0.2</td><td class="n">0.40</td><td class="n">0.78</td><td class="n">1.12</td></tr>
+</table></div>
+<p>So in our code γ acts like a <b>learning-rate dimmer</b> that eases off as training improves. It does <b>not</b> give rare classes extra focus, because the averaging happens before γ. The class balance in Track C comes from the per-class averaging and β &gt; α, not from γ. Also, C3 changed α, β and γ together, so γ's own effect is unknown.</p>
+
+<h3>c) TTA views</h3>
+<p><span class="tag ok">CONFIRMED</span> "Both flips" equals a 180° rotation (checked numerically), so the 180° view is counted twice. Only <b>7 of the 8 views are distinct</b>.</p>
+<p><b>Missing view:</b> the full set of 8 square symmetries has two diagonal flips. View 8 (90° rotation + horizontal flip) is the anti-diagonal flip. The <b>main-diagonal flip (transpose)</b> is missing, for example <code>x.transpose(2, 3)</code>. The inverse mappings in the code are all correct.</p>
+
+<h3>d) Why 0.4824 in D3 but 0.4757 in D1c?</h3>
+<p><span class="tag ok">MOSTLY YES, BUT NOT ONLY</span> Two random effects are mixed together:</p>
+<ol>
+<li><b>Different trained models.</b> D1c and D3 each train their own 40-epoch model from scratch with identical settings (both training tables show 40 epochs). No seeds are fixed, so the weights differ.</li>
+<li><b>Random validation crops.</b> The validation transform is <code>A.RandomCrop</code>, so every evaluation pass scores different pixels.</li>
+</ol>
+<p>We cannot separate the two. The useful takeaway: <b>two identical runs differed by 0.0067 mIoU</b>. Treat smaller differences as noise.</p>
+
+<h3>e) Which class does each recall and precision belong to?</h3>
+<div class="tbl"><table>
+<tr><th>Number in the report</th><th>What it really is</th><th>Verdict</th></tr>
+<tr><td>Baseline recall 64.1%</td><td>Not found. Baseline mean recall (4 classes) = 0.791 (computed); Destroyed recall = 0.661.</td><td><span class="tag no">WRONG</span></td></tr>
+<tr><td>Sampler: recall 80.6% → 79.2%</td><td>The CSV <code>recall</code> column. Most likely the mean of 4 classes (same template as the other notebooks; the A1/A2 notebooks are not found).</td><td><span class="tag un">LIKELY</span></td></tr>
+<tr><td>U-Net++ recall 78.7%, precision 0.48</td><td>Mean of 4 classes, Background included (<code>rec.mean()</code>, <code>prec.mean()</code> in B2 cell #9).</td><td><span class="tag ok">CORRECT</span> (but "raised" is wrong)</td></tr>
+<tr><td>scSE recall 79.2%</td><td>Mean of 4 classes (B3 CSV).</td><td><span class="tag ok">CORRECT</span></td></tr>
+</table></div>
+<p>Because Background (recall about 0.93) is inside every mean, these averages hide what happens to Destroyed. For a viva, quote <b>Destroyed</b> precision and recall.</p>
+
+<h3>f) Seeds, leakage and the split</h3>
+<ul>
+<li><span class="tag no">NO SEEDS</span> No <code>torch.manual_seed</code>, <code>np.random.seed</code> or <code>random.seed</code> in any notebook. Only the split is seeded (<code>random_state=42</code>).</li>
+<li><span class="tag ok">SAME SPLIT</span> All 9 notebooks build 6,443 pairs with the same code and print Train 5,798 / Val 645.</li>
+<li><span class="tag ok">NO DUPLICATE-IMAGE LEAK</span> Pairs are grouped by post-disaster image (optical only), so one image cannot sit in both train and val.</li>
+<li><span class="tag un">POSSIBLE</span> Neighbouring tiles from the same disaster event can land in both sets (random split by image, not by event). Not checked.</li>
+<li><span class="tag un">OPTIMISTIC</span> The best epoch is picked by validation mIoU, and the score is reported on that same validation set. There is no separate test set.</li>
+<li><span class="tag un">MINOR</span> Class weights come from pixel counts over all 6,443 images, validation included.</li>
+<li><span class="tag un">LATER WORK</span> Copy-Paste (A3) extracts building cut-outs from all pairs, validation included. It is not in Update 1's results.</li>
+</ul>
+
+<h3>g) All confounds</h3>
+<div class="tbl"><table>
+<tr><th>Confound</th><th>Affects</th></tr>
+<tr><td>Batch 8 instead of 16</td><td>Track B (all), D1c, D3</td></tr>
+<tr><td>Learning rate 5e-4 and weight decay 1e-4 instead of 1e-4 and 1e-5</td><td>Track B (all)</td></tr>
+<tr><td>10-epoch screening vs 40-epoch baseline</td><td>Track A (compare only with the 0.3978 reference)</td></tr>
+<tr><td>Random-crop validation vs whole resized images</td><td>D1b, D1c, D3</td></tr>
+<tr><td>Different random crops in each evaluation pass</td><td>TTA and sliding-window gains</td></tr>
+<tr><td>Class weights removed together with the loss swap</td><td>Track C</td></tr>
+<tr><td>Single runs, no seeds</td><td>Everything</td></tr>
+<tr><td>Best epoch chosen on the reporting set</td><td>Everything</td></tr>
+</table></div>
+<p><b>Is 0.5233 vs 0.5203 meaningful?</b> <span class="tag no">NO</span> The gap is 0.0030. Two identical runs differed by 0.0067. To claim a winner, run each setting about 3 times with different seeds and compare the averages.</p>
+<button class="next" onclick="go('s6')">Next step →</button>
+</details>
+
+<!-- ============================ STEP 6 ============================ -->
+<details class="step" id="s6">
+<summary><span class="num">6</span><h2>Champion Model</h2></summary>
+
+<h3>Current winner in each track (as of Update 1)</h3>
+<div class="tbl"><table>
+<tr><th>Track</th><th>Winner</th><th>Evidence</th><th>How solid?</th></tr>
+<tr><td>Data</td><td>WeightedRandomSampler</td><td>+0.0073 at 10 epochs</td><td>Weak: short run, small gain</td></tr>
+<tr><td>Architecture</td><td>Plain U-Net</td><td>U-Net++, scSE and DeepLabV3+ were all lower</td><td>Weak: those runs had different batch size and learning rate</td></tr>
+<tr><td>Loss</td><td>Phased FT → Lovász (best mIoU 0.5233); FT 0.25/0.75/1.33 best Destroyed (0.273)</td><td>+0.06 mIoU over baseline</td><td><b>Strong</b>: much bigger than the noise</td></tr>
+<tr><td>Resolution</td><td>RandomCrop 768</td><td>+0.0138 (and 0.4824 in a second run)</td><td>Medium: near the noise; validation differs</td></tr>
+<tr><td>Inference</td><td>8-view TTA</td><td>+0.004 to +0.0145</td><td>Medium: always positive</td></tr>
+</table></div>
+
+<h3>What could go wrong when we combine them</h3>
+<ol>
+<li><b>U-Net++ was only tested with the weighted CE + Dice loss.</b> With the Tversky loss, its extra detail might help instead of hurting. Its "loss" may not carry over.</li>
+<li><b>Double correction for imbalance.</b> The sampler shows rare images 10× more often, and Tversky already gives rare classes equal weight. Together they may over-predict again and lose precision.</li>
+<li><b>The loss was tested at 512 resize with batch 16.</b> At 768 crops, batch 8 or smaller, the loss behaves differently: fewer images per batch means noisier per-class terms.</li>
+<li><b>TTA was only measured on weighted-CE models.</b> Its gain on a Tversky model is unknown.</li>
+<li><b>Sliding window</b> should use windows the same size as the training crops (768), not 512.</li>
+<li><b>Memory.</b> U-Net++ with 768 crops and a larger encoder forces an even smaller batch.</li>
+</ol>
+
+<h3>Phase gates</h3>
+<p><span class="tag ok">PASSED</span> <b>mIoU &gt; 0.52</b>: C3 (0.5203, only just, within noise) and C4 (0.5233).</p>
+<p><span class="tag no">NOT YET</span> <b>Destroyed IoU &gt; 0.30</b>: best is 0.273 (C3). This is the gate still missing.</p>
+<p class="muted">Later work exists (for example, a ResNet-50 run at 0.5296 and the Champion_Task runs), but it came after Update 1, so it is left out here.</p>
+<button class="next" onclick="go('s7')">Next step →</button>
+</details>
+
+<!-- ============================ STEP 7 ============================ -->
+<details class="step" id="s7">
+<summary><span class="num">7</span><h2>Viva prep: 8 likely supervisor questions</h2></summary>
+<dl class="qa">
+<dt>1. Why did each track change only one thing?</dt>
+<dd>So we can say which change caused the result. If two things change together, the effect cannot be attributed. Where a run had to change batch size or learning rate too, we state it.</dd>
+<dt>2. Your U-Net++ runs used batch 8 and a higher learning rate. How can you blame the architecture?</dt>
+<dd>We can't fully. The result is confounded. We will re-run U-Net++ with the baseline's batch size and learning rate, and with the new loss, before deciding.</dd>
+<dt>3. Is the phased loss (0.5233) really better than Focal Tversky (0.5203)?</dt>
+<dd>Not proven. Two identical runs in our project differed by 0.0067, which is bigger than this 0.003 gap. We need repeated runs with different seeds.</dd>
+<dt>4. Why did Focal Tversky improve mIoU so much?</dt>
+<dd>Mostly by cutting false alarms. Mean precision rose from 0.501 to 0.602. The baseline's weighted cross-entropy (Destroyed weighted about 283×) made it over-predict rare classes.</dd>
+<dt>5. How do you pick the best epoch? Isn't that tuning on the validation set?</dt>
+<dd>Yes. We keep the epoch with the best validation mIoU and report on the same set, so the numbers are slightly optimistic. Next step: a separate held-out test split.</dd>
+<dt>6. Does mIoU include background? Why does that matter?</dt>
+<dd>Yes. Background IoU is about 0.93 and lifts the average. That is why we also track Destroyed IoU separately, and why it has its own gate (&gt; 0.30).</dd>
+<dt>7. Why did 512 random crops do worse than resizing?</dt>
+<dd>That model over-predicts Destroyed (recall 0.847, precision 0.109). A likely reason is too little context per crop. It was also validated on random crops, so the comparison is not exact. 768 crops did slightly better.</dd>
+<dt>8. Which gate have you passed, and what is your plan for the other?</dt>
+<dd>mIoU &gt; 0.52 is passed (0.5233). Destroyed &gt; 0.30 is not (best 0.273). Next: combine the winners in the Champion Model; if Destroyed is still below 0.30, start Phase 2 with external data.</dd>
+</dl>
+<button class="next" onclick="go('s8')">Next step →</button>
+</details>
+
+<!-- ============================ STEP 8 ============================ -->
+<details class="step" id="s8">
+<summary><span class="num">8</span><h2>Quiz: check your understanding</h2></summary>
+<ol>
+<li>A model marks 200 pixels as Destroyed. 50 of them are correct. There are 100 truly Destroyed pixels. What are precision, recall and IoU?</li>
+<li>In our TTA code, which two views are the same, and which view is missing?</li>
+<li>In our SMP code, is γ applied per class or after averaging? What does γ &gt; 1 do to the gradient as the loss gets smaller?</li>
+<li>Name two confounds in the U-Net vs U-Net++ comparison.</li>
+<li>Which phase-gate target has been met, and which has not?</li>
+<li>Why can't you compare the sampler's 0.4051 directly with the 0.4619 baseline?</li>
+</ol>
+<p class="muted">Answers are at the very bottom of the page.</p>
+</details>
+
+<details class="step" id="answers">
+<summary><span class="num">✓</span><h2>Quiz answers</h2></summary>
+<ol>
+<li>TP 50, FP 150, FN 50. Precision 50/200 = 0.25. Recall 50/100 = 0.50. IoU 50/(50 + 150 + 50) = 0.20.</li>
+<li>"Both flips" equals the 180° rotation. The missing view is the main-diagonal flip (transpose).</li>
+<li>After averaging over classes: <code>mean(1 − TI) ** γ</code>. With γ &gt; 1 the gradient shrinks as the loss gets smaller.</li>
+<li>Batch size 8 vs 16; learning rate 5e-4 vs 1e-4 (also weight decay 1e-4 vs 1e-5). And single runs with no seeds.</li>
+<li>mIoU &gt; 0.52 is met (0.5233). Destroyed IoU &gt; 0.30 is not (best 0.273).</li>
+<li>It is a 10-epoch run. Compare it with the 10-epoch uniform reference (0.3978), not the 40-epoch baseline.</li>
+</ol>
+</details>
+
+</main>
+<script>
+function go(id){
+  var el=document.getElementById(id);
+  if(!el) return;
+  el.open=true;
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.querySelectorAll('nav.steps a').forEach(function(a){
+  a.addEventListener('click',function(e){e.preventDefault();go(a.getAttribute('href').slice(1));});
+});
+function toggleTheme(){
+  var r=document.documentElement;
+  var dark=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+  r.setAttribute('data-theme',dark?'light':'dark');
+}
+</script>
+</body>
+</html>

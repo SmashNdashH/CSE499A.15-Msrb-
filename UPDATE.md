@@ -4,7 +4,7 @@
 
 # Post-Disaster Damage Assessment and Rescue Guidance
 
-> **CSE499B – Section 15, Group 5, Update 1**
+> **CSE499B – Section 13, Group 5, Update 1**
 > 
 > **Team:** 
 > - Abdullah Al Noman (2022095042)

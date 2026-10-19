@@ -1,0 +1,43 @@
+{
+ "task": "R16b",
+ "rule": "p' ∝ p × real share / training share",
+ "training_share": [
+  0.3333,
+  0.3333,
+  0.3333
+ ],
+ "real_share": [
+  0.7368,
+  0.1836,
+  0.0796
+ ],
+ "training_buildings_uncapped": {
+  "Intact": 167706,
+  "Damaged": 41781,
+  "Destroyed": 18121
+ },
+ "stage1_buildings": 57991,
+ "mostly_one_true_building": 39046,
+ "stage1_macro_f1": {
+  "R16 (equal shares)": 0.5968,
+  "R16b (real shares)": 0.692
+ },
+ "grade_counts": {
+  "R16 (equal shares)": {
+   "Intact": 35011,
+   "Damaged": 12906,
+   "Destroyed": 10074
+  },
+  "R16b (real shares)": {
+   "Intact": 43845,
+   "Damaged": 8383,
+   "Destroyed": 5763
+  }
+ },
+ "keep": {
+  "R16_sam3": false,
+  "R16_sam3+r11": false,
+  "R16_vote": false
+ },
+ "run_time_min": 7.3
+}

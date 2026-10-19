@@ -1,0 +1,26 @@
+{
+ "task": "E1 + E2",
+ "smoke_test": false,
+ "val_images": 645,
+ "checkpoints": {
+  "R9": "/root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-d4-R9/snapshots/34897e1aa70742cac62a379561e1f969dccd4e10/final_model.pth",
+  "R1": "/root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-d4-R1/snapshots/ebe008702466f2db4dfac0d1c51d269e2974f59a/final_model.pth",
+  "R9s7": "/root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-d4-R9s7/snapshots/b97ed386d32c9b9fb9c2976c0fb70eae9462bb2a/final_model.pth"
+ },
+ "export_preds_for": "R9",
+ "vote_min_area": 20,
+ "variants": [
+  "std",
+  "tta",
+  "std_vote",
+  "tta_vote",
+  "std_vote20",
+  "tta_vote20"
+ ],
+ "gate_g2": {
+  "background_share": 0.595,
+  "run_first": "R11 (before + after input)"
+ },
+ "e2_adopted": [],
+ "run_time_min": 18.5
+}

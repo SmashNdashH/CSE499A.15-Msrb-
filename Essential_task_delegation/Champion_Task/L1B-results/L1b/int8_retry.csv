@@ -1,0 +1,4 @@
+variant,file_mb,ms_per_image,ms_p95,speedup_vs_onnx_fp32,miou,destroyed_iou,destroyed_drop,int8_usable,kept_in_fp32
+ONNX FP32 (accuracy from L1),130.0,2289,2309,1.0,0.5373,0.2921,0.0,,everything
+"INT8 static, keep 1+1 FP32",33.1,1651,1660,1.39,0.5363,0.2918,0.0003,yes,"/encoder/conv1/Conv, /segmentation_head/segmentation_head.0/Conv"
+"INT8 static, keep 1+3 FP32",33.1,1601,1621,1.43,0.5363,0.2918,0.0003,yes,"/encoder/conv1/Conv, /decoder/blocks.4/conv1/conv1.0/Conv, /decoder/blocks.4/conv2/conv2.0/Conv, /segmentation_head/segmentation_head.0/Conv"

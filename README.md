@@ -4,7 +4,7 @@
 
 # Resource-Efficient Neural Architectures for Post-Disaster Damage Assessment and Rescue Guidance
 
-> **CSE499B/EEE499B/ETE499B - Senior Design II, Section 15, Project Group 5**
+> **CSE499B/EEE499B/ETE499B - Senior Design II, Section 13, Project Group 5**
 > **Team:** Abdullah Al Noman, Tamanna Akter Mou, Aryan Sami, Ridita Afrin Riya, Abrar Mohammed Tanzim Alam
 
 ## Current Documents

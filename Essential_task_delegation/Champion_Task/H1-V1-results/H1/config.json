@@ -1,0 +1,30 @@
+{
+ "task": "H1 V1",
+ "smoke_test": false,
+ "model": "R9",
+ "checkpoint": "/root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-d4-R9/snapshots/34897e1aa70742cac62a379561e1f969dccd4e10/final_model.pth",
+ "best_rule": {
+  "intact": {
+   "variant": "std",
+   "closing": 0,
+   "min_area": 24
+  },
+  "damaged": {
+   "variant": "std",
+   "closing": 0,
+   "min_area": 0
+  },
+  "destroyed": {
+   "variant": "std",
+   "closing": 0,
+   "min_area": 0
+  }
+ },
+ "tuning_questions": 1055,
+ "ground_truth_mask_check": 1.0,
+ "benchmark_images": 2653,
+ "missing_images": 2,
+ "bdc_questions": 4982,
+ "gate_g4": "V1 BDC accuracy 22.26% (optical after-images 26.54%) against the base model's 34.2% and our fine-tuned 7B's 23.58%: the counting half of KR2 is not met.",
+ "run_time_min": 29.3
+}

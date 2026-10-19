@@ -1,0 +1,5 @@
+variant,file_mb,ram_mb,ms_per_image,ms_p95,speedup_vs_pytorch,miou,destroyed_iou,destroyed_drop,pixel_agreement_with_pytorch,int8_usable
+PyTorch FP32,130.4,3,4632,4808,1.0,0.5373,0.2921,0.0,1.0,
+ONNX FP32,130.0,520,2707,2852,1.71,0.5373,0.2921,-0.0,1.0,
+ONNX INT8 dynamic,32.7,1052,15468,16369,0.3,0.5358,0.2897,0.0024,0.9952,yes
+ONNX INT8 static,33.1,151,1801,1949,2.57,0.5251,0.2817,0.0104,0.9876,no

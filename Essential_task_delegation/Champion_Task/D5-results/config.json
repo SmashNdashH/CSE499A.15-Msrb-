@@ -1,0 +1,20 @@
+{
+ "task": "D5",
+ "smoke_test": false,
+ "labels_dir": "D:\\CSE499AB_project\\data\\xView2 Challenge Dataset - train and test\\train\\labels",
+ "benchmark": "D:\\CSE499AB_project\\support\\Abrar\\Implementation_DisasterM3\\benchmark_release.json",
+ "xbd_post_labels": 2799,
+ "overlap_tiles_checked": 1792,
+ "new_tiles": 1007,
+ "new_in_benchmark": 447,
+ "bdc_questions_on_them": 741,
+ "lut": [
+  0,
+  1,
+  2,
+  2,
+  3,
+  255
+ ],
+ "run_time_min": 1.3
+}

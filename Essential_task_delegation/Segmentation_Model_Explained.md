@@ -160,7 +160,7 @@ Picture a stadium with 1,000 people: 928 wear grey (background), 59 wear green (
 
 ### 2.7 Why this matters for the model
 1. **A lazy model looks good on simple accuracy.** If it said "background" for every pixel, it would be right **92.8% of the time** while finding zero buildings. That's why we measure **IoU per class** instead of overall accuracy.
-2. **Destroyed is the hardest class.** It's **3 pixels in 1,000**, and **63% of photos** have none at all, so the model rarely sees examples. That's why Destroyed IoU sits at about 0.27–0.29 while background is about 0.95.
+2. **Destroyed is the hardest class.** It's **3 pixels in 1,000**, and **63% of photos** have none at all, so the model rarely sees examples. That's why Destroyed IoU sits at about 0.27–0.30 while background is about 0.95. The best recipe (sampler + copy-paste) averages 0.297 with TTA over two seeds, just under the 0.30 target.
 3. **Every rare-class trick in the recipe exists for this imbalance:**
    - Focal Tversky makes missing a rare pixel cost more;
    - the sampler shows the 37% of photos with destroyed buildings more often;

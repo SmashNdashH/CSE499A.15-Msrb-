@@ -1,106 +1,588 @@
-# Next Steps Roadmap: after R1–R8
+# Next Steps Roadmap: delegation-ready tasks
 
-Written 2026-10-08. It combines [Phase2_Plan.md](Phase2_Plan.md) and [Research_Directions_Beyond_Finetuning.md](Research_Directions_Beyond_Finetuning.md) into one order, with the result at each step deciding what comes next.
+Updated 2026-10-18, after the fine-tuning ablation closed. This roadmap turns [Phase2_Plan.md](Phase2_Plan.md), [Research_Directions_Beyond_Finetuning.md](Research_Directions_Beyond_Finetuning.md) and [Paper_Audit_and_Integration_Plan.md](Paper_Audit_and_Integration_Plan.md) into **tasks**. Each task:
+- has an ID in the project's existing naming style (§2);
+- says where the idea comes from and which goal it serves;
+- says exactly what to build.
 
-## Where we are
-- **Fine-tuning has plateaued.** All single-change runs (R1–R8) are done and none beats R1, so R7 is the R1 recipe: 0.540 mIoU / 0.277 Destroyed IoU, or 0.545 / 0.283 with TTA.
-- **The Phase Gate fails only on Destroyed IoU.** The best is R5 (sampler) at 0.2898, or 0.2917 with TTA, against the 0.30 target.
-- **Running now:** R9 (sampler + copy-paste) and R10 (sampler + R3 loss), on two Kaggle accounts since 8 Oct.
-- **Submitted files stay frozen.** The review files in `others/` (report PDF and deck exports) stay as submitted; everything here goes into the next update.
+You can hand a task to a teammate, or paste it with the brief in §8 into an AI coding agent to get a Kaggle notebook.
 
-## Steps, in order
+## 1. Where we are (18 October 2026)
 
-### Step 1: Close the fine-tuning chapter (now to about 9 Oct; GPU already committed)
-- When R9 and R10 finish, audit them as before: config, history, CSV and logs.
-- **Gate G1:**
-  - **Destroyed IoU > ~0.30:** run a second seed of that config (~7 GPU-h). If both seeds stay above 0.30, that config is the champion and we claim the Phase Gate ([Phase2_Plan §6](Phase2_Plan.md#6-when-we-can-claim-the-phase-gate)). Phase 2 then only strengthens the result.
-  - **Otherwise:** fine-tuning is closed. We report R7 = R1, with the sampler (R5) as the best setting for Destroyed IoU, and move to the structural steps below.
+- **Fine-tuning is closed.** All 11 D4 training runs are done; the full table is in [Ablation_Study_Reference_and_QA_Prep.md](Ablation_Study_Reference_and_QA_Prep.md) §7.
+- **Champion:**
+  - **R9 recipe (sampler + copy-paste).** It has the best Destroyed IoU (two-seed mean 0.2884, or 0.2971 with TTA) and the best Destroyed recall (about 0.50, or 0.52 with TTA), with the same mIoU as R1.
+  - R1 stays the reference baseline; under the mIoU-first R7 rule, R7 = R1.
+  - Use **R9's seed-42 model** (`Champion_Task/R9-results/d4_R9/final_model.pth`) for everything downstream.
+- **Phase Gate:**
+  - mIoU > 0.52 is met in every run.
+  - Destroyed IoU > 0.30 is **not** met; the best two-seed mean is 0.2971 with TTA, 0.003 short.
+- **The system goals** (O2–O4: hybrid counting, offline DisasTeller with heatmap, 3B edge model) have **not started producing numbers yet.** That's where most of the remaining work is.
+- **Submitted files stay frozen.** The review files in `others/` stay as submitted; all of this goes into the next update.
 
-### Step 2: Cheap diagnosis, no training (start now; ~0.5 GPU-h plus CPU)
-- **P2-0** ([Phase2_Plan §3](Phase2_Plan.md#3-step-p2-0-diagnose-first-about-30-gpu-minutes-can-start-now)) is evaluation only, using R1's `final_model.pth` (`Champion_Task/R1-results/d4_R1/`). It gives us:
-  - the 4×4 confusion matrix;
-  - building IoU (classes 1–3 merged, vs background);
-  - Destroyed IoU per disaster event and per source (xBD vs other);
-  - **the share of missed destroyed pixels that R1 labels Background.**
-- **Converter check (CPU):** draw masks from the xBD polygons for the 1,792 tiles DisasterM3 also contains, and compare them with DisasterM3's own masks. This also shows how DisasterM3 handled "minor damage" and "un-classified".
-- **SAM 3 S0 and S1** ([Research Directions §7.4](Research_Directions_Beyond_Finetuning.md#74-test-plan-cheapest-steps-first)):
-  - request gated Hugging Face access today;
-  - run a smoke test on a T4;
-  - prompt "building" on the 645 validation pre- and post-disaster images, then compare building IoU and building counts with R1's building IoU from P2-0.
-- **What to reuse:** [d4-champion-model-E0.ipynb](Champion_Task/d4-champion-model-E0.ipynb) is already an evaluation-only notebook.
-  - Its `EVAL_CHECKPOINTS` list (Cell 2) takes a `local_path`, and the notebook already builds the dataset-level confusion matrix.
-  - Upload R1's `final_model.pth` as a Kaggle dataset and point the list at it.
-  - Add three printouts after the confusion-matrix step: building IoU, per-event Destroyed IoU, and the Background-miss share.
-- **Gate G2 (from P2-0):**
-  - **40% or more of missed destroyed pixels labelled Background:** the model doesn't recognise rubble as a building. Run **P2-B first**, because the pre-disaster image shows where the building was.
-  - **Under 40%:** the model finds the building but grades it wrongly. Run **P2-A first** (more destroyed examples).
-- **Gate G3 (from S1):** if SAM 3 on the pre-disaster image finds buildings at least as well as R1, the SAM 3 two-stage path (S3) replaces P2-C as our two-stage option.
+**The goals every task serves** (from the CSE499B review report; details in Paper_Audit §1):
 
-### Step 3: Main structural bets (next week's GPU quota; one change each; same keep rule)
-- **P2-B, pre+post input (~8 GPU-h), the main bet.** This is lever 1 in the research document.
-  - Start from a copy of [d4-champion-model-R5.ipynb](Champion_Task/d4-champion-model-R5.ipynb), the same clean base used for R9 and R10.
-  - Changes:
-    1. keep `pre_image_path` where the pairs are built from `post_image_path` (it's dropped at the moment);
-    2. load both images in `DisasterM3SegDataset`, apply the **same** crop, flip, rotation and brightness change to both, and stack them into 6 channels;
-    3. change the hard-coded `in_channels=3` in `build_model` to 6 (smp adapts the pretrained first layer).
-  - The TTA flips and rotations already act on every channel.
-  - Before training, overlay 10 pre/post pairs per source to check that they line up.
-- **P2-A, the 1,007 leak-safe xBD tiles (~7 GPU-h, plus CPU conversion):**
-  - leave out any tile id that's already in DisasterM3;
-  - map the damage classes using the converter-check result, with un-classified → 255 (ignore);
-  - make the loss ignore 255;
-  - keep 5,798 samples per epoch.
-- **Order:** G2 decides which runs first. Run both in parallel on two accounts if the quota allows.
+| Goal | Key result |
+|---|---|
+| O1 Spatial stage | Champion U-Net: mIoU > 0.52 and Destroyed IoU > 0.30 on full-resolution validation images |
+| O2 Ground the VLM | Hybrid counting (U-Net + higher-resolution VLM) beats the base model's 34.2% building damage counting (BDC) accuracy, all six tasks re-scored |
+| O3 Offline system | DisasTeller on our VLM, no Gemini, returning a report, damage map, counts and survivability heatmap |
+| O4 Edge model | Distilled Qwen2.5-VL-3B in about 6 GB, per-task accuracy against the 7B |
 
-### Step 4: Champion and the gate claim (~9 + 9 GPU-h)
-- **P2-AB:** combine whatever passed (P2-A, P2-B, and the sampler if it helps Destroyed IoU), with TTA. Then run a **second seed** before claiming the gate.
-- **If both P2-A and P2-B fail:** run the two-stage model, using SAM 3 S3 if G3 passed and P2-C otherwise.
-- **If that also fails:** report the gate as missed, with the P2-0 error analysis. That is still a defensible result.
+## 2. Tasks at a glance
 
-### Step 5: System objectives in parallel (mostly CPU or light GPU; any member)
-- **Edge benchmark (O4, CPU, can start now):** export R1's U-Net to ONNX, quantise it to INT8, and measure latency, memory and accuracy drop on a subset of the validation images on a laptop CPU.
-- **Offline report layer (O3):** DisasTeller's agents read per-building facts (counts, labels, IDs) as text and run on our Qwen instead of Gemini. Start with the text produced from R1's masks; swap in the champion's masks later.
-- **7B → 3B distillation (O4):** the notebooks are ready (`support/Abrar/Implementation_DisasterM3/*3b_distill.ipynb`). Run them on a third account once the segmentation runs need less GPU.
+**Task IDs** follow the names the project already uses: the sprint's Tasks A1–D5, then the D4 runs R1–R10 and E0.
 
-### Step 6: Next update
-- A new team update ([UPDATE.md](../UPDATE.md) or a new update report) covering:
-  - R1–R8 final results;
-  - the R7 decision;
-  - R9 and R10 results;
-  - the P2-0 diagnosis;
-  - the first structural results.
-- `CSE499B_Review_report_update.tex` (today's progress) is the starting point for the next report version.
+| Prefix | Meaning | Continues |
+|---|---|---|
+| **E** | Evaluation-only notebook, no training | E0 (re-scoring old checkpoints) |
+| **R** | Segmentation training run | R1–R10 and R9s7; a second seed adds `s7`, e.g. R15s7 |
+| **D5** | The xBD data task | Task D5 in `team_task_assignments.md` (external data, Phase 2) |
+| **H** | Hybrid U-Net + VLM work | New; serves O2 |
+| **T** | Triage system: heatmap, reports, demo | New; serves O3 |
+| **L** | Lightweight (edge) models | New; serves O4 |
 
-## GPU budget (approximate)
+**Old names** (renamed on 18 October 2026 in every document in `Essential_task_delegation/`; listed here so older notes and commits still make sense). The old P2-0 step 4, the converter check, is now part of D5.
+- E1 = P2-0;
+- R11 = P2-B;
+- R12 = P2-A;
+- R15 = P2-AB;
+- R16 = P2-C, and SAM 3 step S3;
+- E3 = SAM 3 steps S0–S1;
+- L4 = SAM 3 step S5.
 
-| Item | GPU-h | When | Suggested owner |
-|---|---|---|---|
-| R9, R10 (running) | ~14 | now | already running |
-| P2-0 + SAM 3 S0/S1 | ~3 | this week | Abrar |
-| xBD conversion + converter check | 0 (CPU) | this week | Ridita |
-| P2-B, P2-A | ~15 | next week (2 accounts) | Abrar (P2-B), Ridita (P2-A) |
-| P2-AB + second seed | ~18 | the week after | whichever account has quota |
-| 7B → 3B distillation | heavy | third account, after segmentation | open |
+**Source tags:**
+- **[Paper]** an idea from a paper in the audit;
+- **[Plan]** our own earlier plan (Phase2_Plan, the CSE499A future-work list, the review report);
+- **[Innovation]** an idea a teammate proposed.
 
-At about 16 GPU-hours a week across two accounts, Phase 2 takes about two weeks.
+| Task | Title | Source | Goal | Type | GPU-h | Needs | Suggested owner |
+|---|---|---|---|---|---|---|---|
+| **Phase A: this week, no new training** | | | | | | | |
+| E1 | Error diagnosis + export champion predictions | Plan | O1 | Eval notebook | ~1 | — | Abrar |
+| E2 | Object-based majority voting | Paper: BRIGHT | O1 | Eval (add-on to E1) | ~0.3 | E1 | Abrar |
+| D5 | xBD converter check + 1,007 leak-safe tiles | Plan + Paper: xBD | O1 | CPU notebook | 0 | — | Aryan |
+| E3 | SAM 3 smoke test and building finding | Paper: SAM 3, SegEarth-OV3 | O1, O4 | Eval notebook | ~2 | HF access | Abrar |
+| H1 | KR2 harness: U-Net counting + counts-as-text | Plan + Paper: TEOChat, DamageScope | O2 | Eval notebook (2×T4) | ~1 + ~6 | E1 | Noman |
+| T1 | Survivability heatmap | Plan + Paper: BDAChat | O3 | CPU notebook | 0 | E1 | Aryan |
+| L1 | Edge benchmark of the U-Net (ONNX, INT8) | Plan + Paper: AWQ; Tamanna Plan 1 | O4 | Laptop CPU | 0 | — | Tamanna |
+| **Phase B: next week, training (one change each)** | | | | | | | |
+| R11 | Before + after input (6 channels) | Plan + Paper: xView2 winners, BRIGHT, TEOChat | O1 | Train notebook | ~8 | E1 (order) | Abrar |
+| R12 | +1,007 leak-safe xBD tiles | Plan + Paper: xBD | O1 | Train notebook | ~7 | D5 | Ridita |
+| R13 | BRIGHT pre-disaster footprints (optical only) | Innovation: Ridita + Paper: BRIGHT | O1 | Train notebook | ~7 | R12 result | Ridita |
+| R14 | Rubble-centric crop mining (optional) | Innovation: Ridita | O1 | Train notebook | ~6 | spare quota | Ridita |
+| **Phase C: champion and fallback** | | | | | | | |
+| R15 | Combined champion + second seed (R15s7) | Plan | O1 | 2 train runs | ~16 | R11, R12 | Abrar |
+| R16 | Two-stage: find buildings, then grade each (runs regardless of R12) | Paper: xView2 1st, BRIGHT, BDAChat + Plan (two-stage fallback) + Innovation: Ridita | O1, O2, O3 | Train + eval | ~1 | E3 | Abrar |
+| **System track: in parallel** | | | | | | | |
+| H2 | Per-building table + SQL counting agent | Paper: DamageScope, Change-Agent | O2, O3 | CPU / light GPU | ~1 | E1 | Noman |
+| H3 | VLM input upgrades (before + after, numbered marks, crops) | Paper: TEOChat, GeoPixel, ImageRAG; Tamanna Plan 2 | O2 | Variants in H1 | ~6 each | H1 | Tamanna |
+| H4 | GEOBench-VLM external counting test | Paper: GEOBench-VLM | O2 | Eval notebook | ~1 | H1 | Aryan |
+| T2 | DisasTeller on local models | Plan | O3 | GPU notebook | ~2 | — | Ridita |
+| T3 | Unified offline demo | Plan + Tamanna Plan 3 | O3 | App notebook | ~1 | H1, T1, T2 | Tamanna |
+| L0 | A better 7B teacher before distilling (decided 19 Oct) | Paper: DisasterM3 (Table 2, Appendix B.3) | O4, O2 | Eval notebook, then a top-up run only if needed | ~2–3, then ~10–20 | H1 V2 | Abrar |
+| L2 | 7B → 3B distillation (after L0) | Plan + Paper: QLoRA | O4 | 2 notebooks | heavy (~15–25) | L0; 3rd account | Noman |
+| L2b | Explanations as a second skill ("why?" on request) | Paper: Distilling Step-by-Step, BDAChat, ImageRAG | O4, O3 | Generation notebook + L2 step 2 change | ~3–5 | L2 step 1 | Noman |
+| L3 | AWQ 4-bit 3B + confidence handoff to 7B | Paper: AWQ, Grace | O4 | Eval notebook | ~2 | L2 | Noman |
+| L4 | EfficientSAM3 vs SAM 3 | Paper: EfficientSAM3 + Plan (SAM 3 edge step) | O4 | Eval notebook | ~1 | E3 | Tamanna |
 
-## How each step is judged
-- **Every training run:**
-  - the same E-protocol: 645 validation images, full resolution, last epoch, with both standard and TTA rows;
-  - the same audit as R1–R8: the config matches the notebook, the history runs unbroken over 40 epochs, and the CSV is present.
-- **Keep rule:**
-  - mIoU must beat R1 by more than the noise (0.0028 between seeds; a same-seed rerun moved 0.0053);
-  - Destroyed IoU must not drop.
-- **Gate claim:** Destroyed IoU > 0.30 on two seeds, or on the two-seed mean (stated as a mean). If the gate passes only with TTA, say so.
-- **Diagnosis and S1:** use the same validation images and the same confusion-matrix code, so the numbers compare directly with R1.
+Owners are suggestions; reassign freely. The order inside each phase is the recommended priority.
 
-## Files involved
-- **New notebooks** in [Champion_Task/](Champion_Task/):
-  - P2-0, copied from `d4-champion-model-E0.ipynb`;
-  - P2-B (6-channel) and P2-A (xBD with the ignore label), copied from `d4-champion-model-R5.ipynb`.
-- **A CPU script** for the xBD conversion and converter check (input: `data/xView2 Challenge Dataset - train and test/`).
-- **Documents to update with results:**
-  - [Phase2_Plan.md](Phase2_Plan.md)
-  - [Research_Directions_Beyond_Finetuning.md](Research_Directions_Beyond_Finetuning.md) §9
-  - [Ablation_Study_Reference_and_QA_Prep.md](Ablation_Study_Reference_and_QA_Prep.md)
-  - the [README.md](../README.md) status table
+## 3. Shared rules for every notebook
+
+These apply to every task, so an agent doesn't have to rediscover them.
+
+- **Kaggle setup:**
+  - GPU T4 ×1 (×2 only where a task says so), internet ON.
+  - Attach the DisasterM3 mirror (`/kaggle/input/datasets/abrarmohammedtanzim/disasterm3-mirror/DisasterM3_Instruct`).
+  - Add the `HF_TOKEN` secret (write-scoped) only if the notebook pushes to Hugging Face.
+  - Teammates' accounts got 403 errors pushing to `AbrarAlam/*` repos. Push to your own namespace, or rely on Kaggle outputs.
+- **Base code:** copy the notebook named in the task and change only what the task lists. For segmentation work, keep Cell 1's pins (`segmentation-models-pytorch==0.3.4`, `albumentations==1.4.21`) and reuse these from [d4-champion-model-R5.ipynb](Champion_Task/d4-champion-model-R5.ipynb) (cells 4, 5, 8 and 10):
+  - `DisasterM3SegDataset`;
+  - `build_model`;
+  - `predict` (8-view TTA);
+  - `evaluate`, `metrics_from_confusion` and `result_row`, plus `CSV_FIELDS`.
+- **Training-run names:** set `EXPERIMENT` to the task ID (for example `EXPERIMENT = "R11"`) and add a preset with the same name. The notebook then writes `D4_R11.csv` and pushes to `disasterm3-d4-R11`, like R1–R10.
+- **Data and leakage:**
+  - The validation set is always the same 645 images: `train_test_split(pairs, test_size=0.1, random_state=42)` over the 6,443 pairs built in Cell 4.
+  - Never train on them, and never add outside data to validation.
+  - No SAR (radar) images anywhere in segmentation work.
+- **Scoring:**
+  - E-protocol: full native 1024 images, last epoch, dataset-level confusion matrix.
+  - Report a standard row and an 8-view TTA row.
+  - Training runs: 40 epochs, 5,798 samples per epoch.
+- **Run-All safe:**
+  - A `SMOKE_TEST` flag (about 5 minutes on a few images).
+  - The 11.3-hour time guard with resume (as in the D4 notebooks) for anything over about 9 hours.
+  - Big temporary files go in `/kaggle/temp`, which isn't saved, so the output doesn't get zipped.
+- **Outputs:** everything in `/kaggle/working/<task-id>/` (for example `/kaggle/working/E1/`):
+  - a CSV with the same columns as the D4 CSVs (for segmentation);
+  - `config.json`;
+  - a one-page `README.md` with what ran, the numbers, and anything that broke.
+- **Checkpoints to upload once as Kaggle datasets:**
+  - R9 champion: `Champion_Task/R9-results/d4_R9/final_model.pth`;
+  - R1 reference: `Champion_Task/R1-results/d4_R1/final_model.pth`.
+
+  Both load with `build_model("Unet", "resnet50", pretrained=False)` and `load_state_dict`.
+- **Keep rule for training runs (R11 onwards):**
+  - mIoU must not drop by more than the noise (about 0.005 against the R9 or R1 base).
+  - Destroyed IoU must rise by more than the seed noise (0.013).
+  - A gate claim needs two seeds (Phase2_Plan §6).
+
+## 4. Phase A: this week, no new training
+
+### E1 · Error diagnosis and champion predictions
+- **Source:** [Plan] Phase2_Plan §3. BRIGHT's finding that finding buildings and grading them are separate problems is why we split the errors this way.
+- **Goal:** O1. Learn *why* destroyed pixels are missed, and set Gate G2 (which of R11 and R12 runs first). It also produces the prediction files that E2, H1, T1 and H2 reuse.
+- **Base:** copy [d4-champion-model-E0.ipynb](Champion_Task/d4-champion-model-E0.ipynb). It's already evaluation-only, and its `EVAL_CHECKPOINTS` list (Cell 2) takes a `local_path`.
+- **Inputs:** the R9 and R1 `final_model.pth` files (Kaggle dataset); the DisasterM3 mirror.
+- **Build:**
+  1. For each model, standard and TTA: the 4×4 confusion matrix (pixel counts, rows = truth).
+  2. **Building IoU:** classes 1–3 merged against background.
+  3. **Background-miss share:** of the destroyed pixels the model gets wrong, the fraction predicted as Background, Intact and Damaged.
+  4. **Per-event and per-source Destroyed IoU:** accumulate a confusion matrix per event. The event comes from the file name: xBD names look like `hurricane_florence_00000261_post_disaster.png` (event = the text before `_<8 digits>`); other names look like `bata_explosion_post_0.png` (event = the text before `_post`). Source = xBD versus other.
+  5. Save R9's predicted masks for all 645 images (standard and TTA) as uint8 PNGs (`preds/R9_std/<name>.png`, `preds/R9_tta/<name>.png`), plus the ground-truth masks (`gt/<name>.png`).
+- **Outputs:** `p2_0_summary.csv`, `per_event.csv`, `README.md`, and the `preds/` and `gt/` folders. Publish the output as a Kaggle dataset, `d4-r9-val-predictions`.
+- **Done when:**
+  - R9's and R1's overall IoUs match their D4 CSVs to 4 decimals (proving the setup is identical);
+  - the G2 number (Background-miss share) is reported.
+- **Gate G2:**
+  - 40% or more of the missed destroyed pixels predicted as Background: run R11 first.
+  - Otherwise: run R12 first.
+
+### E2 · Object-based majority voting (no training)
+- **Source:** [Paper] BRIGHT (ESSD 2025): +0.69 mIoU per event, −0.41 overall on their data.
+- **Goal:** O1. A free post-processing step that might lift Destroyed IoU.
+- **Base:** extra cells at the end of the E1 notebook (the predictions are already in memory), or a CPU notebook reading `d4-r9-val-predictions`.
+- **Build:**
+  1. For each image, take the building mask = prediction > 0.
+  2. Find connected components (8-connectivity, `cv2.connectedComponentsWithStats`).
+  3. Give each component its majority class among 1, 2 and 3.
+  4. Re-score with the same confusion-matrix code.
+  5. Variant: ignore components smaller than 20 px.
+- **Outputs:** a standard row and a TTA row for "R9 + voting" in the D4 CSV format, plus `README.md`.
+- **Done when:** both rows are compared with R9's (0.5373 / 0.2921; TTA 0.5440 / 0.3001). Adopt voting only if Destroyed IoU rises by more than 0.005 without lowering mIoU, **and** it repeats on R9s7's model.
+
+### D5 · xBD converter check and the 1,007 leak-safe tiles
+- **Source:** [Plan] Phase2_Plan §2–3 (this is Task D5 from the sprint plan) and [Paper] xBD.
+- **Goal:** O1. Prepare R12's extra training data and find out exactly how DisasterM3 mapped xBD's damage levels.
+- **Base:** a new **Kaggle CPU notebook**. It needs DisasterM3's masks from the mirror, plus the xBD labels uploaded as a Kaggle dataset. Upload `data/xView2 Challenge Dataset - train and test/train/labels/` (5,598 JSON files) and `train/images/`.
+- **Build:**
+  1. **Tile IDs:** collect every image name in DisasterM3, train and benchmark (`train_release.json` and `benchmark_release.json`). Turn each into an xBD tile ID such as `palu-tsunami_00000123` (the xBD event name uses dashes, and DisasterM3 uses underscores).
+  2. **Split the tiles:** separate xBD's 2,799 post-disaster labels into "already in DisasterM3" (expected: 1,792) and "new" (expected: 1,007).
+  3. **Converter:**
+     - Parse `features.xy[*].wkt` (pixel-coordinate polygons) and fill them with `cv2.fillPoly` by `properties.subtype`: `no-damage`, `minor-damage`, `major-damage`, `destroyed`, `un-classified`.
+     - Rasterise the 1,792 overlapping tiles and compare them pixel by pixel with DisasterM3's combined 4-class masks (built the same way as Cell 4 of the D4 notebook).
+     - Report a 5×4 table: xBD subtype against DisasterM3 class.
+  4. **Convert the 1,007 new tiles** with the measured mapping. `un-classified` becomes 255 (ignore), unless step 3 shows something else.
+- **Outputs:**
+  - the `xbd-extra-1007` Kaggle dataset (`images/`, `masks/`, `manifest.json` with the event and the per-class pixel counts);
+  - `mapping_report.md`.
+- **Done when:**
+  - the mapping table is clear (expected: minor and major become Damaged);
+  - no new tile ID appears anywhere in DisasterM3;
+  - the counts match Phase2_Plan §2 (1,007 tiles, about 3,472 destroyed polygons).
+
+### E3 · SAM 3 smoke test and building finding
+- **Source:** [Paper] SAM 3 (arXiv 2511.16719) and SegEarth-OV3 (64.3% zero-shot building IoU on xBD).
+- **Goal:**
+  - O1: decide whether SAM 3 can be stage 1 of the two-stage model (Gate G3).
+  - O4: the field version of SAM 3 is L4.
+- **Base:** a new notebook on a T4, in fp16. Request access to the gated `facebook/sam3` weights on Hugging Face first, then use the official `facebookresearch/sam3` code.
+- **Build:**
+  1. **Part 1, smoke test:** load the model, run one 1024×1024 image, and log peak GPU memory and seconds per image. If it doesn't fit, record that and try 2×T4 or EfficientSAM3 (L4).
+  2. **Part 2, building finding:** prompt "building" on the 645 validation **pre-disaster** images and on the **post-disaster** images.
+     - Building IoU: the union of SAM 3's masks against the ground-truth building mask (classes 1–3).
+     - Building count against the number of ground-truth building blobs.
+  3. Compare with R9's building IoU from E1.
+- **Outputs:** `sam3_s1.csv` (per image: IoU and counts, pre and post) and `README.md` (memory, speed, and the overall IoU for pre and post).
+- **Gate G3:** if SAM 3 on the pre image is at least as good as R9 at finding buildings, R16 uses SAM 3 as stage 1; otherwise it uses R9's building mask.
+
+### H1 · KR2 evaluation harness: U-Net counting and counts-as-text
+- **Source:**
+  - [Plan] the CSE499A future-work "textual bridge" and the review report's "VLM reads per-building counts as text";
+  - [Paper] TEOChat (VLMs find buildings badly but grade given ones well) and DamageScope (answer counts from data, not from pixels).
+- **Goal:** O2, KR2 — the first real hybrid counting number, plus all six tasks re-scored.
+- **Base:**
+  - `support/Abrar/Implementation_DisasterM3/3b_hybrid_vllm_evaluation.ipynb` (vLLM on 2×T4, our fine-tuned `AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP`);
+  - `hybrid_bdc_counter.py`;
+  - `4_score_results.py` for scoring.
+
+  Replace the old ResNet-34 U-Net (`AbrarAlam/disasterm3-unet-checkpoints-2`) with **R9**: ResNet-50, four classes, full 1024 input.
+- **Data:** the DisasterM3 benchmark (`benchmark_release.json`, 30,042 entries). The six scored tasks have 12,968 questions; building damage counting (BDC) has 4,982:
+  - about 2,671 ask for intact buildings;
+  - about 1,059 for destroyed;
+  - about 786 for damaged;
+  - about 466 for a total.
+
+  Each is multiple choice with the exact count as ground truth (e.g. 232). 623 BDC questions use a **radar** after-image (`*_sar_post_*`). Score those with the U-Net on the matching optical image (same name without `_sar`), and report them separately.
+- **Variants** (a flag at the top):
+  - **V1, counting bypass (no VLM):**
+    1. Segment the after-image with R9 + TTA.
+    2. Read the class from the question: intact/undamaged/remained → 1; destroyed/collapsed → 3; damaged → 2; total/all → 1–3.
+    3. Count connected components of that class (minimum area as in `hybrid_bdc_counter.py`; tune it on 200 *training* images, never on the benchmark).
+    4. Pick the option nearest to the count.
+  - **V2, counts-as-text for all six tasks:**
+    - Put a short fact block before every question, e.g. "U-Net analysis: 51 intact, 3 damaged, 0 destroyed buildings; most damage in the north-east quadrant."
+    - BDC still uses V1. Keep the full image as the visual input. This is the "textual bridge".
+- **Outputs:**
+  - `kr2_results.csv`: accuracy per task per variant, next to the 499A references below.
+  - BDC accuracy broken down by question type (intact, damaged, destroyed, total) and by optical versus radar.
+  - `README.md`.
+- **499A references** (our fine-tuned 7B / the base model):
+
+  | Task | Fine-tuned 7B | Base model |
+  |---|---|---|
+  | DTR | 68.33% | 66.6% |
+  | BBR | 16.39% | 4.7% |
+  | **BDC** | **23.58%** | **34.2%** (the KR2 target) |
+  | DRE | 26.24% | 29.3% |
+  | DSR | 31.31% | 28.3% |
+  | ORR | 22.50% | 23.9% |
+
+  The old crop collage scored 13.11% on BDC because intact buildings weren't counted.
+- **Like-for-like comparison (checked 19 Oct against the DisasterM3 paper):**
+  - **Where the base numbers come from:** the paper's Table 2 (page 7, "Bench set with optical-optical setting"), not our own CSE499A runs. That table covers only questions whose after-image is a photo.
+  - **How they were decoded:** the paper runs every model in vLLM with its default settings (Appendix B.1). Its script, `support/Abrar/Implementation_DisasterM3/temp_junjue/pyscripts/run_vllm.py` (lines 240–252), takes the model's default generation config, with temperature at least 0.01. Qwen2.5-VL-7B's defaults (temperature 0.000001, repetition penalty 1.05) make that effectively greedy, like H1 V2 and V2b.
+  - **Optical questions only:**
+
+    | Task | Our 7B (greedy, H1 V2/V2b) | Base model (paper) | Paper's fine-tuned 7B |
+    |---|---|---|---|
+    | DSR | 37.9 | 28.3 | 37.7 |
+    | DTR | 71.1 | 66.6 | 83.6 |
+    | BBR | 19.5 | 4.7 | 21.5 |
+    | BDC | 32.0 | 34.2 | 34.3 |
+    | DRE | 32.9 | 29.3 | 29.4 |
+    | ORR | 23.3 | 23.9 | 36.2 |
+    | Mean | 36.1 | 31.2 | 40.4 |
+
+  - Our 7B beats the base model by 4.9 points but trails the paper's own fine-tune (same model, same training set) by 4.3, mainly on DTR and ORR. Counting is 2.2 points short of the base, not 3.7: the 30.5% included radar questions. L0 follows this up.
+  - One difference remains: H1 V2 and V2b feed 512 px images, where the paper's default is the full size.
+- **Why U-Net counting stays low (H1 V1, 22.3%):**
+  - It used R9. Optical after-images scored 26.5%, radar 11.3% (below the 20% of guessing).
+  - Counting from the true masks scores 100%, so the masks are the problem. An answer counts separate buildings (8-connected blobs), and the wrong options are only ±20% or ±40% away (paper, page 6), so a count must land within about 10%.
+  - A U-Net merges touching houses and splits damaged ones: on optical after-images the median count error is 45% for intact, 75–83% for damaged and destroyed.
+  - A better pixel model helps little; counting separate buildings (R16) is the route.
+- **Done when:** V1's BDC accuracy is reported with its breakdown, and V2's six-task table is complete.
+- **Gate G4:**
+  - V1 above 34.2% means the counting half of KR2 is met.
+  - Keep V2 only if it doesn't lower any of the other five tasks by more than 1 point.
+
+### T1 · Survivability heatmap
+- **Source:**
+  - [Plan] CSE499A future work (`cv2.distanceTransform` or kernel density estimation);
+  - [Paper] BDAChat's damage-aware heatmap (MIT code in its repo).
+- **Goal:** O3, one of KR3's four required outputs.
+- **Base:** a new CPU notebook reading `d4-r9-val-predictions` (E1).
+- **Build:**
+  1. **Danger map:**
+     - damage mask = destroyed (weight 1.0) plus damaged (weight 0.5);
+     - KDE = `cv2.GaussianBlur` of the weighted mask (sigma about 25 px, tuned visually), normalised to 0–1.
+  2. **Safety map:** `cv2.distanceTransform` on the inverse of the damaged-or-destroyed mask, normalised, so distance from the nearest collapse means safer.
+  3. **Survivability-search priority:** KDE × (1 − normalised distance). Areas with dense collapses rank first for search.
+  4. Overlay each map on the after-image (colour map plus legend).
+  5. For each image, record the top-3 hot spots (centroid, area) and the 3 safest open areas.
+- **Outputs:** `heatmaps/<name>_{kde,safe,priority}.png`, `hotspots.json` (feeds DisasTeller in T2 and the demo in T3), and `README.md` showing 6 example images (3 xBD, 3 other).
+- **Done when:** 20 images have been checked by eye. Hot spots must sit on the ground-truth destroyed areas: report the share of hot spots that overlap ground-truth destroyed pixels.
+
+### L1 · Edge benchmark of the U-Net
+- **Source:**
+  - [Plan] O4 and Research_Directions lever 5;
+  - [Paper] AWQ (low-bit deployment);
+  - Tamanna's [Plan 1](Tamanna_task_2/Plan_1/Plan_1_Edge_Model_Compression.md), which already lays out the steps.
+- **Goal:** O4 — a measured speed, memory and accuracy table for the segmenter.
+- **Base:** Tamanna's Plan 1, run on a laptop CPU (and optionally a Kaggle CPU notebook as a second machine).
+- **Build:**
+  1. Export R9 to ONNX: a fixed 1024×1024 input, opset 17.
+  2. Quantise with ONNX Runtime: dynamic INT8, plus static INT8 calibrated on 100 *training* images.
+  3. On the 645 validation images, compare PyTorch FP32, ONNX FP32 and the two INT8 versions on:
+     - file size;
+     - peak RAM;
+     - milliseconds per image (median of 3 runs, with a warm-up);
+     - mIoU and Destroyed IoU.
+- **Outputs:** `edge_benchmark.csv`, a speed-against-accuracy plot, and `README.md` with the CPU model.
+- **Done when:** all four rows are measured on the same machine. INT8 is usable if Destroyed IoU drops by less than 0.01.
+
+## 5. Phase B: next week, structural training runs
+
+Each run changes **one thing** from its base and follows the keep rule in §3.
+
+### R11 · Before + after input (6 channels), the main bet
+- **Source:**
+  - [Plan] Phase2_Plan §4 and research lever 1;
+  - [Paper] the xView2 winners (all of the top 5 used both images), BRIGHT Table 7 (the before image raises Destroyed IoU from 59.5 to 64.9), and TEOChat.
+- **Goal:** O1. Let the model see where a building stood before it became rubble.
+- **Base:** copy [d4-champion-model-R5.ipynb](Champion_Task/d4-champion-model-R5.ipynb) (sampler, no copy-paste). Copy-paste would put rubble into the after-image where the before-image shows nothing, so it's left out.
+- **Changes:**
+  1. Cell 4: keep `pre_image_path` in each pair. It's resolved like `post_image_path`.
+  2. Cell 5: load both images, apply the **same** crop, flip, rotation and brightness change to both (Albumentations `additional_targets={"pre": "image"}`), normalise each, and stack them into 6 channels.
+  3. Cell 8: change `in_channels=3` to `in_channels=6` in `build_model`. smp adapts the pretrained first layer.
+  4. TTA needs no change, because the flips and rotations act on every channel.
+  5. Add a preset `"R11": dict(use_sampler=True, in_channels=6)` and set `EXPERIMENT = "R11"`.
+- **Check first:** overlay 10 before/after pairs per source (xBD and other) and confirm they line up. If shifts are larger than about 5 px, note them in the README.
+- **Outputs:** the usual D4 outputs, as `D4_R11.csv` and so on.
+- **Done when:** compared with R5 (0.5354 / 0.2898; TTA 0.5391 / 0.2917) and R9, using the keep rule.
+
+### R12 · Add the 1,007 leak-safe xBD tiles
+- **Source:** [Plan] Phase2_Plan §4 (the training half of Task D5) and [Paper] xBD.
+- **Goal:** O1. More destroyed examples: 8,021 destroyed polygons, 3,472 from D5's 1,007 tiles and 4,549 from D5b's 612 tier3 tiles (added 19 Oct, option A).
+- **Base:** R11's 6-channel recipe (chosen 19 Oct). Built as `d4-champion-model-R12.ipynb`, a copy of `d4-champion-model-R11.ipynb`.
+  - **Masks:** from D5's and D5b's outputs (`D5-results/`, `D5b-results/`, uploaded as one Kaggle dataset). Their lookup tables are the same, `[0, 1, 2, 2, 3, 255]`.
+  - **Images:** from Bojan Tunguz's two xView2 copies on Kaggle (`xview2-challenge-dataset-train-and-test` and `xview2-challenge-dataset-tier-3-data`, attached on import), so only the masks need uploading.
+- **Changes:**
+  1. Append the 1,619 tiles (D5's 1,007 and D5b's 612) to `train_pairs` only. Cell 4b stops if either pool is missing.
+  2. Make the loss ignore pixels marked 255: `ignore_index=255` in both smp losses (Focal Tversky and Lovász). Cell 7 checks that ignored pixels don't change the loss.
+  3. Keep 5,798 samples per epoch, so the change is "more data", not "more training". With the sampler on, compute the image weights over the combined list.
+  4. Set `EXPERIMENT = "R12"`.
+- **Outputs:** `D4_R12.csv` and so on.
+- **Benchmark rule:** 1,059 of the tiles are DisasterM3 benchmark images (447 from D5, all 612 from D5b), so R12 never answers benchmark questions; R16 (with R11) does.
+- **Done when:** compared with R11 (0.5811 / 0.2911; TTA 0.5875 / 0.2965) and R9 under the keep rule. Per-event Destroyed IoU from E1's code shows whether the gain comes from the events the new tiles cover.
+
+### R13 · BRIGHT pre-disaster footprints (optical only)
+- **Source:** [Innovation] Ridita's BRIGHT plan and roadmap (`BRIGHT_DisasterM3_Integration/`), and [Paper] BRIGHT.
+- **Goal:** O1. Better building finding, which helps if E1 shows that many destroyed pixels are missed as Background.
+- **Base:** copy `d4-champion-model-R5.ipynb`.
+- **First fix the script issues** (Paper_Audit §2.2):
+  1. Never load BRIGHT's post-disaster files; they're radar.
+  2. Pair each pre-disaster image with a **footprint** mask, where any building is class 1 (Intact, which is true before a disaster). Never pair it with damage classes.
+  3. **No BRIGHT event is missing from DisasterM3** (checked 19 Oct against its train and benchmark lists, which record each picture's sensor). Skip the 7 events that have optical after-images there: Turkey, Morocco, Libya, Beirut, Bata and Hawaii (in our training data) and Noto (in the benchmark). The other 7 appear in DisasterM3 only as radar questions, which our optical U-Net can't answer, so their before-images are safe to use. List the events used in the README. Ridita's converted set (5 events) includes Noto, so drop its tiles.
+  4. Don't use AIDER; it has no masks.
+- **Open question for the 6-channel recipe:** a BRIGHT tile has no optical after-image. Either put the before-image in both slots (a no-change pair, where every building is intact) or train R13 on the 3-channel recipe. Decide when R13 is built.
+- **Change:** append the BRIGHT tiles to training only, and keep 5,798 samples per epoch.
+- **Run when:** after R12. It's lower priority, because it adds only intact buildings.
+
+### R14 · Rubble-centric crop mining (optional)
+- **Source:** [Innovation] Ridita's roadmap, Innovation 1.
+- **Goal:** O1.
+- **Base:** copy `d4-champion-model-R9.ipynb`.
+- **Change:** when an image contains destroyed pixels, centre the 768 crop on a random destroyed pixel 60% of the time (with a random offset of up to ±200 px). Otherwise crop at random.
+- **Caveat:** this is another data-sampling tweak, and the sampler and copy-paste already moved Destroyed IoU only to the noise level. Run it only with spare quota.
+
+## 6. Phase C: champion and fallback
+
+### R15 · Combined champion and second seed (R15s7)
+- **Source:** [Plan] Phase2_Plan §4 and §6.
+- **Goal:** O1, the gate claim.
+- **Build:**
+  1. Combine everything from R11 to R14 that passed the keep rule (plus E2 voting if it was adopted).
+  2. Train with seed 42 (R15), then repeat with seed 7 (R15s7).
+  3. Claim the gate only if both runs, or their mean, are above 0.30. Say whether that's with TTA.
+- **Cost:** about 16 GPU-hours on two accounts in parallel.
+
+### R16 · Two-stage: find buildings, then grade each one
+- **Source:**
+  - [Paper] xView2 1st place, BRIGHT (find-then-grade models beat one-step ones: 67.6 against 64.9 mIoU), and BDAChat (pairs before and after crops per building);
+  - [Plan] the two-stage fallback in Phase2_Plan and the SAM 3 test plan (Research_Directions §7.4);
+  - [Innovation] Ridita's "Footprint-guided damage cascade".
+- **Goal:** O1, O2 and O3. **Decided 19 Oct: R16 runs regardless of R12.** If R12 passes the gate, R16 becomes an add-on rather than the fallback, for four reasons:
+  - **one grade per building:** counting questions (O2) become simple counts, where counting blobs on the U-Net's pixel map scored only 22% (H1 V1), and DisasTeller's reports (O3) need a per-building list;
+  - **clean for the benchmark:** it trains only on DisasterM3's training data, so unlike an R12 trained on exam pictures it can answer benchmark questions;
+  - **a different fix for "missed as background":** it finds buildings in the before-image, so rubble or lava in the after-image can't hide them;
+  - **cheap:** about 3 GPU hours.
+
+  It is still the fallback if R15 misses the gate.
+- **Build:**
+  1. **Stage 1:** G3 passed, so buildings come from SAM 3 on the pre-image (`pre_grid2`), plus the U-Net's building pieces that SAM 3 missed. The U-Net is R11, run inside the notebook. E3 measured that SAM 3 together with R9 covers 86% of destroyed buildings' footprints.
+  2. **Crops:** for each building, a square crop of the before and after images with a 16 px margin, resized to 96 px (128 px would need about 14 GB of crops), plus the building's mask as a 4th channel. Training buildings are the 8-connected pieces of each class in our masks, so each has one grade: every damaged and destroyed piece, and at most 12 intact pieces per image. BDAChat's `sgts.py` is a reference for the pairing.
+  3. **Grader:** a Siamese ResNet-18 (shared weights) that combines [before, after, after − before] and outputs 3 classes. Train with balanced grades for 10 epochs and keep the last epoch; the whole notebook takes about 1 GPU hour.
+  4. **Scoring:** paint each building's mask with its predicted class and score with the E-protocol. Also compute object-level macro F1 to compare with BDAChat's 0.763.
+  5. **Combined test:** label each building by a vote between the grader and the best U-Net's pixels inside it. Measure it rather than assume it helps: E2's per-building vote on R9 alone lowered Destroyed IoU from 0.292 to 0.228, though R16's building outlines come from a better source. For the O1 score, combine with the best U-Net (R12 if it passes). For benchmark questions (O2, O3), combine only with a U-Net that never trained on benchmark pictures (R11), so the combination stays clean.
+- **Done when:** R16 alone and R16 combined with the best U-Net are both scored against R9 and R11.
+- **Built 19 Oct:** `Champion_Task/r16-two-stage-grader.ipynb`. Step 4's object-level F1 is measured on the true validation buildings, so it isolates the grader.
+- **Result (19 Oct), not kept:**
+  - The best Destroyed IoU is 0.261 (the vote), against R11's 0.297 with TTA; SAM 3 + grader alone reaches 0.167.
+  - The grader's macro F1 on the true buildings is 0.656 (BDAChat 0.763). Its balanced training over-grades intact buildings: destroyed precision 0.35, recall 0.89.
+  - On the 85 non-xBD images, SAM 3 + grader doubles R11's Destroyed IoU (0.128 against 0.071).
+  - **Next:** correct the grader by the real grade shares (CPU, from `instances_val.csv`).
+- **R16b, the correction (19 Oct, on your PC, 7.3 min), not kept:** `Champion_Task/r16b-grader-prior-correction.ipynb`.
+  - **Rule:** each grade's probability is multiplied by its share among the training buildings (intact 73.7%, damaged 18.4%, destroyed 8.0%) and divided by a third. Nothing is fitted on validation, and R16's scores were first rebuilt exactly from its per-building table.
+  - **Pixel scores:** every R16 map improves. SAM 3 + grader goes from Destroyed IoU 0.167 to 0.228, and the vote from 0.261 to 0.274 with mIoU 0.585. R11 with TTA stays ahead (0.297 and 0.588).
+  - **Over-grading mostly gone:** among the stage-1 buildings that are mostly one true building, intact buildings graded destroyed fall from 3,539 to 1,500, and macro F1 rises from 0.597 to 0.692.
+  - **Next:** counting with the corrected grades (H1 V3) needs SAM 3 and the grader run on the benchmark images.
+
+## 7. System track: in parallel, mostly no segmentation training
+
+### H2 · Per-building table and SQL counting agent
+- **Source:** [Paper] DamageScope (SQLite + vector store, with an LLM choosing the query) and Change-Agent.
+- **Goal:** O2 and O3. Exact answers to questions like "how many destroyed buildings within 100 m of X", without the VLM counting pixels.
+- **Build:**
+  1. From R9's predictions (E1), build one SQLite row per building blob: image, ID, class, area, centroid, bounding box, and the distance to the nearest destroyed building.
+  2. Give our Qwen (or a small local LLM) the table schema and let it write SQL for a question.
+  3. Run the SQL and have the model phrase the answer.
+  4. Test on 100 BDC questions and compare with H1 V1.
+- **Outputs:** `buildings.sqlite`, `agent_eval.csv`, `README.md`.
+
+### H3 · VLM input upgrades (variants in the H1 harness)
+- **Source:**
+  - [Paper] TEOChat (before and after images with image labels), GeoPixel (numbered marks, tiling) and ImageRAG (send full-resolution crops of the relevant areas with their coordinates);
+  - Tamanna's [Plan 2](Tamanna_task_2/Plan_2/Plan_2_Visual_RAG_Patch_Zooming.md), which already describes the crop step.
+- **Goal:** O2, KR2's "higher-resolution VLM".
+- **Variants** (each scored on the six tasks like V2):
+  - **V3:** before and after images labelled "Image 1 (before)" and "Image 2 (after)".
+  - **V4:** numbered marks drawn on each detected building, so the VLM can say "building 12".
+  - **V5:** the full image plus up to 4 full-resolution crops of the most damaged areas, each with its pixel box.
+- **Done when:** a variant is kept only if it beats V2 on some task without lowering the others.
+
+### H4 · GEOBench-VLM external counting test
+- **Source:** [Paper] GEOBench-VLM (ICCV 2025). Its damaged-building counting is scored at 56.7% for GPT-4o and 50.0% for Qwen2-VL.
+- **Goal:** O2 — a third-party check of hybrid counting.
+- **Build:**
+  1. Download the benchmark from its GitHub (`The-AI-Alliance/GEOBench-VLM`).
+  2. Take the xBD damaged-building-counting and disaster-type questions.
+  3. **First** check that their xBD tiles don't overlap our training tiles. Report the overlap and score only the clean ones.
+  4. Run H1 V1 and V2.
+
+### T2 · DisasTeller on local models
+- **Source:** [Plan] the CSE499A future work "DisasTeller backend swap" and KR3.
+- **Goal:** O3 — no Gemini calls.
+- **Base:** `support/Ridita_Integration_of_VLM__/DisasTeller/`.
+- **Build:**
+  1. Serve our fine-tuned Qwen with vLLM on 2×T4 (OpenAI-compatible server).
+  2. Point CrewAI's LLM at it instead of `gemini/gemini-3.1-flash-lite`.
+  3. Replace the three image tools' `genai.GenerativeModel` calls with local Qwen calls.
+  4. Replace `gemini-embedding-001` with a local sentence-transformers model, and rebuild the Chroma database of guidelines.
+  5. Feed the agents per-building facts (H2) and hot spots (T1) as text.
+- **Outputs:** the same 6 report files as the Gemini run, a log proving no external API calls (run once with internet off after setup), and `README.md` comparing them with the Gemini reports from 20 July.
+
+### T3 · Unified offline demo
+- **Source:** [Plan] the CSE499A future work "unified deployment" and O3; Tamanna's [Plan 3](Tamanna_task_2/Plan_3/Plan_3_Offline_Interactive_Demo.md).
+- **Goal:** O3 — one offline system.
+- **Base:** `support/Abrar/Implementation_DisasterM3/gradio_app.py` (already loads a U-Net and Qwen).
+- **Build:** one Gradio app with this chain:
+  1. upload before and after images;
+  2. R9 segmentation (damage map);
+  3. per-building counts (H2);
+  4. heatmap (T1);
+  5. a question box answered by the VLM with counts as text (H1 V2);
+  6. a DisasTeller report on local models (T2).
+
+  It must run with internet off after setup. A container is optional, not a key result.
+
+### L0 · A better 7B teacher before distilling
+- **Decided 19 Oct:** improve the 7B first, then distil (L2). A student learns from its teacher, and ours trails the paper's own fine-tune of the same model.
+- **Source:** [Paper] DisasterM3, Table 2 and Appendix B.3 (arXiv 2505.21089v2). The local PDF stops at page 15, so the appendix was read online.
+- **Goal:** O4 (a better teacher for the 3B) and O2 (six-task accuracy).
+- **Where we stand (optical questions, greedy):** our 7B averages 36.1%, against 31.2% for the base model and 40.4% for the paper's fine-tune. The gaps to the paper are on disaster type (71.1 against 83.6) and relational reasoning (23.3 against 36.2); see H1's like-for-like table.
+- **Recipe, ours against the paper's:**
+
+  | Setting | Paper (Appendix B.3) | Ours (`train_qwen_disasterm3.ipynb`) |
+  |---|---|---|
+  | Method | LoRA on the language model, vision encoder frozen | Same, but the base model is held in 4-bit (QLoRA) |
+  | LoRA | rank 64, alpha 16, dropout 0.05 | Same |
+  | Optimiser | AdamW, lr 2e-4, β 0.9 / 0.95, cosine | Same, plus 3% warmup |
+  | Batch and length | Global batch 256, 1 epoch | 1 × 256 gradient accumulation, 1 epoch; all 217 steps finished |
+  | Precision and hardware | Not stated; 4× H100 | fp16 on 1× T4 |
+  | Image size in training | Not stated | Capped at about 512 image tokens per image |
+  | Image size in testing | Each model's default (full size, about 1,300 tokens for a 1024 px image) | 512 px in H1 V2/V2b (about 324 tokens) |
+  | Data | Instruct question-answer samples | The 55,764 Instruct entries with a text answer; the 37,204 segmentation entries have none |
+
+- **Ruled out:**
+  - The answer format: our 7B answers with letters only on 99.9–100% of questions in every task.
+  - Using the authors' model as the teacher: they haven't released their fine-tuned weights (their Hugging Face page lists only EarthVQA-pretrained and GeoFM).
+- **Build:**
+  1. **Step 1, re-test (about 2–3 GPU hours on T4 ×2):** re-score our 7B on DTR and ORR, optical questions (1,211), at three sizes for a 1024 px image:
+     - 1036 px, the full size (Qwen's default, the paper's setting);
+     - 616 px, our training cap;
+     - 504 px, H1 V2's size, re-run as the control.
+
+     Built 19 Oct: `Champion_Task/l0-step1-image-size-check.ipynb`, a copy of H1 V2's notebook with only the image size changed. The decision was fixed before the run, against the paper's 83.6 and 36.2:
+     - **Gap closed:** the best size comes within 3 points on both tasks. Re-score all six tasks at that size, then L2 with the same 7B.
+     - **Partly closed:** at least half of each gap is recovered. Re-score all six at that size, then decide on step 2.
+     - **Not closed:** go to step 2.
+  2. **Step 2, only if step 1 leaves the gap:** a top-up training of our LoRA adapter on DTR and ORR (3,509 training entries) plus an equal replay sample of the other tasks, at up to about 1,024 image tokens.
+     - It takes about 10–20 T4 hours; the DDP notebook can halve that. Retraining from scratch would take about 45–90.
+     - Keep it only if DTR and ORR rise and no other task drops by more than 1 point.
+- **Done when:** the 7B's six-task scores are re-measured at the paper's setting, and L2 uses the better of the two models as its teacher.
+
+### L2 · 7B → 3B distillation
+- **Source:** [Plan] CSE499A future work and KR4; [Paper] QLoRA (we already use it via Unsloth).
+- **Goal:** O4.
+- **Waits for L0** (decided 19 Oct): the teacher is improved first.
+- **Base:** the two ready notebooks in `support/Abrar/Implementation_DisasterM3/`, kept unchanged as the originals:
+  - `generate_teacher_cot_train_3b_distill.ipynb` has never been run. Step 1 runs as its fixed copy, [Champion_Task/l2-stage1-teacher-rationales.ipynb](Champion_Task/l2-stage1-teacher-rationales.ipynb) (19 Oct): Kaggle's own torch, fp16 on 2×T4 in batches, 4,000 checkable examples, and only answers that match the label kept;
+  - `train_qwen_disasterm3_3b_distill.ipynb` needs the same environment fix, as a copy, and **its outputs cleared**, because they're left over from the 7B run.
+- **Build:**
+  1. Generate the teacher's answers on the training set. QLoRA's lesson: a smaller, cleaner set beats a large noisy one. The smoke test (19 Oct) showed that our fine-tuned 7B answers in one sentence instead of reasoning, so this is answer-level distillation; explanations come from L2b.
+  2. Fine-tune Qwen2.5-VL-3B, with L2b's explanations as a second skill.
+  3. Score all six tasks with the H1 harness, against the 7B.
+
+### L2b · Explanations as a second skill ("why?" on request)
+- **Source:** [Paper] Distilling Step-by-Step (Hsieh et al., Findings of ACL 2023; see Paper_Audit §4.12), BDAChat (explanations are its main strength) and ImageRAG (fine-tuning with reasoning added 18 points). Decided on 19 Oct, after L2's smoke test.
+- **Goal:** O4 and O3. The field 3B answers briefly by default, which keeps it fast and in the benchmark's format, and explains its answer when the user asks "why?".
+- **Why this design:** the papers' lessons and the comparison of short answers (A) against reasoning before every answer (B) are recorded in [Paper_Audit §5.3](Paper_Audit_and_Integration_Plan.md#53-decided-how-the-distilled-3b-learns-19-october-2026).
+- **Build:**
+  1. **Explanation data.** For a few thousand of step 1's checkable training examples, give a model the images, the question, the correct answer and true facts computed from DisasterM3's masks (counts per class as 8-connected blobs, and where the damage is). Ask for 2–3 sentences on what in the before and after images shows the answer. Use the base Qwen2.5-VL-7B-Instruct: our fine-tuned 7B answers in one sentence and doesn't explain.
+  2. **Check each explanation.** Keep it only if it agrees with the answer and every number it states matches the mask facts; drop the rest.
+  3. **Train two skills in step 2.** The normal prompt has the short answer as its target; the same prompt followed by "Explain your answer." has the explanation as its target. The 3B writes an explanation only when asked, so normal answers stay fast.
+  4. **Score both.** Six-task accuracy with the normal prompt, which must not fall, and a hand-checked sample of about 50 explanations, judged against the image and the facts.
+- **Don't** train the 3B to reason before every answer: it is slower in the field (Grace, AWQ), clashes with the benchmark's letters-only answers, and risks teaching made-up evidence, since VLMs find and count buildings poorly (TEOChat, GEOBench-VLM).
+- **Done when:** the 3B's six-task accuracy is no lower than without explanations, and most of the sampled explanations are judged faithful.
+
+### L3 · AWQ 4-bit 3B and confidence handoff to the 7B
+- **Source:** [Paper] AWQ (4-bit, about 3× faster) and Grace (route an answer by the model's own confidence).
+- **Goal:** O4 — "fits in about 6 GB".
+- **Build:**
+  1. Quantise the distilled 3B with AutoAWQ. Also check whether Qwen publishes an official AWQ build to compare against.
+  2. Measure memory, tokens per second and six-task accuracy.
+  3. Handoff: compute the geometric mean of the probabilities of the generated tokens (`output_scores=True`). Below a threshold, send the question to the 7B.
+  4. Report the share answered by the 3B, the accuracy against the 7B alone, and the latency.
+
+### L4 · EfficientSAM3 against SAM 3
+- **Source:** [Paper] EfficientSAM3 (its paper reports no results yet, so we measure) and [Plan] the edge step of the SAM 3 test plan (Research_Directions §7.4).
+- **Goal:** O4 — a field-sized building finder.
+- **Build:** repeat E3's part 2 (building finding) with the smallest and medium EfficientSAM3 students. Report building IoU, milliseconds per image on a T4 and on a CPU, and memory.
+
+## 8. Brief for an AI coding agent (copy, then paste one task under it)
+
+> You are writing a Kaggle notebook for a university capstone: post-disaster building-damage segmentation and a vision-language model on the DisasterM3 dataset.
+>
+> **Read first:**
+> - `Essential_task_delegation/Next_Steps_Roadmap.md` §3 (shared rules) and the task below;
+> - the base notebook or script the task names.
+>
+> **Rules:**
+> - Copy the base notebook and change only what the task lists.
+> - Keep the pinned versions in Cell 1.
+> - Never train on the 645 validation images (the split is `train_test_split(pairs, test_size=0.1, random_state=42)`).
+> - Never use radar (SAR) images for segmentation.
+> - Score with the E-protocol (full 1024 images, last epoch, dataset-level confusion matrix, standard and 8-view TTA rows).
+> - Make the notebook Run-All safe, with a `SMOKE_TEST` flag.
+> - Write all outputs to `/kaggle/working/<task-id>/`, and big temporary files to `/kaggle/temp/`.
+> - Read secrets only from Kaggle Secrets.
+>
+> **Deliver:**
+> 1. the `.ipynb`;
+> 2. a short README: inputs to attach, expected runtime, outputs, and how to check them against the "Done when" line;
+> 3. a list of any assumption you had to make.
+>
+> Ask before changing anything the task doesn't mention.
+>
+> **Task:** <paste the task here, e.g. E1>
+
+## 9. Decision gates
+
+| Gate | Decided by | Rule |
+|---|---|---|
+| G1 | R9 + R9s7 | **Done (18 Oct):** two-seed mean 0.2971, so the gate is not claimed and fine-tuning is closed |
+| G2 | E1 | 40% or more of missed destroyed pixels predicted as Background: R11 before R12; otherwise the reverse |
+| G3 | E3 | SAM 3 at least as good as R9 at finding buildings on pre-images: it becomes R16's stage 1 |
+| G4 | H1 | V1 above 34.2% on BDC means the counting half of KR2 is met; V2 is kept only if no other task drops by more than 1 point |
+| G5 | R15 + R15s7 | Gate claim only with two seeds above 0.30, or a two-seed mean above 0.30, with TTA stated if used |
+
+## 10. GPU budget (approximate)
+
+| Week | Tasks | GPU-h |
+|---|---|---|
+| This week | E1, E2, E3, H1 (V1, V2) | about 10 |
+| Next week | R11, R12 on two accounts; T2 | about 17 |
+| Week after | R15 + R15s7 and R16 (R16 runs regardless, decided 19 Oct); H3 variants | about 17–26 |
+| Third account, any time | L2, L3 | about 15–25 |
+
+CPU-only, any time: D5, T1, L1 and H2.
+
+## 11. Documents to update as results come in
+- [Ablation_Study_Reference_and_QA_Prep.md](Ablation_Study_Reference_and_QA_Prep.md) §7: new segmentation runs (R11 onwards).
+- [Phase2_Plan.md](Phase2_Plan.md): E1, R11, R12 and R15 outcomes.
+- [Paper_Audit_and_Integration_Plan.md](Paper_Audit_and_Integration_Plan.md) §2: the status of each goal.
+- [Research_Directions_Beyond_Finetuning.md](Research_Directions_Beyond_Finetuning.md) §9.
+- The README status table, and `CSE499B_Review_report_update.tex` for the next report.

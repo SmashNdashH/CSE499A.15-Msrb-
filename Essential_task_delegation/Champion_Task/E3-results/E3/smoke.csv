@@ -1,0 +1,4 @@
+precision,sec_per_image,peak_gpu_gb,instances,iou_vs_fp32,error
+fp32,1.73,4.3,11,1.0,
+fp16,0.485,4.07,11,0.9998,
+bf16,2.859,7.65,11,0.9987,

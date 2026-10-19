@@ -1,0 +1,7 @@
+images_from,source,images,hot_spots,on_gt_destroyed,ceiling_from_gt_mask,on_gt_damaged_or_destroyed
+all,all,645,708,0.345,0.47,0.768
+all,other,85,50,0.48,0.432,0.6
+all,xBD,560,658,0.334,0.475,0.781
+with destroyed,all,216,404,0.604,0.734,0.886
+with destroyed,other,22,33,0.727,0.704,0.818
+with destroyed,xBD,194,371,0.593,0.738,0.892

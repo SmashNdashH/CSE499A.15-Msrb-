@@ -1,0 +1,22 @@
+{
+ "task": "H1 V2b",
+ "smoke_test": false,
+ "model": "AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP",
+ "decoding": "greedy",
+ "image_size": 512,
+ "batch": 8,
+ "max_new_tokens": 32,
+ "transformers": "5.16.1",
+ "torch": "2.11.0+cu128",
+ "questions": 4982,
+ "complete": {
+  "plain": true,
+  "facts": true
+ },
+ "stopped_at_time_limit": false,
+ "run_hours": 2.87,
+ "unreadable_images": 8,
+ "best": "7B plain (greedy)",
+ "best_bdc_%": 30.51,
+ "six_task_mean_%": 35.6
+}

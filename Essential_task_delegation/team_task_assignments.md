@@ -1,5 +1,11 @@
 # Team Task Assignments: DisasterM3 Segmentation Ablation Study
 
+> **Outcome (18 October 2026):** the sprint and the D4 champion runs are finished.
+> - **Phase Gate mIoU target (> 0.52):** met in every run, at 0.527–0.543, or up to 0.545 with TTA.
+> - **Destroyed IoU target (> 0.30):** not met. The best recipe (sampler + copy-paste) averages 0.2971 with TTA over two seeds.
+>
+> As this plan specifies, Phase 2 is now active. Final numbers are in `Ablation_Study_Reference_and_QA_Prep.md` §7, and the next steps are in `Phase2_Plan.md` and `Next_Steps_Roadmap.md`. The plan below is kept as originally written.
+
 ## 🚀 DisasterM3 Segmentation Project: 15-Day Capstone Sprint
 
 **Hey team, here is the master plan for the next 15 days.**

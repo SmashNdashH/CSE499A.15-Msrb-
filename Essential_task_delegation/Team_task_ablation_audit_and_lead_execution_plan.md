@@ -4,6 +4,13 @@
 **Date of Completion:** September 28, 2026  
 **Final Status:** **ALL 4 ABLATION TRACKS COMPLETED & EMPIRICALLY VERIFIED**
 
+> **Update (18 October 2026): this champion specification was superseded by the D4 controlled runs.**
+> - The old sprint numbers came from different evaluation setups, so each component was re-tested one at a time against R1, the U-Net + ResNet-50 phased-loss recipe at native 768 crops, using lr 1e-4.
+> - U-Net++ (R4) scored lower than the U-Net (0.5267 against 0.5374 mIoU), so the champion stays a U-Net.
+> - mIoU passes the Phase Gate in every run.
+> - Destroyed IoU does not pass: the best recipe (sampler + copy-paste) averages 0.2971 with TTA over two seeds.
+> - The milestone projections below were not reached. They projected at least 0.58 mIoU and 0.32 Destroyed IoU; the actual best is 0.545 mIoU and 0.297 Destroyed IoU (two-seed mean with TTA). Final numbers are in `Ablation_Study_Reference_and_QA_Prep.md` §7.
+
 ---
 
 ## Executive Summary & Full Team Leaderboard

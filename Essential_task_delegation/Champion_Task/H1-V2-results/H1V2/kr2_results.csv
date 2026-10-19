@@ -1,0 +1,7 @@
+task,questions,plain_%,facts_%,facts_minus_plain,complete,note,kr2_system_%,ref_499A_finetuned_%,ref_base_%
+DTR,420,70.71,69.29,-1.42,True,,70.71,68.33,66.6
+BBR,2363,20.52,10.66,-9.86,True,,20.52,16.39,4.7
+BDC,4982,,,,True,"answered by H1 V1 (U-Net counting), not by the VLM",22.26,23.58,34.2
+DRE,2178,31.86,30.07,-1.79,True,,31.86,26.24,29.3
+DSR,2007,37.87,36.42,-1.45,True,,37.87,31.31,28.3
+ORR,1018,22.1,,,True,plain only: crop images without U-Net facts,22.1,22.5,23.9

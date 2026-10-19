@@ -1,0 +1,19 @@
+{
+ "task": "T1 v3",
+ "smoke_test": false,
+ "ran_on": "PC",
+ "after_images": false,
+ "predictions": "E1-results\\E1\\preds\\R9_tta",
+ "images": 645,
+ "sigma_px": 25,
+ "damaged_weight": 0.5,
+ "safe_scale_px": 200,
+ "hot_threshold": 0.05,
+ "min_spot_px": 500,
+ "point_edge_margin_px": 32,
+ "safe_min_gap_px": 150,
+ "safe_edge_margin_px": 100,
+ "point_radius_px": 20,
+ "display_max": 0.5,
+ "run_time_min": 6.8
+}

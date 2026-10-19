@@ -1,0 +1,26 @@
+{
+ "task": "E3",
+ "smoke_test": false,
+ "sam3_commit": "7f473cfd983d5eb43040ff608f66bff0d7bdcb53",
+ "prompt": "building",
+ "confidence": 0.5,
+ "runs": [
+  [
+   "pre",
+   1
+  ],
+  [
+   "post",
+   1
+  ],
+  [
+   "pre",
+   2
+  ]
+ ],
+ "min_instance_px": 10,
+ "precision": "fp16",
+ "model_load_s": 38,
+ "val_images": 645,
+ "gate_g3": "SAM 3 pre_grid2: building IoU 0.6304 (destroyed footprint recall 0.634) vs R9 TTA 0.5905 (recall 0.709). R16 stage 1 = SAM 3 on the before image."
+}

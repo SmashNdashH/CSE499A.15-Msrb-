@@ -1,0 +1,25 @@
+{
+ "task": "H1 V2",
+ "smoke_test": false,
+ "model": "AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP",
+ "decoding": "greedy",
+ "image_size": 512,
+ "batch": 8,
+ "max_new_tokens": 32,
+ "transformers": "5.16.1",
+ "torch": "2.11.0+cu128",
+ "stopped_at_time_limit": false,
+ "run_hours": 4.28,
+ "unreadable_images": {
+  "BBR": 4,
+  "DRE": 4,
+  "DSR": 2
+ },
+ "keep_facts": false,
+ "gate": "Facts not kept: the largest change against the plain run is -9.86 points (rule: no task may drop by more than 1 point).",
+ "six_task_means": {
+  "kr2_system_%": 34.22,
+  "ref_499A_finetuned_%": 31.39,
+  "ref_base_%": 31.17
+ }
+}
