@@ -1,0 +1,91 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{lipsum} % For generating filler text if needed to adjust length
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{Automated Evaluation Pipeline for Fine-Tuned Vision-Language Models in Disaster Response Scenarios\\
+}
+
+\author{\IEEEauthorblockN{Tamanna Akter Mou}
+\IEEEauthorblockA{\textit{Department of Computer Science and Engineering} \\
+\textit{North South University}\\
+Dhaka, Bangladesh \\
+tamanna.mou@northsouth.edu}
+}
+
+\maketitle
+
+\begin{abstract}
+During the initial phase of this project, various research papers on Vision-Language Models (VLMs) were studied to understand their applications in crisis management. Ultimately, the DisasterVQA benchmark was selected for implementation. This paper details the development of an automated evaluation pipeline designed to assess the zero-shot performance of a fine-tuned Qwen2.5-VL-7B model in disaster response scenarios. By filtering the dataset to focus exclusively on Binary and Multiple-Choice Questions (MCQ), we eliminated the need for expensive proprietary LLM judges. A strict, zero-cost exact string-matching algorithm was implemented using regular expressions. The pipeline successfully overcame hardware limitations via 8-bit quantization and proved that our fine-tuned model performs on par with state-of-the-art proprietary models, achieving 91.18\% Binary accuracy and 84.65\% MCQ accuracy.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Vision-Language Models, DisasterVQA, Evaluation Pipeline, Exact Match, Qwen2.5-VL
+\end{IEEEkeywords}
+
+\section{Introduction}
+DisasterVQA is a comprehensive benchmark specifically designed to assess the capabilities of Vision-Language Models in real-world disaster response scenarios. It evaluates how well AI models can analyze post-disaster images to extract critical situational awareness data, such as identifying blocked roads, collapsed infrastructure, or flood severity. While the original research heavily relied on expensive, proprietary models like GPT-4 to act as automated judges for open-ended questions, such an approach is not scalable for continuous testing during model development. 
+
+To address this, my primary contribution to our group project was the design and implementation of a fully automated, zero-cost evaluation pipeline. This pipeline was built to rigorously test our group's custom fine-tuned model (\texttt{AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP}) on the DisasterVQA dataset. By selectively focusing on structured question formats—namely Binary (Yes/No) and Multiple-Choice Questions (MCQ)—and excluding open-ended queries, I was able to implement a strict algorithmic evaluation method. This ensures our team can rapidly benchmark our model's performance on local hardware or free cloud instances (like Kaggle) without incurring API costs.
+
+\section{Methodology and Implementation}
+The implementation of the evaluation pipeline required several distinct phases, ranging from data preprocessing to hardware optimization and evaluation logic design.
+
+\subsection{Dataset Filtering and Preparation}
+The original Hugging Face \texttt{QCRI/DisasterVQA} dataset contains thousands of varied question-answer pairs. For this pipeline, a Python script was written to load the dataset and filter out all open-ended questions. A random sample of 500 Binary and MCQ pairs was then selected. 
+
+One critical issue discovered during implementation was that the dataset's main \texttt{question} string did not include the multiple-choice options (e.g., A, B, C, D). If fed directly to the model, it would attempt to answer open-endedly rather than selecting an option. To resolve this, a dynamic prompt injection mechanism was implemented. The script extracts the \texttt{choices} dictionary from the dataset and dynamically appends it to the prompt (e.g., \textit{``Choices: A: Flood, B: Landslide. Answer with the correct option letter.''}). This crucial step ensured the model understood the expected output format.
+
+\subsection{Hardware Optimization on Kaggle}
+Evaluating a 7-Billion parameter Vision-Language Model is highly memory-intensive. When initially loading the model in 16-bit precision (fp16) on Kaggle's 15GB VRAM GPU, the environment immediately crashed due to Out-Of-Memory (OOM) errors. 
+
+To overcome this, the \texttt{bitsandbytes} library was integrated to load the model using \textbf{8-bit quantization}. This significantly reduced the model's memory footprint to approximately 7GB. Additionally, the inference loop was strictly set to a \texttt{batch\_size = 1}, and the input image resolutions were constrained using \texttt{max\_pixels: 512 * 512}. These optimizations allowed the model to process high-resolution disaster imagery within the strict hardware limits.
+
+\subsection{Automated Exact-Match Evaluation Logic}
+To evaluate the predictions without an AI judge, a custom exact string-matching algorithm was developed. The Hugging Face dataset schema presented a unique challenge: the ground truth answers were formatted as Python lists (e.g., \texttt{["Yes"]}), while the model output raw strings (e.g., \texttt{"Yes."}). 
+
+A standard string equality check (\texttt{==}) would fail due to formatting differences. Therefore, the evaluation logic was designed using Regular Expressions (Regex). The script extracts the core string from the dataset list, converts both the ground truth and the prediction to lowercase, and utilizes word boundaries (\texttt{\textbackslash b}) to search for the truth within the model's output. This prevents false positives, ensuring that a ground truth of "No" does not incorrectly match with a model output containing the word "Not".
+
+\section{Results}
+The automated pipeline successfully generated predictions for the sampled dataset and evaluated them with 100\% programmatic accuracy. 
+
+As shown in Fig. \ref{fig:accuracy_output}, the fine-tuned model achieved exceptional zero-shot performance on the benchmark. Specifically, the model scored:
+\begin{itemize}
+    \item \textbf{Binary Accuracy:} 91.18\% (248 correct out of 272)
+    \item \textbf{Multiple-Choice Accuracy:} 84.65\% (193 correct out of 228)
+\end{itemize}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=\linewidth]{accuracy_screenshot.png}}
+\caption{Debug output and final accuracy scores generated by the automated evaluation pipeline in the Kaggle Notebook.}
+\label{fig:accuracy_output}
+\end{figure}
+
+These results are highly significant. When compared to the baseline models evaluated in the original DisasterVQA paper, our 7B parameter model performed on par with the proprietary GPT-4.1-mini, outperforming much larger open-source models like Mistral-Small-24B and Qwen-2.5-VL-32B.
+
+\section{Challenges Faced and Solutions}
+Throughout the development of this pipeline, several technical difficulties were encountered and successfully resolved:
+\begin{enumerate}
+    \item \textbf{CUDA Out of Memory (OOM):} As discussed, the initial VRAM overflow was mitigated through 8-bit quantization and strict pixel limits for the vision encoder.
+    \item \textbf{Evaluation Logic Bugs:} The initial accuracy was reported as 0.00\% due to the dataset's list formatting and missing multiple-choice prompts. This was overcome by writing a robust Regex-based extraction function and dynamically formatting the inference prompts.
+    \item \textbf{Data Loss on Session Restart:} Kaggle environments frequently restart, which initially caused the loss of an hour's worth of inference data. This was solved by implementing an incremental file-saving mechanism that writes each prediction to a \texttt{vqa\_predictions\_500.jsonl} file immediately after generation.
+\end{enumerate}
+
+\section{Impact on the Main Project}
+The successful implementation of this automated evaluation pipeline is a foundational contribution to our group project. It provides our team with a reliable, zero-cost, and rapid testing framework. As we continue to tweak hyperparameters or try new datasets for fine-tuning, we can immediately run this pipeline to gauge our model's performance against the DisasterVQA baseline. By removing the dependency on expensive GPT-4 API calls, we ensure that our research remains scalable and reproducible for future iterations of disaster response AI models.
+
+\section{Conclusion}
+Developing an automated evaluation pipeline for Vision-Language Models requires careful handling of dataset schemas, hardware constraints, and evaluation logic. By optimizing the model for Kaggle's environment and building a robust exact-match algorithm, we successfully validated the high performance of our fine-tuned Qwen2.5-VL-7B model. This work not only highlights the model's capabilities in crisis management scenarios but also establishes a sustainable testing methodology for our continued research.
+
+\end{document}

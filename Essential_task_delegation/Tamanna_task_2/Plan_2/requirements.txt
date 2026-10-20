@@ -1,0 +1,15 @@
+# Dependencies for Tamanna's Agentic Vision RAG Pipeline (Plan 2)
+# Kaggle / Google Colab T4 GPU Compatible
+
+torch>=2.0.0
+torchvision>=0.15.0
+transformers>=4.45.0
+accelerate>=0.31.0
+bitsandbytes>=0.43.0
+segmentation-models-pytorch>=0.3.3
+opencv-python>=4.8.0
+pillow>=10.0.0
+numpy>=1.24.0
+matplotlib>=3.7.0
+scipy>=1.10.0
+tqdm>=4.65.0
