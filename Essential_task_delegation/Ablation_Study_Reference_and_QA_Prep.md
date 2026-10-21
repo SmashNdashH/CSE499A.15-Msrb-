@@ -147,7 +147,7 @@ Under CE + Dice, the 93% background dominated its attention modules, and it pred
 A 512 crop sees only a quarter of the scene, so it has less context per sample. Its validation score also came from random crops, which are noisy. At 768 the context is enough and the native resolution wins.
 
 **Q: Is C3 really better than C2?**
-Not proven. It is +0.0022 mIoU from one seed. D4 runs R1 vs R6 measure seed noise, and R3 tests C3's parameters inside the phased loss.
+Not proven. It is +0.0022 mIoU from one seed. D4 runs R1 vs R1s7 (called R6 until 20 Oct) measure seed noise, and R3 tests C3's parameters inside the phased loss.
 
 **Q: Why not combine A2 + A3 straight away?**
 The one-variable rule (§3). Also, the A3 CSV result was leaky, so copy-paste first needed a clean re-test (R2).
@@ -161,14 +161,14 @@ No. Under CE + Dice its Destroyed recall (0.668) is the same as the U-Net's (0.6
 - If recall matters more in deployment, we can lower the decision threshold for the Destroyed class at inference without retraining, and report F2.
 
 **Q: How do you know the results aren't seed luck?**
-- R6 re-runs R1 with another seed.
-- A component counts only if it beats R1 by more than |R1 − R6|.
+- R1s7 (called R6 until 20 Oct) re-runs R1 with another seed.
+- A component counts only if it beats R1 by more than |R1 − R1s7|.
 - Before claiming the Phase Gate we re-ran the best recipe with another seed (R9s7), and it showed that R9's 0.3001 was partly luck.
 
 **Q: Did you pass the Phase Gate?**
 - **mIoU:** passed in every run, at 0.527–0.543, or up to 0.545 with TTA.
 - **Destroyed IoU:** not passed. The best single run reached 0.3001 with TTA (R9, seed 42), but the same recipe with seed 7 gave 0.2941. Our rule needs two seeds, so we report the gate as missed by 0.003 (two-seed mean 0.2971).
-- That's why the plan moves to structural changes: before + after input, more destroyed examples, and two-stage grading.
+- That's why the plan moves to structural changes: before + after input, more destroyed examples, and find-then-grade (find each building, then grade it).
 
 **Q: Why not just report R9's 0.3001?**
 It passes by 0.0001, while Destroyed IoU moves by about 0.013 from the seed alone. The repeat with seed 7 scored 0.2941, so 0.3001 isn't a reliable result.
@@ -196,14 +196,14 @@ It passes by 0.0001, while Destroyed IoU moves by about 0.013 from the seed alon
 | R3 | FT α.25 β.75 γ1.33 | C3 params inside the phased loss? |
 | R4 | U-Net++ (bs 4 × accum 2) | Architecture under the right loss? |
 | R5 | + weighted sampler 10/5/1 | Sampler on the champion recipe? |
-| R6 | seed 7 | Noise bar |
+| R1s7 (was R6) | seed 7 | Noise bar |
 | R8 | + guide's enhanced augmentation (HSV, CLAHE, Elastic, GridDistortion, CoarseDropout) | Planned Tier-2 item, never run |
-| R7 | R1 + every R2–R5/R8 change that beats R1 by more than \|R1 − R6\| without lowering Destroyed IoU | **Champion** (+ 8-view TTA) |
+| R7 | R1 + every R2–R5/R8 change that beats R1 by more than \|R1 − R1s7\| without lowering Destroyed IoU | **Champion** (+ 8-view TTA) |
 | R9 | + sampler + copy-paste (R5 + R2) | Destroyed-focused combination |
 | R10 | + sampler + FT α.25 β.75 γ1.33 (R5 + R3) | Destroyed-focused combination |
 | R9s7 | R9 with seed 7 | Second-seed check before claiming the Phase Gate |
 
-R2–R6 are independent, so run them in parallel on several Kaggle accounts. Run R1 and R6 first. Expect about 10 h per ResNet-50 run at 768; the notebook resumes across sessions from a per-experiment HF repo.
+R2–R5 and R1s7 are independent, so run them in parallel on several Kaggle accounts. Run R1 and R1s7 first. Expect about 10 h per ResNet-50 run at 768; the notebook resumes across sessions from a per-experiment HF repo.
 
 **Final results (18 October 2026; E-protocol, last epoch; checked against every run's CSV):**
 
@@ -211,7 +211,7 @@ R2–R6 are independent, so run them in parallel on several Kaggle accounts. Run
 |---|---|---|---|---|---|---|---|---|
 | R1 | reference (seed 42) | 0.5374 | 0.3578 | 0.2686 | 0.467 | 0.5440 | 0.2822 | 7.2 |
 | R1b | R1 repeated, same seed | 0.5427 | 0.3602 | 0.2796 | 0.482 | 0.5452 | 0.2832 | 7.3 |
-| R6 | seed 7 | 0.5402 | 0.3542 | 0.2815 | 0.486 | 0.5443 | 0.2839 | 6.5 |
+| R1s7 (was R6) | seed 7 | 0.5402 | 0.3542 | 0.2815 | 0.486 | 0.5443 | 0.2839 | 6.5 |
 | R2 | copy-paste | 0.5369 | 0.3564 | 0.2681 | 0.432 | 0.5415 | 0.2676 | 6.5 |
 | R3 | FT 0.25 / 0.75 / 1.33 | 0.5402 | **0.3635** | 0.2790 | 0.507 | 0.5444 | 0.2845 | 6.2 |
 | R4 | U-Net++ | 0.5267 | 0.3416 | 0.2551 | 0.464 | 0.5324 | 0.2628 | 20.1 |
@@ -225,7 +225,7 @@ R2–R6 are independent, so run them in parallel on several Kaggle accounts. Run
 
 | Recipe | Runs | mIoU | Damaged IoU | Destroyed IoU | Destroyed recall | mIoU with TTA | Destroyed IoU with TTA |
 |---|---|---|---|---|---|---|---|
-| R1 recipe | R1, R1b, R6 | 0.5401 | 0.3574 | 0.2766 | 0.478 | 0.5445 | 0.2831 |
+| R1 recipe | R1, R1b, R1s7 (was R6) | 0.5401 | 0.3574 | 0.2766 | 0.478 | 0.5445 | 0.2831 |
 | R9 recipe (sampler + copy-paste) | R9, R9s7 | 0.5378 | 0.3486 | 0.2884 | 0.502 | 0.5447 | **0.2971** |
 | Difference | | −0.002 | −0.009 | +0.012 | +0.023 | +0.000 | +0.014 |
 

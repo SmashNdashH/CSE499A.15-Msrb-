@@ -293,7 +293,7 @@ The **forward pass** (encoder, then decoder with skips, then head) is identical 
 | Copy-paste | Training | What the weights learn | R2 |
 | Enhanced augmentation | Training | What the weights learn | R8 |
 | Decoder architecture | Training (and model shape) | What the weights learn | R4 |
-| Seed | Training | Random choices only; measures noise | R6 |
+| Seed | Training | Random choices only; measures noise | R1s7 (called R6 until 20 Oct) |
 | TTA | Inference only | How the same frozen weights are used. Added +0.003 to +0.007 mIoU in every D4 run. | all D4 runs (TTA row) |
 | Evaluation protocol (full image vs centre crop, last vs best epoch) | Scoring only | The **number**, not the model | E-protocol vs older runs |
 

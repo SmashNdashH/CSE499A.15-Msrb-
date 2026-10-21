@@ -181,7 +181,7 @@ Across these papers, specialist models are good at finding and counting, VLMs ar
   - **Unseen disasters:** scores on new events fall below 40% mIoU.
   - **Post-image sensor:** optical post-disaster images beat radar (69.76 against 65.56 mIoU), and fusing both is best (70.79).
 - **How we use it (O1):**
-  - It's published evidence for R11 (feeding the before image) and for R16 (two-stage grading).
+  - It's published evidence for R11 (feeding the before image) and for R16 (find-then-grade).
   - **Object-based majority voting** gives each predicted building blob the class most of its pixels have. It needs no training, and we can try it on R1 and R9 predictions right away.
   - **Data overlap:** all 14 BRIGHT events are in DisasterM3 (checked 19 Oct against its train and benchmark lists, which record each picture's sensor):
     - 6 of DisasterM3's 8 non-xBD training events come from BRIGHT, with optical after-images; Kalehe and Shovi don't come from BRIGHT;

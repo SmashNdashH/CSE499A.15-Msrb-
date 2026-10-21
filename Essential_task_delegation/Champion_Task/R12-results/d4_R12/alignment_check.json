@@ -1,0 +1,142 @@
+[
+ {
+  "image": "hurricane_florence_00000315_post_disaster.png",
+  "source": "xBD",
+  "shift_x_px": 14.0,
+  "shift_y_px": 21.0,
+  "response": 0.113
+ },
+ {
+  "image": "nepal_flooding_00000278_post_disaster.png",
+  "source": "xBD",
+  "shift_x_px": 67.9,
+  "shift_y_px": -31.3,
+  "response": 0.006
+ },
+ {
+  "image": "santa_rosa_wildfire_00000201_post_disaster.png",
+  "source": "xBD",
+  "shift_x_px": 1.6,
+  "shift_y_px": 1.1,
+  "response": 0.051
+ },
+ {
+  "image": "hurricane_michael_00000224_post_disaster.png",
+  "source": "xBD",
+  "shift_x_px": -3.0,
+  "shift_y_px": -0.6,
+  "response": 0.097
+ },
+ {
+  "image": "hurricane_matthew_00000217_post_disaster.png",
+  "source": "xBD",
+  "shift_x_px": 65.7,
+  "shift_y_px": -135.8,
+  "response": 0.003
+ },
+ {
+  "image": "hurricane_michael_00000530_post_disaster.png",
+  "source": "xBD",
+  "shift_x_px": 0.3,
+  "shift_y_px": -2.3,
+  "response": 0.102
+ },
+ {
+  "image": "woolsey_fire_00000758_post_disaster.png",
+  "source": "xBD",
+  "shift_x_px": -0.1,
+  "shift_y_px": 0.5,
+  "response": 0.44
+ },
+ {
+  "image": "woolsey_fire_00000679_post_disaster.png",
+  "source": "xBD",
+  "shift_x_px": 1.0,
+  "shift_y_px": 1.8,
+  "response": 0.388
+ },
+ {
+  "image": "nepal_flooding_00000559_post_disaster.png",
+  "source": "xBD",
+  "shift_x_px": 92.3,
+  "shift_y_px": -1.6,
+  "response": 0.011
+ },
+ {
+  "image": "socal_fire_00000220_post_disaster.png",
+  "source": "xBD",
+  "shift_x_px": 1.5,
+  "shift_y_px": 1.8,
+  "response": 0.242
+ },
+ {
+  "image": "turkey_earthquake3_post_692.png",
+  "source": "other",
+  "shift_x_px": 87.0,
+  "shift_y_px": 104.0,
+  "response": -0.009
+ },
+ {
+  "image": "turkey_earthquake5_post_884.png",
+  "source": "other",
+  "shift_x_px": -6.3,
+  "shift_y_px": -7.9,
+  "response": 0.122
+ },
+ {
+  "image": "turkey_earthquake3_post_654.png",
+  "source": "other",
+  "shift_x_px": -32.0,
+  "shift_y_px": -0.1,
+  "response": 0.084
+ },
+ {
+  "image": "kalehe_flooding_post_1010.png",
+  "source": "other",
+  "shift_x_px": 167.5,
+  "shift_y_px": -75.5,
+  "response": 0.005
+ },
+ {
+  "image": "turkey_earthquake5_post_920.png",
+  "source": "other",
+  "shift_x_px": -2.0,
+  "shift_y_px": -5.5,
+  "response": 0.083
+ },
+ {
+  "image": "turkey_earthquake5_post_826.png",
+  "source": "other",
+  "shift_x_px": 43.6,
+  "shift_y_px": 20.5,
+  "response": 0.025
+ },
+ {
+  "image": "turkey_earthquake5_post_808.png",
+  "source": "other",
+  "shift_x_px": 34.0,
+  "shift_y_px": -231.9,
+  "response": 0.005
+ },
+ {
+  "image": "turkey_earthquake3_post_665.png",
+  "source": "other",
+  "shift_x_px": -118.9,
+  "shift_y_px": -127.9,
+  "response": 0.004
+ },
+ {
+  "image": "turkey_earthquake7_post_935.png",
+  "source": "other",
+  "shift_x_px": 1.7,
+  "shift_y_px": -10.0,
+  "response": 0.43
+ },
+ {
+  "image": "kalehe_flooding_post_1008.png",
+  "source": "other",
+  "shift_x_px": 2.9,
+  "shift_y_px": 7.0,
+  "response": 0.059
+ }
+]

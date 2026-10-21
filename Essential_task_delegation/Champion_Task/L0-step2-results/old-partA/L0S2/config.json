@@ -1,0 +1,39 @@
+{
+ "task": "L0 step 2, full-size re-score",
+ "smoke_test": false,
+ "model": "old",
+ "model_id": "AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP",
+ "run_tasks": [
+  "BDC",
+  "BBR"
+ ],
+ "decoding": "greedy",
+ "image_size": "native (1036 px for a 1024 px image)",
+ "image_tokens_per_question": 2738,
+ "questions": {
+  "DTR": 353,
+  "BBR": 2006,
+  "BDC": 3583,
+  "DRE": 1868,
+  "DSR": 2007,
+  "ORR": 858
+ },
+ "complete_tasks": [
+  "BBR",
+  "BDC"
+ ],
+ "batch": 8,
+ "max_new_tokens": 32,
+ "transformers": "5.16.1",
+ "torch": "2.11.0+cu128",
+ "stopped_at_time_limit": false,
+ "run_hours": 8.62,
+ "minutes": {
+  "BDC": 336.3,
+  "BBR": 180.8
+ },
+ "unreadable_images": {
+  "BDC": 3,
+  "BBR": 2
+ }
+}

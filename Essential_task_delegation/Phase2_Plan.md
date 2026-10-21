@@ -10,6 +10,8 @@ Drafted 2026-10-05, while R4, R5 and R8 are still running. Nothing here needs th
 > - R16 was P2-C.
 >
 > The converter check (old P2-0 step 4) is now its own task, D5.
+>
+> **Names updated 2026-10-20:** R6 is now R1s7 (R1 with seed 7). R16's two stages are now "the finding" and "the grading", and the model is "find-then-grade"; "step" is kept for a task's parts.
 
 > **Update 2026-10-08:** R4, R5 and R8 have finished: R4 (U-Net++) 0.5267 / 0.2551, R5 (sampler) 0.5354 / **0.2898** (0.2917 with TTA), R8 0.5342 / 0.2703. None passed the R7 rule, so R7 is the R1 recipe. The best Destroyed IoU is 0.2917 (R5 with TTA), so the gap to 0.30 is now about **+0.008**. Two combination runs are in progress, R9 (sampler + copy-paste) and R10 (sampler + R3 loss). Phase 2 is still needed unless one of them passes and a second seed confirms it.
 
@@ -27,12 +29,12 @@ The Phase Gate needs **mIoU > 0.52 and Destroyed IoU > 0.30** on the 645 validat
 | Run | mIoU | Destroyed IoU | With TTA |
 |---|---|---|---|
 | R1 (reference) | 0.5374 | 0.2686 | 0.5440 / 0.2822 |
-| R6 (seed 7) | 0.5402 | 0.2815 | 0.5443 / 0.2839 |
+| R1s7 (seed 7; called R6 until 20 Oct) | 0.5402 | 0.2815 | 0.5443 / 0.2839 |
 | R2 (copy-paste) | 0.5369 | 0.2681 | 0.5415 / 0.2676 |
 | R3 (FT 0.25/0.75/1.33) | 0.5402 | 0.2790 | 0.5444 / **0.2845** |
 
 - mIoU passes in every run. Destroyed IoU misses in every run; the best is 0.2845, so the gap is about **+0.016**.
-- Seed noise on Destroyed IoU is |R1 − R6| = **0.013**, nearly as big as the gap. Any run that "passes" by a hair must be confirmed with a second seed (see §6).
+- Seed noise on Destroyed IoU is |R1 − R1s7| = **0.013**, nearly as big as the gap. Any run that "passes" by a hair must be confirmed with a second seed (see §6).
 - R4, R5 and R8 could still close the gap, but nothing in the sprint moved Destroyed IoU that much except the loss change, which R1 already has. Plan Phase 2 now; cancel it if one of them passes and a second seed confirms.
 
 ## 2. What the data actually is (checked 2026-10-05 against the local `train_release.json`)
@@ -96,11 +98,11 @@ xBD's tier-3, test and hold splits contain roughly 4,400 more tiles that Disaste
 ### R15: combined champion
 If R12 and R11 each pass the keep rule, combine them, add any R2–R8 change that also passed, and use TTA. This replaces R7 as the champion candidate. Cost: about 9 GPU-hours.
 
-### R16: two-stage model (fallback only)
-Stage 1 segments buildings versus background; stage 2 classifies damage inside each building from pre+post crops. It is the strongest option in the xBD literature, but it means 3–5 days of new code and error propagation (a building stage 1 misses is lost). Do it **only if R12 and R11 both fail**. Otherwise it goes in the report as future work.
+### R16: find-then-grade model (fallback only)
+The finding segments buildings versus background; the grading classifies damage inside each building from pre+post crops. It is the strongest option in the xBD literature (called "two-stage" there), but it means 3–5 days of new code and error propagation (a building the finding misses is lost). Do it **only if R12 and R11 both fail**. Otherwise it goes in the report as future work.
 
 ### Not doing
-CrowdAI / SpaceNet (footprint-only datasets, useful only for R16 stage 1); AIDER for training (§2).
+CrowdAI / SpaceNet (footprint-only datasets, useful only for R16's finding); AIDER for training (§2).
 
 ## 5. GPU budget and timeline
 

@@ -1,0 +1,23 @@
+{
+ "task": "E4",
+ "smoke_test": false,
+ "val_images": 645,
+ "checkpoints": {
+  "R11": "/root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-d4-R11/snapshots/31974dacfee2125a66639858433a113704edf9b3/final_model.pth",
+  "R12": "/root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-d4-R12/snapshots/6f8f2e3d1b181e595de2b81d32973dc64c4317bd/final_model.pth"
+ },
+ "reproduces_csv": "R11 yes, R12 yes",
+ "noise": 0.013,
+ "min_event_destroyed_px": 10000,
+ "destroyed_change_tta": {
+  "xBD": 0.0066,
+  "other": -0.0019
+ },
+ "reading": "Not the wrong place: R12 changes Destroyed IoU by +0.007 on the xBD images, within the seed noise (0.013), although every extra tile is xBD (-0.002 on the others). More xBD destroyed examples don't help at this training budget, even where they were added.",
+ "rank_correlation": {
+  "rho": 0.731,
+  "p": 0.005,
+  "events": 13
+ },
+ "validation_minutes": 12.1
+}

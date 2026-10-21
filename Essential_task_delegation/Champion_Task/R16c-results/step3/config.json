@@ -1,0 +1,83 @@
+{
+ "task": "R16c step 3",
+ "smoke_test": false,
+ "val_images": 645,
+ "sam3_dir": "/kaggle/input/notebooks/abrarmohammedtanzim/e3-sam3-building-finding/E3/masks/pre_grid2",
+ "grader_dir": "/kaggle/input/notebooks/abrarmohammedtanzim/r16c-step2-stronger-grader/R16c-truth",
+ "unet": "R11s7",
+ "unet_checkpoint": "/root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-d4-R11s7/snapshots/d0654a16a2b8b15d8c9989f22519d53cf4d403c0/final_model.pth",
+ "unet_reproduces_csv": "yes",
+ "expected_unet": {
+  "std": [
+   0.5867,
+   0.2869
+  ],
+  "tta": [
+   0.5913,
+   0.2928
+  ]
+ },
+ "graders_reproduce_step2_f1": "yes",
+ "biases": {
+  "42": {
+   "Intact": 0.0,
+   "Damaged": -1.75,
+   "Destroyed": -3.75
+  },
+  "43": {
+   "Intact": 0.0,
+   "Damaged": -2.0,
+   "Destroyed": -4.0
+  }
+ },
+ "crop": 128,
+ "margin": 32,
+ "min_area": 20,
+ "seeds": [
+  42,
+  43
+ ],
+ "validation_minutes": 26.7,
+ "missing_sam3_maps": 0,
+ "true_buildings_macro_f1": {
+  "42": 0.7779,
+  "43": 0.7843
+ },
+ "keep": {
+  "R16c_s42_sam3": false,
+  "R16c_s42_sam3+r11s7": false,
+  "R16c_s42_vote": false,
+  "R16c_s43_sam3": false,
+  "R16c_s43_sam3+r11s7": false,
+  "R16c_s43_vote": false
+ },
+ "phase_gate": {
+  "R16c_s42_sam3": false,
+  "R16c_s42_sam3+r11s7": true,
+  "R16c_s42_vote": false,
+  "R16c_s43_sam3": false,
+  "R16c_s43_sam3+r11s7": true,
+  "R16c_s43_vote": false
+ },
+ "vs_step2": {
+  "R16c_s42_sam3+r11s7": {
+   "miou": -0.0026,
+   "destroyed_iou": -0.0069
+  },
+  "R16c_s43_sam3+r11s7": {
+   "miou": -0.0022,
+   "destroyed_iou": -0.01
+  }
+ },
+ "kept_on_all_seeds": {
+  "sam3": false,
+  "sam3+r11s7": false,
+  "vote": false
+ },
+ "gate_on_all_seeds": {
+  "sam3": false,
+  "sam3+r11s7": true,
+  "vote": false
+ },
+ "o1": "SAM 3 + R11s7's pieces passes the O1 gate on both grader seeds; with step 2 (R11's pieces), that is two U-Net seeds."
+}

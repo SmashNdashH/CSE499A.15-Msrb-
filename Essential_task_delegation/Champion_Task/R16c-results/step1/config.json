@@ -1,0 +1,22 @@
+{
+ "task": "R16c step 1",
+ "validation_images": 645,
+ "questions": 1055,
+ "stage1_buildings": 57991,
+ "r11_pieces_with_identical_counts": 526,
+ "min_area": 20,
+ "real_share": [
+  0.7368,
+  0.1836,
+  0.0796
+ ],
+ "truth_accuracy_%": 100.0,
+ "finding": "Best R16 map for counting: 'vote with R11, R16 grades', 36.9% of the 1,055 validation questions, against 39.2% for R11's blobs (-2.4 points) and 55.3% with a perfect grader on the same outlines.",
+ "references_%": {
+  "our 7B, greedy, benchmark optical questions (H1 V2b)": 32.01,
+  "base Qwen2.5-VL-7B, benchmark optical questions (paper)": 34.2,
+  "R9's tuned counter, benchmark optical questions (H1 V1)": 26.54,
+  "R9's untuned counter, these validation questions (H1 V1)": 33.3
+ },
+ "run_time_min": 2.6
+}

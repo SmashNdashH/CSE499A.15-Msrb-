@@ -46,7 +46,7 @@ Our current segmentation dataset is built directly from DisasterM3’s building 
 | **D3 (Ridita)** | U-Net + ResNet-34, CE+Dice | **Sliding Window 1024** | 0.4819 | 0.3021 | 0.1853 | Free +2.19% mIoU |
 | **R1 (Reference Champion)** | ResNet-50 + Phased Loss | Native 768 crops | 0.5374 | 0.3380 | 0.2686 | Passed mIoU |
 | **R1 + TTA (Best Run)** | ResNet-50 + Phased Loss | Native 768 + 8-view TTA | **0.5440** | **0.3410** | **0.2822** | **Target: >0.30 (Gap: 0.0178)** |
-| **R6 (Seed 7 Check)** | ResNet-50 + Phased Loss | Native 768 + 8-view TTA | **0.5443** | **0.3421** | **0.2839** | Seed noise ~0.013 |
+| **R1s7, formerly R6 (Seed 7 Check)** | ResNet-50 + Phased Loss | Native 768 + 8-view TTA | **0.5443** | **0.3421** | **0.2839** | Seed noise ~0.013 |
 
 ### 1.3 The Core Bottleneck
 Under our strict **E-Protocol** (evaluating on the 645 full-resolution validation images without crop or resize, using dataset-level confusion matrix):

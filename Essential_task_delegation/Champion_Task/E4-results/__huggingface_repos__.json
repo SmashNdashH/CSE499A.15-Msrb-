@@ -1,0 +1,1 @@
+{"repos": [{"repoId": "AbrarAlam/disasterm3-d4-R12", "repoType": "model", "commitHash": "6f8f2e3d1b181e595de2b81d32973dc64c4317bd", "filePaths": ["final_model.pth"]}, {"repoId": "AbrarAlam/disasterm3-d4-R11", "repoType": "model", "commitHash": "31974dacfee2125a66639858433a113704edf9b3", "filePaths": ["final_model.pth"]}]}

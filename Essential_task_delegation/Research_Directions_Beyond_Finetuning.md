@@ -29,7 +29,7 @@ The D4 champion runs changed one setting at a time from the R1 recipe (U-Net + R
 |---|---|---|---|
 | R1 | reference | 0.5374 | 0.2686 |
 | R1b | same config and seed, run again (an accidental repeat, see §10) | 0.5427 | 0.2796 |
-| R6 | seed 7 | 0.5402 | 0.2815 |
+| R1s7 (called R6 until 20 Oct) | seed 7 | 0.5402 | 0.2815 |
 | R2 | copy-paste | 0.5369 | 0.2681 |
 | R3 | Focal Tversky 0.25 / 0.75 / 1.33 | 0.5402 | 0.2790 |
 | R4 | U-Net++ decoder (batch 4 × 2) | 0.5267 | 0.2551 |
@@ -55,7 +55,7 @@ Ranked by expected gain for the effort.
 | # | Lever | What changes | Why it should help | Cost |
 |---|---|---|---|---|
 | 1 | **Give the model the pre-disaster image too** | Our model sees only the post-disaster image. DisasterM3 includes a matching pre-disaster image (`*_pre_*.png`) for every training photo. | The model can compare each building before and after, instead of guessing whether rubble used to be a building. All five xView2 winners (§4), ChangeMamba's damage model and TEOChat use pre + post pairs. | **Low.** `smp.Unet(in_channels=6)` on the stacked pair is one model change, plus loading the pre image with the same crop and flips. A Siamese encoder is the stronger version. |
-| 2 | **Two stages: find buildings, then grade each one** | Stage 1 segments building vs background. Stage 2 classifies each building's damage from its pre/post crops. | Rare *pixels* become rare *objects*: the training set has 40,704 damaged and 16,682 destroyed building instances, compared with 0.33% of pixels. Counting comes out per building. This is how xView2's 1st and 2nd place solutions worked, and it's Tier 5 of our improvement guide. | **Medium.** A new pipeline, but each stage is simple. |
+| 2 | **Find buildings, then grade each one** (the literature's "two-stage" model) | The finding segments building vs background. The grading classifies each building's damage from its pre/post crops. | Rare *pixels* become rare *objects*: the training set has 40,704 damaged and 16,682 destroyed building instances, compared with 0.33% of pixels. Counting comes out per building. This is how xView2's 1st and 2nd place solutions worked, and it's Tier 5 of our improvement guide. | **Medium.** A new pipeline, but each stage is simple. |
 | 3 | **More data instead of more tuning** | Add xBD (already on this PC under `data/xView2 Challenge Dataset - train and test`) or BRIGHT, for pre-training or joint training. | More rare-class examples is the most reliable fix for imbalance. This is Phase 2, Task D5 in `team_task_assignments.md`. | **Medium.** **Check for overlap first:** DisasterM3 already contains xBD-style events (e.g. `woolsey_fire_…` in its Bench split), so adding xBD could leak validation or test images. |
 | 4 | **Start from foundation models, train less** | Use SAM / SAM 2 / SAM 3 for building outlines, or AnyChange (zero-shot change detection), and train only a small damage head. | Fewer settings to tune, and we inherit models trained on far more data. | **Low to medium.** See §6–§7. |
 | 5 | **Change the contribution, not the model** | Freeze R1 as the segmentation champion. Spend 499B on the system: hybrid counting, offline DisasTeller, 7B→3B distillation and an edge benchmark. | The title is *Resource-Efficient Neural Architectures…*; a measured, working offline system is the contribution. | **Low to medium**, and already in objectives O2–O4. |
@@ -176,7 +176,7 @@ A **pixel mask** is an image-sized map marking which pixels belong to something.
 
 ## 7. The SAM 3 plan
 
-SAM 3 connects four earlier ideas: the pre-disaster image, the two-stage pipeline, foundation models and the agent layer. It also shrinks the "too many variables" problem, because SAM 3 stays frozen.
+SAM 3 connects four earlier ideas: the pre-disaster image, the find-then-grade pipeline (the literature's "two-stage" model), foundation models and the agent layer. It also shrinks the "too many variables" problem, because SAM 3 stays frozen.
 
 ### 7.1 Practical facts
 
@@ -202,9 +202,9 @@ SAM 3 connects four earlier ideas: the pre-disaster image, the two-stage pipelin
   flood?"           └───────────┬──────────────────────────────┬────────────────┘
                                 │ "building"                   │ "flood water"
                     ┌───────────▼──────── PERCEPTION LAYER ("eyes") ───────────────┐
- PRE image  ──────► │ Stage 1: SAM 3 "building" on the PRE image                     │
+ PRE image  ──────► │ Finding: SAM 3 "building" on the PRE image                     │
                     │          → list of every building (no training)                │
- PRE + POST crops ► │ Stage 2: small Siamese classifier per building                 │
+ PRE + POST crops ► │ Grading: small Siamese classifier per building                 │
                     │          → intact / damaged / destroyed (the only part trained)│
                     └───────────┬──────────────────────────────────────────────────┘
                                 ▼
@@ -221,7 +221,7 @@ SAM 3 connects four earlier ideas: the pre-disaster image, the two-stage pipelin
 | Earlier idea | Where it shows up |
 |---|---|
 | Lever 1: pre-disaster image | SAM 3 finds buildings on the **pre** image, where they're intact and sharp (xView2 1st place's idea). Destroyed buildings are found by footprint even though they're rubble in the post image. |
-| Lever 2: two stages | Stage 1 is SAM 3, stage 2 a small classifier. Rare pixels become rare objects (40,704 damaged, 16,682 destroyed instances). |
+| Lever 2: find, then grade | SAM 3 does the finding, a small classifier the grading. Rare pixels become rare objects (40,704 damaged, 16,682 destroyed instances). |
 | Lever 4: foundation models | SAM 3 is frozen and adds **zero** settings to tune; only one small classifier is trained. |
 | Agentic workflow + RAG | The VLM is the SAM 3 Agent "brain". DisasterM3 contains these questions, e.g. "Segment intact buildings near the flooding (within 100m)", and building counting, where our VLM alone fell 10.62 points in 499A. |
 | Edge devices | Two deployment tiers, matching Grace's satellite-and-ground split. SAM 3 can act as a teacher whose pseudo-labels train small field models. |
@@ -232,9 +232,9 @@ SAM 3 connects four earlier ideas: the pre-disaster image, the two-stage pipelin
 | Step | What | Training? | Effort | Pass check |
 |---|---|---|---|---|
 | **E3**, part 1 | Request Hugging Face access. Smoke-test SAM 3 on a Kaggle T4: does a 1024×1024 image fit in memory, and how long does it take? | No | ½ day | Runs on a T4 (otherwise 2×T4 or EfficientSAM3) |
-| **E3**, part 2 | Prompt "building" on the 645 validation images, **both pre and post**. Measure building IoU against the combined ground-truth masks and per-image building counts, and compare with R1's building-vs-background IoU. | No | 1 day | SAM 3 on the pre image ≥ R1 → it becomes stage 1 |
+| **E3**, part 2 | Prompt "building" on the 645 validation images, **both pre and post**. Measure building IoU against the combined ground-truth masks and per-image building counts, and compare with R1's building-vs-background IoU. | No | 1 day | SAM 3 on the pre image ≥ R1 → it does R16's finding |
 | **S2** | Zero-shot damage prompts on post images ("destroyed building", "collapsed building", "rubble"). Compare Destroyed IoU with R1's 0.27. | No | ½ day | Likely to fail; a clear negative result is still worth reporting |
-| **R16** | Stage 2: train a Siamese ResNet-18 on pre+post crops of training buildings. On validation, classify the buildings SAM 3 found and score with our full-image protocol **and** the xView2 metric. | Small model only | 2–3 days | Destroyed IoU beats R1 by more than the noise bar (0.013) |
+| **R16** | The grading: train a Siamese ResNet-18 on pre+post crops of training buildings. On validation, classify the buildings SAM 3 found and score with our full-image protocol **and** the xView2 metric. | Small model only | 2–3 days | Destroyed IoU beats R1 by more than the noise bar (0.013) |
 | **S4** | Connect the VLM as the agent. Evaluate on DisasterM3's counting and referring-segmentation questions against our 499A scores (34.2% base, 23.58% fine-tuned). | No | 2–3 days | Counting beats the 34.2% base model (objective O2) |
 | **L4** | Edge tier: EfficientSAM3 vs SAM 3 accuracy and latency, or distil SAM 3's pseudo-labels into our U-Net. | Optional | 2 days | A measured trade-off table for the report |
 
@@ -341,7 +341,7 @@ We can borrow BDAChat's strength cheaply: after the classifier grades a building
 2. **A pre + post input run** for the U-Net (lever 1). It's one change, tested with the same noise-bar method as R1–R8.
 3. **An edge benchmark**: INT8 U-Net and 4-bit 3B VLM, with latency, memory and accuracy.
 4. **RAG plus the agent layer**, to build the offline DisasTeller (O3).
-5. **Two-stage object-level damage** (R16), if E3 passes.
+5. **Find-then-grade object-level damage** (R16), if E3 passes.
 6. **Diffusion-generated data and PNNs** as future work in the report.
 
 ---

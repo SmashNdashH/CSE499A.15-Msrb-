@@ -7,6 +7,8 @@ Updated 2026-10-18, after the fine-tuning ablation closed. This roadmap turns [P
 
 You can hand a task to a teammate, or paste it with the brief in §8 into an AI coding agent to get a Kaggle notebook.
 
+What each finished task found, and the decisions it led to, are in [Task_Ledger.md](Task_Ledger.md); live status is in [Progress_Tracker.md](Progress_Tracker.md).
+
 ## 1. Where we are (18 October 2026)
 
 - **Fine-tuning is closed.** All 11 D4 training runs are done; the full table is in [Ablation_Study_Reference_and_QA_Prep.md](Ablation_Study_Reference_and_QA_Prep.md) §7.
@@ -36,7 +38,7 @@ You can hand a task to a teammate, or paste it with the brief in §8 into an AI 
 | Prefix | Meaning | Continues |
 |---|---|---|
 | **E** | Evaluation-only notebook, no training | E0 (re-scoring old checkpoints) |
-| **R** | Segmentation training run | R1–R10 and R9s7; a second seed adds `s7`, e.g. R15s7 |
+| **R** | Segmentation training run | R1–R5, R1s7, R8–R12, R9s7 and R11s7; a second seed adds `s7` to the run's name (R11s7), and a new number is only for a new recipe. R1s7 (R1 with seed 7) was called R6 until 20 Oct. A run's parts are "steps" (R16c step 1–5), never "stages". |
 | **D5** | The xBD data task | Task D5 in `team_task_assignments.md` (external data, Phase 2) |
 | **H** | Hybrid U-Net + VLM work | New; serves O2 |
 | **T** | Triage system: heatmap, reports, demo | New; serves O3 |
@@ -73,9 +75,10 @@ You can hand a task to a teammate, or paste it with the brief in §8 into an AI 
 | R14 | Rubble-centric crop mining (optional) | Innovation: Ridita | O1 | Train notebook | ~6 | spare quota | Ridita |
 | **Phase C: champion and fallback** | | | | | | | |
 | R15 | Combined champion + second seed (R15s7) | Plan | O1 | 2 train runs | ~16 | R11, R12 | Abrar |
-| R16 | Two-stage: find buildings, then grade each (runs regardless of R12) | Paper: xView2 1st, BRIGHT, BDAChat + Plan (two-stage fallback) + Innovation: Ridita | O1, O2, O3 | Train + eval | ~1 | E3 | Abrar |
+| R16 | Find-then-grade: find buildings, then grade each (runs regardless of R12) | Paper: xView2 1st, BRIGHT, BDAChat + Plan (Phase2_Plan's fallback) + Innovation: Ridita | O1, O2, O3 | Train + eval | ~1 | E3 | Abrar |
 | **System track: in parallel** | | | | | | | |
 | H2 | Per-building table + SQL counting agent | Paper: DamageScope, Change-Agent | O2, O3 | CPU / light GPU | ~1 | E1 | Noman |
+| H2b | Graded test of the SQL agent: which model, if any, writes the SQL | Paper: test suites (Zhong et al.), TrustSQL / EHRSQL 2024, Dr.Spider, DAIL-SQL | O2, O3, O4 | Eval notebook (2×T4) | ~1–1.5 | H2 | Abrar |
 | H3 | VLM input upgrades (before + after, numbered marks, crops) | Paper: TEOChat, GeoPixel, ImageRAG; Tamanna Plan 2 | O2 | Variants in H1 | ~6 each | H1 | Tamanna |
 | H4 | GEOBench-VLM external counting test | Paper: GEOBench-VLM | O2 | Eval notebook | ~1 | H1 | Aryan |
 | T2 | DisasTeller on local models | Plan | O3 | GPU notebook | ~2 | — | Ridita |
@@ -93,7 +96,7 @@ Owners are suggestions; reassign freely. The order inside each phase is the reco
 These apply to every task, so an agent doesn't have to rediscover them.
 
 - **Kaggle setup:**
-  - GPU T4 ×1 (×2 only where a task says so), internet ON.
+  - GPU T4 ×2 (Kaggle's only T4 option; most notebooks use one of the two), internet ON.
   - Attach the DisasterM3 mirror (`/kaggle/input/datasets/abrarmohammedtanzim/disasterm3-mirror/DisasterM3_Instruct`).
   - Add the `HF_TOKEN` secret (write-scoped) only if the notebook pushes to Hugging Face.
   - Teammates' accounts got 403 errors pushing to `AbrarAlam/*` repos. Push to your own namespace, or rely on Kaggle outputs.
@@ -186,7 +189,7 @@ These apply to every task, so an agent doesn't have to rediscover them.
 ### E3 · SAM 3 smoke test and building finding
 - **Source:** [Paper] SAM 3 (arXiv 2511.16719) and SegEarth-OV3 (64.3% zero-shot building IoU on xBD).
 - **Goal:**
-  - O1: decide whether SAM 3 can be stage 1 of the two-stage model (Gate G3).
+  - O1: decide whether SAM 3 can do the finding for the find-then-grade model, R16 (Gate G3).
   - O4: the field version of SAM 3 is L4.
 - **Base:** a new notebook on a T4, in fp16. Request access to the gated `facebook/sam3` weights on Hugging Face first, then use the official `facebookresearch/sam3` code.
 - **Build:**
@@ -196,7 +199,7 @@ These apply to every task, so an agent doesn't have to rediscover them.
      - Building count against the number of ground-truth building blobs.
   3. Compare with R9's building IoU from E1.
 - **Outputs:** `sam3_s1.csv` (per image: IoU and counts, pre and post) and `README.md` (memory, speed, and the overall IoU for pre and post).
-- **Gate G3:** if SAM 3 on the pre image is at least as good as R9 at finding buildings, R16 uses SAM 3 as stage 1; otherwise it uses R9's building mask.
+- **Gate G3:** if SAM 3 on the pre image is at least as good as R9 at finding buildings, R16 uses SAM 3 for the finding; otherwise it uses R9's building mask.
 
 ### H1 · KR2 evaluation harness: U-Net counting and counts-as-text
 - **Source:**
@@ -337,6 +340,16 @@ Each run changes **one thing** from its base and follows the keep rule in §3.
 - **Outputs:** `D4_R12.csv` and so on.
 - **Benchmark rule:** 1,059 of the tiles are DisasterM3 benchmark images (447 from D5, all 612 from D5b), so R12 never answers benchmark questions; R16 (with R11) does.
 - **Done when:** compared with R11 (0.5811 / 0.2911; TTA 0.5875 / 0.2965) and R9 under the keep rule. Per-event Destroyed IoU from E1's code shows whether the gain comes from the events the new tiles cover.
+- **Result (19 Oct, second run, after the one-line fix to Cell 4b), not kept:**
+  - Trained on 7,417 images, including the 1,619 extra tiles.
+  - mIoU 0.5820 (TTA 0.5883) and Destroyed IoU 0.2898 (TTA 0.2945). That is within noise of R11.
+  - 8,021 more destroyed buildings didn't move the destroyed class, so more examples of it isn't the lever. That fits E1: most missed destroyed pixels are predicted as background.
+  - R11 stays the champion recipe. R12 must never answer benchmark questions.
+- **E4 (19 Oct), R12 against R11 by source and event:**
+  - On xBD images R12 gains only +0.007 Destroyed IoU (within noise), but per event the gain follows the extra data (rank correlation +0.73; Palu +0.047).
+  - **The real cause of O1's gap:** Turkey's earthquake holds 37% of the validation's destroyed pixels and R11 scores 0.000 there, calling 91.5% of them intact. Training holds 3.75 million Turkey destroyed pixels, so more data isn't the fix.
+  - Without Turkey, R11's Destroyed IoU is 0.410.
+  - R16's grader finds 72–83% of Turkey's destroyed pixels; see R16c.
 
 ### R13 · BRIGHT pre-disaster footprints (optical only)
 - **Source:** [Innovation] Ridita's BRIGHT plan and roadmap (`BRIGHT_DisasterM3_Integration/`), and [Paper] BRIGHT.
@@ -368,11 +381,16 @@ Each run changes **one thing** from its base and follows the keep rule in §3.
   2. Train with seed 42 (R15), then repeat with seed 7 (R15s7).
   3. Claim the gate only if both runs, or their mean, are above 0.30. Say whether that's with TTA.
 - **Cost:** about 16 GPU-hours on two accounts in parallel.
+- **Status (20 Oct):** nothing beyond R11 has passed the keep rule (R12 added nothing; R13 and R14 haven't run), so R15 would be R11 itself and isn't built.
+  - R11's second seed runs as **R11s7**, by the naming rule: a seed repeat keeps the run's name plus `s7`, and a new number is only for a new recipe.
+  - The O1 candidate is R16c's find-then-grade map on R11 (step 2) and on R11s7 (step 3).
+  - R15 comes back only if a later change passes.
 
-### R16 · Two-stage: find buildings, then grade each one
+### R16 · Find-then-grade: find buildings, then grade each one
+R16's two parts are **the finding** (which buildings are there) and **the grading** (each one's damage grade). Named so on 20 Oct, replacing "stage 1/2", so that "step" is used only for a task's steps.
 - **Source:**
   - [Paper] xView2 1st place, BRIGHT (find-then-grade models beat one-step ones: 67.6 against 64.9 mIoU), and BDAChat (pairs before and after crops per building);
-  - [Plan] the two-stage fallback in Phase2_Plan and the SAM 3 test plan (Research_Directions §7.4);
+  - [Plan] the find-then-grade fallback in Phase2_Plan and the SAM 3 test plan (Research_Directions §7.4);
   - [Innovation] Ridita's "Footprint-guided damage cascade".
 - **Goal:** O1, O2 and O3. **Decided 19 Oct: R16 runs regardless of R12.** If R12 passes the gate, R16 becomes an add-on rather than the fallback, for four reasons:
   - **one grade per building:** counting questions (O2) become simple counts, where counting blobs on the U-Net's pixel map scored only 22% (H1 V1), and DisasTeller's reports (O3) need a per-building list;
@@ -382,13 +400,13 @@ Each run changes **one thing** from its base and follows the keep rule in §3.
 
   It is still the fallback if R15 misses the gate.
 - **Build:**
-  1. **Stage 1:** G3 passed, so buildings come from SAM 3 on the pre-image (`pre_grid2`), plus the U-Net's building pieces that SAM 3 missed. The U-Net is R11, run inside the notebook. E3 measured that SAM 3 together with R9 covers 86% of destroyed buildings' footprints.
+  1. **The finding:** G3 passed, so buildings come from SAM 3 on the pre-image (`pre_grid2`), plus the U-Net's building pieces that SAM 3 missed. The U-Net is R11, run inside the notebook. E3 measured that SAM 3 together with R9 covers 86% of destroyed buildings' footprints.
   2. **Crops:** for each building, a square crop of the before and after images with a 16 px margin, resized to 96 px (128 px would need about 14 GB of crops), plus the building's mask as a 4th channel. Training buildings are the 8-connected pieces of each class in our masks, so each has one grade: every damaged and destroyed piece, and at most 12 intact pieces per image. BDAChat's `sgts.py` is a reference for the pairing.
   3. **Grader:** a Siamese ResNet-18 (shared weights) that combines [before, after, after − before] and outputs 3 classes. Train with balanced grades for 10 epochs and keep the last epoch; the whole notebook takes about 1 GPU hour.
   4. **Scoring:** paint each building's mask with its predicted class and score with the E-protocol. Also compute object-level macro F1 to compare with BDAChat's 0.763.
   5. **Combined test:** label each building by a vote between the grader and the best U-Net's pixels inside it. Measure it rather than assume it helps: E2's per-building vote on R9 alone lowered Destroyed IoU from 0.292 to 0.228, though R16's building outlines come from a better source. For the O1 score, combine with the best U-Net (R12 if it passes). For benchmark questions (O2, O3), combine only with a U-Net that never trained on benchmark pictures (R11), so the combination stays clean.
 - **Done when:** R16 alone and R16 combined with the best U-Net are both scored against R9 and R11.
-- **Built 19 Oct:** `Champion_Task/r16-two-stage-grader.ipynb`. Step 4's object-level F1 is measured on the true validation buildings, so it isolates the grader.
+- **Built 19 Oct:** `Champion_Task/r16-find-then-grade.ipynb` (named `r16-two-stage-grader` until 20 Oct, here and on Kaggle). Build item 4's object-level F1 is measured on the true validation buildings, so it isolates the grader.
 - **Result (19 Oct), not kept:**
   - The best Destroyed IoU is 0.261 (the vote), against R11's 0.297 with TTA; SAM 3 + grader alone reaches 0.167.
   - The grader's macro F1 on the true buildings is 0.656 (BDAChat 0.763). Its balanced training over-grades intact buildings: destroyed precision 0.35, recall 0.89.
@@ -397,8 +415,36 @@ Each run changes **one thing** from its base and follows the keep rule in §3.
 - **R16b, the correction (19 Oct, on your PC, 7.3 min), not kept:** `Champion_Task/r16b-grader-prior-correction.ipynb`.
   - **Rule:** each grade's probability is multiplied by its share among the training buildings (intact 73.7%, damaged 18.4%, destroyed 8.0%) and divided by a third. Nothing is fitted on validation, and R16's scores were first rebuilt exactly from its per-building table.
   - **Pixel scores:** every R16 map improves. SAM 3 + grader goes from Destroyed IoU 0.167 to 0.228, and the vote from 0.261 to 0.274 with mIoU 0.585. R11 with TTA stays ahead (0.297 and 0.588).
-  - **Over-grading mostly gone:** among the stage-1 buildings that are mostly one true building, intact buildings graded destroyed fall from 3,539 to 1,500, and macro F1 rises from 0.597 to 0.692.
+  - **Over-grading mostly gone:** among the found buildings that are mostly one true building, intact buildings graded destroyed fall from 3,539 to 1,500, and macro F1 rises from 0.597 to 0.692.
   - **Next:** counting with the corrected grades (H1 V3) needs SAM 3 and the grader run on the benchmark images.
+- **R16c, a rigorous test of the find-then-grade idea** (go given 19 Oct, after you asked to test R16 more rigorously). Its steps were renumbered 1–5 on 20 Oct: step 3 was 2b, step 4 was 3a, step 5 was 3b.
+  - **Step 1, the ceiling and a counting check** (your PC, 2.6 min): `Champion_Task/r16c-step1-ceiling-and-counting.ipynb`.
+    - Give each found building its main true grade, as a perfect grader would. SAM 3 + R11's pieces then reach mIoU 0.766 and Destroyed IoU 0.614 (0.798 and 0.661 if it may also reject non-buildings). R16b's grader gets 0.541 and 0.208.
+    - So the outlines are good enough; the grader loses most of the score.
+    - Counting, on the 1,055 validation counting questions:
+      - R11's blobs: 39.2%;
+      - R16's best map: 36.9%;
+      - a perfect grader: 55.3%.
+  - **Step 2, a stronger grader** (Kaggle, about 2 h): `Champion_Task/r16c-step2-stronger-grader.ipynb`, a copy of R16's notebook.
+    - 128 px crops with a 32 px margin, 20 epochs, two seeds.
+    - The epoch and a bias per grade are picked on 580 held-out training images, never on validation.
+    - It is scored against R11 TTA (keep rule) and against the ceiling (the share of the gap closed).
+  - **Steps 4 and 5, the grader on SAM 3's own outlines** (planned only if step 2 fell short; run as a stretch by your decision of 20 Oct):
+    - Step 4, `Champion_Task/r16c-step4-sam3-training-images.ipynb`, runs SAM 3 on the 5,798 training images (about 3.5–4 h).
+    - Step 5, `Champion_Task/r16c-step5-grader-on-sam3-outlines.ipynb`, is step 2's notebook with `TRAIN_OUTLINES = "sam3"`: the grader trains on SAM 3's own outlines. A 4th label, "None", lets it reject outlines that are mostly background.
+    - Step 5 replaces step 2 only if it beats step 2's kept map on both seeds by the keep margin.
+  - **Step 3, step 2's graders with R11s7's pieces:** `Champion_Task/r16c-step3-r11s7-pieces.ipynb`, evaluation only, after R11s7. It gives the O1 claim its second U-Net seed.
+  - **Done when:** a map is kept on both seeds (then it becomes the O1 candidate, checked on R11s7 in step 3, and H1 V3 counts with it), or step 5 also falls short and the find-then-grade route is closed with these numbers.
+  - **Watch Turkey (found with E4, 19 Oct):**
+    - On Turkey's 64 validation images, R16's grader finds 72–83% of the destroyed pixels where R11 finds none. Its Destroyed IoU there is 0.13, or 0.19 with R16b's correction, held down by over-grading intact buildings.
+    - Step 2's per-building table gets the same Turkey breakdown after the run.
+  - **Step 2 result (20 Oct, 1.4 h on account 1): kept on both grader seeds, and the O1 gate passes on both.**
+    - SAM 3 + R11's pieces: mIoU 0.587 and 0.585, Destroyed IoU 0.316 and 0.311 (R11 with TTA: 0.588 and 0.297).
+    - The grader's macro F1 on the true buildings is 0.778 and 0.784.
+    - It wins on Turkey (0.000 → 0.24–0.27) and loses on xBD images (0.456 → 0.35–0.38).
+    - Counting on the validation questions stays at R11's level (37–39%).
+    - The gate is so far on one U-Net seed (R11). Step 3 re-scores the same graders with R11s7's pieces.
+    - Results in `Champion_Task/R16c-results/step2/` (Kaggle's output folder: `R16c-truth`).
 
 ## 7. System track: in parallel, mostly no segmentation training
 
@@ -411,6 +457,27 @@ Each run changes **one thing** from its base and follows the keep rule in §3.
   3. Run the SQL and have the model phrase the answer.
   4. Test on 100 BDC questions and compare with H1 V1.
 - **Outputs:** `buildings.sqlite`, `agent_eval.csv`, `README.md`.
+
+### H2b · Graded test of the SQL agent (added 22 Oct)
+- **Why:** H2's 100 counting questions all need the same query, so they can't separate the models. Counting needs no model at all (a fixed query does it), and a second model costs memory on low-resource hardware.
+- **Source:** [Paper]
+  - Zhong, Yu & Klein, EMNLP 2020 (test-suite accuracy);
+  - TrustSQL and the EHRSQL 2024 shared task (refusals and the RS(10) reliability score);
+  - Dr.Spider, ICLR 2023 (robustness to rephrasing);
+  - DAIL-SQL and Rajkumar et al. (the prompt format);
+  - Self-Debugging, ICLR 2024 (retries with the error message).
+- **Goal:** O2, O3 and O4. Decide which model, if any, writes SQL in the deployed system.
+- **Build:** [h2b-sql-agent-graded-test.ipynb](Champion_Task/h2b-sql-agent-graded-test.ipynb).
+  - **Questions:** 29 answerable questions in 12 groups, each in 3 phrasings on 3 images, plus 12 the tables can't answer; 297 items in all.
+  - **Grading:** on 5 versions of H2's table.
+  - **Models:** our 7B, the base VL-3B (L2's student), Qwen2.5-Coder 1.5B and 3B, each in 4-bit and fp16.
+- **Decision rule (fixed 22 Oct):**
+  - A configuration passes at 90% or more test-suite accuracy and RS(10) above 0.
+  - Our VLM writes the SQL if it passes in 4-bit.
+  - Otherwise the smallest passing separate model is the fallback, with its memory cost.
+  - If nothing passes, fixed queries only.
+  - Re-run on the distilled 3B after L2.
+- **Outputs:** `summary.csv`, `by_group.csv`, `pairwise.csv`, `decision.md`, `README.md`.
 
 ### H3 · VLM input upgrades (variants in the H1 harness)
 - **Source:**
@@ -489,9 +556,26 @@ Each run changes **one thing** from its base and follows the keep rule in §3.
      - **Gap closed:** the best size comes within 3 points on both tasks. Re-score all six tasks at that size, then L2 with the same 7B.
      - **Partly closed:** at least half of each gap is recovered. Re-score all six at that size, then decide on step 2.
      - **Not closed:** go to step 2.
+
+     **Result (19 Oct, 1.7 h): not closed.**
+     - Disaster type: 71.1 → 75.4 → 75.6 (504 → 616 → 1036 px).
+     - Relational: 23.3 → 26.9 → 31.1.
+     - The control reproduced H1 V2 exactly.
+     - At full size the gaps to the paper are 8.0 and 5.1 points. Full size recovers 36% and 61% of them, and "partly closed" needs half of both.
+     - Full size becomes the 7B's test setting. Step 2 (or stopping here) is your decision. Re-scoring the other four tasks at full size would take about 11 GPU hours: 9,464 optical questions at 4.7 s per two-image question and 2.4 s per one-image question.
   2. **Step 2, only if step 1 leaves the gap:** a top-up training of our LoRA adapter on DTR and ORR (3,509 training entries) plus an equal replay sample of the other tasks, at up to about 1,024 image tokens.
      - It takes about 10–20 T4 hours; the DDP notebook can halve that. Retraining from scratch would take about 45–90.
      - Keep it only if DTR and ORR rise and no other task drops by more than 1 point.
+
+     **Built 20 Oct:**
+     - [l0-step2-full-size-rescore.ipynb](Champion_Task/l0-step2-full-size-rescore.ipynb) re-scores at full size: the old 7B on the four tasks step 1 didn't ask (9,464 questions, about 11 h, in two parts), then the new 7B on all six (10,675, about 12 h).
+     - [l0-step2-topup-training.ipynb](Champion_Task/l0-step2-topup-training.ipynb) trains on DTR + ORR plus an equal replay at full size (up to 1036 × 1036): 7,018 examples, global batch 256, about 28 steps, about 7–14 h on T4 ×2 (the smoke test measures it).
+       - A new rank-64 adapter on the merged 7B replaces "continue the old adapter": its saved layer pattern is for transformers 4.49 and matches nothing in transformers 5.
+       - It resumes from Hugging Face, and merges and pushes `AbrarAlam/disasterm3-qwen2.5vl7b-l0s2-mergedFP` at the end.
+       - **Memory at full size, 20 Oct:** the 7B is at the edge of a T4.
+         - Two attempts ran out of GPU memory. Both were fixed without changing the data or the batch: the waiting micro-batches stay on the CPU, and the optimizer is 8-bit paged AdamW.
+         - The smoke test measured 10.0 s per example, so about 19.5 h in 2–3 sessions.
+         - If memory still runs short, the next options are: leave out the few longest examples, use a smaller image size for two-image examples only, or use LoRA rank 32. Each is your decision (details in the [ledger](Task_Ledger.md)).
 - **Done when:** the 7B's six-task scores are re-measured at the paper's setting, and L2 uses the better of the two models as its teacher.
 
 ### L2 · 7B → 3B distillation
@@ -499,7 +583,7 @@ Each run changes **one thing** from its base and follows the keep rule in §3.
 - **Goal:** O4.
 - **Waits for L0** (decided 19 Oct): the teacher is improved first.
 - **Base:** the two ready notebooks in `support/Abrar/Implementation_DisasterM3/`, kept unchanged as the originals:
-  - `generate_teacher_cot_train_3b_distill.ipynb` has never been run. Step 1 runs as its fixed copy, [Champion_Task/l2-stage1-teacher-rationales.ipynb](Champion_Task/l2-stage1-teacher-rationales.ipynb) (19 Oct): Kaggle's own torch, fp16 on 2×T4 in batches, 4,000 checkable examples, and only answers that match the label kept;
+  - `generate_teacher_cot_train_3b_distill.ipynb` has never been run. Step 1 runs as its fixed copy, [Champion_Task/l2-step1-teacher-rationales.ipynb](Champion_Task/l2-step1-teacher-rationales.ipynb) (19 Oct; named `l2-stage1-teacher-rationales` until 20 Oct): Kaggle's own torch, fp16 on 2×T4 in batches, 4,000 checkable examples, and only answers that match the label kept;
   - `train_qwen_disasterm3_3b_distill.ipynb` needs the same environment fix, as a copy, and **its outputs cleared**, because they're left over from the 7B run.
 - **Build:**
   1. Generate the teacher's answers on the training set. QLoRA's lesson: a smaller, cleaner set beats a large noisy one. The smoke test (19 Oct) showed that our fine-tuned 7B answers in one sentence instead of reasoning, so this is answer-level distillation; explanations come from L2b.
@@ -565,7 +649,7 @@ Each run changes **one thing** from its base and follows the keep rule in §3.
 |---|---|---|
 | G1 | R9 + R9s7 | **Done (18 Oct):** two-seed mean 0.2971, so the gate is not claimed and fine-tuning is closed |
 | G2 | E1 | 40% or more of missed destroyed pixels predicted as Background: R11 before R12; otherwise the reverse |
-| G3 | E3 | SAM 3 at least as good as R9 at finding buildings on pre-images: it becomes R16's stage 1 |
+| G3 | E3 | SAM 3 at least as good as R9 at finding buildings on pre-images: it does R16's finding |
 | G4 | H1 | V1 above 34.2% on BDC means the counting half of KR2 is met; V2 is kept only if no other task drops by more than 1 point |
 | G5 | R15 + R15s7 | Gate claim only with two seeds above 0.30, or a two-seed mean above 0.30, with TTA stated if used |
 

@@ -215,7 +215,11 @@ others/**/*.tex
 # D5 and D5b masks (R12), T1-v3 maps (T2, T3) and R16's per-building table (R16b).
 # =========================================================================
 # L2 step 1's training file (71 MB): step 2 reads the Kaggle output instead
-Essential_task_delegation/Champion_Task/L2-stage1-results/disasterm3_distillation_cot_train.json
+Essential_task_delegation/Champion_Task/L2-step1-results/disasterm3_distillation_cot_train.json
+# R16c step 4's SAM 3 maps of the 5,798 training images (84 MB): step 5 reads the Kaggle output instead
+Essential_task_delegation/Champion_Task/R16c-results/step4/masks/
+# Training checkpoints of any session (about 0.9 GB each): they live on Hugging Face, and runs restore from there
+Essential_task_delegation/Champion_Task/**/checkpoints/
 # Superseded maps and masks that no notebook reads from here
 Essential_task_delegation/Champion_Task/H1-V1-results/H1/masks/
 Essential_task_delegation/Champion_Task/T1-results/T1/maps/

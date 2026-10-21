@@ -1,0 +1,14 @@
+method,all_%,intact_%,damaged_%,destroyed_%,xBD_%,other_%,median_count_error_%
+truth,100.0,100.0,100.0,100.0,100.0,100.0,0.0
+"R11, every blob",37.16,36.76,37.32,37.96,39.5,21.99,33.3
+"R11, blobs of at least 20 px",39.24,38.02,43.66,36.57,42.67,17.02,33.3
+"SAM 3 only, R16 grades",30.14,29.55,33.1,27.78,31.51,21.28,50.0
+"SAM 3 + R11 pieces, R16 grades",31.37,34.41,37.68,15.28,32.6,23.4,40.0
+"SAM 3 only, R16b grades",36.4,36.76,34.86,37.5,38.18,24.82,36.7
+"SAM 3 + R11 pieces, R16b grades",34.41,38.56,34.51,23.61,37.31,15.6,33.3
+"SAM 3 only, perfect grades",47.39,41.8,57.39,48.61,47.7,45.39,22.7
+"SAM 3 + R11 pieces, perfect grades",49.57,38.92,65.49,56.02,50.98,40.43,19.0
+"SAM 3 only, perfect + rejects grades",45.31,38.2,57.39,47.69,45.51,43.97,24.6
+"SAM 3 + R11 pieces, perfect + rejects grades",55.26,49.55,65.14,56.94,56.78,45.39,13.9
+"vote with R11, R16 grades",36.87,35.5,41.9,33.8,39.82,17.73,33.3
+"vote with R11, R16b grades",36.87,35.68,41.2,34.26,40.15,15.6,33.3

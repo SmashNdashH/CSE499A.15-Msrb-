@@ -1,0 +1,2 @@
+images,building_iou,count_ratio,recall_intact,recall_damaged,recall_destroyed,sec_per_image
+5798,0.629,1.056,0.6844,0.6703,0.6932,2.62

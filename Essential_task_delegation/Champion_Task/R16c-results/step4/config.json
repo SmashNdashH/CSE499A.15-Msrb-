@@ -1,0 +1,17 @@
+{
+ "task": "R16c step 4",
+ "smoke_test": false,
+ "sam3_commit": "7f473cfd983d5eb43040ff608f66bff0d7bdcb53",
+ "prompt": "building",
+ "confidence": 0.5,
+ "grid": 2,
+ "min_instance_px": 10,
+ "precision": "fp16",
+ "model_load_s": 37,
+ "train_images": 5798,
+ "maps": 5798,
+ "complete": true,
+ "stopped_at_time_limit": false,
+ "run_hours": 4.64,
+ "resumed_from": []
+}
