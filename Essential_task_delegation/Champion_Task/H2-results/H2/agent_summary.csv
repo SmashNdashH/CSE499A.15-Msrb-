@@ -1,0 +1,3 @@
+llm,questions,sql_valid_%,retried_%,count_equals_table_%,H2_accuracy_%,oracle_accuracy_%,V1_accuracy_%
+Qwen/Qwen2.5-Coder-3B-Instruct,100,100.0,0.0,99.0,34.0,34.0,28.0
+AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP,100,100.0,0.0,100.0,34.0,34.0,28.0

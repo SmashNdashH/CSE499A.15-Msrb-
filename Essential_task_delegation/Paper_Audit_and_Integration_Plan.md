@@ -265,6 +265,35 @@ Across these papers, specialist models are good at finding and counting, VLMs ar
 - **Fine-tuning recipe (Appendix B.3):** LoRA on the language model with the vision encoder frozen; rank 64, alpha 16, dropout 0.05; AdamW, lr 2e-4, β 0.9 / 0.95, cosine schedule; global batch 256; 1 epoch; 4× H100. Precision and image size aren't stated. The fine-tuned weights aren't released.
 - **How we use it:** like-for-like comparisons (roadmap H1) and the recipe check behind roadmap task L0, a better 7B teacher before distilling.
 
+### 4.14 Soup (trysoup.dev), a fine-tuning tool: set aside, barely usable for us (22 October 2026)
+- **Source:** [trysoup.dev](https://trysoup.dev/) and [github.com/MakazhanAlpamys/Soup](https://github.com/MakazhanAlpamys/Soup). It isn't a paper. Version 0.76.0, Apache-2.0, about 9.5k stars. Its README and its `docs/` training, models, serving-and-export and performance-and-quantization pages were read on 22 October 2026.
+- **What it is:** a free command-line tool, run on your own GPU, that wraps transformers, PEFT and TRL (Unsloth optional).
+  - One YAML file (`soup.yaml`) sets the model, task, data and hyperparameters (LoRA rank and alpha, learning rate, epochs, 4-bit).
+  - It offers many methods (SFT, DPO, GRPO, distillation, and more), a local OpenAI-compatible server (`soup serve`), GGUF export for llama.cpp and Ollama (`soup export --format gguf --quant q4_k_m`) and a speed and memory benchmark (`soup bench`).
+  - No account is needed, and telemetry is off unless turned on.
+- **Checked against our Qwen2.5-VL recipe (L0's 7B, L2's 3B student):**
+
+  | We need | Soup's docs (v0.76.0) |
+  |---|---|
+  | Qwen2.5-VL | Not listed. The vision models are Llama-3.2-Vision, Qwen2-VL-7B and Pixtral. |
+  | Vision encoder frozen, LoRA on the language model only | Not documented |
+  | An image-size cap (`max_pixels`, our 1036 × 1036) | Not documented |
+  | Loss on the answer tokens only | Unclear |
+  | Two T4s together (DDP) | Not documented for training ("hardware-gated") |
+  | Resume across Kaggle's 12 h sessions, with checkpoints pushed to Hugging Face | Not documented |
+  | 8-bit AdamW without paging (L0's resume fix) | Not documented |
+  | Exporting a vision model to an edge format | Not covered: GGUF export checks text architectures only |
+  | O1's U-Net | Out of scope (language models only) |
+
+- **Verdict: barely usable for this project.** It can't replace our training notebook for any Qwen2.5-VL fine-tune, and the notebook already covers every row above.
+  - **The only possible uses are text-only:**
+    - a local OpenAI-compatible server for DisasTeller's text agents (T2);
+    - a 4-bit GGUF export and benchmark of a text model, if H2b ends with a separate SQL model (O4);
+    - a short SFT or DPO refusal fine-tune of such a model, judged on new questions, not H2b's bank.
+  - Ollama, llama.cpp and vLLM cover the first two without it.
+  - **Other risks:** it changes fast (AWQ and GPTQ export are being removed in v0.77), so any use should pin the version.
+- **How we use it:** we don't, for now (your decision, 22 October 2026). Look again only if its docs add Qwen2.5-VL with a frozen vision encoder, an image-size cap and two-GPU training, or if T2 or H2b needs one of the text-only uses above.
+
 ## 5. Integration plan, cheapest first
 
 ### 5.1 Quick wins on our own code (from section 2)
@@ -323,6 +352,7 @@ Across these papers, specialist models are good at finding and counting, VLMs ar
 - **GeoPixel's single big model:** too heavy, and it has no before image.
 - **BRIGHT's radar data:** future work.
 - **DamageScope's cloud GPT-4o:** use our local Qwen instead.
+- **Soup for our VLM fine-tunes:** set aside on 22 October 2026. It doesn't support our Qwen2.5-VL recipe (§4.14).
 
 ## 7. Check before citing
 - **Not peer-reviewed yet:** DamageScope (2026), Grace (2025) and EfficientSAM3, which also has no results.

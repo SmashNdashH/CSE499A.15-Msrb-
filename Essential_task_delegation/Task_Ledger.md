@@ -57,6 +57,7 @@ Status is kept in [Progress_Tracker.md](Progress_Tracker.md); the plans are in [
 | 20 Oct | You make the renames inside notebooks that already ran, by hand | Editing a code cell with Claude's tools wipes its recorded outputs | [Manual_Notebook_Renames.md](Manual_Notebook_Renames.md) |
 | 20 Oct | L0 step 2's training keeps the equal replay (option A): 7,018 examples, about 19.5 h in 2–3 sessions, rather than half the replay (about 15 h) | The replay protects the other four tasks, and the keep rule fails if any of them drops by more than 1 point | L0 step 2: session 1 on account 3 |
 | 22 Oct | H2 builds its table from R11 with 8-view TTA, not R9 | R11's blobs of at least 20 px are our best counter on validation (39.24% against R9's 33.3%), and R11's counting on the benchmark had never been measured | `Champion_Task/h2-sql-counting-agent.ipynb` (Noman's original unchanged) |
+| 22 Oct | Set Soup (trysoup.dev, a fine-tuning tool) aside for now, and record that it's barely usable for us | Its docs (v0.76.0) don't list Qwen2.5-VL, and don't cover the vision encoder freeze, the image-size cap, two-GPU training or Kaggle resumes that our recipe needs. Its only possible uses here are text-only (a local server for T2; GGUF export or a refusal fine-tune of a text model) | [Paper_Audit_and_Integration_Plan.md §4.14](Paper_Audit_and_Integration_Plan.md); our training notebook stays the recipe for every Qwen2.5-VL fine-tune |
 | 22 Oct | Build H2b, a graded test of the SQL agent. The deployment rule was fixed before any run: benchmark counting uses a fixed query, our VLM writes the SQL if it passes in 4-bit, and a separate model is only a fallback | H2's counting questions can't separate the models, and a second model works against the low-resource target | [h2b-sql-agent-graded-test.ipynb](Champion_Task/h2b-sql-agent-graded-test.ipynb), after H2 |
 
 **Standing working rules** (from you, kept in memory):
@@ -181,6 +182,27 @@ Status is kept in [Progress_Tracker.md](Progress_Tracker.md); the plans are in [
   - G4 was not met.
   - Its fact file fed H1 V2.
   - Counting separate buildings (R16) became the route for counting.
+
+### H2 · Per-building table and SQL counting agent
+- **What:** a per-building SQLite table of the benchmark images, so counts and other questions become database queries, plus a small-LLM SQL agent over it.
+- **Why it was planned:**
+  - O2 and O3: exact, queryable counts for DisasTeller (T2) and the demo (T3).
+  - It was also the first chance to measure R11's counting on the benchmark itself.
+- **How:**
+  - Noman built the notebook. Its run copy switched from R9 to R11 with 8-view TTA (after- and before-images) and a 20 px minimum, the best counter on validation (39.24%).
+  - Two LLMs, Qwen2.5-Coder-3B and our 7B (text only), wrote SQL for 100 sampled optical counting questions.
+- **How it ran:** Kaggle account 2, T4 ×2, 22 Oct, about 1.5 h with the smoke test. [h2-sql-counting-agent.ipynb](Champion_Task/h2-sql-counting-agent.ipynb). H1 V1's per-question file was uploaded as an input, because the `h1-v1-facts` dataset lacked it.
+- **Expectation before the run:** R11's counting near 30% on the optical questions (validation numbers run high), with the base 7B's 34.2% as the bar.
+- **Result:**
+  - **R11's counting:** 32.96% on the optical questions and 27.46% over all 4,978 questions in the table. That beats R9's tuned counter (26.51%) and our 7B (30.09% at full size), but is still 1.2 points under 34.2%.
+  - **The agent:** both models wrote valid SQL for all 100 questions; their counts matched the table on 99 and 100, so both scored the table's 34%.
+  - **The demo:** a free-form distance question got a query with no image filter from the 3B (answer 33,880).
+  - **The table:** 117,687 buildings in 2,652 images; 3 images couldn't be segmented.
+  - Results in [H2-results/H2/](Champion_Task/H2-results/H2/README.md).
+- **What it led to:**
+  - R11's blobs are now our best benchmark counter, but the counting half of KR2 is still not met.
+  - The open-question failure confirmed the need for H2b's graded test.
+  - Its table is H2b's input.
 
 ### H1 V2 · Counts as text, and all six tasks re-scored
 - **What:** our fine-tuned 7B on all six benchmark tasks, with and without a U-Net fact line before each question.
@@ -518,6 +540,23 @@ R16c's steps were renumbered 1–5 on 20 Oct (your decision): step 3 was first c
     - Checked on your PC with torch's save, load and deepcopy. Session 1 started fresh, so it never reloaded the state.
   - **Fix:** `adamw_bnb_8bit`, the same 8-bit AdamW without paging. The maths and the optimizer's memory are unchanged, and it loads checkpoint-15's state as is. Session 2 itself held that state in ordinary GPU memory through a full step without running out. `time_limit_h` is 5.0 for account 3's remaining 7.2 h.
   - **Expectation:** steps 16–23 in about 6 h, then session 3 does steps 24–28 and the merge.
+- **Session 2 again (account 3, 21–22 Oct, about 6 h): steps 16–24 done.**
+  - **Against the expectation:** one step further than planned (24, not 23), because each step took about 37 min (2,170–2,259 s) instead of session 1's 42.
+  - **The fix held:** the 8-bit AdamW resumed checkpoint-15's state with no crash.
+  - **Memory:** peak 14.4 GB on GPU 0 and 14.5 GB on GPU 1.
+  - **Loss:** 0.520 at step 24, still in session 1's band (0.52–0.60). The learning rate is down to 1.6e-5 on the cosine schedule.
+  - **Checkpoints:** 16, 20 and 24 are on Hugging Face (log lines, plus a sha256 check of the local copies before deleting them).
+  - **A misleading number:** the summary's `train_loss` of 0.205 is this session's 9 losses divided by all 24 steps, a quirk of resumed runs; ignore it.
+  - Results in [L0-step2-results/train-session2/](Champion_Task/L0-step2-results/train-session2/L0S2-train/README.md).
+  - **Left:** 4 steps (about 2.5 h) plus the merge. Session 3a takes one step with account 3's last 1 h 26 min, and 3b finishes next week.
+- **Session 3a (account 3, 22 Oct, about 1 h): step 25 done, exactly as planned.**
+  - It resumed from checkpoint-24, trained one step (2,541 s), and the 0.3 h time limit stopped it.
+  - **Loss:** 0.537; the learning rate is down to 1.1e-5.
+  - **Memory:** peak 14.3 GB on each GPU.
+  - **Checkpoint:** checkpoint-25 is on Hugging Face (log line and sha256 match).
+  - **Its own `train_loss` (0.021)** is the same resume quirk: one step's loss divided by 25.
+  - Results in [L0-step2-results/train-session3a/](Champion_Task/L0-step2-results/train-session3a/L0S2-train/README.md).
+  - **Left:** steps 26–28 (about 2.1 h) and the merge, in session 3b with `time_limit_h` back to 5.0.
 
 ### L2 step 1 · Teacher answers for the 3B
 - **What:** the 7B answers 4,000 training questions, and only answers checked correct against their labels are kept.

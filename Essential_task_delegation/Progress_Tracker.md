@@ -1,6 +1,40 @@
 # CSE499B progress tracker
 
-**Last updated:** 22 Oct 2026, 01:20.
+**Last updated:** 22 Oct 2026, 09:50.
+- **L0 training, session 3a done (account 3): step 25 of 28.**
+  - It resumed from checkpoint-24, trained one step (2,541 s, about 42 min), then stopped at its time limit as planned.
+  - **Loss:** 0.537; the learning rate is down to 1.1e-5.
+  - **Memory:** peak 14.3 GB on each GPU.
+  - **Checkpoint:** checkpoint-25 is on Hugging Face (the log line plus a sha256 match); the local copies were deleted.
+  - **Results:** [L0-step2-results/train-session3a/](Champion_Task/L0-step2-results/train-session3a/L0S2-train/README.md).
+  - **Left:** steps 26–28 (about 2.1 h) and the merge. **Session 3b's Cell 2 must set `time_limit_h` back to 5.0,** or it stops after one step again.
+- **H2b's smoke test passed on Kaggle** (account 2, 08:31). It ran end to end with both kinds of model in 4-bit:
+  - VL-3B: 2.35 GB, about 4.1 s per question;
+  - Coder-1.5B: 1.12 GB, about 3.7 s per question;
+  - batched and one-at-a-time replies agreed 100%.
+  - **Early signal, 6 items only:** both models answered both unanswerable questions instead of refusing, and both missed the "no destroyed nearby" NULL case.
+  - **A bug found and fixed before the full run:**
+    - transformers fills any generation setting left at its default from the model's own defaults;
+    - so the "greedy, no repetition penalty" settings, passed in, likely ran with the models' 1.05–1.1 repetition penalty, and in the version on your PC even switched to sampling;
+    - Cell 9 now installs the settings as the model's own and checks them; it was checked on a tiny model on your PC.
+    - **Confirmed on Kaggle (second smoke run, 08:50):** the warning is gone, the check passed for both models, and the 6 results are identical. That session lacked the `HF_TOKEN` secret, which is harmless for these public models; turn it on for the full run.
+  - **Files:** the smoke run is kept as `h2b-sql-agent-graded-test-smoke.ipynb`. The main notebook was rebuilt output-free, and every cell except Cells 2 and 9 matches the smoke run's code exactly.
+- **L0 training, session 2 done (account 3):** it resumed from checkpoint-15 and reached **step 24 of 28**, one more step than planned. The 8-bit AdamW fix held.
+  - **Speed:** 9 steps of about 37 min each (2,170–2,259 s), faster than session 1's 42 min.
+  - **Memory:** peak 14.4 GB on GPU 0 and 14.5 GB on GPU 1.
+  - **Loss:** 0.520 at step 24, in session 1's band of 0.52–0.60; the learning rate is down to 1.6e-5.
+  - **Checkpoints:** 16, 20 and 24 are on Hugging Face. The local copies (1.9 GB) were deleted after their hashes matched.
+  - **Results:** [L0-step2-results/train-session2/](Champion_Task/L0-step2-results/train-session2/L0S2-train/README.md).
+  - **Ignore `train_loss` 0.205 in the summary:** after a resume the trainer divides this session's 9 losses by all 24 steps.
+- **H2 done (account 2): R11's counting on the benchmark is 32.96% on the optical questions** (27.46% over all 4,978 questions in the table).
+  - **Our best counting so far:** it beats R9's tuned counter (26.51%) and our 7B (30.09% at full size, 32.01% at 512 px).
+  - **But still below the bar:** it's under the base 7B's 34.2%, so the counting half of KR2 is still 1.2 points short.
+  - **The agent:** both models wrote valid SQL for all 100 sampled questions, and their counts matched the table on 99 and 100.
+  - **The demo:** an open question showed the 3B leaving out the image filter (answer 33,880), which is exactly what H2b grades.
+  - **The table:** 117,687 buildings in 2,652 images; 3 images couldn't be segmented. Results in [H2-results/H2/](Champion_Task/H2-results/H2/README.md).
+- **H2b checked against H2's real table on your PC** (with stand-in models), using 297 items on 90 images.
+  - All 6 near-miss queries were caught. One of them, integer division in a percentage, would have passed on the real table alone, which shows why the five versions of the table are needed.
+  - Its smoke test now uses both kinds of model: the base VL-3B and the 1.5B coder.
 - **H2b built (your go, 22 Oct):** [h2b-sql-agent-graded-test.ipynb](Champion_Task/h2b-sql-agent-graded-test.ipynb), a graded test of which model, if any, should write SQL in the deployed system. It runs once H2's table exists.
   - **Why:** H2's counting questions all need the same query, so they can't separate the models. Counting needs no model at all (a fixed query does it), and a second model costs memory on low-resource hardware.
   - **What:**
@@ -129,7 +163,7 @@ Kept by Claude for Abrar. Claude updates this file whenever a task starts runnin
 
 | Done | Running | Ready to run | Needs your decision | Needs rerun | Not started |
 |---|---|---|---|---|---|
-| 21 | 1 | 2 | 0 | 1 | 12 |
+| 22 | 0 | 2 | 0 | 1 | 12 |
 
 ## Run board: what ran, what's running, what's next
 
@@ -139,24 +173,22 @@ Every notebook run so far, on Kaggle or on your PC, and every planned run. Updat
 
 | What | Notebook | Account | Started | Time |
 |---|---|---|---|---|
-Nothing is running on Kaggle (21 Oct, 19:30).
+Nothing is running on Kaggle (22 Oct, 08:40).
 
 **Ready to run now**
 
 | What | Notebook | Account | Time |
 |---|---|---|---|
-| L0 step 2: the full training, session 2 again (continues from checkpoint-15) | [l0-step2-topup-training.ipynb](Champion_Task/l0-step2-topup-training.ipynb), Cell 2 with `optim = "adamw_bnb_8bit"` and `time_limit_h = 5.0` | 3 (`redwannewaz`, about 7 h 12 min left) | about 6 h: stops after about step 23 of 28, then saves to Hugging Face |
-| H2: R11's per-building table and the SQL counting agent | [h2-sql-counting-agent.ipynb](Champion_Task/h2-sql-counting-agent.ipynb) | 2 (`abrar2222864642`) | smoke test done 22 Oct (passed: R11 loaded, 6 images with their before-images, the 3B's SQL valid on 6 of 6). The full run takes about 1–1.5 h. It needs `H1_v1_per_question.csv`, which the Kaggle dataset `h1-v1-facts` doesn't contain (it holds only `H1_v1_summary.csv` and `facts.json`), so upload the local copy from `H1-V1-results/H1/` as an input. |
 
 **Waiting: built, runs when its input or account frees up**
 
 | What | Notebook | Account | Waits for | Time |
 |---|---|---|---|---|
 | R16c step 5 (was 3b): the grader trained on SAM 3's outlines | [r16c-step5-grader-on-sam3-outlines.ipynb](Champion_Task/r16c-step5-grader-on-sam3-outlines.ipynb) | 1, or any account its inputs are shared with | account 1's quota reset (its first try stopped when the hours ran out) | 1.5–2 h |
-| L0 step 2: the full training, session 3 (the last 5 steps), then the merge | the training notebook, the same Cell 2 (`adamw_bnb_8bit`) | 3 or any account with the HF token | next week's GPU quota | about 3.5 h of training + about 1 h merge |
+| L0 step 2: the full training, session 3b (steps 26–28), then the merge | the training notebook, Cell 2 with `time_limit_h = 5.0` (session 3a's was 0.3) | 3 or any account with the HF token | next week's GPU quota | about 2.1 h of training (3 steps of about 40 min) + about 1 h merge; plan on 3.5–4 h |
 | L0 step 2: the new 7B on all six tasks | the re-score notebook, `MODEL = "new"`, in parts | 3, plus 2 if needed | the training and merge | about 14.5 h (BDC + BBR 8.6 h, DRE + DSR 4.1 h, DTR + ORR about 1.7 h, as the old 7B took) |
 | L0 step 2: the verdict, all parts scored together | a short scoring notebook on your PC, built when the parts arrive | your PC | both models' answers | minutes |
-| H2b: graded test of the SQL agent (which model, if any, writes the SQL) | [h2b-sql-agent-graded-test.ipynb](Champion_Task/h2b-sql-agent-graded-test.ipynb) | any with H2's output attached and the HF token | H2's `buildings.sqlite` | smoke test about 10 min, then about 1–1.5 h |
+| H2b: graded test of the SQL agent (which model, if any, writes the SQL), the full run | [h2b-sql-agent-graded-test.ipynb](Champion_Task/h2b-sql-agent-graded-test.ipynb) | 2, where H2's output is (or any account it's shared with), with the HF token | the smoke test, and next week's GPU quota | about 1–1.5 h |
 
 **Later: not built yet**
 
@@ -194,6 +226,10 @@ Nothing is running on Kaggle (21 Oct, 19:30).
 | R16c step 2: the stronger grader | `r16c-step2-stronger-grader.ipynb` (output `R16c-truth`, kept locally as `R16c-results/step2/`) | account 1, 19 Oct | 1.4 h |
 | R16c step 3: step 2's graders with R11s7's pieces | `r16c-step3-r11s7-pieces.ipynb`; results in [R16c-results/step3/](Champion_Task/R16c-results/step3/README.md) | account 2 (inputs shared from account 1), 21 Oct | about 0.6 h |
 | L0 step 2: the full training, session 1 (steps 1–15 of 28) | `l0-step2-topup-training.ipynb`; results in [L0-step2-results/train-session1/](Champion_Task/L0-step2-results/train-session1/L0S2-train/README.md) | account 3, 21 Oct | about 10.9 h |
+| L0 step 2: the full training, session 2 (steps 16–24; the first try crashed at step 16) | `l0-step2-topup-training.ipynb`; results in [L0-step2-results/train-session2/](Champion_Task/L0-step2-results/train-session2/L0S2-train/README.md) | account 3, 21–22 Oct | about 6 h (plus 1 h for the failed first try) |
+| H2: R11's per-building table and the SQL agent | `h2-sql-counting-agent.ipynb`; results in [H2-results/H2/](Champion_Task/H2-results/H2/README.md) | account 2, 22 Oct | about 1.5 h with the smoke test |
+| L0 step 2: the full training, session 3a (step 25) | `l0-step2-topup-training.ipynb`; results in [L0-step2-results/train-session3a/](Champion_Task/L0-step2-results/train-session3a/L0S2-train/README.md) | account 3, 22 Oct | about 1 h |
+| H2b: two smoke tests (VL-3B and Coder-1.5B in 4-bit; the second confirmed Cell 9's fix) | `h2b-sql-agent-graded-test-smoke.ipynb` | account 2, 22 Oct | about 15 min each |
 | R11s7: R11 with seed 7 | `d4-champion-model-R11s7.ipynb` | account 2, 20 Oct | 6.8 h |
 | L0 step 2: the old 7B's full-size re-score, part A (BDC, BBR) | `l0-step2-full-size-rescore-old-partA.ipynb`; results in [L0-step2-results/old-partA/](Champion_Task/L0-step2-results/old-partA/L0S2/README.md) | account 3, 20 Oct | 8.6 h |
 | L0 step 2: part B (DRE, DSR) | `l0-step2-full-size-rescore-old-partB.ipynb`; results in [L0-step2-results/old-partB/](Champion_Task/L0-step2-results/old-partB/L0S2/README.md) | account 2, 20 Oct | 4.1 h |
@@ -464,7 +500,7 @@ Results in [R16-results/](Champion_Task/R16-results/R16/README.md). | Grader cor
 - On the 85 non-xBD images, SAM 3 + R11's pieces reach Destroyed IoU 0.187, against R11's 0.071.
 
 Results in [R16b-results/](Champion_Task/R16b-results/README.md). | Counting with the corrected grades (H1 V3) needs SAM 3 and the grader run on the benchmark images. |
-| R16c | A stronger R16 grader, tested rigorously | Running (step 5 on account 1 since about 12:10, 20 Oct; steps 1, 2 and 4 done, step 2 kept) | Step 1 your PC (2.6 min); step 2 Kaggle account 1, T4, 1.4 h; steps 4 and 5 account 1, about 5–6 h; step 3 account 1, about 0.5 h | Go given 19 Oct. Steps renumbered 1–5 on 20 Oct (your decision): step 3 was 2b, step 4 was 3a, step 5 was 3b.
+| R16c | A stronger R16 grader, tested rigorously | Needs rerun (step 5 stopped on 21 Oct when account 1's hours ran out; it runs again after the reset. Steps 1–4 done, step 2 kept) | Step 1 your PC (2.6 min); step 2 Kaggle account 1, T4, 1.4 h; steps 4 and 5 account 1, about 5–6 h; step 3 account 1, about 0.5 h | Go given 19 Oct. Steps renumbered 1–5 on 20 Oct (your decision): step 3 was 2b, step 4 was 3a, step 5 was 3b.
 
 **Step 1 done** (19 Oct): [r16c-step1-ceiling-and-counting.ipynb](Champion_Task/r16c-step1-ceiling-and-counting.ipynb), results in [R16c-results/step1/](Champion_Task/R16c-results/step1/README.md).
 - The ceiling: give each found building its main true grade. SAM 3 + R11's pieces would then reach mIoU 0.766 and Destroyed IoU 0.614 (0.798 and 0.661 if the grader may also reject non-buildings). Our corrected grader gets 0.541 and 0.208 on the same outlines, so the grader loses most of the score.
@@ -504,13 +540,13 @@ Results in [R16b-results/](Champion_Task/R16b-results/README.md). | Counting wit
 
 | ID | Task | Status | Where | Result | Next step |
 |---|---|---|---|---|---|
-| H2 | Per-building table and SQL counting agent | Ready to run | Kaggle T4 ×2, account 2 | Noman built it (never run); the run copy [h2-sql-counting-agent.ipynb](Champion_Task/h2-sql-counting-agent.ipynb) uses R11 with 8-view TTA and a 20 px minimum (39.24% on validation) instead of R9, and measures R11's counting on all 4,982 benchmark BDC questions. | Smoke test, then the full run. Its table feeds T2 and T3. |
-| H2b | Graded test of the SQL agent | Ready to run (after H2) | Kaggle T4 ×2, about 1–1.5 h | Built 22 Oct and checked end to end on your PC with stand-in models. It covers 297 items on 5 versions of H2's table, and 4 models in 4-bit and fp16. The decision rule was fixed before any run. | Run once H2's `buildings.sqlite` exists, then again on the distilled 3B after L2. |
+| H2 | Per-building table and SQL counting agent | Done (22 Oct) | Kaggle T4 ×2, account 2, about 1.5 h | **R11's counting on the benchmark: 32.96% on the optical questions** (27.46% overall), against 26.51% for R9's tuned counter and 34.2% for the base 7B. Both models wrote valid SQL for all 100 sampled questions, and their counts matched the table on 99 and 100. Results in [H2-results/H2/](Champion_Task/H2-results/H2/README.md). | Its table feeds H2b, T2 and T3. Counting is still 1.2 points under KR2's bar. |
+| H2b | Graded test of the SQL agent | Ready to run | Kaggle T4 ×2, about 1–1.5 h | Built 22 Oct and checked end to end on your PC with stand-in models, on a synthetic table and on H2's real one: 297 items on 90 real images, with all 6 near-miss queries caught. It covers 5 versions of H2's table, and 4 models in 4-bit and fp16. The decision rule was fixed before any run. | Smoke test on account 2 now, the full run next week, and again on the distilled 3B after L2. |
 | H3 | VLM input upgrades (before + after, numbered marks, crops) | Not started | Kaggle GPU | — | After H1 V2. |
 | H4 | GEOBench-VLM external counting test | Not started | Kaggle GPU | — | — |
 | T2 | DisasTeller on local models | Not started | Kaggle T4 ×2 | — | The biggest missing O3 piece. |
 | T3 | Offline demo app | Not started | — | — | After H1, T1 and T2. |
-| L0 | A better 7B teacher before distilling | Needs rerun (step 2: the old 7B's full-size re-score and the training's smoke test done 20 Oct. The full training: session 1 did steps 1–15 (21 Oct); session 2 crashed at step 16 when the paged optimizer resumed. Fixed with `adamw_bnb_8bit`; session 2 runs again on account 3, then session 3 and the merge) | Step 1: Kaggle account 1, T4 ×2, 1.7 h. Step 2: the old 7B's re-score of four tasks (about 11 h, account 3 then account 2), training (about 7–14 h on T4 ×2, account 3), then the new 7B on six tasks (about 12 h) | Decided 19 Oct: improve the 7B before distilling.
+| L0 | A better 7B teacher before distilling | Ready to run (step 2: the old 7B's full-size re-score and the training's smoke test were done on 20 Oct. The full training: session 1 did steps 1–15 (21 Oct), session 2 did steps 16–24 (22 Oct) after its first try crashed, and session 3a did step 25 (22 Oct). Next is session 3b next week: steps 26–28 and the merge) | Step 1: Kaggle account 1, T4 ×2, 1.7 h. Step 2: the old 7B's re-score of four tasks (about 11 h, account 3 then account 2), training (about 7–14 h on T4 ×2, account 3), then the new 7B on six tasks (about 12 h) | Decided 19 Oct: improve the 7B before distilling.
 
 **Step 1 done (19 Oct):** [l0-step1-image-size-check.ipynb](Champion_Task/l0-step1-image-size-check.ipynb), results in [L0-step1-results/](Champion_Task/L0-step1-results/L0S1/README.md). The 1,211 optical questions, at three sizes for a 1024 px image (disaster type, 353 questions / relational, 858):
 - 504 px, H1 V2's size, as the control: 71.1% / 23.3%;
@@ -545,6 +581,19 @@ Background:
 | — | Update the roadmap and README with these results | Not started | — | — | Say when. |
 
 ## Change log
+
+- **22 Oct 2026, 09:50:** session 3a's download `L0-step2-results/results` was renamed to `L0-step2-results/train-session3a/`. Its `checkpoints/` (checkpoint-24 and checkpoint-25, 1.9 GB) were deleted after the log's push line and a sha256 match with Hugging Face.
+
+- **22 Oct 2026, 09:30:**
+  - H2b's smoke run was downloaded over the main notebook. It's kept as `Champion_Task/h2b-sql-agent-graded-test-smoke.ipynb`.
+  - The main notebook was rebuilt cell by cell, output-free, with `SMOKE_TEST = False` and Cell 9's generation fix. A machine check confirmed every other cell is identical to the smoke run.
+
+- **22 Oct 2026, 08:40:**
+  - Session 2's download `L0-step2-results(1)` was moved to `L0-step2-results/train-session2/`.
+  - Its `checkpoints/` (checkpoint-20 and checkpoint-24, 1.9 GB) were deleted under the standing rule. The run's log confirms the pushes, and the sha256 of each adapter and optimizer file matches Hugging Face.
+  - H2's results are in `H2-results/H2/` (already in the pattern).
+  - H2b's smoke test now also loads the base VL-3B.
+  - R16c's status was corrected from "Running" to "Needs rerun".
 
 - **22 Oct 2026, 01:20:** H2b built in `Champion_Task/` and added to the roadmap (§7, after H2). The local check's scripts are in Claude's scratchpad, not the project.
 - **22 Oct 2026:** the 8 papers H2b cites were added to `others/lit review_research papers/` as PDFs named by their titles:

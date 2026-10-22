@@ -1,0 +1,30 @@
+{
+ "task": "H2",
+ "smoke_test": false,
+ "model": "R11",
+ "checkpoint": "/root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-d4-R11/snapshots/31974dacfee2125a66639858433a113704edf9b3/final_model.pth",
+ "mask": "R11 8-view TTA (after- and before-image, 6 channels)",
+ "min_area": {
+  "intact": 20,
+  "damaged": 20,
+  "destroyed": 20
+ },
+ "images_in_table": 2652,
+ "buildings_in_table": 117687,
+ "full_table": true,
+ "not_segmented": 3,
+ "oracle_accuracy_pct": 27.46,
+ "oracle_accuracy_optical_pct": 32.96,
+ "gsd_m_per_px": null,
+ "n_questions": 100,
+ "sample_sensor": "Optical",
+ "seed": 42,
+ "use_category_hint": true,
+ "llms": [
+  "Qwen/Qwen2.5-Coder-3B-Instruct",
+  "AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP"
+ ],
+ "max_sql_retries": 2,
+ "same_count_as_V1_pct": 22.98,
+ "run_time_min": 15.3
+}
