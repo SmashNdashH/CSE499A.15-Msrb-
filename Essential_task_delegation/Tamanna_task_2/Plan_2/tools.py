@@ -36,40 +36,144 @@ class SegmentationLocatorTool:
         self,
         checkpoint_path: Optional[str] = None,
         device: str = "cuda" if torch.cuda.is_available() else "cpu",
-        encoder_name: str = "resnet34"
+        encoder_name: Optional[str] = None
     ):
         self.device = device
-        self.encoder_name = encoder_name
+        self.encoder_name = encoder_name or config.DEFAULT_SEGMENTATION_ENCODER
         self.checkpoint_path = checkpoint_path or config.DEFAULT_WEIGHTS_PATH
         self.model = None
+
+        model_role = "Team Champion (ResNet-50, mIoU 0.5449)" if "50" in self.encoder_name else "B1 Architecture Baseline (ResNet-34, mIoU 0.4619)"
+        print(f"[SegmentationTool] Selected backbone: {self.encoder_name} [{model_role}]")
 
         if SMP_AVAILABLE:
             self._load_model()
         else:
             print("[Warning] segmentation_models_pytorch not installed. Running in mock/mask-only mode.")
 
-    def _load_model(self):
-        """Initializes and loads the trained segmentation network."""
+    def _resolve_checkpoint(self) -> Optional[str]:
+        """Resolves local checkpoint or downloads the Team Champion ResNet-50 weights from HF."""
+        if self.checkpoint_path and os.path.exists(self.checkpoint_path):
+            return self.checkpoint_path
+
+        # Candidate local paths
+        candidates = [
+            self.checkpoint_path,
+            "/kaggle/input/disasterm3-unet-champion/final_model.pth",
+            "/kaggle/input/disasterm3-unet-champion/best_model.pth",
+            "/kaggle/working/final_model.pth",
+            "/kaggle/working/best_model.pth",
+            str(config.PLAN2_DIR.parents[1] / "Champion_Task" / "final_model.pth"),
+        ]
+        for c in candidates:
+            if c and os.path.exists(c):
+                return c
+
+        # Attempt to auto-fetch official Team Champion from Hugging Face
         try:
+            from huggingface_hub import hf_hub_download
+            for repo_info in config.CHAMPION_HF_REPOS:
+                print(f"[SegmentationTool] Downloading {repo_info['desc']} from HF ({repo_info['repo_id']})...")
+                try:
+                    downloaded = hf_hub_download(
+                        repo_id=repo_info["repo_id"],
+                        filename=repo_info["filename"],
+                        token=config.HF_TOKEN,
+                        local_dir="/kaggle/working" if config.IS_KAGGLE else str(config.PLAN2_DIR / "outputs")
+                    )
+                    if downloaded and os.path.exists(downloaded):
+                        print(f"✓ Checkpoint successfully retrieved: {downloaded}")
+                        return downloaded
+                except Exception as dl_err:
+                    print(f"Notice: HF repo {repo_info['repo_id']} download skipped: {dl_err}")
+        except ImportError:
+            pass
+
+        return None
+
+    def _load_model(self):
+        """Initializes and loads the trained segmentation network with automatic tensor shape verification."""
+        try:
+            resolved_ckpt = self._resolve_checkpoint()
+            clean_state = None
+            detected_encoder = self.encoder_name
+
+            if resolved_ckpt and os.path.exists(resolved_ckpt):
+                print(f"[SegmentationTool] Loading weights from: {resolved_ckpt}")
+                checkpoint = torch.load(resolved_ckpt, map_location=self.device)
+                state_dict = checkpoint.get("state_dict", checkpoint)
+                clean_state = {k.replace("model.", "").replace("module.", ""): v for k, v in state_dict.items()}
+
+                # Auto-verify architecture against kernel dimension to eliminate layer shape mismatches:
+                # ResNet-50 bottleneck conv1: [64, 64, 1, 1] (Team Champion)
+                # ResNet-34 basicblock conv1: [64, 64, 3, 3] (B1 Baseline)
+                for k, v in clean_state.items():
+                    if "layer1.0.conv1.weight" in k:
+                        if v.shape == torch.Size([64, 64, 1, 1]):
+                            detected_encoder = "resnet50"
+                            print("[SegmentationTool] Verified weights: ResNet-50 Bottleneck (Team Champion Model).")
+                        elif v.shape == torch.Size([64, 64, 3, 3]):
+                            detected_encoder = "resnet34"
+                            print("[SegmentationTool] Verified weights: ResNet-34 BasicBlock (B1 Baseline Model).")
+                        break
+
+            self.encoder_name = detected_encoder
             self.model = smp.Unet(
                 encoder_name=self.encoder_name,
                 encoder_weights=None,
                 in_channels=3,
                 classes=4
             )
-            if os.path.exists(self.checkpoint_path):
-                print(f"[SegmentationTool] Loading weights from: {self.checkpoint_path}")
-                checkpoint = torch.load(self.checkpoint_path, map_location=self.device)
-                state_dict = checkpoint.get("state_dict", checkpoint)
-                clean_state = {k.replace("model.", "").replace("module.", ""): v for k, v in state_dict.items()}
+
+            if clean_state is not None:
                 self.model.load_state_dict(clean_state, strict=False)
+                print(f"[SegmentationTool] Successfully loaded {self.encoder_name} U-Net weights.")
             else:
-                print(f"[SegmentationTool] Checkpoint not found at {self.checkpoint_path}. Initialized base architecture.")
+                print(f"[SegmentationTool] Checkpoint not located. Initialized base {self.encoder_name} architecture.")
+
             self.model.to(self.device)
             self.model.eval()
         except Exception as e:
             print(f"[SegmentationTool] Error loading model: {e}. Model will fallback to synthetic/mask parsing.")
             self.model = None
+
+    @staticmethod
+    def compute_mask_metrics(pred_mask: np.ndarray, gt_mask: np.ndarray) -> Dict[str, float]:
+        """
+        Rigorously evaluates predicted segmentation mask against Ground Truth mask
+        using the project's standard 4-class evaluation protocol (E-protocol).
+        Classes: 0=Background, 1=Intact, 2=Damaged, 3=Destroyed.
+        """
+        metrics = {}
+        ious = []
+        for cls_id, cls_name in config.CLASS_MAPPING.items():
+            pred_c = (pred_mask == cls_id)
+            gt_c = (gt_mask == cls_id)
+            intersection = np.logical_and(pred_c, gt_c).sum()
+            union = np.logical_or(pred_c, gt_c).sum()
+            iou = (intersection / union) if union > 0 else 1.0 if (pred_c.sum() == 0 and gt_c.sum() == 0) else 0.0
+            ious.append(iou)
+            metrics[f"{cls_name.lower()}_iou"] = float(round(iou, 4))
+
+        metrics["miou"] = float(round(np.mean(ious), 4))
+
+        # Calculate building-level macro metrics
+        fg_pred = (pred_mask > 0)
+        fg_gt = (gt_mask > 0)
+        tp = np.logical_and(fg_pred, fg_gt).sum()
+        fp = np.logical_and(fg_pred, ~fg_gt).sum()
+        fn = np.logical_and(~fg_pred, fg_gt).sum()
+
+        precision = (tp / (tp + fp)) if (tp + fp) > 0 else 0.0
+        recall = (tp / (tp + fn)) if (tp + fn) > 0 else 0.0
+        f1 = (2 * precision * recall / (precision + recall)) if (precision + recall) > 0 else 0.0
+        f2 = (5 * precision * recall / (4 * precision + recall)) if (4 * precision + recall) > 0 else 0.0
+
+        metrics["macro_precision"] = float(round(precision, 4))
+        metrics["macro_recall"] = float(round(recall, 4))
+        metrics["f1"] = float(round(f1, 4))
+        metrics["f2"] = float(round(f2, 4))
+        return metrics
 
     def predict_mask(self, image_rgb: np.ndarray) -> np.ndarray:
         """Executes forward pass to generate [H, W] predicted damage class map."""

@@ -1,0 +1,500 @@
+{"id": "imgq-3001", "question_type": "Multiple-Choice", "instruction": "What is the condition of the buildings in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "C: Completely destroyed"}
+{"id": "imgq-523", "question_type": "Binary", "instruction": "Are there any vehicles submerged in water? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-131", "question_type": "Binary", "instruction": "Is construction work visible in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-3476", "question_type": "Binary", "instruction": "Are vehicles submerged in water? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1268", "question_type": "Binary", "instruction": "Is a vehicle obstructed or affected by the road damage? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1143", "question_type": "Multiple-Choice", "instruction": "What objects are visible being carried by the individuals? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Mattress"}
+{"id": "imgq-1048", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "A: Partially blocked by debris"}
+{"id": "imgq-648", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-3453", "question_type": "Binary", "instruction": "Is a vehicle present in the flooded area? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-486", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Flooding"}
+{"id": "imgq-3178", "question_type": "Binary", "instruction": "Are there emergency personnel present in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "No."}
+{"id": "imgq-3472", "question_type": "Binary", "instruction": "Is flooding visible on the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "No."}
+{"id": "imgq-4194", "question_type": "Binary", "instruction": "Is there a fallen tree obstructing the area? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "No."}
+{"id": "imgq-2543", "question_type": "Multiple-Choice", "instruction": "What type of vehicles cannot pass through? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Truck"}
+{"id": "imgq-421", "question_type": "Multiple-Choice", "instruction": "How many people are visible in the water? Select all that apply.", "ground_truth": ["C"], "model_output": "C: 3"}
+{"id": "imgq-2756", "question_type": "Multiple-Choice", "instruction": "What is the approximate water level in the scene? Select all that apply.", "ground_truth": ["A"], "model_output": "A: between knee and waist level"}
+{"id": "imgq-1936", "question_type": "Multiple-Choice", "instruction": "What is the condition of the vegetation in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Burning"}
+{"id": "imgq-165", "question_type": "Multiple-Choice", "instruction": "What is the condition of the bridge in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Partially collapsed"}
+{"id": "imgq-155", "question_type": "Binary", "instruction": "Are emergency responders present in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "No."}
+{"id": "imgq-448", "question_type": "Binary", "instruction": "Are people being rescued using improvised equipment? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "No."}
+{"id": "imgq-1028", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-1089", "question_type": "Binary", "instruction": "Is the road completely blocked by the debris? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-2355", "question_type": "Multiple-Choice", "instruction": "What is the condition of the building in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Partially damaged"}
+{"id": "imgq-2812", "question_type": "Multiple-Choice", "instruction": "What is the person in the image using to stay afloat? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Surfboard"}
+{"id": "imgq-138", "question_type": "Binary", "instruction": "Are there any utility poles damaged or leaning? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2623", "question_type": "Binary", "instruction": "Is flooding visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-935", "question_type": "Binary", "instruction": "Is there any water being sprayed on the fire? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "No."}
+{"id": "imgq-3358", "question_type": "Binary", "instruction": "Are any buildings visibly damaged? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-3046", "question_type": "Multiple-Choice", "instruction": "What objects are visible in the image? Select all that apply.", "ground_truth": ["A", "B", "C"], "model_output": "A: Emergency personnel"}
+{"id": "imgq-3290", "question_type": "Binary", "instruction": "Are there visible signs of structural damage to buildings? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2542", "question_type": "Binary", "instruction": "Is it safe for vehicles to pass through? Answer with Yes or No.", "ground_truth": "No", "model_output": "Yes."}
+{"id": "imgq-1926", "question_type": "Multiple-Choice", "instruction": "How many emergency vehicles are visible? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Two"}
+{"id": "imgq-1035", "question_type": "Multiple-Choice", "instruction": "Which objects are visibly damaged in the image? Select all that apply.", "ground_truth": ["A", "B"], "model_output": "A: Vehicle"}
+{"id": "imgq-2079", "question_type": "Multiple-Choice", "instruction": "What emergency action might be needed in this scene? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Water drainage and vehicle recovery"}
+{"id": "imgq-2751", "question_type": "Binary", "instruction": "Is there a damaged aircraft visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1281", "question_type": "Binary", "instruction": "Are traffic cones placed near the damaged area in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3780", "question_type": "Multiple-Choice", "instruction": "What is the condition of the building in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Partially Collapsed"}
+{"id": "imgq-4076", "question_type": "Multiple-Choice", "instruction": "How is the road affected by the burned vehicles? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Completely blocked"}
+{"id": "imgq-31", "question_type": "Binary", "instruction": "Are there any visible barriers or cones indicating restricted access? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3552", "question_type": "Binary", "instruction": "Is the bridge affected by the flooding? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3763", "question_type": "Multiple-Choice", "instruction": "What type of building is adjacent to the fire? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Commercial"}
+{"id": "imgq-748", "question_type": "Binary", "instruction": "Is there visible smoke in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3276", "question_type": "Binary", "instruction": "Are there any emergency responders or vehicles visible in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-1939", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Wildfire"}
+{"id": "imgq-1537", "question_type": "Binary", "instruction": "Are there debris or rubble obstructing the area? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1280", "question_type": "Binary", "instruction": "Is there visible damage to the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-725", "question_type": "Binary", "instruction": "Are emergency responders present in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1012", "question_type": "Binary", "instruction": "Are there any damaged buildings in the background? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3573", "question_type": "Binary", "instruction": "Is the floodwater color clear? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-1522", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-485", "question_type": "Binary", "instruction": "Is there a vehicle submerged in water? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-444", "question_type": "Binary", "instruction": "Is the road visibly damaged or collapsed? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1738", "question_type": "Binary", "instruction": "Are any of the emergency responders wearing respiratory masks? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-462", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Flood"}
+{"id": "imgq-1627", "question_type": "Binary", "instruction": "Is there visible damage to the road surface? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3972", "question_type": "Binary", "instruction": "Is this a scene of sunset? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-1553", "question_type": "Binary", "instruction": "Is debris blocking the road? Answer with Yes or No.", "ground_truth": "No", "model_output": "Yes."}
+{"id": "imgq-2821", "question_type": "Binary", "instruction": "Are there any emergency vehicles present? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-1225", "question_type": "Binary", "instruction": "Is there a vehicle visible in the debris? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3769", "question_type": "Multiple-Choice", "instruction": "What is the condition of the building in the center of the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Partially Collapsed"}
+{"id": "imgq-222", "question_type": "Binary", "instruction": "Are there any fallen power lines visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3420", "question_type": "Binary", "instruction": "Are the utility poles visibly damaged in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-2132", "question_type": "Binary", "instruction": "Are there any emergency vehicles present in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-2501", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Flood"}
+{"id": "imgq-578", "question_type": "Binary", "instruction": "Are vehicles submerged in water? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4332", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Flood"}
+{"id": "imgq-1729", "question_type": "Multiple-Choice", "instruction": "What equipment is visible being used by responders? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Ladders"}
+{"id": "imgq-385", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Flood"}
+{"id": "imgq-2577", "question_type": "Binary", "instruction": "Are there any visible signs of damage inside the shelter? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-1342", "question_type": "Binary", "instruction": "Are traffic cones placed near the damaged area in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3885", "question_type": "Binary", "instruction": "Is there a vehicle obstructing the road? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-2948", "question_type": "Binary", "instruction": "Are there any people using makeshift rafts in the foreground? Answer with Yes or No.", "ground_truth": "No", "model_output": "Yes."}
+{"id": "imgq-2894", "question_type": "Binary", "instruction": "Are there any vehicles present in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4155", "question_type": "Binary", "instruction": "Is fuel leakage visible around the vehicles? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "No."}
+{"id": "imgq-4041", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road in the image? Select all that apply.", "ground_truth": ["A", "D"], "model_output": "A: Blocked by debris"}
+{"id": "imgq-1640", "question_type": "Binary", "instruction": "Is there visible damage to the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2699", "question_type": "Binary", "instruction": "Are there any emergency vehicles present? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-903", "question_type": "Binary", "instruction": "Are there visible signs of structural damage to buildings? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3305", "question_type": "Multiple-Choice", "instruction": "What is the condition of the vehicles in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Moving"}
+{"id": "imgq-344", "question_type": "Binary", "instruction": "Is flooding visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-233", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Blocked by debris"}
+{"id": "imgq-3101", "question_type": "Binary", "instruction": "Is there debris obstructing the ground? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1070", "question_type": "Binary", "instruction": "Are there emergency responders visible in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-3617", "question_type": "Binary", "instruction": "Are there any objects floating in the floodwater? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1327", "question_type": "Binary", "instruction": "Are there any buildings visibly damaged in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-390", "question_type": "Binary", "instruction": "Are emergency responders present in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4012", "question_type": "Binary", "instruction": "Is there a vehicle overturned in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1090", "question_type": "Binary", "instruction": "Are there emergency responders visible in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-4064", "question_type": "Binary", "instruction": "Is there visible damage to the bus? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-480", "question_type": "Multiple-Choice", "instruction": "Which objects are visible in the image that may obstruct rescue operations? Select all that apply.", "ground_truth": ["A", "B", "C", "D"], "model_output": "A: Fallen trees"}
+{"id": "imgq-4350", "question_type": "Binary", "instruction": "Is smoke visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4357", "question_type": "Binary", "instruction": "Are rescue workers wearing identifiable uniforms visible? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2101", "question_type": "Binary", "instruction": "Is there a firefighter visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2985", "question_type": "Binary", "instruction": "Is there visible damage to the building? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3908", "question_type": "Multiple-Choice", "instruction": "What objects are visible near the disaster site? Select all that apply.", "ground_truth": ["A", "B", "D"], "model_output": "A: Vehicles"}
+{"id": "imgq-1658", "question_type": "Binary", "instruction": "Are there any emergency responders standing on a rooftop? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-762", "question_type": "Multiple-Choice", "instruction": "What type of incident is depicted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Building Collapse"}
+{"id": "imgq-1688", "question_type": "Binary", "instruction": "Is there visible structural damage to any buildings? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1609", "question_type": "Multiple-Choice", "instruction": "What is the condition of the building in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "B: Partially damaged"}
+{"id": "imgq-983", "question_type": "Binary", "instruction": "Is the debris in the image from a damaged vehicle? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-3145", "question_type": "Binary", "instruction": "Are emergency responders visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1235", "question_type": "Binary", "instruction": "Is there visible structural damage to the building? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3293", "question_type": "Binary", "instruction": "Is there obstructed vehicle visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "No."}
+{"id": "imgq-3208", "question_type": "Multiple-Choice", "instruction": "Which objects are visible in the debris? Select all that apply.", "ground_truth": ["A", "B", "C"], "model_output": "A: Furniture"}
+{"id": "imgq-3039", "question_type": "Binary", "instruction": "Is there visible road damage in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-352", "question_type": "Binary", "instruction": "Is flooding visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2847", "question_type": "Multiple-Choice", "instruction": "How many people are visible in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Three"}
+{"id": "imgq-2982", "question_type": "Binary", "instruction": "Is it safe to enter the building? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-800", "question_type": "Binary", "instruction": "Are there emergency responders visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2490", "question_type": "Binary", "instruction": "Is there visible damage to the buildings? Answer with Yes or No.", "ground_truth": "No", "model_output": "Yes."}
+{"id": "imgq-3418", "question_type": "Multiple-Choice", "instruction": "Which objects are visible in the image? Select all that apply.", "ground_truth": ["A", "B", "C"], "model_output": "A: Vehicles"}
+{"id": "imgq-1142", "question_type": "Multiple-Choice", "instruction": "What type of disaster is most likely depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-766", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Fire"}
+{"id": "imgq-2145", "question_type": "Multiple-Choice", "instruction": "What is the condition of the vegetation in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Partially damaged"}
+{"id": "imgq-1736", "question_type": "Binary", "instruction": "Is there visible structural damage to buildings? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1247", "question_type": "Binary", "instruction": "Is there visible structural damage to a building? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3003", "question_type": "Binary", "instruction": "Is there a person visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3230", "question_type": "Binary", "instruction": "Is the road currently blocked by barriers or cones? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2602", "question_type": "Binary", "instruction": "Is flooding visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1032", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-3214", "question_type": "Multiple-Choice", "instruction": "What type of disaster is visible in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "A: Flooding"}
+{"id": "imgq-1472", "question_type": "Binary", "instruction": "Is the building visibly damaged? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3950", "question_type": "Binary", "instruction": "Is the area blocked for assessment? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3595", "question_type": "Binary", "instruction": "Are there any vehicles partially submerged in water? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3630", "question_type": "Binary", "instruction": "Are there any vehicles partially submerged in water? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-279", "question_type": "Binary", "instruction": "Is there a damaged vehicle in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1075", "question_type": "Binary", "instruction": "Is heavy machinery being used for debris removal? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3849", "question_type": "Binary", "instruction": "Is there visible fire in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-166", "question_type": "Binary", "instruction": "Are there visible signs of building damage in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3759", "question_type": "Multiple-Choice", "instruction": "Which of the following statements is not true about the image? Select all that apply.", "ground_truth": ["B", "C"], "model_output": "A: There are 3 firefighters in the image"}
+{"id": "imgq-1435", "question_type": "Binary", "instruction": "Are there any objects blocking access routes? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1843", "question_type": "Binary", "instruction": "Is there a building on fire? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1238", "question_type": "Multiple-Choice", "instruction": "What is the condition of the building? Select all that apply.", "ground_truth": ["C"], "model_output": "B: Partially damaged"}
+{"id": "imgq-331", "question_type": "Multiple-Choice", "instruction": "What is the primary object being used for crossing the water? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Rope"}
+{"id": "imgq-992", "question_type": "Binary", "instruction": "Are there emergency responders visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2652", "question_type": "Multiple-Choice", "instruction": "What is the primary use of the space shown in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Shelter"}
+{"id": "imgq-4114", "question_type": "Binary", "instruction": "Are traffic cones being used to block or redirect the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3368", "question_type": "Binary", "instruction": "Is there a person operating snow-clearing equipment? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1431", "question_type": "Binary", "instruction": "Are there emergency responders visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "No."}
+{"id": "imgq-999", "question_type": "Multiple-Choice", "instruction": "How many people in the image are visibly wearing a helmet? Select all that apply.", "ground_truth": ["B"], "model_output": "B: One"}
+{"id": "imgq-3074", "question_type": "Multiple-Choice", "instruction": "What type of disaster is visible in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Landslide"}
+{"id": "imgq-2321", "question_type": "Multiple-Choice", "instruction": "What is the condition of the trees in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Fallen"}
+{"id": "imgq-1815", "question_type": "Multiple-Choice", "instruction": "What type of facility is being used as a shelter? Select all that apply.", "ground_truth": ["A"], "model_output": "A: School gymnasium"}
+{"id": "imgq-4152", "question_type": "Multiple-Choice", "instruction": "What is the terrain surrounding the accident scene? Select all that apply.", "ground_truth": ["B", "D"], "model_output": "B: Highway"}
+{"id": "imgq-3016", "question_type": "Binary", "instruction": "Is there visible damage to the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2130", "question_type": "Multiple-Choice", "instruction": "What is the state of the roads in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Flooded"}
+{"id": "imgq-665", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-1226", "question_type": "Binary", "instruction": "Are there any fallen electric poles? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-4398", "question_type": "Binary", "instruction": "Is there visible debris blocking the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1150", "question_type": "Multiple-Choice", "instruction": "What equipment is the rescue worker wearing? Select all that apply.", "ground_truth": ["A", "B", "C"], "model_output": "A: Helmet"}
+{"id": "imgq-3491", "question_type": "Multiple-Choice", "instruction": "What is the condition of the bridge? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Partially collapsed"}
+{"id": "imgq-2624", "question_type": "Multiple-Choice", "instruction": "How many boats are visible in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: One"}
+{"id": "imgq-2514", "question_type": "Binary", "instruction": "Are there any vehicles trapped in the floodwater? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1218", "question_type": "Binary", "instruction": "Is there visible structural damage to the building? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3499", "question_type": "Binary", "instruction": "Is flooding visible in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "Yes."}
+{"id": "imgq-2730", "question_type": "Binary", "instruction": "Is there a large vehicle partially submerged in water? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1966", "question_type": "Multiple-Choice", "instruction": "What type of place is shown in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Retail/wholesale store"}
+{"id": "imgq-4220", "question_type": "Multiple-Choice", "instruction": "What type of vehicles are visible in the image? Select all that apply.", "ground_truth": ["A", "B", "C"], "model_output": "A: Car"}
+{"id": "imgq-2726", "question_type": "Binary", "instruction": "Is there a need to call for assistance? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-1832", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Fire"}
+{"id": "imgq-1641", "question_type": "Binary", "instruction": "Are emergency responders present in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1031", "question_type": "Binary", "instruction": "Is there debris blocking the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-642", "question_type": "Multiple-Choice", "instruction": "What objects are visible in the debris? Select all that apply.", "ground_truth": ["A", "B"], "model_output": "A: Wooden planks"}
+{"id": "imgq-2376", "question_type": "Binary", "instruction": "Are there any people trapped under debris? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-2292", "question_type": "Multiple-Choice", "instruction": "What is the person in the image wearing? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Safety vest"}
+{"id": "imgq-437", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Flood"}
+{"id": "imgq-3538", "question_type": "Multiple-Choice", "instruction": "Which of the following poses a risk in this scene? Select all that apply.", "ground_truth": ["A", "B"], "model_output": "A: Deep floodwater"}
+{"id": "imgq-238", "question_type": "Binary", "instruction": "Are emergency responders present in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4039", "question_type": "Binary", "instruction": "Are there any people actively responding to the disaster scene? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-516", "question_type": "Binary", "instruction": "Are there any visible signs of damaged infrastructure? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-711", "question_type": "Multiple-Choice", "instruction": "What objects are visible in the disaster area? Select all that apply.", "ground_truth": ["A", "B"], "model_output": "A: Damaged vehicle"}
+{"id": "imgq-2939", "question_type": "Multiple-Choice", "instruction": "Which of the following statements is not true about the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: The road is completely blocked by an uprooted tree."}
+{"id": "imgq-750", "question_type": "Binary", "instruction": "Is the disaster affecting an industrial facility? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3700", "question_type": "Binary", "instruction": "Is the building on fire? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-3196", "question_type": "Binary", "instruction": "Is there visible structural damage to buildings? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1937", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Wildfire"}
+{"id": "imgq-2783", "question_type": "Binary", "instruction": "Are there any people visible in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-318", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road? Select all that apply.", "ground_truth": ["C"], "model_output": "A: Blocked by debris"}
+{"id": "imgq-1761", "question_type": "Binary", "instruction": "Is there heavy machinery present in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1747", "question_type": "Binary", "instruction": "Is there debris blocking the sidewalk? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2780", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Completely blocked"}
+{"id": "imgq-2171", "question_type": "Binary", "instruction": "Is there any visible flooding in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-2466", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Partially damaged"}
+{"id": "imgq-1169", "question_type": "Multiple-Choice", "instruction": "What is the condition of the bridge? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Partially collapsed"}
+{"id": "imgq-2582", "question_type": "Multiple-Choice", "instruction": "What is the condition of the floor in the shelter? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Dry"}
+{"id": "imgq-4037", "question_type": "Binary", "instruction": "Are there emergency vehicles visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-58", "question_type": "Binary", "instruction": "Are there any emergency personnel visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3195", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Partially collapsed"}
+{"id": "imgq-3381", "question_type": "Binary", "instruction": "Are road conditions hazardous for driving? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-536", "question_type": "Binary", "instruction": "Is there a boat visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3201", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Completely blocked"}
+{"id": "imgq-4153", "question_type": "Binary", "instruction": "Is there any fire or smoke in the scene? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-2505", "question_type": "Binary", "instruction": "Are there any emergency vehicles present? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3515", "question_type": "Binary", "instruction": "Are fallen trees obstructing pathways? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1234", "question_type": "Binary", "instruction": "Is there any caution tape placed near the damaged area? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3596", "question_type": "Multiple-Choice", "instruction": "How many vehicles are visible in the flooded area? Select all that apply.", "ground_truth": ["D"], "model_output": "B: 1-2"}
+{"id": "imgq-3007", "question_type": "Binary", "instruction": "Are there damaged buildings visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4358", "question_type": "Binary", "instruction": "Is heavy machinery being used for debris removal? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4404", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Snowstorm"}
+{"id": "imgq-1344", "question_type": "Multiple-Choice", "instruction": "How severe is the damage on the road? Select all that apply.", "ground_truth": ["A"], "model_output": "C: Severe"}
+{"id": "imgq-1999", "question_type": "Binary", "instruction": "Are there any vehicles obstructed by the fallen trees? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-738", "question_type": "Multiple-Choice", "instruction": "What type of disaster is most likely depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Hurricane"}
+{"id": "imgq-2102", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Wildfire"}
+{"id": "imgq-16", "question_type": "Binary", "instruction": "Is there visible road damage in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3387", "question_type": "Binary", "instruction": "Are emergency responders present in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4111", "question_type": "Multiple-Choice", "instruction": "What is the condition of the vehicles involved in the incident? Select all that apply.", "ground_truth": ["B", "C", "D"], "model_output": "B: Damaged"}
+{"id": "imgq-3375", "question_type": "Multiple-Choice", "instruction": "What is the primary object obstructing the area? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Fallen tree"}
+{"id": "imgq-1220", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Clear"}
+{"id": "imgq-2329", "question_type": "Binary", "instruction": "Are there anything blocking the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3565", "question_type": "Multiple-Choice", "instruction": "What is the estimated water depth of the floodwater? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Waist deep"}
+{"id": "imgq-836", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Wildfire"}
+{"id": "imgq-2367", "question_type": "Multiple-Choice", "instruction": "What is the primary activity of people in the image? Select all that apply.", "ground_truth": ["D"], "model_output": "B: Evacuating"}
+{"id": "imgq-502", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Flooded"}
+{"id": "imgq-4083", "question_type": "Multiple-Choice", "instruction": "What response action is visible in the scene? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Emergency responders assessing the accident site"}
+{"id": "imgq-2929", "question_type": "Binary", "instruction": "Are there any people using makeshift rafts? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1365", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-3945", "question_type": "Binary", "instruction": "Are there any overturned vehicles? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2999", "question_type": "Binary", "instruction": "Are there people present in the disaster area? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4165", "question_type": "Multiple-Choice", "instruction": "What objects are visible on the road? Select all that apply.", "ground_truth": ["A", "C"], "model_output": "A: Debris"}
+{"id": "imgq-2846", "question_type": "Multiple-Choice", "instruction": "What is the estimated depth of the floodwater? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Knee-deep"}
+{"id": "imgq-4378", "question_type": "Binary", "instruction": "Is there a visible sinkhole in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4218", "question_type": "Binary", "instruction": "Is there a motorcycle involved in the accident? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1705", "question_type": "Multiple-Choice", "instruction": "What type of equipment are the responders using? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Stretchers"}
+{"id": "imgq-3568", "question_type": "Binary", "instruction": "Is there a person attempting to assist near the vehicle? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-756", "question_type": "Binary", "instruction": "Is there visible fire damage to the building? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2516", "question_type": "Multiple-Choice", "instruction": "How many vehicles are visible in the floodwater? Select all that apply.", "ground_truth": ["D"], "model_output": "B: Two"}
+{"id": "imgq-3641", "question_type": "Multiple-Choice", "instruction": "What type of building is visible near the flooded area? Select all that apply.", "ground_truth": ["A", "B"], "model_output": "A: Pizza shop"}
+{"id": "imgq-2473", "question_type": "Binary", "instruction": "Is there visible flooding in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-3", "question_type": "Multiple-Choice", "instruction": "What type of infrastructure is damaged in the image? Select all that apply.", "ground_truth": ["A", "B"], "model_output": "A: Bridge"}
+{"id": "imgq-2797", "question_type": "Binary", "instruction": "Are there any vehicles submerged in water? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1471", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-2267", "question_type": "Multiple-Choice", "instruction": "What is the primary material of the debris? Select all that apply.", "ground_truth": ["B"], "model_output": "A: Metal"}
+{"id": "imgq-99", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road surface? Select all that apply.", "ground_truth": ["C"], "model_output": "B: Snow-covered"}
+{"id": "imgq-525", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Flood"}
+{"id": "imgq-1646", "question_type": "Binary", "instruction": "Are emergency responders visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4125", "question_type": "Multiple-Choice", "instruction": "What type of building is visible in the background? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Residential house"}
+{"id": "imgq-3895", "question_type": "Binary", "instruction": "Is the structure on fire? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-3768", "question_type": "Multiple-Choice", "instruction": "What type of equipment is visible in the image? Select all that apply.", "ground_truth": ["A", "D"], "model_output": "A: Excavator"}
+{"id": "imgq-1402", "question_type": "Binary", "instruction": "Are there emergency responders visible in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-1118", "question_type": "Binary", "instruction": "Is there visible structural damage to buildings? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-291", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Landslide"}
+{"id": "imgq-1125", "question_type": "Binary", "instruction": "Is there visible structural damage to buildings? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4122", "question_type": "Binary", "instruction": "Is fire visible anywhere in the scene? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-4257", "question_type": "Binary", "instruction": "Are there any visible signs of structural damage to the buildings? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-4334", "question_type": "Binary", "instruction": "Is there visible damage to the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-415", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Flood"}
+{"id": "imgq-3432", "question_type": "Binary", "instruction": "Is access to the area blocked by water? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2254", "question_type": "Multiple-Choice", "instruction": "What is the condition of the buildings? Select all that apply.", "ground_truth": ["A"], "model_output": "B: Partially damaged"}
+{"id": "imgq-3818", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Structural fire"}
+{"id": "imgq-343", "question_type": "Multiple-Choice", "instruction": "What type of infrastructure is visible in the image? Select all that apply.", "ground_truth": ["A", "B", "C"], "model_output": "A: Roads"}
+{"id": "imgq-3559", "question_type": "Multiple-Choice", "instruction": "Which of the following statements is not true about the image? Select all that apply.", "ground_truth": ["D"], "model_output": "C: There are visible vehicles that are not submerged in floodwater"}
+{"id": "imgq-2484", "question_type": "Multiple-Choice", "instruction": "What is the condition of the buildings in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Intact"}
+{"id": "imgq-3583", "question_type": "Multiple-Choice", "instruction": "What is the primary location shown in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Parking garage"}
+{"id": "imgq-582", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Flooding"}
+{"id": "imgq-593", "question_type": "Multiple-Choice", "instruction": "What type of building is visible in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Commercial"}
+{"id": "imgq-3093", "question_type": "Binary", "instruction": "Are there emergency responders visible in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-2204", "question_type": "Multiple-Choice", "instruction": "What type of structure is on fire? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Industrial facility"}
+{"id": "imgq-2565", "question_type": "Binary", "instruction": "Are emergency vehicles present? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-775", "question_type": "Binary", "instruction": "Is there visible fire damage to vehicles in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1227", "question_type": "Binary", "instruction": "Are there emergency responders visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2460", "question_type": "Multiple-Choice", "instruction": "What is the primary activity being conducted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Utility repair"}
+{"id": "imgq-4093", "question_type": "Multiple-Choice", "instruction": "What is the condition of the car involved in the collision? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Severely damaged"}
+{"id": "imgq-2835", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Completely flooded"}
+{"id": "imgq-1942", "question_type": "Multiple-Choice", "instruction": "How many people are visible in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Three"}
+{"id": "imgq-996", "question_type": "Binary", "instruction": "Are rescue workers visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "No."}
+{"id": "imgq-2515", "question_type": "Binary", "instruction": "Are there any downed power lines visible? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3536", "question_type": "Binary", "instruction": "Are there people using a boat for evacuation? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3421", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Snowstorm"}
+{"id": "imgq-3238", "question_type": "Binary", "instruction": "Are there damaged vehicles present in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-946", "question_type": "Binary", "instruction": "Is there any ongoing emergency response activity visible? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3344", "question_type": "Binary", "instruction": "Are emergency vehicles visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1419", "question_type": "Binary", "instruction": "Is there visible structural damage to buildings in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1830", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Wildfire"}
+{"id": "imgq-3152", "question_type": "Binary", "instruction": "Are there people on the damaged bridge? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4376", "question_type": "Binary", "instruction": "Are traffic cones present in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1703", "question_type": "Binary", "instruction": "Is there any human stuck under the rubble and need help? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-2021", "question_type": "Binary", "instruction": "Is there visible smoke in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2412", "question_type": "Binary", "instruction": "Is there obstruction on the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2092", "question_type": "Multiple-Choice", "instruction": "What type of area is most likely depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Coastal area"}
+{"id": "imgq-562", "question_type": "Multiple-Choice", "instruction": "What is the condition of the buildings in the background? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Partially damaged"}
+{"id": "imgq-1155", "question_type": "Binary", "instruction": "Is there visible building debris in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1054", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-320", "question_type": "Binary", "instruction": "Is there visible damage to a building in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-1528", "question_type": "Multiple-Choice", "instruction": "What is the condition of the archway in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "B: Partially damaged"}
+{"id": "imgq-109", "question_type": "Multiple-Choice", "instruction": "What objects are blocking the road? Select all that apply.", "ground_truth": ["A", "B"], "model_output": "A: Trees"}
+{"id": "imgq-2747", "question_type": "Binary", "instruction": "Are there any vehicles submerged in water? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2584", "question_type": "Binary", "instruction": "Are there any emergency vehicles present? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-1079", "question_type": "Binary", "instruction": "Is heavy machinery present in the scene? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2748", "question_type": "Binary", "instruction": "Are there any people visible in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-4371", "question_type": "Binary", "instruction": "Are there vehicles present on the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-35", "question_type": "Binary", "instruction": "Are there any vehicles visible near the landslide area? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-350", "question_type": "Multiple-Choice", "instruction": "What is the primary disaster type depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Flooding"}
+{"id": "imgq-3320", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Snowstorm"}
+{"id": "imgq-2962", "question_type": "Multiple-Choice", "instruction": "What is partially submerged in water in the image? Select all that apply.", "ground_truth": ["A", "B", "C", "D"], "model_output": "D: All of the above"}
+{"id": "imgq-296", "question_type": "Binary", "instruction": "Are there visible signs of structural damage to buildings? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1074", "question_type": "Binary", "instruction": "Are there emergency responders visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-336", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road? Select all that apply.", "ground_truth": ["C"], "model_output": "B: Cracked"}
+{"id": "imgq-162", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road in the image? Select all that apply.", "ground_truth": ["B", "D"], "model_output": "B: Partially damaged"}
+{"id": "imgq-4033", "question_type": "Binary", "instruction": "Is the ship partially submerged in water? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1497", "question_type": "Multiple-Choice", "instruction": "What is placed near the damaged road to indicate caution? Select all that apply.", "ground_truth": ["C"], "model_output": "B: Barricade"}
+{"id": "imgq-4070", "question_type": "Multiple-Choice", "instruction": "What is the condition of the person inside the vehicle? Select all that apply.", "ground_truth": ["A", "B"], "model_output": "B: Injured but conscious"}
+{"id": "imgq-2396", "question_type": "Multiple-Choice", "instruction": "What is the condition of the ceiling fans? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Intact"}
+{"id": "imgq-1112", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-1282", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road? Select all that apply.", "ground_truth": ["B", "D"], "model_output": "B: Cracked"}
+{"id": "imgq-3139", "question_type": "Binary", "instruction": "Is there visible damage to the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2252", "question_type": "Binary", "instruction": "Can vehicles pass through? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-1007", "question_type": "Binary", "instruction": "Is heavy machinery visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4101", "question_type": "Multiple-Choice", "instruction": "What type of disaster scenario is depicted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Vehicle accident"}
+{"id": "imgq-609", "question_type": "Binary", "instruction": "Is there visible structural damage to buildings? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3392", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Hurricane"}
+{"id": "imgq-2669", "question_type": "Binary", "instruction": "Are there any people visible in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-2695", "question_type": "Binary", "instruction": "Is there any visible damage to the houses? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-2191", "question_type": "Binary", "instruction": "Are there any emergency responders present? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1135", "question_type": "Multiple-Choice", "instruction": "What type of disaster is visible in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-3667", "question_type": "Binary", "instruction": "Are there any vehicles in the floodwater? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "No."}
+{"id": "imgq-2192", "question_type": "Binary", "instruction": "Is the road impassable due to damage? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3771", "question_type": "Multiple-Choice", "instruction": "Which of the following statements is true about the image? Select all that apply.", "ground_truth": ["D"], "model_output": "A: The area is flooded"}
+{"id": "imgq-1869", "question_type": "Binary", "instruction": "Are there any emergency vehicles present? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-895", "question_type": "Binary", "instruction": "Are firefighters actively responding to the disaster? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-451", "question_type": "Binary", "instruction": "Is there a vehicle partially submerged in water? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-463", "question_type": "Multiple-Choice", "instruction": "What is the condition of the area surrounding the buildings? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Flooded"}
+{"id": "imgq-3090", "question_type": "Binary", "instruction": "Is debris blocking the road? Answer with Yes or No.", "ground_truth": "No", "model_output": "Yes."}
+{"id": "imgq-1980", "question_type": "Binary", "instruction": "Is there visible flooding in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1605", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Cracked"}
+{"id": "imgq-1943", "question_type": "Multiple-Choice", "instruction": "What is the condition of the vehicles in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Burned"}
+{"id": "imgq-1888", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Wildfire"}
+{"id": "imgq-2165", "question_type": "Multiple-Choice", "instruction": "What is the primary action being taken by the people in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Clearing debris"}
+{"id": "imgq-4286", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Partially obstructed by vehicles"}
+{"id": "imgq-269", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Hurricane"}
+{"id": "imgq-3160", "question_type": "Multiple-Choice", "instruction": "What is the primary object being used for debris removal? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Crane"}
+{"id": "imgq-3065", "question_type": "Binary", "instruction": "Is there visible damage to the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3031", "question_type": "Binary", "instruction": "Is the road visibly damaged? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-470", "question_type": "Binary", "instruction": "Are sandbags visible near the buildings? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-304", "question_type": "Multiple-Choice", "instruction": "What objects are obstructing the road? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Fallen trees"}
+{"id": "imgq-1850", "question_type": "Multiple-Choice", "instruction": "What is the condition of the building in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Intact"}
+{"id": "imgq-3414", "question_type": "Binary", "instruction": "Is heavy snowfall visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1533", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-3736", "question_type": "Multiple-Choice", "instruction": "What is the primary object on fire in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Oil rig"}
+{"id": "imgq-514", "question_type": "Multiple-Choice", "instruction": "What type of vehicle is stuck in the floodwater? Select all that apply.", "ground_truth": ["B"], "model_output": "A: Car"}
+{"id": "imgq-1158", "question_type": "Binary", "instruction": "Is there a vehicle obstructing the road? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-900", "question_type": "Binary", "instruction": "Is there visible fire in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4233", "question_type": "Binary", "instruction": "Was this photo taken right after the plane crash? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-4339", "question_type": "Binary", "instruction": "Are there any emergency responders visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2077", "question_type": "Binary", "instruction": "Is there anyone visibly drowning in the scene? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-652", "question_type": "Binary", "instruction": "Are there any fallen debris visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4389", "question_type": "Binary", "instruction": "Is there a visible sinkhole in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-860", "question_type": "Binary", "instruction": "Is there visible smoke in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4055", "question_type": "Multiple-Choice", "instruction": "What is the condition of the vehicles in the image? Select all that apply.", "ground_truth": ["B", "C"], "model_output": "B: Damaged"}
+{"id": "imgq-2147", "question_type": "Binary", "instruction": "Are there any emergency personnel visible? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-1163", "question_type": "Binary", "instruction": "Are power lines damaged or hanging in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-370", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "B: Partially flooded"}
+{"id": "imgq-2050", "question_type": "Binary", "instruction": "Does the shelter appear structurally intact? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3773", "question_type": "Binary", "instruction": "Are emergency vehicles present in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2568", "question_type": "Binary", "instruction": "Is the road blocked by large debris? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-468", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Flood"}
+{"id": "imgq-254", "question_type": "Multiple-Choice", "instruction": "What type of disaster does the image most likely depict? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Hurricane"}
+{"id": "imgq-3059", "question_type": "Binary", "instruction": "Are there emergency responders visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "No."}
+{"id": "imgq-2521", "question_type": "Multiple-Choice", "instruction": "What is obstructing the road? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Downed power line"}
+{"id": "imgq-3918", "question_type": "Binary", "instruction": "Is the building visibly damaged by fire? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-77", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["D"], "model_output": "A: Flooding"}
+{"id": "imgq-447", "question_type": "Multiple-Choice", "instruction": "What is the level of floodwater compared to the height of the people visible in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "B: Up to the waist"}
+{"id": "imgq-3529", "question_type": "Multiple-Choice", "instruction": "What is the primary material of the damaged structures visible in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "A: Brick"}
+{"id": "imgq-3978", "question_type": "Binary", "instruction": "Is this person on fire? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-1105", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-780", "question_type": "Multiple-Choice", "instruction": "What type of disaster is most likely depicted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Fire"}
+{"id": "imgq-1866", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Wildfire"}
+{"id": "imgq-2253", "question_type": "Multiple-Choice", "instruction": "Which statement is true about the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: The street is filled with debris and vehicles in a storm-damaged area."}
+{"id": "imgq-2232", "question_type": "Binary", "instruction": "Is there visible flooding in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1004", "question_type": "Binary", "instruction": "Has caution tape been placed near the scene in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "No."}
+{"id": "imgq-1841", "question_type": "Binary", "instruction": "Are there any emergency vehicles present? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-294", "question_type": "Multiple-Choice", "instruction": "What actions are the people in the image performing? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Clearing debris"}
+{"id": "imgq-772", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Fire"}
+{"id": "imgq-1732", "question_type": "Multiple-Choice", "instruction": "What is the likely cause of the damage depicted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Earthquake"}
+{"id": "imgq-10", "question_type": "Multiple-Choice", "instruction": "What type of vehicle is visible in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Bus"}
+{"id": "imgq-1789", "question_type": "Binary", "instruction": "Is there a vehicle on top of the debris? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1228", "question_type": "Binary", "instruction": "Are rescue operations actively taking place in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3664", "question_type": "Binary", "instruction": "Is the building visibly damaged? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3669", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Flooded"}
+{"id": "imgq-2109", "question_type": "Binary", "instruction": "Is there any potential hazard in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1310", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Partially collapsed"}
+{"id": "imgq-1941", "question_type": "Binary", "instruction": "Are there any people trapped under debris? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-3270", "question_type": "Multiple-Choice", "instruction": "What is the condition of the visible vehicle? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Overturned"}
+{"id": "imgq-3424", "question_type": "Binary", "instruction": "Is debris obstructing the area? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3661", "question_type": "Multiple-Choice", "instruction": "What is the condition of the shoreline infrastructure? Select all that apply.", "ground_truth": ["A"], "model_output": "B: Damaged"}
+{"id": "imgq-2595", "question_type": "Binary", "instruction": "Is flooding visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3105", "question_type": "Binary", "instruction": "Is there visible debris blocking the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3370", "question_type": "Multiple-Choice", "instruction": "What is the primary activity visible in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Snow clearing"}
+{"id": "imgq-2259", "question_type": "Multiple-Choice", "instruction": "What is the primary activity of the people in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Clearing debris"}
+{"id": "imgq-721", "question_type": "Multiple-Choice", "instruction": "What is the primary activity of responders in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "A: Rescue operations"}
+{"id": "imgq-892", "question_type": "Binary", "instruction": "Are firefighters actively responding to the situation? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1358", "question_type": "Binary", "instruction": "Are there emergency responders visible near the debris? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-1024", "question_type": "Binary", "instruction": "Is debris blocking the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-293", "question_type": "Binary", "instruction": "Are any of the people wearing visible protective gear (gloves, boots, helmets)? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-2707", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Completely flooded"}
+{"id": "imgq-3449", "question_type": "Multiple-Choice", "instruction": "Does the flood appear to be on flat land or a slope? Select all that apply.", "ground_truth": ["C"], "model_output": "A: Flat land"}
+{"id": "imgq-2530", "question_type": "Binary", "instruction": "Is there any flooding visible in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-305", "question_type": "Multiple-Choice", "instruction": "What time of day is depicted in the image? Select all that apply.", "ground_truth": ["D"], "model_output": "D: Night"}
+{"id": "imgq-3503", "question_type": "Binary", "instruction": "Is there a vehicle submerged in water? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1427", "question_type": "Multiple-Choice", "instruction": "What is the condition of the buildings in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "A: Completely collapsed"}
+{"id": "imgq-286", "question_type": "Multiple-Choice", "instruction": "What is the condition of the area in terms of accessibility? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Partially obstructed"}
+{"id": "imgq-252", "question_type": "Binary", "instruction": "Is there any emergency barricades placed by authorities? Answer with Yes or No.", "ground_truth": "No", "model_output": "Yes."}
+{"id": "imgq-2728", "question_type": "Multiple-Choice", "instruction": "Which of the following statements is true about what is happening in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "A: There is debris in the scene"}
+{"id": "imgq-2210", "question_type": "Multiple-Choice", "instruction": "What is the primary activity taking place in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Collecting water"}
+{"id": "imgq-2342", "question_type": "Binary", "instruction": "Are there any emergency vehicles present? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-2476", "question_type": "Multiple-Choice", "instruction": "What condition are the buildings in? Select all that apply.", "ground_truth": ["A"], "model_output": "B: Partially damaged"}
+{"id": "imgq-734", "question_type": "Multiple-Choice", "instruction": "What is the condition of the vehicles in the foreground? Select all that apply.", "ground_truth": ["C", "D"], "model_output": "C: Severely damaged"}
+{"id": "imgq-283", "question_type": "Multiple-Choice", "instruction": "What is the condition of the pavement? Select all that apply.", "ground_truth": ["B", "C"], "model_output": "B: Cracked"}
+{"id": "imgq-2368", "question_type": "Multiple-Choice", "instruction": "What is the condition of the area? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Intact"}
+{"id": "imgq-392", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Flood"}
+{"id": "imgq-871", "question_type": "Binary", "instruction": "Is there visible fire in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-340", "question_type": "Multiple-Choice", "instruction": "What is the level of floodwater compared to the height of the people visible in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Up to the waist"}
+{"id": "imgq-2777", "question_type": "Multiple-Choice", "instruction": "What is the primary mode of transportation visible in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Boat"}
+{"id": "imgq-338", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Flood"}
+{"id": "imgq-3169", "question_type": "Binary", "instruction": "Is there visible structural damage to the buildings? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-1100", "question_type": "Binary", "instruction": "Is the debris blocking access to the building? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1854", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Fire"}
+{"id": "imgq-558", "question_type": "Multiple-Choice", "instruction": "What is the likely location type affected by the disaster? Select all that apply.", "ground_truth": ["A", "B"], "model_output": "A: Airport"}
+{"id": "imgq-2664", "question_type": "Binary", "instruction": "Are there any houses affected by the flooding? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1148", "question_type": "Binary", "instruction": "Is a rescue worker present in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2706", "question_type": "Binary", "instruction": "Is there a bridge damaged or collapsed? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-2775", "question_type": "Binary", "instruction": "Are there any animals being carried in the rescue boats? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-206", "question_type": "Multiple-Choice", "instruction": "Which objects are visible in the image? Select all that apply.", "ground_truth": ["B", "C", "D"], "model_output": "B: Submerged boats"}
+{"id": "imgq-2898", "question_type": "Multiple-Choice", "instruction": "How many damaged vehicles are there in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: One"}
+{"id": "imgq-400", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Flooding"}
+{"id": "imgq-1925", "question_type": "Binary", "instruction": "Is there a fire visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "No."}
+{"id": "imgq-3082", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-4231", "question_type": "Multiple-Choice", "instruction": "What is the condition of the vessel in the image? Select all that apply.", "ground_truth": ["B", "C", "D"], "model_output": "B: Partially damaged"}
+{"id": "imgq-2643", "question_type": "Binary", "instruction": "Is flooding visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2437", "question_type": "Binary", "instruction": "Is the road passable? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "No."}
+{"id": "imgq-1438", "question_type": "Binary", "instruction": "Are there any people visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1210", "question_type": "Binary", "instruction": "Is there any caution tape visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-961", "question_type": "Binary", "instruction": "Is the road blocked in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3143", "question_type": "Binary", "instruction": "Is there visible damage to the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3359", "question_type": "Binary", "instruction": "Is flooding visible in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "Yes."}
+{"id": "imgq-1429", "question_type": "Binary", "instruction": "Is there visible structural damage to buildings? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1115", "question_type": "Binary", "instruction": "Is there visible structural damage to a building? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1229", "question_type": "Multiple-Choice", "instruction": "What is the primary condition of the building? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Severely damaged"}
+{"id": "imgq-1816", "question_type": "Multiple-Choice", "instruction": "What is the condition of the facility being used? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Intact"}
+{"id": "imgq-604", "question_type": "Multiple-Choice", "instruction": "What type of vehicle is visible in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Taxi"}
+{"id": "imgq-4092", "question_type": "Multiple-Choice", "instruction": "What type of vehicles are involved in the collision? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Car and bus"}
+{"id": "imgq-3027", "question_type": "Binary", "instruction": "Is the road visibly damaged? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1371", "question_type": "Multiple-Choice", "instruction": "What is the primary activity the emergency responders are involved in? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Rescuing trapped individuals"}
+{"id": "imgq-2121", "question_type": "Multiple-Choice", "instruction": "What is the condition of the roof in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Partially damaged"}
+{"id": "imgq-4304", "question_type": "Binary", "instruction": "Are there any buildings visibly damaged in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-3519", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Completely flooded"}
+{"id": "imgq-358", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Flood"}
+{"id": "imgq-45", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Landslide"}
+{"id": "imgq-2128", "question_type": "Binary", "instruction": "Is flooding visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2908", "question_type": "Multiple-Choice", "instruction": "What type of natural disaster is depicted in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Landslide"}
+{"id": "imgq-2632", "question_type": "Binary", "instruction": "Is there visible flooding in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-476", "question_type": "Multiple-Choice", "instruction": "What objects are visible blocking the road? Select all that apply.", "ground_truth": ["C"], "model_output": "B: Vehicles"}
+{"id": "imgq-361", "question_type": "Multiple-Choice", "instruction": "Is the main road in the image navigable by emergency vehicles? Select all that apply.", "ground_truth": ["A"], "model_output": "C: No"}
+{"id": "imgq-2508", "question_type": "Multiple-Choice", "instruction": "What is the condition of the trees in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Swaying"}
+{"id": "imgq-1002", "question_type": "Binary", "instruction": "Is there visible structural damage to buildings? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2358", "question_type": "Binary", "instruction": "Are there any people visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3970", "question_type": "Multiple-Choice", "instruction": "What is the condition of the vehicle in the image? Select all that apply.", "ground_truth": ["B", "C"], "model_output": "B: On fire"}
+{"id": "imgq-610", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-1577", "question_type": "Multiple-Choice", "instruction": "What is the terrain type visible in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Mountainous"}
+{"id": "imgq-341", "question_type": "Binary", "instruction": "Is flooding visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1140", "question_type": "Multiple-Choice", "instruction": "What actions are emergency responders performing? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Clearing debris"}
+{"id": "imgq-1684", "question_type": "Multiple-Choice", "instruction": "What activity are the people engaged in? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Eating together"}
+{"id": "imgq-1309", "question_type": "Binary", "instruction": "Is there caution tape placed near the damaged area? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-737", "question_type": "Binary", "instruction": "Are vehicles obstructed by debris in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4089", "question_type": "Binary", "instruction": "Are emergency responders present in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2535", "question_type": "Multiple-Choice", "instruction": "What is blocking the road in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Power pole"}
+{"id": "imgq-3301", "question_type": "Binary", "instruction": "Are vehicles present in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1382", "question_type": "Binary", "instruction": "Are there collapsed buildings visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2861", "question_type": "Binary", "instruction": "Is flooding visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4343", "question_type": "Binary", "instruction": "Are there people actively clearing debris in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3067", "question_type": "Multiple-Choice", "instruction": "What type of disaster is visible in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Sinkhole"}
+{"id": "imgq-2465", "question_type": "Binary", "instruction": "Is the road completely blocked by the damage? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-39", "question_type": "Binary", "instruction": "Is there visible damage to the road? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3133", "question_type": "Binary", "instruction": "Are there people visible near the damaged area? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3824", "question_type": "Binary", "instruction": "Is there water being sprayed to extinguish the fire? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2588", "question_type": "Binary", "instruction": "Are emergency vehicles present? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-1369", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-3111", "question_type": "Multiple-Choice", "instruction": "What objects are placed near the damaged bridge to restrict access? Select all that apply.", "ground_truth": ["D"], "model_output": "D: Emergency tape"}
+{"id": "imgq-491", "question_type": "Multiple-Choice", "instruction": "How many vehicles are visible in the image? Select all that apply.", "ground_truth": ["D"], "model_output": "B: 3"}
+{"id": "imgq-620", "question_type": "Multiple-Choice", "instruction": "What is the likely cause of the building damage? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-4344", "question_type": "Binary", "instruction": "Is there evidence of burned or charred materials in the scene? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-539", "question_type": "Binary", "instruction": "Is flooding visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-505", "question_type": "Multiple-Choice", "instruction": "What is the condition of the vehicle? Select all that apply.", "ground_truth": ["A", "B"], "model_output": "A: Submerged"}
+{"id": "imgq-3480", "question_type": "Binary", "instruction": "Did the floodwater reach residential buildings? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4203", "question_type": "Binary", "instruction": "Are there multiple vehicles visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-4356", "question_type": "Binary", "instruction": "Are there collapsed buildings visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1257", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Earthquake"}
+{"id": "imgq-1296", "question_type": "Multiple-Choice", "instruction": "What is the primary obstruction visible on the road? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Rocks"}
+{"id": "imgq-2827", "question_type": "Multiple-Choice", "instruction": "What is the primary obstacle on the road? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Debris"}
+{"id": "imgq-989", "question_type": "Binary", "instruction": "Are there any objects blocking access to the building entrances? Answer with Yes or No.", "ground_truth": "No", "model_output": "Yes."}
+{"id": "imgq-3367", "question_type": "Binary", "instruction": "Is snow accumulation visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-1549", "question_type": "Binary", "instruction": "Are there collapsed buildings visible in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-957", "question_type": "Binary", "instruction": "Is there active fire in the image? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-3226", "question_type": "Multiple-Choice", "instruction": "What is the condition of the roof of the damaged building? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Partially Collapsed"}
+{"id": "imgq-2978", "question_type": "Multiple-Choice", "instruction": "What is the primary mode of transportation being used by the people? Select all that apply.", "ground_truth": ["C"], "model_output": "C: Inner tube"}
+{"id": "imgq-1223", "question_type": "Binary", "instruction": "Is there a vehicle visible in the debris? Answer with Yes or No.", "ground_truth": "Yes", "model_output": "Yes."}
+{"id": "imgq-2356", "question_type": "Multiple-Choice", "instruction": "What is the primary obstruction visible in the image? Select all that apply.", "ground_truth": ["B"], "model_output": "B: Fallen tree"}
+{"id": "imgq-4143", "question_type": "Multiple-Choice", "instruction": "How many vehicles are visible in the image? Select all that apply.", "ground_truth": ["C"], "model_output": "D: 4"}
+{"id": "imgq-1168", "question_type": "Binary", "instruction": "Is there flood visible in the image? Answer with Yes or No.", "ground_truth": "No", "model_output": "No."}
+{"id": "imgq-255", "question_type": "Multiple-Choice", "instruction": "What is the condition of the road? Select all that apply.", "ground_truth": ["C"], "model_output": "B: Partially blocked"}
+{"id": "imgq-443", "question_type": "Multiple-Choice", "instruction": "What type of disaster is depicted in the image? Select all that apply.", "ground_truth": ["A"], "model_output": "A: Flood"}

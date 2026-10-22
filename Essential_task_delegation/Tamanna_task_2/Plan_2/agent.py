@@ -88,50 +88,132 @@ class AgenticVisionRAG:
             # Retrieve sharp, un-downsampled 256x256 crop
             crop_rgb = self.retriever.crop_patch(image_input, b["bbox"])
 
-            prompt = (
-                f"You are an expert structural disaster engineer inspecting satellite imagery.\n"
-                f"You are examining an un-downsampled 256x256 crop of Building #{b_id}.\n"
-                f"The automated segmentation network predicted this building as: '{predicted_class}'.\n\n"
-                f"Task:\n"
-                f"1. Describe specific visual structural features (e.g. collapsed roof, wall cracks, debris, intact roofline).\n"
-                f"2. Assign an official EMS-98 Grade (Grade 1, Grade 2, Grade 3, Grade 4, or Grade 5).\n"
-                f"3. Declare rescue priority (Immediate, High, Standard, or Low).\n"
-                f"4. State whether you Agree or Disagree with the segmenter's prediction.\n\n"
-                f"Format:\n"
-                f"Features: <details>\n"
-                f"EMS-98: <Grade X>\n"
-                f"Priority: <Triage level>\n"
-                f"Agreement: <Agree / Disagree>"
-            )
+        prompt = (
+            f"You are an expert structural disaster damage engineer examining satellite imagery.\n"
+            f"Inspect the un-downsampled 256x256 native crop of Building #{b_id}.\n"
+            f"The segmentation model initially flagged this building as: '{predicted_class}'.\n\n"
+            f"Required Analysis:\n"
+            f"1. Features: Structural condition (roof collapse, rubble pile, intact boundaries, cracks).\n"
+            f"2. EMS-98: Assign an official European Macroseismic Grade (Grade 1, Grade 2, Grade 3, Grade 4, or Grade 5).\n"
+            f"3. Independent Class: State strictly 'Intact', 'Damaged', or 'Destroyed'.\n"
+            f"4. Priority: Declare rescue priority ('Immediate', 'High', 'Standard', or 'Low').\n\n"
+            f"Response Template:\n"
+            f"Features: <concise observation>\n"
+            f"EMS-98: <Grade 1-5>\n"
+            f"Independent Class: <Intact / Damaged / Destroyed>\n"
+            f"Priority: <Immediate / High / Standard / Low>"
+        )
+
+        inspections = []
+        conflicts_detected = 0
+        vlm_correct_count = 0
+        seg_correct_count = 0
+        corrected_errors = 0
+        gt_evaluated_count = 0
+
+        ems_to_class = {
+            "Grade 1": "Intact",
+            "Grade 2": "Damaged",
+            "Grade 3": "Damaged",
+            "Grade 4": "Destroyed",
+            "Grade 5": "Destroyed"
+        }
+
+        for b in selected_targets:
+            b_id = b["building_id"]
+            predicted_class = b["class_name"]
+
+            # Retrieve sharp, un-downsampled 256x256 crop
+            crop_rgb = self.retriever.crop_patch(image_input, b["bbox"])
 
             vlm_text = self.vlm.inspect_crop(crop_rgb, prompt)
+            is_mock_run = getattr(self.vlm, "is_mock", False)
 
-            # Parse agreement and grade
-            is_disagree = "disagree" in vlm_text.lower()
+            # 1. Extract EMS-98 Grade
+            grade_match = re.search(r"Grade\s*([1-5])", vlm_text, re.IGNORECASE)
+            extracted_grade = f"Grade {grade_match.group(1)}" if grade_match else "Unspecified"
+
+            # 2. Extract Independent VLM Class Prediction
+            class_match = re.search(r"Independent Class:\s*(Intact|Damaged|Destroyed)", vlm_text, re.IGNORECASE)
+            if class_match:
+                vlm_class = class_match.group(1).capitalize()
+            elif extracted_grade in ems_to_class:
+                vlm_class = ems_to_class[extracted_grade]
+            else:
+                # Fallback keyword extraction
+                if re.search(r"\b(destroyed|collapse|rubble)\b", vlm_text, re.IGNORECASE):
+                    vlm_class = "Destroyed"
+                elif re.search(r"\b(damaged|partial|cracked)\b", vlm_text, re.IGNORECASE):
+                    vlm_class = "Damaged"
+                else:
+                    vlm_class = "Intact"
+
+            # 3. Scientific Inter-Model Consensus: Does VLM agree with Segmenter?
+            is_disagree = (vlm_class.lower() != predicted_class.lower())
             if is_disagree:
                 conflicts_detected += 1
 
-            # Extract EMS-98 grade
-            grade_match = re.search(r"Grade\s*([1-5])", vlm_text, re.IGNORECASE)
-            extracted_grade = f"Grade {grade_match.group(1)}" if grade_match else "Unspecified"
+            # 4. Ground Truth Verification (if ground truth mask or mask_override is available)
+            gt_class = None
+            seg_is_correct = None
+            vlm_is_correct = None
+            error_corrected = False
+
+            if mask_override is not None:
+                x, y, w, h = b["bbox"]
+                gt_crop = mask_override[y:y+h, x:x+w]
+                fg_gt = gt_crop[gt_crop > 0]
+                if len(fg_gt) > 0:
+                    gt_class_id = int(np.bincount(fg_gt).argmax())
+                    gt_class = config.CLASS_MAPPING.get(gt_class_id, "Intact")
+                    gt_evaluated_count += 1
+
+                    seg_is_correct = (predicted_class == gt_class)
+                    vlm_is_correct = (vlm_class == gt_class)
+
+                    if seg_is_correct:
+                        seg_correct_count += 1
+                    if vlm_is_correct:
+                        vlm_correct_count += 1
+
+                    # Flag true correction: Segmenter was wrong, but VLM corrected it to the Ground Truth!
+                    if (not seg_is_correct) and vlm_is_correct:
+                        error_corrected = True
+                        corrected_errors += 1
 
             inspections.append({
                 "building_id": b_id,
                 "bbox": b["bbox"],
                 "centroid": b["centroid"],
                 "area_pixels": b["area_pixels"],
-                "initial_segmentation_class": predicted_class,
+                "segmenter_class": predicted_class,
+                "vlm_class": vlm_class,
                 "ems98_grade": extracted_grade,
-                "inspection_text": vlm_text,
+                "gt_class": gt_class,
+                "seg_correct": seg_is_correct,
+                "vlm_correct": vlm_is_correct,
+                "vlm_corrected_error": error_corrected,
                 "conflict_with_segmenter": is_disagree,
+                "inspection_text": vlm_text,
+                "is_mock_unverified": is_mock_run,
                 "crop_rgb": crop_rgb
             })
 
-            status_icon = "⚠️ Conflict" if is_disagree else "✓ Verified"
-            print(f"  [{status_icon}] Building #{b_id} ({predicted_class}) -> {extracted_grade}")
+            if is_mock_run:
+                status_icon = "⚠️ Mock Fallback"
+            elif is_disagree:
+                status_icon = f"⚠️ Conflict (Seg:{predicted_class} vs VLM:{vlm_class})"
+            else:
+                status_icon = f"✓ Verified ({predicted_class})"
+            print(f"  [{status_icon}] Building #{b_id} -> {extracted_grade}")
 
         # ─── Step 5: SYNTHESIS & REPORT GENERATION ───────────────────────────
         print(f"\n[Thought 4] Compiling forensic report. Detected {conflicts_detected} classification conflicts.")
+        if gt_evaluated_count > 0:
+            print(f"[Ground Truth Audit] Evaluated {gt_evaluated_count} buildings against Ground Truth:")
+            print(f"  - Segmenter Accuracy: {round(seg_correct_count / gt_evaluated_count * 100, 1)}%")
+            print(f"  - VLM Accuracy:       {round(vlm_correct_count / gt_evaluated_count * 100, 1)}%")
+            print(f"  - VLM Corrected Errors: {corrected_errors} buildings")
 
         # Compute rescue priority distribution
         immediate_rescues = sum(1 for i in inspections if "immediate" in i["inspection_text"].lower())
@@ -139,6 +221,7 @@ class AgenticVisionRAG:
         report = {
             "query": user_query,
             "vlm_model_used": self.vlm.model_id,
+            "is_mock_run": getattr(self.vlm, "is_mock", False),
             "spatial_census": {
                 "total_buildings_detected": total_blds,
                 "destroyed_count": counts["Destroyed"],
@@ -148,6 +231,13 @@ class AgenticVisionRAG:
             "inspection_summary": {
                 "crops_evaluated": len(inspections),
                 "conflicts_detected": conflicts_detected,
+                "consensus_rate_pct": round((len(inspections) - conflicts_detected) / max(1, len(inspections)) * 100, 2) if not getattr(self.vlm, "is_mock", False) else None,
+                "ground_truth_stats": {
+                    "gt_crops_evaluated": gt_evaluated_count,
+                    "seg_accuracy_pct": round(seg_correct_count / gt_evaluated_count * 100, 2) if gt_evaluated_count > 0 else None,
+                    "vlm_accuracy_pct": round(vlm_correct_count / gt_evaluated_count * 100, 2) if (gt_evaluated_count > 0 and not getattr(self.vlm, "is_mock", False)) else None,
+                    "vlm_corrected_errors": corrected_errors
+                },
                 "immediate_rescue_priorities": immediate_rescues
             },
             "detailed_inspections": inspections,

@@ -1,5 +1,5 @@
-Model,Parameters,Agreement Rate (%),Avg Latency / Tile,VRAM Usage,Finding
-Base Qwen2.5-VL-7B (Full-Image 499A Baseline),7.6B,54.2%,8.50s,5.5 GB,Spatial blindness: downsampled buildings turn into blurry smudges
-Base Qwen2.5-VL-7B (Agentic Vis-RAG),7.6B,100.0%,46.65s,5.5 GB,Patch zooming eliminates counting regression (+24.2% gain)
-Team Fine-Tuned Qwen2.5-VL-7B (Agentic Vis-RAG),7.6B,100.0%,3.65s,5.6 GB,Champion: highest EMS-98 damage grading consistency
-Google PaliGemma 2 3B (Agentic Vis-RAG),3.0B,100.0%,0.13s,3.2 GB,Edge Efficient: ~2x faster, ~42% less memory consumption
+Model,Architecture,Tool-VLM Consensus (%),Avg Latency / Tile,VRAM Usage,Evaluation Finding
+Base Qwen2.5-VL-7B (Full-Image CSE499A Baseline),7.6B Foundation,Literature (Spatial Blindness),8.50s,5.5 GB,Global downsampling squishes 1024px tiles into blur (-10.62% drop)
+Base Qwen2.5-VL-7B (Agentic Vis-RAG),7.6B + 256px Visual RAG,60.0%,31.12s,5.5 GB,Native-res patch zooming eliminates spatial resolution loss
+Team Fine-Tuned Qwen2.5-VL-7B (Agentic Vis-RAG),7.6B Merged FP + Vis-RAG,Pending Execution,Pending Execution,5.6 GB,Checkpoint available at AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP
+Google PaliGemma 2 3B (Agentic Vis-RAG),3.0B Multimodal,46.7%,2.11s,3.2 GB,"Edge Efficient: ~2x faster inference, ~42% less VRAM footprint"

@@ -77,9 +77,9 @@ def parse_args():
     parser.add_argument(
         "--model",
         type=str,
-        choices=["finetuned", "base", "paligemma"],
+        choices=["finetuned", "base", "paligemma", "qwen_edge"],
         default="finetuned",
-        help="Which VLM model to load (finetuned, base, paligemma)"
+        help="Which VLM model to load (finetuned, base, paligemma, qwen_edge)"
     )
     parser.add_argument(
         "--image",

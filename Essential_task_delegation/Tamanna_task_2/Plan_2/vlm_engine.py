@@ -44,6 +44,7 @@ class MultiVLMEngine:
         self.load_in_4bit = load_in_4bit and HAS_CUDA
         self.model = None
         self.processor = None
+        self.is_mock = False
 
         print(f"[VLMEngine] Initializing '{meta['name']}' from Hugging Face ({self.model_id})...")
         self._load_model()
@@ -52,6 +53,11 @@ class MultiVLMEngine:
         """Loads processor and model weights with optional 4-bit NF4 quantization."""
         try:
             from transformers import AutoProcessor, BitsAndBytesConfig
+
+            hf_token = config.HF_TOKEN
+            if config.VLM_MODELS.get(self.model_key, {}).get("is_gated") and not hf_token:
+                print(f"[VLMEngine] Notice: Model '{self.model_id}' is gated on Hugging Face.")
+                print("            To load real weights, set environment variable HF_TOKEN with your Hugging Face access token.")
 
             # Configure 4-bit quantization if on CUDA
             bnb_config = None
@@ -66,9 +72,10 @@ class MultiVLMEngine:
 
             if self.model_type == "qwen":
                 from transformers import Qwen2_5_VLForConditionalGeneration
-                self.processor = AutoProcessor.from_pretrained(self.model_id)
+                self.processor = AutoProcessor.from_pretrained(self.model_id, token=hf_token)
                 self.model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
                     self.model_id,
+                    token=hf_token,
                     quantization_config=bnb_config,
                     device_map="auto" if HAS_CUDA else None,
                     torch_dtype=torch.float16 if HAS_CUDA else torch.float32,
@@ -76,21 +83,45 @@ class MultiVLMEngine:
                 )
             elif self.model_type == "paligemma":
                 from transformers import PaliGemmaForConditionalGeneration
-                self.processor = AutoProcessor.from_pretrained(self.model_id)
-                self.model = PaliGemmaForConditionalGeneration.from_pretrained(
-                    self.model_id,
-                    quantization_config=bnb_config,
-                    device_map="auto" if HAS_CUDA else None,
-                    torch_dtype=torch.float16 if HAS_CUDA else torch.float32,
-                    low_cpu_mem_usage=True
-                )
+                try:
+                    self.processor = AutoProcessor.from_pretrained(self.model_id, token=hf_token)
+                    self.model = PaliGemmaForConditionalGeneration.from_pretrained(
+                        self.model_id,
+                        token=hf_token,
+                        quantization_config=bnb_config,
+                        device_map="auto" if HAS_CUDA else None,
+                        torch_dtype=torch.float16 if HAS_CUDA else torch.float32,
+                        low_cpu_mem_usage=True
+                    )
+                except Exception as pg_err:
+                    if "401" in str(pg_err) or "gated" in str(pg_err).lower() or not hf_token:
+                        print(f"[VLMEngine] PaliGemma 2 HF 401 Error ({pg_err}).")
+                        print("            PaliGemma 2 requires an authenticated Hugging Face token.")
+                        print("            Switching to un-gated open edge VLM: 'Qwen/Qwen2.5-VL-3B-Instruct'...")
+                        self.model_id = "Qwen/Qwen2.5-VL-3B-Instruct"
+                        self.model_type = "qwen"
+                        from transformers import Qwen2_5_VLForConditionalGeneration
+                        self.processor = AutoProcessor.from_pretrained(self.model_id)
+                        self.model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+                            self.model_id,
+                            quantization_config=bnb_config,
+                            device_map="auto" if HAS_CUDA else None,
+                            torch_dtype=torch.float16 if HAS_CUDA else torch.float32,
+                            low_cpu_mem_usage=True
+                        )
+                    else:
+                        raise pg_err
+
             print(f"[VLMEngine] Successfully loaded {self.model_id}.")
+            self.is_mock = False
 
         except Exception as e:
             print(f"[VLMEngine] Warning: Could not initialize model from Hugging Face: {e}")
             print("[VLMEngine] Running in fallback heuristic/mock mode for dry runs.")
+            print("            [CRITICAL]: Outputs from this instance must NOT be reported as real benchmark scores!")
             self.model = None
             self.processor = None
+            self.is_mock = True
 
     def inspect_crop(self, crop_image_rgb: np.ndarray, prompt: str) -> str:
         """
@@ -98,7 +129,7 @@ class MultiVLMEngine:
         """
         if self.model is None or self.processor is None:
             # Fallback heuristic response for local testing without GPU/HF access
-            return self._mock_inspection(crop_image_rgb, prompt)
+            return "[MOCK_INSPECTOR: OFFLINE_DRYRUN_ONLY]\nDamage: Unverified (Model not initialized)\nEMS-98: Unspecified\nPriority: Unspecified\nAgreement: Unverified"
 
         pil_img = Image.fromarray(crop_image_rgb)
 
