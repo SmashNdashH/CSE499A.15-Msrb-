@@ -1,0 +1,200 @@
+{
+ "task": "H2b",
+ "smoke_test": false,
+ "seed": 42,
+ "table": "/kaggle/input/datasets/contactalnoman/h2-buildings-table/buildings.sqlite",
+ "items": 297,
+ "answerable_items": 261,
+ "unanswerable_items": 36,
+ "questions": 29,
+ "unanswerable_questions": 12,
+ "phrasings": [
+  0,
+  1,
+  2
+ ],
+ "images_per_question": 3,
+ "pool_images": 600,
+ "variants": [
+  "real",
+  "classes redrawn",
+  "geometry redrawn",
+  "no destroyed",
+  "no buildings"
+ ],
+ "versions_left_out": 1,
+ "models": [
+  [
+   "our-7B",
+   "AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP",
+   "vl",
+   "the VLM the system ships now: no extra memory"
+  ],
+  [
+   "VL-3B",
+   "Qwen/Qwen2.5-VL-3B-Instruct",
+   "vl",
+   "base of the distilled 3B (L2), its stand-in: no extra memory"
+  ],
+  [
+   "Coder-1.5B",
+   "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+   "text",
+   "a separate SQL model, the smallest"
+  ],
+  [
+   "Coder-3B",
+   "Qwen/Qwen2.5-Coder-3B-Instruct",
+   "text",
+   "a separate SQL model, H2's agent"
+  ]
+ ],
+ "precisions": [
+  "nf4",
+  "fp16"
+ ],
+ "batch_size": 16,
+ "agree_min": 0.9,
+ "max_new_tokens": 256,
+ "max_sql_retries": 2,
+ "pass_ts_acc": 90.0,
+ "rs_penalty": 10,
+ "bootstrap": 2000,
+ "runs": {
+  "our-7B nf4": {
+   "config": "our-7B nf4",
+   "model": "AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP",
+   "kind": "vl",
+   "role": "the VLM the system ships now: no extra memory",
+   "precision": "nf4",
+   "footprint_gb": 5.78,
+   "peak_gb_one_at_a_time": 6.17,
+   "latency_median_s": 3.27,
+   "latency_p90_s": 4.96,
+   "tokens_per_s": 12.3,
+   "batch_agreement": 0.958,
+   "batch_size_used": 16,
+   "load_min": 2.3,
+   "answer_min": 5.8
+  },
+  "our-7B fp16": {
+   "config": "our-7B fp16",
+   "model": "AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP",
+   "kind": "vl",
+   "role": "the VLM the system ships now: no extra memory",
+   "precision": "fp16",
+   "footprint_gb": 16.58,
+   "peak_gb_one_at_a_time": 16.97,
+   "latency_median_s": 3.29,
+   "latency_p90_s": 5.41,
+   "tokens_per_s": 12.0,
+   "batch_agreement": 1.0,
+   "batch_size_used": 16,
+   "load_min": 0.1,
+   "answer_min": 5.2
+  },
+  "VL-3B nf4": {
+   "config": "VL-3B nf4",
+   "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+   "kind": "vl",
+   "role": "base of the distilled 3B (L2), its stand-in: no extra memory",
+   "precision": "nf4",
+   "footprint_gb": 2.35,
+   "peak_gb_one_at_a_time": 2.55,
+   "latency_median_s": 3.23,
+   "latency_p90_s": 4.56,
+   "tokens_per_s": 12.7,
+   "batch_agreement": 1.0,
+   "batch_size_used": 16,
+   "load_min": 0.8,
+   "answer_min": 3.7
+  },
+  "VL-3B fp16": {
+   "config": "VL-3B fp16",
+   "model": "Qwen/Qwen2.5-VL-3B-Instruct",
+   "kind": "vl",
+   "role": "base of the distilled 3B (L2), its stand-in: no extra memory",
+   "precision": "fp16",
+   "footprint_gb": 7.51,
+   "peak_gb_one_at_a_time": 7.65,
+   "latency_median_s": 2.22,
+   "latency_p90_s": 3.3,
+   "tokens_per_s": 16.9,
+   "batch_agreement": 1.0,
+   "batch_size_used": 16,
+   "load_min": 0.1,
+   "answer_min": 3.2
+  },
+  "Coder-1.5B nf4": {
+   "config": "Coder-1.5B nf4",
+   "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+   "kind": "text",
+   "role": "a separate SQL model, the smallest",
+   "precision": "nf4",
+   "footprint_gb": 1.12,
+   "peak_gb_one_at_a_time": 1.26,
+   "latency_median_s": 2.31,
+   "latency_p90_s": 3.91,
+   "tokens_per_s": 15.3,
+   "batch_agreement": 1.0,
+   "batch_size_used": 16,
+   "load_min": 0.2,
+   "answer_min": 2.0
+  },
+  "Coder-1.5B fp16": {
+   "config": "Coder-1.5B fp16",
+   "model": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+   "kind": "text",
+   "role": "a separate SQL model, the smallest",
+   "precision": "fp16",
+   "footprint_gb": 3.09,
+   "peak_gb_one_at_a_time": 3.2,
+   "latency_median_s": 1.73,
+   "latency_p90_s": 2.42,
+   "tokens_per_s": 24.0,
+   "batch_agreement": 1.0,
+   "batch_size_used": 16,
+   "load_min": 0.0,
+   "answer_min": 1.7
+  },
+  "Coder-3B nf4": {
+   "config": "Coder-3B nf4",
+   "model": "Qwen/Qwen2.5-Coder-3B-Instruct",
+   "kind": "text",
+   "role": "a separate SQL model, H2's agent",
+   "precision": "nf4",
+   "footprint_gb": 2.01,
+   "peak_gb_one_at_a_time": 2.2,
+   "latency_median_s": 2.97,
+   "latency_p90_s": 4.31,
+   "tokens_per_s": 13.4,
+   "batch_agreement": 1.0,
+   "batch_size_used": 16,
+   "load_min": 0.6,
+   "answer_min": 3.9
+  },
+  "Coder-3B fp16": {
+   "config": "Coder-3B fp16",
+   "model": "Qwen/Qwen2.5-Coder-3B-Instruct",
+   "kind": "text",
+   "role": "a separate SQL model, H2's agent",
+   "precision": "fp16",
+   "footprint_gb": 6.17,
+   "peak_gb_one_at_a_time": 6.31,
+   "latency_median_s": 2.33,
+   "latency_p90_s": 3.49,
+   "tokens_per_s": 17.0,
+   "batch_agreement": 1.0,
+   "batch_size_used": 16,
+   "load_min": 0.1,
+   "answer_min": 3.1
+  }
+ },
+ "versions": {
+  "torch": "2.11.0+cu128",
+  "transformers": "5.16.1",
+  "bitsandbytes": "0.50.2",
+  "accelerate": "1.14.0"
+ },
+ "run_time_min": 47.1
+}

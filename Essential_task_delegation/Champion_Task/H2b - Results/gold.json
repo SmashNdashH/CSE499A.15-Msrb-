@@ -1,0 +1,659 @@
+{
+ "A1@portugal_wildfire_00001412_post_disaster.png": {
+  "real": 5.0,
+  "classes redrawn": 7.0,
+  "geometry redrawn": 5.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "A1@nepal_flooding_00000075_post_disaster.png": {
+  "real": 1.0,
+  "classes redrawn": 10.0,
+  "geometry redrawn": 1.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "A1@hurricane_florence_00000035_post_disaster.png": {
+  "real": 0.0,
+  "classes redrawn": 4.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "A2@portugal_wildfire_00000798_post_disaster.png": {
+  "real": 16.0,
+  "classes redrawn": 7.0,
+  "geometry redrawn": 16.0,
+  "no destroyed": 16.0,
+  "no buildings": 0.0
+ },
+ "A2@hurricane_michael_00000357_post_disaster.png": {
+  "real": 103.0,
+  "classes redrawn": 61.0,
+  "geometry redrawn": 103.0,
+  "no destroyed": 103.0,
+  "no buildings": 0.0
+ },
+ "A2@hurricane_harvey_00000429_post_disaster.png": {
+  "real": 0.0,
+  "classes redrawn": 59.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "A3@turkey_earthquake6_post_534.png": {
+  "real": 3.0,
+  "classes redrawn": 29.0,
+  "geometry redrawn": 3.0,
+  "no destroyed": 3.0,
+  "no buildings": 0.0
+ },
+ "A3@mexico_earthquake_00000126_post_disaster.png": {
+  "real": 3.0,
+  "classes redrawn": 39.0,
+  "geometry redrawn": 3.0,
+  "no destroyed": 3.0,
+  "no buildings": 0.0
+ },
+ "A3@portugal_wildfire_00001157_post_disaster.png": {
+  "real": 0.0,
+  "classes redrawn": 7.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "B1@joplin_tornado_00000031_post_disaster.png": {
+  "real": 204.0,
+  "classes redrawn": 204.0,
+  "geometry redrawn": 204.0,
+  "no destroyed": 190.0,
+  "no buildings": 0.0
+ },
+ "B1@turkey_earthquake6_post_550.png": {
+  "real": 54.0,
+  "classes redrawn": 54.0,
+  "geometry redrawn": 54.0,
+  "no destroyed": 49.0,
+  "no buildings": 0.0
+ },
+ "B1@midwest_flooding_00000335_post_disaster.png": {
+  "real": 9.0,
+  "classes redrawn": 9.0,
+  "geometry redrawn": 9.0,
+  "no destroyed": 9.0,
+  "no buildings": 0.0
+ },
+ "B2@hurricane_harvey_00000184_post_disaster.png": {
+  "real": 85.0,
+  "classes redrawn": 69.0,
+  "geometry redrawn": 85.0,
+  "no destroyed": 85.0,
+  "no buildings": 0.0
+ },
+ "B2@rwanda_volcano_00000114_post_disaster.png": {
+  "real": 23.0,
+  "classes redrawn": 14.0,
+  "geometry redrawn": 23.0,
+  "no destroyed": 15.0,
+  "no buildings": 0.0
+ },
+ "B2@turkey_earthquake4_post_299.png": {
+  "real": 0.0,
+  "classes redrawn": 12.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "C1@marshall_wildfire_00000051_post_disaster.png": {
+  "real": 100.0,
+  "classes redrawn": 0.0,
+  "geometry redrawn": 100.0,
+  "no destroyed": "NONE",
+  "no buildings": "NONE"
+ },
+ "C1@hurricane_matthew_00000275_post_disaster.png": {
+  "real": 100.0,
+  "classes redrawn": 20.0,
+  "geometry redrawn": 100.0,
+  "no destroyed": "NONE",
+  "no buildings": "NONE"
+ },
+ "C1@nepal_flooding_00000413_post_disaster.png": {
+  "real": 0.0,
+  "classes redrawn": 10.714285714285714,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": "NONE"
+ },
+ "C2@haiti_earthquake_00000069_post_disaster.png": {
+  "real": 98.18181818181819,
+  "classes redrawn": 54.54545454545455,
+  "geometry redrawn": 98.18181818181819,
+  "no destroyed": 94.73684210526316,
+  "no buildings": "NONE"
+ },
+ "C2@libya_flood_post_66.png": {
+  "real": 34.21052631578947,
+  "classes redrawn": 55.26315789473684,
+  "geometry redrawn": 34.21052631578947,
+  "no destroyed": 34.21052631578947,
+  "no buildings": "NONE"
+ },
+ "C2@socal_fire_00000365_post_disaster.png": {
+  "real": 0.0,
+  "classes redrawn": 50.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": "NONE"
+ },
+ "D1@turkey_earthquake6_post_423.png": {
+  "real": 360.0,
+  "classes redrawn": 297.0,
+  "geometry redrawn": 229.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "D1@turkey_earthquake6_post_439.png": {
+  "real": 1631.0,
+  "classes redrawn": 793.0,
+  "geometry redrawn": 1462.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "D1@turkey_earthquake4_post_308.png": {
+  "real": 0.0,
+  "classes redrawn": 51478.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "D2@mexico_earthquake_00000081_post_disaster.png": {
+  "real": 2214.632,
+  "classes redrawn": 2207.315789473684,
+  "geometry redrawn": 2704.712,
+  "no destroyed": 2214.632,
+  "no buildings": "NONE"
+ },
+ "D2@turkey_earthquake7_post_609.png": {
+  "real": 3270.171875,
+  "classes redrawn": 2793.5593220338983,
+  "geometry redrawn": 4324.921875,
+  "no destroyed": 3270.171875,
+  "no buildings": "NONE"
+ },
+ "D2@hurricane_matthew_00000127_post_disaster.png": {
+  "real": "NONE",
+  "classes redrawn": 566.2777777777778,
+  "geometry redrawn": "NONE",
+  "no destroyed": "NONE",
+  "no buildings": "NONE"
+ },
+ "D3@midwest_flooding_00000013_post_disaster.png": {
+  "real": 414.0,
+  "classes redrawn": 9736.0,
+  "geometry redrawn": 890.0,
+  "no destroyed": 414.0,
+  "no buildings": "NONE"
+ },
+ "D3@turkey_earthquake7_post_611.png": {
+  "real": 2067.0,
+  "classes redrawn": 6815.0,
+  "geometry redrawn": 834.0,
+  "no destroyed": 2067.0,
+  "no buildings": "NONE"
+ },
+ "D3@shovi_landslide_post_778.png": {
+  "real": "NONE",
+  "classes redrawn": 1425.0,
+  "geometry redrawn": "NONE",
+  "no destroyed": "NONE",
+  "no buildings": "NONE"
+ },
+ "D4@turkey_earthquake1_post_241.png": {
+  "real": 24.0,
+  "classes redrawn": 130.0,
+  "geometry redrawn": 24.0,
+  "no destroyed": 24.0,
+  "no buildings": "NONE"
+ },
+ "D4@beriut_explosion_post_45.png": {
+  "real": 23.0,
+  "classes redrawn": 23.0,
+  "geometry redrawn": 17.0,
+  "no destroyed": 23.0,
+  "no buildings": "NONE"
+ },
+ "D4@rwanda_volcano_00000086_post_disaster.png": {
+  "real": "NONE",
+  "classes redrawn": 21.0,
+  "geometry redrawn": "NONE",
+  "no destroyed": "NONE",
+  "no buildings": "NONE"
+ },
+ "E1@joplin_tornado_00000055_post_disaster.png": {
+  "real": 24.0,
+  "classes redrawn": 24.0,
+  "geometry redrawn": 25.0,
+  "no destroyed": 24.0,
+  "no buildings": 0.0
+ },
+ "E1@libya_flood_post_122.png": {
+  "real": 4.0,
+  "classes redrawn": 4.0,
+  "geometry redrawn": 4.0,
+  "no destroyed": 4.0,
+  "no buildings": 0.0
+ },
+ "E1@mexico_earthquake_00000192_post_disaster.png": {
+  "real": 0.0,
+  "classes redrawn": 0.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "E2@woolsey_fire_00000078_post_disaster.png": {
+  "real": 2.0,
+  "classes redrawn": 0.0,
+  "geometry redrawn": 2.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "E2@turkey_earthquake6_post_534.png": {
+  "real": 8.0,
+  "classes redrawn": 21.0,
+  "geometry redrawn": 4.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "E2@turkey_earthquake5_post_361.png": {
+  "real": 0.0,
+  "classes redrawn": 23.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "F1@santa_rosa_wildfire_00000249_post_disaster.png": {
+  "real": 1.0,
+  "classes redrawn": 0.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "F1@mexico_earthquake_00000045_post_disaster.png": {
+  "real": 13.0,
+  "classes redrawn": 21.0,
+  "geometry redrawn": 12.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "F1@beriut_explosion_post_52.png": {
+  "real": 0.0,
+  "classes redrawn": 25.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "F2@hurricane_florence_00000089_post_disaster.png": {
+  "real": 14.0,
+  "classes redrawn": 0.0,
+  "geometry redrawn": 14.0,
+  "no destroyed": 14.0,
+  "no buildings": 0.0
+ },
+ "F2@moore_tornado_00000201_post_disaster.png": {
+  "real": 3.0,
+  "classes redrawn": 8.0,
+  "geometry redrawn": 3.0,
+  "no destroyed": 3.0,
+  "no buildings": 0.0
+ },
+ "F2@palu_tsunami_00000141_post_disaster.png": {
+  "real": 0.0,
+  "classes redrawn": 1.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "F3@noto_earthquake_post_186.png": {
+  "real": 2.0,
+  "classes redrawn": 4.0,
+  "geometry redrawn": 2.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "F3@la_palma_volcano_00000391_post_disaster.png": {
+  "real": 8.0,
+  "classes redrawn": 0.0,
+  "geometry redrawn": 2.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "F3@turkey_earthquake6_post_482.png": {
+  "real": 0.0,
+  "classes redrawn": 2.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "F4@turkey_earthquake6_post_423.png": {
+  "real": 134.8,
+  "classes redrawn": 353.8,
+  "geometry redrawn": 556.4,
+  "no destroyed": "NONE",
+  "no buildings": "NONE"
+ },
+ "F4@palu_tsunami_00000180_post_disaster.png": {
+  "real": 154.8,
+  "classes redrawn": 102.1,
+  "geometry redrawn": 71.2,
+  "no destroyed": "NONE",
+  "no buildings": "NONE"
+ },
+ "F4@turkey_earthquake4_post_316.png": {
+  "real": "NONE",
+  "classes redrawn": 339.9,
+  "geometry redrawn": "NONE",
+  "no destroyed": "NONE",
+  "no buildings": "NONE"
+ },
+ "G1@la_palma_volcano_00000543_post_disaster.png": {
+  "real": 10.0,
+  "classes redrawn": 5.0,
+  "geometry redrawn": 6.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "G1@hurricane_michael_00000194_post_disaster.png": {
+  "real": 2.0,
+  "classes redrawn": 11.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "G1@guatemala_volcano_00000009_post_disaster.png": {
+  "real": 0.0,
+  "classes redrawn": 2.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "G2@mexico_earthquake_00000086_post_disaster.png": {
+  "real": 36.0,
+  "classes redrawn": 36.0,
+  "geometry redrawn": 21.0,
+  "no destroyed": 36.0,
+  "no buildings": 0.0
+ },
+ "G2@mexico_earthquake_00000004_post_disaster.png": {
+  "real": 26.0,
+  "classes redrawn": 26.0,
+  "geometry redrawn": 37.0,
+  "no destroyed": 26.0,
+  "no buildings": 0.0
+ },
+ "G2@santa_rosa_wildfire_00000117_post_disaster.png": {
+  "real": 0.0,
+  "classes redrawn": 0.0,
+  "geometry redrawn": 13.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "G3@mexico_hurricane_00000075_post_disaster.png": {
+  "real": 16.0,
+  "classes redrawn": 6.0,
+  "geometry redrawn": 8.0,
+  "no destroyed": 16.0,
+  "no buildings": 0.0
+ },
+ "G3@palu_tsunami_00000169_post_disaster.png": {
+  "real": 26.0,
+  "classes redrawn": 12.0,
+  "geometry redrawn": 19.0,
+  "no destroyed": 26.0,
+  "no buildings": 0.0
+ },
+ "G3@rwanda_volcano_00000094_post_disaster.png": {
+  "real": 0.0,
+  "classes redrawn": 46.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "H1@mexico_earthquake_00000192_post_disaster.png": {
+  "real": "damaged",
+  "classes redrawn": "intact",
+  "geometry redrawn": "damaged",
+  "no destroyed": "damaged",
+  "no buildings": "NONE"
+ },
+ "H1@nepal_flooding_00000578_post_disaster.png": {
+  "real": "intact",
+  "classes redrawn": "AMBIGUOUS",
+  "geometry redrawn": "intact",
+  "no destroyed": "intact",
+  "no buildings": "NONE"
+ },
+ "H1@turkey_earthquake7_post_596.png": {
+  "real": "intact",
+  "classes redrawn": "intact",
+  "geometry redrawn": "intact",
+  "no destroyed": "intact",
+  "no buildings": "NONE"
+ },
+ "H2@nepal_flooding_00000167_post_disaster.png": {
+  "real": 18.0,
+  "classes redrawn": 8.0,
+  "geometry redrawn": 18.0,
+  "no destroyed": "NONE",
+  "no buildings": "NONE"
+ },
+ "H2@ukraine_conflict_00000419_post_disaster.png": {
+  "real": 4.0,
+  "classes redrawn": 4.0,
+  "geometry redrawn": 34.0,
+  "no destroyed": "NONE",
+  "no buildings": "NONE"
+ },
+ "H2@midwest_flooding_00000239_post_disaster.png": {
+  "real": "NONE",
+  "classes redrawn": 5.0,
+  "geometry redrawn": "NONE",
+  "no destroyed": "NONE",
+  "no buildings": "NONE"
+ },
+ "H3@palu_tsunami_00000025_post_disaster.png": {
+  "real": [
+   19.0,
+   17.0,
+   13.0
+  ],
+  "classes redrawn": [
+   19.0,
+   17.0,
+   13.0
+  ],
+  "geometry redrawn": [
+   16.0,
+   23.0,
+   32.0
+  ],
+  "no destroyed": [
+   19.0,
+   17.0,
+   13.0
+  ],
+  "no buildings": []
+ },
+ "H3@hurricane_michael_00000357_post_disaster.png": {
+  "real": [
+   119.0,
+   46.0,
+   113.0
+  ],
+  "classes redrawn": [
+   119.0,
+   46.0,
+   113.0
+  ],
+  "geometry redrawn": [
+   103.0,
+   75.0,
+   4.0
+  ],
+  "no destroyed": [
+   119.0,
+   46.0,
+   113.0
+  ],
+  "no buildings": []
+ },
+ "H3@haiti_earthquake_00000060_post_disaster.png": {
+  "real": [
+   2.0,
+   9.0,
+   1.0
+  ],
+  "classes redrawn": [
+   2.0,
+   9.0,
+   1.0
+  ],
+  "geometry redrawn": [
+   10.0,
+   5.0,
+   11.0
+  ],
+  "no destroyed": [
+   2.0,
+   9.0,
+   1.0
+  ],
+  "no buildings": []
+ },
+ "I1@ukraine_conflict_00000197_post_disaster.png": {
+  "real": true,
+  "classes redrawn": true,
+  "geometry redrawn": true,
+  "no destroyed": false,
+  "no buildings": false
+ },
+ "I1@ukraine_conflict_00000397_post_disaster.png": {
+  "real": true,
+  "classes redrawn": true,
+  "geometry redrawn": true,
+  "no destroyed": false,
+  "no buildings": false
+ },
+ "I1@portugal_wildfire_00000720_post_disaster.png": {
+  "real": false,
+  "classes redrawn": true,
+  "geometry redrawn": false,
+  "no destroyed": false,
+  "no buildings": false
+ },
+ "I2@noto_earthquake_post_182.png": {
+  "real": true,
+  "classes redrawn": true,
+  "geometry redrawn": true,
+  "no destroyed": true,
+  "no buildings": false
+ },
+ "I2@libya_flood_post_107.png": {
+  "real": true,
+  "classes redrawn": false,
+  "geometry redrawn": true,
+  "no destroyed": true,
+  "no buildings": false
+ },
+ "I2@ian_hurricane_post_674.png": {
+  "real": false,
+  "classes redrawn": true,
+  "geometry redrawn": false,
+  "no destroyed": false,
+  "no buildings": false
+ },
+ "J1@mexico_earthquake_00000070_post_disaster.png": {
+  "real": 4.0,
+  "classes redrawn": 3.0,
+  "geometry redrawn": 3.0,
+  "no destroyed": 4.0,
+  "no buildings": 0.0
+ },
+ "J1@tuscaloosa_tornado_00000320_post_disaster.png": {
+  "real": 12.0,
+  "classes redrawn": 17.0,
+  "geometry redrawn": 10.0,
+  "no destroyed": 12.0,
+  "no buildings": 0.0
+ },
+ "J1@turkey_earthquake6_post_458.png": {
+  "real": 0.0,
+  "classes redrawn": 0.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "J2@haiti_earthquake_00000069_post_disaster.png": {
+  "real": 10.0,
+  "classes redrawn": 2.0,
+  "geometry redrawn": 2.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "J2@palu_tsunami_00000136_post_disaster.png": {
+  "real": 2.0,
+  "classes redrawn": 1.0,
+  "geometry redrawn": 2.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "J2@morocco_earthquake_00000306_post_disaster.png": {
+  "real": 0.0,
+  "classes redrawn": 0.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "K1@la_palma_volcano_00000232_post_disaster.png": {
+  "real": 3.0,
+  "classes redrawn": 2.0,
+  "geometry redrawn": 5.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "K1@palu_tsunami_00000011_post_disaster.png": {
+  "real": 1.0,
+  "classes redrawn": 23.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "K1@turkey_earthquake0_post_199.png": {
+  "real": 0.0,
+  "classes redrawn": 4.0,
+  "geometry redrawn": 0.0,
+  "no destroyed": 0.0,
+  "no buildings": 0.0
+ },
+ "K2@joplin_tornado_00000052_post_disaster.png": {
+  "real": 111.0,
+  "classes redrawn": 1360.1666666666667,
+  "geometry redrawn": "NONE",
+  "no destroyed": "NONE",
+  "no buildings": "NONE"
+ },
+ "K2@ukraine_conflict_00000419_post_disaster.png": {
+  "real": 6437.7692307692305,
+  "classes redrawn": 5531.833333333333,
+  "geometry redrawn": 3220.866666666667,
+  "no destroyed": "NONE",
+  "no buildings": "NONE"
+ },
+ "K2@moore_tornado_00000052_post_disaster.png": {
+  "real": "NONE",
+  "classes redrawn": "NONE",
+  "geometry redrawn": "NONE",
+  "no destroyed": "NONE",
+  "no buildings": "NONE"
+ }
+}

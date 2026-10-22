@@ -1,0 +1,4 @@
+,our-7B nf4,our-7B fp16,VL-3B nf4,VL-3B fp16,Coder-1.5B nf4,Coder-1.5B fp16,Coder-3B nf4,Coder-3B fp16
+plain,74.7,81.6,55.2,65.5,73.6,72.4,75.9,74.7
+responder words,52.9,58.6,35.6,46.0,31.0,31.0,63.2,70.1
+indirect,79.3,80.5,48.3,57.5,65.5,63.2,77.0,77.0

@@ -1,0 +1,9 @@
+a,b,ts_acc_a_%,ts_acc_b_%,difference_pts,ci95,clear_difference
+our-7B nf4,our-7B fp16,69.0,73.6,-4.6,"[-8.8, -0.8]",True
+VL-3B nf4,VL-3B fp16,46.4,56.3,-9.9,"[-17.6, -3.4]",True
+Coder-1.5B nf4,Coder-1.5B fp16,56.7,55.6,1.1,"[-2.3, 6.1]",False
+Coder-3B nf4,Coder-3B fp16,72.0,73.9,-1.9,"[-5.7, 1.5]",False
+our-7B nf4,Coder-3B nf4,69.0,72.0,-3.0,"[-10.7, 3.8]",False
+VL-3B nf4,Coder-1.5B nf4,46.4,56.7,-10.3,"[-23.8, 1.5]",False
+Coder-1.5B nf4,Coder-3B nf4,56.7,72.0,-15.3,"[-24.5, -7.3]",True
+VL-3B nf4,our-7B nf4,46.4,69.0,-22.6,"[-36.8, -9.2]",True
