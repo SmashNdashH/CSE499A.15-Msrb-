@@ -294,6 +294,42 @@ Across these papers, specialist models are good at finding and counting, VLMs ar
   - **Other risks:** it changes fast (AWQ and GPTQ export are being removed in v0.77), so any use should pin the version.
 - **How we use it:** we don't, for now (your decision, 22 October 2026). Look again only if its docs add Qwen2.5-VL with a frozen vision encoder, an image-size cap and two-GPU training, or if T2 or H2b needs one of the text-only uses above.
 
+### 4.15 TimeSpot, a geo-temporal benchmark for VLMs: its evaluation methods are useful to us; its data isn't (ICML 2026; recorded 26 October 2026)
+- **Citation:** Azmine Toushik Wasi, Shahriyar Zaman Ridoy, Koushik Ahamed Tonmoy, Kinga Tshering, S. M. Muhtasimul Hasan, Wahid Faisal, Tasnim Mohiuddin and Md Rizwan Parvez. *TimeSpot: Benchmarking Geo-Temporal Understanding in Vision-Language Models in Real-World Settings.* ICML 2026 (the arXiv record's comment: "Accepted to ICML 2026"). arXiv:2603.06687 (v1, 4 March 2026).
+  - Affiliations: CIOL (Bangladesh), SUST, North South University and QCRI. Ridoy, the co-first and corresponding author, and Tonmoy, Tshering and Hasan are at NSU.
+  - Links: [arXiv](https://arxiv.org/abs/2603.06687), [OpenReview](https://openreview.net/forum?id=XQlUqVCHJd), [project page](https://TimeSpot-GT.github.io), [dataset](https://huggingface.co/datasets/kagnlp/TimeSpot), [code](https://github.com/shahriyar-zaman/Timespot).
+  - The local PDF (66 pages) was read on 26 October 2026: the abstract, Table 3, the SFT experiment and Appendix D.1 were checked against it.
+- **What it is:** a benchmark of 1,455 ground-level photos from about 80 countries (the abstract says 80; Table 2 lists 82).
+  - Models must output a fixed nine-field answer: four time fields (season, month, local time, daylight phase) and five place fields (continent, country, climate zone, environment type, latitude and longitude).
+  - Labels come from timestamps and coordinates by rule (meteorological seasons with the hemisphere, solar elevation for the daylight phase, Köppen–Geiger climate), then two rounds of human checks.
+- **Key numbers:**
+  - VLMs are weak at time. Month accuracy is 22–48% (best: o4-mini, 48.20%), and time to within 1 hour is 22–34%.
+  - Qwen2.5-VL-7B, our base model family, gets the country right 73.96% of the time, but its mean location error is 4,720 km. It's the best on daylight phase (64.09%).
+  - **Calibration** (Appendix D.1, Table 6): the open models are worse calibrated. Their expected calibration error is 0.072–0.142 (Qwen2.5-VL-72B and Llama-3.2-90B), against 0.021–0.085 for GPT-4o-mini and Gemini-2.5-Flash. "All models exhibit systematic overconfidence."
+  - **SFT:** a LoRA fine-tune of Qwen2.5-VL-3B on a stratified 40% of the data raised country accuracy from 14.20% to 19.24% by epoch 4. The authors call SFT "insufficient on its own".
+- **Methods we can reuse, and must cite when we do:**
+  1. **Expected calibration error (ECE):** bin the predictions by confidence and average |accuracy − confidence| over the bins, weighted by bin size. It shows whether a model's confidence can be trusted.
+  2. **Risk–coverage curve and RC-AUC:** withhold every answer whose confidence is below a threshold τ. Coverage is the share kept, risk is the error rate among those kept, and RC-AUC (the area under risk against coverage) sums the curve in one number, lower being better.
+  3. **Consistency-violation rates:** count answers whose own fields contradict each other (a season that doesn't fit the month and hemisphere, a daylight phase that doesn't fit the time) or that fail a plausibility check. It needs no ground truth.
+- **How we use it:**
+  - **L3 (the 3B's confidence handoff to the 7B):** before setting the handoff threshold, measure the 3B's ECE and risk–coverage curve on the six tasks, using the token-probability confidence L3 already defines. Expect overconfidence (Table 6), so calibrate on validation data first, for example with temperature scaling.
+  - **H2c (free-form questions, second try):** report the risk–coverage curve with its RC-AUC for the agreement gate, next to RS(10).
+  - **T2 (DisasTeller's reports):** a consistency check. Every number in a report must match the fixed queries on H2's table, and the pass check is zero contradictions.
+- **What we don't use:**
+  - The dataset: ground-level photos, a different task, and a licence restricted to non-commercial research.
+  - Geolocation: we already know where our images come from, and the authors flag location inference as a dual-use risk.
+- **How it relates to the rest:** it's an evaluation paper for VLMs in general. Its introduction names disaster response as an application and cites DisasterInsight (§3.7 of System_Design_Notes).
+
+  ```bibtex
+  @inproceedings{wasi2026timespot,
+    title     = {TimeSpot: Benchmarking Geo-Temporal Understanding in Vision-Language Models in Real-World Settings},
+    author    = {Wasi, Azmine Toushik and Ridoy, Shahriyar Zaman and Tonmoy, Koushik Ahamed and Tshering, Kinga and Hasan, S. M. Muhtasimul and Faisal, Wahid and Mohiuddin, Tasnim and Parvez, Md Rizwan},
+    booktitle = {Proceedings of the 43rd International Conference on Machine Learning (ICML)},
+    year      = {2026},
+    note      = {arXiv:2603.06687}
+  }
+  ```
+
 ## 5. Integration plan, cheapest first
 
 ### 5.1 Quick wins on our own code (from section 2)
@@ -318,6 +354,8 @@ Across these papers, specialist models are good at finding and counting, VLMs ar
 | 6 | External counting test on GEOBench-VLM | GEOBench-VLM | O2 | Inference only |
 | 7 | EfficientSAM3 vs SAM 3 measurement | EfficientSAM3 | O4 (L4) | Inference only |
 | 8 | Explanations as a second skill for the distilled 3B: a short answer by default, an explanation when asked | Distilling Step-by-Step, BDAChat | O4, O3 (L2b) | ~3–5 GPU-h, plus the L2 training |
+| 9 | Calibration check of the 3B (ECE, risk–coverage curve, RC-AUC) before setting L3's handoff threshold; the same curve for H2c's agreement gate | TimeSpot (§4.15), Grace | O4 (L3), O3 (H2c) | Inference only |
+| 10 | Consistency check of DisasTeller's reports: every number must match the fixed queries | TimeSpot (§4.15) | O3 (T2) | CPU |
 
 ### 5.3 Decided: how the distilled 3B learns (19 October 2026)
 
@@ -353,12 +391,19 @@ Across these papers, specialist models are good at finding and counting, VLMs ar
 - **BRIGHT's radar data:** future work.
 - **DamageScope's cloud GPT-4o:** use our local Qwen instead.
 - **Soup for our VLM fine-tunes:** set aside on 22 October 2026. It doesn't support our Qwen2.5-VL recipe (§4.14).
+- **TimeSpot's dataset and its geolocation task:** ground-level photos, a non-commercial licence, and nothing we need to locate. Only its evaluation methods are used (§4.15).
 
 ## 7. Check before citing
 - **Not peer-reviewed yet:** DamageScope (2026), Grace (2025) and EfficientSAM3, which also has no results.
 - **BDAChat:** these details come from its repo, because the full paper is paywalled and NSU doesn't subscribe to the journal on ScienceDirect (checked 18 October 2026). Before quoting more than the abstract and README, request the PDF from the corresponding authors (Jiawei Cui and Changhai Zhai; their emails are behind the envelope icons on the article page, DOI 10.1016/j.aei.2026.104320), or through ResearchGate or an NSU interlibrary loan.
 - **GEOBench-VLM:** check for overlap with our xBD training tiles before claiming a result.
 - **Distilling Step-by-Step:** its abstract and method (§1–3) were checked against the PDF on 19 October 2026. Check the result tables before quoting any other number.
+- **TimeSpot:**
+  - The paper doesn't say how its confidence scores were obtained (asked of the model, or from token probabilities). Ours come from token probabilities (L3), so cite its metrics, not its numbers, as comparable.
+  - Its calibration table covers four models only, and the open ones are 72B and 90B, not our 3B and 7B.
+  - It mixes "mean" and "median" for the distance error, and 80 and 82 countries.
+  - It uses Gemini-2.5-Flash as a judge, "validated extensively", with no agreement figures.
+  - The venue comes from the arXiv record and the project page; check the ICML proceedings entry before final citation.
 - **DisasterM3's appendix:** read online (arXiv HTML, v2). The text extraction doubled some values ("6464", "1616"); they were read as rank 64 and alpha 16, which our training notebook's header also cites. Check the PDF of the supplementary material before quoting other appendix numbers.
 
 ## 8. Sources (local copies)
@@ -378,5 +423,6 @@ Across these papers, specialist models are good at finding and counting, VLMs ar
 | EfficientSAM3 | `EfficientSAM3 Progressive Hierarchical Distillation for Video Concept Segmentation from SAM1, 2, and 3.pdf` |
 | Distilling Step-by-Step | `Distilling Step-by-Step Outperforming Larger Language Models with Less Training Data and Smaller Model Sizes.pdf` |
 | DisasterM3 | `NeurIPS-2025-disasterm3-a-remote-sensing-vision-language-dataset-for-disaster-damage-assessment-and-response-Paper-Datasets_and_Benchmarks_Track.pdf` (main paper and checklist; appendices online, arXiv 2505.21089v2) |
+| TimeSpot | `TimeSpot Benchmarking Geo-Temporal Understanding in Vision–Language Models in Real-World Settings.pdf` (arXiv 2603.06687v1, 66 pages with appendices) |
 
 Related documents: [Research_Directions_Beyond_Finetuning.md](Research_Directions_Beyond_Finetuning.md) (SAM 3 plan, positioning against GeoPixel and BDAChat) · [Phase2_Plan.md](Phase2_Plan.md) (E1, R11, R12) · [Next_Steps_Roadmap.md](Next_Steps_Roadmap.md) (order of work).

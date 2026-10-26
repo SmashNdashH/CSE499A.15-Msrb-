@@ -1,0 +1,45 @@
+<!doctype html><meta charset="utf-8"><title>ONNX Runtime Web test</title>
+<script src="/node_modules/onnxruntime-web/dist/ort.all.min.js"></script>
+<script>
+(async () => {
+  const b = new URLSearchParams(location.search).get("b");
+  const res = { browser: b, ua: navigator.userAgent, isolated: self.crossOriginIsolated, cores: navigator.hardwareConcurrency, cases: [] };
+  const get = async (u) => new Uint8Array(await (await fetch(u)).arrayBuffer());
+  try {
+    ort.env.wasm.wasmPaths = "/node_modules/onnxruntime-web/dist/";
+    ort.env.wasm.numThreads = self.crossOriginIsolated ? navigator.hardwareConcurrency : 1;
+    res.threads = ort.env.wasm.numThreads;
+    const raw = await get("/input.bin");
+    const input = new Float32Array(raw.buffer);
+    const refs = { int8: await get("/ref_int8.bin"), fp32: await get("/ref_fp32.bin") };
+    let adapter = null;
+    if (navigator.gpu) { try { adapter = await navigator.gpu.requestAdapter(); } catch (e) {} }
+    res.webgpu_adapter = !!adapter;
+    const cases = [["int8", "wasm"], ["fp32", "wasm"]];
+    if (adapter) cases.push(["fp32", "webgpu"], ["int8", "webgpu"]);
+    for (const [model, ep] of cases) {
+      const c = { model, ep };
+      try {
+        let t = performance.now();
+        const s = await ort.InferenceSession.create(`/${model}.onnx`, { executionProviders: [ep], graphOptimizationLevel: "all" });
+        c.load_s = +((performance.now() - t) / 1000).toFixed(2);
+        const feeds = { image: new ort.Tensor("float32", input, [1, 3, 1024, 1024]) };
+        const times = []; let out;
+        for (let k = 0; k < 4; k++) { t = performance.now(); out = await s.run(feeds); times.push(+((performance.now() - t) / 1000).toFixed(2)); }
+        c.first_s = times[0]; c.later_s = times.slice(1);
+        const L = out.logits, d = L.data ?? await L.getData(), n = 1024 * 1024, ref = refs[model];
+        let same = 0; const hist = [0, 0, 0, 0];
+        for (let i = 0; i < n; i++) {
+          let bc = 0, v = d[i];
+          for (let k = 1; k < 4; k++) { const u = d[k * n + i]; if (u > v) { v = u; bc = k; } }
+          hist[bc]++; if (bc === ref[i]) same++;
+        }
+        c.agree_pct = +(100 * same / n).toFixed(4); c.class_pixels = hist;
+        await s.release();
+      } catch (e) { c.error = String((e && e.message) || e).slice(0, 300); }
+      res.cases.push(c);
+    }
+  } catch (e) { res.fatal = String((e && e.message) || e).slice(0, 300); }
+  await fetch("/result?b=" + b, { method: "POST", body: JSON.stringify(res) });
+})();
+</script>

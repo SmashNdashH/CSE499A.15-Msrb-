@@ -1,0 +1,6 @@
+{
+ "image": "hurricane-harvey_00000099_post_disaster.png",
+ "source": "xBD tier1 train images (data/xView2 Challenge Dataset - train and test/train/images)",
+ "labels": {"buildings": 202, "destroyed": 18, "damaged": 184},
+ "shape": [1, 3, 1024, 1024]
+}
