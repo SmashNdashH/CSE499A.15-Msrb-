@@ -1,0 +1,3191 @@
+{
+ "inventory": {
+  "dm3_instruct": {
+   "files_on_disk": 20988,
+   "box_images_orr": 1882,
+   "by_name_role_and_pixels": {
+    "post/SAR": 3537,
+    "post/optical": 7705,
+    "pre/optical": 9746
+   },
+   "json_pairs": {
+    "optical": 7159,
+    "sar": 2647,
+    "unique_pre_images": 9116
+   },
+   "unreferenced_files": {
+    "post/SAR": 890,
+    "post/optical": 546,
+    "pre/optical": 630
+   },
+   "unreferenced_by_prefix": {
+    "spain_volcano": 478,
+    "la_palma_volcano": 367,
+    "morocco_earthquake1": 260,
+    "morroco_earthquake1": 199,
+    "morocco_earthquake": 158,
+    "libya_flood": 126,
+    "ukraine_conflict": 98,
+    "turkey_earthquake3": 97,
+    "turkey_earthquake4": 78,
+    "myanmar_hurricane": 70,
+    "mexico_hurricane": 46,
+    "turkey_earthquake0": 30,
+    "rwanda_volcano": 24,
+    "hawaii_wildfire": 20,
+    "turkey_earthquake1": 9,
+    "marshall_wildfire": 4,
+    "haiti_earthquake": 2
+   },
+   "optical_pairs_usable": 7159,
+   "optical_pool": {
+    "images": 6443,
+    "train": 5798,
+    "val": 645
+   },
+   "paper": {
+    "optical_images": 17190,
+    "sar_images": 3798,
+    "instruction_pairs": 92968
+   }
+  },
+  "dm3_bench_json_only": {
+   "entries": 30042,
+   "unique_pre_images": 2679,
+   "unique_posts": {
+    "Optical": 2199,
+    "SAR": 856
+   },
+   "paper": {
+    "optical_images": 5024,
+    "sar_images": 976,
+    "instruction_pairs": 30042
+   },
+   "images_on_disk": 0
+  },
+  "bright": {
+   "pre_optical_tiles_local": 3395,
+   "pre_events_local": [
+    "bata-explosion",
+    "beirut-explosion",
+    "congo-volcano",
+    "haiti-earthquake",
+    "hawaii-wildfire",
+    "la_palma-volcano",
+    "libya-flood",
+    "marshall-wildfire",
+    "morocco-earthquake",
+    "noto-earthquake",
+    "turkey-earthquake"
+   ],
+   "pre_missing_events": {
+    "ukraine-conflict": 513,
+    "mexico-hurricane": 212,
+    "myanmar-hurricane": 126
+   },
+   "post_tiles": 4246,
+   "post_pil_modes": {
+    "L": 4246
+   },
+   "targets": 4246,
+   "paper_tiles": 4246
+  },
+  "sar_check": {
+   "post_tag_vs_pixels": {
+    "Optical/optical": 7159,
+    "SAR/SAR": 2647
+   },
+   "pre_images_single_channel": 0,
+   "sar_posts_without_sar_in_name": 2584,
+   "sar_posts_with_sar_in_name": 953,
+   "unreadable_files": 0
+  },
+  "naming_schemes": {
+   "<event>_<id>_<role>_disaster": 17375,
+   "<event>_<role>_<id>": 3613
+  }
+ },
+ "events_dm3": [
+  {
+   "dataset": "DisasterM3",
+   "event": "bata_explosion",
+   "hazard": "explosion",
+   "origin": "BRIGHT event",
+   "bright_event": "bata-explosion",
+   "optical_pre": 26,
+   "optical_post": 26,
+   "sar_post": 26,
+   "pool_train": 23,
+   "pool_val": 3,
+   "bench_optical_post": 4
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "beriut_explosion",
+   "hazard": "explosion",
+   "origin": "BRIGHT event",
+   "bright_event": "beirut-explosion",
+   "optical_pre": 28,
+   "optical_post": 28,
+   "sar_post": 27,
+   "pool_train": 23,
+   "pool_val": 4,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "haiti_earthquake",
+   "hazard": "earthquake",
+   "origin": "BRIGHT event",
+   "bright_event": "haiti-earthquake",
+   "optical_pre": 8,
+   "optical_post": 0,
+   "sar_post": 8,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 0
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "hawaii_wildfire",
+   "hazard": "fire",
+   "origin": "BRIGHT event",
+   "bright_event": "hawaii-wildfire",
+   "optical_pre": 27,
+   "optical_post": 27,
+   "sar_post": 9,
+   "pool_train": 14,
+   "pool_val": 1,
+   "bench_optical_post": 33
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "hurricane_florence",
+   "hazard": "hurricane",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 473,
+   "optical_post": 473,
+   "sar_post": 0,
+   "pool_train": 396,
+   "pool_val": 57,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "hurricane_harvey",
+   "hazard": "hurricane",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 443,
+   "optical_post": 443,
+   "sar_post": 0,
+   "pool_train": 385,
+   "pool_val": 44,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "hurricane_matthew",
+   "hazard": "hurricane",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 330,
+   "optical_post": 330,
+   "sar_post": 0,
+   "pool_train": 290,
+   "pool_val": 25,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "hurricane_michael",
+   "hazard": "hurricane",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 481,
+   "optical_post": 481,
+   "sar_post": 0,
+   "pool_train": 431,
+   "pool_val": 42,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "kalehe_flooding",
+   "hazard": "landslide",
+   "origin": "new in DisasterM3",
+   "bright_event": null,
+   "optical_pre": 22,
+   "optical_post": 22,
+   "sar_post": 0,
+   "pool_train": 10,
+   "pool_val": 5,
+   "bench_optical_post": 20
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "la_palma_volcano",
+   "hazard": "volcano",
+   "origin": "BRIGHT event",
+   "bright_event": "la_palma-volcano",
+   "optical_pre": 774,
+   "optical_post": 0,
+   "sar_post": 779,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 0
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "libya_flood",
+   "hazard": "flooding",
+   "origin": "BRIGHT event",
+   "bright_event": "libya-flood",
+   "optical_pre": 52,
+   "optical_post": 178,
+   "sar_post": 51,
+   "pool_train": 43,
+   "pool_val": 4,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "lower_puna_volcano",
+   "hazard": "volcano",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 123,
+   "optical_post": 123,
+   "sar_post": 0,
+   "pool_train": 111,
+   "pool_val": 8,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "marshall_wildfire",
+   "hazard": "fire",
+   "origin": "BRIGHT event",
+   "bright_event": "marshall-wildfire",
+   "optical_pre": 17,
+   "optical_post": 0,
+   "sar_post": 17,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 0
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "mexico_hurricane",
+   "hazard": "hurricane",
+   "origin": "BRIGHT event",
+   "bright_event": "mexico-hurricane",
+   "optical_pre": 112,
+   "optical_post": 0,
+   "sar_post": 112,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 0
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "midwest_flooding",
+   "hazard": "flooding",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 350,
+   "optical_post": 350,
+   "sar_post": 0,
+   "pool_train": 296,
+   "pool_val": 35,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "moore_tornado",
+   "hazard": "tornado",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 162,
+   "optical_post": 162,
+   "sar_post": 0,
+   "pool_train": 145,
+   "pool_val": 16,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "morocco_earthquake",
+   "hazard": "earthquake",
+   "origin": "BRIGHT event",
+   "bright_event": "morocco-earthquake",
+   "optical_pre": 191,
+   "optical_post": 0,
+   "sar_post": 193,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 0
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "morocco_earthquake1",
+   "hazard": "earthquake",
+   "origin": "BRIGHT event",
+   "bright_event": "morocco-earthquake",
+   "optical_pre": 0,
+   "optical_post": 0,
+   "sar_post": 260,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 0
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "morroco_earthquake1",
+   "hazard": "earthquake",
+   "origin": "BRIGHT event",
+   "bright_event": "morocco-earthquake",
+   "optical_pre": 237,
+   "optical_post": 436,
+   "sar_post": 0,
+   "pool_train": 58,
+   "pool_val": 3,
+   "bench_optical_post": 0
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "myanmar_hurricane",
+   "hazard": "hurricane",
+   "origin": "BRIGHT event",
+   "bright_event": "myanmar-hurricane",
+   "optical_pre": 96,
+   "optical_post": 0,
+   "sar_post": 96,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 0
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "nepal_flooding",
+   "hazard": "flooding",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 516,
+   "optical_post": 516,
+   "sar_post": 0,
+   "pool_train": 460,
+   "pool_val": 48,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "palu_tsunami",
+   "hazard": "tsunami",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 56,
+   "optical_post": 56,
+   "sar_post": 0,
+   "pool_train": 49,
+   "pool_val": 7,
+   "bench_optical_post": 125
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "pinery_bushfire",
+   "hazard": "fire",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 419,
+   "optical_post": 419,
+   "sar_post": 0,
+   "pool_train": 341,
+   "pool_val": 40,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "portugal_wildfire",
+   "hazard": "fire",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 915,
+   "optical_post": 915,
+   "sar_post": 0,
+   "pool_train": 784,
+   "pool_val": 105,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "rwanda_volcano",
+   "hazard": "volcano",
+   "origin": "BRIGHT event",
+   "bright_event": "congo-volcano",
+   "optical_pre": 93,
+   "optical_post": 0,
+   "sar_post": 93,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 0
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "santa_rosa_wildfire",
+   "hazard": "fire",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 310,
+   "optical_post": 310,
+   "sar_post": 0,
+   "pool_train": 288,
+   "pool_val": 20,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "shovi_landslide",
+   "hazard": "landslide",
+   "origin": "new in DisasterM3",
+   "bright_event": null,
+   "optical_pre": 30,
+   "optical_post": 30,
+   "sar_post": 0,
+   "pool_train": 12,
+   "pool_val": 1,
+   "bench_optical_post": 30
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "socal_fire",
+   "hazard": "fire",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 928,
+   "optical_post": 928,
+   "sar_post": 0,
+   "pool_train": 564,
+   "pool_val": 54,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "spain_volcano",
+   "hazard": "volcano",
+   "origin": "BRIGHT event",
+   "bright_event": "la_palma-volcano",
+   "optical_pre": 873,
+   "optical_post": 0,
+   "sar_post": 873,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 0
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "sunda_tsunami",
+   "hazard": "tsunami",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 31,
+   "optical_post": 31,
+   "sar_post": 0,
+   "pool_train": 23,
+   "pool_val": 4,
+   "bench_optical_post": 44
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "turkey_earthquake0",
+   "hazard": "earthquake",
+   "origin": "BRIGHT event",
+   "bright_event": "turkey-earthquake",
+   "optical_pre": 135,
+   "optical_post": 165,
+   "sar_post": 135,
+   "pool_train": 117,
+   "pool_val": 14,
+   "bench_optical_post": 30
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "turkey_earthquake1",
+   "hazard": "earthquake",
+   "origin": "BRIGHT event",
+   "bright_event": "turkey-earthquake",
+   "optical_pre": 122,
+   "optical_post": 128,
+   "sar_post": 124,
+   "pool_train": 110,
+   "pool_val": 12,
+   "bench_optical_post": 30
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "turkey_earthquake3",
+   "hazard": "earthquake",
+   "origin": "BRIGHT event",
+   "bright_event": "turkey-earthquake",
+   "optical_pre": 125,
+   "optical_post": 222,
+   "sar_post": 125,
+   "pool_train": 112,
+   "pool_val": 13,
+   "bench_optical_post": 30
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "turkey_earthquake4",
+   "hazard": "earthquake",
+   "origin": "BRIGHT event",
+   "bright_event": "turkey-earthquake",
+   "optical_pre": 62,
+   "optical_post": 140,
+   "sar_post": 57,
+   "pool_train": 54,
+   "pool_val": 8,
+   "bench_optical_post": 54
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "turkey_earthquake5",
+   "hazard": "earthquake",
+   "origin": "BRIGHT event",
+   "bright_event": "turkey-earthquake",
+   "optical_pre": 139,
+   "optical_post": 139,
+   "sar_post": 139,
+   "pool_train": 127,
+   "pool_val": 12,
+   "bench_optical_post": 30
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "turkey_earthquake7",
+   "hazard": "earthquake",
+   "origin": "BRIGHT event",
+   "bright_event": "turkey-earthquake",
+   "optical_pre": 57,
+   "optical_post": 57,
+   "sar_post": 0,
+   "pool_train": 37,
+   "pool_val": 5,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "tuscaloosa_tornado",
+   "hazard": "tornado",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 228,
+   "optical_post": 228,
+   "sar_post": 0,
+   "pool_train": 191,
+   "pool_val": 23,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "ukraine_conflict",
+   "hazard": "conflict",
+   "origin": "BRIGHT event",
+   "bright_event": "ukraine-conflict",
+   "optical_pre": 413,
+   "optical_post": 0,
+   "sar_post": 413,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 0
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "woolsey_fire",
+   "hazard": "fire",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 342,
+   "optical_post": 342,
+   "sar_post": 0,
+   "pool_train": 304,
+   "pool_val": 32,
+   "bench_optical_post": 60
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "guatemala_volcano",
+   "hazard": "volcano",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 0,
+   "optical_post": 0,
+   "sar_post": 0,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 27
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "ian_hurricane",
+   "hazard": "hurricane",
+   "origin": "new in DisasterM3",
+   "bright_event": null,
+   "optical_pre": 0,
+   "optical_post": 0,
+   "sar_post": 0,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 109
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "joplin_tornado",
+   "hazard": "tornado",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 0,
+   "optical_post": 0,
+   "sar_post": 0,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 148
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "mexico_earthquake",
+   "hazard": "earthquake",
+   "origin": "xBD",
+   "bright_event": null,
+   "optical_pre": 0,
+   "optical_post": 0,
+   "sar_post": 0,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 193
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "noto_earthquake",
+   "hazard": "earthquake",
+   "origin": "BRIGHT event",
+   "bright_event": "noto-earthquake",
+   "optical_pre": 0,
+   "optical_post": 0,
+   "sar_post": 0,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 68
+  },
+  {
+   "dataset": "DisasterM3",
+   "event": "turkey_earthquake6",
+   "hazard": "earthquake",
+   "origin": "BRIGHT event",
+   "bright_event": "turkey-earthquake",
+   "optical_pre": 0,
+   "optical_post": 0,
+   "sar_post": 0,
+   "pool_train": 0,
+   "pool_val": 0,
+   "bench_optical_post": 204
+  }
+ ],
+ "overlap": {
+  "dm3_images_identical_to_bright_pre": 2828,
+  "by_bright_event": [
+   {
+    "bright_event": "bata-explosion",
+    "pre_tiles": 107,
+    "tiles_found_in_dm3": 0,
+    "as_pool_pre_train": 0,
+    "as_pool_pre_val": 0,
+    "dm3_prefixes": []
+   },
+   {
+    "bright_event": "beirut-explosion",
+    "pre_tiles": 133,
+    "tiles_found_in_dm3": 0,
+    "as_pool_pre_train": 0,
+    "as_pool_pre_val": 0,
+    "dm3_prefixes": []
+   },
+   {
+    "bright_event": "congo-volcano",
+    "pre_tiles": 123,
+    "tiles_found_in_dm3": 93,
+    "as_pool_pre_train": 0,
+    "as_pool_pre_val": 0,
+    "dm3_prefixes": [
+     "rwanda_volcano"
+    ]
+   },
+   {
+    "bright_event": "haiti-earthquake",
+    "pre_tiles": 73,
+    "tiles_found_in_dm3": 8,
+    "as_pool_pre_train": 0,
+    "as_pool_pre_val": 0,
+    "dm3_prefixes": [
+     "haiti_earthquake"
+    ]
+   },
+   {
+    "bright_event": "hawaii-wildfire",
+    "pre_tiles": 65,
+    "tiles_found_in_dm3": 0,
+    "as_pool_pre_train": 0,
+    "as_pool_pre_val": 0,
+    "dm3_prefixes": []
+   },
+   {
+    "bright_event": "la_palma-volcano",
+    "pre_tiles": 933,
+    "tiles_found_in_dm3": 921,
+    "as_pool_pre_train": 0,
+    "as_pool_pre_val": 0,
+    "dm3_prefixes": [
+     "la_palma_volcano",
+     "spain_volcano"
+    ]
+   },
+   {
+    "bright_event": "libya-flood",
+    "pre_tiles": 124,
+    "tiles_found_in_dm3": 52,
+    "as_pool_pre_train": 43,
+    "as_pool_pre_val": 4,
+    "dm3_prefixes": [
+     "libya_flood"
+    ]
+   },
+   {
+    "bright_event": "marshall-wildfire",
+    "pre_tiles": 77,
+    "tiles_found_in_dm3": 17,
+    "as_pool_pre_train": 0,
+    "as_pool_pre_val": 0,
+    "dm3_prefixes": [
+     "marshall_wildfire"
+    ]
+   },
+   {
+    "bright_event": "morocco-earthquake",
+    "pre_tiles": 567,
+    "tiles_found_in_dm3": 428,
+    "as_pool_pre_train": 58,
+    "as_pool_pre_val": 3,
+    "dm3_prefixes": [
+     "morocco_earthquake",
+     "morroco_earthquake1"
+    ]
+   },
+   {
+    "bright_event": "noto-earthquake",
+    "pre_tiles": 79,
+    "tiles_found_in_dm3": 0,
+    "as_pool_pre_train": 0,
+    "as_pool_pre_val": 0,
+    "dm3_prefixes": []
+   },
+   {
+    "bright_event": "turkey-earthquake",
+    "pre_tiles": 1114,
+    "tiles_found_in_dm3": 583,
+    "as_pool_pre_train": 520,
+    "as_pool_pre_val": 59,
+    "dm3_prefixes": [
+     "turkey_earthquake0",
+     "turkey_earthquake1",
+     "turkey_earthquake3",
+     "turkey_earthquake4",
+     "turkey_earthquake5"
+    ]
+   }
+  ],
+  "dm3_exact_duplicate_groups": 1722,
+  "dm3_exact_duplicate_files": 3451,
+  "dm3_duplicate_prefix_pairs": {
+   "la_palma_volcano = spain_volcano": 1456,
+   "socal_fire = woolsey_fire": 264,
+   "pinery_bushfire": 1,
+   "ukraine_conflict": 1
+  },
+  "val_train_near_identical_pairs": 40,
+  "val_images_with_a_train_copy": 40,
+  "val_train_examples": [
+   {
+    "val_image": "socal_fire_00000081_pre_disaster.png",
+    "train_image": "woolsey_fire_00000017_pre_disaster.png",
+    "r": 1.0,
+    "identical": true
+   },
+   {
+    "val_image": "socal_fire_00000188_pre_disaster.png",
+    "train_image": "woolsey_fire_00000739_pre_disaster.png",
+    "r": 1.0,
+    "identical": true
+   },
+   {
+    "val_image": "socal_fire_00000218_pre_disaster.png",
+    "train_image": "woolsey_fire_00000517_pre_disaster.png",
+    "r": 1.0,
+    "identical": true
+   },
+   {
+    "val_image": "socal_fire_00000220_pre_disaster.png",
+    "train_image": "woolsey_fire_00000216_pre_disaster.png",
+    "r": 1.0,
+    "identical": true
+   },
+   {
+    "val_image": "socal_fire_00000222_pre_disaster.png",
+    "train_image": "woolsey_fire_00000241_pre_disaster.png",
+    "r": 1.0,
+    "identical": true
+   },
+   {
+    "val_image": "socal_fire_00000235_pre_disaster.png",
+    "train_image": "woolsey_fire_00000253_pre_disaster.png",
+    "r": 1.0,
+    "identical": true
+   },
+   {
+    "val_image": "socal_fire_00000301_pre_disaster.png",
+    "train_image": "woolsey_fire_00000416_pre_disaster.png",
+    "r": 1.0,
+    "identical": true
+   },
+   {
+    "val_image": "socal_fire_00000341_pre_disaster.png",
+    "train_image": "woolsey_fire_00000452_pre_disaster.png",
+    "r": 1.0,
+    "identical": true
+   },
+   {
+    "val_image": "socal_fire_00000348_pre_disaster.png",
+    "train_image": "woolsey_fire_00000475_pre_disaster.png",
+    "r": 1.0,
+    "identical": true
+   },
+   {
+    "val_image": "socal_fire_00000396_pre_disaster.png",
+    "train_image": "woolsey_fire_00000869_pre_disaster.png",
+    "r": 1.0,
+    "identical": true
+   }
+  ],
+  "pre_images_shared_by_val_and_train_pairs": 0,
+  "leaked_val_pairs": 40,
+  "leaked_share_of_val_destroyed_px": 0.0862,
+  "leaked_twins": {
+   "post_r": {
+    "n": 40,
+    "p25": 0.8505,
+    "median": 0.878,
+    "p75": 0.894
+   },
+   "building_iou": {
+    "n": 40,
+    "p25": 0.5553,
+    "median": 0.7225,
+    "p75": 0.7728
+   },
+   "same_damage_class": {
+    "n": 40,
+    "p25": 0.8545,
+    "median": 0.967,
+    "p75": 1.0
+   }
+  }
+ },
+ "geometry": {
+  "dm3_optical_sizes": {
+   "1024x1024": 17451
+  },
+  "bright_pre_sizes": {
+   "1024x1024": 3395
+  },
+  "bright_gsd_by_event": [
+   {
+    "event": "bata-explosion",
+    "tiles": 107,
+    "gsd_median_m": 0.507,
+    "gsd_min_m": 0.507,
+    "gsd_max_m": 0.507,
+    "paper_gsd_m": [
+     0.5,
+     0.5
+    ],
+    "paper_buildings": 8893
+   },
+   {
+    "event": "beirut-explosion",
+    "tiles": 133,
+    "gsd_median_m": 0.5,
+    "gsd_min_m": 0.5,
+    "gsd_max_m": 0.5,
+    "paper_gsd_m": [
+     1.0,
+     1.0
+    ],
+    "paper_buildings": 25496
+   },
+   {
+    "event": "congo-volcano",
+    "tiles": 123,
+    "gsd_median_m": 0.333,
+    "gsd_min_m": 0.333,
+    "gsd_max_m": 0.333,
+    "paper_gsd_m": [
+     0.33,
+     0.33
+    ],
+    "paper_buildings": 18741
+   },
+   {
+    "event": "haiti-earthquake",
+    "tiles": 73,
+    "gsd_median_m": 0.479,
+    "gsd_min_m": 0.479,
+    "gsd_max_m": 0.479,
+    "paper_gsd_m": [
+     0.48,
+     0.48
+    ],
+    "paper_buildings": 18918
+   },
+   {
+    "event": "hawaii-wildfire",
+    "tiles": 65,
+    "gsd_median_m": 0.377,
+    "gsd_min_m": 0.377,
+    "gsd_max_m": 0.377,
+    "paper_gsd_m": [
+     0.6,
+     0.6
+    ],
+    "paper_buildings": 3995
+   },
+   {
+    "event": "la_palma-volcano",
+    "tiles": 933,
+    "gsd_median_m": 0.3,
+    "gsd_min_m": 0.3,
+    "gsd_max_m": 0.3,
+    "paper_gsd_m": [
+     0.3,
+     0.35
+    ],
+    "paper_buildings": 30239
+   },
+   {
+    "event": "libya-flood",
+    "tiles": 124,
+    "gsd_median_m": 0.35,
+    "gsd_min_m": 0.35,
+    "gsd_max_m": 0.35,
+    "paper_gsd_m": [
+     0.35,
+     0.35
+    ],
+    "paper_buildings": 10979
+   },
+   {
+    "event": "marshall-wildfire",
+    "tiles": 77,
+    "gsd_median_m": 0.6,
+    "gsd_min_m": 0.6,
+    "gsd_max_m": 0.6,
+    "paper_gsd_m": [
+     0.6,
+     0.6
+    ],
+    "paper_buildings": 8365
+   },
+   {
+    "event": "mexico-hurricane",
+    "tiles": 212,
+    "gsd_median_m": 0.2,
+    "gsd_min_m": 0.2,
+    "gsd_max_m": 0.3,
+    "paper_gsd_m": [
+     0.35,
+     0.8
+    ],
+    "paper_buildings": 18437
+   },
+   {
+    "event": "morocco-earthquake",
+    "tiles": 567,
+    "gsd_median_m": 0.305,
+    "gsd_min_m": 0.305,
+    "gsd_max_m": 0.305,
+    "paper_gsd_m": [
+     0.35,
+     0.4
+    ],
+    "paper_buildings": 6269
+   },
+   {
+    "event": "myanmar-hurricane",
+    "tiles": 126,
+    "gsd_median_m": 0.35,
+    "gsd_min_m": 0.35,
+    "gsd_max_m": 0.35,
+    "paper_gsd_m": [
+     0.6,
+     0.6
+    ],
+    "paper_buildings": 8052
+   },
+   {
+    "event": "noto-earthquake",
+    "tiles": 79,
+    "gsd_median_m": 0.473,
+    "gsd_min_m": 0.473,
+    "gsd_max_m": 0.473,
+    "paper_gsd_m": [
+     0.5,
+     0.5
+    ],
+    "paper_buildings": 8153
+   },
+   {
+    "event": "turkey-earthquake",
+    "tiles": 1114,
+    "gsd_median_m": 0.305,
+    "gsd_min_m": 0.305,
+    "gsd_max_m": 0.35,
+    "paper_gsd_m": [
+     0.3,
+     0.35
+    ],
+    "paper_buildings": 135033
+   },
+   {
+    "event": "ukraine-conflict",
+    "tiles": 513,
+    "gsd_median_m": 0.35,
+    "gsd_min_m": 0.35,
+    "gsd_max_m": 0.466,
+    "paper_gsd_m": [
+     0.6,
+     0.6
+    ],
+    "paper_buildings": 56770
+   }
+  ],
+  "dm3_copies_of_bright_gsd_m": {
+   "n": 2828,
+   "p25": 0.3,
+   "median": 0.3,
+   "p75": 0.3052
+  },
+  "dm3_paper_claim_gsd_m": 0.8,
+  "hf_ratio": {
+   "dm3_pool_pre": {
+    "n": 6422,
+    "p25": 0.0415,
+    "median": 0.0595,
+    "p75": 0.0878
+   },
+   "dm3_pool_post": {
+    "n": 6422,
+    "p25": 0.0409,
+    "median": 0.0727,
+    "p75": 0.1264
+   },
+   "bright_pre_all": {
+    "n": 3337,
+    "p25": 0.0292,
+    "median": 0.0671,
+    "p75": 0.1636
+   },
+   "bright_pre_our_5_events": {
+    "n": 1258,
+    "p25": 0.1149,
+    "median": 0.1892,
+    "p75": 0.2603
+   }
+  },
+  "hf_ratio_by_dm3_pool_event_post": {
+   "bata_explosion": 0.0702,
+   "beriut_explosion": 0.0829,
+   "hawaii_wildfire": 0.0238,
+   "hurricane_florence": 0.1089,
+   "hurricane_harvey": 0.0356,
+   "hurricane_matthew": 0.1761,
+   "hurricane_michael": 0.0592,
+   "kalehe_flooding": 0.1529,
+   "libya_flood": 0.0713,
+   "lower_puna_volcano": 0.1024,
+   "midwest_flooding": 0.1357,
+   "moore_tornado": 0.0798,
+   "morroco_earthquake": 0.0093,
+   "nepal_flooding": 0.1196,
+   "palu_tsunami": 0.0261,
+   "pinery_bushfire": 0.125,
+   "portugal_wildfire": 0.0666,
+   "santa_rosa_wildfire": 0.1431,
+   "shovi_landslide": 0.1461,
+   "socal_fire": 0.0423,
+   "sunda_tsunami": 0.1517,
+   "turkey_earthquake": 0.0106,
+   "tuscaloosa_tornado": 0.0888,
+   "woolsey_fire": 0.1138
+  },
+  "hf_ratio_by_bright_event": {
+   "bata-explosion": 0.0668,
+   "beirut-explosion": 0.0698,
+   "congo-volcano": 0.1073,
+   "haiti-earthquake": 0.0749,
+   "hawaii-wildfire": 0.0406,
+   "la_palma-volcano": 0.2227,
+   "libya-flood": 0.0693,
+   "marshall-wildfire": 0.0254,
+   "morocco-earthquake": 0.0421,
+   "noto-earthquake": 0.0421,
+   "turkey-earthquake": 0.0279
+  }
+ },
+ "radiometry": {
+  "groups": {
+   "DM3 pool pre": {
+    "lum_mean": {
+     "n": 6443,
+     "p25": 77.444,
+     "median": 89.4688,
+     "p75": 101.383
+    },
+    "lum_std": {
+     "n": 6443,
+     "p25": 23.6875,
+     "median": 28.8963,
+     "p75": 35.3707
+    },
+    "sat_mean": {
+     "n": 6443,
+     "p25": 0.239,
+     "median": 0.3014,
+     "p75": 0.3565
+    },
+    "nodata_frac": {
+     "n": 6443,
+     "p25": 0.0,
+     "median": 0.0,
+     "p75": 0.0
+    },
+    "bright_lowsat_frac": {
+     "n": 6443,
+     "p25": 0.0005,
+     "median": 0.0021,
+     "p75": 0.0071
+    },
+    "dark_channel": {
+     "n": 6443,
+     "p25": 0.1334,
+     "median": 0.1697,
+     "p75": 0.2082
+    },
+    "lap_var": {
+     "n": 6443,
+     "p25": 165.9274,
+     "median": 226.986,
+     "p75": 345.3789
+    },
+    "hf_ratio": {
+     "n": 6422,
+     "p25": 0.0415,
+     "median": 0.0595,
+     "p75": 0.0878
+    },
+    "mean_r": {
+     "n": 6443,
+     "p25": 71.8429,
+     "median": 87.1267,
+     "p75": 103.5435
+    },
+    "mean_g": {
+     "n": 6443,
+     "p25": 83.4228,
+     "median": 94.1934,
+     "p75": 103.6391
+    },
+    "mean_b": {
+     "n": 6443,
+     "p25": 58.0885,
+     "median": 70.0971,
+     "p75": 83.6861
+    },
+    "images": 6443,
+    "share_nodata_over_10pct": 0.1051,
+    "share_bright_lowsat_over_20pct": 0.0023
+   },
+   "DM3 pool post": {
+    "lum_mean": {
+     "n": 6443,
+     "p25": 75.4977,
+     "median": 88.7446,
+     "p75": 101.6723
+    },
+    "lum_std": {
+     "n": 6443,
+     "p25": 21.6472,
+     "median": 27.5089,
+     "p75": 34.6522
+    },
+    "sat_mean": {
+     "n": 6443,
+     "p25": 0.2328,
+     "median": 0.2991,
+     "p75": 0.3507
+    },
+    "nodata_frac": {
+     "n": 6443,
+     "p25": 0.0,
+     "median": 0.0,
+     "p75": 0.0
+    },
+    "bright_lowsat_frac": {
+     "n": 6443,
+     "p25": 0.0005,
+     "median": 0.0021,
+     "p75": 0.0071
+    },
+    "dark_channel": {
+     "n": 6443,
+     "p25": 0.1391,
+     "median": 0.1811,
+     "p75": 0.2235
+    },
+    "lap_var": {
+     "n": 6443,
+     "p25": 140.8003,
+     "median": 226.3592,
+     "p75": 378.6838
+    },
+    "hf_ratio": {
+     "n": 6422,
+     "p25": 0.0409,
+     "median": 0.0727,
+     "p75": 0.1264
+    },
+    "mean_r": {
+     "n": 6443,
+     "p25": 70.0972,
+     "median": 87.2935,
+     "p75": 103.7881
+    },
+    "mean_g": {
+     "n": 6443,
+     "p25": 81.3804,
+     "median": 93.2056,
+     "p75": 104.7632
+    },
+    "mean_b": {
+     "n": 6443,
+     "p25": 56.6814,
+     "median": 69.109,
+     "p75": 83.0534
+    },
+    "images": 6443,
+    "share_nodata_over_10pct": 0.1015,
+    "share_bright_lowsat_over_20pct": 0.0216
+   },
+   "DM3 other optical": {
+    "lum_mean": {
+     "n": 4565,
+     "p25": 60.4019,
+     "median": 75.776,
+     "p75": 93.2486
+    },
+    "lum_std": {
+     "n": 4565,
+     "p25": 23.1339,
+     "median": 32.3427,
+     "p75": 43.2684
+    },
+    "sat_mean": {
+     "n": 4565,
+     "p25": 0.1824,
+     "median": 0.2314,
+     "p75": 0.307
+    },
+    "nodata_frac": {
+     "n": 4565,
+     "p25": 0.0,
+     "median": 0.0005,
+     "p75": 0.0024
+    },
+    "bright_lowsat_frac": {
+     "n": 4565,
+     "p25": 0.0,
+     "median": 0.0009,
+     "p75": 0.0109
+    },
+    "dark_channel": {
+     "n": 4565,
+     "p25": 0.0932,
+     "median": 0.1282,
+     "p75": 0.1872
+    },
+    "lap_var": {
+     "n": 4565,
+     "p25": 99.9007,
+     "median": 328.4959,
+     "p75": 1496.3932
+    },
+    "hf_ratio": {
+     "n": 4522,
+     "p25": 0.0225,
+     "median": 0.0977,
+     "p75": 0.2013
+    },
+    "mean_r": {
+     "n": 4565,
+     "p25": 57.1481,
+     "median": 74.9991,
+     "p75": 97.2345
+    },
+    "mean_g": {
+     "n": 4565,
+     "p25": 62.4531,
+     "median": 77.6529,
+     "p75": 93.3764
+    },
+    "mean_b": {
+     "n": 4565,
+     "p25": 54.6615,
+     "median": 67.0266,
+     "p75": 84.3317
+    },
+    "images": 4565,
+    "share_nodata_over_10pct": 0.11,
+    "share_bright_lowsat_over_20pct": 0.0248
+   },
+   "BRIGHT pre (11 events)": {
+    "lum_mean": {
+     "n": 3395,
+     "p25": 71.2967,
+     "median": 95.3847,
+     "p75": 111.1229
+    },
+    "lum_std": {
+     "n": 3395,
+     "p25": 31.9587,
+     "median": 45.1463,
+     "p75": 59.7768
+    },
+    "sat_mean": {
+     "n": 3395,
+     "p25": 0.2073,
+     "median": 0.2545,
+     "p75": 0.3109
+    },
+    "nodata_frac": {
+     "n": 3395,
+     "p25": 0.0001,
+     "median": 0.001,
+     "p75": 0.0053
+    },
+    "bright_lowsat_frac": {
+     "n": 3395,
+     "p25": 0.0003,
+     "median": 0.0091,
+     "p75": 0.0343
+    },
+    "dark_channel": {
+     "n": 3395,
+     "p25": 0.0934,
+     "median": 0.1309,
+     "p75": 0.1847
+    },
+    "lap_var": {
+     "n": 3395,
+     "p25": 278.7925,
+     "median": 712.3212,
+     "p75": 1504.9364
+    },
+    "hf_ratio": {
+     "n": 3337,
+     "p25": 0.0292,
+     "median": 0.0671,
+     "p75": 0.1636
+    },
+    "mean_r": {
+     "n": 3395,
+     "p25": 68.8612,
+     "median": 100.3941,
+     "p75": 120.832
+    },
+    "mean_g": {
+     "n": 3395,
+     "p25": 72.9316,
+     "median": 95.1662,
+     "p75": 109.6441
+    },
+    "mean_b": {
+     "n": 3395,
+     "p25": 63.952,
+     "median": 82.7898,
+     "p75": 99.1839
+    },
+    "images": 3395,
+    "share_nodata_over_10pct": 0.1617,
+    "share_bright_lowsat_over_20pct": 0.0097
+   },
+   "BRIGHT pre (our 5 events)": {
+    "lum_mean": {
+     "n": 1285,
+     "p25": 52.5391,
+     "median": 66.1462,
+     "p75": 83.5388
+    },
+    "lum_std": {
+     "n": 1285,
+     "p25": 23.6163,
+     "median": 35.1147,
+     "p75": 45.8158
+    },
+    "sat_mean": {
+     "n": 1285,
+     "p25": 0.165,
+     "median": 0.2144,
+     "p75": 0.3337
+    },
+    "nodata_frac": {
+     "n": 1285,
+     "p25": 0.0003,
+     "median": 0.0012,
+     "p75": 0.0036
+    },
+    "bright_lowsat_frac": {
+     "n": 1285,
+     "p25": 0.0005,
+     "median": 0.0055,
+     "p75": 0.0176
+    },
+    "dark_channel": {
+     "n": 1285,
+     "p25": 0.0736,
+     "median": 0.1072,
+     "p75": 0.1412
+    },
+    "lap_var": {
+     "n": 1285,
+     "p25": 580.947,
+     "median": 1254.7515,
+     "p75": 2558.5833
+    },
+    "hf_ratio": {
+     "n": 1258,
+     "p25": 0.1149,
+     "median": 0.1892,
+     "p75": 0.2603
+    },
+    "mean_r": {
+     "n": 1285,
+     "p25": 48.4195,
+     "median": 62.9658,
+     "p75": 78.7174
+    },
+    "mean_g": {
+     "n": 1285,
+     "p25": 53.8516,
+     "median": 68.8898,
+     "p75": 86.868
+    },
+    "mean_b": {
+     "n": 1285,
+     "p25": 50.9172,
+     "median": 62.164,
+     "p75": 79.3544
+    },
+    "images": 1285,
+    "share_nodata_over_10pct": 0.1292,
+    "share_bright_lowsat_over_20pct": 0.021
+   }
+  },
+  "lum_hist_js_bits": {
+   "DM3 pool pre": {
+    "DM3 pool pre": 0.0,
+    "DM3 pool post": 0.0021,
+    "DM3 other optical": 0.0529,
+    "BRIGHT pre (11 events)": 0.0664,
+    "BRIGHT pre (our 5 events)": 0.1116
+   },
+   "DM3 pool post": {
+    "DM3 pool pre": 0.0021,
+    "DM3 pool post": 0.0,
+    "DM3 other optical": 0.0536,
+    "BRIGHT pre (11 events)": 0.066,
+    "BRIGHT pre (our 5 events)": 0.113
+   },
+   "DM3 other optical": {
+    "DM3 pool pre": 0.0529,
+    "DM3 pool post": 0.0536,
+    "DM3 other optical": 0.0,
+    "BRIGHT pre (11 events)": 0.0171,
+    "BRIGHT pre (our 5 events)": 0.0163
+   },
+   "BRIGHT pre (11 events)": {
+    "DM3 pool pre": 0.0664,
+    "DM3 pool post": 0.066,
+    "DM3 other optical": 0.0171,
+    "BRIGHT pre (11 events)": 0.0,
+    "BRIGHT pre (our 5 events)": 0.0471
+   },
+   "BRIGHT pre (our 5 events)": {
+    "DM3 pool pre": 0.1116,
+    "DM3 pool post": 0.113,
+    "DM3 other optical": 0.0163,
+    "BRIGHT pre (11 events)": 0.0471,
+    "BRIGHT pre (our 5 events)": 0.0
+   }
+  },
+  "lum_hist_by_group": {
+   "DM3 pool pre": [
+    0.00071,
+    0.00169,
+    0.00186,
+    0.00213,
+    0.0028,
+    0.00381,
+    0.00532,
+    0.0076,
+    0.01076,
+    0.01487,
+    0.01974,
+    0.02518,
+    0.03085,
+    0.03637,
+    0.0413,
+    0.04536,
+    0.04851,
+    0.05047,
+    0.05146,
+    0.0511,
+    0.04903,
+    0.04659,
+    0.04366,
+    0.0408,
+    0.03808,
+    0.03537,
+    0.03245,
+    0.02933,
+    0.02615,
+    0.02317,
+    0.02045,
+    0.01806,
+    0.01598,
+    0.0142,
+    0.01263,
+    0.01123,
+    0.01001,
+    0.00892,
+    0.00798,
+    0.00712,
+    0.00634,
+    0.00563,
+    0.00502,
+    0.00448,
+    0.004,
+    0.00357,
+    0.0032,
+    0.00286,
+    0.00256,
+    0.0023,
+    0.00207,
+    0.00187,
+    0.00168,
+    0.00152,
+    0.00139,
+    0.00127,
+    0.00115,
+    0.00104,
+    0.00095,
+    0.00086,
+    0.00078,
+    0.0007,
+    0.0007,
+    0.00097
+   ],
+   "DM3 pool post": [
+    0.0005,
+    0.00114,
+    0.00142,
+    0.00197,
+    0.00279,
+    0.00406,
+    0.00564,
+    0.00775,
+    0.01042,
+    0.01359,
+    0.0174,
+    0.02212,
+    0.02803,
+    0.03503,
+    0.04216,
+    0.04796,
+    0.05161,
+    0.05323,
+    0.05357,
+    0.05284,
+    0.05121,
+    0.04875,
+    0.04574,
+    0.04224,
+    0.03817,
+    0.03383,
+    0.02973,
+    0.02634,
+    0.02344,
+    0.02053,
+    0.0181,
+    0.01611,
+    0.0146,
+    0.01318,
+    0.01195,
+    0.01084,
+    0.00973,
+    0.00859,
+    0.00759,
+    0.00678,
+    0.00613,
+    0.00556,
+    0.00502,
+    0.00454,
+    0.00411,
+    0.00374,
+    0.00343,
+    0.00316,
+    0.00294,
+    0.00274,
+    0.00256,
+    0.00241,
+    0.00227,
+    0.00215,
+    0.00204,
+    0.00194,
+    0.00185,
+    0.00177,
+    0.00171,
+    0.00165,
+    0.00162,
+    0.00151,
+    0.00166,
+    0.00277
+   ],
+   "DM3 other optical": [
+    0.00275,
+    0.01015,
+    0.01509,
+    0.01698,
+    0.01903,
+    0.01947,
+    0.02098,
+    0.0243,
+    0.02839,
+    0.03421,
+    0.03742,
+    0.0384,
+    0.03991,
+    0.04086,
+    0.04171,
+    0.04213,
+    0.04221,
+    0.04165,
+    0.04025,
+    0.03804,
+    0.03517,
+    0.03216,
+    0.02903,
+    0.026,
+    0.02336,
+    0.02112,
+    0.01914,
+    0.01747,
+    0.01607,
+    0.01483,
+    0.01377,
+    0.01281,
+    0.01179,
+    0.01094,
+    0.01015,
+    0.00936,
+    0.00858,
+    0.00785,
+    0.00718,
+    0.00658,
+    0.00603,
+    0.00551,
+    0.00504,
+    0.00459,
+    0.0042,
+    0.00384,
+    0.00351,
+    0.00326,
+    0.00306,
+    0.0029,
+    0.00267,
+    0.00244,
+    0.00228,
+    0.00216,
+    0.00202,
+    0.00191,
+    0.00181,
+    0.00173,
+    0.00167,
+    0.00166,
+    0.0018,
+    0.00178,
+    0.00224,
+    0.0046
+   ],
+   "BRIGHT pre (11 events)": [
+    0.00368,
+    0.01064,
+    0.01416,
+    0.01598,
+    0.0179,
+    0.01806,
+    0.01927,
+    0.02231,
+    0.0252,
+    0.02767,
+    0.03055,
+    0.03104,
+    0.03185,
+    0.03259,
+    0.03289,
+    0.0328,
+    0.03243,
+    0.03163,
+    0.0304,
+    0.02909,
+    0.02785,
+    0.0263,
+    0.02488,
+    0.02402,
+    0.02289,
+    0.02158,
+    0.02051,
+    0.01971,
+    0.01905,
+    0.01835,
+    0.01756,
+    0.01675,
+    0.016,
+    0.0153,
+    0.01466,
+    0.01403,
+    0.01337,
+    0.01269,
+    0.01204,
+    0.01141,
+    0.0108,
+    0.01024,
+    0.00974,
+    0.00924,
+    0.00877,
+    0.00833,
+    0.0079,
+    0.00749,
+    0.00706,
+    0.00654,
+    0.006,
+    0.0055,
+    0.00508,
+    0.00468,
+    0.00423,
+    0.00385,
+    0.00349,
+    0.00313,
+    0.00281,
+    0.0025,
+    0.00226,
+    0.00209,
+    0.00225,
+    0.00691
+   ],
+   "BRIGHT pre (our 5 events)": [
+    0.00293,
+    0.01272,
+    0.01897,
+    0.02217,
+    0.02612,
+    0.02558,
+    0.02776,
+    0.03461,
+    0.0409,
+    0.04584,
+    0.05162,
+    0.05092,
+    0.05069,
+    0.0502,
+    0.04851,
+    0.04574,
+    0.04239,
+    0.03872,
+    0.03489,
+    0.0316,
+    0.0285,
+    0.02461,
+    0.02118,
+    0.01922,
+    0.01678,
+    0.01415,
+    0.01227,
+    0.01115,
+    0.01045,
+    0.00974,
+    0.00894,
+    0.00819,
+    0.0076,
+    0.00715,
+    0.00675,
+    0.00637,
+    0.00599,
+    0.00559,
+    0.00522,
+    0.00488,
+    0.00453,
+    0.00416,
+    0.00387,
+    0.00358,
+    0.00336,
+    0.0032,
+    0.003,
+    0.00285,
+    0.0027,
+    0.00237,
+    0.00195,
+    0.00165,
+    0.00148,
+    0.00138,
+    0.00104,
+    0.00094,
+    0.00086,
+    0.00082,
+    0.00078,
+    0.00077,
+    0.00083,
+    0.00105,
+    0.00158,
+    0.01369
+   ]
+  },
+  "pre_to_post": {
+   "delta_lum_mean": {
+    "n": 6443,
+    "p25": -5.8317,
+    "median": -0.3995,
+    "p75": 5.5355
+   },
+   "delta_sat_mean": {
+    "n": 6443,
+    "p25": -0.0302,
+    "median": -0.0008,
+    "p75": 0.023
+   },
+   "pair_js_bits": {
+    "n": 6443,
+    "p25": 0.0295,
+    "median": 0.0568,
+    "p75": 0.1397
+   },
+   "share_pairs_js_over_0_2": 0.1844
+  },
+  "dm3_pool_post_by_event": {
+   "bata_explosion": {
+    "images": 26,
+    "lum": 98.4144,
+    "sat": 0.2744,
+    "nodata_share_over_10pct": 0.0
+   },
+   "beriut_explosion": {
+    "images": 27,
+    "lum": 101.8808,
+    "sat": 0.2849,
+    "nodata_share_over_10pct": 0.0
+   },
+   "hawaii_wildfire": {
+    "images": 15,
+    "lum": 130.0804,
+    "sat": 0.1947,
+    "nodata_share_over_10pct": 0.267
+   },
+   "hurricane_florence": {
+    "images": 453,
+    "lum": 61.0599,
+    "sat": 0.4116,
+    "nodata_share_over_10pct": 0.079
+   },
+   "hurricane_harvey": {
+    "images": 429,
+    "lum": 93.0345,
+    "sat": 0.2914,
+    "nodata_share_over_10pct": 0.163
+   },
+   "hurricane_matthew": {
+    "images": 315,
+    "lum": 91.5487,
+    "sat": 0.3299,
+    "nodata_share_over_10pct": 0.127
+   },
+   "hurricane_michael": {
+    "images": 473,
+    "lum": 93.2153,
+    "sat": 0.2637,
+    "nodata_share_over_10pct": 0.068
+   },
+   "kalehe_flooding": {
+    "images": 15,
+    "lum": 67.7334,
+    "sat": 0.2651,
+    "nodata_share_over_10pct": 0.0
+   },
+   "libya_flood": {
+    "images": 47,
+    "lum": 129.2406,
+    "sat": 0.2873,
+    "nodata_share_over_10pct": 0.0
+   },
+   "lower_puna_volcano": {
+    "images": 119,
+    "lum": 74.518,
+    "sat": 0.3076,
+    "nodata_share_over_10pct": 0.16
+   },
+   "midwest_flooding": {
+    "images": 331,
+    "lum": 80.2454,
+    "sat": 0.3713,
+    "nodata_share_over_10pct": 0.124
+   },
+   "moore_tornado": {
+    "images": 161,
+    "lum": 100.3978,
+    "sat": 0.2616,
+    "nodata_share_over_10pct": 0.155
+   },
+   "morroco_earthquake": {
+    "images": 61,
+    "lum": 111.0359,
+    "sat": 0.2847,
+    "nodata_share_over_10pct": 0.0
+   },
+   "nepal_flooding": {
+    "images": 508,
+    "lum": 85.3084,
+    "sat": 0.3632,
+    "nodata_share_over_10pct": 0.134
+   },
+   "palu_tsunami": {
+    "images": 56,
+    "lum": 98.974,
+    "sat": 0.2468,
+    "nodata_share_over_10pct": 0.0
+   },
+   "pinery_bushfire": {
+    "images": 381,
+    "lum": 103.7384,
+    "sat": 0.3092,
+    "nodata_share_over_10pct": 0.013
+   },
+   "portugal_wildfire": {
+    "images": 889,
+    "lum": 72.8836,
+    "sat": 0.3267,
+    "nodata_share_over_10pct": 0.124
+   },
+   "santa_rosa_wildfire": {
+    "images": 308,
+    "lum": 95.3288,
+    "sat": 0.2499,
+    "nodata_share_over_10pct": 0.114
+   },
+   "shovi_landslide": {
+    "images": 13,
+    "lum": 70.1823,
+    "sat": 0.2169,
+    "nodata_share_over_10pct": 0.0
+   },
+   "socal_fire": {
+    "images": 618,
+    "lum": 89.783,
+    "sat": 0.218,
+    "nodata_share_over_10pct": 0.129
+   },
+   "sunda_tsunami": {
+    "images": 27,
+    "lum": 104.7195,
+    "sat": 0.2074,
+    "nodata_share_over_10pct": 0.0
+   },
+   "turkey_earthquake": {
+    "images": 621,
+    "lum": 128.9478,
+    "sat": 0.1769,
+    "nodata_share_over_10pct": 0.071
+   },
+   "tuscaloosa_tornado": {
+    "images": 214,
+    "lum": 86.9793,
+    "sat": 0.3674,
+    "nodata_share_over_10pct": 0.117
+   },
+   "woolsey_fire": {
+    "images": 336,
+    "lum": 88.2075,
+    "sat": 0.212,
+    "nodata_share_over_10pct": 0.06
+   }
+  },
+  "bright_pre_by_event": {
+   "bata-explosion": {
+    "images": 107,
+    "lum": 94.5034,
+    "sat": 0.2929,
+    "nodata_share_over_10pct": 0.28
+   },
+   "beirut-explosion": {
+    "images": 133,
+    "lum": 103.6069,
+    "sat": 0.3104,
+    "nodata_share_over_10pct": 0.098
+   },
+   "congo-volcano": {
+    "images": 123,
+    "lum": 71.3509,
+    "sat": 0.333,
+    "nodata_share_over_10pct": 0.285
+   },
+   "haiti-earthquake": {
+    "images": 73,
+    "lum": 97.3402,
+    "sat": 0.3881,
+    "nodata_share_over_10pct": 0.164
+   },
+   "hawaii-wildfire": {
+    "images": 65,
+    "lum": 121.4622,
+    "sat": 0.2083,
+    "nodata_share_over_10pct": 0.046
+   },
+   "la_palma-volcano": {
+    "images": 933,
+    "lum": 59.8764,
+    "sat": 0.1948,
+    "nodata_share_over_10pct": 0.105
+   },
+   "libya-flood": {
+    "images": 124,
+    "lum": 139.5605,
+    "sat": 0.2266,
+    "nodata_share_over_10pct": 0.258
+   },
+   "marshall-wildfire": {
+    "images": 77,
+    "lum": 97.0639,
+    "sat": 0.3705,
+    "nodata_share_over_10pct": 0.273
+   },
+   "morocco-earthquake": {
+    "images": 567,
+    "lum": 93.8714,
+    "sat": 0.314,
+    "nodata_share_over_10pct": 0.192
+   },
+   "noto-earthquake": {
+    "images": 79,
+    "lum": 110.3494,
+    "sat": 0.1795,
+    "nodata_share_over_10pct": 0.0
+   },
+   "turkey-earthquake": {
+    "images": 1114,
+    "lum": 107.4047,
+    "sat": 0.2442,
+    "nodata_share_over_10pct": 0.176
+   }
+  }
+ },
+ "registration": {
+  "pairs": 7159,
+  "pairs_reliable": 2966,
+  "rule": "phase correlation on 256-px tiles valid in both images; reliable = >=4 tiles with peak >= 0.1 agreeing within 1.5 px of their median",
+  "pairs_without_valid_tiles": 47,
+  "shift_px_trusted": {
+   "n": 2966,
+   "p25": 0.9826,
+   "median": 2.0798,
+   "p75": 3.3357
+  },
+  "share_trusted_over_1px": 0.7451,
+  "share_trusted_over_2px": 0.5172,
+  "share_trusted_over_5px": 0.0991,
+  "shift_hist_trusted": {
+   "0-0.5": 255,
+   "0.5-1": 501,
+   "1-2": 676,
+   "2-3": 610,
+   "3-5": 630,
+   "5-10": 208,
+   "10-20": 71,
+   "20-1000000000.0": 15
+  },
+  "by_event_median_px": {
+   "bata_explosion": {
+    "pairs": 2,
+    "median_px": 7.42,
+    "share_over_2px": 1.0
+   },
+   "beriut_explosion": {
+    "pairs": 1,
+    "median_px": 4.9,
+    "share_over_2px": 1.0
+   },
+   "hawaii_wildfire": {
+    "pairs": 2,
+    "median_px": 3.5,
+    "share_over_2px": 0.5
+   },
+   "hurricane_florence": {
+    "pairs": 132,
+    "median_px": 3.28,
+    "share_over_2px": 0.818
+   },
+   "hurricane_harvey": {
+    "pairs": 71,
+    "median_px": 7.13,
+    "share_over_2px": 0.986
+   },
+   "hurricane_matthew": {
+    "pairs": 7,
+    "median_px": 1.95,
+    "share_over_2px": 0.429
+   },
+   "hurricane_michael": {
+    "pairs": 229,
+    "median_px": 3.51,
+    "share_over_2px": 0.895
+   },
+   "libya_flood": {
+    "pairs": 7,
+    "median_px": 4.67,
+    "share_over_2px": 1.0
+   },
+   "lower_puna_volcano": {
+    "pairs": 23,
+    "median_px": 3.51,
+    "share_over_2px": 0.739
+   },
+   "midwest_flooding": {
+    "pairs": 170,
+    "median_px": 3.21,
+    "share_over_2px": 0.871
+   },
+   "moore_tornado": {
+    "pairs": 153,
+    "median_px": 2.3,
+    "share_over_2px": 0.752
+   },
+   "morroco_earthquake1": {
+    "pairs": 11,
+    "median_px": 18.71,
+    "share_over_2px": 0.909
+   },
+   "nepal_flooding": {
+    "pairs": 39,
+    "median_px": 3.44,
+    "share_over_2px": 0.744
+   },
+   "palu_tsunami": {
+    "pairs": 27,
+    "median_px": 4.63,
+    "share_over_2px": 0.963
+   },
+   "pinery_bushfire": {
+    "pairs": 292,
+    "median_px": 2.75,
+    "share_over_2px": 0.771
+   },
+   "portugal_wildfire": {
+    "pairs": 890,
+    "median_px": 0.76,
+    "share_over_2px": 0.053
+   },
+   "santa_rosa_wildfire": {
+    "pairs": 126,
+    "median_px": 2.77,
+    "share_over_2px": 0.786
+   },
+   "socal_fire": {
+    "pairs": 281,
+    "median_px": 3.13,
+    "share_over_2px": 0.829
+   },
+   "sunda_tsunami": {
+    "pairs": 14,
+    "median_px": 1.37,
+    "share_over_2px": 0.357
+   },
+   "turkey_earthquake1": {
+    "pairs": 3,
+    "median_px": 40.17,
+    "share_over_2px": 1.0
+   },
+   "turkey_earthquake4": {
+    "pairs": 2,
+    "median_px": 6.02,
+    "share_over_2px": 0.5
+   },
+   "turkey_earthquake5": {
+    "pairs": 5,
+    "median_px": 11.14,
+    "share_over_2px": 1.0
+   },
+   "turkey_earthquake7": {
+    "pairs": 50,
+    "median_px": 10.46,
+    "share_over_2px": 1.0
+   },
+   "tuscaloosa_tornado": {
+    "pairs": 105,
+    "median_px": 1.94,
+    "share_over_2px": 0.448
+   },
+   "woolsey_fire": {
+    "pairs": 324,
+    "median_px": 1.38,
+    "share_over_2px": 0.238
+   }
+  },
+  "reliable_share_by_event": {
+   "bata_explosion": 0.077,
+   "beriut_explosion": 0.036,
+   "hawaii_wildfire": 0.118,
+   "hurricane_florence": 0.279,
+   "hurricane_harvey": 0.16,
+   "hurricane_matthew": 0.021,
+   "hurricane_michael": 0.476,
+   "kalehe_flooding": 0.0,
+   "libya_flood": 0.135,
+   "lower_puna_volcano": 0.187,
+   "midwest_flooding": 0.486,
+   "moore_tornado": 0.944,
+   "morroco_earthquake1": 0.046,
+   "nepal_flooding": 0.076,
+   "palu_tsunami": 0.482,
+   "pinery_bushfire": 0.697,
+   "portugal_wildfire": 0.973,
+   "santa_rosa_wildfire": 0.406,
+   "shovi_landslide": 0.0,
+   "socal_fire": 0.303,
+   "sunda_tsunami": 0.452,
+   "turkey_earthquake0": 0.0,
+   "turkey_earthquake1": 0.025,
+   "turkey_earthquake3": 0.0,
+   "turkey_earthquake4": 0.032,
+   "turkey_earthquake5": 0.036,
+   "turkey_earthquake7": 0.877,
+   "tuscaloosa_tornado": 0.461,
+   "woolsey_fire": 0.947
+  },
+  "worst": [
+   {
+    "pre": "turkey_earthquake1_pre_516.png",
+    "post": "turkey_earthquake1_post_516.png",
+    "dx": 46.04,
+    "dy": 31.19,
+    "tiles_agreeing": 4,
+    "spread_px": 1.37
+   },
+   {
+    "pre": "turkey_earthquake1_pre_522.png",
+    "post": "turkey_earthquake1_post_522.png",
+    "dx": 32.63,
+    "dy": 23.43,
+    "tiles_agreeing": 4,
+    "spread_px": 1.18
+   },
+   {
+    "pre": "turkey_earthquake1_pre_507.png",
+    "post": "turkey_earthquake1_post_507.png",
+    "dx": 31.75,
+    "dy": 23.66,
+    "tiles_agreeing": 5,
+    "spread_px": 0.92
+   },
+   {
+    "pre": "morroco_earthquake1_pre_275.png",
+    "post": "morroco_earthquake1_post_275.png",
+    "dx": 16.02,
+    "dy": 32.07,
+    "tiles_agreeing": 5,
+    "spread_px": 0.82
+   },
+   {
+    "pre": "hurricane_florence_00000107_pre_disaster.png",
+    "post": "hurricane_florence_00000107_post_disaster.png",
+    "dx": 16.43,
+    "dy": 26.18,
+    "tiles_agreeing": 4,
+    "spread_px": 0.43
+   },
+   {
+    "pre": "hurricane_florence_00000476_pre_disaster.png",
+    "post": "hurricane_florence_00000476_post_disaster.png",
+    "dx": 15.41,
+    "dy": 24.79,
+    "tiles_agreeing": 5,
+    "spread_px": 1.3
+   },
+   {
+    "pre": "hurricane_florence_00000427_pre_disaster.png",
+    "post": "hurricane_florence_00000427_post_disaster.png",
+    "dx": 12.79,
+    "dy": 22.41,
+    "tiles_agreeing": 5,
+    "spread_px": 0.33
+   },
+   {
+    "pre": "hurricane_florence_00000150_pre_disaster.png",
+    "post": "hurricane_florence_00000150_post_disaster.png",
+    "dx": 15.2,
+    "dy": 20.59,
+    "tiles_agreeing": 5,
+    "spread_px": 1.28
+   }
+  ]
+ },
+ "labels": {
+  "dm3_pool": {
+   "images": 6443,
+   "building_share_of_all_px": 0.0723,
+   "intact": 0.8101,
+   "damaged": 0.1446,
+   "destroyed": 0.0453,
+   "images_without_destroyed_px": 0.6298,
+   "images_without_any_building": 0.0,
+   "building_components": 249623,
+   "building_area_px": {
+    "n": 249623,
+    "p25": 431.0,
+    "median": 1030.0,
+    "p75": 1810.0
+   },
+   "destroyed_components_per_image": {
+    "n": 6443,
+    "p25": 0.0,
+    "median": 0.0,
+    "p75": 2.0
+   }
+  },
+  "dm3_pool_train": {
+   "images": 5798,
+   "building_share_of_all_px": 0.0721,
+   "intact": 0.8069,
+   "damaged": 0.1467,
+   "destroyed": 0.0463,
+   "images_without_destroyed_px": 0.6259,
+   "images_without_any_building": 0.0,
+   "building_components": 224433,
+   "building_area_px": {
+    "n": 224433,
+    "p25": 433.0,
+    "median": 1032.0,
+    "p75": 1807.0
+   },
+   "destroyed_components_per_image": {
+    "n": 5798,
+    "p25": 0.0,
+    "median": 0.0,
+    "p75": 2.0
+   }
+  },
+  "dm3_pool_val": {
+   "images": 645,
+   "building_share_of_all_px": 0.0745,
+   "intact": 0.8378,
+   "damaged": 0.1263,
+   "destroyed": 0.0359,
+   "images_without_destroyed_px": 0.6651,
+   "images_without_any_building": 0.0,
+   "building_components": 25190,
+   "building_area_px": {
+    "n": 25190,
+    "p25": 407.0,
+    "median": 1010.0,
+    "p75": 1834.0
+   },
+   "destroyed_components_per_image": {
+    "n": 645,
+    "p25": 0.0,
+    "median": 0.0,
+    "p75": 1.0
+   }
+  },
+  "bright_all": {
+   "images": 4246,
+   "building_share_of_all_px": 0.1414,
+   "intact": 0.8269,
+   "damaged": 0.1068,
+   "destroyed": 0.0664,
+   "images_without_destroyed_px": 0.789,
+   "images_without_any_building": 0.1976,
+   "building_components": 211318,
+   "building_area_px": {
+    "n": 211318,
+    "p25": 385.0,
+    "median": 945.0,
+    "p75": 2573.0
+   },
+   "destroyed_components_per_image": {
+    "n": 4246,
+    "p25": 0.0,
+    "median": 0.0,
+    "p75": 0.0
+   }
+  },
+  "bright_our_5_events": {
+   "images": 1285,
+   "building_share_of_all_px": 0.0809,
+   "intact": 0.783,
+   "damaged": 0.0065,
+   "destroyed": 0.2105,
+   "images_without_destroyed_px": 0.8093,
+   "images_without_any_building": 0.2451,
+   "building_components": 57316,
+   "building_area_px": {
+    "n": 57316,
+    "p25": 231.0,
+    "median": 471.0,
+    "p75": 990.0
+   },
+   "destroyed_components_per_image": {
+    "n": 1285,
+    "p25": 0.0,
+    "median": 0.0,
+    "p75": 0.0
+   }
+  },
+  "bright_paper": {
+   "building_share_of_all_px": 0.141,
+   "intact": 0.828,
+   "damaged": 0.107,
+   "destroyed": 0.065
+  },
+  "dm3_multi_label_px": {
+   "images_with_any": 0,
+   "share_of_building_px": 0.0
+  },
+  "dm3_mask_value_sets": {
+   "0/255": 6443
+  },
+  "dm3_road_px_share": {
+   "intact": 0.92,
+   "flooded": 0.0661,
+   "debris": 0.0139
+  },
+  "bright_values_outside_0_3_px": 0,
+  "by_event": [
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "bata_explosion",
+    "images": 26,
+    "building_share_of_all_px": 0.0642,
+    "intact": 0.7761,
+    "damaged": 0.1436,
+    "destroyed": 0.0803,
+    "images_without_destroyed_px": 0.654,
+    "median_building_area_px": 569.0,
+    "building_components": 2239,
+    "train": 23,
+    "val": 3
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "beriut_explosion",
+    "images": 27,
+    "building_share_of_all_px": 0.3678,
+    "intact": 0.9364,
+    "damaged": 0.0345,
+    "destroyed": 0.0291,
+    "images_without_destroyed_px": 0.926,
+    "median_building_area_px": 1909.5,
+    "building_components": 2646,
+    "train": 23,
+    "val": 4
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "hawaii_wildfire",
+    "images": 15,
+    "building_share_of_all_px": 0.1055,
+    "intact": 0.2986,
+    "damaged": 0.0698,
+    "destroyed": 0.6317,
+    "images_without_destroyed_px": 0.4,
+    "median_building_area_px": 829.5,
+    "building_components": 1470,
+    "train": 14,
+    "val": 1
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "hurricane_florence",
+    "images": 453,
+    "building_share_of_all_px": 0.022,
+    "intact": 0.7881,
+    "damaged": 0.2051,
+    "destroyed": 0.0069,
+    "images_without_destroyed_px": 0.94,
+    "median_building_area_px": 803.0,
+    "building_components": 8808,
+    "train": 396,
+    "val": 57
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "hurricane_harvey",
+    "images": 429,
+    "building_share_of_all_px": 0.1289,
+    "intact": 0.5536,
+    "damaged": 0.4355,
+    "destroyed": 0.0109,
+    "images_without_destroyed_px": 0.716,
+    "median_building_area_px": 1393.0,
+    "building_components": 26800,
+    "train": 385,
+    "val": 44
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "hurricane_matthew",
+    "images": 315,
+    "building_share_of_all_px": 0.0271,
+    "intact": 0.1455,
+    "damaged": 0.7714,
+    "destroyed": 0.0832,
+    "images_without_destroyed_px": 0.26,
+    "median_building_area_px": 316.0,
+    "building_components": 13706,
+    "train": 290,
+    "val": 25
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "hurricane_michael",
+    "images": 473,
+    "building_share_of_all_px": 0.0832,
+    "intact": 0.5866,
+    "damaged": 0.3914,
+    "destroyed": 0.022,
+    "images_without_destroyed_px": 0.459,
+    "median_building_area_px": 1012.0,
+    "building_components": 30235,
+    "train": 431,
+    "val": 42
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "kalehe_flooding",
+    "images": 15,
+    "building_share_of_all_px": 0.0091,
+    "intact": 0.7569,
+    "damaged": 0.0378,
+    "destroyed": 0.2053,
+    "images_without_destroyed_px": 0.8,
+    "median_building_area_px": 195.0,
+    "building_components": 543,
+    "train": 10,
+    "val": 5
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "libya_flood",
+    "images": 47,
+    "building_share_of_all_px": 0.2263,
+    "intact": 0.6629,
+    "damaged": 0.2924,
+    "destroyed": 0.0448,
+    "images_without_destroyed_px": 0.83,
+    "median_building_area_px": 2524.0,
+    "building_components": 1965,
+    "train": 43,
+    "val": 4
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "lower_puna_volcano",
+    "images": 119,
+    "building_share_of_all_px": 0.0093,
+    "intact": 0.8139,
+    "damaged": 0.0258,
+    "destroyed": 0.1603,
+    "images_without_destroyed_px": 0.79,
+    "median_building_area_px": 414.0,
+    "building_components": 1737,
+    "train": 111,
+    "val": 8
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "midwest_flooding",
+    "images": 331,
+    "building_share_of_all_px": 0.0354,
+    "intact": 0.9558,
+    "damaged": 0.0341,
+    "destroyed": 0.0101,
+    "images_without_destroyed_px": 0.84,
+    "median_building_area_px": 858.0,
+    "building_components": 9949,
+    "train": 296,
+    "val": 35
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "moore_tornado",
+    "images": 161,
+    "building_share_of_all_px": 0.1065,
+    "intact": 0.8598,
+    "damaged": 0.0732,
+    "destroyed": 0.0669,
+    "images_without_destroyed_px": 0.758,
+    "median_building_area_px": 1085.0,
+    "building_components": 14827,
+    "train": 145,
+    "val": 16
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "morroco_earthquake1",
+    "images": 61,
+    "building_share_of_all_px": 0.0455,
+    "intact": 0.9488,
+    "damaged": 0.0424,
+    "destroyed": 0.0089,
+    "images_without_destroyed_px": 0.934,
+    "median_building_area_px": 1804.0,
+    "building_components": 561,
+    "train": 58,
+    "val": 3
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "nepal_flooding",
+    "images": 508,
+    "building_share_of_all_px": 0.0326,
+    "intact": 0.7339,
+    "damaged": 0.2612,
+    "destroyed": 0.0049,
+    "images_without_destroyed_px": 0.659,
+    "median_building_area_px": 508.0,
+    "building_components": 18705,
+    "train": 460,
+    "val": 48
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "palu_tsunami",
+    "images": 56,
+    "building_share_of_all_px": 0.2319,
+    "intact": 0.862,
+    "damaged": 0.0296,
+    "destroyed": 0.1084,
+    "images_without_destroyed_px": 0.304,
+    "median_building_area_px": 887.0,
+    "building_components": 5614,
+    "train": 49,
+    "val": 7
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "pinery_bushfire",
+    "images": 381,
+    "building_share_of_all_px": 0.008,
+    "intact": 0.9404,
+    "damaged": 0.0287,
+    "destroyed": 0.0308,
+    "images_without_destroyed_px": 0.769,
+    "median_building_area_px": 436.0,
+    "building_components": 3377,
+    "train": 341,
+    "val": 40
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "portugal_wildfire",
+    "images": 889,
+    "building_share_of_all_px": 0.0158,
+    "intact": 0.9494,
+    "damaged": 0.0181,
+    "destroyed": 0.0326,
+    "images_without_destroyed_px": 0.679,
+    "median_building_area_px": 608.0,
+    "building_components": 15870,
+    "train": 784,
+    "val": 105
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "santa_rosa_wildfire",
+    "images": 308,
+    "building_share_of_all_px": 0.0681,
+    "intact": 0.7123,
+    "damaged": 0.0103,
+    "destroyed": 0.2774,
+    "images_without_destroyed_px": 0.292,
+    "median_building_area_px": 1166.0,
+    "building_components": 16311,
+    "train": 288,
+    "val": 20
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "shovi_landslide",
+    "images": 13,
+    "building_share_of_all_px": 0.018,
+    "intact": 0.8107,
+    "damaged": 0.0708,
+    "destroyed": 0.1186,
+    "images_without_destroyed_px": 0.769,
+    "median_building_area_px": 506.0,
+    "building_components": 272,
+    "train": 12,
+    "val": 1
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "socal_fire",
+    "images": 618,
+    "building_share_of_all_px": 0.0343,
+    "intact": 0.9114,
+    "damaged": 0.0099,
+    "destroyed": 0.0787,
+    "images_without_destroyed_px": 0.519,
+    "median_building_area_px": 1197.0,
+    "building_components": 14851,
+    "train": 564,
+    "val": 54
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "sunda_tsunami",
+    "images": 27,
+    "building_share_of_all_px": 0.1274,
+    "intact": 0.9911,
+    "damaged": 0.0069,
+    "destroyed": 0.002,
+    "images_without_destroyed_px": 0.852,
+    "median_building_area_px": 567.0,
+    "building_components": 2419,
+    "train": 23,
+    "val": 4
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "turkey_earthquake0",
+    "images": 131,
+    "building_share_of_all_px": 0.3152,
+    "intact": 0.999,
+    "damaged": 0.0003,
+    "destroyed": 0.0007,
+    "images_without_destroyed_px": 0.992,
+    "median_building_area_px": 4599.0,
+    "building_components": 5068,
+    "train": 117,
+    "val": 14
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "turkey_earthquake1",
+    "images": 122,
+    "building_share_of_all_px": 0.2616,
+    "intact": 0.9171,
+    "damaged": 0.0413,
+    "destroyed": 0.0417,
+    "images_without_destroyed_px": 0.467,
+    "median_building_area_px": 2502.5,
+    "building_components": 9494,
+    "train": 110,
+    "val": 12
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "turkey_earthquake3",
+    "images": 125,
+    "building_share_of_all_px": 0.3756,
+    "intact": 0.9469,
+    "damaged": 0.0328,
+    "destroyed": 0.0204,
+    "images_without_destroyed_px": 0.72,
+    "median_building_area_px": 2907.0,
+    "building_components": 7105,
+    "train": 112,
+    "val": 13
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "turkey_earthquake4",
+    "images": 62,
+    "building_share_of_all_px": 0.347,
+    "intact": 0.7947,
+    "damaged": 0.1313,
+    "destroyed": 0.074,
+    "images_without_destroyed_px": 0.323,
+    "median_building_area_px": 3257.0,
+    "building_components": 3940,
+    "train": 54,
+    "val": 8
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "turkey_earthquake5",
+    "images": 139,
+    "building_share_of_all_px": 0.3019,
+    "intact": 0.9904,
+    "damaged": 0.004,
+    "destroyed": 0.0055,
+    "images_without_destroyed_px": 0.77,
+    "median_building_area_px": 2121.0,
+    "building_components": 12841,
+    "train": 127,
+    "val": 12
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "turkey_earthquake7",
+    "images": 42,
+    "building_share_of_all_px": 0.0568,
+    "intact": 0.9481,
+    "damaged": 0.0246,
+    "destroyed": 0.0273,
+    "images_without_destroyed_px": 0.762,
+    "median_building_area_px": 629.0,
+    "building_components": 2491,
+    "train": 37,
+    "val": 5
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "tuscaloosa_tornado",
+    "images": 214,
+    "building_share_of_all_px": 0.0606,
+    "intact": 0.7834,
+    "damaged": 0.1629,
+    "destroyed": 0.0537,
+    "images_without_destroyed_px": 0.729,
+    "median_building_area_px": 871.0,
+    "building_components": 10599,
+    "train": 191,
+    "val": 23
+   },
+   {
+    "dataset": "DisasterM3 pool",
+    "event": "woolsey_fire",
+    "images": 336,
+    "building_share_of_all_px": 0.0142,
+    "intact": 0.7634,
+    "damaged": 0.0295,
+    "destroyed": 0.2072,
+    "images_without_destroyed_px": 0.271,
+    "median_building_area_px": 517.0,
+    "building_components": 5180,
+    "train": 304,
+    "val": 32
+   },
+   {
+    "dataset": "BRIGHT",
+    "event": "bata-explosion",
+    "images": 107,
+    "building_share_of_all_px": 0.0556,
+    "intact": 0.9116,
+    "damaged": 0.0542,
+    "destroyed": 0.0342,
+    "images_without_destroyed_px": 0.879,
+    "median_building_area_px": 584.0,
+    "median_building_area_m2": 150.2,
+    "building_components": 7459,
+    "paper_buildings": 8893
+   },
+   {
+    "dataset": "BRIGHT",
+    "event": "beirut-explosion",
+    "images": 133,
+    "building_share_of_all_px": 0.3144,
+    "intact": 0.9522,
+    "damaged": 0.0348,
+    "destroyed": 0.013,
+    "images_without_destroyed_px": 0.947,
+    "median_building_area_px": 2070.0,
+    "median_building_area_m2": 517.5,
+    "building_components": 10777,
+    "paper_buildings": 25496
+   },
+   {
+    "dataset": "BRIGHT",
+    "event": "congo-volcano",
+    "images": 123,
+    "building_share_of_all_px": 0.0648,
+    "intact": 0.8901,
+    "damaged": 0.0063,
+    "destroyed": 0.1036,
+    "images_without_destroyed_px": 0.846,
+    "median_building_area_px": 422.0,
+    "median_building_area_m2": 46.9,
+    "building_components": 15615,
+    "paper_buildings": 18741
+   },
+   {
+    "dataset": "BRIGHT",
+    "event": "haiti-earthquake",
+    "images": 73,
+    "building_share_of_all_px": 0.1297,
+    "intact": 0.9839,
+    "damaged": 0.0148,
+    "destroyed": 0.0014,
+    "images_without_destroyed_px": 0.932,
+    "median_building_area_px": 473.0,
+    "median_building_area_m2": 108.5,
+    "building_components": 7758,
+    "paper_buildings": 18918
+   },
+   {
+    "dataset": "BRIGHT",
+    "event": "hawaii-wildfire",
+    "images": 65,
+    "building_share_of_all_px": 0.1155,
+    "intact": 0.3361,
+    "damaged": 0.102,
+    "destroyed": 0.5619,
+    "images_without_destroyed_px": 0.323,
+    "median_building_area_px": 1698.0,
+    "median_building_area_m2": 241.2,
+    "building_components": 3657,
+    "paper_buildings": 3995
+   },
+   {
+    "dataset": "BRIGHT",
+    "event": "la_palma-volcano",
+    "images": 933,
+    "building_share_of_all_px": 0.0822,
+    "intact": 0.7331,
+    "damaged": 0.0032,
+    "destroyed": 0.2637,
+    "images_without_destroyed_px": 0.829,
+    "median_building_area_px": 635.0,
+    "median_building_area_m2": 57.1,
+    "building_components": 21486,
+    "paper_buildings": 30239
+   },
+   {
+    "dataset": "BRIGHT",
+    "event": "libya-flood",
+    "images": 124,
+    "building_share_of_all_px": 0.1875,
+    "intact": 0.6408,
+    "damaged": 0.302,
+    "destroyed": 0.0571,
+    "images_without_destroyed_px": 0.815,
+    "median_building_area_px": 2305.0,
+    "median_building_area_m2": 282.4,
+    "building_components": 4555,
+    "paper_buildings": 10979
+   },
+   {
+    "dataset": "BRIGHT",
+    "event": "marshall-wildfire",
+    "images": 77,
+    "building_share_of_all_px": 0.0665,
+    "intact": 0.9262,
+    "damaged": 0.0069,
+    "destroyed": 0.0669,
+    "images_without_destroyed_px": 0.675,
+    "median_building_area_px": 428.0,
+    "median_building_area_m2": 154.1,
+    "building_components": 8226,
+    "paper_buildings": 8365
+   },
+   {
+    "dataset": "BRIGHT",
+    "event": "mexico-hurricane",
+    "images": 212,
+    "building_share_of_all_px": 0.119,
+    "intact": 0.1417,
+    "damaged": 0.7868,
+    "destroyed": 0.0714,
+    "images_without_destroyed_px": 0.731,
+    "median_building_area_px": 1445.0,
+    "median_building_area_m2": 57.8,
+    "building_components": 6315,
+    "paper_buildings": 18437
+   },
+   {
+    "dataset": "BRIGHT",
+    "event": "morocco-earthquake",
+    "images": 567,
+    "building_share_of_all_px": 0.0205,
+    "intact": 0.9799,
+    "damaged": 0.0171,
+    "destroyed": 0.0031,
+    "images_without_destroyed_px": 0.986,
+    "median_building_area_px": 1623.0,
+    "median_building_area_m2": 151.2,
+    "building_components": 2889,
+    "paper_buildings": 6269
+   },
+   {
+    "dataset": "BRIGHT",
+    "event": "myanmar-hurricane",
+    "images": 126,
+    "building_share_of_all_px": 0.0523,
+    "intact": 0.9052,
+    "damaged": 0.0885,
+    "destroyed": 0.0063,
+    "images_without_destroyed_px": 0.929,
+    "median_building_area_px": 539.0,
+    "median_building_area_m2": 66.0,
+    "building_components": 8424,
+    "paper_buildings": 8052
+   },
+   {
+    "dataset": "BRIGHT",
+    "event": "noto-earthquake",
+    "images": 79,
+    "building_share_of_all_px": 0.0587,
+    "intact": 0.856,
+    "damaged": 0.0433,
+    "destroyed": 0.1007,
+    "images_without_destroyed_px": 0.544,
+    "median_building_area_px": 540.0,
+    "median_building_area_m2": 120.7,
+    "building_components": 4231,
+    "paper_buildings": 8153
+   },
+   {
+    "dataset": "BRIGHT",
+    "event": "turkey-earthquake",
+    "images": 1114,
+    "building_share_of_all_px": 0.2781,
+    "intact": 0.9298,
+    "damaged": 0.0409,
+    "destroyed": 0.0293,
+    "images_without_destroyed_px": 0.69,
+    "median_building_area_px": 2482.0,
+    "median_building_area_m2": 231.2,
+    "building_components": 66055,
+    "paper_buildings": 135033
+   },
+   {
+    "dataset": "BRIGHT",
+    "event": "ukraine-conflict",
+    "images": 513,
+    "building_share_of_all_px": 0.1263,
+    "intact": 0.6713,
+    "damaged": 0.3174,
+    "destroyed": 0.0114,
+    "images_without_destroyed_px": 0.717,
+    "median_building_area_px": 625.0,
+    "median_building_area_m2": 76.6,
+    "building_components": 43871,
+    "paper_buildings": 56770
+   }
+  ],
+  "area_hist_edges_px": [
+   1,
+   2,
+   4,
+   8,
+   16,
+   32,
+   64,
+   128,
+   256,
+   512,
+   1024,
+   2048,
+   4096,
+   8192,
+   16384,
+   32768,
+   65536,
+   131072,
+   262144,
+   524288,
+   1048576
+  ],
+  "building_area_hist": {
+   "dm3_pool": [
+    17,
+    22,
+    17,
+    42,
+    198,
+    2608,
+    11878,
+    23449,
+    33264,
+    52684,
+    72883,
+    30557,
+    13759,
+    5335,
+    1984,
+    663,
+    212,
+    42,
+    7,
+    2
+   ],
+   "bright_all": [
+    31,
+    7,
+    7,
+    56,
+    438,
+    2549,
+    8863,
+    21531,
+    36049,
+    40554,
+    36043,
+    30584,
+    19335,
+    9535,
+    3800,
+    1324,
+    439,
+    127,
+    42,
+    4
+   ],
+   "bright_our_5_events": [
+    6,
+    0,
+    5,
+    53,
+    411,
+    1967,
+    4651,
+    8795,
+    14845,
+    12670,
+    7036,
+    3888,
+    1395,
+    609,
+    461,
+    294,
+    145,
+    62,
+    22,
+    1
+   ]
+  }
+ }
+}

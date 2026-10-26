@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DisasterM3 vs BRIGHT — Optical Data Audit &amp; EDA</title>
+<style>
+  :root {
+    --ink: #1d1d1b;
+    --ink-2: #52514e;
+    --muted: #85837c;
+    --rule: #e4e2dc;
+    --panel: #f6f5f2;
+    --accent: #2a78d6;
+    --accent-soft: #eaf2fc;
+    --surface: #ffffff;
+  }
+  @page {
+    size: A4;
+    margin: 17mm 17mm 18mm 17mm;
+    @bottom-left { content: "DisasterM3 vs BRIGHT — Optical Data Audit & EDA · easy English"; font: 8pt "Segoe UI", Arial, sans-serif; color: #85837c; }
+    @bottom-right { content: "Page " counter(page) " of " counter(pages); font: 8pt "Segoe UI", Arial, sans-serif; color: #85837c; }
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--surface); }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font: 10.5pt/1.6 "Segoe UI", Arial, sans-serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; color: var(--ink); }
+  h1 { font-size: 25pt; line-height: 1.15; margin: 0 0 6pt; }
+  h2 { font-size: 16pt; margin: 22pt 0 6pt; break-after: avoid; }
+  h3 { font-size: 12.5pt; margin: 14pt 0 4pt; break-after: avoid; }
+  h2 .num { color: var(--muted); margin-right: 6pt; }
+  p { margin: 0 0 7pt; }
+  .lead { font-size: 11.5pt; }
+  .meta { color: var(--ink-2); font-size: 9.5pt; margin-bottom: 14pt; }
+  .chip { display: inline-block; background: var(--panel); border: 1px solid var(--rule); border-radius: 10pt; padding: 0 7pt; margin-right: 4pt; }
+  .chip.blue { background: var(--accent-soft); border-color: #b7d3f6; color: #184f95; }
+  ul, ol { margin: 0 0 8pt; padding-left: 16pt; }
+  li { margin: 0 0 4pt; }
+  li::marker { color: var(--muted); }
+  b, strong { font-weight: 650; }
+  code { font: 9pt Consolas, "Courier New", monospace; background: var(--panel); border: 1px solid var(--rule); border-radius: 3pt; padding: 0 3pt; white-space: nowrap; }
+  pre { font: 9pt/1.5 Consolas, "Courier New", monospace; background: var(--panel); border: 1px solid var(--rule); border-radius: 5pt; padding: 8pt 10pt; white-space: pre-wrap; }
+  table { width: 100%; border-collapse: collapse; margin: 6pt 0 10pt; font-size: 9.5pt; line-height: 1.45; }
+  th { text-align: left; font-weight: 600; color: var(--ink-2); background: var(--panel); border-bottom: 1px solid var(--rule); padding: 5pt 7pt; }
+  td { border-bottom: 1px solid var(--rule); padding: 5pt 7pt; vertical-align: top; }
+  td.n, th.n { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  tr { break-inside: avoid; }
+  .box { background: var(--panel); border: 1px solid var(--rule); border-radius: 6pt; padding: 9pt 12pt; margin: 8pt 0 12pt; break-inside: avoid; }
+  .box.blue { background: var(--accent-soft); border-color: #b7d3f6; }
+  .box h3 { margin-top: 0; }
+  .box p:last-child, .box ul:last-child, .box ol:last-child { margin-bottom: 0; }
+  .keypoints li { margin-bottom: 6pt; }
+  figure { margin: 8pt 0 12pt; break-inside: avoid; }
+  figcaption { font-size: 10.5pt; font-weight: 650; margin-bottom: 2pt; }
+  .figsub { font-size: 9pt; color: var(--ink-2); margin-bottom: 6pt; }
+  .source { font-size: 8.5pt; color: var(--muted); margin-top: 4pt; }
+  .fixed { display: inline-block; font-size: 8pt; font-weight: 600; color: #184f95; background: var(--accent-soft); border: 1px solid #b7d3f6; border-radius: 8pt; padding: 0 6pt; margin-left: 3pt; vertical-align: 1pt; }
+  .page-break { break-before: page; }
+  .ok { color: #006300; font-weight: 600; }
+  .bad { color: #b42828; font-weight: 600; }
+  .muted { color: var(--muted); }
+  .two { columns: 2; column-gap: 18pt; }
+  .keep { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<!-- ============================== PART 1 ============================== -->
+<h1>DisasterM3 vs BRIGHT — Optical Data Audit &amp; EDA</h1>
+<div class="meta">
+  <span class="chip">Ridita Afrin · CSE499B Group 5</span>
+  <span class="chip">First version: Oct 19, 2026</span>
+  <span class="chip blue">Easy English version, corrected: Oct 22, 2026</span>
+</div>
+
+<p class="lead">We checked two datasets, <b>DisasterM3</b> and <b>BRIGHT</b>. We looked only at normal color photos. We left out radar (SAR) pictures.</p>
+<p class="lead">We can use both datasets for our color-photo model. But we found two big things:</p>
+<ol class="lead">
+  <li>DisasterM3 has a <b>leak</b> in its test set.</li>
+  <li>Our five BRIGHT events can show the model <b>where buildings are</b>. They <b>cannot</b> show it what destroyed buildings look like.</li>
+</ol>
+
+<div class="box">
+<h3>The 7 main points</h3>
+<ol class="keypoints">
+  <li><b>There is a leak in the test set.</b> We have 645 test pairs. 40 of them (6.2%) are almost copies of learning pairs. The reason: two xBD events, <code>socal_fire</code> and <code>woolsey_fire</code>, have the same 264 "before" photos. These 40 pairs hold 8.6% of all destroyed pixels in the test set.</li>
+  <li><b>Our BRIGHT tiles do not leak.</b> Our five events have 1,285 tiles. None of them is in the photos our model learns from or is tested on.</li>
+  <li><b>BRIGHT has no color "after" photo.</b> All 4,246 BRIGHT "after" pictures are SAR. So we get only "before" photos. In a "before" photo, every building still stands, so the tiles go in as <b>intact</b>. 82% of these tiles are volcano photos, but the test set has only 8 volcano pairs.</li>
+  <li><b>The papers give the wrong resolution.</b> BRIGHT's own files do not match BRIGHT's paper for 6 of 14 events. The DisasterM3 paper says 0.8 m, but its copies of BRIGHT tiles are 0.30 m.</li>
+  <li><b>Our photos look different.</b> Our five events are darker (pixel middle 60, pool 84) and 2.6 times sharper than the photos the model reads.</li>
+  <li><b>"Before" and "after" photos do not line up.</b> The paper says they match exactly. But in 52% of the pairs we could measure, the photos are moved by more than 2 pixels, and in a few pairs by up to 56 pixels.</li>
+  <li><b>File names hide SAR.</b> 73% of DisasterM3's SAR "after" files have no "sar" in the name. The tags and the pixels are right. Only the names are wrong.</li>
+</ol>
+</div>
+
+<h2>Hard words used in this report</h2>
+<table>
+  <tr><th style="width:28%">Word</th><th>Easy meaning</th></tr>
+  <tr><td><b>Optical (color) photo</b></td><td>A normal color photo from a satellite.</td></tr>
+  <tr><td><b>SAR picture</b></td><td>A radar picture. It is black and white. We do not use it.</td></tr>
+  <tr><td><b>Pre / post photo</b></td><td>Pre = the photo taken <b>before</b> the disaster. Post = the photo taken <b>after</b> the disaster.</td></tr>
+  <tr><td><b>Pair</b></td><td>One pre photo and one post photo of the same place.</td></tr>
+  <tr><td><b>Tile</b></td><td>One square photo, 1024 × 1024 pixels.</td></tr>
+  <tr><td><b>Label / mask</b></td><td>A picture that marks every pixel: building or not, broken or not.</td></tr>
+  <tr><td><b>Intact / damaged / destroyed</b></td><td>Not broken / a little broken / fully broken.</td></tr>
+  <tr><td><b>Learning set (train)</b></td><td>The photos the model learns from: 5,798 pairs.</td></tr>
+  <tr><td><b>Test set (frozen val)</b></td><td>The photos we use to test the model: 645 pairs. "Frozen" means we never change it.</td></tr>
+  <tr><td><b>Leak</b></td><td>Some test photos are also in the learning photos. The model has seen the answers before the test.</td></tr>
+  <tr><td><b>Pool (optical pool)</b></td><td>The 6,443 color pairs our champion model uses (learning set + test set).</td></tr>
+  <tr><td><b>Tag</b></td><td>A short note saved with a file, for example "this is SAR".</td></tr>
+  <tr><td><b>Resolution (GSD, metres per pixel)</b></td><td>How much ground one pixel shows. 0.3 m means one pixel shows 30 cm. A smaller number means more detail.</td></tr>
+  <tr><td><b>Exact copy (byte for byte)</b></td><td>Two files are exactly the same. Not one bit is different.</td></tr>
+  <tr><td><b>Middle value (median)</b></td><td>Sort all the values. The one in the middle is the median.</td></tr>
+  <tr><td><b>IoU</b></td><td>A score from 0 to 1. It shows how well two masks cover the same area. 1 means a perfect match.</td></tr>
+  <tr><td><b>Destroyed IoU / the gate</b></td><td>How well the model finds destroyed buildings. Our target ("gate") is above 0.30.</td></tr>
+</table>
+
+<h2><span class="num">1</span>What we checked, and how we removed SAR</h2>
+<p>We counted every number ourselves, on the copy of the data on our computer. We did not copy numbers from the papers.</p>
+<p>We removed SAR by <b>looking at the pixels</b>, not only by reading the tags.</p>
+<p>DisasterM3 has two parts. <b>Instruct</b> holds the photos for learning. <b>Bench</b> holds the photos for testing (a "benchmark").</p>
+<table>
+  <tr><th>Source</th><th>What we used</th><th class="n">Size</th></tr>
+  <tr><td>DisasterM3 Instruct photos</td><td>Pre photos and color post photos (we read the pixels)</td><td class="n">20,988 files</td></tr>
+  <tr><td>DisasterM3 Instruct masks</td><td>Building and road masks of the pool</td><td class="n">6,443</td></tr>
+  <tr><td>DisasterM3 Bench</td><td>Only its list file (JSON). The Bench photos are <b>not</b> on our computer.</td><td class="n">30,042 entries</td></tr>
+  <tr><td>BRIGHT pre-event</td><td>Color tiles, and the resolution saved in each file (GeoTIFF tag)</td><td class="n">3,395 tiles, 11 events</td></tr>
+  <tr><td>BRIGHT post-event</td><td><b>Not used.</b> All of them are SAR.</td><td class="n">4,246 tiles</td></tr>
+  <tr><td>BRIGHT labels</td><td>Damage maps: 0 = no building, 1 = intact, 2 = damaged, 3 = destroyed</td><td class="n">4,246 maps</td></tr>
+</table>
+
+<h3>How we find SAR (the SAR rule)</h3>
+<ul>
+  <li>A color photo has 3 channels: red, green and blue.</li>
+  <li>In a SAR picture, the 3 channels are the same.</li>
+  <li>So: if the 3 channels are almost the same (the difference is less than 1 grey level), the picture is SAR.</li>
+  <li>We check only the pixels that have data. We skip black empty pixels.</li>
+  <li>We also compare our result with DisasterM3's tags (<code>image_type</code>, <code>post_image_type</code>). We need the pixel test because <b>2,066 files have no tag</b>.</li>
+</ul>
+
+<h3>Pairs, the pool, and BRIGHT's photos</h3>
+<ul>
+  <li><b>Pairs.</b> The pairs come from the file <code>train_release.json</code>. It has <b>7,159 color pairs</b> and <b>2,647 SAR pairs</b>. They use 9,116 pre photos. <span class="fixed">fixed</span></li>
+  <li><b>The pool.</b> Our champion model uses <b>6,443 color pairs</b>. They are split with <code>random_state=42</code>: 5,798 for learning and 645 for testing. The 645 pairs are the frozen test set of our E-protocol.</li>
+  <li><b>BRIGHT has color photos only from before the disaster.</b> Its folder is called <code>pre-event_wo_ukraine_myanmar_mexico</code> ("wo" means "without"). So it has no photos of Ukraine (513 tiles), Myanmar (126) and Mexico (212). These 3 events have labels and SAR, but no color photo here.</li>
+</ul>
+
+<h2><span class="num">2</span>How many photos of each kind</h2>
+<p>With the pixel test, DisasterM3 Instruct on our computer has <b>17,451 color photos</b> and <b>3,537 SAR pictures</b>. BRIGHT adds <b>3,395 color pre tiles</b>. BRIGHT adds <b>no</b> color post photo.</p>
+<table>
+  <tr><th>Part</th><th class="n">Pre (color)</th><th class="n">Post (color)</th><th class="n">Post (SAR, left out)</th><th>Notes</th></tr>
+  <tr><td>DisasterM3 Instruct, all files on disk</td><td class="n">9,746</td><td class="n">7,705</td><td class="n">3,537</td><td>20,988 files, the same total as the paper. But the paper says 17,190 color and 3,798 SAR.</td></tr>
+  <tr><td>DisasterM3 Instruct, files named in the JSON list</td><td class="n">9,116</td><td class="n">7,159</td><td class="n">2,647</td><td><b>2,066 files are not in the list.</b></td></tr>
+  <tr><td>DisasterM3 pool (our model)</td><td class="n">6,443</td><td class="n">6,443</td><td class="n">0</td><td>5,798 learning / 645 test</td></tr>
+  <tr><td>DisasterM3 Bench (list only)</td><td class="n">2,679</td><td class="n">2,199</td><td class="n">856</td><td>Photos not on our computer. The paper says 5,024 color and 976 SAR.</td></tr>
+  <tr><td>BRIGHT</td><td class="n">3,395 here<br>(4,246 released)</td><td class="n">0</td><td class="n">4,246</td><td>Ukraine (513), Myanmar (126) and Mexico (212) pre tiles are missing.</td></tr>
+</table>
+<ul>
+  <li><b>Tags are right. File names are not.</b> DisasterM3's tags and our pixel test agree on every post photo. But 2,584 of the 3,537 SAR post files (73%) have <b>no "sar" in the name</b>. Example: <code>la_palma_volcano_00000002_post_disaster.png</code> is SAR. A filter that looks at names keeps these SAR pictures as color photos. The older script <code>dm3_bright_audit.py</code> finds SAR by name, so it makes this mistake.</li>
+  <li><b>8 pre photos are more than 90% black</b> (1 from <code>rwanda_volcano</code>, 4 from <code>spain_volcano</code>, 3 from <code>ukraine_conflict</code>). A black pixel has red = green = blue = 0, so a test on the whole photo calls them SAR. But their few real pixels have color. This is why our rule checks only pixels with data. None of these 8 photos is in the pool.</li>
+  <li><b>2,066 files are not in any list.</b> Almost all of them come from BRIGHT events: <code>spain_volcano</code> 478, <code>la_palma_volcano</code> 367, Morocco under 3 spellings 617, <code>libya_flood</code> 126.</li>
+  <li><b>36 events</b>, the same number as the paper: 19 from xBD, 14 from BRIGHT and 3 from neither. Two BRIGHT events have new names: "Spain volcano" is La Palma, and "Rwanda volcano" is Goma. The 3 others are Kalehe, Shovi and Hurricane Ian. The paper says 10 events are new, but only these 3 are really new. 5 events are <b>only in Bench</b>: Guatemala volcano, Joplin tornado, Mexico earthquake, Hurricane Ian and Noto earthquake.</li>
+</ul>
+
+<h2><span class="num">3</span>Resolution and photo size</h2>
+<p>BRIGHT's own files say <b>0.2 to 0.6 m per pixel</b>. DisasterM3 has 2,828 exact copies of BRIGHT tiles, and they are still <b>0.30 m</b>, not the 0.8 m that the DisasterM3 paper says.</p>
+<figure>
+  <figcaption>BRIGHT tiles are 0.2–0.6 m per pixel. Six events have more detail than the paper says.</figcaption>
+  <div class="figsub">Resolution of each event, read from the files of all 4,246 BRIGHT label maps. Bold names are our five training events.</div>
+  {{CHART_GSD}}
+  <div class="source">Source: dm3_bright_optical_eda.py · GeoTIFF ModelPixelScale tags (degrees changed to metres at each tile's latitude) · BRIGHT paper Table 2 · DisasterM3 paper §3</div>
+</figure>
+<ul>
+  <li><b>Beirut has the biggest gap:</b> 0.50 m in the files, 1.0 m in the paper.</li>
+  <li><b>Noto is a little off:</b> 0.47 m in the files, 0.50 m in the paper. We do not count it in the six. <span class="fixed">fixed</span></li>
+  <li><b>Tile size.</b> Every color photo in both datasets is <b>1024 × 1024 pixels</b>: 17,451 in DisasterM3 and 3,395 in BRIGHT.</li>
+  <li><b>DisasterM3's 0.8 m.</b> The paper (§3) says every photo was changed to 0.8 m. But its 2,828 BRIGHT copies have a middle value of 0.30 m. DisasterM3 photos have no location or scale saved in them, so we <b>cannot measure</b> the rest.</li>
+</ul>
+
+<h3>Sharpness</h3>
+<p>We measure how much small, sharp detail a photo has (the "high-frequency share"). A blurry photo scores near 0.</p>
+<table>
+  <tr><th>Photos</th><th class="n">Sharpness (middle value)</th></tr>
+  <tr><td>Pool, post photos</td><td class="n">0.073</td></tr>
+  <tr><td>Pool, pre photos</td><td class="n">0.060</td></tr>
+  <tr><td>BRIGHT, all 11 events</td><td class="n">0.067</td></tr>
+  <tr><td><b>BRIGHT, our 5 events</b></td><td class="n"><b>0.189</b> (La Palma alone: 0.223)</td></tr>
+</table>
+<p>Our five events are much sharper than the rest. The Turkey (0.011) and Morocco (0.009) post photos are the <b>most blurry</b> in the pool. But their pre photos are BRIGHT tiles, which are 3 to 9 times sharper.</p>
+
+<h3>Building size in the photo</h3>
+<p>How many pixels does one building cover? (middle value)</p>
+<ul>
+  <li>In the pool: <b>1,030 pixels</b>. In all of BRIGHT: 945 pixels.</li>
+  <li>In our five events: <b>471 pixels</b>. La Palma: 635 pixels (about 57 m²). Goma: 422 pixels (about 47 m²).</li>
+</ul>
+<p>So in our five events, buildings look <b>small</b> in the photo.</p>
+
+<h2><span class="num">4</span>Brightness and color</h2>
+<p>Our five BRIGHT events look the <b>most different</b> from the photos the model learns from and is tested on. They are darker, they have less color, and they are sharper. Their difference from pool post photos is 0.11 bits (0 means the same, 1 means totally different).</p>
+<figure>
+  <figcaption>Our five BRIGHT events are darker than pool post photos: pixel middle 60 vs 84</figcaption>
+  <div class="figsub">Share of pixels at each brightness. Difference from pool post photos: 0.11 bits (our 5 events), 0.07 bits (all 11 events).</div>
+  {{CHART_LUM}}
+  <div class="source">Source: dm3_bright_optical_eda.py · brightness of non-black pixels, over 6,443 pool post photos, 3,395 BRIGHT pre tiles and the 1,285 tiles of our five events · bins of 8 brightness levels</div>
+</figure>
+<p>Most of this gap comes from La Palma. Volcano ground is dark (its middle photo brightness is 60). But DisasterM3's own events already go from 61 (Hurricane Florence) to 130 (Maui), so dark photos are not new to the model.</p>
+
+<div class="box blue">
+<p><b>Two ways to measure brightness.</b> This report uses two numbers, and they are not the same thing: <span class="fixed">fixed</span></p>
+<ul>
+  <li><b>Pixel middle: 60 vs 84.</b> We put all the pixels of a group together, then take the middle value.</li>
+  <li><b>Photo middle: 66 vs 89.</b> We find each photo's average brightness first, then take the middle of those.</li>
+</ul>
+</div>
+
+<ul>
+  <li><b>Pre vs post inside DisasterM3.</b> If we put all pre photos together and all post photos together, they look almost the same (0.002 bits). But one pair at a time, they differ: the middle difference is 0.057 bits, and 18% of pairs differ by more than 0.2 bits. The reasons are flood water, burn marks, another satellite or another season.</li>
+  <li><b>Color.</b> The middle color strength (saturation) is 0.30 for pool post photos and 0.21 for our five events. The photo middle brightness is 89 vs 66.</li>
+  <li><b>Black empty areas (no-data).</b> 10.3% of pool photos and <b>16.2%</b> of BRIGHT tiles (549 of 3,395) are more than 10% black. <span class="fixed">fixed</span> The worst BRIGHT events are Bata and Goma (28% of their tiles each), Marshall (27%) and Derna (26%).</li>
+  <li><b>Cloud, haze and smoke.</b> 139 pool <b>post</b> photos are more than 20% covered by bright, colorless areas (cloud, haze or smoke). Only 15 pre photos are. So bad weather on the disaster day hits the post photos most, and the model reads the post photos.</li>
+</ul>
+
+<h2><span class="num">5</span>Do pre and post photos line up?</h2>
+<p>In half of the pairs we could measure, the post photo is moved by <b>more than 2 pixels</b> from the pre photo (middle value 2.1 pixels). The paper says the pairs are "strictly aligned". That is not true. How far they move depends on the event.</p>
+<figure>
+  <figcaption>52% of the DisasterM3 color pairs we could measure are moved by more than 2 pixels</figcaption>
+  <div class="figsub">Shift between pre and post photo, for pairs with a reliable measurement. Method: phase correlation on pieces of 256 pixels.</div>
+  {{CHART_SHIFT}}
+  <div class="source">Source: dm3_bright_optical_eda.py · 2,966 of DisasterM3's 7,159 color pairs with a reliable shift (at least 4 pieces agree within 1.5 pixels)</div>
+</figure>
+<ul>
+  <li><b>By event.</b> Portugal wildfire pairs are almost right (0.8 pixels). Hurricane Harvey is moved 7.1 pixels, Turkey scene 7 is moved 10.5 pixels and Morocco 18.7 pixels.</li>
+  <li><b>How many we could measure.</b> Only 2,966 of 7,159 pairs (41%). In the other pairs, real change (broken buildings), cloud or black areas stop the two photos from matching. 47 pairs have no usable piece at all.</li>
+  <li><b>Worst cases.</b> <code>turkey_earthquake1</code> pairs 507, 516 and 522 are moved 40–56 pixels. <code>hurricane_florence</code> pairs 107, 150, 427 and 476 are moved 26–31 pixels.</li>
+  <li><b>Who is hurt.</b> Our champion model reads <b>only the post photo</b>, so this problem does not hurt it. A model that reads both photos (Siamese or change detection) must <b>line the photos up first</b>, or learn with shifted copies.</li>
+</ul>
+
+<h2><span class="num">6</span>Labels: how many of each class</h2>
+<p>Where the model is tested, destroyed buildings are <b>very few</b>: only 3.6% of building pixels in the test set are destroyed, and 66.5% of test photos have no destroyed pixel at all.</p>
+<figure>
+  <figcaption>Our five BRIGHT events are 21% destroyed, but we train on them as intact</figcaption>
+  <div class="figsub">Damage class as a share of building pixels. The test set is 3.6% destroyed.</div>
+  {{CHART_LABELS}}
+  <div class="source">Source: dm3_bright_optical_eda.py · 4-class maps of the 6,443 pool photos (merged as the notebooks do) and the 4,246 BRIGHT label maps · BRIGHT paper Fig. 5d</div>
+</figure>
+<p>BRIGHT's labels match its paper (14.1% building pixels; 82.7 / 10.7 / 6.6%). So the <b>labels are fine</b>. The problem is the <b>photo</b>: our pipeline sees only the "before" view, when every building still stands. Also, 80.9% of our tiles have no destroyed pixel, so the destroyed buildings sit in a few tiles only.</p>
+<ul>
+  <li><b>The merge is clean.</b> Our notebooks join three masks (intact, damaged, destroyed) into one map. No pixel is in two masks, and every mask holds only 0 or 255. So the order of joining does not matter.</li>
+  <li><b>Big differences between events.</b> Inside the pool, the destroyed share of building pixels goes from 0.07% (Turkey scene 0) to 63% (Maui).</li>
+  <li><b>Counting buildings.</b> The pool has 249,623 buildings (middle size 1,030 pixels). BRIGHT's maps have 211,318, but its paper says 384,596. The reason: buildings that touch are counted as one. Example: in Turkey we count 66,055, the paper says 135,033.</li>
+  <li><b>Empty tiles.</b> 839 BRIGHT tiles (19.8%) have no building at all. 315 of them are in our five events (24.5% of their tiles). No pool photo is empty.</li>
+  <li><b>Roads.</b> Pool road pixels are 92.0% intact, 6.6% flooded and 1.4% covered by debris. Our segmentation model does not use roads.</li>
+</ul>
+
+<h2><span class="num">7</span>Events that are in both datasets</h2>
+<p>All 14 BRIGHT events are also in DisasterM3. But only <b>6</b> of them reach the pool, and 3 of those 6 (Turkey, Morocco, Derna) use <b>exact copies</b> of BRIGHT pre tiles.</p>
+<table>
+  <tr><th>BRIGHT event</th><th>Name in DisasterM3</th><th class="n">Pool pairs<br>(learning / test)</th><th class="n">SAR pairs</th><th>BRIGHT pre tiles with an exact copy in DisasterM3</th></tr>
+  <tr><td>Turkey earthquake</td><td><code>turkey_earthquake0</code>, 1, 3, 4, 5, 7 (6 names) <span class="fixed">fixed</span></td><td class="n">557 / 64</td><td class="n">580</td><td>583 of 1,114; 579 are pool pre photos</td></tr>
+  <tr><td>Morocco earthquake</td><td><code>morocco_earthquake</code>, <code>morocco_earthquake1</code>, <code>morroco_earthquake1</code></td><td class="n">58 / 3</td><td class="n">453</td><td>428 of 567; 61 are pool pre photos</td></tr>
+  <tr><td>Derna flood</td><td><code>libya_flood</code></td><td class="n">43 / 4</td><td class="n">51</td><td>52 of 124; 47 are pool pre photos</td></tr>
+  <tr><td>Beirut explosion</td><td><code>beriut_explosion</code></td><td class="n">23 / 4</td><td class="n">27</td><td>0 of 133</td></tr>
+  <tr><td>Bata explosion</td><td><code>bata_explosion</code></td><td class="n">23 / 3</td><td class="n">26</td><td>0 of 107</td></tr>
+  <tr><td>Maui wildfire</td><td><code>hawaii_wildfire</code></td><td class="n">14 / 1</td><td class="n">9</td><td>0 of 65</td></tr>
+  <tr><td><b>La Palma volcano</b></td><td><code>la_palma_volcano</code>, <code>spain_volcano</code></td><td class="n">0 / 0</td><td class="n">1,652</td><td>921 of 933</td></tr>
+  <tr><td><b>Goma volcano</b></td><td><code>rwanda_volcano</code></td><td class="n">0 / 0</td><td class="n">93</td><td>93 of 123</td></tr>
+  <tr><td><b>Marshall wildfire (Boulder)</b></td><td><code>marshall_wildfire</code></td><td class="n">0 / 0</td><td class="n">17</td><td>17 of 77</td></tr>
+  <tr><td><b>Les Cayes earthquake</b></td><td><code>haiti_earthquake</code></td><td class="n">0 / 0</td><td class="n">8</td><td>8 of 73</td></tr>
+  <tr><td><b>Noto earthquake</b></td><td><code>noto_earthquake</code> (Bench only)</td><td class="n">0 / 0</td><td class="n">0</td><td>0 of 79</td></tr>
+  <tr><td>Ukraine conflict</td><td><code>ukraine_conflict</code></td><td class="n">0 / 0</td><td class="n">413</td><td>cannot check: no pre tiles on our computer</td></tr>
+  <tr><td>Acapulco hurricane</td><td><code>mexico_hurricane</code></td><td class="n">0 / 0</td><td class="n">112</td><td>cannot check: no pre tiles on our computer</td></tr>
+  <tr><td>Kyaukpyu cyclone</td><td><code>myanmar_hurricane</code></td><td class="n">0 / 0</td><td class="n">96</td><td>cannot check: no pre tiles on our computer</td></tr>
+</table>
+<p class="muted" style="font-size:9pt">Bold: our five training events.</p>
+<ul>
+  <li><b>Our five events cannot leak.</b> None of their tiles is in the pool. Their copies in DisasterM3 are only SAR pairs and Bench masks. Two checks count these copies in two ways: <span class="fixed">fixed</span>
+    <ul>
+      <li><b>1,039 tiles</b> have an exact pixel copy in DisasterM3 (the last column of the table: 921 + 93 + 17 + 8 + 0).</li>
+      <li><b>1,165 tiles</b> are found by the leak check <code>bright_dm3_dedup.py</code>, which also matches tiles by file name and building mask.</li>
+    </ul>
+    Both counts give the same answer: <b>none</b> of these tiles is in the pool.</li>
+  <li><b>Turkey, Morocco and Libya would leak.</b> 66 test pairs (59 Turkey, 4 Libya, 3 Morocco) use a BRIGHT tile as their pre photo. If these tiles go into learning, the model sees test photos. So they <b>must stay out of training</b>.</li>
+</ul>
+<figure>
+  <figcaption>BRIGHT adds 1,056 volcano tiles to learning, but the test set has only 8 volcano pairs</figcaption>
+  <div class="figsub">Learning photos by disaster type, after adding our five BRIGHT events. Right column: test pairs of each type.</div>
+  {{CHART_HAZARD}}
+  <div class="source">Source: dm3_bright_optical_eda.py · DisasterM3 pool learning set (5,798 pairs) and test set (645) · BRIGHT pre tiles of La Palma, Goma, Les Cayes, Marshall and Noto (1,285)</div>
+</figure>
+<p>Our five events add data almost only where the test <b>looks least</b>: 1,056 of their 1,285 tiles are volcano photos, and volcano has only 8 of the 645 test pairs.</p>
+<p><b>The same photos twice inside DisasterM3.</b> <code>la_palma_volcano</code> and <code>spain_volcano</code> hold the same La Palma pairs two times: 1,456 identical files, all in SAR pairs. <code>socal_fire</code> and <code>woolsey_fire</code> share 264 identical pre photos inside the pool. The next section shows what this does to the test set.</p>
+
+<h2><span class="num">8</span>Checking the learning / test split</h2>
+<p>The 645-pair test set looks like the learning set: similar events and similar labels. But 40 test pairs (6.2%) show <b>places that are also in the learning set</b>, and they hold 8.6% of the test set's destroyed pixels.</p>
+<table class="keep" style="width:75%">
+  <tr><th>Measure</th><th class="n">Learning</th><th class="n">Test</th></tr>
+  <tr><td>Pairs</td><td class="n">5,798</td><td class="n">645</td></tr>
+  <tr><td>From xBD events</td><td class="n">87.2%</td><td class="n">86.8%</td></tr>
+  <tr><td>Building pixels, out of all pixels</td><td class="n">7.21%</td><td class="n">7.45%</td></tr>
+  <tr><td>Damaged, out of building pixels</td><td class="n">14.67%</td><td class="n">12.63%</td></tr>
+  <tr><td>Destroyed, out of building pixels</td><td class="n">4.63%</td><td class="n">3.59%</td></tr>
+  <tr><td>Photos with no destroyed pixel</td><td class="n">62.6%</td><td class="n">66.5%</td></tr>
+</table>
+<ul>
+  <li><b>How the leak happens.</b> <code>socal_fire</code> and <code>woolsey_fire</code> are two names for the same 264 pre photos. The random split put 40 of them in the test set and their <b>twin</b> in the learning set. The twins are very alike:
+    <ul>
+      <li>the pre photo is exactly the same;</li>
+      <li>the post photos are 88% alike (correlation r = 0.88, middle value);</li>
+      <li>the building masks overlap at IoU 0.72;</li>
+      <li>97% of the shared building pixels have the same damage class.</li>
+    </ul></li>
+  <li><b>Why a name check misses it.</b> No test file has the same name as a learning file. Only the <b>pixels</b> match.</li>
+  <li><b>What it does to the score.</b> The test set has 1,808,111 destroyed pixels, and 155,812 of them are in these 40 pairs. So the 645-pair score is <b>a little too good</b>: the model gets points for remembering the twins. Report the Destroyed IoU on the <b>605 clean pairs</b> next to the 645 score. The list of the 40 pairs is in <code>val_train_leaks.csv</code>.</li>
+</ul>
+<p>Every test event also appears in the learning set. This is normal for a random split. Tiles that sit next to each other on the ground could also be split between learning and test. But DisasterM3 photos have no location, so we cannot check this.</p>
+
+<h2><span class="num">9</span>Problems in the data</h2>
+<p>We found 11 problems. <b>Only the first one</b> makes the test score wrong. The others change counts, filters or how we prepare photos.</p>
+<table>
+  <tr><th style="width:3%">#</th><th style="width:27%">Problem</th><th style="width:33%">How many</th><th>Effect on our work</th></tr>
+  <tr><td>1</td><td>Same place in learning and test (<code>socal_fire</code> = <code>woolsey_fire</code>)</td><td>40 test pairs, 8.6% of test destroyed pixels</td><td>The 645-pair Destroyed IoU looks <b>too good</b></td></tr>
+  <tr><td>2</td><td>Pre and post photos do not line up</td><td>52% of 2,966 measured pairs over 2 px; 10% over 5 px; worst 55.6 px</td><td>None for the post-only champion. A pre+post model must handle it.</td></tr>
+  <tr><td>3</td><td>More than 10% of the tile is black</td><td>10.3% of pool photos, 16.2% of BRIGHT tiles <span class="fixed">fixed</span></td><td>Wasted crops. Brightness fixing per photo goes wrong.</td></tr>
+  <tr><td>4</td><td>Blurry, stretched post photos</td><td>Turkey posts have 3 times less fine detail than their pre tiles; Morocco 9 times less</td><td>Blurry post photos next to sharp 0.30 m pre tiles</td></tr>
+  <tr><td>5</td><td>Cloud, haze or smoke over 20% of the tile</td><td>139 pool post photos, 15 pool pre photos</td><td>It hides the damage in the photo the model reads</td></tr>
+  <tr><td>6</td><td>SAR files without "sar" in the name</td><td>2,584 of 3,537</td><td>Filters by name let SAR into color data</td></tr>
+  <tr><td>7</td><td>La Palma saved under two names (<code>la_palma_volcano</code> = <code>spain_volcano</code>)</td><td>1,456 identical files</td><td>La Palma is counted twice in DisasterM3 numbers</td></tr>
+  <tr><td>8</td><td>Wrong or mixed spelling of event names</td><td><code>beriut</code>, <code>morroco</code>; Morocco under 3 names, Turkey under 6</td><td>Grouping events by file name is wrong without a name map</td></tr>
+  <tr><td>9</td><td>Files not in any JSON list</td><td>2,066</td><td>Loaders that read the list never see them</td></tr>
+  <tr><td>10</td><td>BRIGHT tiles with no building</td><td>839 of 4,246; 315 of our 1,285</td><td>Learning tiles with only background</td></tr>
+  <tr><td>11</td><td>The papers give the wrong resolution</td><td>BRIGHT Table 2: 6 of 14 events (and Noto a little). DisasterM3: says 0.8 m, its BRIGHT copies are 0.30 m.</td><td>Plans based on the papers' numbers will be wrong</td></tr>
+</table>
+<p>Also: 8 pre photos are more than 90% black, but none of them is in the pool.</p>
+
+<h2><span class="num">10</span>What to do</h2>
+<p class="lead"><b>Fix the leak first.</b> Adding our BRIGHT tiles is safe, but <b>do not expect</b> it to raise the Destroyed score.</p>
+<ol>
+  <li><b>Report the score two times.</b> Keep the score on all 645 test pairs, so we can compare with the old runs R1–R6. Also report the Destroyed IoU on the <b>605 clean pairs</b> (the pairs not in <code>val_train_leaks.csv</code>). If we ever make a new split, group the pairs by the fingerprint (hash) of the pre photo, so twins always stay on the same side.</li>
+  <li><b>Keep BRIGHT Turkey, Morocco and Libya out of training.</b> 66 test pairs use these tiles as pre photos. Our five events are fine: none of their tiles is in the pool.</li>
+  <li><b>Expect little change from our five events.</b> They add "before" photos with buildings labeled intact. 82% of them are volcano, and the test set has only 8 volcano pairs. Their labels mark 21% of building pixels as destroyed, but there is no color "after" photo of these events on our computer. The only one anywhere is Noto: 68 photos in DisasterM3 Bench.</li>
+  <li><b>Make the photos look alike before mixing.</b> Our five events are darker (photo middle 66 vs 89), sharper, and their buildings are smaller (471 vs 1,030 pixels). <span class="fixed">fixed</span>
+    <ul>
+      <li>Fix the brightness of each photo by itself (per-image normalization).</li>
+      <li>Add blur and color changes during learning (augmentation).</li>
+      <li>Think about making these photos <b>1.5 times bigger</b>. The buildings are about 2.2 times smaller in area, and 1.5 × 1.5 = 2.25, so this makes the sizes match.</li>
+    </ul></li>
+  <li><b>Find SAR by tag or pixels, never by file name.</b> Stop using the name-based SAR check in <code>dm3_bright_audit.py</code> and <code>dm3_vs_bright_compare.py</code>.</li>
+  <li><b>Skip crops that are mostly black.</b> 10–16% of tiles are more than 10% black. When we cut a random crop, we throw it away if more than half of it is black.</li>
+  <li><b>Line up pairs before any pre+post model.</b> The champion reads only post photos. But a Siamese model would see a middle shift of 2 pixels, and more than 5 pixels in 1 of every 10 pairs.</li>
+  <li><b>Take resolution from the file tags, not from the papers.</b> BRIGHT's Table 2 is wrong for 6 events. DisasterM3's BRIGHT copies are 0.30 m, not 0.8 m.</li>
+</ol>
+
+<h2><span class="num">11</span>How to make every number again</h2>
+<p>Two commands make every number in this report again. They take about 35 minutes on a laptop with 8 GB of memory.</p>
+<pre>cd Essential_task_delegation/BRIGHT_DisasterM3_Integration
+python dm3_bright_optical_eda.py   # the main check; results go to data/dm3_bright_optical_eda/
+python bright_dm3_dedup.py         # checks every BRIGHT tile against the pool</pre>
+<table>
+  <tr><th style="width:38%">Output file</th><th>One row is</th></tr>
+  <tr><td><code>summary.json</code></td><td>every number in this report</td></tr>
+  <tr><td><code>dm3_images.csv</code></td><td>one DisasterM3 Instruct photo: pre or post, event, tag, color or SAR by pixels, brightness, fingerprint (md5), split</td></tr>
+  <tr><td><code>bright_pre_tiles.csv</code></td><td>one BRIGHT pre tile: resolution, brightness, fingerprint</td></tr>
+  <tr><td><code>bright_targets.csv</code></td><td>one BRIGHT label map: pixels of each class, buildings, resolution</td></tr>
+  <tr><td><code>dm3_pool_labels.csv</code></td><td>one pool photo: pixels of each class, buildings, road pixels</td></tr>
+  <tr><td><code>dm3_optical_pair_registration.csv</code></td><td>one color pair: shift, how many pieces agree, can we trust it</td></tr>
+  <tr><td><code>dm3_pool_pairs_radiometry.csv</code></td><td>one pool pair: pre and post brightness, color, difference</td></tr>
+  <tr><td><code>dm3_events.csv</code></td><td>one DisasterM3 event name: disaster type, where it came from, counts</td></tr>
+  <tr><td><code>val_train_leaks.csv</code></td><td>one leaked test pair: its twin in the learning set, and how alike they are</td></tr>
+</table>
+
+<div class="keep">
+<h3>What the measures mean</h3>
+<ul>
+  <li><b>High-frequency share (sharpness):</b> how much fine detail is in the middle 512 × 512 pixels of a photo (the power between half and full Nyquist frequency). Blurry or stretched photos score near 0.</li>
+  <li><b>JS divergence (difference in bits):</b> how different two brightness patterns are. 0 means the same, 1 means totally different.</li>
+  <li><b>Reliable shift:</b> we cut both photos into pieces of 256 pixels and measure how far each piece moved (phase correlation). We trust the result only if at least 4 pieces give a clear signal (peak 0.1 or more) and agree within 1.5 pixels.</li>
+  <li><b>Building count (components):</b> a group of building pixels that touch each other. Buildings that touch are counted as one, so busy areas get <b>too few</b>.</li>
+</ul>
+</div>
+
+<!-- ============================== PART 2 ============================== -->
+<div class="page-break"></div>
+<h1 style="font-size:21pt">Part 2 — Mistakes in the older PDF</h1>
+<p>The older PDF (<i>EO Data Audit &amp; Exploratory Data Analysis: DisasterM3 vs. BRIGHT</i>, 4 pages) copied the score tables from the papers <b>correctly</b>. But <b>most of its data numbers are wrong</b>, or they do not match the files on our computer.</p>
+<table>
+  <tr><th style="width:31%">The older PDF said</th><th style="width:17%">Verdict</th><th>The truth (measured, unless we say "paper")</th></tr>
+  <tr><td>Cover: "4,246 BRIGHT pre-event EO tiles"</td><td class="bad">Wrong for the release</td><td>3,395 color pre tiles. The other 851 (Ukraine, Myanmar, Mexico) are Google Earth photos. You must download them yourself with <code>aoi_reference_kmz.zip</code> and BRIGHT's guide.</td></tr>
+  <tr><td>Cover: BRIGHT "0.3–1.0 m GSD"</td><td class="bad">Wrong</td><td>0.2–0.6 m in the file tags</td></tr>
+  <tr><td>Cover: "22,214 DisasterM3 EO images (0.8 m)"</td><td class="bad">Number from the paper; 0.8 m wrong</td><td>On our computer: 17,451 color photos (the paper says 17,190). Its 2,828 BRIGHT copies are 0.30 m.</td></tr>
+  <tr><td>Cover: "11,107 pure EO bi-temporal pairs"</td><td class="bad">Wrong</td><td>The older PDF's own math gives 17,440 / 2 = 8,720. The JSON lists 7,159 color pairs (Instruct) + 2,199 (Bench) = 9,358.</td></tr>
+  <tr><td>Cover: "384,596 audited building footprints"</td><td class="bad">Paper number, not checked</td><td>The paper's own rows add up to 358,340. The label maps have 211,318 building groups (touching buildings count as one).</td></tr>
+  <tr><td>§1: BRIGHT "5-event T1+T2 EO subset"</td><td class="bad">Not in the release</td><td>Used only in one experiment in the BRIGHT paper (§4.4). All 4,246 released post tiles are SAR.</td></tr>
+  <tr><td>§1: DisasterM3 "all scenes resampled to 0.80 m"</td><td class="bad">Wrong</td><td>2,828 DisasterM3 photos are exact BRIGHT copies at 0.30 m.</td></tr>
+  <tr><td>§1: DisasterM3 "georeferenced to 0.8 m grid"</td><td class="bad">Wrong</td><td>DisasterM3 photos have no location saved in them.</td></tr>
+  <tr><td>§1, §3: "xBD 15 + BRIGHT 11 + 10 new events (incl. Nepal flooding)"</td><td class="bad">Wrong</td><td>19 xBD + all 14 BRIGHT (two renamed) + 3 new: Kalehe, Shovi, Hurricane Ian. Nepal flooding is an xBD event.</td></tr>
+  <tr><td>§1: DisasterM3 "instance masks"</td><td class="bad">Not exact</td><td>One black-and-white (0/255) mask per class and photo. Single buildings can only be found by grouping touching pixels.</td></tr>
+  <tr><td>§2: resolution (GSD) column</td><td class="bad">Wrong for 6 of 14 events, a little off for Noto <span class="fixed">fixed</span></td><td>Beirut 0.50 (not 1.00), Ukraine 0.35–0.47 (not 0.60), Myanmar 0.35 (not 0.60), Maui 0.38 (not 0.60), Morocco 0.31 (not 0.35–0.40), Acapulco 0.20–0.30 (not 0.35–0.80); a little off: Noto 0.47 (not 0.50)</td></tr>
+  <tr><td>§2: color tiles for Ukraine 513, Myanmar 126, Acapulco 212</td><td class="bad">Not released</td><td>0 in <code>pre-event.zip</code>. DisasterM3 has 410, 96 and 112 of them, with BRIGHT's labels.</td></tr>
+  <tr><td>§2: "Reg. RMSE" column</td><td class="bad">This is SAR content</td><td>It is about lining up color photos with SAR (BRIGHT Table C1). For color pre/post pairs in DisasterM3: 52% of measured pairs are moved more than 2 pixels.</td></tr>
+  <tr><td>§2: "5 events (488 tiles)" with post-event color photos</td><td class="bad">Wrong sum, and not released</td><td>133 + 107 + 65 + 124 + 79 = 508 tiles. No color post photo is released.</td></tr>
+  <tr><td>§3: BRIGHT tiles "downsampled to 0.80 m", a 2.28–2.67 times loss</td><td class="bad">The idea is wrong</td><td>DisasterM3 keeps them as exact copies at 0.30 m (La Palma, Goma, Les Cayes, Marshall, Turkey, Morocco, Derna).</td></tr>
+  <tr><td>§4: BRIGHT 85.9 / 14.1%, 6.1 : 1 (paper about 7 : 1)</td><td class="ok">Right</td><td>14.14% building pixels, 6.07 : 1</td></tr>
+  <tr><td>§4: BRIGHT 82.8 / 10.7 / 6.5%</td><td class="ok">Right</td><td>82.7 / 10.7 / 6.6%</td></tr>
+  <tr><td>§4: DisasterM3 92.85 / 1.81 / 5.34%, "damaged collapses 5.9 times"</td><td class="bad">The masks say otherwise</td><td>Pool: 81.0 / 14.5 / 4.5% of building pixels (5.86 / 1.05 / 0.33% of all pixels, as in our Integration Plan). DisasterM3 actually has <b>more</b> damaged than BRIGHT.</td></tr>
+  <tr><td>§4: roads 79.44 / 12.94 / 7.62%</td><td class="muted">Paper number</td><td>Pool road pixels: 92.0 / 6.6 / 1.4%</td></tr>
+  <tr><td>§4: 27,074 vs 26,988 "due to 86 multi-hazard tiles"</td><td class="bad">No proof</td><td>The paper gives no reason. 86 is only the difference between the two numbers.</td></tr>
+  <tr><td>§4: photo counts by disaster type (6,750 fire …)</td><td class="ok">Right (paper Fig. 2)</td><td>But they mix color + SAR, and Instruct + Bench. Our color pool only: fire 2,547, hurricane 1,670, flooding 886, earthquake 682, tornado 375, volcano 119, tsunami 83, explosion 53, landslide 28, conflict 0.</td></tr>
+  <tr><td>§5A: BRIGHT Table 7 gains (F1 68.71 → 73.59 …)</td><td class="bad">Numbers right, but SAR</td><td>Table 7 uses SAR post pictures, so these are color + SAR results, not color only.</td></tr>
+  <tr><td>§6: BRIGHT Table 8, DisasterM3 Tables 2, 3, 9</td><td class="ok">Right</td><td>Every number matches the papers. One label is wrong: the BRIGHT rows put "Intact IoU" under "Counting".</td></tr>
+  <tr><td>§7: +3.80 mIoU, +8.32 Destroyed IoU, +5.7 mIoU, +7.9 Building IoU, 5.4 times fewer parameters</td><td class="ok">Right</td><td>Checked against BRIGHT Table 8 and DisasterM3 Table 3.</td></tr>
+  <tr><td>Pages 2–4</td><td class="bad">Text is cut</td><td>Sections 3, 5A and 7 stop in the middle of a sentence.</td></tr>
+</table>
+
+<h3>What the older PDF did not have</h3>
+<ul>
+  <li>The test-set leak: 40 pairs whose <code>socal_fire</code> / <code>woolsey_fire</code> twins are in the learning set, with 8.6% of the test destroyed pixels.</li>
+  <li>All 14 BRIGHT events are inside DisasterM3, and BRIGHT's Turkey, Morocco and Libya tiles are the pre photos of 66 test pairs.</li>
+  <li>73% of DisasterM3's SAR post files have no "sar" in the name.</li>
+  <li>Pre and post photos do not line up, and the BRIGHT photos look different.</li>
+</ul>
+
+<h3>How to fix the older PDF</h3>
+<ol>
+  <li>Replace sections 1–5 with the numbers we measured. Put "the paper says" and "we measured" in two separate columns.</li>
+  <li>Keep sections 6–7, and fix the wrong column label.</li>
+  <li>Remove the SAR content (Table 7, Table C1), or label it "color + SAR".</li>
+  <li>Next to every number from a paper, write its table or figure number.</li>
+  <li>Export the PDF again, so no section is cut.</li>
+</ol>
+
+<!-- ============================== CHANGES ============================== -->
+<div class="box blue" style="margin-top:18pt">
+<h3>What we fixed in this version (Oct 22, 2026)</h3>
+<p>We checked every number against <code>summary.json</code> and <code>bright_dm3_dedup_report.json</code>. These places changed from the Oct 19 version. They are marked <span class="fixed">fixed</span> in the text.</p>
+<table style="background:#fff">
+  <tr><th style="width:24%">Where</th><th style="width:30%">Oct 19 version</th><th>This version</th></tr>
+  <tr><td>§1, Pairs</td><td>7,160 color and 2,648 SAR pairs, 9,117 pre photos</td><td>7,159 color and 2,647 SAR pairs, 9,116 pre photos. The data and the rest of the report already used these numbers.</td></tr>
+  <tr><td>§4 and §9, black areas</td><td>15.9% of BRIGHT tiles</td><td>16.2% (549 of 3,395 tiles)</td></tr>
+  <tr><td>§3 and Part 2, Morocco resolution</td><td>0.30 m in the chart, 0.31 m in Part 2</td><td>0.31 m in both places (the files say 0.305 m)</td></tr>
+  <tr><td>§3 and Part 2, Noto resolution</td><td>Part 1 called it a match; Part 2 called it wrong ("7 of 14")</td><td>The same rule in both parts: 6 events are clearly wrong, and Noto is a little off (0.47 vs 0.50 m)</td></tr>
+  <tr><td>§4 and §10, brightness</td><td>"pixel median 60 vs 84" and "median luminance 66 vs 89" with no explanation</td><td>Two clear names: <b>pixel middle</b> (60 vs 84) and <b>photo middle</b> (66 vs 89)</td></tr>
+  <tr><td>§7, our five events in DisasterM3</td><td>Said 1,165 tiles, while the table adds up to 1,039, with no reason given</td><td>Both counts explained: 1,039 exact pixel copies; 1,165 found by the leak check, which also matches names and masks</td></tr>
+  <tr><td>§7, Turkey names</td><td><code>turkey_earthquake0</code> – 7</td><td>6 names: 0, 1, 3, 4, 5, 7. There is no 2, and 6 is only in Bench.</td></tr>
+</table>
+<p>No conclusion changed. The leak, the five-event result and the eight recommendations are the same.</p>
+</div>
+
+</body>
+</html>

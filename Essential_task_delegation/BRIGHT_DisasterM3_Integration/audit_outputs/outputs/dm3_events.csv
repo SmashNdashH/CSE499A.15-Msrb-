@@ -1,0 +1,46 @@
+dataset,event,hazard,origin,bright_event,optical_pre,optical_post,sar_post,pool_train,pool_val,bench_optical_post
+DisasterM3,bata_explosion,explosion,BRIGHT event,bata-explosion,26,26,26,23,3,4
+DisasterM3,beriut_explosion,explosion,BRIGHT event,beirut-explosion,28,28,27,23,4,60
+DisasterM3,haiti_earthquake,earthquake,BRIGHT event,haiti-earthquake,8,0,8,0,0,0
+DisasterM3,hawaii_wildfire,fire,BRIGHT event,hawaii-wildfire,27,27,9,14,1,33
+DisasterM3,hurricane_florence,hurricane,xBD,,473,473,0,396,57,60
+DisasterM3,hurricane_harvey,hurricane,xBD,,443,443,0,385,44,60
+DisasterM3,hurricane_matthew,hurricane,xBD,,330,330,0,290,25,60
+DisasterM3,hurricane_michael,hurricane,xBD,,481,481,0,431,42,60
+DisasterM3,kalehe_flooding,landslide,new in DisasterM3,,22,22,0,10,5,20
+DisasterM3,la_palma_volcano,volcano,BRIGHT event,la_palma-volcano,774,0,779,0,0,0
+DisasterM3,libya_flood,flooding,BRIGHT event,libya-flood,52,178,51,43,4,60
+DisasterM3,lower_puna_volcano,volcano,xBD,,123,123,0,111,8,60
+DisasterM3,marshall_wildfire,fire,BRIGHT event,marshall-wildfire,17,0,17,0,0,0
+DisasterM3,mexico_hurricane,hurricane,BRIGHT event,mexico-hurricane,112,0,112,0,0,0
+DisasterM3,midwest_flooding,flooding,xBD,,350,350,0,296,35,60
+DisasterM3,moore_tornado,tornado,xBD,,162,162,0,145,16,60
+DisasterM3,morocco_earthquake,earthquake,BRIGHT event,morocco-earthquake,191,0,193,0,0,0
+DisasterM3,morocco_earthquake1,earthquake,BRIGHT event,morocco-earthquake,0,0,260,0,0,0
+DisasterM3,morroco_earthquake1,earthquake,BRIGHT event,morocco-earthquake,237,436,0,58,3,0
+DisasterM3,myanmar_hurricane,hurricane,BRIGHT event,myanmar-hurricane,96,0,96,0,0,0
+DisasterM3,nepal_flooding,flooding,xBD,,516,516,0,460,48,60
+DisasterM3,palu_tsunami,tsunami,xBD,,56,56,0,49,7,125
+DisasterM3,pinery_bushfire,fire,xBD,,419,419,0,341,40,60
+DisasterM3,portugal_wildfire,fire,xBD,,915,915,0,784,105,60
+DisasterM3,rwanda_volcano,volcano,BRIGHT event,congo-volcano,93,0,93,0,0,0
+DisasterM3,santa_rosa_wildfire,fire,xBD,,310,310,0,288,20,60
+DisasterM3,shovi_landslide,landslide,new in DisasterM3,,30,30,0,12,1,30
+DisasterM3,socal_fire,fire,xBD,,928,928,0,564,54,60
+DisasterM3,spain_volcano,volcano,BRIGHT event,la_palma-volcano,873,0,873,0,0,0
+DisasterM3,sunda_tsunami,tsunami,xBD,,31,31,0,23,4,44
+DisasterM3,turkey_earthquake0,earthquake,BRIGHT event,turkey-earthquake,135,165,135,117,14,30
+DisasterM3,turkey_earthquake1,earthquake,BRIGHT event,turkey-earthquake,122,128,124,110,12,30
+DisasterM3,turkey_earthquake3,earthquake,BRIGHT event,turkey-earthquake,125,222,125,112,13,30
+DisasterM3,turkey_earthquake4,earthquake,BRIGHT event,turkey-earthquake,62,140,57,54,8,54
+DisasterM3,turkey_earthquake5,earthquake,BRIGHT event,turkey-earthquake,139,139,139,127,12,30
+DisasterM3,turkey_earthquake7,earthquake,BRIGHT event,turkey-earthquake,57,57,0,37,5,60
+DisasterM3,tuscaloosa_tornado,tornado,xBD,,228,228,0,191,23,60
+DisasterM3,ukraine_conflict,conflict,BRIGHT event,ukraine-conflict,413,0,413,0,0,0
+DisasterM3,woolsey_fire,fire,xBD,,342,342,0,304,32,60
+DisasterM3,guatemala_volcano,volcano,xBD,,0,0,0,0,0,27
+DisasterM3,ian_hurricane,hurricane,new in DisasterM3,,0,0,0,0,0,109
+DisasterM3,joplin_tornado,tornado,xBD,,0,0,0,0,0,148
+DisasterM3,mexico_earthquake,earthquake,xBD,,0,0,0,0,0,193
+DisasterM3,noto_earthquake,earthquake,BRIGHT event,noto-earthquake,0,0,0,0,0,68
+DisasterM3,turkey_earthquake6,earthquake,BRIGHT event,turkey-earthquake,0,0,0,0,0,204

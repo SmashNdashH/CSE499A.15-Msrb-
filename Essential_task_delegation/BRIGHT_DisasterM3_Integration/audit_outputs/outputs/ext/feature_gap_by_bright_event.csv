@@ -1,0 +1,12 @@
+bright_event,tiles,our_subset,median_nn_distance,share_beyond_pool_p95,nearest_pool_event,nearest_pool_hazard,nearest_similarity,second_pool_event
+bata-explosion,107,False,0.1875,0.0093,bata_explosion,explosion,0.9382,tuscaloosa_tornado
+beirut-explosion,133,False,0.1711,0.1429,beriut_explosion,explosion,0.9422,turkey_earthquake4
+congo-volcano,123,True,0.2217,0.0488,tuscaloosa_tornado,tornado,0.8983,bata_explosion
+haiti-earthquake,73,True,0.1555,0.0411,bata_explosion,explosion,0.8927,tuscaloosa_tornado
+hawaii-wildfire,65,False,0.2312,0.1077,bata_explosion,explosion,0.8939,tuscaloosa_tornado
+la_palma-volcano,933,True,0.3074,0.4244,turkey_earthquake7,earthquake,0.8351,portugal_wildfire
+libya-flood,124,False,0.2495,0.3065,libya_flood,flooding,0.9159,turkey_earthquake0
+marshall-wildfire,77,True,0.2838,0.1429,turkey_earthquake7,earthquake,0.868,bata_explosion
+morocco-earthquake,567,False,0.2903,0.3316,morroco_earthquake1,earthquake,0.9392,socal_fire
+noto-earthquake,79,True,0.3435,0.5696,santa_rosa_wildfire,fire,0.6997,lower_puna_volcano
+turkey-earthquake,1114,False,0.1804,0.0844,turkey_earthquake4,earthquake,0.9569,turkey_earthquake0

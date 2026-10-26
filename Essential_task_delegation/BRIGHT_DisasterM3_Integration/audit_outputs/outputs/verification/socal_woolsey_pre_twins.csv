@@ -1,0 +1,265 @@
+group,pixel_md5,socal_fire_pre,woolsey_fire_pre,socal_side,woolsey_side,file_bytes_identical,socal_xbd_source
+1,7d44656aa20d20e44ddb408a6fe7ad53,socal_fire_00000007_pre_disaster.png,woolsey_fire_00000604_pre_disaster.png,train,train,True,not in xView2 train or test
+2,a391a8c9f78c9f2f7541c023102a3190,socal_fire_00000011_pre_disaster.png,woolsey_fire_00000616_pre_disaster.png,train,train,True,not in xView2 train or test
+3,ebdd4256bc3b4feee558420e662069de,socal_fire_00000014_pre_disaster.png,woolsey_fire_00000627_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+4,6eeceee63b0d3279ae4a8601582ef35f,socal_fire_00000049_pre_disaster.png,woolsey_fire_00000007_pre_disaster.png,train,train,True,xView2 test (test_pre_00417.png)
+5,a393434b0b000651885634a7f4937e76,socal_fire_00000059_pre_disaster.png,woolsey_fire_00000234_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+6,51b885f00b2346e9633ff3b12651b0e9,socal_fire_00000063_pre_disaster.png,woolsey_fire_00000008_pre_disaster.png,train,train,True,not in xView2 train or test
+7,84b847bd4f3cfa0bb6468c2d9a1795f9,socal_fire_00000069_pre_disaster.png,woolsey_fire_00000261_pre_disaster.png,train,train,True,not in xView2 train or test
+8,826e549979885ad8c40207f3bf94018e,socal_fire_00000080_pre_disaster.png,woolsey_fire_00000054_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+9,d5f6ab9ec73f750bc97dc0d12d699e52,socal_fire_00000081_pre_disaster.png,woolsey_fire_00000017_pre_disaster.png,val,train,True,"xView2 train (tier 1), pixel-identical"
+10,3949bdbab1863458284800443bce85c5,socal_fire_00000082_pre_disaster.png,woolsey_fire_00000014_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+11,e90cff163685d597aa80515bbf4a8b78,socal_fire_00000087_pre_disaster.png,woolsey_fire_00000784_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+12,865325e963c69f58a5f71f1f15e9d8db,socal_fire_00000090_pre_disaster.png,woolsey_fire_00000029_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+13,4cedf42a649cc1bc182a55320f23fd5d,socal_fire_00000098_pre_disaster.png,woolsey_fire_00000793_pre_disaster.png,train,train,True,xView2 test (test_pre_00924.png)
+14,0463fb5171195564986561c02f1b188f,socal_fire_00000102_pre_disaster.png,woolsey_fire_00000076_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+15,68a42785c4e2e69ab089c3beae94d618,socal_fire_00000106_pre_disaster.png,woolsey_fire_00000026_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+16,6e188379076e84bb5de2ebc83c28dc59,socal_fire_00000109_pre_disaster.png,woolsey_fire_00000800_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+17,ecb09a83e61f4fe8ec3b55a18e61796d,socal_fire_00000112_pre_disaster.png,woolsey_fire_00000086_pre_disaster.png,train,train,True,not in xView2 train or test
+18,78908e0f437d441fb7ebcf3dbbfef22d,socal_fire_00000114_pre_disaster.png,woolsey_fire_00000035_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+19,20a03d52220410cf7045c769a294df1f,socal_fire_00000116_pre_disaster.png,woolsey_fire_00000769_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+20,2a96252147bcaeacf23d0009a750bcb4,socal_fire_00000119_pre_disaster.png,woolsey_fire_00000096_pre_disaster.png,train,not in pool,True,not in xView2 train or test
+21,50086639ed949326c06009e85e4698bd,socal_fire_00000124_pre_disaster.png,woolsey_fire_00000041_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+22,9e53b4afaccdb8715bc8cfceb743d84e,socal_fire_00000129_pre_disaster.png,woolsey_fire_00000776_pre_disaster.png,train,train,True,xView2 test (test_pre_00831.png)
+23,8a850739700dd5bea7dd55ae4d1f0354,socal_fire_00000134_pre_disaster.png,woolsey_fire_00000056_pre_disaster.png,train,train,True,not in xView2 train or test
+24,44e29d7881ea8014d28db90455ff578b,socal_fire_00000137_pre_disaster.png,woolsey_fire_00000071_pre_disaster.png,train,train,True,xView2 test (test_pre_00257.png)
+25,efb11e7296dfa388114da3957a983f1b,socal_fire_00000145_pre_disaster.png,woolsey_fire_00000070_pre_disaster.png,train,train,True,xView2 test (test_pre_00315.png)
+26,abce2d93a29915a064bfb65cda74e079,socal_fire_00000154_pre_disaster.png,woolsey_fire_00000083_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+27,69abcacbee9413a2376730eeaef4d6f9,socal_fire_00000155_pre_disaster.png,woolsey_fire_00000790_pre_disaster.png,not in pool,train,True,not in xView2 train or test
+28,333666a61a11cfbbcc484dc597e0f66a,socal_fire_00000156_pre_disaster.png,woolsey_fire_00000830_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+29,a02d7a6bfc90d60e849c5447bf683795,socal_fire_00000158_pre_disaster.png,woolsey_fire_00000129_pre_disaster.png,train,train,True,not in xView2 train or test
+30,d2a93e1260e920220e0b9c7cbc635e61,socal_fire_00000165_pre_disaster.png,woolsey_fire_00000137_pre_disaster.png,train,val,True,not in xView2 train or test
+31,888c7a402d0a58510e62b5811e18a8dd,socal_fire_00000166_pre_disaster.png,woolsey_fire_00000108_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+32,665660df54137dc1a4f56ae011847f03,socal_fire_00000170_pre_disaster.png,woolsey_fire_00000724_pre_disaster.png,train,train,True,xView2 test (test_pre_00735.png)
+33,82dcda84a3d0e64d93a6dafb6be97d4a,socal_fire_00000174_pre_disaster.png,woolsey_fire_00000135_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+34,e7583b6d04b5377a5abf4f8e143390fc,socal_fire_00000179_pre_disaster.png,woolsey_fire_00000732_pre_disaster.png,train,train,True,xView2 test (test_pre_00622.png)
+35,a4d3db0d881bc3bbfd1a2738261620fb,socal_fire_00000180_pre_disaster.png,woolsey_fire_00000847_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+36,9e335fff83239c82ad6f3b0876df9f28,socal_fire_00000183_pre_disaster.png,woolsey_fire_00000152_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+37,6c686a18a1ae18425a9cb435d109ad90,socal_fire_00000188_pre_disaster.png,woolsey_fire_00000739_pre_disaster.png,val,train,True,not in xView2 train or test
+38,1d6c00ef1a6c7fecc2c3f53101906398,socal_fire_00000192_pre_disaster.png,woolsey_fire_00000139_pre_disaster.png,train,train,True,not in xView2 train or test
+39,4ebbe3b9dd2d9fcd3091f2fc4dc38483,socal_fire_00000193_pre_disaster.png,woolsey_fire_00000178_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+40,a3dbc1d1b56a1c3ddb0b0d8b0a551e1c,socal_fire_00000198_pre_disaster.png,woolsey_fire_00000748_pre_disaster.png,train,train,True,xView2 test (test_pre_00612.png)
+41,0fea1b41259de7c9d090a81d585aa81a,socal_fire_00000204_pre_disaster.png,woolsey_fire_00000222_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+42,b7ab619115dd4b1b834803e43f4c9613,socal_fire_00000207_pre_disaster.png,woolsey_fire_00000758_pre_disaster.png,train,val,True,xView2 test (test_pre_00244.png)
+43,4729d6333ff1924bbd357a27c3f34412,socal_fire_00000212_pre_disaster.png,woolsey_fire_00000232_pre_disaster.png,train,train,True,not in xView2 train or test
+44,ebe75787a9851071859ca869fcfa1e05,socal_fire_00000217_pre_disaster.png,woolsey_fire_00000180_pre_disaster.png,train,train,True,xView2 test (test_pre_00266.png)
+45,61434c069cb21090e4ad9cd080239f09,socal_fire_00000218_pre_disaster.png,woolsey_fire_00000517_pre_disaster.png,val,train,True,not in xView2 train or test
+46,fd46f2a2dbb8f82d9a0f60b3b60fcdd8,socal_fire_00000220_pre_disaster.png,woolsey_fire_00000216_pre_disaster.png,val,train,True,"xView2 train (tier 1), pixel-identical"
+47,e506b29de13bbba939b4a090b60a2c20,socal_fire_00000221_pre_disaster.png,woolsey_fire_00000197_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+48,59896df0bae7a0f900acff08bdfc16a8,socal_fire_00000222_pre_disaster.png,woolsey_fire_00000241_pre_disaster.png,val,train,True,"xView2 train (tier 1), pixel-identical"
+49,27c073bae39cdf6fe565d9cacb2e2ba2,socal_fire_00000223_pre_disaster.png,woolsey_fire_00000838_pre_disaster.png,train,train,True,xView2 test (test_pre_00631.png)
+50,e35806f119a41db191336b79c38b4cc2,socal_fire_00000225_pre_disaster.png,woolsey_fire_00000774_pre_disaster.png,train,not in pool,True,not in xView2 train or test
+51,263aa13c35a5fa2c66fd44c5bd8c644d,socal_fire_00000228_pre_disaster.png,woolsey_fire_00000227_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+52,e4da659ec79651b591ce6a209748c983,socal_fire_00000229_pre_disaster.png,woolsey_fire_00000192_pre_disaster.png,train,train,True,xView2 test (test_pre_00755.png)
+53,886a10eb93102ebdd6dca9dc9e8322aa,socal_fire_00000235_pre_disaster.png,woolsey_fire_00000253_pre_disaster.png,val,train,True,xView2 test (test_pre_00122.png)
+54,8109f043522418d10e45d4586fe0fd13,socal_fire_00000237_pre_disaster.png,woolsey_fire_00000843_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+55,0c5c367c6162e695146bdc73bb7fae49,socal_fire_00000241_pre_disaster.png,woolsey_fire_00000203_pre_disaster.png,train,train,True,xView2 test (test_pre_00195.png)
+56,b88b2a9e4b27fe3e5dbc36e1eb6cc3be,socal_fire_00000245_pre_disaster.png,woolsey_fire_00000264_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+57,2d355406645b22360564d9b9b03eecec,socal_fire_00000253_pre_disaster.png,woolsey_fire_00000214_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+58,9f1266efbfa7345700c527a42b64f542,socal_fire_00000255_pre_disaster.png,woolsey_fire_00000298_pre_disaster.png,train,train,True,xView2 test (test_pre_00199.png)
+59,42ddcb9cde77905513dd22958d0971e7,socal_fire_00000263_pre_disaster.png,woolsey_fire_00000427_pre_disaster.png,train,train,True,xView2 test (test_pre_00825.png)
+60,56121a41f0cfee130e13e1913d25a255,socal_fire_00000265_pre_disaster.png,woolsey_fire_00000226_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+61,641b0a885f6c37d22e685f77f3a89958,socal_fire_00000268_pre_disaster.png,woolsey_fire_00000311_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+62,3394a204aa5b54e8bdae522b01c73840,socal_fire_00000275_pre_disaster.png,woolsey_fire_00000441_pre_disaster.png,train,train,True,xView2 test (test_pre_00265.png)
+63,8d074ea81404d8801f9c59ecb7db8a6a,socal_fire_00000276_pre_disaster.png,woolsey_fire_00000237_pre_disaster.png,train,train,True,xView2 test (test_pre_00680.png)
+64,ff3bc130940fbc4c32f244a2cf9230d6,socal_fire_00000279_pre_disaster.png,woolsey_fire_00000324_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+65,e56ed711987f262bd3f625b735a9984f,socal_fire_00000281_pre_disaster.png,woolsey_fire_00000417_pre_disaster.png,train,train,True,not in xView2 train or test
+66,ed403b1c924748ea2fdbf112e37bb128,socal_fire_00000283_pre_disaster.png,woolsey_fire_00000322_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+67,3c67222e793b3f484dff6654c0d43e0a,socal_fire_00000290_pre_disaster.png,woolsey_fire_00000244_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+68,f2ac29f4b2bf48173b7d82f7f4ffd06b,socal_fire_00000300_pre_disaster.png,woolsey_fire_00000461_pre_disaster.png,train,train,True,xView2 test (test_pre_00706.png)
+69,dcfb60f1aa784442010b6c07c3bd0023,socal_fire_00000301_pre_disaster.png,woolsey_fire_00000416_pre_disaster.png,val,train,True,"xView2 train (tier 1), pixel-identical"
+70,16de990ac6fe03297f4665fcdf1c417b,socal_fire_00000302_pre_disaster.png,woolsey_fire_00000332_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+71,0f11cbe9eb6da89545962cd82d244e1c,socal_fire_00000303_pre_disaster.png,woolsey_fire_00000257_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+72,9b6f78bc2a601bd10c9be1d4ef5e057f,socal_fire_00000307_pre_disaster.png,woolsey_fire_00000437_pre_disaster.png,not in pool,train,True,not in xView2 train or test
+73,7050835b8979eb56e1f028e7eed6e5bb,socal_fire_00000312_pre_disaster.png,woolsey_fire_00000472_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+74,f6b989ab42f7800da1f70db33543978a,socal_fire_00000315_pre_disaster.png,woolsey_fire_00000272_pre_disaster.png,train,val,True,not in xView2 train or test
+75,1be3aa7f04769b12b95cdca995f4e87b,socal_fire_00000324_pre_disaster.png,woolsey_fire_00000485_pre_disaster.png,not in pool,val,True,not in xView2 train or test
+76,e1930b0c0b76c27a821fec960bb9122c,socal_fire_00000332_pre_disaster.png,woolsey_fire_00000443_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+77,dc26f1bc45749937f296ce27beab554a,socal_fire_00000334_pre_disaster.png,woolsey_fire_00000504_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+78,f9e0a865a391134f8e97ac916856fa56,socal_fire_00000338_pre_disaster.png,woolsey_fire_00000466_pre_disaster.png,train,train,True,not in xView2 train or test
+79,e88970f1a7c2e3840d9e1466c92af8c4,socal_fire_00000341_pre_disaster.png,woolsey_fire_00000452_pre_disaster.png,val,train,True,"xView2 train (tier 1), pixel-identical"
+80,56682aa8f530ce2a3ee43c03c36f3978,socal_fire_00000348_pre_disaster.png,woolsey_fire_00000475_pre_disaster.png,val,train,True,"xView2 train (tier 1), pixel-identical"
+81,c0648bd70af93844cda42509a5ffac76,socal_fire_00000351_pre_disaster.png,woolsey_fire_00000293_pre_disaster.png,train,train,True,xView2 test (test_pre_00373.png)
+82,76acdab1a2166e33753ee5abac86ebe1,socal_fire_00000356_pre_disaster.png,woolsey_fire_00000488_pre_disaster.png,train,train,True,xView2 test (test_pre_00894.png)
+83,8a61a736dbd80347e4ceac7c5cf7e71c,socal_fire_00000358_pre_disaster.png,woolsey_fire_00000474_pre_disaster.png,train,val,True,"xView2 train (tier 1), pixel-identical"
+84,320ec2f4feaf8bbe2487ddc07719b213,socal_fire_00000360_pre_disaster.png,woolsey_fire_00000307_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+85,f3757199d343638c26682c2e4d4daf6e,socal_fire_00000367_pre_disaster.png,woolsey_fire_00000013_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+86,0df4738f3a8f3df78aae806efe3871bb,socal_fire_00000368_pre_disaster.png,woolsey_fire_00000865_pre_disaster.png,train,train,True,not in xView2 train or test
+87,06ae91060683bf445fd1df6fcd2a5fba,socal_fire_00000369_pre_disaster.png,woolsey_fire_00000313_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+88,9b2e993d89363736045b6e9f18bdeb1e,socal_fire_00000370_pre_disaster.png,woolsey_fire_00000494_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+89,4e68887adcd597fd677216ecadd2308a,socal_fire_00000379_pre_disaster.png,woolsey_fire_00000498_pre_disaster.png,train,val,True,xView2 test (test_pre_00156.png)
+90,e2c2f09478e84f3a3b0a6d60bf05cccc,socal_fire_00000381_pre_disaster.png,woolsey_fire_00000867_pre_disaster.png,train,train,True,xView2 test (test_pre_00378.png)
+91,d7df872fd85cbac49661d9805123df82,socal_fire_00000382_pre_disaster.png,woolsey_fire_00000435_pre_disaster.png,train,val,True,not in xView2 train or test
+92,67c456b9f8e956c0fe2ed34d0f1a4a57,socal_fire_00000387_pre_disaster.png,woolsey_fire_00000030_pre_disaster.png,train,val,True,"xView2 train (tier 1), pixel-identical"
+93,cd2a80e3a33824a6a5aa22627c938b68,socal_fire_00000389_pre_disaster.png,woolsey_fire_00000518_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+94,700010ca09094914133826b8c8414abd,socal_fire_00000391_pre_disaster.png,woolsey_fire_00000039_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+95,34e174bf3ad0bf8523041c053489dbfe,socal_fire_00000396_pre_disaster.png,woolsey_fire_00000869_pre_disaster.png,val,train,True,xView2 test (test_pre_00057.png)
+96,734397116b20934ee2e52ce1d939d9fd,socal_fire_00000399_pre_disaster.png,woolsey_fire_00000529_pre_disaster.png,train,val,True,"xView2 train (tier 1), pixel-identical"
+97,c0a201e5d0d3d1b84dca59d0a20c1c95,socal_fire_00000402_pre_disaster.png,woolsey_fire_00000053_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+98,7addc93e60ce7fe7497ab600904df7ac,socal_fire_00000405_pre_disaster.png,woolsey_fire_00000351_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+99,a0ba8900072711dd73f32afb85fe2933,socal_fire_00000408_pre_disaster.png,woolsey_fire_00000560_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+100,8a992e3a90a69bf9439a02198c69852c,socal_fire_00000409_pre_disaster.png,woolsey_fire_00000871_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+101,f9c57d7d320cded56e5e0312c0765480,socal_fire_00000414_pre_disaster.png,woolsey_fire_00000487_pre_disaster.png,train,train,True,xView2 test (test_pre_00219.png)
+102,2ad76c1b91078f55dd5214b4a0a93e5f,socal_fire_00000417_pre_disaster.png,woolsey_fire_00000573_pre_disaster.png,train,val,True,"xView2 train (tier 1), pixel-identical"
+103,482a572206aaea304315f3dda2350e1b,socal_fire_00000420_pre_disaster.png,woolsey_fire_00000080_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+104,9cd142fdced3b70c2ddb9886b7af0089,socal_fire_00000422_pre_disaster.png,woolsey_fire_00000548_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+105,46826b97b7268fd5d0dc4eb234a2ca00,socal_fire_00000426_pre_disaster.png,woolsey_fire_00000589_pre_disaster.png,train,val,True,xView2 test (test_pre_00790.png)
+106,b1ae5dc5d3c9539c7a34d693e3bff670,socal_fire_00000427_pre_disaster.png,woolsey_fire_00000433_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+107,8f2767ae775beba8059bce4df9d2349f,socal_fire_00000428_pre_disaster.png,woolsey_fire_00000547_pre_disaster.png,train,train,True,not in xView2 train or test
+108,4dbc465532b7411f40c2399e01523b6d,socal_fire_00000429_pre_disaster.png,woolsey_fire_00000134_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+109,486a690c75f003637e5d1c7fbd91259e,socal_fire_00000430_pre_disaster.png,woolsey_fire_00000091_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+110,4182657d475cbb2424ad73066de117f3,socal_fire_00000431_pre_disaster.png,woolsey_fire_00000554_pre_disaster.png,train,train,True,xView2 test (test_pre_00157.png)
+111,d8b4d3daf00ea2d414731e9fed0a6219,socal_fire_00000436_pre_disaster.png,woolsey_fire_00000446_pre_disaster.png,val,train,True,"xView2 train (tier 1), pixel-identical"
+112,cec29a2b6198c6f76543cf60ec0d3f24,socal_fire_00000442_pre_disaster.png,woolsey_fire_00000557_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+113,9be9f3b09aca477063c979f723c79020,socal_fire_00000455_pre_disaster.png,woolsey_fire_00000138_pre_disaster.png,val,train,True,"xView2 train (tier 1), pixel-identical"
+114,4d0bc64350b0106d0c6d82966804f921,socal_fire_00000459_pre_disaster.png,woolsey_fire_00000470_pre_disaster.png,train,train,True,not in xView2 train or test
+115,0df4dfd9281bf36f45eee7ce1af197d6,socal_fire_00000463_pre_disaster.png,woolsey_fire_00000576_pre_disaster.png,train,val,True,not in xView2 train or test
+116,89d8597334bd5059835373ea1c04c2a3,socal_fire_00000470_pre_disaster.png,woolsey_fire_00000610_pre_disaster.png,train,train,True,xView2 test (test_pre_00142.png)
+117,37fbd0c2d41ed48201315f40c536ab6a,socal_fire_00000472_pre_disaster.png,woolsey_fire_00000484_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+118,7e877ea8bf70aca4cd53b72b35d2e587,socal_fire_00000473_pre_disaster.png,woolsey_fire_00000597_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+119,083f2002872d5b9cf0ccf672a67d9fb2,socal_fire_00000480_pre_disaster.png,woolsey_fire_00000611_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+120,2acaa793ab24cdf032f2e5ff166da099,socal_fire_00000482_pre_disaster.png,woolsey_fire_00000500_pre_disaster.png,train,train,True,xView2 test (test_pre_00763.png)
+121,fd5a38d57073a641b14f2c3ec15b7ffe,socal_fire_00000485_pre_disaster.png,woolsey_fire_00000643_pre_disaster.png,train,train,True,xView2 test (test_pre_00216.png)
+122,dd25fbf39489b0767d2257a6fb0d93da,socal_fire_00000489_pre_disaster.png,woolsey_fire_00000580_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+123,017d345bc8d40b87904b75828ee4e30e,socal_fire_00000494_pre_disaster.png,woolsey_fire_00000631_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+124,06689621c8fbac4a06efa1672e2da20f,socal_fire_00000497_pre_disaster.png,woolsey_fire_00000594_pre_disaster.png,val,train,True,"xView2 train (tier 1), pixel-identical"
+125,3611b69f821946a22870039abeac3f27,socal_fire_00000501_pre_disaster.png,woolsey_fire_00000644_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+126,0e04405844d419cc21b271832c0d162e,socal_fire_00000503_pre_disaster.png,woolsey_fire_00000526_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+127,c1d25600eb3ff5e13fd53e297ff94147,socal_fire_00000504_pre_disaster.png,woolsey_fire_00000695_pre_disaster.png,val,train,True,xView2 test (test_pre_00880.png)
+128,4057db85583c27eddc5893b272ceb06d,socal_fire_00000505_pre_disaster.png,woolsey_fire_00000607_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+129,d3793c9c46448b44daef65fd2070bb17,socal_fire_00000510_pre_disaster.png,woolsey_fire_00000085_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+130,340ee23176e33a584a8da10c6c03707f,socal_fire_00000512_pre_disaster.png,woolsey_fire_00000653_pre_disaster.png,train,val,True,not in xView2 train or test
+131,681ed2a7533715f3d82c1540318d52eb,socal_fire_00000514_pre_disaster.png,woolsey_fire_00000706_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+132,1d0e84d0a89fda363d7f71d05df7b527,socal_fire_00000516_pre_disaster.png,woolsey_fire_00000532_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+133,5bd1677a8c801206af11a7790b5f0237,socal_fire_00000521_pre_disaster.png,woolsey_fire_00000685_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+134,6504bfce606debc89cf45a00ef9caa2d,socal_fire_00000522_pre_disaster.png,woolsey_fire_00000101_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+135,e20c258aebf0690c4f5d8f6dd9593caa,socal_fire_00000525_pre_disaster.png,woolsey_fire_00000715_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+136,db7fe226cbae7125f39f4a5c460b6932,socal_fire_00000532_pre_disaster.png,woolsey_fire_00000723_pre_disaster.png,train,train,True,not in xView2 train or test
+137,872075e45078100377528ecb78f84420,socal_fire_00000551_pre_disaster.png,woolsey_fire_00000130_pre_disaster.png,train,train,True,xView2 test (test_pre_00011.png)
+138,50ef74db105d5af1ad5e1a28d6acf3e3,socal_fire_00000561_pre_disaster.png,woolsey_fire_00000248_pre_disaster.png,train,train,True,not in xView2 train or test
+139,7a6eb04cf4912ff1d3d158e842a545f3,socal_fire_00000573_pre_disaster.png,woolsey_fire_00000729_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+140,94d94141195ac600531f624313d3c50b,socal_fire_00000574_pre_disaster.png,woolsey_fire_00000567_pre_disaster.png,not in pool,train,True,xView2 test (test_pre_00026.png)
+141,f666fc14ddc5c02d5acd4727fd898fab,socal_fire_00000582_pre_disaster.png,woolsey_fire_00000269_pre_disaster.png,train,train,True,not in xView2 train or test
+142,73976b1c7cd19b57e652d1a36b04d0b3,socal_fire_00000583_pre_disaster.png,woolsey_fire_00000736_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+143,9f7af3fa9af03c256a450251d9a4d208,socal_fire_00000591_pre_disaster.png,woolsey_fire_00000148_pre_disaster.png,not in pool,train,True,"xView2 train (tier 1), pixel-identical"
+144,e54c060ebbf175e213e7e29a98d8f84c,socal_fire_00000592_pre_disaster.png,woolsey_fire_00000016_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+145,9578a99e45970ed7c7655ac67919bb4a,socal_fire_00000594_pre_disaster.png,woolsey_fire_00000081_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+146,647454f4c6cd6c471fcfc2d358df0e44,socal_fire_00000598_pre_disaster.png,woolsey_fire_00000741_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+147,2460fef301f13a55eea523213aab8ab4,socal_fire_00000600_pre_disaster.png,woolsey_fire_00000168_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+148,35f2bfb1fa077b1bad28e65efd8aa93e,socal_fire_00000604_pre_disaster.png,woolsey_fire_00000095_pre_disaster.png,train,train,True,not in xView2 train or test
+149,32a740de49d69221a85dee37e38fd8f8,socal_fire_00000607_pre_disaster.png,woolsey_fire_00000281_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+150,f9d65264eafdfb32bc2f50d42246a777,socal_fire_00000610_pre_disaster.png,woolsey_fire_00000747_pre_disaster.png,train,train,True,not in xView2 train or test
+151,53d5e00ce3f586d9e8a50856b89b0886,socal_fire_00000614_pre_disaster.png,woolsey_fire_00000114_pre_disaster.png,val,train,True,xView2 test (test_pre_00304.png)
+152,8514891644e2e5d156749e9d75521bc1,socal_fire_00000616_pre_disaster.png,woolsey_fire_00000745_pre_disaster.png,train,train,True,not in xView2 train or test
+153,dc089fa6aba47d84467115bc6585e1d3,socal_fire_00000620_pre_disaster.png,woolsey_fire_00000754_pre_disaster.png,val,val,True,"xView2 train (tier 1), pixel-identical"
+154,a44a9ec92217a4eb4816775e93fcef81,socal_fire_00000628_pre_disaster.png,woolsey_fire_00000126_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+155,b027375225a30937429f7905e590efcf,socal_fire_00000631_pre_disaster.png,woolsey_fire_00000759_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+156,2334dad7f95662dfe27b79ffa5e717bd,socal_fire_00000637_pre_disaster.png,woolsey_fire_00000333_pre_disaster.png,train,train,True,xView2 test (test_pre_00233.png)
+157,31f36b77b482bb608b91de607e49011c,socal_fire_00000642_pre_disaster.png,woolsey_fire_00000140_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+158,92bc17122a8b4a49f60c63362ca827ea,socal_fire_00000651_pre_disaster.png,woolsey_fire_00000158_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+159,6e5dbb3db8a4eaaeb3d4b843e0ab1294,socal_fire_00000657_pre_disaster.png,woolsey_fire_00000079_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+160,22d986caabe86e7ba9a62391be0794d7,socal_fire_00000661_pre_disaster.png,woolsey_fire_00000171_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+161,9e15b6d908850d1ed22e0772efcb33e9,socal_fire_00000662_pre_disaster.png,woolsey_fire_00000456_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+162,ab41d01f31fe1e1b5a4e39c378dc95ab,socal_fire_00000663_pre_disaster.png,woolsey_fire_00000460_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+163,e61a38c7f6aa5a4b7ed5e14b18f31d7a,socal_fire_00000671_pre_disaster.png,woolsey_fire_00000467_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+164,05bd7ddbb5a2feef7988a9f2aed77925,socal_fire_00000673_pre_disaster.png,woolsey_fire_00000471_pre_disaster.png,train,train,True,not in xView2 train or test
+165,47fafeae95f945fdd2cf5ff9a84a2a36,socal_fire_00000676_pre_disaster.png,woolsey_fire_00000115_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+166,a13adce2a60fc79d92c39c3d4de2a45d,socal_fire_00000679_pre_disaster.png,woolsey_fire_00000477_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+167,8c496a8503676380423e5791fd5f964b,socal_fire_00000684_pre_disaster.png,woolsey_fire_00000128_pre_disaster.png,train,train,True,xView2 test (test_pre_00194.png)
+168,30e7d0847249213698c1f6ae47a623c7,socal_fire_00000685_pre_disaster.png,woolsey_fire_00000457_pre_disaster.png,train,train,True,xView2 test (test_pre_00659.png)
+169,04b169bd8e7dfd612eba20ae7c0ffea1,socal_fire_00000686_pre_disaster.png,woolsey_fire_00000490_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+170,d48375595f7bc455d93589ad102ff0cc,socal_fire_00000688_pre_disaster.png,woolsey_fire_00000009_pre_disaster.png,train,val,True,"xView2 train (tier 1), pixel-identical"
+171,2abf221e94bcba59138332cc51075823,socal_fire_00000692_pre_disaster.png,woolsey_fire_00000142_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+172,77b52cb583b7af114cb560adbdfce2b1,socal_fire_00000695_pre_disaster.png,woolsey_fire_00000015_pre_disaster.png,not in pool,not in pool,True,"xView2 train (tier 1), pixel-identical"
+173,b89f83acd9b6ffa2da7b801dba8cde10,socal_fire_00000696_pre_disaster.png,woolsey_fire_00000469_pre_disaster.png,train,train,True,xView2 test (test_pre_00457.png)
+174,113a6994e449003361b4aadb78583f77,socal_fire_00000715_pre_disaster.png,woolsey_fire_00000032_pre_disaster.png,train,val,True,"xView2 train (tier 1), pixel-identical"
+175,396cebec8c335f3b726c9b1f89d5219f,socal_fire_00000723_pre_disaster.png,woolsey_fire_00000037_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+176,ddcb5466e4665f6bf795514e0626edb2,socal_fire_00000749_pre_disaster.png,woolsey_fire_00000061_pre_disaster.png,train,train,True,xView2 test (test_pre_00279.png)
+177,2d66cf7204322f508c44bfcd096a71ae,socal_fire_00000763_pre_disaster.png,woolsey_fire_00000075_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+178,898a6ab4de95b6f8759d7c038f91a550,socal_fire_00000771_pre_disaster.png,woolsey_fire_00000296_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+179,f2c8d26767eba589b2d03a455f7dbc20,socal_fire_00000785_pre_disaster.png,woolsey_fire_00000319_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+180,127b8df83c3bdaf1c38fe3dbe3a8c88f,socal_fire_00000788_pre_disaster.png,woolsey_fire_00000583_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+181,368cd0ea4162ca8e1234b26482e30ff3,socal_fire_00000793_pre_disaster.png,woolsey_fire_00000552_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+182,569f8629d5704f5937876936025be926,socal_fire_00000800_pre_disaster.png,woolsey_fire_00000330_pre_disaster.png,train,train,True,not in xView2 train or test
+183,1a3aa94a6bc410a803e61459189fe925,socal_fire_00000810_pre_disaster.png,woolsey_fire_00000255_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+184,5a9e381f3296f635414eee7ba9582e17,socal_fire_00000815_pre_disaster.png,woolsey_fire_00000341_pre_disaster.png,train,train,True,xView2 test (test_pre_00566.png)
+185,2496e0cd378b9dec1839c1798d427390,socal_fire_00000818_pre_disaster.png,woolsey_fire_00000514_pre_disaster.png,train,val,True,not in xView2 train or test
+186,5e5c30d63d830f756e82cff39bc27373,socal_fire_00000819_pre_disaster.png,woolsey_fire_00000422_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+187,92870aec3df7f33f9ddb67786b25f08a,socal_fire_00000824_pre_disaster.png,woolsey_fire_00000265_pre_disaster.png,val,val,True,"xView2 train (tier 1), pixel-identical"
+188,c6280cbd7c552e9d210d1c1c355189d7,socal_fire_00000837_pre_disaster.png,woolsey_fire_00000439_pre_disaster.png,train,train,True,not in xView2 train or test
+189,8f3314dfdc3121ecd5f1d5003a749c5e,socal_fire_00000847_pre_disaster.png,woolsey_fire_00000682_pre_disaster.png,train,train,True,xView2 test (test_pre_00601.png)
+190,1045f4d6ef52f348c1ddc18a204c4fcc,socal_fire_00000848_pre_disaster.png,woolsey_fire_00000646_pre_disaster.png,train,train,True,not in xView2 train or test
+191,b689fa8b208c59d57b5485100cc81e3a,socal_fire_00000861_pre_disaster.png,woolsey_fire_00000692_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+192,059e82e37b7932f3e82c21a80c2b648a,socal_fire_00000862_pre_disaster.png,woolsey_fire_00000658_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+193,a049c840df14b4da242e23c2b7dd8bbd,socal_fire_00000868_pre_disaster.png,woolsey_fire_00000505_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+194,7890c88af87e1265bbad475e78fbd895,socal_fire_00000870_pre_disaster.png,woolsey_fire_00000399_pre_disaster.png,train,val,True,not in xView2 train or test
+195,df9b7dd5aac4f9b6572635e5c4627440,socal_fire_00000874_pre_disaster.png,woolsey_fire_00000703_pre_disaster.png,train,val,True,"xView2 train (tier 1), pixel-identical"
+196,65ff4f041850c782d977e0f7971fe35d,socal_fire_00000880_pre_disaster.png,woolsey_fire_00000350_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+197,5c8f7ae83a95c20b07a8d04c5dd3c308,socal_fire_00000882_pre_disaster.png,woolsey_fire_00000413_pre_disaster.png,train,train,True,xView2 test (test_pre_00847.png)
+198,a75a7d4a5a48612cbf6ad56fbb3dd5e4,socal_fire_00000885_pre_disaster.png,woolsey_fire_00000712_pre_disaster.png,train,train,True,xView2 test (test_pre_00575.png)
+199,1d666f9ef7d7f5905423d42bea428941,socal_fire_00000886_pre_disaster.png,woolsey_fire_00000320_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+200,7798aa8381c93402c79758b76900619c,socal_fire_00000889_pre_disaster.png,woolsey_fire_00000679_pre_disaster.png,train,val,True,xView2 test (test_pre_00586.png)
+201,e289a8525cf4518e49987f60ebbb05f9,socal_fire_00000891_pre_disaster.png,woolsey_fire_00000538_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+202,901a9b6d69fefa912106870cfd84d987,socal_fire_00000893_pre_disaster.png,woolsey_fire_00000361_pre_disaster.png,train,train,True,xView2 test (test_pre_00748.png)
+203,4e385ec39e9da9ab708964f1f1dcfc6e,socal_fire_00000898_pre_disaster.png,woolsey_fire_00000722_pre_disaster.png,train,val,True,xView2 test (test_pre_00694.png)
+204,f433777389ce01e6f5243178f80f232c,socal_fire_00000899_pre_disaster.png,woolsey_fire_00000429_pre_disaster.png,train,train,True,not in xView2 train or test
+205,34545cc8ab23122b423717a723dc3195,socal_fire_00000902_pre_disaster.png,woolsey_fire_00000329_pre_disaster.png,train,train,True,not in xView2 train or test
+206,cf6e2592b1619870ff8feb0d4f4c9dab,socal_fire_00000904_pre_disaster.png,woolsey_fire_00000693_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+207,11c4f3cc6cf32a0acf6adaf73a9f2476,socal_fire_00000906_pre_disaster.png,woolsey_fire_00000660_pre_disaster.png,not in pool,train,True,"xView2 train (tier 1), pixel-identical"
+208,6d0094c072d7f5fda7717b425c2acb60,socal_fire_00000907_pre_disaster.png,woolsey_fire_00000558_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+209,f21508fe9b61e82c24b091871bdd4342,socal_fire_00000909_pre_disaster.png,woolsey_fire_00000370_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+210,15a122913afd5a2f332c3bbc16850c6a,socal_fire_00000911_pre_disaster.png,woolsey_fire_00000482_pre_disaster.png,train,train,True,not in xView2 train or test
+211,01d62915f9e9d8a4b255f8cbc45a5bb5,socal_fire_00000916_pre_disaster.png,woolsey_fire_00000343_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+212,926d713def9004d7092e47a50ab581ee,socal_fire_00000917_pre_disaster.png,woolsey_fire_00000634_pre_disaster.png,train,val,True,"xView2 train (tier 1), pixel-identical"
+213,51a56df333a571579e0551358a328a14,socal_fire_00000920_pre_disaster.png,woolsey_fire_00000704_pre_disaster.png,train,train,True,not in xView2 train or test
+214,f7ceb0595795b46a0b404f3e2b5a02f1,socal_fire_00000923_pre_disaster.png,woolsey_fire_00000385_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+215,7d9ddee991d6a2a3ca6e330f00c1ccab,socal_fire_00000924_pre_disaster.png,woolsey_fire_00000734_pre_disaster.png,not in pool,train,True,not in xView2 train or test
+216,d953f939d8adc76550254bb52e9ac235,socal_fire_00000925_pre_disaster.png,woolsey_fire_00000493_pre_disaster.png,train,train,True,not in xView2 train or test
+217,f898fc8d1fead142f7db46c8a9dae3af,socal_fire_00000929_pre_disaster.png,woolsey_fire_00000571_pre_disaster.png,train,train,True,xView2 test (test_pre_00531.png)
+218,a7b05f0be0330ae5725c0288f6a222c3,socal_fire_00000930_pre_disaster.png,woolsey_fire_00000674_pre_disaster.png,train,train,True,xView2 test (test_pre_00807.png)
+219,e02c18dc35939318da53613d78d6ac02,socal_fire_00000936_pre_disaster.png,woolsey_fire_00000648_pre_disaster.png,train,train,True,not in xView2 train or test
+220,3a8fb1f19698fad234c96f5617613b32,socal_fire_00000938_pre_disaster.png,woolsey_fire_00000713_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+221,553ae6a0659405474f69df5e16745f93,socal_fire_00000940_pre_disaster.png,woolsey_fire_00000742_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+222,664f32e5fc7a8cfde8fce7cca173a117,socal_fire_00000947_pre_disaster.png,woolsey_fire_00000588_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+223,be3a61a9c11a7d22c58665e0c01a5ed9,socal_fire_00000948_pre_disaster.png,woolsey_fire_00000375_pre_disaster.png,train,train,True,not in xView2 train or test
+224,a6ffb1d16a34520e1e1b33379cc8217a,socal_fire_00000949_pre_disaster.png,woolsey_fire_00000688_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+225,6aa2a49f871da4e9b8c7f8f16b034a99,socal_fire_00000954_pre_disaster.png,woolsey_fire_00000721_pre_disaster.png,train,train,True,not in xView2 train or test
+226,c582f79c8989bf67064a100dfdd05735,socal_fire_00000962_pre_disaster.png,woolsey_fire_00000388_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+227,2208e59b2032e5585911141205a5c15e,socal_fire_00000971_pre_disaster.png,woolsey_fire_00000727_pre_disaster.png,not in pool,not in pool,True,"xView2 train (tier 1), pixel-identical"
+228,d659d82234add351bb503553b806948d,socal_fire_00000972_pre_disaster.png,woolsey_fire_00000702_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+229,55b1ee76328eefdb7c7aecc7a8869789,socal_fire_00001007_pre_disaster.png,woolsey_fire_00000730_pre_disaster.png,not in pool,train,True,"xView2 train (tier 1), pixel-identical"
+230,c28a4a33bde097d91b139cfdf48866c2,socal_fire_00001023_pre_disaster.png,woolsey_fire_00000612_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+231,358bcbdf3682d741959dd73ffa848099,socal_fire_00001035_pre_disaster.png,woolsey_fire_00000623_pre_disaster.png,train,val,True,"xView2 train (tier 1), pixel-identical"
+232,6836ae40beeea4125d4c5475becde1ae,socal_fire_00001047_pre_disaster.png,woolsey_fire_00000632_pre_disaster.png,train,val,True,"xView2 train (tier 1), pixel-identical"
+233,2ac411a0646a10204328518f75b781f5,socal_fire_00001058_pre_disaster.png,woolsey_fire_00000645_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+234,d91e2906c40d9598fb1ae00f54a24abc,socal_fire_00001075_pre_disaster.png,woolsey_fire_00000755_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+235,17f87c49fcca66c07cacae36e914a6e0,socal_fire_00001078_pre_disaster.png,woolsey_fire_00000822_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+236,fa99f6bd2a4f582d520dc478d657a8ba,socal_fire_00001092_pre_disaster.png,woolsey_fire_00000827_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+237,814608cda2099c45387111b609ea54fd,socal_fire_00001097_pre_disaster.png,woolsey_fire_00000794_pre_disaster.png,train,train,True,not in xView2 train or test
+238,f0db92716fe3cd036178f4ecec2a8b32,socal_fire_00001113_pre_disaster.png,woolsey_fire_00000810_pre_disaster.png,train,val,True,"xView2 train (tier 1), pixel-identical"
+239,7f291a4847ea2213d3422de2e83b45bc,socal_fire_00001114_pre_disaster.png,woolsey_fire_00000799_pre_disaster.png,train,train,True,xView2 test (test_pre_00513.png)
+240,7e1a2ce1ba59b426868fc4f74ccbcbcc,socal_fire_00001120_pre_disaster.png,woolsey_fire_00000756_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+241,5dc69814fc62b0cce0deda26e2a99b06,socal_fire_00001128_pre_disaster.png,woolsey_fire_00000806_pre_disaster.png,train,train,True,xView2 test (test_pre_00796.png)
+242,41d0245c3d84c76a3b1f375c054f2b5a,socal_fire_00001141_pre_disaster.png,woolsey_fire_00000813_pre_disaster.png,train,train,True,xView2 test (test_pre_00741.png)
+243,e5ca1390af4176630df3b907aa7d59aa,socal_fire_00001153_pre_disaster.png,woolsey_fire_00000819_pre_disaster.png,train,train,True,xView2 test (test_pre_00738.png)
+244,50791f5727beafcd4c9b4d6be26a530f,socal_fire_00001165_pre_disaster.png,woolsey_fire_00000825_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+245,5ecf173aec95299542251774781cb72a,socal_fire_00001171_pre_disaster.png,woolsey_fire_00000783_pre_disaster.png,train,val,True,"xView2 train (tier 1), pixel-identical"
+246,5cb26b8fad4b95163c3fdba688165a5a,socal_fire_00001178_pre_disaster.png,woolsey_fire_00000804_pre_disaster.png,not in pool,train,True,"xView2 train (tier 1), pixel-identical"
+247,acb045f327a2bc18dc81ac111c2e83cd,socal_fire_00001188_pre_disaster.png,woolsey_fire_00000809_pre_disaster.png,val,train,True,xView2 test (test_pre_00605.png)
+248,bc36b85465e88a9f18ef6e69d93e9ee5,socal_fire_00001205_pre_disaster.png,woolsey_fire_00000771_pre_disaster.png,not in pool,not in pool,True,xView2 test (test_pre_00468.png)
+249,375b5b65932eae9ef3e26d49ea0c3e60,socal_fire_00001217_pre_disaster.png,woolsey_fire_00000775_pre_disaster.png,train,train,True,not in xView2 train or test
+250,60faa0f1df7771b79101d6c6a7698b32,socal_fire_00001246_pre_disaster.png,woolsey_fire_00000840_pre_disaster.png,train,train,True,xView2 test (test_pre_00712.png)
+251,8c80ba17249cbd03d044b770e23947a6,socal_fire_00001248_pre_disaster.png,woolsey_fire_00000786_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+252,2a8facb5d7b1d34346fae62ec100e26b,socal_fire_00001258_pre_disaster.png,woolsey_fire_00000845_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+253,ce364b93f97e2741d7cecc67e0217db5,socal_fire_00001259_pre_disaster.png,woolsey_fire_00000789_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+254,b2cff8fe1ea23cd2da45629926777d0c,socal_fire_00001267_pre_disaster.png,woolsey_fire_00000795_pre_disaster.png,train,train,True,xView2 test (test_pre_00153.png)
+255,aa6e59dd10e63b4b751bd4d2b33485d0,socal_fire_00001270_pre_disaster.png,woolsey_fire_00000844_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+256,61dcae6d8d80dac2572648da3bc55074,socal_fire_00001276_pre_disaster.png,woolsey_fire_00000856_pre_disaster.png,train,train,True,not in xView2 train or test
+257,ff55c59fa732eb3c65caef773d022f24,socal_fire_00001278_pre_disaster.png,woolsey_fire_00000801_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+258,918cc5adcdcb682701e313f4167bd6cb,socal_fire_00001279_pre_disaster.png,woolsey_fire_00000850_pre_disaster.png,train,train,True,xView2 test (test_pre_00824.png)
+259,cc2a71f4ebac918a4ecf79b95a09a1cb,socal_fire_00001290_pre_disaster.png,woolsey_fire_00000807_pre_disaster.png,train,train,True,not in xView2 train or test
+260,d0080bbef72eec14453b021fb572d565,socal_fire_00001312_pre_disaster.png,woolsey_fire_00000858_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+261,9b77a057cf10be3213315b6591bdc361,socal_fire_00001323_pre_disaster.png,woolsey_fire_00000860_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+262,8b3a907b26a314c3de3dac63185ff2d8,socal_fire_00001333_pre_disaster.png,woolsey_fire_00000862_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+263,cec56e27ecc438d2da0318d067afc57e,socal_fire_00001344_pre_disaster.png,woolsey_fire_00000864_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
+264,3efd1294bff6790315e0ee165446034d,socal_fire_00001353_pre_disaster.png,woolsey_fire_00000866_pre_disaster.png,train,train,True,"xView2 train (tier 1), pixel-identical"
