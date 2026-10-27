@@ -1,0 +1,501 @@
+uid,id,image,cls,ground_truth,gt_option,pred_option,correct,mapped_option,mapped_correct,count_used,response
+0,building_damage_counting_2671,test_images\bata_explosion_post_0.png,Damaged building counting.,2,B,B,True,B,True,2,B
+3,building_damage_counting_2677,test_images\bata_explosion_post_3.png,Damaged building counting.,31,C,E,False,E,False,2,The answer is E.
+6,building_damage_counting_2683,test_images\beriut_explosion_post_10.png,Damaged building counting.,5,A,A,True,A,True,5,The answer is A.
+10,building_damage_counting_2691,test_images\beriut_explosion_post_23.png,Damaged building counting.,37,B,E,False,E,False,13,E
+13,building_damage_counting_2697,test_images\beriut_explosion_post_26.png,Damaged building counting.,1,B,A,False,A,False,8,The answer is A.
+17,building_damage_counting_2702,test_images\guatemala_volcano_00000011_post_disaster.png,Damaged building counting.,1,A,A,True,A,True,0,The answer is A.
+20,building_damage_counting_2705,test_images\guatemala_volcano_00000018_post_disaster.png,Damaged building counting.,2,C,A,False,A,False,6,The answer is A.
+23,building_damage_counting_2708,test_images\guatemala_volcano_00000022_post_disaster.png,Damaged building counting.,1,E,A,False,A,False,0,The answer is A.
+27,building_damage_counting_2740,test_images\hawaii_wildfire_post_638.png,Damaged building counting.,4,C,A,False,A,False,2,The answer is A.
+30,building_damage_counting_2746,test_images\hawaii_wildfire_post_641.png,Damaged building counting.,22,A,D,False,D,False,6,D
+34,building_damage_counting_2754,test_images\hawaii_wildfire_post_645.png,Damaged building counting.,10,D,C,False,C,False,1,The answer is C.
+37,building_damage_counting_2760,test_images\hawaii_wildfire_post_648.png,Damaged building counting.,7,D,A,False,A,False,0,The answer is A.
+40,building_damage_counting_2765,test_images\hawaii_wildfire_post_657.png,Damaged building counting.,3,D,E,False,E,False,0,The answer is E.
+44,building_damage_counting_2770,test_images\hurricane_florence_00000089_post_disaster.png,Damaged building counting.,15,A,D,False,D,False,14,The answer is D.
+47,building_damage_counting_2773,test_images\hurricane_florence_00000145_post_disaster.png,Damaged building counting.,1,A,A,True,A,True,1,The answer is A.
+51,building_damage_counting_2777,test_images\hurricane_florence_00000259_post_disaster.png,Damaged building counting.,9,C,B,False,B,False,8,B
+54,building_damage_counting_2780,test_images\hurricane_florence_00000321_post_disaster.png,Damaged building counting.,2,D,A,False,A,False,0,The answer is A.
+57,building_damage_counting_2783,test_images\hurricane_florence_00000411_post_disaster.png,Damaged building counting.,19,D,A,False,A,False,15,The answer is A.
+61,building_damage_counting_2787,test_images\hurricane_florence_00000447_post_disaster.png,Damaged building counting.,5,B,A,False,A,False,6,The answer is A.
+64,building_damage_counting_2790,test_images\hurricane_florence_00000473_post_disaster.png,Damaged building counting.,6,D,D,True,D,True,7,D
+68,building_damage_counting_2794,test_images\hurricane_florence_00000509_post_disaster.png,Damaged building counting.,1,A,B,False,B,False,1,B
+71,building_damage_counting_2797,test_images\hurricane_florence_00000536_post_disaster.png,Damaged building counting.,4,D,E,False,E,False,2,The answer is E.
+74,building_damage_counting_2800,test_images\hurricane_harvey_00000041_post_disaster.png,Damaged building counting.,3,C,A,False,A,False,2,The answer is A.
+78,building_damage_counting_2804,test_images\hurricane_harvey_00000079_post_disaster.png,Damaged building counting.,1,B,C,False,C,False,9,C
+81,building_damage_counting_2807,test_images\hurricane_harvey_00000106_post_disaster.png,Damaged building counting.,4,A,B,False,B,False,3,The answer is B.
+85,building_damage_counting_2811,test_images\hurricane_harvey_00000141_post_disaster.png,Damaged building counting.,11,C,C,True,C,True,12,The answer is C.
+88,building_damage_counting_2814,test_images\hurricane_harvey_00000184_post_disaster.png,Damaged building counting.,130,B,E,False,E,False,85,E
+91,building_damage_counting_2817,test_images\hurricane_harvey_00000264_post_disaster.png,Damaged building counting.,6,C,A,False,A,False,2,The answer is A.
+95,building_damage_counting_2821,test_images\hurricane_harvey_00000319_post_disaster.png,Damaged building counting.,7,C,B,False,B,False,9,B
+98,building_damage_counting_2824,test_images\hurricane_harvey_00000345_post_disaster.png,Damaged building counting.,1,D,D,True,D,True,0,The answer is D.
+102,building_damage_counting_2828,test_images\hurricane_harvey_00000404_post_disaster.png,Damaged building counting.,152,C,E,False,E,False,113,E
+105,building_damage_counting_2831,test_images\hurricane_harvey_00000438_post_disaster.png,Damaged building counting.,45,E,E,True,E,True,48,E
+109,building_damage_counting_2835,test_images\hurricane_harvey_00000488_post_disaster.png,Damaged building counting.,24,D,E,False,E,False,58,E
+112,building_damage_counting_2838,test_images\hurricane_harvey_00000513_post_disaster.png,Damaged building counting.,8,D,E,False,E,False,9,E
+115,building_damage_counting_2841,test_images\hurricane_matthew_00000017_post_disaster.png,Damaged building counting.,9,C,A,False,A,False,40,The answer is A.
+119,building_damage_counting_2845,test_images\hurricane_matthew_00000043_post_disaster.png,Damaged building counting.,31,C,A,False,A,False,116,The answer is A.
+122,building_damage_counting_2848,test_images\hurricane_matthew_00000062_post_disaster.png,Damaged building counting.,17,C,E,False,E,False,22,E
+126,building_damage_counting_2852,test_images\hurricane_matthew_00000095_post_disaster.png,Damaged building counting.,18,E,E,True,E,True,92,E
+129,building_damage_counting_2855,test_images\hurricane_matthew_00000114_post_disaster.png,Damaged building counting.,5,C,C,True,C,True,5,C
+132,building_damage_counting_2858,test_images\hurricane_matthew_00000134_post_disaster.png,Damaged building counting.,16,E,E,True,E,True,20,E
+136,building_damage_counting_2862,test_images\hurricane_matthew_00000160_post_disaster.png,Damaged building counting.,5,B,D,False,D,False,1,D.
+139,building_damage_counting_2865,test_images\hurricane_matthew_00000180_post_disaster.png,Damaged building counting.,4,A,B,False,B,False,2,B
+143,building_damage_counting_2869,test_images\hurricane_matthew_00000207_post_disaster.png,Damaged building counting.,12,A,A,True,A,True,3,The answer is A.
+146,building_damage_counting_2872,test_images\hurricane_matthew_00000227_post_disaster.png,Damaged building counting.,2,A,B,False,B,False,3,B.
+149,building_damage_counting_2875,test_images\hurricane_matthew_00000248_post_disaster.png,Damaged building counting.,8,D,D,True,D,True,8,D
+153,building_damage_counting_2879,test_images\hurricane_matthew_00000282_post_disaster.png,Damaged building counting.,13,D,B,False,B,False,9,B
+156,building_damage_counting_2882,test_images\hurricane_matthew_00000308_post_disaster.png,Damaged building counting.,9,D,D,True,D,True,9,D
+160,building_damage_counting_2886,test_images\hurricane_matthew_00000334_post_disaster.png,Damaged building counting.,1,C,C,True,C,True,2,C.
+163,building_damage_counting_2889,test_images\hurricane_matthew_00000353_post_disaster.png,Damaged building counting.,6,A,E,False,E,False,26,E
+166,building_damage_counting_2892,test_images\hurricane_matthew_00000382_post_disaster.png,Damaged building counting.,11,C,A,False,A,False,1,The answer is A.
+170,building_damage_counting_2896,test_images\hurricane_michael_00000018_post_disaster.png,Damaged building counting.,32,A,D,False,D,False,29,D
+173,building_damage_counting_2899,test_images\hurricane_michael_00000048_post_disaster.png,Damaged building counting.,14,E,C,False,C,False,18,The answer is C.
+177,building_damage_counting_2903,test_images\hurricane_michael_00000085_post_disaster.png,Damaged building counting.,20,C,A,False,A,False,8,The answer is A.
+180,building_damage_counting_2906,test_images\hurricane_michael_00000113_post_disaster.png,Damaged building counting.,9,A,E,False,E,False,19,E
+183,building_damage_counting_2909,test_images\hurricane_michael_00000149_post_disaster.png,Damaged building counting.,3,A,B,False,B,False,9,B.
+187,building_damage_counting_2913,test_images\hurricane_michael_00000185_post_disaster.png,Damaged building counting.,20,D,D,True,D,True,21,The answer is D.
+190,building_damage_counting_2916,test_images\hurricane_michael_00000212_post_disaster.png,Damaged building counting.,31,C,B,False,B,False,37,B
+194,building_damage_counting_2920,test_images\hurricane_michael_00000249_post_disaster.png,Damaged building counting.,31,C,C,True,C,True,29,The answer is C.
+197,building_damage_counting_2923,test_images\hurricane_michael_00000276_post_disaster.png,Damaged building counting.,14,A,C,False,C,False,20,C
+201,building_damage_counting_2927,test_images\hurricane_michael_00000312_post_disaster.png,Damaged building counting.,2,C,A,False,A,False,4,The answer is A.
+204,building_damage_counting_2930,test_images\hurricane_michael_00000339_post_disaster.png,Damaged building counting.,6,D,D,True,D,True,7,D
+207,building_damage_counting_2933,test_images\hurricane_michael_00000376_post_disaster.png,Damaged building counting.,3,D,A,False,A,False,0,The answer is A.
+211,building_damage_counting_2937,test_images\hurricane_michael_00000423_post_disaster.png,Damaged building counting.,1,B,D,False,D,False,10,D.
+214,building_damage_counting_2940,test_images\hurricane_michael_00000450_post_disaster.png,Damaged building counting.,15,B,E,False,E,False,20,E
+218,building_damage_counting_2944,test_images\hurricane_michael_00000486_post_disaster.png,Damaged building counting.,6,A,B,False,B,False,7,B
+221,building_damage_counting_2947,test_images\hurricane_michael_00000513_post_disaster.png,Damaged building counting.,26,A,E,False,E,False,44,E
+224,building_damage_counting_2950,test_images\ian_hurricane_post_660.png,Damaged building counting.,4,D,A,False,A,False,2,The answer is A.
+228,building_damage_counting_2954,test_images\ian_hurricane_post_672.png,Damaged building counting.,1,E,E,True,E,True,1,E
+231,building_damage_counting_2957,test_images\ian_hurricane_post_680.png,Damaged building counting.,3,B,A,False,A,False,2,The answer is A.
+235,building_damage_counting_2961,test_images\ian_hurricane_post_691.png,Damaged building counting.,1,D,D,True,D,True,1,D.
+238,building_damage_counting_2964,test_images\ian_hurricane_post_706.png,Damaged building counting.,7,E,E,True,E,True,0,The answer is E.
+241,building_damage_counting_2967,test_images\ian_hurricane_post_714.png,Damaged building counting.,2,E,E,True,E,True,2,E
+245,building_damage_counting_2971,test_images\ian_hurricane_post_719.png,Damaged building counting.,2,E,A,False,A,False,0,The answer is A.
+248,building_damage_counting_2974,test_images\ian_hurricane_post_722.png,Damaged building counting.,9,D,A,False,A,False,0,The answer is A.
+252,building_damage_counting_2978,test_images\ian_hurricane_post_728.png,Damaged building counting.,40,C,A,False,A,False,0,The answer is A.
+255,building_damage_counting_2981,test_images\ian_hurricane_post_731.png,Damaged building counting.,41,B,D,False,D,False,2,The answer is D.
+258,building_damage_counting_2984,test_images\ian_hurricane_post_735.png,Damaged building counting.,7,C,B,False,B,False,5,B
+262,building_damage_counting_2988,test_images\ian_hurricane_post_740.png,Damaged building counting.,41,A,A,True,A,True,9,The answer is A.
+265,building_damage_counting_2991,test_images\ian_hurricane_post_743.png,Damaged building counting.,29,A,D,False,D,False,0,The answer is D.
+269,building_damage_counting_2995,test_images\ian_hurricane_post_747.png,Damaged building counting.,3,C,D,False,D,False,1,D
+272,building_damage_counting_2998,test_images\ian_hurricane_post_751.png,Damaged building counting.,2,E,C,False,C,False,1,The answer is C.
+275,building_damage_counting_3001,test_images\ian_hurricane_post_754.png,Damaged building counting.,67,B,D,False,D,False,4,The answer is D.
+279,building_damage_counting_3005,test_images\ian_hurricane_post_759.png,Damaged building counting.,15,E,A,False,A,False,4,The answer is A.
+282,building_damage_counting_3008,test_images\joplin_tornado_00000000_post_disaster.png,Damaged building counting.,70,D,C,False,C,False,60,The answer is C.
+286,building_damage_counting_3012,test_images\joplin_tornado_00000004_post_disaster.png,Damaged building counting.,84,C,D,False,D,False,52,D
+289,building_damage_counting_3015,test_images\joplin_tornado_00000007_post_disaster.png,Damaged building counting.,4,A,B,False,B,False,2,B
+292,building_damage_counting_3018,test_images\joplin_tornado_00000012_post_disaster.png,Damaged building counting.,1,A,B,False,B,False,7,B
+296,building_damage_counting_3022,test_images\joplin_tornado_00000018_post_disaster.png,Damaged building counting.,9,D,B,False,B,False,10,B
+299,building_damage_counting_3025,test_images\joplin_tornado_00000022_post_disaster.png,Damaged building counting.,2,E,E,True,E,True,5,E
+303,building_damage_counting_3029,test_images\joplin_tornado_00000030_post_disaster.png,Damaged building counting.,7,D,B,False,B,False,11,B
+306,building_damage_counting_3032,test_images\joplin_tornado_00000033_post_disaster.png,Damaged building counting.,101,E,C,False,C,False,76,C
+310,building_damage_counting_3036,test_images\joplin_tornado_00000038_post_disaster.png,Damaged building counting.,10,D,B,False,B,False,8,B
+313,building_damage_counting_3039,test_images\joplin_tornado_00000041_post_disaster.png,Damaged building counting.,8,D,D,True,D,True,13,D
+316,building_damage_counting_3042,test_images\joplin_tornado_00000044_post_disaster.png,Damaged building counting.,23,B,E,False,E,False,21,E
+320,building_damage_counting_3046,test_images\joplin_tornado_00000049_post_disaster.png,Damaged building counting.,7,B,B,True,B,True,8,B
+323,building_damage_counting_3049,test_images\joplin_tornado_00000053_post_disaster.png,Damaged building counting.,16,D,B,False,B,False,14,B
+327,building_damage_counting_3053,test_images\joplin_tornado_00000058_post_disaster.png,Damaged building counting.,12,B,B,True,B,True,12,The answer is B.
+330,building_damage_counting_3056,test_images\joplin_tornado_00000063_post_disaster.png,Damaged building counting.,4,D,D,True,D,True,5,D
+333,building_damage_counting_3059,test_images\joplin_tornado_00000068_post_disaster.png,Damaged building counting.,9,E,B,False,B,False,7,B
+337,building_damage_counting_3063,test_images\joplin_tornado_00000074_post_disaster.png,Damaged building counting.,7,D,B,False,B,False,6,B
+340,building_damage_counting_3066,test_images\joplin_tornado_00000077_post_disaster.png,Damaged building counting.,11,C,B,False,B,False,6,B
+344,building_damage_counting_3070,test_images\joplin_tornado_00000083_post_disaster.png,Damaged building counting.,70,C,D,False,D,False,94,D
+347,building_damage_counting_3073,test_images\joplin_tornado_00000086_post_disaster.png,Damaged building counting.,27,D,C,False,C,False,33,The answer is C.
+350,building_damage_counting_3076,test_images\joplin_tornado_00000089_post_disaster.png,Damaged building counting.,43,A,D,False,D,False,37,D
+354,building_damage_counting_3080,test_images\joplin_tornado_00000093_post_disaster.png,Damaged building counting.,9,B,B,True,B,True,10,B
+357,building_damage_counting_3083,test_images\joplin_tornado_00000096_post_disaster.png,Damaged building counting.,4,B,D,False,D,False,12,D
+361,building_damage_counting_3087,test_images\joplin_tornado_00000108_post_disaster.png,Damaged building counting.,18,A,B,False,B,False,19,B
+364,building_damage_counting_3090,test_images\joplin_tornado_00000111_post_disaster.png,Damaged building counting.,3,C,A,False,A,False,8,The answer is A.
+367,building_damage_counting_3093,test_images\joplin_tornado_00000114_post_disaster.png,Damaged building counting.,82,D,D,True,D,True,72,D
+371,building_damage_counting_3097,test_images\joplin_tornado_00000118_post_disaster.png,Damaged building counting.,151,E,D,False,D,False,125,D
+374,building_damage_counting_3100,test_images\joplin_tornado_00000121_post_disaster.png,Damaged building counting.,28,D,C,False,C,False,32,The answer is C.
+378,building_damage_counting_3104,test_images\joplin_tornado_00000125_post_disaster.png,Damaged building counting.,14,D,B,False,B,False,9,B
+381,building_damage_counting_3107,test_images\joplin_tornado_00000131_post_disaster.png,Damaged building counting.,15,C,B,False,B,False,10,B
+384,building_damage_counting_3110,test_images\joplin_tornado_00000134_post_disaster.png,Damaged building counting.,10,E,B,False,B,False,12,B
+388,building_damage_counting_3114,test_images\joplin_tornado_00000139_post_disaster.png,Damaged building counting.,35,E,E,True,E,True,37,E
+391,building_damage_counting_3117,test_images\joplin_tornado_00000143_post_disaster.png,Damaged building counting.,20,A,A,True,A,True,20,The answer is A.
+395,building_damage_counting_3121,test_images\joplin_tornado_00000147_post_disaster.png,Damaged building counting.,22,D,D,True,D,True,22,D
+398,building_damage_counting_3130,test_images\libya_flood_post_77.png,Damaged building counting.,2,D,A,False,A,False,0,The answer is A.
+402,building_damage_counting_3138,test_images\libya_flood_post_81.png,Damaged building counting.,53,E,C,False,C,False,35,C
+405,building_damage_counting_3144,test_images\libya_flood_post_84.png,Damaged building counting.,74,D,E,False,E,False,35,E
+408,building_damage_counting_3150,test_images\libya_flood_post_87.png,Damaged building counting.,1,D,A,False,A,False,0,The answer is A.
+412,building_damage_counting_3158,test_images\libya_flood_post_91.png,Damaged building counting.,58,D,E,False,E,False,26,E
+415,building_damage_counting_3164,test_images\libya_flood_post_97.png,Damaged building counting.,89,E,A,False,A,False,35,The answer is A.
+419,building_damage_counting_3172,test_images\libya_flood_post_108.png,Damaged building counting.,1,D,E,False,E,False,0,The answer is E.
+422,building_damage_counting_3177,test_images\lower_puna_volcano_00000121_post_disaster.png,Damaged building counting.,14,B,A,False,A,False,1,The answer is A.
+425,building_damage_counting_3193,test_images\mexico_earthquake_00000000_post_disaster.png,Damaged building counting.,2,D,A,False,A,False,0,The answer is A.
+429,building_damage_counting_3197,test_images\mexico_earthquake_00000039_post_disaster.png,Damaged building counting.,1,B,E,False,E,False,18,E
+432,building_damage_counting_3200,test_images\mexico_earthquake_00000052_post_disaster.png,Damaged building counting.,5,B,E,False,E,False,46,The answer is E.
+436,building_damage_counting_3204,test_images\mexico_earthquake_00000058_post_disaster.png,Damaged building counting.,4,B,E,False,E,False,158,E
+439,building_damage_counting_3207,test_images\mexico_earthquake_00000062_post_disaster.png,Damaged building counting.,3,B,E,False,E,False,29,E
+442,building_damage_counting_3210,test_images\mexico_earthquake_00000073_post_disaster.png,Damaged building counting.,5,E,A,False,A,False,2,The answer is A.
+446,building_damage_counting_3214,test_images\mexico_earthquake_00000081_post_disaster.png,Damaged building counting.,4,A,B,False,B,False,18,B.
+449,building_damage_counting_3217,test_images\mexico_earthquake_00000085_post_disaster.png,Damaged building counting.,3,E,B,False,B,False,17,B
+453,building_damage_counting_3221,test_images\mexico_earthquake_00000092_post_disaster.png,Damaged building counting.,9,B,E,False,E,False,27,E
+456,building_damage_counting_3224,test_images\mexico_earthquake_00000116_post_disaster.png,Damaged building counting.,4,B,E,False,E,False,24,E
+459,building_damage_counting_3227,test_images\mexico_earthquake_00000124_post_disaster.png,Damaged building counting.,3,B,A,False,A,False,8,The answer is A.
+463,building_damage_counting_3231,test_images\mexico_earthquake_00000146_post_disaster.png,Damaged building counting.,3,C,A,False,A,False,1,The answer is A.
+466,building_damage_counting_3234,test_images\mexico_earthquake_00000162_post_disaster.png,Damaged building counting.,1,E,E,True,E,True,132,E
+470,building_damage_counting_3238,test_images\mexico_earthquake_00000183_post_disaster.png,Damaged building counting.,9,D,E,False,E,False,150,E
+473,building_damage_counting_3321,test_images\midwest_flooding_00000050_post_disaster.png,Damaged building counting.,1,A,A,True,A,True,0,The answer is A.
+476,building_damage_counting_3324,test_images\midwest_flooding_00000133_post_disaster.png,Damaged building counting.,1,E,E,True,E,True,0,E
+480,building_damage_counting_3328,test_images\midwest_flooding_00000232_post_disaster.png,Damaged building counting.,1,C,A,False,A,False,0,The answer is A.
+483,building_damage_counting_3331,test_images\midwest_flooding_00000286_post_disaster.png,Damaged building counting.,7,B,A,False,A,False,3,The answer is A.
+487,building_damage_counting_3335,test_images\midwest_flooding_00000342_post_disaster.png,Damaged building counting.,1,E,E,True,E,True,1,E
+490,building_damage_counting_3338,test_images\midwest_flooding_00000369_post_disaster.png,Damaged building counting.,8,D,A,False,A,False,1,The answer is A.
+493,building_damage_counting_3341,test_images\midwest_flooding_00000424_post_disaster.png,Damaged building counting.,1,B,A,False,A,False,0,The answer is A.
+497,building_damage_counting_3345,test_images\moore_tornado_00000045_post_disaster.png,Damaged building counting.,62,A,D,False,D,False,24,The answer is D.
+500,building_damage_counting_3348,test_images\moore_tornado_00000097_post_disaster.png,Damaged building counting.,52,C,E,False,E,False,38,E
+504,building_damage_counting_3352,test_images\moore_tornado_00000145_post_disaster.png,Damaged building counting.,2,A,A,True,A,True,1,The answer is A.
+507,building_damage_counting_3355,test_images\moore_tornado_00000197_post_disaster.png,Damaged building counting.,1,E,E,True,E,True,0,E
+511,building_damage_counting_3374,test_images\nepal_flooding_00000011_post_disaster.png,Damaged building counting.,3,C,C,True,C,True,3,C
+514,building_damage_counting_3377,test_images\nepal_flooding_00000043_post_disaster.png,Damaged building counting.,1,B,B,True,B,True,1,B
+517,building_damage_counting_3380,test_images\nepal_flooding_00000075_post_disaster.png,Damaged building counting.,2,C,C,True,C,True,2,C.
+521,building_damage_counting_3384,test_images\nepal_flooding_00000125_post_disaster.png,Damaged building counting.,2,D,A,False,A,False,1,The answer is A.
+524,building_damage_counting_3387,test_images\nepal_flooding_00000158_post_disaster.png,Damaged building counting.,8,B,A,False,A,False,6,The answer is A.
+528,building_damage_counting_3391,test_images\nepal_flooding_00000212_post_disaster.png,Damaged building counting.,1,D,A,False,A,False,7,The answer is A.
+531,building_damage_counting_3394,test_images\nepal_flooding_00000251_post_disaster.png,Damaged building counting.,32,A,A,True,A,True,28,The answer is A.
+534,building_damage_counting_3397,test_images\nepal_flooding_00000282_post_disaster.png,Damaged building counting.,1,E,E,True,E,True,1,E
+538,building_damage_counting_3401,test_images\nepal_flooding_00000323_post_disaster.png,Damaged building counting.,27,A,D,False,D,False,16,D
+541,building_damage_counting_3404,test_images\nepal_flooding_00000352_post_disaster.png,Damaged building counting.,4,C,A,False,A,False,3,The answer is A.
+545,building_damage_counting_3408,test_images\nepal_flooding_00000403_post_disaster.png,Damaged building counting.,23,D,D,True,D,True,39,D
+548,building_damage_counting_3411,test_images\nepal_flooding_00000436_post_disaster.png,Damaged building counting.,66,B,D,False,D,False,58,The answer is D.
+551,building_damage_counting_3414,test_images\nepal_flooding_00000467_post_disaster.png,Damaged building counting.,24,D,E,False,E,False,22,E
+555,building_damage_counting_3418,test_images\nepal_flooding_00000507_post_disaster.png,Damaged building counting.,1,C,C,True,C,True,1,C.
+558,building_damage_counting_3421,test_images\nepal_flooding_00000537_post_disaster.png,Damaged building counting.,5,D,A,False,A,False,3,The answer is A.
+562,building_damage_counting_3425,test_images\nepal_flooding_00000589_post_disaster.png,Damaged building counting.,7,B,B,True,B,True,7,B
+565,building_damage_counting_3428,test_images\noto_earthquake_post_124.png,Damaged building counting.,1,C,A,False,A,False,0,The answer is A.
+568,building_damage_counting_3434,test_images\noto_earthquake_post_152.png,Damaged building counting.,38,A,A,True,A,True,4,The answer is A.
+572,building_damage_counting_3442,test_images\noto_earthquake_post_161.png,Damaged building counting.,39,B,E,False,E,False,3,The answer is E.
+575,building_damage_counting_3448,test_images\noto_earthquake_post_165.png,Damaged building counting.,3,A,C,False,C,False,8,The answer is C.
+579,building_damage_counting_3456,test_images\noto_earthquake_post_173.png,Damaged building counting.,11,E,B,False,B,False,17,B
+582,building_damage_counting_3462,test_images\noto_earthquake_post_177.png,Damaged building counting.,1,E,E,True,E,True,0,E
+585,building_damage_counting_3468,test_images\noto_earthquake_post_181.png,Damaged building counting.,1,E,E,True,E,True,31,E
+589,building_damage_counting_3476,test_images\noto_earthquake_post_186.png,Damaged building counting.,5,C,E,False,E,False,41,E
+592,building_damage_counting_3482,test_images\noto_earthquake_post_189.png,Damaged building counting.,7,B,E,False,E,False,41,E
+596,building_damage_counting_3488,test_images\palu_tsunami_00000002_post_disaster.png,Damaged building counting.,9,E,B,False,B,False,5,B
+599,building_damage_counting_3491,test_images\palu_tsunami_00000013_post_disaster.png,Damaged building counting.,4,B,A,False,A,False,2,The answer is A.
+603,building_damage_counting_3495,test_images\palu_tsunami_00000019_post_disaster.png,Damaged building counting.,4,D,B,False,B,False,5,B
+606,building_damage_counting_3498,test_images\palu_tsunami_00000025_post_disaster.png,Damaged building counting.,7,B,A,False,A,False,4,The answer is A.
+609,building_damage_counting_3501,test_images\palu_tsunami_00000033_post_disaster.png,Damaged building counting.,4,E,A,False,A,False,0,The answer is A.
+613,building_damage_counting_3505,test_images\palu_tsunami_00000046_post_disaster.png,Damaged building counting.,2,D,A,False,A,False,0,The answer is A.
+616,building_damage_counting_3508,test_images\palu_tsunami_00000051_post_disaster.png,Damaged building counting.,1,C,C,True,C,True,1,C.
+620,building_damage_counting_3512,test_images\palu_tsunami_00000063_post_disaster.png,Damaged building counting.,11,B,E,False,E,False,17,E
+623,building_damage_counting_3515,test_images\palu_tsunami_00000069_post_disaster.png,Damaged building counting.,12,E,B,False,B,False,7,B
+626,building_damage_counting_3518,test_images\palu_tsunami_00000079_post_disaster.png,Damaged building counting.,2,C,A,False,A,False,3,The answer is A.
+630,building_damage_counting_3522,test_images\palu_tsunami_00000096_post_disaster.png,Damaged building counting.,10,D,A,False,A,False,4,The answer is A.
+633,building_damage_counting_3525,test_images\palu_tsunami_00000108_post_disaster.png,Damaged building counting.,1,A,A,True,A,True,0,The answer is A.
+637,building_damage_counting_3529,test_images\palu_tsunami_00000124_post_disaster.png,Damaged building counting.,5,D,E,False,E,False,1,The answer is E.
+640,building_damage_counting_3532,test_images\palu_tsunami_00000135_post_disaster.png,Damaged building counting.,8,E,A,False,A,False,6,The answer is A.
+643,building_damage_counting_3535,test_images\palu_tsunami_00000143_post_disaster.png,Damaged building counting.,22,C,D,False,D,False,13,D
+647,building_damage_counting_3539,test_images\palu_tsunami_00000149_post_disaster.png,Damaged building counting.,8,A,B,False,B,False,6,B.
+650,building_damage_counting_3542,test_images\palu_tsunami_00000161_post_disaster.png,Damaged building counting.,5,E,A,False,A,False,6,The answer is A.
+654,building_damage_counting_3546,test_images\palu_tsunami_00000165_post_disaster.png,Damaged building counting.,2,D,A,False,A,False,0,The answer is A.
+657,building_damage_counting_3549,test_images\palu_tsunami_00000171_post_disaster.png,Damaged building counting.,1,A,A,True,A,True,0,The answer is A.
+660,building_damage_counting_3552,test_images\palu_tsunami_00000180_post_disaster.png,Damaged building counting.,1,E,C,False,C,False,13,C
+664,building_damage_counting_3556,test_images\palu_tsunami_00000195_post_disaster.png,Damaged building counting.,1,E,E,True,E,True,1,E
+667,building_damage_counting_3559,test_images\pinery_bushfire_00000446_post_disaster.png,Damaged building counting.,1,A,A,True,A,True,0,The answer is A.
+671,building_damage_counting_3563,test_images\pinery_bushfire_00000830_post_disaster.png,Damaged building counting.,1,B,A,False,A,False,0,The answer is A.
+674,building_damage_counting_3566,test_images\pinery_bushfire_00001319_post_disaster.png,Damaged building counting.,3,E,A,False,A,False,1,The answer is A.
+677,building_damage_counting_3569,test_images\portugal_wildfire_00000071_post_disaster.png,Damaged building counting.,1,A,A,True,A,True,0,The answer is A.
+681,building_damage_counting_3573,test_images\portugal_wildfire_00000651_post_disaster.png,Damaged building counting.,1,D,D,True,D,True,2,D.
+684,building_damage_counting_3576,test_images\portugal_wildfire_00001228_post_disaster.png,Damaged building counting.,2,E,E,True,E,True,0,E
+688,building_damage_counting_3580,test_images\portugal_wildfire_00001412_post_disaster.png,Damaged building counting.,2,B,B,True,B,True,2,B
+691,building_damage_counting_3583,test_images\portugal_wildfire_00001623_post_disaster.png,Damaged building counting.,1,C,C,True,C,True,2,C.
+694,building_damage_counting_3586,test_images\portugal_wildfire_00001842_post_disaster.png,Damaged building counting.,4,B,B,True,B,True,5,B
+698,building_damage_counting_3592,test_images\santa_rosa_wildfire_00000055_post_disaster.png,Damaged building counting.,1,B,A,False,A,False,0,The answer is A.
+701,building_damage_counting_3595,test_images\santa_rosa_wildfire_00000104_post_disaster.png,Damaged building counting.,1,E,E,True,E,True,0,The answer is E.
+705,building_damage_counting_3599,test_images\santa_rosa_wildfire_00000217_post_disaster.png,Damaged building counting.,4,C,A,False,A,False,0,The answer is A.
+708,building_damage_counting_3602,test_images\santa_rosa_wildfire_00000255_post_disaster.png,Damaged building counting.,1,D,A,False,A,False,0,The answer is A.
+712,building_damage_counting_3606,test_images\santa_rosa_wildfire_00000370_post_disaster.png,Damaged building counting.,1,A,A,True,A,True,0,The answer is A.
+715,building_damage_counting_3609,test_images\socal_fire_00000488_post_disaster.png,Damaged building counting.,2,E,E,True,E,True,0,The answer is E.
+718,building_damage_counting_3613,test_images\sunda_tsunami_00000009_post_disaster.png,Damaged building counting.,6,C,B,False,B,False,9,B
+723,building_damage_counting_3618,test_images\sunda_tsunami_00000079_post_disaster.png,Damaged building counting.,2,E,A,False,A,False,0,The answer is A.
+726,building_damage_counting_3621,test_images\sunda_tsunami_00000140_post_disaster.png,Damaged building counting.,9,E,A,False,A,False,2,The answer is A.
+730,building_damage_counting_3628,test_images\turkey_earthquake1_post_227.png,Damaged building counting.,2,A,B,False,B,False,0,B
+733,building_damage_counting_3634,test_images\turkey_earthquake1_post_238.png,Damaged building counting.,1,C,E,False,E,False,0,The answer is E.
+736,building_damage_counting_3640,test_images\turkey_earthquake1_post_241.png,Damaged building counting.,7,E,A,False,A,False,0,The answer is A.
+740,building_damage_counting_3648,test_images\turkey_earthquake1_post_247.png,Damaged building counting.,6,D,A,False,A,False,0,The answer is A.
+743,building_damage_counting_3654,test_images\turkey_earthquake1_post_250.png,Damaged building counting.,2,D,E,False,E,False,0,The answer is E.
+747,building_damage_counting_3662,test_images\turkey_earthquake3_post_267.png,Damaged building counting.,11,C,E,False,E,False,0,The answer is E.
+750,building_damage_counting_3668,test_images\turkey_earthquake3_post_270.png,Damaged building counting.,1,A,E,False,E,False,0,The answer is E.
+753,building_damage_counting_3674,test_images\turkey_earthquake3_post_279.png,Damaged building counting.,3,E,E,True,E,True,0,The answer is E.
+757,building_damage_counting_3682,test_images\turkey_earthquake4_post_286.png,Damaged building counting.,13,D,E,False,E,False,0,The answer is E.
+760,building_damage_counting_3688,test_images\turkey_earthquake4_post_290.png,Damaged building counting.,1,C,A,False,A,False,0,The answer is A.
+764,building_damage_counting_3695,test_images\turkey_earthquake4_post_294.png,Damaged building counting.,3,E,A,False,A,False,0,The answer is A.
+767,building_damage_counting_3700,test_images\turkey_earthquake4_post_298.png,Damaged building counting.,9,D,A,False,A,False,0,The answer is A.
+770,building_damage_counting_3706,test_images\turkey_earthquake4_post_302.png,Damaged building counting.,17,D,A,False,A,False,0,The answer is A.
+774,building_damage_counting_3714,test_images\turkey_earthquake4_post_306.png,Damaged building counting.,25,B,A,False,A,False,0,The answer is A.
+777,building_damage_counting_3720,test_images\turkey_earthquake4_post_310.png,Damaged building counting.,1,D,E,False,E,False,0,The answer is E.
+781,building_damage_counting_3728,test_images\turkey_earthquake4_post_314.png,Damaged building counting.,1,C,A,False,A,False,0,The answer is A.
+784,building_damage_counting_3734,test_images\turkey_earthquake4_post_318.png,Damaged building counting.,10,D,A,False,A,False,0,The answer is A.
+787,building_damage_counting_3740,test_images\turkey_earthquake4_post_322.png,Damaged building counting.,15,A,E,False,E,False,0,The answer is E.
+791,building_damage_counting_3748,test_images\turkey_earthquake4_post_326.png,Damaged building counting.,15,D,A,False,A,False,0,The answer is A.
+794,building_damage_counting_3754,test_images\turkey_earthquake4_post_330.png,Damaged building counting.,13,B,A,False,A,False,0,The answer is A.
+798,building_damage_counting_3762,test_images\turkey_earthquake4_post_335.png,Damaged building counting.,30,B,A,False,A,False,0,The answer is A.
+801,building_damage_counting_3768,test_images\turkey_earthquake5_post_358.png,Damaged building counting.,1,B,A,False,A,False,0,The answer is A.
+805,building_damage_counting_3774,test_images\turkey_earthquake6_post_371.png,Damaged building counting.,13,E,E,True,E,True,9,E
+808,building_damage_counting_3777,test_images\turkey_earthquake6_post_376.png,Damaged building counting.,5,A,B,False,B,False,3,B
+811,building_damage_counting_3780,test_images\turkey_earthquake6_post_379.png,Damaged building counting.,24,E,A,False,A,False,1,The answer is A.
+815,building_damage_counting_3784,test_images\turkey_earthquake6_post_385.png,Damaged building counting.,4,E,C,False,C,False,1,The answer is C.
+818,building_damage_counting_3787,test_images\turkey_earthquake6_post_388.png,Damaged building counting.,6,D,B,False,B,False,14,B
+822,building_damage_counting_3791,test_images\turkey_earthquake6_post_402.png,Damaged building counting.,4,C,A,False,A,False,2,The answer is A.
+825,building_damage_counting_3794,test_images\turkey_earthquake6_post_405.png,Damaged building counting.,6,D,E,False,E,False,22,E
+828,building_damage_counting_3797,test_images\turkey_earthquake6_post_415.png,Damaged building counting.,4,E,A,False,A,False,3,The answer is A.
+832,building_damage_counting_3801,test_images\turkey_earthquake6_post_421.png,Damaged building counting.,2,D,A,False,A,False,1,The answer is A.
+835,building_damage_counting_3804,test_images\turkey_earthquake6_post_424.png,Damaged building counting.,1,E,A,False,A,False,0,The answer is A.
+839,building_damage_counting_3808,test_images\turkey_earthquake6_post_439.png,Damaged building counting.,1,B,E,False,E,False,0,The answer is E.
+842,building_damage_counting_3811,test_images\turkey_earthquake6_post_442.png,Damaged building counting.,15,D,A,False,A,False,0,The answer is A.
+845,building_damage_counting_3814,test_images\turkey_earthquake6_post_452.png,Damaged building counting.,1,B,B,True,B,True,1,B
+849,building_damage_counting_3818,test_images\turkey_earthquake6_post_467.png,Damaged building counting.,9,B,A,False,A,False,0,The answer is A.
+852,building_damage_counting_3821,test_images\turkey_earthquake6_post_471.png,Damaged building counting.,1,B,A,False,A,False,0,The answer is A.
+856,building_damage_counting_3825,test_images\turkey_earthquake6_post_478.png,Damaged building counting.,1,E,E,True,E,True,2,E
+859,building_damage_counting_3828,test_images\turkey_earthquake6_post_483.png,Damaged building counting.,23,A,A,True,A,True,0,The answer is A.
+862,building_damage_counting_3831,test_images\turkey_earthquake6_post_487.png,Damaged building counting.,2,A,E,False,E,False,0,The answer is E.
+866,building_damage_counting_3835,test_images\turkey_earthquake6_post_496.png,Damaged building counting.,1,C,A,False,A,False,0,The answer is A.
+869,building_damage_counting_3838,test_images\turkey_earthquake6_post_500.png,Damaged building counting.,18,B,D,False,D,False,11,D
+873,building_damage_counting_3842,test_images\turkey_earthquake6_post_508.png,Damaged building counting.,1,E,B,False,B,False,14,B
+877,building_damage_counting_3846,test_images\turkey_earthquake6_post_516.png,Damaged building counting.,35,B,A,False,A,False,15,The answer is A.
+880,building_damage_counting_3849,test_images\turkey_earthquake6_post_520.png,Damaged building counting.,3,E,E,True,E,True,3,E
+884,building_damage_counting_3853,test_images\turkey_earthquake6_post_531.png,Damaged building counting.,2,A,B,False,B,False,0,B
+887,building_damage_counting_3856,test_images\turkey_earthquake6_post_534.png,Damaged building counting.,13,D,A,False,A,False,3,The answer is A.
+891,building_damage_counting_3860,test_images\turkey_earthquake6_post_542.png,Damaged building counting.,2,E,E,True,E,True,9,E
+894,building_damage_counting_3863,test_images\turkey_earthquake6_post_549.png,Damaged building counting.,11,E,E,True,E,True,12,E
+897,building_damage_counting_3866,test_images\turkey_earthquake6_post_552.png,Damaged building counting.,7,D,B,False,B,False,5,B
+901,building_damage_counting_3870,test_images\turkey_earthquake6_post_556.png,Damaged building counting.,3,D,A,False,A,False,0,The answer is A.
+904,building_damage_counting_3873,test_images\turkey_earthquake6_post_561.png,Damaged building counting.,1,B,B,True,B,True,2,B
+908,building_damage_counting_3877,test_images\turkey_earthquake6_post_565.png,Damaged building counting.,4,E,B,False,B,False,7,B
+911,building_damage_counting_3880,test_images\turkey_earthquake6_post_568.png,Damaged building counting.,1,D,D,True,D,True,3,D.
+915,building_damage_counting_3884,test_images\turkey_earthquake7_post_605.png,Damaged building counting.,2,B,A,False,A,False,0,The answer is A.
+918,building_damage_counting_3887,test_images\turkey_earthquake7_post_614.png,Damaged building counting.,5,A,E,False,E,False,0,The answer is E.
+921,building_damage_counting_3890,test_images\tuscaloosa_tornado_00000031_post_disaster.png,Damaged building counting.,6,E,A,False,A,False,4,The answer is A.
+925,building_damage_counting_3894,test_images\tuscaloosa_tornado_00000054_post_disaster.png,Damaged building counting.,4,E,A,False,A,False,1,The answer is A.
+928,building_damage_counting_3897,test_images\tuscaloosa_tornado_00000076_post_disaster.png,Damaged building counting.,7,A,A,True,A,True,3,The answer is A.
+932,building_damage_counting_3901,test_images\tuscaloosa_tornado_00000107_post_disaster.png,Damaged building counting.,5,E,B,False,B,False,8,B
+935,building_damage_counting_3904,test_images\tuscaloosa_tornado_00000167_post_disaster.png,Damaged building counting.,1,A,B,False,B,False,1,B
+938,building_damage_counting_3907,test_images\tuscaloosa_tornado_00000210_post_disaster.png,Damaged building counting.,2,D,D,True,D,True,2,D.
+942,building_damage_counting_3911,test_images\tuscaloosa_tornado_00000241_post_disaster.png,Damaged building counting.,3,A,B,False,B,False,2,B
+945,building_damage_counting_3914,test_images\tuscaloosa_tornado_00000272_post_disaster.png,Damaged building counting.,6,A,A,True,A,True,12,The answer is A.
+949,building_damage_counting_3918,test_images\tuscaloosa_tornado_00000316_post_disaster.png,Damaged building counting.,11,C,A,False,A,False,15,The answer is A.
+952,building_damage_counting_3994,test_images\woolsey_fire_00000011_post_disaster.png,Damaged building counting.,2,C,A,False,A,False,0,The answer is A.
+955,building_damage_counting_3997,test_images\woolsey_fire_00000146_post_disaster.png,Damaged building counting.,1,A,A,True,A,True,0,The answer is A.
+959,building_damage_counting_4001,test_images\woolsey_fire_00000246_post_disaster.png,Damaged building counting.,3,B,D,False,D,False,1,D.
+962,building_damage_counting_4004,test_images\woolsey_fire_00000328_post_disaster.png,Damaged building counting.,4,E,A,False,A,False,0,The answer is A.
+966,building_damage_counting_4008,test_images\woolsey_fire_00000480_post_disaster.png,Damaged building counting.,2,D,A,False,A,False,0,The answer is A.
+969,building_damage_counting_4011,test_images\woolsey_fire_00000585_post_disaster.png,Damaged building counting.,4,E,A,False,A,False,3,The answer is A.
+972,building_damage_counting_4014,test_images\woolsey_fire_00000817_post_disaster.png,Damaged building counting.,3,C,D,False,D,False,1,D
+976,building_damage_counting_4020,test_images\bata_explosion_post_2.png,Totally-destroyed building counting.,4,B,A,False,A,False,0,The answer is A.
+979,building_damage_counting_4026,test_images\beriut_explosion_post_8.png,Totally-destroyed building counting.,1,B,B,True,B,True,2,B
+983,building_damage_counting_4033,test_images\beriut_explosion_post_24.png,Totally-destroyed building counting.,5,C,D,False,D,False,13,D.
+986,building_damage_counting_4037,test_images\guatemala_volcano_00000004_post_disaster.png,Totally-destroyed building counting.,4,D,C,False,C,False,1,C
+989,building_damage_counting_4040,test_images\guatemala_volcano_00000019_post_disaster.png,Totally-destroyed building counting.,1,C,A,False,A,False,0,The answer is A.
+993,building_damage_counting_4049,test_images\hawaii_wildfire_post_631.png,Totally-destroyed building counting.,68,C,D,False,D,False,4,D
+996,building_damage_counting_4054,test_images\hawaii_wildfire_post_637.png,Totally-destroyed building counting.,51,B,C,False,C,False,6,C
+1000,building_damage_counting_4061,test_images\hawaii_wildfire_post_641.png,Totally-destroyed building counting.,50,D,B,False,B,False,6,B
+1003,building_damage_counting_4067,test_images\hawaii_wildfire_post_645.png,Totally-destroyed building counting.,44,E,A,False,A,False,13,The answer is A.
+1007,building_damage_counting_4075,test_images\hawaii_wildfire_post_650.png,Totally-destroyed building counting.,97,D,A,False,A,False,10,The answer is A.
+1010,building_damage_counting_4080,test_images\hawaii_wildfire_post_654.png,Totally-destroyed building counting.,33,D,A,False,A,False,4,The answer is A.
+1013,building_damage_counting_4086,test_images\hurricane_florence_00000035_post_disaster.png,Totally-destroyed building counting.,1,B,A,False,A,False,0,The answer is A.
+1017,building_damage_counting_4090,test_images\hurricane_harvey_00000124_post_disaster.png,Totally-destroyed building counting.,13,A,B,False,B,False,5,B
+1020,building_damage_counting_4093,test_images\hurricane_harvey_00000283_post_disaster.png,Totally-destroyed building counting.,1,A,A,True,A,True,0,The answer is A.
+1024,building_damage_counting_4097,test_images\hurricane_harvey_00000362_post_disaster.png,Totally-destroyed building counting.,12,D,A,False,A,False,0,The answer is A.
+1027,building_damage_counting_4100,test_images\hurricane_harvey_00000463_post_disaster.png,Totally-destroyed building counting.,4,B,A,False,A,False,1,A.
+1030,building_damage_counting_4103,test_images\hurricane_matthew_00000023_post_disaster.png,Totally-destroyed building counting.,2,D,A,False,A,False,0,The answer is A.
+1034,building_damage_counting_4107,test_images\hurricane_matthew_00000056_post_disaster.png,Totally-destroyed building counting.,1,D,A,False,A,False,0,The answer is A.
+1037,building_damage_counting_4110,test_images\hurricane_matthew_00000082_post_disaster.png,Totally-destroyed building counting.,10,B,B,True,B,True,10,B
+1041,building_damage_counting_4114,test_images\hurricane_matthew_00000134_post_disaster.png,Totally-destroyed building counting.,1,D,E,False,E,False,0,E
+1044,building_damage_counting_4117,test_images\hurricane_matthew_00000153_post_disaster.png,Totally-destroyed building counting.,23,A,E,False,E,False,25,E
+1047,building_damage_counting_4120,test_images\hurricane_matthew_00000174_post_disaster.png,Totally-destroyed building counting.,24,A,E,False,E,False,22,E
+1051,building_damage_counting_4124,test_images\hurricane_matthew_00000201_post_disaster.png,Totally-destroyed building counting.,2,C,A,False,A,False,4,The answer is A.
+1054,building_damage_counting_4127,test_images\hurricane_matthew_00000220_post_disaster.png,Totally-destroyed building counting.,5,A,B,False,B,False,6,B.
+1058,building_damage_counting_4131,test_images\hurricane_matthew_00000248_post_disaster.png,Totally-destroyed building counting.,9,D,B,False,B,False,12,B
+1061,building_damage_counting_4134,test_images\hurricane_matthew_00000275_post_disaster.png,Totally-destroyed building counting.,11,D,C,False,C,False,10,C
+1064,building_damage_counting_4137,test_images\hurricane_matthew_00000308_post_disaster.png,Totally-destroyed building counting.,11,E,E,True,E,True,12,E
+1068,building_damage_counting_4141,test_images\hurricane_matthew_00000334_post_disaster.png,Totally-destroyed building counting.,2,E,E,True,E,True,2,E
+1071,building_damage_counting_4144,test_images\hurricane_matthew_00000353_post_disaster.png,Totally-destroyed building counting.,1,E,B,False,B,False,17,B
+1075,building_damage_counting_4148,test_images\hurricane_matthew_00000390_post_disaster.png,Totally-destroyed building counting.,24,D,E,False,E,False,17,E
+1078,building_damage_counting_4151,test_images\hurricane_michael_00000048_post_disaster.png,Totally-destroyed building counting.,1,A,A,True,A,True,0,The answer is A.
+1081,building_damage_counting_4154,test_images\hurricane_michael_00000076_post_disaster.png,Totally-destroyed building counting.,4,D,A,False,A,False,3,The answer is A.
+1085,building_damage_counting_4158,test_images\hurricane_michael_00000113_post_disaster.png,Totally-destroyed building counting.,9,D,A,False,A,False,3,The answer is A.
+1088,building_damage_counting_4161,test_images\hurricane_michael_00000167_post_disaster.png,Totally-destroyed building counting.,5,E,A,False,A,False,3,The answer is A.
+1092,building_damage_counting_4165,test_images\hurricane_michael_00000203_post_disaster.png,Totally-destroyed building counting.,4,C,A,False,A,False,3,The answer is A.
+1095,building_damage_counting_4168,test_images\hurricane_michael_00000230_post_disaster.png,Totally-destroyed building counting.,1,C,C,True,C,True,1,C.
+1098,building_damage_counting_4171,test_images\hurricane_michael_00000258_post_disaster.png,Totally-destroyed building counting.,1,C,A,False,A,False,0,The answer is A.
+1102,building_damage_counting_4175,test_images\hurricane_michael_00000303_post_disaster.png,Totally-destroyed building counting.,24,A,A,True,A,True,7,The answer is A.
+1105,building_damage_counting_4178,test_images\hurricane_michael_00000330_post_disaster.png,Totally-destroyed building counting.,2,B,D,False,D,False,1,D.
+1109,building_damage_counting_4182,test_images\hurricane_michael_00000441_post_disaster.png,Totally-destroyed building counting.,1,D,D,True,D,True,3,D
+1112,building_damage_counting_4185,test_images\hurricane_michael_00000486_post_disaster.png,Totally-destroyed building counting.,1,D,A,False,A,False,0,The answer is A.
+1116,building_damage_counting_4189,test_images\ian_hurricane_post_725.png,Totally-destroyed building counting.,1,B,B,True,B,True,2,B
+1119,building_damage_counting_4192,test_images\ian_hurricane_post_730.png,Totally-destroyed building counting.,1,C,A,False,A,False,0,The answer is A.
+1122,building_damage_counting_4195,test_images\ian_hurricane_post_742.png,Totally-destroyed building counting.,1,E,E,True,E,True,1,E
+1126,building_damage_counting_4199,test_images\joplin_tornado_00000002_post_disaster.png,Totally-destroyed building counting.,14,E,C,False,C,False,10,C
+1129,building_damage_counting_4202,test_images\joplin_tornado_00000008_post_disaster.png,Totally-destroyed building counting.,20,A,D,False,D,False,11,D.
+1133,building_damage_counting_4206,test_images\joplin_tornado_00000018_post_disaster.png,Totally-destroyed building counting.,17,E,E,True,E,True,20,E
+1136,building_damage_counting_4209,test_images\joplin_tornado_00000025_post_disaster.png,Totally-destroyed building counting.,51,C,C,True,C,True,50,C
+1139,building_damage_counting_4212,test_images\joplin_tornado_00000031_post_disaster.png,Totally-destroyed building counting.,33,E,E,True,E,True,14,E
+1143,building_damage_counting_4216,test_images\joplin_tornado_00000037_post_disaster.png,Totally-destroyed building counting.,3,E,E,True,E,True,4,E
+1146,building_damage_counting_4219,test_images\joplin_tornado_00000043_post_disaster.png,Totally-destroyed building counting.,59,A,E,False,E,False,62,E
+1150,building_damage_counting_4223,test_images\joplin_tornado_00000050_post_disaster.png,Totally-destroyed building counting.,11,E,E,True,E,True,12,E
+1153,building_damage_counting_4226,test_images\joplin_tornado_00000057_post_disaster.png,Totally-destroyed building counting.,23,B,E,False,E,False,21,E
+1156,building_damage_counting_4229,test_images\joplin_tornado_00000063_post_disaster.png,Totally-destroyed building counting.,34,C,E,False,E,False,31,E
+1160,building_damage_counting_4233,test_images\joplin_tornado_00000075_post_disaster.png,Totally-destroyed building counting.,44,C,E,False,E,False,46,E
+1163,building_damage_counting_4236,test_images\joplin_tornado_00000084_post_disaster.png,Totally-destroyed building counting.,79,C,C,True,C,True,84,C
+1167,building_damage_counting_4240,test_images\joplin_tornado_00000088_post_disaster.png,Totally-destroyed building counting.,60,C,E,False,E,False,52,E
+1170,building_damage_counting_4243,test_images\joplin_tornado_00000093_post_disaster.png,Totally-destroyed building counting.,9,C,B,False,B,False,12,B
+1173,building_damage_counting_4246,test_images\joplin_tornado_00000099_post_disaster.png,Totally-destroyed building counting.,2,A,B,False,B,False,1,B
+1177,building_damage_counting_4250,test_images\joplin_tornado_00000111_post_disaster.png,Totally-destroyed building counting.,2,B,B,True,B,True,2,B
+1180,building_damage_counting_4253,test_images\joplin_tornado_00000114_post_disaster.png,Totally-destroyed building counting.,21,C,A,False,A,False,8,The answer is A.
+1184,building_damage_counting_4257,test_images\joplin_tornado_00000118_post_disaster.png,Totally-destroyed building counting.,51,C,E,False,E,False,72,E
+1187,building_damage_counting_4260,test_images\joplin_tornado_00000121_post_disaster.png,Totally-destroyed building counting.,37,D,D,True,D,True,39,D
+1190,building_damage_counting_4263,test_images\joplin_tornado_00000125_post_disaster.png,Totally-destroyed building counting.,57,A,E,False,E,False,74,E
+1194,building_damage_counting_4267,test_images\joplin_tornado_00000134_post_disaster.png,Totally-destroyed building counting.,3,D,D,True,D,True,3,D
+1197,building_damage_counting_4270,test_images\joplin_tornado_00000139_post_disaster.png,Totally-destroyed building counting.,11,B,A,False,A,False,4,The answer is A.
+1201,building_damage_counting_4274,test_images\joplin_tornado_00000144_post_disaster.png,Totally-destroyed building counting.,152,E,E,True,E,True,148,E
+1204,building_damage_counting_4277,test_images\joplin_tornado_00000147_post_disaster.png,Totally-destroyed building counting.,285,C,E,False,E,False,216,E
+1208,building_damage_counting_4298,test_images\libya_flood_post_79.png,Totally-destroyed building counting.,2,E,E,True,E,True,0,The answer is E.
+1211,building_damage_counting_4304,test_images\libya_flood_post_84.png,Totally-destroyed building counting.,20,D,C,False,C,False,9,C
+1214,building_damage_counting_4310,test_images\libya_flood_post_89.png,Totally-destroyed building counting.,4,E,A,False,A,False,2,The answer is A.
+1218,building_damage_counting_4318,test_images\libya_flood_post_101.png,Totally-destroyed building counting.,19,A,D,False,D,False,16,D
+1221,building_damage_counting_4324,test_images\libya_flood_post_115.png,Totally-destroyed building counting.,4,A,A,True,A,True,0,The answer is A.
+1225,building_damage_counting_4329,test_images\lower_puna_volcano_00000133_post_disaster.png,Totally-destroyed building counting.,1,B,B,True,B,True,5,B
+1228,building_damage_counting_4332,test_images\lower_puna_volcano_00000149_post_disaster.png,Totally-destroyed building counting.,11,B,B,True,B,True,12,B
+1231,building_damage_counting_4335,test_images\lower_puna_volcano_00000223_post_disaster.png,Totally-destroyed building counting.,2,A,D,False,D,False,1,D
+1235,building_damage_counting_4359,test_images\mexico_earthquake_00000076_post_disaster.png,Totally-destroyed building counting.,1,E,E,True,E,True,2,E
+1238,building_damage_counting_4393,test_images\midwest_flooding_00000006_post_disaster.png,Totally-destroyed building counting.,4,B,B,True,B,True,4,B
+1242,building_damage_counting_4397,test_images\midwest_flooding_00000252_post_disaster.png,Totally-destroyed building counting.,1,C,A,False,A,False,0,A.
+1245,building_damage_counting_4400,test_images\midwest_flooding_00000383_post_disaster.png,Totally-destroyed building counting.,1,C,A,False,A,False,0,The answer is A.
+1248,building_damage_counting_4403,test_images\moore_tornado_00000045_post_disaster.png,Totally-destroyed building counting.,92,B,E,False,E,False,64,E
+1252,building_damage_counting_4407,test_images\moore_tornado_00000104_post_disaster.png,Totally-destroyed building counting.,24,A,C,False,C,False,28,C
+1255,building_damage_counting_4410,test_images\moore_tornado_00000201_post_disaster.png,Totally-destroyed building counting.,1,D,D,True,D,True,1,D
+1259,building_damage_counting_4415,test_images\nepal_flooding_00000115_post_disaster.png,Totally-destroyed building counting.,5,D,A,False,A,False,0,The answer is A.
+1262,building_damage_counting_4418,test_images\nepal_flooding_00000232_post_disaster.png,Totally-destroyed building counting.,1,A,A,True,A,True,0,The answer is A.
+1265,building_damage_counting_4421,test_images\nepal_flooding_00000333_post_disaster.png,Totally-destroyed building counting.,5,E,A,False,A,False,0,The answer is A.
+1269,building_damage_counting_4425,test_images\nepal_flooding_00000423_post_disaster.png,Totally-destroyed building counting.,5,A,B,False,B,False,0,B
+1272,building_damage_counting_4428,test_images\nepal_flooding_00000487_post_disaster.png,Totally-destroyed building counting.,2,D,A,False,A,False,0,The answer is A.
+1276,building_damage_counting_4432,test_images\noto_earthquake_post_124.png,Totally-destroyed building counting.,1,D,A,False,A,False,0,The answer is A.
+1279,building_damage_counting_4438,test_images\noto_earthquake_post_140.png,Totally-destroyed building counting.,1,E,E,True,E,True,0,E
+1282,building_damage_counting_4444,test_images\noto_earthquake_post_152.png,Totally-destroyed building counting.,35,E,A,False,A,False,0,The answer is A.
+1286,building_damage_counting_4452,test_images\noto_earthquake_post_160.png,Totally-destroyed building counting.,6,D,A,False,A,False,0,The answer is A.
+1289,building_damage_counting_4458,test_images\noto_earthquake_post_163.png,Totally-destroyed building counting.,35,B,A,False,A,False,0,The answer is A.
+1293,building_damage_counting_4466,test_images\noto_earthquake_post_171.png,Totally-destroyed building counting.,53,A,A,True,A,True,0,The answer is A.
+1296,building_damage_counting_4472,test_images\noto_earthquake_post_174.png,Totally-destroyed building counting.,2,B,A,False,A,False,0,The answer is A.
+1299,building_damage_counting_4478,test_images\noto_earthquake_post_178.png,Totally-destroyed building counting.,1,E,E,True,E,True,0,E
+1303,building_damage_counting_4486,test_images\noto_earthquake_post_182.png,Totally-destroyed building counting.,7,B,A,False,A,False,3,The answer is A.
+1306,building_damage_counting_4492,test_images\noto_earthquake_post_186.png,Totally-destroyed building counting.,6,C,B,False,B,False,11,B
+1310,building_damage_counting_4500,test_images\palu_tsunami_00000000_post_disaster.png,Totally-destroyed building counting.,9,E,A,False,A,False,0,The answer is A.
+1313,building_damage_counting_4503,test_images\palu_tsunami_00000004_post_disaster.png,Totally-destroyed building counting.,2,B,B,True,B,True,2,B
+1317,building_damage_counting_4507,test_images\palu_tsunami_00000016_post_disaster.png,Totally-destroyed building counting.,4,B,A,False,A,False,3,The answer is A.
+1320,building_damage_counting_4510,test_images\palu_tsunami_00000020_post_disaster.png,Totally-destroyed building counting.,29,B,D,False,D,False,16,D
+1323,building_damage_counting_4513,test_images\palu_tsunami_00000026_post_disaster.png,Totally-destroyed building counting.,21,B,E,False,E,False,16,E
+1327,building_damage_counting_4517,test_images\palu_tsunami_00000035_post_disaster.png,Totally-destroyed building counting.,2,A,B,False,B,False,0,B
+1330,building_damage_counting_4520,test_images\palu_tsunami_00000039_post_disaster.png,Totally-destroyed building counting.,4,B,B,True,B,True,4,B
+1334,building_damage_counting_4524,test_images\palu_tsunami_00000051_post_disaster.png,Totally-destroyed building counting.,9,C,B,False,B,False,5,B
+1337,building_damage_counting_4527,test_images\palu_tsunami_00000057_post_disaster.png,Totally-destroyed building counting.,19,A,E,False,E,False,17,E
+1340,building_damage_counting_4530,test_images\palu_tsunami_00000064_post_disaster.png,Totally-destroyed building counting.,6,A,B,False,B,False,4,B
+1344,building_damage_counting_4534,test_images\palu_tsunami_00000070_post_disaster.png,Totally-destroyed building counting.,28,C,D,False,D,False,13,D
+1347,building_damage_counting_4537,test_images\palu_tsunami_00000085_post_disaster.png,Totally-destroyed building counting.,20,C,D,False,D,False,14,D
+1351,building_damage_counting_4541,test_images\palu_tsunami_00000100_post_disaster.png,Totally-destroyed building counting.,2,A,A,True,A,True,0,The answer is A.
+1354,building_damage_counting_4544,test_images\palu_tsunami_00000108_post_disaster.png,Totally-destroyed building counting.,4,E,A,False,A,False,2,A.
+1357,building_damage_counting_4547,test_images\palu_tsunami_00000112_post_disaster.png,Totally-destroyed building counting.,51,A,D,False,D,False,38,D
+1361,building_damage_counting_4551,test_images\palu_tsunami_00000129_post_disaster.png,Totally-destroyed building counting.,2,C,A,False,A,False,0,The answer is A.
+1364,building_damage_counting_4554,test_images\palu_tsunami_00000135_post_disaster.png,Totally-destroyed building counting.,17,D,B,False,B,False,9,B
+1368,building_damage_counting_4558,test_images\palu_tsunami_00000143_post_disaster.png,Totally-destroyed building counting.,33,B,E,False,E,False,22,E
+1371,building_damage_counting_4561,test_images\palu_tsunami_00000148_post_disaster.png,Totally-destroyed building counting.,14,C,A,False,A,False,3,The answer is A.
+1374,building_damage_counting_4564,test_images\palu_tsunami_00000158_post_disaster.png,Totally-destroyed building counting.,7,D,B,False,B,False,8,B
+1378,building_damage_counting_4568,test_images\palu_tsunami_00000165_post_disaster.png,Totally-destroyed building counting.,83,A,E,False,E,False,61,E
+1381,building_damage_counting_4571,test_images\palu_tsunami_00000169_post_disaster.png,Totally-destroyed building counting.,24,D,E,False,E,False,32,E
+1385,building_damage_counting_4575,test_images\palu_tsunami_00000178_post_disaster.png,Totally-destroyed building counting.,68,D,C,False,C,False,39,C
+1388,building_damage_counting_4578,test_images\palu_tsunami_00000185_post_disaster.png,Totally-destroyed building counting.,25,C,E,False,E,False,20,E
+1391,building_damage_counting_4581,test_images\palu_tsunami_00000188_post_disaster.png,Totally-destroyed building counting.,20,A,E,False,E,False,21,E
+1395,building_damage_counting_4585,test_images\palu_tsunami_00000193_post_disaster.png,Totally-destroyed building counting.,26,C,E,False,E,False,27,E
+1398,building_damage_counting_4588,test_images\pinery_bushfire_00000048_post_disaster.png,Totally-destroyed building counting.,7,D,A,False,A,False,4,The answer is A.
+1402,building_damage_counting_4592,test_images\pinery_bushfire_00000388_post_disaster.png,Totally-destroyed building counting.,1,B,B,True,B,True,2,B
+1405,building_damage_counting_4595,test_images\pinery_bushfire_00000830_post_disaster.png,Totally-destroyed building counting.,1,B,B,True,B,True,1,B
+1409,building_damage_counting_4599,test_images\pinery_bushfire_00001523_post_disaster.png,Totally-destroyed building counting.,2,A,D,False,D,False,1,D
+1412,building_damage_counting_4602,test_images\portugal_wildfire_00000285_post_disaster.png,Totally-destroyed building counting.,2,A,A,True,A,True,2,A.
+1415,building_damage_counting_4605,test_images\portugal_wildfire_00000651_post_disaster.png,Totally-destroyed building counting.,1,E,E,True,E,True,4,E
+1419,building_damage_counting_4609,test_images\portugal_wildfire_00001265_post_disaster.png,Totally-destroyed building counting.,5,C,C,True,C,True,6,C
+1422,building_damage_counting_4612,test_images\portugal_wildfire_00001378_post_disaster.png,Totally-destroyed building counting.,3,D,D,True,D,True,3,D
+1426,building_damage_counting_4616,test_images\portugal_wildfire_00001572_post_disaster.png,Totally-destroyed building counting.,17,C,E,False,E,False,24,E
+1429,building_damage_counting_4619,test_images\portugal_wildfire_00001842_post_disaster.png,Totally-destroyed building counting.,3,B,A,False,A,False,4,The answer is A.
+1432,building_damage_counting_4625,test_images\santa_rosa_wildfire_00000018_post_disaster.png,Totally-destroyed building counting.,7,C,A,False,A,False,5,The answer is A.
+1436,building_damage_counting_4629,test_images\santa_rosa_wildfire_00000049_post_disaster.png,Totally-destroyed building counting.,75,E,E,True,E,True,74,E
+1439,building_damage_counting_4632,test_images\santa_rosa_wildfire_00000074_post_disaster.png,Totally-destroyed building counting.,9,A,B,False,B,False,3,B
+1443,building_damage_counting_4636,test_images\santa_rosa_wildfire_00000104_post_disaster.png,Totally-destroyed building counting.,18,D,C,False,C,False,14,C
+1446,building_damage_counting_4639,test_images\santa_rosa_wildfire_00000130_post_disaster.png,Totally-destroyed building counting.,49,D,D,True,D,True,50,D
+1449,building_damage_counting_4642,test_images\santa_rosa_wildfire_00000186_post_disaster.png,Totally-destroyed building counting.,22,C,C,True,C,True,22,C
+1453,building_damage_counting_4646,test_images\santa_rosa_wildfire_00000242_post_disaster.png,Totally-destroyed building counting.,54,E,E,True,E,True,56,E
+1456,building_damage_counting_4649,test_images\santa_rosa_wildfire_00000263_post_disaster.png,Totally-destroyed building counting.,4,D,D,True,D,True,5,D
+1460,building_damage_counting_4653,test_images\santa_rosa_wildfire_00000293_post_disaster.png,Totally-destroyed building counting.,2,E,E,True,E,True,3,E
+1463,building_damage_counting_4656,test_images\santa_rosa_wildfire_00000318_post_disaster.png,Totally-destroyed building counting.,9,A,C,False,C,False,5,C
+1466,building_damage_counting_4659,test_images\santa_rosa_wildfire_00000340_post_disaster.png,Totally-destroyed building counting.,2,A,A,True,A,True,3,The answer is A.
+1470,building_damage_counting_4663,test_images\shovi_landslide_post_781.png,Totally-destroyed building counting.,3,D,A,False,A,False,2,The answer is A.
+1473,building_damage_counting_4666,test_images\socal_fire_00000468_post_disaster.png,Totally-destroyed building counting.,5,B,A,False,A,False,3,The answer is A.
+1477,building_damage_counting_4670,test_images\socal_fire_00000713_post_disaster.png,Totally-destroyed building counting.,1,C,C,True,C,True,1,C
+1480,building_damage_counting_4673,test_images\socal_fire_00000821_post_disaster.png,Totally-destroyed building counting.,23,E,E,True,E,True,24,E
+1483,building_damage_counting_4676,test_images\socal_fire_00001086_post_disaster.png,Totally-destroyed building counting.,5,E,A,False,A,False,4,The answer is A.
+1487,building_damage_counting_4682,test_images\sunda_tsunami_00000009_post_disaster.png,Totally-destroyed building counting.,23,D,A,False,A,False,6,The answer is A.
+1490,building_damage_counting_4685,test_images\sunda_tsunami_00000042_post_disaster.png,Totally-destroyed building counting.,11,C,A,False,A,False,0,The answer is A.
+1494,building_damage_counting_4689,test_images\sunda_tsunami_00000140_post_disaster.png,Totally-destroyed building counting.,21,C,A,False,A,False,4,The answer is A.
+1497,building_damage_counting_4694,test_images\turkey_earthquake1_post_236.png,Totally-destroyed building counting.,3,C,A,False,A,False,0,The answer is A.
+1500,building_damage_counting_4700,test_images\turkey_earthquake1_post_240.png,Totally-destroyed building counting.,18,B,A,False,A,False,0,The answer is A.
+1504,building_damage_counting_4708,test_images\turkey_earthquake1_post_245.png,Totally-destroyed building counting.,2,E,A,False,A,False,0,The answer is A.
+1507,building_damage_counting_4714,test_images\turkey_earthquake1_post_248.png,Totally-destroyed building counting.,10,E,A,False,A,False,0,The answer is A.
+1511,building_damage_counting_4722,test_images\turkey_earthquake3_post_269.png,Totally-destroyed building counting.,10,B,A,False,A,False,0,The answer is A.
+1514,building_damage_counting_4728,test_images\turkey_earthquake3_post_274.png,Totally-destroyed building counting.,1,E,E,True,E,True,0,E
+1518,building_damage_counting_4736,test_images\turkey_earthquake4_post_283.png,Totally-destroyed building counting.,11,E,A,False,A,False,0,The answer is A.
+1521,building_damage_counting_4741,test_images\turkey_earthquake4_post_286.png,Totally-destroyed building counting.,2,E,A,False,A,False,0,The answer is A.
+1524,building_damage_counting_4747,test_images\turkey_earthquake4_post_297.png,Totally-destroyed building counting.,2,D,A,False,A,False,0,The answer is A.
+1528,building_damage_counting_4755,test_images\turkey_earthquake4_post_305.png,Totally-destroyed building counting.,1,B,A,False,A,False,0,The answer is A.
+1531,building_damage_counting_4761,test_images\turkey_earthquake4_post_310.png,Totally-destroyed building counting.,2,A,A,True,A,True,0,The answer is A.
+1535,building_damage_counting_4769,test_images\turkey_earthquake4_post_317.png,Totally-destroyed building counting.,26,B,A,False,A,False,0,The answer is A.
+1538,building_damage_counting_4775,test_images\turkey_earthquake4_post_322.png,Totally-destroyed building counting.,20,E,A,False,A,False,0,The answer is A.
+1541,building_damage_counting_4781,test_images\turkey_earthquake4_post_325.png,Totally-destroyed building counting.,4,B,A,False,A,False,0,The answer is A.
+1545,building_damage_counting_4789,test_images\turkey_earthquake4_post_330.png,Totally-destroyed building counting.,9,A,A,True,A,True,0,The answer is A.
+1548,building_damage_counting_4795,test_images\turkey_earthquake4_post_334.png,Totally-destroyed building counting.,5,A,A,True,A,True,0,The answer is A.
+1552,building_damage_counting_4803,test_images\turkey_earthquake5_post_353.png,Totally-destroyed building counting.,1,A,A,True,A,True,0,The answer is A.
+1555,building_damage_counting_4809,test_images\turkey_earthquake5_post_363.png,Totally-destroyed building counting.,1,B,A,False,A,False,0,The answer is A.
+1558,building_damage_counting_4813,test_images\turkey_earthquake6_post_376.png,Totally-destroyed building counting.,2,E,A,False,A,False,0,The answer is A.
+1562,building_damage_counting_4817,test_images\turkey_earthquake6_post_386.png,Totally-destroyed building counting.,2,C,D,False,D,False,1,D.
+1565,building_damage_counting_4820,test_images\turkey_earthquake6_post_403.png,Totally-destroyed building counting.,2,D,D,True,D,True,2,D.
+1569,building_damage_counting_4824,test_images\turkey_earthquake6_post_419.png,Totally-destroyed building counting.,1,D,D,True,D,True,1,D
+1572,building_damage_counting_4827,test_images\turkey_earthquake6_post_422.png,Totally-destroyed building counting.,2,B,D,False,D,False,1,D
+1575,building_damage_counting_4830,test_images\turkey_earthquake6_post_425.png,Totally-destroyed building counting.,3,A,A,True,A,True,0,The answer is A.
+1579,building_damage_counting_4834,test_images\turkey_earthquake6_post_429.png,Totally-destroyed building counting.,6,A,A,True,A,True,0,The answer is A.
+1582,building_damage_counting_4837,test_images\turkey_earthquake6_post_439.png,Totally-destroyed building counting.,11,A,B,False,B,False,4,B
+1586,building_damage_counting_4841,test_images\turkey_earthquake6_post_446.png,Totally-destroyed building counting.,7,C,C,True,C,True,7,C
+1589,building_damage_counting_4844,test_images\turkey_earthquake6_post_452.png,Totally-destroyed building counting.,3,B,A,False,A,False,2,The answer is A.
+1592,building_damage_counting_4847,test_images\turkey_earthquake6_post_459.png,Totally-destroyed building counting.,5,E,A,False,A,False,0,The answer is A.
+1596,building_damage_counting_4851,test_images\turkey_earthquake6_post_475.png,Totally-destroyed building counting.,1,D,D,True,D,True,3,D.
+1599,building_damage_counting_4854,test_images\turkey_earthquake6_post_482.png,Totally-destroyed building counting.,1,E,E,True,E,True,0,E
+1603,building_damage_counting_4858,test_images\turkey_earthquake6_post_490.png,Totally-destroyed building counting.,2,C,A,False,A,False,4,The answer is A.
+1606,building_damage_counting_4861,test_images\turkey_earthquake6_post_497.png,Totally-destroyed building counting.,3,D,D,True,D,True,3,D.
+1610,building_damage_counting_4865,test_images\turkey_earthquake6_post_508.png,Totally-destroyed building counting.,2,E,A,False,A,False,0,The answer is A.
+1613,building_damage_counting_4868,test_images\turkey_earthquake6_post_517.png,Totally-destroyed building counting.,12,B,E,False,E,False,16,E
+1616,building_damage_counting_4871,test_images\turkey_earthquake6_post_521.png,Totally-destroyed building counting.,1,E,E,True,E,True,0,E
+1620,building_damage_counting_4875,test_images\turkey_earthquake6_post_535.png,Totally-destroyed building counting.,10,A,A,True,A,True,13,The answer is A.
+1623,building_damage_counting_4878,test_images\turkey_earthquake6_post_548.png,Totally-destroyed building counting.,1,C,A,False,A,False,0,The answer is A.
+1627,building_damage_counting_4882,test_images\turkey_earthquake6_post_552.png,Totally-destroyed building counting.,3,C,A,False,A,False,2,The answer is A.
+1630,building_damage_counting_4885,test_images\turkey_earthquake6_post_565.png,Totally-destroyed building counting.,2,C,A,False,A,False,0,The answer is A.
+1633,building_damage_counting_4888,test_images\turkey_earthquake7_post_605.png,Totally-destroyed building counting.,4,B,D,False,D,False,1,D.
+1637,building_damage_counting_4892,test_images\turkey_earthquake7_post_615.png,Totally-destroyed building counting.,1,D,D,True,D,True,4,D.
+1640,building_damage_counting_4895,test_images\tuscaloosa_tornado_00000042_post_disaster.png,Totally-destroyed building counting.,19,C,E,False,E,False,27,E
+1644,building_damage_counting_4899,test_images\tuscaloosa_tornado_00000090_post_disaster.png,Totally-destroyed building counting.,11,B,B,True,B,True,15,B
+1647,building_damage_counting_4902,test_images\tuscaloosa_tornado_00000161_post_disaster.png,Totally-destroyed building counting.,1,B,A,False,A,False,0,The answer is A.
+1650,building_damage_counting_4905,test_images\tuscaloosa_tornado_00000210_post_disaster.png,Totally-destroyed building counting.,4,B,B,True,B,True,4,B
+1654,building_damage_counting_4909,test_images\tuscaloosa_tornado_00000272_post_disaster.png,Totally-destroyed building counting.,6,D,E,False,E,False,1,E
+1657,building_damage_counting_4912,test_images\tuscaloosa_tornado_00000333_post_disaster.png,Totally-destroyed building counting.,2,D,A,False,A,False,0,A.
+1661,building_damage_counting_4940,test_images\woolsey_fire_00000033_post_disaster.png,Totally-destroyed building counting.,2,B,A,False,A,False,0,The answer is A.
+1664,building_damage_counting_4943,test_images\woolsey_fire_00000078_post_disaster.png,Totally-destroyed building counting.,4,A,B,False,B,False,2,B
+1667,building_damage_counting_4946,test_images\woolsey_fire_00000121_post_disaster.png,Totally-destroyed building counting.,1,A,A,True,A,True,0,The answer is A.
+1671,building_damage_counting_4950,test_images\woolsey_fire_00000206_post_disaster.png,Totally-destroyed building counting.,2,E,E,True,E,True,2,E
+1674,building_damage_counting_4953,test_images\woolsey_fire_00000262_post_disaster.png,Totally-destroyed building counting.,11,E,B,False,B,False,10,B
+1678,building_damage_counting_4957,test_images\woolsey_fire_00000352_post_disaster.png,Totally-destroyed building counting.,1,A,B,False,B,False,1,B
+1681,building_damage_counting_4960,test_images\woolsey_fire_00000440_post_disaster.png,Totally-destroyed building counting.,1,B,A,False,A,False,2,The answer is A.
+1684,building_damage_counting_4963,test_images\woolsey_fire_00000480_post_disaster.png,Totally-destroyed building counting.,10,C,C,True,C,True,11,C
+1688,building_damage_counting_4967,test_images\woolsey_fire_00000555_post_disaster.png,Totally-destroyed building counting.,10,E,D,False,D,False,18,D.
+1691,building_damage_counting_4970,test_images\woolsey_fire_00000598_post_disaster.png,Totally-destroyed building counting.,56,E,C,False,C,False,38,C
+1695,building_damage_counting_4974,test_images\woolsey_fire_00000728_post_disaster.png,Totally-destroyed building counting.,25,A,D,False,D,False,16,D.
+1698,building_damage_counting_4977,test_images\woolsey_fire_00000780_post_disaster.png,Totally-destroyed building counting.,1,B,B,True,B,True,1,B
+1702,building_damage_counting_4981,test_images\woolsey_fire_00000863_post_disaster.png,Totally-destroyed building counting.,6,A,A,True,A,True,0,The answer is A.
