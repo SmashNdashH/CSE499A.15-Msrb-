@@ -15,18 +15,32 @@ The originals are never changed.
 
 1. **DisasTeller copy, offline by default** (`disasteller_offline/`): the
    guideline search is linked to this folder's index, and the online switch of
-   System_Design_Notes §2 is added. See "DisasTeller, offline by default".
+   System_Design_Notes §2 is added. Why: O3 promises a complete report with no
+   internet, so offline is the default and the only mode that is graded. See
+   "DisasTeller, offline by default".
 2. **30 test questions, fixed before any search ran**
-   (`retrieval_test/questions.csv`), with the pass rule written down first. See
-   "Retrieval test of the guideline search".
+   (`retrieval_test/questions.csv`), with the pass rule written down first.
+   Why: the reports cite what this search returns, and the search had never
+   been measured. Fixing the test first means it can't be fitted to the
+   results. See "Retrieval test of the guideline search".
 3. **The test run: passed, 27 of 30** (the bar was 24). The meaning ranking
    alone got 20, so the hybrid search stays. Also in "Retrieval test of the
    guideline search".
-4. **Kaggle proof of the day-1 check: prepared, not run yet.** It needs a
-   Kaggle account. See "Running on Kaggle with internet turned off".
-5. **Counter:** work on `hybrid_bdc_counter.py` has stopped (see Files).
-6. **Sphere:** the PDF and its sections stay as they are until Abrar decides
-   (see Source documents).
+4. **Kaggle proof of the day-1 check: passed with version 2.** It ran as a
+   commit on 27 Oct with Kaggle's Internet setting off: `Internet is OFF`,
+   search `16/16` and `Counter OK`, as expected before the run. Version 1 had
+   the internet on, so it doesn't count. Why: the graded T2 run is on Kaggle
+   with the internet off (System_Design_Notes §2.4), so the search has to work
+   there with nothing downloaded. Version 2:
+   https://www.kaggle.com/code/riditaafrin/day1-kaggle-check?scriptVersionId=362688031
+   (public). See "Running on Kaggle with internet turned off".
+5. **Counter:** work on `hybrid_bdc_counter.py` has stopped. Why: H2's table
+   already holds R11's buildings one by one (see Files).
+6. **Sphere:** the PDF and its sections stay as they are until Abrar decides.
+   Why: Sphere's permission is needed to put the handbook online, and the
+   repository is public (see Source documents). Checked 27 Oct: the PDF is
+   unchanged and kept out of git, and its 61 sections are the same as in the
+   first push.
 7. **This README:** each step's reasons, the expectation fixed before the test,
    and the result against it.
 
@@ -52,7 +66,7 @@ The originals are never changed.
 - New option `--mode r1` for R1's labels:
   0 = Background, 1 = Intact, 2 = Damaged, 3 = Destroyed.
 - The CSV also gets one count per class (intact, damaged, destroyed).
-- Work on it has stopped (review, 26 Oct): H2's table already holds R11's buildings one by one (117,687 buildings in 2,652 benchmark images, `Champion_Task/H2-results/H2/buildings.sqlite`).
+- Work on it has stopped (review, 26 Oct): H2's table already holds R11's buildings one by one (117,687 buildings in 2,652 benchmark images); see [H2's README](../Champion_Task/H2-results/H2/README.md).
 
 **guidelines/**
 - The source documents. See the list below.
@@ -168,8 +182,9 @@ Nothing to install, nothing to download.
    keep it **Private**.
 3. **Code → New Notebook → File → Import Notebook**, choose
    `day1_kaggle_check.ipynb`.
-4. Right panel: Accelerator **None**, Internet **Off**,
-   **+ Add Input** → your `offline-rag-kr2` dataset.
+4. **Settings** menu: **Turn off internet** (the item then reads "Turn on
+   internet"), and **Accelerator → None**. **+ Add Input** → your
+   `offline-rag-kr2` dataset.
 5. **Run All**. You should see `Internet is OFF`,
    `Search backend: numpy + torch`, `16/16` and `Counter OK`.
 6. **Save Version → Save & Run All (Commit)**. Kaggle runs the whole notebook
@@ -181,8 +196,49 @@ Nothing to install, nothing to download.
    make it public), and put the version's link (the address with
    `scriptVersionId=`) under "Kaggle proof" below.
 
-**Kaggle proof (review step 4): not run yet.** It needs a Kaggle account, and
-this PC has no Kaggle login. Checked on 27 Oct, so the run should go smoothly:
+**Kaggle proof (review step 4): version 2, with Internet off, passed.**
+https://www.kaggle.com/code/riditaafrin/day1-kaggle-check?scriptVersionId=362688031
+
+Version 2 (27 Oct, committed 09:26, 69 s), downloaded unchanged into
+`results/v2_internet_off/` (`day1-kaggle-check.ipynb`, `day1_kaggle_check.json`):
+- **Internet was off.** Kaggle's metadata in the notebook says
+  `"isInternetEnabled": false`, cell 2 printed `Internet is OFF`, and the JSON
+  says `"internet": "off"`. Cell 2's connection attempt took 32 s to fail; in
+  version 1 it connected in 0.06 s.
+- **The rest passed:** accelerator none (`"accelerator": "none"`,
+  `"isGpuEnabled": false`), `chromadb installed: False`,
+  `Search backend: numpy + torch`, `16/16` and `Counter OK`. The demo query
+  gave the same top 3 as version 1.
+- **The same input as version 1:** both used dataset version 21290657. Cell 1
+  lists the same files as `kaggle_upload/offline-rag-kr2/`, whose code and index
+  files are byte-identical to this folder's (only its README is older).
+- Checked: it is a committed run (Kaggle's papermill metadata, 6 code cells run
+  in order, no error); every cell's code is the same as
+  `day1_kaggle_check.ipynb`; the JSON file is the notebook's printed summary,
+  byte for byte.
+- The model-loading progress bar in cell 3 is saved at `0/103`: the notebook
+  file keeps only the bar's first frame. The next line shows the search ran.
+- Link: https://www.kaggle.com/code/riditaafrin/day1-kaggle-check?scriptVersionId=362688031
+- The notebook is public: the link opens without a login (checked 27 Oct). The
+  `offline-rag-kr2` dataset stays private (Kaggle shows it as
+  "[Private Datasource]"), so anyone can see the outputs, but only with access
+  to the dataset can they run the notebook again.
+
+Version 1 (27 Oct, committed 08:31, 48 s; its files were checked, then not
+kept, because only version 2 is the proof):
+- **Internet was on.** The notebook printed `Internet is ON`, the JSON says
+  `"internet": "on"`, and Kaggle's own metadata in the notebook says
+  `"isInternetEnabled": true`. With the internet on, the run can't show that
+  nothing was downloaded, so it isn't the offline proof.
+- The rest passed: accelerator none, the `offline-rag-kr2` dataset attached,
+  `Search backend: numpy + torch`, `16/16` and `Counter OK`. The demo query's
+  top 3 (`EMS98-rc-frame-mexico-city-2`, `EMS98-rc-frame-north-pelopponissos-2`,
+  `INSARAG2B-5.8.2-p1`) is also what this PC gives on the upload folder.
+- Checked: it is a committed run (Kaggle's papermill metadata, 6 code cells run
+  in order); every cell's code is the same as `day1_kaggle_check.ipynb`; the
+  JSON file is the notebook's printed summary, byte for byte.
+
+Checked on 27 Oct, before version 1:
 - `kaggle_upload/offline-rag-kr2.zip` (made 25 Oct) still matches the index
   and the code byte for byte, and it holds no PDF, so it can be uploaded as it
   is. Only its copy of this README is older, which the notebook doesn't read.
@@ -190,7 +246,6 @@ this PC has no Kaggle login. Checked on 27 Oct, so the run should go smoothly:
   upload folder with the Kaggle backend (numpy + torch): `16/16` and
   `Counter OK`.
 - The notebook's last cell now asks for Save & Run All (Commit), not Quick Save.
-- Link: to be added after the run.
 
 In later notebooks (Day 3), add the same dataset and use:
 
