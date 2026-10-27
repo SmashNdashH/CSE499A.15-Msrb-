@@ -1,0 +1,91 @@
+tile,building_id,bbox_x1y1x2y2,segmenter_class,vlm_class,vlm_class_answer,conflict,ems98_grade,priority,inspection_text
+hurricane_matthew_00000067_post_disaster.png,3,"(374, 117, 391, 132)",Damaged,Intact,Intact,True,Grade 4,High,"Features: The building has a damaged roof and partially collapsed walls, with visible debris scattered around.
+EMS-98: Grade 4
+Priority: High"
+hurricane_matthew_00000067_post_disaster.png,4,"(341, 122, 364, 144)",Damaged,Intact,Intact,True,Grade 4,High,"Features: The building has a damaged roof and partially collapsed walls, with debris scattered around the structure.
+EMS-98: Grade 4
+Priority: High"
+hurricane_matthew_00000067_post_disaster.png,5,"(870, 245, 885, 276)",Damaged,Intact,Intact,True,Grade 4,High,"Features: The building has a damaged roof and partially collapsed walls, with visible debris scattered around.
+EMS-98: Grade 4
+Priority: High"
+hurricane_florence_00000215_post_disaster.png,1,"(201, 245, 230, 279)",Intact,Intact,Intact,False,Grade 1,Low,"Features: The building has a roof with no visible damage, intact walls, and no debris present.
+EMS-98: Grade 1
+Priority: Low"
+hurricane_florence_00000215_post_disaster.png,2,"(197, 391, 255, 423)",Intact,Intact,Intact,False,Grade 1,Low,"Features: The building has a roof with no visible damage, intact walls, and no debris present.
+EMS-98: Grade 1
+Priority: Low"
+hurricane_florence_00000215_post_disaster.png,3,"(148, 457, 161, 485)",Intact,Intact,Intact,False,Grade 3,High,"Features: The building has a damaged roof and intact walls with no visible debris.
+EMS-98: Grade 3
+Priority: High"
+nepal_flooding_00000456_post_disaster.png,4,"(681, 158, 715, 199)",Damaged,Intact,Intact,True,Grade 1,Low,"Features: The building's roof and walls appear intact with no visible signs of damage or debris.
+EMS-98: Grade 1
+Priority: Low"
+nepal_flooding_00000456_post_disaster.png,5,"(902, 184, 966, 232)",Damaged,Intact,Intact,True,Grade 4,High,"Features: The building has a damaged roof and partially collapsed walls, with debris scattered around the structure.
+EMS-98: Grade 4
+Priority: High"
+nepal_flooding_00000456_post_disaster.png,7,"(804, 245, 849, 275)",Damaged,Intact,Intact,True,Grade 4,High,"Features: The building has sustained damage to its roof and walls, with debris scattered around the structure.
+EMS-98: Grade 4
+Priority: High"
+nepal_flooding_00000030_post_disaster.png,1,"(145, 657, 198, 712)",Intact,Intact,Intact,False,Grade 1,Low,"Features: The building has a white roof and intact walls with no visible debris.
+EMS-98: Grade 1
+Priority: Low"
+nepal_flooding_00000030_post_disaster.png,2,"(334, 698, 348, 714)",Intact,Intact,Intact,False,Grade 1,Low,"Features: The building has a roof with no visible damage, intact walls, and no debris present.
+EMS-98: Grade 1
+Priority: Low"
+nepal_flooding_00000030_post_disaster.png,3,"(119, 728, 146, 767)",Intact,Intact,Intact,False,Grade 3,High,"Features: The building has a damaged roof and intact walls with no visible debris.
+EMS-98: Grade 3
+Priority: High"
+moore_tornado_00000006_post_disaster.png,1,"(938, 252, 970, 281)",Damaged,Intact,Intact,True,Grade 4,High,"Features: The building has sustained significant roof damage, with debris scattered across the area. The walls appear intact but show signs of structural compromise.
+EMS-98: Grade 4
+Priority: High"
+moore_tornado_00000006_post_disaster.png,2,"(783, 254, 820, 276)",Destroyed,Intact,Intact,True,Grade 4,High,"Features: The building has a damaged roof and partially collapsed walls, with debris scattered around the structure.
+EMS-98: Grade 4
+Priority: High"
+moore_tornado_00000006_post_disaster.png,3,"(476, 260, 509, 282)",Destroyed,Intact,Intact,True,Grade 3,High,"Features: The building has sustained significant roof damage, with debris scattered around the structure. The walls appear intact, but the overall condition is compromised.
+EMS-98: Grade 3
+Priority: High"
+hurricane_michael_00000100_post_disaster.png,2,"(912, 52, 959, 78)",Damaged,Intact,Intact,True,Grade 3,High,"Features: The building has sustained damage to its roof and walls, with debris scattered around the structure.
+EMS-98: Grade 3
+Priority: High"
+hurricane_michael_00000100_post_disaster.png,4,"(354, 58, 420, 89)",Damaged,Intact,Intact,True,Grade 1,Low,"Features: The building's roof and walls appear intact with no visible signs of damage or debris.
+EMS-98: Grade 1
+Priority: Low"
+hurricane_michael_00000100_post_disaster.png,5,"(430, 58, 471, 74)",Damaged,Intact,Intact,True,Grade 3,High,"Features: The building has sustained damage to its roof and walls, with debris scattered around the structure.
+EMS-98: Grade 3
+Priority: High"
+hurricane_harvey_00000451_post_disaster.png,1,"(128, 0, 231, 414)",Damaged,Intact,Intact,True,Grade 1,Low,"Features: The building has intact roof and walls with no visible debris.
+EMS-98: Grade 1
+Priority: Low"
+hurricane_harvey_00000451_post_disaster.png,2,"(250, 0, 535, 186)",Damaged,Intact,Intact,True,Grade 1,Low,"Features: The building has intact roof and walls with no visible debris.
+EMS-98: Grade 1
+Priority: Low"
+hurricane_harvey_00000451_post_disaster.png,3,"(384, 0, 765, 208)",Damaged,Intact,Intact,True,Grade 1,Low,"Features: The building's roof and walls appear intact with no visible signs of damage or debris.
+EMS-98: Grade 1
+Priority: Low"
+turkey_earthquake3_post_665.png,2,"(0, 200, 33, 270)",Intact,Intact,Intact,False,Grade 1,Low,"Features: The building's roof and walls appear intact with no visible signs of damage or debris.
+EMS-98: Grade 1
+Priority: Low"
+turkey_earthquake3_post_665.png,3,"(819, 301, 1024, 616)",Intact,Intact,Intact,False,Grade 1,Low,"Features: The building's roof and walls show no visible signs of damage, and there is no debris present.
+EMS-98: Grade 1
+Priority: Low"
+turkey_earthquake3_post_665.png,4,"(0, 302, 87, 452)",Intact,Intact,Intact,False,Grade 1,Low,"Features: The building's roof and walls show no visible signs of damage, and there is no debris present.
+EMS-98: Grade 1
+Priority: Low"
+hurricane_harvey_00000348_post_disaster.png,4,"(37, 268, 61, 286)",Damaged,Intact,Intact,True,Grade 1,Low,"Features: The building's roof and walls appear intact with no visible signs of damage or debris.
+EMS-98: Grade 1
+Priority: Low"
+hurricane_harvey_00000348_post_disaster.png,10,"(111, 843, 140, 874)",Damaged,Intact,Intact,True,Grade 1,Low,"Features: The building has a roof with no visible damage, and its walls appear intact with no debris present.
+EMS-98: Grade 1
+Priority: Low"
+hurricane_harvey_00000348_post_disaster.png,11,"(0, 877, 52, 1016)",Damaged,Intact,Intact,True,Grade 1,Low,"Features: The building has intact roof and walls with no visible debris.
+EMS-98: Grade 1
+Priority: Low"
+tuscaloosa_tornado_00000244_post_disaster.png,2,"(199, 68, 257, 109)",Damaged,Intact,Intact,True,Grade 3,High,"Features: The building has a damaged roof and intact walls. There is no visible debris in the surrounding area.
+EMS-98: Grade 3
+Priority: High"
+tuscaloosa_tornado_00000244_post_disaster.png,3,"(333, 105, 385, 138)",Damaged,Intact,Intact,True,Grade 3,High,"Features: The building has a damaged roof and intact walls. There is debris present in the surrounding area.
+EMS-98: Grade 3
+Priority: High"
+tuscaloosa_tornado_00000244_post_disaster.png,9,"(199, 267, 232, 332)",Damaged,Intact,Intact,True,Grade 3,Standard,"Features: The building has a roof with visible damage and walls that appear intact. There is no debris present in the surrounding area.
+EMS-98: Grade 3
+Priority: Standard"

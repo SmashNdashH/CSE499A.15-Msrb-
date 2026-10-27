@@ -43,7 +43,7 @@ class SegmentationLocatorTool:
         self.checkpoint_path = checkpoint_path or config.DEFAULT_WEIGHTS_PATH
         self.model = None
 
-        model_role = "Team Champion (ResNet-50, mIoU 0.5449)" if "50" in self.encoder_name else "B1 Architecture Baseline (ResNet-34, mIoU 0.4619)"
+        model_role = "D4 recipe encoder (ResNet-50)" if "50" in self.encoder_name else "B1 baseline encoder (ResNet-34)"
         print(f"[SegmentationTool] Selected backbone: {self.encoder_name} [{model_role}]")
 
         if SMP_AVAILABLE:

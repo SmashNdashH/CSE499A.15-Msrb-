@@ -8,10 +8,8 @@ Usage:
   # Run using team's fine-tuned model
   python run_pipeline.py --model finetuned --image path/to/satellite_post.png
 
-  # Run using Google PaliGemma 2 benchmark
-  python run_pipeline.py --model paligemma --image path/to/satellite_post.png
-
-  # Run self-test on generated sample (works offline without any external files)
+  # Run self-test on a generated tile. Its synthetic mask stands in for the segmenter's output.
+  # Without the VLM's weights (offline), the VLM runs in mock mode and reports no VLM numbers.
   python run_pipeline.py --self_test
 
 Author: Tamanna (Member B, Group 5)
@@ -32,7 +30,7 @@ from agent import AgenticVisionRAG
 from visualizer import generate_inspection_dashboard
 
 
-def create_synthetic_disaster_tile() -> Tuple_Type:
+def create_synthetic_disaster_tile() -> tuple:
     """Generates a synthetic 1024x1024 satellite disaster scene for self-testing."""
     np.random.seed(42)
     img = np.ones((1024, 1024, 3), dtype=np.uint8) * 80  # Dark ground background
@@ -69,17 +67,14 @@ def create_synthetic_disaster_tile() -> Tuple_Type:
     return img, mask
 
 
-Tuple_Type = tuple
-
-
 def parse_args():
     parser = argparse.ArgumentParser(description="Tamanna's Agentic Vision RAG Runner")
     parser.add_argument(
         "--model",
         type=str,
-        choices=["finetuned", "base", "paligemma", "qwen_edge"],
+        choices=["finetuned", "base"],
         default="finetuned",
-        help="Which VLM model to load (finetuned, base, paligemma, qwen_edge)"
+        help="Which VLM model to load (finetuned, base)"
     )
     parser.add_argument(
         "--image",
@@ -88,10 +83,16 @@ def parse_args():
         help="Path to the 1024x1024 satellite post-disaster image"
     )
     parser.add_argument(
-        "--mask",
+        "--pred_mask",
         type=str,
         default=None,
-        help="Optional path to ground truth or precomputed segmentation mask"
+        help="Optional path to a segmenter prediction made earlier (0-3 per pixel); used instead of running the U-Net"
+    )
+    parser.add_argument(
+        "--gt_mask",
+        type=str,
+        default=None,
+        help="Optional path to the ground-truth mask (0-3 per pixel); used only to score the classes"
     )
     parser.add_argument(
         "--output_dir",
@@ -122,10 +123,12 @@ def main():
     print("   Author: Tamanna | Member B (Architecture & Inspection Lead)")
     print("=" * 70)
 
-    # Prepare Image and Mask
+    # Prepare Image and Masks
+    gt_mask = None
     if args.self_test or args.image is None:
         print("\n[Notice] No image supplied or --self_test enabled. Using synthetic test tile...")
-        image_input, mask_override = create_synthetic_disaster_tile()
+        # The synthetic mask stands in for the segmenter's output; there is no ground truth.
+        image_input, pred_mask = create_synthetic_disaster_tile()
         image_id = "synthetic_disaster_sample"
     else:
         if not os.path.exists(args.image):
@@ -133,9 +136,11 @@ def main():
             sys.exit(1)
         image_input = args.image
         image_id = os.path.splitext(os.path.basename(args.image))[0]
-        mask_override = None
-        if args.mask and os.path.exists(args.mask):
-            mask_override = cv2.imread(args.mask, cv2.IMREAD_GRAYSCALE)
+        pred_mask = None
+        if args.pred_mask and os.path.exists(args.pred_mask):
+            pred_mask = cv2.imread(args.pred_mask, cv2.IMREAD_GRAYSCALE)
+        if args.gt_mask and os.path.exists(args.gt_mask):
+            gt_mask = cv2.imread(args.gt_mask, cv2.IMREAD_GRAYSCALE)
 
     # Initialize Engine and Agent
     vlm_engine = MultiVLMEngine(model_key=args.model)
@@ -148,7 +153,8 @@ def main():
         image_input=image_input,
         user_query=query,
         max_crops_to_inspect=args.max_crops,
-        mask_override=mask_override
+        pred_mask=pred_mask,
+        gt_mask=gt_mask
     )
 
     # Save JSON Report

@@ -1,0 +1,2 @@
+label,run,vlm,segmenter,tiles,buildings_found,buildings_inspected,vlm_agrees_with_segmenter,vlm_disagrees,vlm_class_unparsed,agreement_pct_of_parsed,mean_seconds_per_tile,peak_gpu_memory_allocated_gb
+"Demo, not an evaluation",finetuned,AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP,R9,10,363,30,9,21,0,30.0,9.63,6.31

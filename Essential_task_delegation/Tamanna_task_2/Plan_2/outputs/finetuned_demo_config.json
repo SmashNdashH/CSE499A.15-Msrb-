@@ -1,0 +1,37 @@
+{
+ "label": "Demo, not an evaluation",
+ "run": "finetuned",
+ "vlm": "AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP",
+ "segmenter": "R9",
+ "segmenter_checkpoint": "/root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-d4-R9/snapshots/34897e1aa70742cac62a379561e1f969dccd4e10/final_model.pth",
+ "segmenter_input": "native",
+ "tiles": [
+  "hurricane_matthew_00000067_post_disaster.png",
+  "hurricane_florence_00000215_post_disaster.png",
+  "nepal_flooding_00000456_post_disaster.png",
+  "nepal_flooding_00000030_post_disaster.png",
+  "moore_tornado_00000006_post_disaster.png",
+  "hurricane_michael_00000100_post_disaster.png",
+  "hurricane_harvey_00000451_post_disaster.png",
+  "turkey_earthquake3_post_665.png",
+  "hurricane_harvey_00000348_post_disaster.png",
+  "tuscaloosa_tornado_00000244_post_disaster.png"
+ ],
+ "seed": 42,
+ "max_crops": 3,
+ "blob_area_px": [
+  80,
+  50000
+ ],
+ "decoding": "greedy",
+ "quantization": "4-bit NF4",
+ "class_prompt": "This is a satellite image crop centred on one building after a disaster.\nWhat is the damage level of the building in the centre?\nAnswer with one word: Intact, Damaged or Destroyed.",
+ "inspection_prompt": "You are a structural engineer examining a satellite image crop centred on Building #<id>.\nDescribe the building's condition and grade it.\nAnswer in this format:\nFeatures: <roof, walls, debris>\nEMS-98: <Grade 1 to Grade 5>\nPriority: <Immediate / High / Standard / Low>",
+ "versions": {
+  "torch": "2.11.0+cu128",
+  "transformers": "5.16.1",
+  "segmentation-models-pytorch": "0.3.4",
+  "albumentations": "1.4.21",
+  "bitsandbytes": "0.50.2"
+ }
+}

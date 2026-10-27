@@ -1,6 +1,41 @@
 # Comprehensive Audit Response & Scientific Methodological Fixes
 ### Addressing Groupmate / Supervisor Critical Review of Tamanna's Task 2 (Plan 2: Agentic Vision RAG)
 
+## Correction (27 Oct 2026)
+
+Abrar's second review compared this response with the committed code and the notebooks' saved outputs. Four of its claims weren't true when it was written on 22 Oct. The original text, below the correction, is kept as it was written; where the two differ, this section holds.
+
+### Claims that weren't true
+
+1. **"Zero hard-coded numbers", with every fallback default purged (Issue 1 and Part 3).** They were still in the committed notebooks.
+   - `Agentic-vision-rag.ipynb`, the summary cell: 54.2%, 8.50 s, 96.7%, 39.36 s, 46.7%, 2.78 s and the VRAM figures 5.5, 5.6 and 3.2 GB were typed in, 91.8% and 3.65 s were fallbacks, and the chart typed in all eight of its values.
+   - `BaseModel_and_PaliGemma2_Benchmark.ipynb`, the summary and chart cells that Part 3 lists as cleaned: 8.50 s, the VRAM figures and "~2x faster inference, ~42% less VRAM" were typed in, and the chart fell back to 54.2%, 96.7%, 91.8%, 46.7%, 39.36 s, 3.65 s and 2.78 s.
+   - No recorded run is behind any of these, or behind the other rows of Issue 1's table. No CSE499A record holds the "measured baseline" of 54.2%, 4.82 MAE and 8.50 s. The 96.7% and 39.36 s don't come from `base_model_benchmark.csv`, which averages 60.0% and 31.12 s over a different set of tiles. No file holds the PaliGemma row's 100.0% and 2.44 s.
+
+2. **"The VLM is never told the segmenter's class" (Issue 3).** It was told, and asked to agree.
+   - `agent.py`'s prompt said "The segmentation model initially flagged this building as: '<class>'". The prompt was built once, after a loop that did nothing, so every building got the last building's number and class, and a tile with no buildings stopped with an error.
+   - Both notebooks' prompts said "(Predicted: <class>)" and asked the VLM to declare Agree or Disagree.
+   - `agent.py` used one argument, `mask_override`, as both the segmenter's prediction and the ground truth, so a ground-truth check scored the segmenter against its own input, at 100%.
+
+3. **Fixes marked "Verified (py_compile clean)" or "Successfully updated" (Part 3).** `py_compile` only checks syntax. The files failed when run, and the saved outputs didn't come from the committed code.
+   - `Agentic-vision-rag.ipynb` used `re` without importing it, so it stopped at the tile selection. Its saved outputs include lines the code can't print, and its summary showed 91.8%, the fallback for an empty batch, after a batch that scored 100.0% on every tile.
+   - In `BaseModel_and_PaliGemma2_Benchmark.ipynb`, the base-model cell's printed tile times add up to 394 s, but the cell ran for 130 s, and each cell after it ran for under a millisecond, so their outputs weren't produced there. The PaliGemma table lists tiles that weren't among the notebook's tiles.
+   - `evaluate_benchmark.py` also used `re` without importing it, `run_pipeline.py` failed on import under Python 3.13 and earlier, and `visualizer.py` read a key the agent never wrote.
+   - `google_paligemma_benchmark.csv` was said to be marked `SIMULATED_MOCK_AUTH_REQUIRED`; every row says `EMPIRICAL_RUN`.
+   - The "D4 split" of Issue 4 wasn't the team's. The notebooks shuffled file names with `random.Random(42)`, while the team's 645 validation images come from `train_test_split(pairs, test_size=0.1, random_state=42)`. Tiles were picked by file name, which can't tell colour photos from radar, and four radar tiles were used: la_palma_volcano_00000560, spain_volcano_00000894, mexico_hurricane_00000018 and spain_volcano_00000028. DisasterM3's list marks the last two as SAR and doesn't contain the first two at all, so none of the four can be picked now.
+
+4. **The champion checkpoint (Issue 5).** The fix said that `config.py` and both notebooks now use the champion, R9, or R1. Both repos are private. The saved run of `BaseModel_and_PaliGemma2_Benchmark.ipynb` got "401 … Repository Not Found" for both and loaded the B1 baseline (ResNet-34) instead, and `Agentic-vision-rag.ipynb`'s saved output also names ResNet-34. The figures quoted for the two models were recipe means, not the models' own: 0.5378 and 0.2971 are the R9 recipe's two-seed means (mIoU without TTA, Destroyed IoU with TTA), while R9 itself scored 0.5373 and 0.2921, or 0.5440 and 0.3001 with TTA; 0.5401 is the R1 recipe's three-run mean ([Ablation_Study_Reference_and_QA_Prep.md §7](../../Ablation_Study_Reference_and_QA_Prep.md)). The current champion is R11; R9 is the 3-channel model the team chose for downstream use on 18 Oct ([Task_Ledger.md](../../Task_Ledger.md)).
+
+### What has been fixed now
+
+- **Numbers:** the README's results table and the viva answers quoting it are gone, and so are the typed-in and fallback values in both notebooks; a chart now plots only the values measured in its own run. Both charts and `google_paligemma_benchmark.csv` were deleted from `outputs/`, and so were the other four older files once the Kaggle re-runs were in. In `Plan_2_Visual_RAG_Patch_Zooming.md`, the memory estimates now read "not measured", and two misquoted paper figures (ImageRAG and GEOBench-VLM) are corrected.
+- **`agent.py`:** the prompt is built inside the loop, one per building. The class is asked on its own, and no prompt contains the segmenter's class. A tile with no buildings gives an empty report. The predicted mask (`pred_mask`) and the ground-truth mask (`gt_mask`) are separate arguments, and the ground truth never replaces the prediction. Its callers were updated and the crashes above fixed.
+- **Both notebooks, rebuilt:** `import re`; ImageNet normalisation before the U-Net, as in training; R9 loaded strictly, with no fallback to another model; tiles drawn from the team's validation split, colour photos only by DisasterM3's list (`post_image_type == "Optical"`); dashboard boxes drawn in the segmenter's corner format; PaliGemma dropped, since the edge model is L2's job. Their outputs are labelled "demo, not an evaluation". `BaseModel_and_PaliGemma2_Benchmark.ipynb`, named above as it was on 22 Oct, is now `Base_model_demo.ipynb`.
+- **Kaggle runs (27 Oct 2026):** each notebook ran once with Restart & Run All and was committed with Save & Run All, in a fresh kernel, with the same 10 tiles, R9 checkpoint and prompts; only the VLM differs. The committed notebooks and their output files are in this folder, labelled "demo, not an evaluation".
+- **How this was checked:** `agent.py` was run locally against `tools.py` with a scripted stand-in for the VLM, and the notebooks' cells, all but the install, configuration and model-loading ones, were run on synthetic data with an untrained U-Net. Neither is a run on DisasterM3. The Kaggle runs of the two notebooks are listed in the [README](README.md).
+
+---
+
 > **Author:** Tamanna (Member B — Architecture & Multimodal Inspection Lead)  
 > **Reviewer / Group Lead:** Abrar (Project Supervisor & Lead)  
 > **Project:** CSE499B Senior Design Project — Group 5 (DisasterM3 / xBD Multimodal Damage Assessment)  

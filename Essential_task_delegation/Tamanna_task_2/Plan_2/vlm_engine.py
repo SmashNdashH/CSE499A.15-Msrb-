@@ -4,9 +4,8 @@ vlm_engine.py
 Multi-Model Vision-Language Engine supporting:
   1. Team Fine-Tuned Model: AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP
   2. Base Foundation Model: Qwen/Qwen2.5-VL-7B-Instruct
-  3. Google Multimodal Benchmark: google/paligemma2-3b-pt-448 (or 10B)
 
-Includes 4-bit NF4 quantization to fit within Kaggle T4 GPU (16 GB VRAM) using ~5.5 GB memory.
+Includes 4-bit NF4 quantization to fit on a Kaggle T4 GPU (its memory use has not been measured here).
 
 Author: Tamanna (Member B, Group 5)
 Project: CSE499B DisasterM3 Capstone
@@ -55,9 +54,6 @@ class MultiVLMEngine:
             from transformers import AutoProcessor, BitsAndBytesConfig
 
             hf_token = config.HF_TOKEN
-            if config.VLM_MODELS.get(self.model_key, {}).get("is_gated") and not hf_token:
-                print(f"[VLMEngine] Notice: Model '{self.model_id}' is gated on Hugging Face.")
-                print("            To load real weights, set environment variable HF_TOKEN with your Hugging Face access token.")
 
             # Configure 4-bit quantization if on CUDA
             bnb_config = None
@@ -68,7 +64,7 @@ class MultiVLMEngine:
                     bnb_4bit_compute_dtype=torch.float16,
                     bnb_4bit_use_double_quant=True,
                 )
-                print("[VLMEngine] 4-bit NormalFloat (NF4) quantization enabled (~5.5 GB VRAM).")
+                print("[VLMEngine] 4-bit NormalFloat (NF4) quantization enabled.")
 
             if self.model_type == "qwen":
                 from transformers import Qwen2_5_VLForConditionalGeneration
@@ -81,36 +77,6 @@ class MultiVLMEngine:
                     torch_dtype=torch.float16 if HAS_CUDA else torch.float32,
                     low_cpu_mem_usage=True
                 )
-            elif self.model_type == "paligemma":
-                from transformers import PaliGemmaForConditionalGeneration
-                try:
-                    self.processor = AutoProcessor.from_pretrained(self.model_id, token=hf_token)
-                    self.model = PaliGemmaForConditionalGeneration.from_pretrained(
-                        self.model_id,
-                        token=hf_token,
-                        quantization_config=bnb_config,
-                        device_map="auto" if HAS_CUDA else None,
-                        torch_dtype=torch.float16 if HAS_CUDA else torch.float32,
-                        low_cpu_mem_usage=True
-                    )
-                except Exception as pg_err:
-                    if "401" in str(pg_err) or "gated" in str(pg_err).lower() or not hf_token:
-                        print(f"[VLMEngine] PaliGemma 2 HF 401 Error ({pg_err}).")
-                        print("            PaliGemma 2 requires an authenticated Hugging Face token.")
-                        print("            Switching to un-gated open edge VLM: 'Qwen/Qwen2.5-VL-3B-Instruct'...")
-                        self.model_id = "Qwen/Qwen2.5-VL-3B-Instruct"
-                        self.model_type = "qwen"
-                        from transformers import Qwen2_5_VLForConditionalGeneration
-                        self.processor = AutoProcessor.from_pretrained(self.model_id)
-                        self.model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
-                            self.model_id,
-                            quantization_config=bnb_config,
-                            device_map="auto" if HAS_CUDA else None,
-                            torch_dtype=torch.float16 if HAS_CUDA else torch.float32,
-                            low_cpu_mem_usage=True
-                        )
-                    else:
-                        raise pg_err
 
             print(f"[VLMEngine] Successfully loaded {self.model_id}.")
             self.is_mock = False
@@ -159,19 +125,6 @@ class MultiVLMEngine:
                 response = self.processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
                 return response.strip()
 
-            elif self.model_type == "paligemma":
-                prompt_text = f"answer en {prompt}"
-                inputs = self.processor(
-                    text=prompt_text,
-                    images=pil_img,
-                    return_tensors="pt"
-                ).to(self.model.device)
-
-                with torch.no_grad():
-                    output = self.model.generate(**inputs, max_new_tokens=180)
-                response = self.processor.decode(output[0], skip_special_tokens=True)
-                return response.replace(prompt_text, "").strip()
-
         except Exception as err:
             return f"[VLM Generation Error]: {err}"
 
@@ -180,55 +133,20 @@ class MultiVLMEngine:
         Queries the model on the full downsampled image (used for Baseline Config A comparisons).
         """
         if self.model is None or self.processor is None:
-            return "Baseline downsampled observation: Unable to clearly resolve individual building details due to pixel downsampling."
+            return "[MOCK_INSPECTOR: OFFLINE_DRYRUN_ONLY]\nModel not initialized; no observation."
 
         pil_img = Image.fromarray(full_image_rgb)
-        if self.model_type == "qwen":
-            messages = [
-                {
-                    "role": "user",
-                    "content": [
-                        {"type": "image", "image": pil_img},
-                        {"type": "text", "text": prompt},
-                    ],
-                }
-            ]
-            text = self.processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-            inputs = self.processor(text=[text], images=[pil_img], return_tensors="pt").to(self.model.device)
-            with torch.no_grad():
-                out = self.model.generate(**inputs, max_new_tokens=250)
-            return self.processor.batch_decode(out[:, inputs.input_ids.shape[1]:], skip_special_tokens=True)[0].strip()
-        else:
-            prompt_text = f"answer en {prompt}"
-            inputs = self.processor(text=prompt_text, images=pil_img, return_tensors="pt").to(self.model.device)
-            with torch.no_grad():
-                out = self.model.generate(**inputs, max_new_tokens=150)
-            return self.processor.decode(out[0], skip_special_tokens=True).replace(prompt_text, "").strip()
-
-    def _mock_inspection(self, crop: np.ndarray, prompt: str) -> str:
-        """Deterministic mock response for offline debugging without active GPU."""
-        # Simple color variance heuristic
-        gray = cv2.cvtColor(crop, cv2.COLOR_RGB2GRAY)
-        std_dev = float(np.std(gray))
-
-        if std_dev > 50:
-            return (
-                "Damage: Severe structural compromise, roof failure with extensive debris scatter.\n"
-                "EMS-98: Grade 5\n"
-                "Priority: Immediate\n"
-                "Agreement: Agree"
-            )
-        elif std_dev > 30:
-            return (
-                "Damage: Moderate wall fractures and partial roof displacement.\n"
-                "EMS-98: Grade 3\n"
-                "Priority: High\n"
-                "Agreement: Agree"
-            )
-        else:
-            return (
-                "Damage: Intact roofline with no visible macro-structural collapses.\n"
-                "EMS-98: Grade 1\n"
-                "Priority: Low\n"
-                "Agreement: Disagree"
-            )
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "image", "image": pil_img},
+                    {"type": "text", "text": prompt},
+                ],
+            }
+        ]
+        text = self.processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+        inputs = self.processor(text=[text], images=[pil_img], return_tensors="pt").to(self.model.device)
+        with torch.no_grad():
+            out = self.model.generate(**inputs, max_new_tokens=250)
+        return self.processor.batch_decode(out[:, inputs.input_ids.shape[1]:], skip_special_tokens=True)[0].strip()

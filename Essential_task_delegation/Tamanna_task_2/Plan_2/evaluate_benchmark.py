@@ -1,28 +1,29 @@
 """
 evaluate_benchmark.py
 ---------------------
-Comparative Tri-VLM Benchmark Suite:
-Evaluates three model configurations across DisasterM3 validation tiles:
+Runs the agent with each VLM over a folder of tiles:
   1. Team Fine-Tuned Model: AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP
   2. Base Foundation Model: Qwen/Qwen2.5-VL-7B-Instruct
-  3. Google Multimodal Benchmark: google/paligemma2-3b-pt-448
 
-Measures:
-  - Building Count Mean Absolute Error (MAE) compared to ground truth
-  - Damage Class Agreement Rate (%) with segmentation predictions
-  - EMS-98 Severity Alignment
-  - Inference Latency per image (seconds)
-  - Peak GPU VRAM allocated (GB)
+Records, per tile and per model:
+  - Building counts from the segmenter
+  - Agreement between the VLM's class and the segmenter's class (not accuracy; no ground truth is used)
+  - Inference Latency per tile (seconds)
+  - Peak GPU memory allocated by PyTorch (GB)
+
+This script has never been run. Its tile selection is not the team's validation split;
+the notebooks select tiles from that split.
 
 Outputs:
-  - tri_vlm_benchmark_results.csv
-  - tri_vlm_benchmark_summary.json
+  - vlm_benchmark_results.csv
+  - vlm_benchmark_summary.json
 
 Author: Tamanna (Member B, Group 5)
 Project: CSE499B DisasterM3 Capstone
 """
 
 import os
+import re
 import sys
 import time
 import json
@@ -42,7 +43,7 @@ from visualizer import generate_annotated_damage_map
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Tri-VLM Comparative Benchmark")
+    parser = argparse.ArgumentParser(description="VLM Benchmark (agreement with the segmenter, not accuracy)")
     parser.add_argument(
         "--data_dir",
         type=str,
@@ -70,18 +71,17 @@ def parse_args():
     parser.add_argument(
         "--models",
         nargs="+",
-        default=["finetuned", "base", "paligemma"],
-        help="List of model keys to benchmark: finetuned, base, paligemma"
+        default=["finetuned", "base"],
+        help="List of model keys to benchmark: finetuned, base"
     )
     return parser.parse_args()
 
 
 def get_validation_images(data_dir: str, max_count: int = 10) -> List[str]:
     """
-    Finds available satellite imagery tiles in holdout/validation directory.
-    Guarantees:
-      1. Excludes 'train_images' to prevent data leakage / score inflation.
-      2. Deduplicates tiles so multiple crops of the same master tile are not sampled.
+    Finds satellite imagery tiles under data_dir: a folder named 'val' or 'test' if there is one,
+    otherwise a seeded 10% sample of every image found. Neither is the team's validation split,
+    and file names don't say whether a tile is optical or radar.
     """
     patterns = ["*post_disaster*.png", "*.png", "*.jpg", "*.tif"]
     found = []
@@ -103,19 +103,19 @@ def get_validation_images(data_dir: str, max_count: int = 10) -> List[str]:
         clean_candidates = val_candidates
         print(f"[Dataset Split] Found {len(clean_candidates)} isolated validation/test images.")
     else:
-        # If dataset mirror only has unpartitioned or train_images, deterministically extract the 10% holdout split (matching D4 seed=42 protocol)
-        print("[Dataset Split] Isolated 'val' folder not explicitly named. Deterministically isolating the 10% holdout split (D4 seed=42 protocol)...")
+        # A seeded 10% sample of the file list; this is not the team's train/validation split
+        print("[Dataset Split] No 'val' folder found. Taking a seeded 10% sample of the images found "
+              "(not the team's validation split)...")
         # Sort deterministically by filename
         sorted_found = sorted(found)
-        # Use exact 90/10 split matching team's D4 protocol (seed=42)
         import random
         rng = random.Random(42)
         indices = list(range(len(sorted_found)))
         rng.shuffle(indices)
         val_size = max(1, int(len(sorted_found) * 0.10))
-        val_indices = set(indices[-val_size:])  # Strict holdout 10%
+        val_indices = set(indices[-val_size:])
         clean_candidates = [sorted_found[i] for i in val_indices]
-        print(f"[Anti-Leakage Guarantee] Isolated {len(clean_candidates)} holdout validation images (10% slice) strictly isolated from training.")
+        print(f"[Dataset Split] Sampled {len(clean_candidates)} images; they may include training images.")
 
     # Deduplicate by base scene ID (strip _post_disaster_X or _X suffixes)
     unique_scenes = {}
@@ -131,7 +131,7 @@ def get_validation_images(data_dir: str, max_count: int = 10) -> List[str]:
             break
 
     final_tiles = list(unique_scenes.values())
-    print(f"[Verification] Selected {len(final_tiles)} distinct disaster scenes with zero duplicate spatial slices.")
+    print(f"[Dataset Split] Selected {len(final_tiles)} tiles, at most one per name prefix.")
     return final_tiles
 
 
@@ -140,17 +140,17 @@ def main():
     os.makedirs(args.output_dir, exist_ok=True)
 
     print("=" * 75)
-    print("📊 TRI-VLM COMPARATIVE BENCHMARK: AGENTIC VISION RAG")
+    print("VLM BENCHMARK: AGENTIC VISION RAG")
     print("   Author: Tamanna (Architecture & Inspection Lead, Group 5)")
     print("=" * 75)
 
     val_images = get_validation_images(args.data_dir, max_count=args.num_samples)
 
     if not val_images:
-        print("[Notice] No external validation files detected. Running benchmark in self-test mock mode.")
-        val_images = ["synthetic_tile_1", "synthetic_tile_2"]
+        print(f"[Error] No images found under {args.data_dir}. Nothing to run.")
+        sys.exit(1)
 
-    print(f"[Setup] Evaluating {len(val_images)} unique holdout tiles across models: {args.models}")
+    print(f"[Setup] Running {len(val_images)} tiles across models: {args.models}")
     for idx, p in enumerate(val_images, 1):
         print(f"  [{idx}] {os.path.basename(p)}")
 
@@ -168,46 +168,36 @@ def main():
         print(f"{'─' * 60}")
 
         # Initialize VLM Engine
+        if torch.cuda.is_available():
+            torch.cuda.reset_peak_memory_stats()
         vlm_engine = MultiVLMEngine(model_key=model_key)
         agent = AgenticVisionRAG(vlm_engine=vlm_engine, seg_tool=seg_tool)
 
         model_start_time = time.time()
         agreements = 0
+        parsed = 0
         total_crops = 0
         total_buildings_detected = 0
 
         for img_idx, img_path in enumerate(val_images, 1):
             tile_start = time.time()
-
-            if img_path.startswith("synthetic"):
-                from run_pipeline import create_synthetic_disaster_tile
-                img_data, mask_override = create_synthetic_disaster_tile()
-                img_name = f"{img_path}.png"
-            else:
-                img_data = img_path
-                mask_override = None
-                img_name = os.path.basename(img_path)
+            img_name = os.path.basename(img_path)
 
             report = agent.run(
-                image_input=img_data,
+                image_input=img_path,
                 user_query="Inspect disaster damage, detect destroyed structures, and grade EMS-98 destruction.",
-                max_crops_to_inspect=5,
-                mask_override=mask_override
+                max_crops_to_inspect=5
             )
 
             tile_latency = time.time() - tile_start
             census = report["spatial_census"]
+            summary = report["inspection_summary"]
             total_buildings_detected += census["total_buildings_detected"]
 
-            # Record per-tile metrics
-            tile_crops = len(report["detailed_inspections"])
-            tile_conflicts = report["inspection_summary"]["conflicts_detected"]
-            tile_agreed = tile_crops - tile_conflicts
-
-            total_crops += tile_crops
-            agreements += tile_agreed
-
-            agreement_rate = (tile_agreed / tile_crops * 100) if tile_crops > 0 else 100.0
+            # Record per-tile metrics; agreement is None when no VLM class answer could be read
+            total_crops += summary["crops_evaluated"]
+            agreements += summary["agreements"]
+            parsed += summary["agreements"] + summary["conflicts_detected"]
 
             benchmark_records.append({
                 "model_key": model_key,
@@ -218,29 +208,30 @@ def main():
                 "destroyed_count": census["destroyed_count"],
                 "damaged_count": census["damaged_count"],
                 "intact_count": census["intact_count"],
-                "crops_evaluated": tile_crops,
-                "conflicts": tile_conflicts,
-                "agreement_rate_pct": round(agreement_rate, 2) if not vlm_engine.is_mock else 0.0,
+                "crops_evaluated": summary["crops_evaluated"],
+                "conflicts": summary["conflicts_detected"],
+                "vlm_class_unparsed": summary["vlm_class_unparsed"],
+                "agreement_rate_pct": summary["agreement_with_segmenter_pct"],
                 "tile_latency_seconds": round(tile_latency, 2)
             })
 
             # Save annotated map for the first tile of each model
             if img_idx == 1:
                 map_path = os.path.join(args.output_dir, f"{model_key}_{img_name}_annotated.png")
-                generate_annotated_damage_map(img_data, report, map_path)
+                generate_annotated_damage_map(img_path, report, map_path)
 
         total_elapsed = time.time() - model_start_time
-        avg_agreement = (agreements / total_crops * 100) if (total_crops > 0 and not vlm_engine.is_mock) else 0.0
+        avg_agreement = round(agreements / parsed * 100, 2) if (parsed > 0 and not vlm_engine.is_mock) else None
 
         summary_stats[model_key] = {
             "model_name": f"{model_name} (SIMULATED MOCK - NOT A REAL RUN)" if vlm_engine.is_mock else model_name,
             "is_mock_fallback": vlm_engine.is_mock,
             "total_images_evaluated": len(val_images),
             "total_crops_inspected": total_crops,
-            "average_agreement_pct": round(avg_agreement, 2) if not vlm_engine.is_mock else "N/A (Mocked)",
+            "average_agreement_pct": avg_agreement,
             "total_benchmark_time_seconds": round(total_elapsed, 2),
             "avg_latency_per_tile_seconds": round(total_elapsed / len(val_images), 2),
-            "peak_vram_gb": round(torch.cuda.max_memory_allocated() / (1024**3), 2) if torch.cuda.is_available() else 0.0
+            "peak_vram_gb": round(torch.cuda.max_memory_allocated() / (1024**3), 2) if torch.cuda.is_available() else None
         }
 
         # Clear GPU cache before next model
@@ -250,26 +241,30 @@ def main():
             torch.cuda.empty_cache()
 
     # ─── Export Results ────────────────────────────────────────────────────────
-    csv_path = os.path.join(args.output_dir, "tri_vlm_benchmark_results.csv")
+    csv_path = os.path.join(args.output_dir, "vlm_benchmark_results.csv")
     with open(csv_path, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=list(benchmark_records[0].keys()))
         writer.writeheader()
         writer.writerows(benchmark_records)
     print(f"\n[CSV Saved]: {csv_path}")
 
-    json_path = os.path.join(args.output_dir, "tri_vlm_benchmark_summary.json")
+    json_path = os.path.join(args.output_dir, "vlm_benchmark_summary.json")
     with open(json_path, "w") as f:
         json.dump(summary_stats, f, indent=2)
     print(f"[JSON Summary Saved]: {json_path}")
 
     # Print Summary Table
+    def show(value, fmt):
+        return "n/a" if value is None else format(value, fmt)
+
     print("\n" + "=" * 75)
-    print("🏆 TRI-VLM BENCHMARK SUMMARY TABLE")
+    print("VLM BENCHMARK SUMMARY TABLE (agreement with the segmenter, not accuracy)")
     print("=" * 75)
     print(f"{'Model':<30} | {'Agreement %':<12} | {'Avg Latency (s)':<16} | {'Peak VRAM'}")
     print("-" * 75)
     for k, v in summary_stats.items():
-        print(f"{v['model_name']:<30} | {v['average_agreement_pct']:<12.1f} | {v['avg_latency_per_tile_seconds']:<16.2f} | {v['peak_vram_gb']} GB")
+        print(f"{v['model_name']:<30} | {show(v['average_agreement_pct'], '<12.1f'):<12} | "
+              f"{v['avg_latency_per_tile_seconds']:<16.2f} | {show(v['peak_vram_gb'], '.2f')} GB")
     print("=" * 75)
 
 

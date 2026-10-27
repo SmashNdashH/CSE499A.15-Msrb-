@@ -1,12 +1,14 @@
 # Plan 2: Agentic Vision RAG — Autonomous Multimodal Patch-Level Inspection for Disaster Damage Assessment
 
+> **Note (27 Oct 2026).** This is the plan as written on 17–20 Oct, not a record of results. The code in this folder replaces the code sketched below and differs from it: PaliGemma was dropped (the edge model is L2's job), and the VLM is never told the segmenter's class. The plan's memory figures were estimates and now read "not measured", and two misquoted paper figures were corrected. Nothing here is a measured result of Plan 2; the demo runs are listed in the [README](README.md).
+
 ---
 
 ## Executive Summary
 
 **Agentic Vision RAG** transforms passive image analysis into an **autonomous, tool-augmented reasoning system**. 
 
-Standard Vision-Language Models (VLMs) suffer from severe spatial blindness when analyzing satellite imagery: downsampling a $1024 \times 1024$ tile to a fixed token budget turns buildings into blurry 2–3 pixel smudges. In CSE499A, this caused our VLM to drop **10.62 points** on building counting tasks. 
+Standard Vision-Language Models (VLMs) suffer from severe spatial blindness when analyzing satellite imagery: downsampling a $1024 \times 1024$ tile to a fixed token budget turns buildings into blurry 2–3 pixel smudges. In CSE499A, our fine-tuned VLM scored **10.62 points** below the base model on building counting (23.58% against the 34.2% the DisasterM3 paper reports for the base model). Downsampling is the suspected cause; it has not been measured. 
 
 While static patch-zooming merely loops through crops in a rigid hard-coded script, **Agentic Vision RAG** introduces an autonomous **VLM Agent (the Brain)** that dynamically interrogates the scene:
 1. It perceives the overall disaster scene and breaks complex user requests (*"Identify all collapsed buildings near the river, grade their EMS-98 destruction, and flag if emergency rescue is needed"*) into discrete sub-goals.
@@ -84,10 +86,10 @@ This plan establishes a rigorous **Tri-VLM Comparative Benchmark** evaluating:
 
 | Research Paper | Venue / Year | Core Insight Applied to Plan 2 |
 |---|---|---|
-| **ImageRAG** ([ImageRAG.md](file:///c:/Users/taman/Desktop/CSE499AB/CSE499A.15-Msrb--1/Essential_task_delegation/Tamanna_task_2/Plan_2/ImageRAG.md)) | *IEEE GRSM 2025* | Formulated remote sensing image analysis as a visual context retrieval problem. Proved that retrieving high-resolution patches bypasses VLM token limits and elevates accuracy from 46.6% to 60.0%. |
+| **ImageRAG** ([imageRAG_RP.md](imageRAG_RP.md)) | *IEEE GRSM 2025* | Formulated remote sensing image analysis as a visual context retrieval problem. Retrieving high-resolution patches raised InternVL2.5-8B's accuracy from 46.67% to 52.00%; with ground-truth boxes, the paper's upper bound, it reached 60.00%. |
 | **Change-Agent** | *IEEE TGRS 2024* | Demonstrated an LLM "brain" that calls change-detection models as deterministic tools, replacing end-to-end black boxes with interpretable tool chains. |
 | **SAM 3 Agent** | *Meta AI 2025* | Showed that multimodal agents can autonomously decompose complex natural language questions into simple spatial tool calls and verify outputs iteratively. |
-| **GEOBench-VLM** | *ICCV 2025* | Benchmarked 31 geospatial tasks showing that even GPT-4o achieves $<40\%$ on satellite counting/localization without specialized vision tools. |
+| **GEOBench-VLM** | *ICCV 2025* | Benchmarked 31 geospatial tasks: the best model overall scored 41.7%, and GPT-4o scored 56.7% on counting damaged buildings ([Paper_Audit_and_Integration_Plan.md §4.6](../../Paper_Audit_and_Integration_Plan.md)). |
 | **PaliGemma 2** | *Google DeepMind 2024* | Introduced versatile vision-language models capable of dense spatial grounding and fine-grained patch understanding at $448 \times 448$ resolution. |
 
 ---
@@ -280,7 +282,7 @@ class EMS98KnowledgeRAGTool:
 
 ### Component 2: Multi-Model VLM Engine (`vlm_engine.py`)
 
-This module loads either our fine-tuned Qwen2.5-VL-7B, the vanilla base model, or Google's PaliGemma 2, applying **4-bit quantization (NF4)** so that 7B parameter models fit within Kaggle's 16 GB T4 VRAM (~5.5 GB allocated).
+This module loads either our fine-tuned Qwen2.5-VL-7B, the vanilla base model, or Google's PaliGemma 2, applying **4-bit quantization (NF4)** so that 7B parameter models fit within Kaggle's 16 GB T4 VRAM (memory use: not measured in this plan).
 
 ```python
 """
@@ -676,14 +678,14 @@ if __name__ == "__main__":
 
 | Model | Parameters | Quantization | VRAM Required | Feasible on Free Kaggle T4 (16 GB)? |
 |---|---|---|---|---|
-| **`AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP`** | 7.6 Billion | 4-bit (NF4) | **~5.5 GB** | **Yes** (Runs comfortably with PyTorch cache) |
-| **`Qwen/Qwen2.5-VL-7B-Instruct`** | 7.6 Billion | 4-bit (NF4) | **~5.5 GB** | **Yes** |
-| **`google/paligemma2-3b-pt-448`** | 3.0 Billion | 4-bit / 8-bit | **~3.2 GB** | **Yes** (Extremely fast, fits CPU offloading) |
-| **ResNet-50 U-Net Segmenter** | 32.5 Million | FP16 | **~0.6 GB** | **Yes** |
+| **`AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP`** | 7.6 Billion | 4-bit (NF4) | not measured | Ran on Kaggle T4 ×2 in the 27 Oct demo run |
+| **`Qwen/Qwen2.5-VL-7B-Instruct`** | 7.6 Billion | 4-bit (NF4) | not measured | Ran on Kaggle T4 ×2 in the 27 Oct demo run |
+| **`google/paligemma2-3b-pt-448`** | 3.0 Billion | 4-bit / 8-bit | not measured | Dropped on 27 Oct 2026 |
+| **ResNet-50 U-Net Segmenter** | 32.5 Million | FP16 | not measured | Ran with each VLM in the demo runs |
 
 **Memory Strategy:**
-- The segmentation model runs first, generates the coordinates, and can be moved to CPU or kept in memory since it consumes only 600 MB.
-- The VLM is loaded using `bitsandbytes` 4-bit NormalFloat (`load_in_4bit=True`). Peak memory usage across segmentation + VLM inference is $<7.5\text{ GB}$, well under the 16 GB physical cap.
+- The segmentation model runs first, generates the coordinates, and can be moved to CPU or kept in memory. Its own memory use is not measured.
+- The VLM is loaded using `bitsandbytes` 4-bit NormalFloat (`load_in_4bit=True`). The demo runs record the peak memory PyTorch allocated for the segmenter and the VLM together in `outputs/*_demo_summary.csv`; it is a demo figure, not a measurement of this plan.
 
 ---
 

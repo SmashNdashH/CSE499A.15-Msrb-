@@ -1,0 +1,147 @@
+tile,building_id,bbox_x1y1x2y2,segmenter_class,vlm_class,vlm_class_answer,conflict,ems98_grade,priority,inspection_text
+hurricane_matthew_00000067_post_disaster.png,3,"(374, 117, 391, 132)",Damaged,Intact,Intact,True,Grade 3,High,"Features: Roof: Partially intact but showing signs of wear and tear. Walls: Visible but appear to be in a state of disrepair. Debris: Significant debris and overgrowth around the structure.
+
+EMS-98: Grade 3
+
+Priority: High"
+hurricane_matthew_00000067_post_disaster.png,4,"(341, 122, 364, 144)",Damaged,Intact,Intact,True,Grade 3,High,"Features: Roof: Partially intact but showing signs of wear and tear. Walls: Appears to be in good condition with no visible structural damage. Debris: There is some scattered debris around the building.
+
+EMS-98: Grade 3
+
+Priority: High"
+hurricane_matthew_00000067_post_disaster.png,5,"(870, 245, 885, 276)",Damaged,Intact,Intact,True,Grade 4,High,"Features: Roof: Partially intact, with visible damage and missing sections. Walls: Partially intact, with visible damage and missing sections. Debris: Significant debris scattered around the structure.
+
+EMS-98: Grade 4
+
+Priority: High"
+hurricane_florence_00000215_post_disaster.png,1,"(201, 245, 230, 279)",Intact,Intact,Intact,False,Grade 3,High,"Features: Roof appears intact, walls are visible but show signs of wear, no debris is present.
+EMS-98: Grade 3
+Priority: High"
+hurricane_florence_00000215_post_disaster.png,2,"(197, 391, 255, 423)",Intact,Intact,Intact,False,Grade 3,Standard,"Features: The roof appears to be intact with no visible signs of damage or missing sections. The walls are also intact, showing no significant cracks or damage. There is some debris visible near the building, which could be from construction or natural elements.
+
+EMS-98: Grade 3
+
+Priority: Standard"
+hurricane_florence_00000215_post_disaster.png,3,"(148, 457, 161, 485)",Intact,Intact,Intact,False,Grade 3,Standard,"Features: The roof appears to be intact with no visible damage. The walls are not clearly visible due to the angle and lighting, but there are no immediate signs of collapse or significant damage. There is some debris visible near the building, which could be from construction or natural elements.
+
+EMS-98: Grade 3
+
+Priority: Standard"
+nepal_flooding_00000456_post_disaster.png,4,"(681, 158, 715, 199)",Damaged,Intact,Intact,True,Grade 3,High,"Features: Roof appears intact but shows signs of wear and discoloration. Walls are visible but show some damage and discoloration. There is no significant debris observed.
+
+EMS-98: Grade 3
+
+Priority: High"
+nepal_flooding_00000456_post_disaster.png,5,"(902, 184, 966, 232)",Damaged,Intact,Intact,True,Grade 4,High,"Features: Roof: Damaged with visible gaps and missing tiles. Walls: Partially intact but show signs of wear and possible structural issues. Debris: Accumulated around the building, indicating potential instability.
+
+EMS-98: Grade 4
+
+Priority: High"
+nepal_flooding_00000456_post_disaster.png,7,"(804, 245, 849, 275)",Damaged,Intact,Intact,True,Grade 1,Standard,"Features: Roof: The roof appears to be in good condition with no visible signs of damage or missing tiles. Walls: The walls look intact with no significant cracks or damage. Debris: There is no visible debris or damage to the building.
+
+EMS-98: Grade 1
+
+Priority: Standard"
+nepal_flooding_00000030_post_disaster.png,1,"(145, 657, 198, 712)",Intact,Intact,Intact,False,Grade 3,Standard,"Features: The building appears to have a flat roof, walls that seem intact, and there is no visible debris around the structure.
+
+EMS-98: Grade 3
+
+Priority: Standard"
+nepal_flooding_00000030_post_disaster.png,2,"(334, 698, 348, 714)",Intact,Intact,Intact,False,Grade 3,Standard,"Features: Roof appears intact with no visible damage. Walls are not clearly visible due to the vegetation, but there are no immediate signs of collapse or significant damage. There is no visible debris around the building.
+
+EMS-98: Grade 3
+
+Priority: Standard"
+nepal_flooding_00000030_post_disaster.png,3,"(119, 728, 146, 767)",Intact,Intact,Intact,False,Grade 3,High,"Features: Roof appears intact but shows signs of wear; walls are visible but show some damage; no significant debris is present.
+
+EMS-98: Grade 3
+
+Priority: High"
+moore_tornado_00000006_post_disaster.png,1,"(938, 252, 970, 281)",Damaged,Intact,Intact,True,Grade 3,High,"Features: Roof appears intact but shows signs of wear; walls are visible but show some damage; debris is scattered around the building.
+
+EMS-98: Grade 3
+
+Priority: High"
+moore_tornado_00000006_post_disaster.png,2,"(783, 254, 820, 276)",Destroyed,Intact,Intact,True,Grade 3,High,"Features: Roof appears intact but shows signs of wear; walls are mostly intact but show some discoloration and possible damage; debris is scattered around the building, indicating potential recent activity or damage.
+
+EMS-98: Grade 3
+
+Priority: High"
+moore_tornado_00000006_post_disaster.png,3,"(476, 260, 509, 282)",Destroyed,Damaged,Damaged,True,Grade 3,High,"Features: Roof appears intact but there is visible debris on the ground, suggesting potential damage. Walls seem to be in good condition with no visible structural damage.
+
+EMS-98: Grade 3
+
+Priority: High"
+hurricane_michael_00000100_post_disaster.png,2,"(912, 52, 959, 78)",Damaged,Damaged,Damaged,False,Grade 3,High,"Features: The roof appears to be intact but there is visible damage to the walls, with some sections showing signs of collapse or significant deformation. There is debris scattered around the structure, indicating recent or ongoing damage.
+
+EMS-98: Grade 3
+
+Priority: High"
+hurricane_michael_00000100_post_disaster.png,4,"(354, 58, 420, 89)",Damaged,Damaged,Damaged,False,Grade 3,High,"Features: Roof appears intact but there is visible damage to the walls, with some sections showing signs of collapse or significant damage. There is debris scattered around the building, indicating recent or ongoing damage.
+
+EMS-98: Grade 3
+
+Priority: High"
+hurricane_michael_00000100_post_disaster.png,5,"(430, 58, 471, 74)",Damaged,Intact,Intact,True,Grade 3,Standard,"Features: Roof appears intact with no visible damage. Walls are mostly intact but show some signs of wear and discoloration. There is no visible debris around the building.
+
+EMS-98: Grade 3
+
+Priority: Standard"
+hurricane_harvey_00000451_post_disaster.png,1,"(128, 0, 231, 414)",Damaged,Intact,Intact,True,Grade 3,High,"Features: The roof appears to be intact with no visible damage, but the walls show signs of wear and possible structural issues. There is some debris scattered around the building, which could be from the walls or other materials.
+
+EMS-98: Grade 3
+
+Priority: High"
+hurricane_harvey_00000451_post_disaster.png,2,"(250, 0, 535, 186)",Damaged,Intact,Intact,True,Grade 3,High,"Features: Roof appears intact but there are visible signs of wear and tear. Walls look structurally sound but show some discoloration and possible damage. There is no visible debris on the roof or walls.
+
+EMS-98: Grade 3
+
+Priority: High"
+hurricane_harvey_00000451_post_disaster.png,3,"(384, 0, 765, 208)",Damaged,Intact,Intact,True,Grade 3,High,"Features: Roof appears intact, walls are visible but show signs of water damage, no debris is visible on the roof or walls.
+
+EMS-98: Grade 3
+
+Priority: High"
+turkey_earthquake3_post_665.png,2,"(0, 200, 33, 270)",Intact,Damaged,Damaged,True,Grade 3,Standard,"Features: The roof appears to be intact with no visible damage. The walls are also intact with no significant damage or debris. There is some debris visible on the ground, but it does not seem to be affecting the structure itself.
+
+EMS-98: Grade 3
+
+Priority: Standard"
+turkey_earthquake3_post_665.png,3,"(819, 301, 1024, 616)",Intact,Damaged,Damaged,True,Grade 3,Standard,"Features: The roof appears to be intact with no visible damage, but there is significant debris scattered around the building. The walls seem to be in good condition with no visible cracks or damage.
+
+EMS-98: Grade 3
+
+Priority: Standard"
+turkey_earthquake3_post_665.png,4,"(0, 302, 87, 452)",Intact,Damaged,Damaged,True,Grade 3,High,"Features: The roof appears to be intact with no visible damage, but the walls show significant damage and debris is scattered around the structure.
+
+EMS-98: Grade 3
+
+Priority: High"
+hurricane_harvey_00000348_post_disaster.png,4,"(37, 268, 61, 286)",Damaged,Intact,Intact,True,Grade 1,Standard,"Features: The roof appears to be intact with no visible signs of damage or missing sections. The walls are also intact, showing no significant cracks or damage. There is no visible debris on the roof or around the building.
+
+EMS-98: Grade 1
+
+Priority: Standard"
+hurricane_harvey_00000348_post_disaster.png,10,"(111, 843, 140, 874)",Damaged,Intact,Intact,True,Grade 3,High,"Features: Roof appears intact, walls are visible but show signs of wear, no debris is present.
+EMS-98: Grade 3
+Priority: High"
+hurricane_harvey_00000348_post_disaster.png,11,"(0, 877, 52, 1016)",Damaged,Intact,Intact,True,Grade 3,Standard,"Features: The building appears to have a roof that is intact but shows signs of wear and tear. The walls are not clearly visible due to the surrounding vegetation, but they seem to be in a stable condition. There is no visible debris around the building.
+
+EMS-98: Grade 3
+
+Priority: Standard"
+tuscaloosa_tornado_00000244_post_disaster.png,2,"(199, 68, 257, 109)",Damaged,Intact,Intact,True,Grade 3,Standard,"Features: The building appears to have a metal roof, which looks intact but shows some signs of wear. The walls are not clearly visible in the satellite image, but there are no immediate signs of collapse or severe damage. There is some debris scattered around the building, which could be from construction or maintenance activities.
+
+EMS-98: Grade 3
+
+Priority: Standard"
+tuscaloosa_tornado_00000244_post_disaster.png,3,"(333, 105, 385, 138)",Damaged,Intact,Intact,True,Grade 3,High,"Features: Roof appears intact but there is visible debris on the ground near the building, suggesting potential damage or recent activity. Walls seem to be in good condition with no visible signs of structural damage.
+
+EMS-98: Grade 3
+
+Priority: High"
+tuscaloosa_tornado_00000244_post_disaster.png,9,"(199, 267, 232, 332)",Damaged,Intact,Intact,True,Grade 3,Standard,"Features: Roof appears intact with no visible damage. Walls are solid and show no signs of collapse or significant damage. There is no visible debris around the building.
+
+EMS-98: Grade 3
+
+Priority: Standard"

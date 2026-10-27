@@ -1,0 +1,2 @@
+label,run,vlm,segmenter,tiles,buildings_found,buildings_inspected,vlm_agrees_with_segmenter,vlm_disagrees,vlm_class_unparsed,agreement_pct_of_parsed,mean_seconds_per_tile,peak_gpu_memory_allocated_gb
+"Demo, not an evaluation",base,Qwen/Qwen2.5-VL-7B-Instruct,R9,10,363,30,8,22,0,26.7,13.68,6.31

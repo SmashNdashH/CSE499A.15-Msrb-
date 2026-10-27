@@ -4,10 +4,10 @@ config.py
 Configuration parameters for Tamanna's Agentic Vision RAG Pipeline (Plan 2).
 Group 5 - CSE499B Capstone Sprint.
 
-Supports seamless switching between:
+Supports switching between:
   1. Team Fine-Tuned Model: AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP
   2. Base Foundation Model: Qwen/Qwen2.5-VL-7B-Instruct
-  3. Google Multimodal Benchmark: google/paligemma2-3b-pt-448 (or 10b)
+PaliGemma 2 and the Qwen2.5-VL-3B edge entry were dropped on 27 Oct 2026: the edge model is L2's job.
 """
 
 import os
@@ -31,29 +31,24 @@ else:
     DEFAULT_WEIGHTS_PATH = str(PLAN2_DIR.parents[1] / "Champion_Task" / "final_model.pth")
     DEFAULT_OUTPUT_DIR = str(PLAN2_DIR / "outputs")
 
-# Hugging Face Access Token (Required for gated models like Google PaliGemma 2)
+# Hugging Face Access Token (Required for private repos such as the R9 checkpoint)
 HF_TOKEN = os.environ.get("HF_TOKEN") or None
 
 # Segmentation Backbone Configurations
-# - "resnet50": Team Champion model (Fullstack ResNet-50 + Phased Loss, mIoU 0.5449)
-# - "resnet34": Architecture ablation baseline (Tamanna B1 baseline, mIoU 0.4619)
+# - "resnet50": the D4 recipe's encoder (R1, R9: U-Net + ResNet-50, phased loss)
+# - "resnet34": the B1 architecture baseline's encoder (U-Net + ResNet-34, CE+Dice)
 DEFAULT_SEGMENTATION_ENCODER = "resnet50"
 BASELINE_SEGMENTATION_ENCODER = "resnet34"
 
 # Official Team Champion Checkpoint Repositories on Hugging Face
 CHAMPION_HF_REPOS = [
-    {"repo_id": "AbrarAlam/disasterm3-d4-R9", "filename": "final_model.pth", "encoder": "resnet50", "desc": "Champion R9 (Sampler + CopyPaste, Destroyed IoU 0.2971)"},
-    {"repo_id": "AbrarAlam/disasterm3-d4-R1", "filename": "final_model.pth", "encoder": "resnet50", "desc": "Champion R1 (Phased Loss + 768 native crops, mIoU 0.5401)"},
-    {"repo_id": "AbrarAlam/disasterm3-unet-checkpoints-2", "filename": "best_model.pth", "encoder": "resnet34", "desc": "B1 Reference Baseline (ResNet-34 CE+Dice, mIoU 0.4619)"}
+    {"repo_id": "AbrarAlam/disasterm3-d4-R9", "filename": "final_model.pth", "encoder": "resnet50", "desc": "R9 (D4 recipe + sampler + copy-paste)"},
+    {"repo_id": "AbrarAlam/disasterm3-d4-R1", "filename": "final_model.pth", "encoder": "resnet50", "desc": "R1 (D4 reference recipe: phased loss, 768 px native crops)"},
+    {"repo_id": "AbrarAlam/disasterm3-unet-checkpoints-2", "filename": "best_model.pth", "encoder": "resnet34", "desc": "B1 baseline (ResNet-34, CE+Dice)"}
 ]
 
 # Ensure output directory exists
 os.makedirs(DEFAULT_OUTPUT_DIR, exist_ok=True)
-
-# Auto-detect if PaliGemma 2 is attached as a local Kaggle model
-import glob
-_local_paligemma = glob.glob("/kaggle/input/**/paligemma*/**/config.json", recursive=True)
-PALIGEMMA_MODEL_ID = os.path.dirname(_local_paligemma[0]) if _local_paligemma else "google/paligemma2-3b-pt-448"
 
 # Model Registry
 VLM_MODELS = {
@@ -70,20 +65,6 @@ VLM_MODELS = {
         "model_type": "qwen",
         "is_gated": False,
         "description": "Vanilla base foundation model used to measure zero-shot and fine-tuning delta."
-    },
-    "qwen_edge": {
-        "name": "Qwen2.5VL_3B_Edge",
-        "model_id": "Qwen/Qwen2.5-VL-3B-Instruct",
-        "model_type": "qwen",
-        "is_gated": False,
-        "description": "Un-gated lightweight 3B edge VLM: zero token requirements, zero 401 errors, ~3.1 GB VRAM."
-    },
-    "paligemma": {
-        "name": "Google_PaliGemma2_3B",
-        "model_id": PALIGEMMA_MODEL_ID,
-        "model_type": "paligemma",
-        "is_gated": not bool(_local_paligemma),
-        "description": f"Google's lightweight 3B multimodal model specialized for spatial understanding ({'Local Kaggle Model' if _local_paligemma else 'HuggingFace Hub [Gated - HF_TOKEN required]'})."
     }
 }
 

@@ -36,7 +36,7 @@ def generate_annotated_damage_map(
 
     for item in report["detailed_inspections"]:
         x, y, w, h = item["bbox"]
-        cls = item["initial_segmentation_class"]
+        cls = item["segmenter_class"]
         col = np.array(config.CLASS_COLORS_RGB.get(cls, (255, 255, 255))) / 255.0
 
         # Draw bounding rectangle
@@ -103,7 +103,7 @@ def generate_inspection_dashboard(
 
     for item in inspections:
         x, y, w, h = item["bbox"]
-        cls = item["initial_segmentation_class"]
+        cls = item["segmenter_class"]
         col = np.array(config.CLASS_COLORS_RGB.get(cls, (255, 255, 255))) / 255.0
 
         rect = patches.Rectangle((x, y), w, h, linewidth=2.5, edgecolor=col, facecolor='none')
@@ -126,12 +126,12 @@ def generate_inspection_dashboard(
         ax_crop = fig.add_subplot(gs[row, col_idx])
 
         ax_crop.imshow(item["crop_rgb"])
-        cls = item["initial_segmentation_class"]
+        cls = item["segmenter_class"]
         col = np.array(config.CLASS_COLORS_RGB.get(cls, (255, 255, 255))) / 255.0
 
         # Title with building metadata
         ax_crop.set_title(
-            f"Building #{item['building_id']} [{cls}]\n{item['ems98_grade']}",
+            f"Building #{item['building_id']}\nSeg: {cls} | VLM: {item['vlm_class'] or 'unparsed'}\n{item['ems98_grade']}",
             fontsize=10,
             fontweight="bold",
             color="black"
