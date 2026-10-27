@@ -17,6 +17,9 @@ Related: [Next_Steps_Roadmap.md](Next_Steps_Roadmap.md) (T2 and H2b), [Task_Ledg
 **What DisasTeller uses today.** Ridita's implementation runs on CrewAI: four agents (the Expert, Alerts, Emergency service and Assignment teams) do six tasks in order, all on Gemini 3.1 Flash-Lite. LangChain supplies the guideline search in `pdf_search_tool.py`: a PDF loader, a text splitter, a Chroma store and Gemini embeddings.
 
 - **LangChain: keep the part we already use.** T2 swaps the Gemini embeddings for a local model and keeps Chroma (roadmap T2, step 4). In offline mode the two web tools go (§2).
+  - Ridita built the replacement on 25 Oct as hybrid search: local MiniLM embeddings plus BM25 keywords, merged by reciprocal rank fusion, over 405 cited sections from six sources.
+  - It runs on Chroma on a laptop, and on the saved vectors with numpy and torch on Kaggle.
+  - Roadmap T2 step 4b tests it against meaning-only and keyword-only search before it's wired in.
 - **LangGraph: a fallback only.**
   - CrewAI lets the model choose its tools and write each call in a set format. Small local models often break that format or loop, and H2b showed the same weakness when our 7B wrote its own queries (§3).
   - If T2's first run hits this, switch to a fixed flow: code runs the segmenter, the fixed queries and the heatmap, and the model only writes each team's section from those facts.
@@ -43,6 +46,10 @@ Related: [Next_Steps_Roadmap.md](Next_Steps_Roadmap.md) (T2 and H2b), [Task_Ledg
   | task6 | Assignment team | 193, and 202–203 in its expected output | the reconstruction plan, including how much money it needs |
 
 - **The guideline search already works offline, but only the Expert team has it.** Its PDF is EMS-98 (`Guidelines/EMS98_Original_english__earthquake.pdf`), the European scale for grading earthquake damage to buildings.
+  - Ridita's offline version (25 Oct) adds five more sources: xBD's damage scale, the IWG-SEM damage guide, two INSARAG search-and-rescue manuals, and Sphere's shelter chapter.
+  - Offline, tasks 3 and 4 can then cite INSARAG (rescue teams, triage, ASR levels) and Sphere (shelter space per person).
+  - *27 Oct:* Ridita's commit `74d44059e` removed the Sphere PDF from the public repo (it needs Sphere's permission to put online). Its text is still in the tracked `guideline_chunks.jsonl` (61 chunks). Whether Sphere stays cited depends on the decision in the tracker's "Needs you now".
+  - Historical costs and hospital counts are still not available offline (§2.2).
 
 ### 2.2 What offline mode changes
 
@@ -288,7 +295,7 @@ The day-1 proposal stacked five layers and marked only Layer 1 as this project:
 | 1 | VLM aerial image to textual rescue guidance | this project |
 
 Layer 1 grew well beyond the day-1 arrow (image, VLM, text). The VLM alone couldn't read damage reliably (our 7B counts buildings at about 30–32%), so Layer 1 now includes:
-- the damage segmenter (O1 met);
+- the damage segmenter (O1 met on all 645 validation images. On the 605 left after E5 removed 40 leaked pairs, only R16c step 5's SAM 3-only map passes: 0.3161 and 0.3051 Destroyed IoU, narrowly. A third grader seed, step 5b, is built and ready to run (27 Oct). SAM 3 + R11's pieces scores 0.2838–0.2980, 26 Oct);
 - per-building counts from a table (H2), and the H2b test of free-form questions;
 - the heatmap (T1) and the edge segmenter (L1b);
 - the stronger 7B and the 3B path (L0, L2).

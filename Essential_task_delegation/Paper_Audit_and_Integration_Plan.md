@@ -33,6 +33,12 @@ The CSE499A final presentation ended with a Future Work list ([final_presentatio
 
 ## 2. Where we stand (17 October 2026)
 
+> **This table is the 17 Oct snapshot.** The current status of every goal is in [Progress_Tracker.md, Goals](Progress_Tracker.md#goals). The changes since:
+> - **O1:** R16c (SAM 3 + R11's pieces, then a stronger grader) passed the gate on all 645 validation images, on two U-Net seeds (20–21 Oct). E5 (26 Oct) then found validation pairs that are near-copies of training pairs, Without the 40 leaked pairs, R16c steps 2 and 3 score 0.2838–0.2980. Only R16c step 5's SAM 3-only map passes on clean data (0.3161 and 0.3051), narrowly; a third grader seed is proposed before claiming it (26 Oct; see the tracker). Benchmark copies move the 7B's and the counting scores by at most 0.7 points.
+> - **O2:** counting with R11's per-building table (H2) is 32.96%, 1.2 points under 34.2%.
+> - **O3:** the heatmap is done (T1 v3), and an offline guideline search is built (Ridita, 25 Oct).
+> - **O4:** the INT8 edge segmenter is done (L1b).
+
 | Goal | Deliverable | Status | Where to look |
 |---|---|---|---|
 | O1 | Phase Gate | **Not met; fine-tuning closed (18 Oct).** mIoU passes in every run. R9 (sampler + copy-paste) is the best Destroyed recipe: 0.3001 with TTA on seed 42, but 0.2941 on its seed-7 repeat (R9s7), so the two-seed mean is 0.2971. Next is the E1 diagnosis, then R11 (before + after input). | `Champion_Task/R9-results/`, `Champion_Task/R9s7-results/`, [Ablation_Study_Reference_and_QA_Prep.md](Ablation_Study_Reference_and_QA_Prep.md) §7 |

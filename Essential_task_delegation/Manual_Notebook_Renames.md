@@ -6,7 +6,7 @@ Written 20 Oct 2026, after your naming decisions:
 - R16, R16b and R16c keep their names. R16c's steps are renumbered 1–5 (2b → 3, 3a → 4, 3b → 5).
 - R16's two parts are called **the finding** (SAM 3 plus the U-Net's missed pieces) and **the grading** (the Siamese grader). The model is **find-then-grade**, not "two-stage".
 
-Claude already renamed the files and folders, and edited the notebooks that haven't run yet. These notebooks have run, and their recorded outputs must stay. Editing a cell's text in VS Code keeps its outputs, as long as you **don't run the cell**, so these edits are yours.
+The files and folders are already renamed, and the notebooks that haven't run yet are already edited. These notebooks have run, and their recorded outputs must stay. Editing a cell's text in VS Code keeps its outputs, as long as you **don't run the cell**, so these edits are yours.
 
 ## How to edit, step by step (VS Code)
 
@@ -227,4 +227,4 @@ Claude already renamed the files and folders, and edited the notebooks that have
 - **Recorded outputs and saved results files** (printed text, `README.md` and CSV files written by these runs) keep the old words, as records of what ran. The changes above make any re-run write the new words.
 - **Kaggle names:** you renamed `r16-two-stage-grader` and `l2-stage1-teacher-rationales` on Kaggle too (20 Oct). R6's Kaggle notebook is renamed when you find it. `r16c-step2-stronger-grader` keeps its name, and its output folder stays `R16c-truth`, because that is written by the run and step 3 looks for it.
 - **Hugging Face:** the R6 run's checkpoint repo stays `AbrarAlam/disasterm3-d4-R6`.
-- **Tell Claude when you're done**, so it can re-check the files by searching for the old names.
+- **Say when you're done**, so the files can be re-checked by searching for the old names.

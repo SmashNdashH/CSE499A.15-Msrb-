@@ -1,0 +1,74 @@
+{
+ "task": "E5 step 2",
+ "smoke_test": false,
+ "val_images": 645,
+ "models": [
+  "R11",
+  "R11s7",
+  "R9",
+  "R1"
+ ],
+ "checkpoints": {
+  "R11": "/root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-d4-R11/snapshots/31974dacfee2125a66639858433a113704edf9b3/final_model.pth",
+  "R11s7": "/root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-d4-R11s7/snapshots/d0654a16a2b8b15d8c9989f22519d53cf4d403c0/final_model.pth",
+  "R9": "/root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-d4-R9/snapshots/34897e1aa70742cac62a379561e1f969dccd4e10/final_model.pth",
+  "R1": "/root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-d4-R1/snapshots/ebe008702466f2db4dfac0d1c51d269e2974f59a/final_model.pth"
+ },
+ "in_channels": {
+  "R11": 6,
+  "R11s7": 6,
+  "R9": 3,
+  "R1": 3
+ },
+ "expected": {
+  "R11": {
+   "std": [
+    0.5811,
+    0.2911
+   ],
+   "tta": [
+    0.5875,
+    0.2965
+   ]
+  },
+  "R11s7": {
+   "std": [
+    0.5867,
+    0.2869
+   ],
+   "tta": [
+    0.5913,
+    0.2928
+   ]
+  },
+  "R9": {
+   "std": [
+    0.5373,
+    0.2921
+   ],
+   "tta": [
+    0.544,
+    0.3001
+   ]
+  },
+  "R1": {
+   "std": [
+    0.5374,
+    0.2686
+   ],
+   "tta": [
+    0.544,
+    0.2822
+   ]
+  }
+ },
+ "minutes": {
+  "R11": 13.3,
+  "R11s7": 6.3,
+  "R9": 5.7,
+  "R1": 5.7
+ },
+ "all_reproduce_d4": true,
+ "fire_images": 86,
+ "pc21_images": 21
+}

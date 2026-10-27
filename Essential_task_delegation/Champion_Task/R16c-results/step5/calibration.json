@@ -1,0 +1,22 @@
+{
+ "42": {
+  "epoch": 5,
+  "held_out_grade_iou": 0.6199,
+  "bias": {
+   "Intact": 0.0,
+   "Damaged": -1.75,
+   "Destroyed": -4.0,
+   "None": -1.25
+  }
+ },
+ "43": {
+  "epoch": 4,
+  "held_out_grade_iou": 0.6081,
+  "bias": {
+   "Intact": 0.0,
+   "Damaged": -1.0,
+   "Destroyed": -4.0,
+   "None": -2.0
+  }
+ }
+}

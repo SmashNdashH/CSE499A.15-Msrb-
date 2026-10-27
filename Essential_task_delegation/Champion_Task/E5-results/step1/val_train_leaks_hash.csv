@@ -1,0 +1,44 @@
+val_image,val_before,event,match,counted,twins_in_training,same_file_bytes,before_dhash,before_corr,after_dhash,after_corr,destroyed_px,in_pc_21
+socal_fire_00000081_post_disaster.png,socal_fire_00000081_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000017_post_disaster.png,True,0,1.0,3,0.9571,2001,True
+socal_fire_00000188_post_disaster.png,socal_fire_00000188_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000739_post_disaster.png,True,0,1.0,4,0.9648,3455,False
+socal_fire_00000218_post_disaster.png,socal_fire_00000218_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000517_post_disaster.png,True,0,1.0,3,0.9824,0,False
+socal_fire_00000220_post_disaster.png,socal_fire_00000220_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000216_post_disaster.png,True,0,1.0,2,0.9936,3323,True
+socal_fire_00000222_post_disaster.png,socal_fire_00000222_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000241_post_disaster.png,True,0,1.0,5,0.9754,2688,True
+socal_fire_00000235_post_disaster.png,socal_fire_00000235_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000253_post_disaster.png,True,0,1.0,8,0.9494,12736,False
+socal_fire_00000301_post_disaster.png,socal_fire_00000301_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000416_post_disaster.png,True,0,1.0,3,0.9665,3415,True
+socal_fire_00000341_post_disaster.png,socal_fire_00000341_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000452_post_disaster.png,True,0,1.0,4,0.9699,2265,True
+socal_fire_00000348_post_disaster.png,socal_fire_00000348_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000475_post_disaster.png,True,0,1.0,6,0.9695,12330,True
+socal_fire_00000396_post_disaster.png,socal_fire_00000396_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000869_post_disaster.png,True,0,1.0,4,0.9657,264,False
+socal_fire_00000436_post_disaster.png,socal_fire_00000436_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000446_post_disaster.png,True,0,1.0,1,0.9279,6163,True
+socal_fire_00000455_post_disaster.png,socal_fire_00000455_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000138_post_disaster.png,True,0,1.0,9,0.6509,0,True
+socal_fire_00000497_post_disaster.png,socal_fire_00000497_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000594_post_disaster.png,True,0,1.0,8,0.9675,7631,True
+socal_fire_00000504_post_disaster.png,socal_fire_00000504_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000695_post_disaster.png,True,0,1.0,6,0.9763,2688,False
+socal_fire_00000614_post_disaster.png,socal_fire_00000614_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000114_post_disaster.png,True,0,1.0,3,0.9677,0,False
+socal_fire_00001188_post_disaster.png,socal_fire_00001188_pre_disaster.png,socal_fire,same before-image,True,woolsey_fire_00000809_post_disaster.png,True,0,1.0,1,0.9696,2078,False
+woolsey_fire_00000009_post_disaster.png,woolsey_fire_00000009_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000688_post_disaster.png,True,0,1.0,3,0.9694,3814,True
+woolsey_fire_00000030_post_disaster.png,woolsey_fire_00000030_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000387_post_disaster.png,True,0,1.0,7,0.9655,13779,True
+woolsey_fire_00000032_post_disaster.png,woolsey_fire_00000032_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000715_post_disaster.png,True,0,1.0,2,0.9735,5427,True
+woolsey_fire_00000137_post_disaster.png,woolsey_fire_00000137_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000165_post_disaster.png,True,0,1.0,1,0.965,17425,False
+woolsey_fire_00000272_post_disaster.png,woolsey_fire_00000272_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000315_post_disaster.png,True,0,1.0,5,0.9346,79,False
+woolsey_fire_00000399_post_disaster.png,woolsey_fire_00000399_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000870_post_disaster.png,True,0,1.0,2,0.9716,603,False
+woolsey_fire_00000435_post_disaster.png,woolsey_fire_00000435_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000382_post_disaster.png,True,0,1.0,7,0.9497,576,False
+woolsey_fire_00000474_post_disaster.png,woolsey_fire_00000474_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000358_post_disaster.png,True,0,1.0,4,0.9554,2134,True
+woolsey_fire_00000498_post_disaster.png,woolsey_fire_00000498_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000379_post_disaster.png,True,0,1.0,4,0.9707,2532,False
+woolsey_fire_00000514_post_disaster.png,woolsey_fire_00000514_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000818_post_disaster.png,True,0,1.0,4,0.9286,0,False
+woolsey_fire_00000529_post_disaster.png,woolsey_fire_00000529_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000399_post_disaster.png,True,0,1.0,8,0.9139,1407,True
+woolsey_fire_00000573_post_disaster.png,woolsey_fire_00000573_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000417_post_disaster.png,True,0,1.0,7,0.9526,6461,True
+woolsey_fire_00000576_post_disaster.png,woolsey_fire_00000576_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000463_post_disaster.png,True,0,1.0,7,0.9652,5727,False
+woolsey_fire_00000589_post_disaster.png,woolsey_fire_00000589_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000426_post_disaster.png,True,0,1.0,12,0.9307,345,False
+woolsey_fire_00000623_post_disaster.png,woolsey_fire_00000623_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00001035_post_disaster.png,True,0,1.0,9,0.9724,0,True
+woolsey_fire_00000632_post_disaster.png,woolsey_fire_00000632_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00001047_post_disaster.png,True,0,1.0,7,0.9635,2776,True
+woolsey_fire_00000634_post_disaster.png,woolsey_fire_00000634_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000917_post_disaster.png,True,0,1.0,5,0.9691,0,True
+woolsey_fire_00000653_post_disaster.png,woolsey_fire_00000653_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000512_post_disaster.png,True,0,1.0,2,0.9497,15113,False
+woolsey_fire_00000679_post_disaster.png,woolsey_fire_00000679_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000889_post_disaster.png,True,0,1.0,4,0.9601,5145,False
+woolsey_fire_00000703_post_disaster.png,woolsey_fire_00000703_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000874_post_disaster.png,True,0,1.0,1,0.9674,4608,True
+woolsey_fire_00000722_post_disaster.png,woolsey_fire_00000722_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000898_post_disaster.png,True,0,1.0,1,0.9844,5226,False
+woolsey_fire_00000758_post_disaster.png,woolsey_fire_00000758_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00000207_post_disaster.png,True,0,1.0,6,0.9134,1111,False
+woolsey_fire_00000783_post_disaster.png,woolsey_fire_00000783_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00001171_post_disaster.png,True,0,1.0,7,0.9661,0,True
+woolsey_fire_00000810_post_disaster.png,woolsey_fire_00000810_pre_disaster.png,woolsey_fire,same before-image,True,socal_fire_00001113_post_disaster.png,True,0,1.0,4,0.9379,487,True
+portugal_wildfire_00000110_post_disaster.png,portugal_wildfire_00000110_pre_disaster.png,portugal_wildfire,review,False,portugal_wildfire_00000382_post_disaster.png,False,7,0.8671,9,0.8886,157,False
+portugal_wildfire_00000557_post_disaster.png,portugal_wildfire_00000557_pre_disaster.png,portugal_wildfire,review,False,portugal_wildfire_00001720_post_disaster.png,False,7,0.8603,11,0.9252,0,False
+socal_fire_00000970_post_disaster.png,socal_fire_00000970_pre_disaster.png,socal_fire,review,False,midwest_flooding_00000213_post_disaster.png,False,4,0.8695,13,0.8735,2569,False

@@ -1,5 +1,7 @@
 # E5 · Prompt for Ridita: collect the leak and BRIGHT audit files
 
+> **Answered 26 Oct.** Ridita sent `audit_outputs/README.md` and `val_train_leaks.csv`. The README confirms the 40 leaked pairs and lists the 19 that Abrar's check missed. Her CSV matches the combined list, [leaked_pairs_40.csv](../Champion_Task/E5-results/E5/leaked_pairs_40.csv), exactly. ~~Still open: push the `audit_outputs/` folder.~~ Pushed 26 Oct (commit `74d44059e`), checked against what she sent. E5's own steps 1 and 2 then confirmed the 40 a third time.
+
 **Why:** E5 needs the exact list of leaked validation pairs, `val_train_leaks.csv`, to re-score O1 on clean images. Ridita's corrected audit names that file, but it isn't in the repo. Abrar's local check found 21 leaked pairs; the audit says 40. Details: [E5-results/E5/README.md](../Champion_Task/E5-results/E5/README.md).
 
 **How Ridita runs it:**

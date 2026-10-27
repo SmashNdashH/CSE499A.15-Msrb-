@@ -1,0 +1,526 @@
+{
+ "42": [
+  {
+   "epoch": 1,
+   "loss": 0.7255382510437363,
+   "balanced_train_accuracy": 0.7036974676724138,
+   "held_out_grade_iou": 0.5782,
+   "held_out_grade_iou_real_shares": 0.5133,
+   "bias": [
+    0.0,
+    -1.5,
+    -4.0,
+    -2.75
+   ]
+  },
+  {
+   "epoch": 2,
+   "loss": 0.5974341046022272,
+   "balanced_train_accuracy": 0.7608207614942529,
+   "held_out_grade_iou": 0.603,
+   "held_out_grade_iou_real_shares": 0.5857,
+   "bias": [
+    0.0,
+    -1.0,
+    -3.25,
+    -2.0
+   ]
+  },
+  {
+   "epoch": 3,
+   "loss": 0.5489100095355648,
+   "balanced_train_accuracy": 0.7826980064655172,
+   "held_out_grade_iou": 0.6127,
+   "held_out_grade_iou_real_shares": 0.5686,
+   "bias": [
+    0.0,
+    -1.25,
+    -3.5,
+    -1.0
+   ]
+  },
+  {
+   "epoch": 4,
+   "loss": 0.5108237375301876,
+   "balanced_train_accuracy": 0.7999506106321839,
+   "held_out_grade_iou": 0.5133,
+   "held_out_grade_iou_real_shares": 0.4506,
+   "bias": [
+    0.0,
+    -1.75,
+    -4.0,
+    -2.75
+   ]
+  },
+  {
+   "epoch": 5,
+   "loss": 0.47417292452749166,
+   "balanced_train_accuracy": 0.8122306034482759,
+   "held_out_grade_iou": 0.6199,
+   "held_out_grade_iou_real_shares": 0.593,
+   "bias": [
+    0.0,
+    -1.75,
+    -4.0,
+    -1.25
+   ]
+  },
+  {
+   "epoch": 6,
+   "loss": 0.4401450300182419,
+   "balanced_train_accuracy": 0.8275300826149425,
+   "held_out_grade_iou": 0.6131,
+   "held_out_grade_iou_real_shares": 0.5735,
+   "bias": [
+    0.0,
+    -1.0,
+    -4.0,
+    -2.5
+   ]
+  },
+  {
+   "epoch": 7,
+   "loss": 0.40654267841714553,
+   "balanced_train_accuracy": 0.8419540229885057,
+   "held_out_grade_iou": 0.6023,
+   "held_out_grade_iou_real_shares": 0.5448,
+   "bias": [
+    0.0,
+    -2.0,
+    -4.0,
+    -2.75
+   ]
+  },
+  {
+   "epoch": 8,
+   "loss": 0.3721160474179805,
+   "balanced_train_accuracy": 0.8560636673850575,
+   "held_out_grade_iou": 0.5712,
+   "held_out_grade_iou_real_shares": 0.5218,
+   "bias": [
+    0.0,
+    -2.25,
+    -4.0,
+    -2.5
+   ]
+  },
+  {
+   "epoch": 9,
+   "loss": 0.3358902233256691,
+   "balanced_train_accuracy": 0.8721152119252874,
+   "held_out_grade_iou": 0.5704,
+   "held_out_grade_iou_real_shares": 0.5283,
+   "bias": [
+    0.0,
+    -2.25,
+    -4.0,
+    -2.5
+   ]
+  },
+  {
+   "epoch": 10,
+   "loss": 0.3031282842416188,
+   "balanced_train_accuracy": 0.8834523168103449,
+   "held_out_grade_iou": 0.6004,
+   "held_out_grade_iou_real_shares": 0.5615,
+   "bias": [
+    0.0,
+    -2.0,
+    -4.0,
+    -3.0
+   ]
+  },
+  {
+   "epoch": 11,
+   "loss": 0.2710010101055277,
+   "balanced_train_accuracy": 0.8979323814655172,
+   "held_out_grade_iou": 0.5595,
+   "held_out_grade_iou_real_shares": 0.5103,
+   "bias": [
+    0.0,
+    -2.25,
+    -4.0,
+    -3.75
+   ]
+  },
+  {
+   "epoch": 12,
+   "loss": 0.24084431600981746,
+   "balanced_train_accuracy": 0.9101674748563219,
+   "held_out_grade_iou": 0.5896,
+   "held_out_grade_iou_real_shares": 0.5489,
+   "bias": [
+    0.0,
+    -2.25,
+    -4.0,
+    -4.0
+   ]
+  },
+  {
+   "epoch": 13,
+   "loss": 0.21096181321418148,
+   "balanced_train_accuracy": 0.9213137571839081,
+   "held_out_grade_iou": 0.5849,
+   "held_out_grade_iou_real_shares": 0.5604,
+   "bias": [
+    0.0,
+    -2.0,
+    -4.0,
+    -3.5
+   ]
+  },
+  {
+   "epoch": 14,
+   "loss": 0.18782277015605192,
+   "balanced_train_accuracy": 0.9305069145114943,
+   "held_out_grade_iou": 0.6,
+   "held_out_grade_iou_real_shares": 0.5761,
+   "bias": [
+    0.0,
+    -2.25,
+    -4.0,
+    -3.25
+   ]
+  },
+  {
+   "epoch": 15,
+   "loss": 0.1662906628187703,
+   "balanced_train_accuracy": 0.9385326867816092,
+   "held_out_grade_iou": 0.5916,
+   "held_out_grade_iou_real_shares": 0.5505,
+   "bias": [
+    0.0,
+    -2.75,
+    -4.0,
+    -3.0
+   ]
+  },
+  {
+   "epoch": 16,
+   "loss": 0.14675129995006939,
+   "balanced_train_accuracy": 0.9458176185344828,
+   "held_out_grade_iou": 0.5819,
+   "held_out_grade_iou_real_shares": 0.5462,
+   "bias": [
+    0.0,
+    -3.0,
+    -4.0,
+    -2.0
+   ]
+  },
+  {
+   "epoch": 17,
+   "loss": 0.13787207796356116,
+   "balanced_train_accuracy": 0.9504422593390804,
+   "held_out_grade_iou": 0.5844,
+   "held_out_grade_iou_real_shares": 0.5517,
+   "bias": [
+    0.0,
+    -2.75,
+    -4.0,
+    -3.25
+   ]
+  },
+  {
+   "epoch": 18,
+   "loss": 0.12663754426884924,
+   "balanced_train_accuracy": 0.9536862428160919,
+   "held_out_grade_iou": 0.5789,
+   "held_out_grade_iou_real_shares": 0.5471,
+   "bias": [
+    0.0,
+    -2.5,
+    -4.0,
+    -2.5
+   ]
+  },
+  {
+   "epoch": 19,
+   "loss": 0.12495892913476832,
+   "balanced_train_accuracy": 0.9549771012931034,
+   "held_out_grade_iou": 0.5888,
+   "held_out_grade_iou_real_shares": 0.5572,
+   "bias": [
+    0.0,
+    -2.25,
+    -4.0,
+    -4.0
+   ]
+  },
+  {
+   "epoch": 20,
+   "loss": 0.12071647794767358,
+   "balanced_train_accuracy": 0.9559985632183908,
+   "held_out_grade_iou": 0.5861,
+   "held_out_grade_iou_real_shares": 0.5563,
+   "bias": [
+    0.0,
+    -2.25,
+    -4.0,
+    -3.75
+   ]
+  }
+ ],
+ "43": [
+  {
+   "epoch": 1,
+   "loss": 0.7278273309441818,
+   "balanced_train_accuracy": 0.7022719109195402,
+   "held_out_grade_iou": 0.5335,
+   "held_out_grade_iou_real_shares": 0.4825,
+   "bias": [
+    0.0,
+    -1.5,
+    -4.0,
+    -2.0
+   ]
+  },
+  {
+   "epoch": 2,
+   "loss": 0.6001360056729153,
+   "balanced_train_accuracy": 0.7602819683908046,
+   "held_out_grade_iou": 0.5024,
+   "held_out_grade_iou_real_shares": 0.4454,
+   "bias": [
+    0.0,
+    -2.25,
+    -4.0,
+    -2.25
+   ]
+  },
+  {
+   "epoch": 3,
+   "loss": 0.5491035880371072,
+   "balanced_train_accuracy": 0.7809918283045977,
+   "held_out_grade_iou": 0.5795,
+   "held_out_grade_iou_real_shares": 0.527,
+   "bias": [
+    0.0,
+    -1.5,
+    -4.0,
+    -2.25
+   ]
+  },
+  {
+   "epoch": 4,
+   "loss": 0.5147776869179188,
+   "balanced_train_accuracy": 0.7953933189655172,
+   "held_out_grade_iou": 0.6081,
+   "held_out_grade_iou_real_shares": 0.567,
+   "bias": [
+    0.0,
+    -1.0,
+    -4.0,
+    -2.0
+   ]
+  },
+  {
+   "epoch": 5,
+   "loss": 0.4766208867745838,
+   "balanced_train_accuracy": 0.8122755028735632,
+   "held_out_grade_iou": 0.5929,
+   "held_out_grade_iou_real_shares": 0.538,
+   "bias": [
+    0.0,
+    -1.5,
+    -4.0,
+    -2.75
+   ]
+  },
+  {
+   "epoch": 6,
+   "loss": 0.439741929800346,
+   "balanced_train_accuracy": 0.8260596264367817,
+   "held_out_grade_iou": 0.6048,
+   "held_out_grade_iou_real_shares": 0.5713,
+   "bias": [
+    0.0,
+    -1.25,
+    -4.0,
+    -1.75
+   ]
+  },
+  {
+   "epoch": 7,
+   "loss": 0.41093254414783126,
+   "balanced_train_accuracy": 0.8414601293103449,
+   "held_out_grade_iou": 0.5956,
+   "held_out_grade_iou_real_shares": 0.5365,
+   "bias": [
+    0.0,
+    -2.0,
+    -4.0,
+    -4.0
+   ]
+  },
+  {
+   "epoch": 8,
+   "loss": 0.3749350168496028,
+   "balanced_train_accuracy": 0.8554126257183908,
+   "held_out_grade_iou": 0.5825,
+   "held_out_grade_iou_real_shares": 0.5333,
+   "bias": [
+    0.0,
+    -1.25,
+    -4.0,
+    -3.25
+   ]
+  },
+  {
+   "epoch": 9,
+   "loss": 0.3388802007954011,
+   "balanced_train_accuracy": 0.8704763829022989,
+   "held_out_grade_iou": 0.6002,
+   "held_out_grade_iou_real_shares": 0.5651,
+   "bias": [
+    0.0,
+    -1.5,
+    -4.0,
+    -3.5
+   ]
+  },
+  {
+   "epoch": 10,
+   "loss": 0.3063015918536433,
+   "balanced_train_accuracy": 0.884069683908046,
+   "held_out_grade_iou": 0.5675,
+   "held_out_grade_iou_real_shares": 0.5124,
+   "bias": [
+    0.0,
+    -1.75,
+    -4.0,
+    -3.0
+   ]
+  },
+  {
+   "epoch": 11,
+   "loss": 0.26908489492261545,
+   "balanced_train_accuracy": 0.8977752334770115,
+   "held_out_grade_iou": 0.5964,
+   "held_out_grade_iou_real_shares": 0.5645,
+   "bias": [
+    0.0,
+    -1.5,
+    -4.0,
+    -1.0
+   ]
+  },
+  {
+   "epoch": 12,
+   "loss": 0.24151137398406006,
+   "balanced_train_accuracy": 0.9083714978448276,
+   "held_out_grade_iou": 0.5811,
+   "held_out_grade_iou_real_shares": 0.5467,
+   "bias": [
+    0.0,
+    -2.25,
+    -4.0,
+    -3.0
+   ]
+  },
+  {
+   "epoch": 13,
+   "loss": 0.21593484248238048,
+   "balanced_train_accuracy": 0.9187657147988506,
+   "held_out_grade_iou": 0.5804,
+   "held_out_grade_iou_real_shares": 0.5461,
+   "bias": [
+    0.0,
+    -2.0,
+    -4.0,
+    -3.5
+   ]
+  },
+  {
+   "epoch": 14,
+   "loss": 0.19234223770855488,
+   "balanced_train_accuracy": 0.9284527658045977,
+   "held_out_grade_iou": 0.589,
+   "held_out_grade_iou_real_shares": 0.5543,
+   "bias": [
+    0.0,
+    -2.5,
+    -4.0,
+    -4.0
+   ]
+  },
+  {
+   "epoch": 15,
+   "loss": 0.16906782017014493,
+   "balanced_train_accuracy": 0.9370846803160919,
+   "held_out_grade_iou": 0.5799,
+   "held_out_grade_iou_real_shares": 0.5432,
+   "bias": [
+    0.0,
+    -2.75,
+    -4.0,
+    -3.5
+   ]
+  },
+  {
+   "epoch": 16,
+   "loss": 0.15461531148731023,
+   "balanced_train_accuracy": 0.9437522449712644,
+   "held_out_grade_iou": 0.5793,
+   "held_out_grade_iou_real_shares": 0.5499,
+   "bias": [
+    0.0,
+    -2.5,
+    -4.0,
+    -0.75
+   ]
+  },
+  {
+   "epoch": 17,
+   "loss": 0.13620349696312828,
+   "balanced_train_accuracy": 0.9512953484195402,
+   "held_out_grade_iou": 0.5748,
+   "held_out_grade_iou_real_shares": 0.5429,
+   "bias": [
+    0.0,
+    -2.75,
+    -4.0,
+    -4.0
+   ]
+  },
+  {
+   "epoch": 18,
+   "loss": 0.1288916083459539,
+   "balanced_train_accuracy": 0.9538658405172413,
+   "held_out_grade_iou": 0.5745,
+   "held_out_grade_iou_real_shares": 0.547,
+   "bias": [
+    0.0,
+    -2.25,
+    -4.0,
+    -3.75
+   ]
+  },
+  {
+   "epoch": 19,
+   "loss": 0.12319636537597098,
+   "balanced_train_accuracy": 0.9554709949712644,
+   "held_out_grade_iou": 0.5793,
+   "held_out_grade_iou_real_shares": 0.5471,
+   "bias": [
+    0.0,
+    -2.75,
+    -4.0,
+    -4.0
+   ]
+  },
+  {
+   "epoch": 20,
+   "loss": 0.1229622229162989,
+   "balanced_train_accuracy": 0.9551566989942529,
+   "held_out_grade_iou": 0.5782,
+   "held_out_grade_iou_real_shares": 0.5446,
+   "bias": [
+    0.0,
+    -2.75,
+    -4.0,
+    -4.0
+   ]
+  }
+ ]
+}

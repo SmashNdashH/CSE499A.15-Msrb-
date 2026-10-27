@@ -1,0 +1,128 @@
+{
+ "task": "E5 step 1",
+ "smoke_test": false,
+ "fingerprint_minutes": 15.4,
+ "files": {
+  "instruct": 20988,
+  "benchmark": 7278,
+  "unreadable": {
+   "instruct": 0,
+   "benchmark": 3
+  },
+  "same_name_twice": {
+   "instruct": 0,
+   "benchmark": 0
+  }
+ },
+ "thresholds": {
+  "near_dhash": 6,
+  "near_corr": 0.95,
+  "review_dhash": 10,
+  "review_corr": 0.85,
+  "dark": 0.5,
+  "flat_std": 4.0
+ },
+ "validation": {
+  "pairs": 645,
+  "destroyed_px": 1808111,
+  "leaked_counted": 40,
+  "leaked_destroyed_px": 155812,
+  "by_match": {
+   "same before-image": 40,
+   "same after-image": 0,
+   "near copy": 0,
+   "review": 3
+  },
+  "pc_21_missing": [],
+  "twin_only_in_validation": 4,
+  "twin_outside_pool": 1,
+  "after_image_corr_median": 0.966
+ },
+ "pool": {
+  "shared_before_image_groups": 250,
+  "pairs_in_groups": 500
+ },
+ "audit": {
+  "leaked_pairs": 40,
+  "leaked_destroyed_px": 155812,
+  "shared_before_images_in_pool": 264
+ },
+ "benchmark": {
+  "files_matched": {
+   "same pixels": 519,
+   "near copy": 39,
+   "review": 48
+  },
+  "per_task": [
+   {
+    "task": "DTR",
+    "questions": 420,
+    "optical": 353,
+    "after_copied": 10,
+    "after_copied_optical": 10,
+    "before_only_copied": 6,
+    "before_only_copied_optical": 6,
+    "review_only": 2
+   },
+   {
+    "task": "BBR",
+    "questions": 2363,
+    "optical": 2006,
+    "after_copied": 35,
+    "after_copied_optical": 35,
+    "before_only_copied": 24,
+    "before_only_copied_optical": 24,
+    "review_only": 19
+   },
+   {
+    "task": "BDC",
+    "questions": 4982,
+    "optical": 3583,
+    "after_copied": 188,
+    "after_copied_optical": 66,
+    "before_only_copied": 44,
+    "before_only_copied_optical": 43,
+    "review_only": 24
+   },
+   {
+    "task": "DRE",
+    "questions": 2178,
+    "optical": 1868,
+    "after_copied": 34,
+    "after_copied_optical": 34,
+    "before_only_copied": 23,
+    "before_only_copied_optical": 23,
+    "review_only": 14
+   },
+   {
+    "task": "DSR",
+    "questions": 2007,
+    "optical": 2007,
+    "after_copied": 35,
+    "after_copied_optical": 35,
+    "before_only_copied": 24,
+    "before_only_copied_optical": 24,
+    "review_only": 18
+   },
+   {
+    "task": "ORR",
+    "questions": 1018,
+    "optical": 858,
+    "after_copied": 6,
+    "after_copied_optical": 6,
+    "before_only_copied": 0,
+    "before_only_copied_optical": 0,
+    "review_only": 6
+   }
+  ],
+  "optical_questions": 10675,
+  "optical_after_copied": 186,
+  "share": 0.0174
+ },
+ "checks": {
+  "leaked pairs within 21-40": "yes",
+  "PC check's 21 all found": "yes",
+  "O2 needs a clean re-score (over 1% of optical questions with a copied after-image)": "yes"
+ },
+ "pictures": 41
+}

@@ -11,6 +11,14 @@ What each finished task found, and the decisions it led to, are in [Task_Ledger.
 
 ## 1. Where we are (18 October 2026)
 
+> **This section is the 18 Oct snapshot.** The current status is in [Progress_Tracker.md](Progress_Tracker.md) (Goals and Tasks). Since then:
+> - R11 became the champion U-Net, and R16c passed the O1 gate on all 645 validation images (20–21 Oct).
+> - E5 (26 Oct) found 40 leaked validation pairs.
+>   - Without them, R16c steps 2 and 3 score 0.2838–0.2980.
+>   - **Only R16c step 5's SAM 3-only map passes O1's gate on clean data (0.3161 and 0.3051), narrowly.** A third grader seed is proposed before claiming it.
+>   - Benchmark copies cost at most 0.7 points; O2's counting is 32.47% on clean questions.
+>   - L0's training is complete; its merge needs a fix (proposed).
+
 - **Fine-tuning is closed.** All 11 D4 training runs are done; the full table is in [Ablation_Study_Reference_and_QA_Prep.md](Ablation_Study_Reference_and_QA_Prep.md) §7.
 - **Champion:**
   - **R9 recipe (sampler + copy-paste).** It has the best Destroyed IoU (two-seed mean 0.2884, or 0.2971 with TTA) and the best Destroyed recall (about 0.50, or 0.52 with TTA), with the same mIoU as R1.
@@ -65,12 +73,13 @@ What each finished task found, and the decisions it led to, are in [Task_Ledger.
 | E2 | Object-based majority voting | Paper: BRIGHT | O1 | Eval (add-on to E1) | ~0.3 | E1 | Abrar |
 | D5 | xBD converter check + 1,007 leak-safe tiles | Plan + Paper: xBD | O1 | CPU notebook | 0 | — | Aryan |
 | E3 | SAM 3 smoke test and building finding | Paper: SAM 3, SegEarth-OV3 | O1, O4 | Eval notebook | ~2 | HF access | Abrar |
+| E5 | Train/validation leak and the benchmark's copies (opened 26 Oct) | Innovation: Ridita's audit | O1, O2 | CPU hash check + eval notebook | ~1 | — | Abrar |
 | H1 | KR2 harness: U-Net counting + counts-as-text | Plan + Paper: TEOChat, DamageScope | O2 | Eval notebook (2×T4) | ~1 + ~6 | E1 | Noman |
 | T1 | Survivability heatmap | Plan + Paper: BDAChat | O3 | CPU notebook | 0 | E1 | Aryan |
 | L1 | Edge benchmark of the U-Net (ONNX, INT8) | Plan + Paper: AWQ; Tamanna Plan 1 | O4 | Laptop CPU | 0 | — | Tamanna |
 | **Phase B: next week, training (one change each)** | | | | | | | |
 | R11 | Before + after input (6 channels) | Plan + Paper: xView2 winners, BRIGHT, TEOChat | O1 | Train notebook | ~8 | E1 (order) | Abrar |
-| R12 | +1,007 leak-safe xBD tiles | Plan + Paper: xBD | O1 | Train notebook | ~7 | D5 | Ridita |
+| R12 | +1,619 extra xBD tiles (D5 and D5b; 2 turned out to be twins of validation pairs, 27 Oct) | Plan + Paper: xBD | O1 | Train notebook | ~7 | D5 | Ridita |
 | R13 | BRIGHT pre-disaster footprints (optical only) | Innovation: Ridita + Paper: BRIGHT | O1 | Train notebook | ~7 | R12 result | Ridita |
 | R14 | Rubble-centric crop mining (optional) | Innovation: Ridita | O1 | Train notebook | ~6 | spare quota | Ridita |
 | **Phase C: champion and fallback** | | | | | | | |
@@ -202,6 +211,38 @@ These apply to every task, so an agent doesn't have to rediscover them.
 - **Outputs:** `sam3_s1.csv` (per image: IoU and counts, pre and post) and `README.md` (memory, speed, and the overall IoU for pre and post).
 - **Gate G3:** if SAM 3 on the pre image is at least as good as R9 at finding buildings, R16 uses SAM 3 for the finding; otherwise it uses R9's building mask.
 
+### E5 · Train/validation leak and the benchmark's copies (opened 26 Oct)
+- **Source:** [Innovation] Ridita's corrected audit (`BRIGHT_DisasterM3_Integration/`, §8).
+- **Goal:** O1 and O2. Scores must come from images the models never saw.
+- **Steps:**
+  1. **Step 1, CPU only** (`e5-step1-hash-check.ipynb`):
+     - fingerprint every DisasterM3 Instruct image and every benchmark image (file MD5, pixel MD5, dHash and a thumbnail);
+     - list exactly which validation pairs leak;
+     - find benchmark images that copy Instruct images, and the questions that use them;
+     - draw pictures of near-copies for review.
+  2. **Step 2, GPU, about 1 h** (`e5-step2-per-image-counts.ipynb`): per-image pixel counts for R11, R11s7, R9 and R1, standard and TTA, checked against their D4 CSVs.
+  3. **On your PC, every score a leak touched, whatever the share** (decided 26 Oct; it's a filter over saved files, minutes of CPU). Each gets two numbers: all questions or pairs, and clean.
+     - **Validation leak (segmentation):** R16c (steps 2, 3 and 5), R16, R11, R11s7, R9 and R1, plus R9s7 and E2's vote from E1's counts.
+     - **Benchmark copies (7B and U-Net counting):** L0 step 1, L0 step 2 (old 7B and the new one), H1 V1, V2 and V2b, H2, R16c step 1's counting, and Aryan's numbers if we quote them.
+     - **Not re-scored:** R2–R8 and R10. No checkpoints or per-image counts were kept. They were only compared with each other on the same 645 pairs, and without the 40 leaked pairs every U-Net drops by about the same amount (0.012–0.013 Destroyed IoU). The gaps between U-Net runs move by about 0.001, under the 0.005 noise margin, so their keep/drop decisions stand.
+     - Then O1's and O2's status everywhere.
+  4. **From now on:** any new split is grouped by before-image fingerprint, so twins stay on one side.
+- **Expectation, fixed 26 Oct:**
+  - 21–40 leaked pairs, with the PC check's 21 among them, and about 264 shared before-images in the pool.
+  - Benchmark: no prediction. (The first plan re-scored O2 only above 1% of optical questions copied; dropped 26 Oct, every affected score is re-scored.)
+- **Built 26 Oct and dry-run checked on your PC.** The real manifest and masks reproduce the split, and planted copies are found exactly. The outputs will go to `Champion_Task/E5-results/step1/` and `step2/`.
+- **Results so far:** [E5-results/E5/](Champion_Task/E5-results/E5/README.md) and [Task_Ledger.md, E5](Task_Ledger.md).
+  - **26 Oct:** Ridita's audit README settles the count at 40 (our 21 plus 19 whose socal_fire side isn't in xBD tier 1): [leaked_pairs_40.csv](Champion_Task/E5-results/E5/leaked_pairs_40.csv).
+  - Without them, R16c scores 0.2838–0.2980 on its four combinations. **O1 isn't met on clean data.**
+  - Still to come: R11 and R11s7 alone (step 2), R16c step 5, and the benchmark (step 1).
+  - **Steps 1 and 2 done (26 Oct, account 2), and every affected score re-scored on your PC.** Every check passed: the split, all 8 D4 reproductions, and the same 40 pairs a third time.
+    - **O1, clean:** R16c step 5's SAM 3-only map is the only map that passes: 0.3161 and 0.3051 (mIoU 0.547).
+    - R11 and R11s7 lose 0.027 to the leak, twice what the after-only U-Nets lose, because the leaked pairs share their before-image. With TTA, R11 is 0.2692 against R9's 0.2874.
+    - **Benchmark:** 186 of 10,675 optical questions (1.74%) use a copied after-image. Without them, scores drop by at most 0.7 points; O2's counting goes from 32.96% to 32.47%.
+    - Tables and caveats: [E5-results/E5/](Champion_Task/E5-results/E5/README.md).
+    - **Next:** group future splits by before-image fingerprint. A third step-5 grader seed (proposed) before claiming O1.
+  - **27 Oct:** R12's 1,619 extra xBD tiles, checked by content for the first time: two share a before-image with validation pairs outside the 40, so R12 trained on 42 leaked pairs. Its verdict (not kept) stands. E2's and E3's decisions also hold on clean data.
+
 ### H1 · KR2 evaluation harness: U-Net counting and counts-as-text
 - **Source:**
   - [Plan] the CSE499A future-work "textual bridge" and the review report's "VLM reads per-building counts as text";
@@ -324,6 +365,7 @@ Each run changes **one thing** from its base and follows the keep rule in §3.
   4. TTA needs no change, because the flips and rotations act on every channel.
   5. Add a preset `"R11": dict(use_sampler=True, in_channels=6)` and set `EXPERIMENT = "R11"`.
 - **Check first:** overlay 10 before/after pairs per source (xBD and other) and confirm they line up. If shifts are larger than about 5 px, note them in the README.
+  - Measured in Ridita's audit (pushed 25 Oct): 52% of 2,966 measurable pairs are shifted by more than 2 px, 10% by more than 5 px, the worst by 56 px. Aligning the pairs first is a candidate R11 variant ([Task_Ledger §9](Task_Ledger.md)).
 - **Outputs:** the usual D4 outputs, as `D4_R11.csv` and so on.
 - **Done when:** compared with R5 (0.5354 / 0.2898; TTA 0.5391 / 0.2917) and R9, using the keep rule.
 
@@ -364,6 +406,7 @@ Each run changes **one thing** from its base and follows the keep rule in §3.
 - **Open question for the 6-channel recipe:** a BRIGHT tile has no optical after-image. Either put the before-image in both slots (a no-change pair, where every building is intact) or train R13 on the 3-channel recipe. Decide when R13 is built.
 - **Change:** append the BRIGHT tiles to training only, and keep 5,798 samples per epoch.
 - **Run when:** after R12. It's lower priority, because it adds only intact buildings.
+- **Ridita's audit (pushed 25 Oct):** the five usable events don't leak, but 1,056 of their 1,285 tiles are volcano scenes, against 8 volcano pairs in validation. Expect little change in Destroyed IoU.
 
 ### R14 · Rubble-centric crop mining (optional)
 - **Source:** [Innovation] Ridita's roadmap, Innovation 1.
@@ -444,8 +487,18 @@ R16's two parts are **the finding** (which buildings are there) and **the gradin
     - The grader's macro F1 on the true buildings is 0.778 and 0.784.
     - It wins on Turkey (0.000 → 0.24–0.27) and loses on xBD images (0.456 → 0.35–0.38).
     - Counting on the validation questions stays at R11's level (37–39%).
+    - **26 Oct: at risk (E5).** These scores include leaked validation pairs. Without the 21 found so far, the four combinations of steps 2 and 3 score 0.2915–0.3070.
     - The gate is so far on one U-Net seed (R11). Step 3 re-scores the same graders with R11s7's pieces.
     - Results in `Champion_Task/R16c-results/step2/` (Kaggle's output folder: `R16c-truth`).
+    - **26 Oct, clean (E5's 40 pairs removed):** steps 2 and 3 score 0.2838–0.2980, so they fail the gate.
+  - **Step 5 result (26 Oct, 3.8 h on account 1): it doesn't replace step 2.**
+    - Its SAM 3 + R11 map scores 0.2434 and 0.2158. The grader, trained on SAM 3's outlines, over-calls R11's pieces as destroyed.
+    - **Its SAM 3-only map passes O1's gate on all 645 pairs (0.3347 and 0.3242) and on clean data (0.3161 and 0.3051), at mIoU 0.547.** It isn't kept against R11, because its mIoU is 0.035 lower.
+    - The Destroyed bias hit the search grid's edge (−4.0) in 38 of 40 epoch searches, so a wider grid is a possible next try.
+    - Results in `Champion_Task/R16c-results/step5/`.
+    - **Step 5b, a third grader seed (44): built and dry-run checked 26 Oct, ready to run on account 1 (about 2.5–3.5 h).** It checks that seed 43's narrow clean pass isn't luck.
+      - Its verdict rule, fixed before the run: all three seeds above 0.30 on clean data means met; otherwise met on the mean only; otherwise not met.
+      - [r16c-step5b-third-grader-seed.ipynb](Champion_Task/r16c-step5b-third-grader-seed.ipynb).
 
 ## 7. System track: in parallel, mostly no segmentation training
 
@@ -528,7 +581,15 @@ R16's two parts are **the finding** (which buildings are there) and **the gradin
   1. Serve our fine-tuned Qwen with vLLM on 2×T4 (OpenAI-compatible server).
   2. Point CrewAI's LLM at it instead of `gemini/gemini-3.1-flash-lite`.
   3. Replace the three image tools' `genai.GenerativeModel` calls with local Qwen calls.
-  4. Replace `gemini-embedding-001` with a local sentence-transformers model, and rebuild the Chroma database of guidelines.
+  4. Replace `gemini-embedding-001` with a local sentence-transformers model, and rebuild the Chroma database of guidelines. **Built by Ridita (25 Oct) as hybrid search:** [Offline_RAG_KR2/](Offline_RAG_KR2/README.md) holds 405 cited sections from six sources.
+     - Each question is ranked by meaning (MiniLM embeddings) and by keywords (BM25), and the two rankings are merged by reciprocal rank fusion.
+     - Keywords catch exact terms ("ASR level", "possible damage") that a long section's embedding can blur.
+     - It isn't wired in or tested on report questions yet ([Task_Ledger §9](Task_Ledger.md)).
+  4b. **Retrieval test before wiring it in** (added 26 Oct):
+     - 30 real report questions, each with the sections that should come back, written before any search runs.
+     - Pass: an expected section in the top 3 for at least 24 of 30.
+     - Report the hits for meaning alone, keywords alone and the hybrid, so the hybrid's gain is measured rather than assumed.
+     - If meaning alone does as well, the simpler search is kept.
   5. Feed the agents per-building facts (H2) and hot spots (T1) as text.
   6. Offline by default: no web tools and no "search the internet" wording unless an online switch is turned on, and new offline wording for tasks 3–6. Details and the test rule: [System_Design_Notes.md §2](System_Design_Notes.md) (recommended 24 Oct).
   7. Consistency check (added 26 Oct, after TimeSpot's consistency-violation rates; [Paper_Audit §4.15](Paper_Audit_and_Integration_Plan.md)): every number in each report is compared with the fixed queries on H2's table, and the run passes only with zero contradictions.
@@ -608,6 +669,13 @@ R16's two parts are **the finding** (which buildings are there) and **the gradin
          - Two attempts ran out of GPU memory. Both were fixed without changing the data or the batch: the waiting micro-batches stay on the CPU, and the optimizer is 8-bit paged AdamW.
          - The smoke test measured 10.0 s per example, so about 19.5 h in 2–3 sessions.
          - If memory still runs short, the next options are: leave out the few longest examples, use a smaller image size for two-image examples only, or use LoRA rank 32. Each is your decision (details in the [ledger](Task_Ledger.md)).
+     - **Status, 27 Oct:**
+       - The training is complete: 28 of 28 steps over sessions 1, 2, 3a and 3b, with losses flat at 0.49–0.60. Checkpoint-28 is on Hugging Face.
+       - Session 3b's merge failed because Kaggle's torchao 0.10 trips the upgraded peft's version check (fp16 merge only).
+       - **Built and dry-run checked 26 Oct: [l0-step2-merge.ipynb](Champion_Task/l0-step2-merge.ipynb),** a named copy that removes torchao, restores checkpoint-28 and merges on the CPU. No GPU and no retraining.
+       - **27 Oct:** run 1 stopped in Cell 2 on my own over-strict check (peft saves the 196 modules as 88 name patterns). The adapter is fine. Fixed and dry-run again.
+       - **Merged 27 Oct (run 2, account 3, 10 min):** exactly the 196 adapted projections changed, and none holds an inf or NaN. `AbrarAlam/disasterm3-qwen2.5vl7b-l0s2-mergedFP` (16.6 GB, public) is on Hugging Face, every file's size checked. Results in [L0-step2-results/merge/](Champion_Task/L0-step2-results/merge/L0S2-merge/README.md).
+       - **Next:** the new 7B's six tasks in the re-score notebook's two parts, A (BDC, BBR) on account 4 (Tamanna's, 28.5 GPU h, joined 27 Oct) and B (DRE, DSR, DTR, ORR) on account 2. Then the verdict on your PC, reported both ways (all and E5-clean).
 - **Done when:** the 7B's six-task scores are re-measured at the paper's setting, and L2 uses the better of the two models as its teacher.
 
 ### L2 · 7B → 3B distillation

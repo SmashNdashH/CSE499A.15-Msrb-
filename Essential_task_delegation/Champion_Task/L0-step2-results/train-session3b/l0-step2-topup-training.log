@@ -1,0 +1,235 @@
+7.8s 1 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+7.8s 2 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+7.8s 3 0.00s - to python to disable frozen modules.
+7.8s 4 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+8.5s 5 0.00s - Debugger warning: It seems that frozen modules are being used, which may
+8.5s 6 0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+8.5s 7 0.00s - to python to disable frozen modules.
+8.5s 8 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+12.7s 9 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 835.4/835.4 kB 12.1 MB/s eta 0:00:00
+12.9s 10 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 835.4/835.4 kB 12.1 MB/s eta 0:00:00
+13.2s 11 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 43.1/43.1 MB 44.2 MB/s eta 0:00:00
+13.4s 12 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 43.1/43.1 MB 44.2 MB/s eta 0:00:00
+24.3s 13 ✓ {'torch': '2.11.0+cu128', 'transformers': '5.16.1', 'peft': '0.21.2', 'bitsandbytes': '0.50.2', 'accelerate': '1.14.0'}, python 3.13.15
+24.3s 14 GPUs: ['Tesla T4', 'Tesla T4']
+100.9s 15 ✓ L0 step 2: config written and pushed; starting model cached at /root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-qwen2.5vl7b-mergedFP/snapshots/8553f6e620d2b31702bb3d3847e13a3e8c0e3747
+109.8s 16 ✓ Continuing from checkpoint-25, restored from Hugging Face
+109.9s 17 Writing /kaggle/working/L0S2-train/train.py
+149.7s 18 The following values were not passed to `accelerate launch` and had defaults used instead:
+149.7s 19 `--num_machines` was set to a value of `1`
+149.7s 20 `--mixed_precision` was set to a value of `'no'`
+149.7s 21 `--dynamo_backend` was set to a value of `'no'`
+149.7s 22 To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+1009.3s 23 ✓ Data: 7,018 examples {'Disaster Type Recognition': 1627, 'relational reasoning': 1882, 'disaster restoration advice': 533, 'Disaster Bearing Bodies Recognition': 510, 'Disaster Scene Recognition': 477, 'Building Damage Counting': 958, 'disaster caption': 535, 'Road Damage Counting': 496}; missing images: 0
+1009.9s 24 Downloading bytes:                                          |  0.00B
+1009.9s 25 Reconstructing (incomplete total...): |            |  0.00B /  0.00B            [A
+1009.9s 26 
+1009.9s 27 Fetching 4 files:   0%|                                   | 0/4 [00:00<?, ?it/s][A[AFetching 4 files: 100%|█████████████████████████| 4/4 [00:00<00:00, 1358.70it/s]
+1009.9s 28 Download complete: :                                        |  0.00B
+1009.9s 29 Reconstruction complete: |                         |  0.00B /  0.00B            [ADownloading bytes:                                          |  0.00B
+1009.9s 30 Reconstructing (incomplete total...): |            |  0.00B /  0.00B            [A
+1009.9s 31 
+1009.9s 32 Fetching 4 files:   0%|                                   | 0/4 [00:00<?, ?it/s][A[AFetching 4 files: 100%|██████████████████████████| 4/4 [00:00<00:00, 566.34it/s]
+1009.9s 33 Download complete: :                                        |  0.00B
+1010.0s 34 Reconstruction complete: |                         |  0.00B /  0.00B            [AReconstruction complete: |                         |  0.00B /  0.00B
+1010.0s 35 Download complete: :                                        |  0.00B
+1010.0s 36 Reconstruction complete: |                         |  0.00B /  0.00B
+1010.0s 37 Download complete: :                                        |  0.00B
+1064.0s 38 Loading weights:   0%|                                  | 0/729 [00:00<?, ?it/s]Loading weights:   0%|                                  | 0/729 [00:00<?, ?it/s]Loading weights:   0%|                          | 1/729 [00:04<50:49,  4.19s/it]Loading weights:   0%|                          | 1/729 [00:04<50:55,  4.20s/it]Loading weights:   0%|                          | 2/729 [00:08<50:41,  4.18s/it]Loading weights:   0%|                          | 2/729 [00:08<50:44,  4.19s/it]Loading weights:   1%|▏                         | 4/729 [00:09<21:44,  1.80s/it]Loading weights:   1%|▏                         | 4/729 [00:09<21:43,  1.80s/it]Loading weights:   1%|▏                         | 5/729 [00:09<16:43,  1.39s/it]Loading weights:   1%|▏                         | 5/729 [00:09<16:42,  1.38s/it]Loading weights:   1%|▏                         | 6/729 [00:10<13:34,  1.13s/it]Loading weights:   1%|▏                         | 6/729 [00:10<13:34,  1.13s/it]Loading weights:   1%|▎                        | 10/729 [00:10<05:07,  2.34it/s]Loading weights:   1%|▎                        | 10/729 [00:10<05:07,  2.34it/s]Loading weights:   2%|▍                        | 12/729 [00:10<03:42,  3.22it/s]Loading weights:   2%|▍                        | 12/729 [00:10<03:42,  3.22it/s]Loading weights:   2%|▌                        | 16/729 [00:10<02:43,  4.35it/s]Loading weights:   2%|▌                        | 16/729 [00:10<02:43,  4.35it/s]Loading weights:   2%|▌                        | 18/729 [00:12<03:39,  3.24it/s]Loading weights:   2%|▌                        | 18/729 [00:11<03:39,  3.24it/s]Loading weights:   3%|▊                        | 22/729 [00:12<02:15,  5.23it/s]Loading weights:   3%|▊                        | 22/729 [00:12<02:15,  5.23it/s]Loading weights:   3%|▊                        | 24/729 [00:12<01:52,  6.28it/s]Loading weights:   3%|▊                        | 24/729 [00:12<01:52,  6.28it/s]Loading weights:   4%|▉                        | 28/729 [00:12<01:46,  6.57it/s]Loading weights:   4%|▉                        | 28/729 [00:12<01:46,  6.57it/s]Loading weights:   4%|█                        | 30/729 [00:13<02:35,  4.48it/s]Loading weights:   4%|█                        | 30/729 [00:13<02:35,  4.48it/s]Loading weights:   5%|█▎                       | 40/729 [00:13<01:03, 10.79it/s]Loading weights:   5%|█▎                       | 40/729 [00:13<01:03, 10.79it/s]Loading weights:   6%|█▌                       | 44/729 [00:13<00:53, 12.89it/s]Loading weights:   6%|█▌                       | 44/729 [00:13<00:53, 12.90it/s]Loading weights:   7%|█▊                       | 52/729 [00:14<00:33, 19.98it/s]Loading weights:   7%|█▊                       | 52/729 [00:14<00:33, 19.98it/s]Loading weights:   8%|█▉                       | 57/729 [00:14<00:29, 22.53it/s]Loading weights:   8%|█▉                       | 57/729 [00:14<00:29, 22.53it/s]Loading weights:   9%|██▏                      | 64/729 [00:14<00:22, 29.34it/s]Loading weights:   9%|██▏                      | 64/729 [00:14<00:22, 29.34it/s]Loading weights:  10%|██▍                      | 70/729 [00:14<00:21, 31.02it/s]Loading weights:  10%|██▍                      | 70/729 [00:14<00:21, 31.02it/s]Loading weights:  10%|██▌                      | 76/729 [00:14<00:18, 36.21it/s]Loading weights:  10%|██▌                      | 76/729 [00:14<00:18, 36.21it/s]Loading weights:  11%|██▊                      | 81/729 [00:14<00:17, 36.48it/s]Loading weights:  11%|██▊                      | 81/729 [00:14<00:17, 36.40it/s]Loading weights:  12%|███                      | 89/729 [00:14<00:14, 45.31it/s]Loading weights:  12%|███                      | 89/729 [00:14<00:14, 45.28it/s]Loading weights:  14%|███▎                    | 100/729 [00:14<00:10, 59.67it/s]Loading weights:  14%|███▎                    | 100/729 [00:14<00:10, 59.51it/s]Loading weights:  15%|███▌                    | 110/729 [00:15<00:08, 69.56it/s]Loading weights:  15%|███▌                    | 110/729 [00:15<00:08, 69.27it/s]Loading weights:  16%|███▉                    | 118/729 [00:15<00:09, 66.99it/s]Loading weights:  16%|███▉                    | 118/729 [00:15<00:09, 66.50it/s]Loading weights:  17%|████▏                   | 126/729 [00:16<00:34, 17.55it/s]Loading weights:  17%|████▏                   | 126/729 [00:16<00:34, 17.53it/s]Loading weights:  18%|████▎                   | 132/729 [00:16<00:31, 19.22it/s]Loading weights:  18%|████▎                   | 132/729 [00:16<00:31, 19.24it/s]Loading weights:  19%|████▌                   | 137/729 [00:17<00:52, 11.24it/s]Loading weights:  19%|████▌                   | 137/729 [00:17<00:52, 11.23it/s]Loading weights:  19%|████▋                   | 141/729 [00:18<00:57, 10.14it/s]Loading weights:  19%|████▋                   | 141/729 [00:18<00:57, 10.14it/s]Loading weights:  20%|████▋                   | 144/729 [00:18<00:54, 10.73it/s]Loading weights:  20%|████▋                   | 144/729 [00:18<00:54, 10.73it/s]Loading weights:  20%|████▊                   | 148/729 [00:19<01:01,  9.52it/s]Loading weights:  20%|████▊                   | 148/729 [00:19<01:01,  9.52it/s]Loading weights:  21%|████▉                   | 150/729 [00:20<01:38,  5.90it/s]Loading weights:  21%|████▉                   | 150/729 [00:20<01:38,  5.90it/s]Loading weights:  21%|█████                   | 154/729 [00:20<01:12,  7.91it/s]Loading weights:  21%|█████                   | 154/729 [00:20<01:12,  7.90it/s]Loading weights:  21%|█████▏                  | 156/729 [00:20<01:04,  8.86it/s]Loading weights:  21%|█████▏                  | 156/729 [00:20<01:04,  8.86it/s]Loading weights:  22%|█████▎                  | 160/729 [00:20<01:09,  8.21it/s]Loading weights:  22%|█████▎                  | 160/729 [00:20<01:09,  8.21it/s]Loading weights:  22%|█████▎                  | 162/729 [00:21<01:54,  4.93it/s]Loading weights:  22%|█████▎                  | 162/729 [00:21<01:54,  4.93it/s]Loading weights:  23%|█████▍                  | 166/729 [00:22<01:18,  7.13it/s]Loading weights:  23%|█████▍                  | 166/729 [00:22<01:18,  7.13it/s]Loading weights:  23%|█████▌                  | 168/729 [00:22<01:08,  8.19it/s]Loading weights:  23%|█████▌                  | 168/729 [00:22<01:08,  8.19it/s]Loading weights:  24%|█████▋                  | 172/729 [00:22<01:11,  7.78it/s]Loading weights:  24%|█████▋                  | 172/729 [00:22<01:11,  7.78it/s]Loading weights:  24%|█████▋                  | 174/729 [00:23<01:58,  4.67it/s]Loading weights:  24%|█████▋                  | 174/729 [00:23<01:58,  4.67it/s]Loading weights:  24%|█████▊                  | 178/729 [00:23<01:19,  6.90it/s]Loading weights:  24%|█████▊                  | 178/729 [00:23<01:19,  6.90it/s]Loading weights:  25%|█████▉                  | 180/729 [00:24<01:08,  8.00it/s]Loading weights:  25%|█████▉                  | 180/729 [00:24<01:08,  8.00it/s]Loading weights:  25%|██████                  | 184/729 [00:24<01:10,  7.69it/s]Loading weights:  25%|██████                  | 184/729 [00:24<01:10,  7.69it/s]Loading weights:  26%|██████                  | 186/729 [00:25<01:56,  4.65it/s]Loading weights:  26%|██████                  | 186/729 [00:25<01:56,  4.65it/s]Loading weights:  26%|██████▎                 | 190/729 [00:25<01:17,  6.95it/s]Loading weights:  26%|██████▎                 | 190/729 [00:25<01:17,  6.95it/s]Loading weights:  26%|██████▎                 | 192/729 [00:25<01:06,  8.05it/s]Loading weights:  26%|██████▎                 | 192/729 [00:25<01:06,  8.05it/s]Loading weights:  27%|██████▍                 | 196/729 [00:26<01:09,  7.70it/s]Loading weights:  27%|██████▍                 | 196/729 [00:26<01:09,  7.70it/s]Loading weights:  27%|██████▌                 | 198/729 [00:27<01:54,  4.62it/s]Loading weights:  27%|██████▌                 | 198/729 [00:27<01:54,  4.62it/s]Loading weights:  28%|██████▋                 | 202/729 [00:27<01:16,  6.88it/s]Loading weights:  28%|██████▋                 | 202/729 [00:27<01:16,  6.88it/s]Loading weights:  28%|██████▋                 | 204/729 [00:27<01:05,  7.98it/s]Loading weights:  28%|██████▋                 | 204/729 [00:27<01:05,  7.98it/s]Loading weights:  29%|██████▊                 | 208/729 [00:28<01:07,  7.69it/s]Loading weights:  29%|██████▊                 | 208/729 [00:28<01:07,  7.69it/s]Loading weights:  29%|██████▉                 | 210/729 [00:29<01:52,  4.63it/s]Loading weights:  29%|██████▉                 | 210/729 [00:29<01:52,  4.63it/s]Loading weights:  29%|███████                 | 214/729 [00:29<01:14,  6.90it/s]Loading weights:  29%|███████                 | 214/729 [00:29<01:14,  6.90it/s]Loading weights:  30%|███████                 | 216/729 [00:29<01:04,  8.01it/s]Loading weights:  30%|███████                 | 216/729 [00:29<01:04,  8.01it/s]Loading weights:  30%|███████▏                | 220/729 [00:30<01:06,  7.69it/s]Loading weights:  30%|███████▏                | 220/729 [00:30<01:06,  7.69it/s]Loading weights:  30%|███████▎                | 222/729 [00:31<01:49,  4.63it/s]Loading weights:  30%|███████▎                | 222/729 [00:31<01:49,  4.63it/s]Loading weights:  31%|███████▍                | 226/729 [00:31<01:12,  6.90it/s]Loading weights:  31%|███████▍                | 226/729 [00:31<01:12,  6.90it/s]Loading weights:  31%|███████▌                | 228/729 [00:31<01:02,  8.00it/s]Loading weights:  31%|███████▌                | 228/729 [00:31<01:02,  8.00it/s]Loading weights:  32%|███████▋                | 232/729 [00:31<01:04,  7.69it/s]Loading weights:  32%|███████▋                | 232/729 [00:31<01:04,  7.69it/s]Loading weights:  32%|███████▋                | 234/729 [00:32<01:46,  4.63it/s]Loading weights:  32%|███████▋                | 234/729 [00:32<01:46,  4.63it/s]Loading weights:  33%|███████▊                | 238/729 [00:33<01:11,  6.90it/s]Loading weights:  33%|███████▊                | 238/729 [00:33<01:11,  6.90it/s]Loading weights:  33%|███████▉                | 240/729 [00:33<01:01,  8.00it/s]Loading weights:  33%|███████▉                | 240/729 [00:33<01:01,  8.00it/s]Loading weights:  33%|████████                | 244/729 [00:33<01:03,  7.68it/s]Loading weights:  33%|████████                | 244/729 [00:33<01:03,  7.68it/s]Loading weights:  34%|████████                | 246/729 [00:34<01:44,  4.61it/s]Loading weights:  34%|████████                | 246/729 [00:34<01:44,  4.61it/s]Loading weights:  34%|████████▏               | 250/729 [00:34<01:09,  6.86it/s]Loading weights:  34%|████████▏               | 250/729 [00:34<01:09,  6.86it/s]Loading weights:  35%|████████▎               | 252/729 [00:35<00:59,  7.97it/s]Loading weights:  35%|████████▎               | 252/729 [00:35<00:59,  7.97it/s]Loading weights:  35%|████████▍               | 256/729 [00:35<01:01,  7.65it/s]Loading weights:  35%|████████▍               | 256/729 [00:35<01:01,  7.65it/s]Loading weights:  35%|████████▍               | 258/729 [00:36<01:42,  4.60it/s]Loading weights:  35%|████████▍               | 258/729 [00:36<01:42,  4.60it/s]Loading weights:  36%|████████▋               | 262/729 [00:36<01:08,  6.85it/s]Loading weights:  36%|████████▋               | 262/729 [00:36<01:08,  6.85it/s]Loading weights:  36%|████████▋               | 264/729 [00:36<00:58,  7.95it/s]Loading weights:  36%|████████▋               | 264/729 [00:36<00:58,  7.95it/s]Loading weights:  37%|████████▊               | 268/729 [00:37<01:00,  7.61it/s]Loading weights:  37%|████████▊               | 268/729 [00:37<01:00,  7.61it/s]Loading weights:  37%|████████▉               | 270/729 [00:38<01:39,  4.61it/s]Loading weights:  37%|████████▉               | 270/729 [00:38<01:39,  4.61it/s]Loading weights:  38%|█████████               | 274/729 [00:38<01:06,  6.87it/s]Loading weights:  38%|█████████               | 274/729 [00:38<01:06,  6.87it/s]Loading weights:  38%|█████████               | 276/729 [00:38<00:56,  7.97it/s]Loading weights:  38%|█████████               | 276/729 [00:38<00:56,  7.97it/s]Loading weights:  38%|█████████▏              | 280/729 [00:39<00:58,  7.62it/s]Loading weights:  38%|█████████▏              | 280/729 [00:39<00:58,  7.62it/s]Loading weights:  39%|█████████▎              | 282/729 [00:40<01:36,  4.62it/s]Loading weights:  39%|█████████▎              | 282/729 [00:40<01:36,  4.62it/s]Loading weights:  39%|█████████▍              | 286/729 [00:40<01:04,  6.88it/s]Loading weights:  39%|█████████▍              | 286/729 [00:40<01:04,  6.88it/s]Loading weights:  40%|█████████▌              | 290/729 [00:40<00:45,  9.61it/s]Loading weights:  40%|█████████▌              | 290/729 [00:40<00:45,  9.60it/s]Loading weights:  40%|█████████▋              | 293/729 [00:41<01:15,  5.80it/s]Loading weights:  40%|█████████▋              | 293/729 [00:41<01:15,  5.80it/s]Loading weights:  40%|█████████▋              | 295/729 [00:42<01:23,  5.21it/s]Loading weights:  40%|█████████▋              | 295/729 [00:42<01:23,  5.21it/s]Loading weights:  41%|█████████▊              | 298/729 [00:42<01:02,  6.95it/s]Loading weights:  41%|█████████▊              | 298/729 [00:42<01:02,  6.95it/s]Loading weights:  41%|█████████▉              | 302/729 [00:42<00:43,  9.90it/s]Loading weights:  41%|█████████▉              | 302/729 [00:42<00:43,  9.90it/s]Loading weights:  42%|██████████              | 305/729 [00:43<01:11,  5.92it/s]Loading weights:  42%|██████████              | 305/729 [00:43<01:11,  5.92it/s]Loading weights:  42%|██████████              | 307/729 [00:43<01:18,  5.34it/s]Loading weights:  42%|██████████              | 307/729 [00:43<01:18,  5.34it/s]Loading weights:  43%|██████████▏             | 310/729 [00:44<00:58,  7.17it/s]Loading weights:  43%|██████████▏             | 310/729 [00:44<00:58,  7.17it/s]Loading weights:  43%|██████████▎             | 312/729 [00:44<00:49,  8.39it/s]Loading weights:  43%|██████████▎             | 312/729 [00:44<00:49,  8.39it/s]Loading weights:  43%|██████████▍             | 316/729 [00:44<00:52,  7.90it/s]Loading weights:  43%|██████████▍             | 316/729 [00:44<00:52,  7.90it/s]Loading weights:  44%|██████████▍             | 318/729 [00:45<01:28,  4.63it/s]Loading weights:  44%|██████████▍             | 318/729 [00:45<01:28,  4.63it/s]Loading weights:  44%|██████████▌             | 322/729 [00:45<00:58,  6.97it/s]Loading weights:  44%|██████████▌             | 322/729 [00:45<00:58,  6.97it/s]Loading weights:  44%|██████████▋             | 324/729 [00:45<00:49,  8.10it/s]Loading weights:  44%|██████████▋             | 324/729 [00:45<00:50,  8.10it/s]Loading weights:  45%|██████████▊             | 328/729 [00:46<00:51,  7.76it/s]Loading weights:  45%|██████████▊             | 328/729 [00:46<00:51,  7.76it/s]Loading weights:  45%|██████████▊             | 330/729 [00:47<01:26,  4.64it/s]Loading weights:  45%|██████████▊             | 330/729 [00:47<01:26,  4.64it/s]Loading weights:  46%|██████████▉             | 334/729 [00:47<00:57,  6.93it/s]Loading weights:  46%|██████████▉             | 334/729 [00:47<00:57,  6.93it/s]Loading weights:  46%|███████████             | 336/729 [00:47<00:48,  8.04it/s]Loading weights:  46%|███████████             | 336/729 [00:47<00:48,  8.04it/s]Loading weights:  48%|███████████▍            | 347/729 [00:47<00:20, 18.62it/s]Loading weights:  48%|███████████▍            | 347/729 [00:47<00:20, 18.62it/s]Loading weights:  49%|███████████▊            | 357/729 [00:48<00:13, 28.52it/s]Loading weights:  49%|███████████▊            | 357/729 [00:48<00:13, 28.52it/s]Loading weights:  50%|████████████            | 367/729 [00:48<00:09, 37.90it/s]Loading weights:  50%|████████████            | 367/729 [00:48<00:09, 37.90it/s]Loading weights:  52%|████████████▍           | 377/729 [00:48<00:07, 47.62it/s]Loading weights:  52%|████████████▍           | 377/729 [00:48<00:07, 47.61it/s]Loading weights:  53%|████████████▋           | 384/729 [00:48<00:06, 51.12it/s]Loading weights:  53%|████████████▋           | 384/729 [00:48<00:06, 51.11it/s]Loading weights:  54%|████████████▉           | 393/729 [00:48<00:05, 56.64it/s]Loading weights:  54%|████████████▉           | 393/729 [00:48<00:05, 56.64it/s]Loading weights:  55%|█████████████▎          | 403/729 [00:48<00:05, 63.25it/s]Loading weights:  55%|█████████████▎          | 403/729 [00:48<00:05, 63.24it/s]Loading weights:  56%|█████████████▌          | 411/729 [00:48<00:04, 66.48it/s]Loading weights:  56%|█████████████▌          | 411/729 [00:48<00:04, 66.47it/s]Loading weights:  57%|█████████████▊          | 419/729 [00:48<00:04, 66.33it/s]Loading weights:  57%|█████████████▊          | 419/729 [00:48<00:04, 66.32it/s]Loading weights:  59%|██████████████          | 429/729 [00:49<00:04, 71.03it/s]Loading weights:  59%|██████████████          | 429/729 [00:49<00:04, 71.02it/s]Loading weights:  60%|██████████████▍         | 439/729 [00:49<00:03, 73.91it/s]Loading weights:  60%|██████████████▍         | 439/729 [00:49<00:03, 73.90it/s]Loading weights:  61%|██████████████▋         | 447/729 [00:49<00:03, 74.85it/s]Loading weights:  61%|██████████████▋         | 447/729 [00:49<00:03, 74.83it/s]Loading weights:  62%|██████████████▉         | 455/729 [00:49<00:03, 71.86it/s]Loading weights:  62%|██████████████▉         | 455/729 [00:49<00:03, 71.86it/s]Loading weights:  64%|███████████████▎        | 465/729 [00:49<00:03, 75.58it/s]Loading weights:  64%|███████████████▎        | 465/729 [00:49<00:03, 75.57it/s]Loading weights:  65%|███████████████▋        | 475/729 [00:49<00:03, 77.69it/s]Loading weights:  65%|███████████████▋        | 475/729 [00:49<00:03, 77.69it/s]Loading weights:  67%|███████████████▉        | 485/729 [00:49<00:03, 80.91it/s]Loading weights:  67%|███████████████▉        | 485/729 [00:49<00:03, 80.91it/s]Loading weights:  68%|████████████████▎       | 494/729 [00:49<00:03, 74.82it/s]Loading weights:  68%|████████████████▎       | 494/729 [00:49<00:03, 74.75it/s]Loading weights:  69%|████████████████▌       | 503/729 [00:49<00:03, 74.81it/s]Loading weights:  69%|████████████████▌       | 503/729 [00:49<00:03, 74.79it/s]Loading weights:  70%|████████████████▉       | 513/729 [00:50<00:02, 79.35it/s]Loading weights:  70%|████████████████▉       | 513/729 [00:50<00:02, 79.36it/s]Loading weights:  72%|█████████████████▏      | 523/729 [00:50<00:02, 80.61it/s]Loading weights:  72%|█████████████████▏      | 523/729 [00:50<00:02, 80.54it/s]Loading weights:  73%|█████████████████▌      | 532/729 [00:50<00:02, 82.11it/s]Loading weights:  73%|█████████████████▌      | 532/729 [00:50<00:02, 82.10it/s]Loading weights:  74%|█████████████████▊      | 541/729 [00:50<00:02, 73.39it/s]Loading weights:  74%|█████████████████▊      | 541/729 [00:50<00:02, 73.38it/s]Loading weights:  76%|██████████████████▏     | 551/729 [00:50<00:02, 76.36it/s]Loading weights:  76%|██████████████████▏     | 551/729 [00:50<00:02, 76.34it/s]Loading weights:  77%|██████████████████▍     | 561/729 [00:50<00:02, 78.31it/s]Loading weights:  77%|██████████████████▍     | 561/729 [00:50<00:02, 78.31it/s]Loading weights:  78%|██████████████████▊     | 571/729 [00:50<00:01, 79.41it/s]Loading weights:  78%|██████████████████▊     | 571/729 [00:50<00:01, 79.40it/s]Loading weights:  80%|███████████████████     | 580/729 [00:50<00:01, 81.42it/s]Loading weights:  80%|███████████████████     | 580/729 [00:50<00:01, 81.39it/s]Loading weights:  81%|███████████████████▍    | 589/729 [00:51<00:01, 73.83it/s]Loading weights:  81%|███████████████████▍    | 589/729 [00:51<00:01, 73.83it/s]Loading weights:  82%|███████████████████▋    | 599/729 [00:51<00:01, 76.73it/s]Loading weights:  82%|███████████████████▋    | 599/729 [00:51<00:01, 76.71it/s]Loading weights:  84%|████████████████████    | 609/729 [00:51<00:01, 78.29it/s]Loading weights:  84%|████████████████████    | 609/729 [00:51<00:01, 78.29it/s]Loading weights:  85%|████████████████████▍   | 619/729 [00:51<00:01, 79.69it/s]Loading weights:  85%|████████████████████▍   | 619/729 [00:51<00:01, 79.68it/s]Loading weights:  86%|████████████████████▋   | 628/729 [00:51<00:01, 81.44it/s]Loading weights:  86%|████████████████████▋   | 628/729 [00:51<00:01, 81.45it/s]Loading weights:  87%|████████████████████▉   | 637/729 [00:51<00:01, 73.27it/s]Loading weights:  87%|████████████████████▉   | 637/729 [00:51<00:01, 73.27it/s]Loading weights:  89%|█████████████████████▎  | 647/729 [00:51<00:01, 76.54it/s]Loading weights:  89%|█████████████████████▎  | 647/729 [00:51<00:01, 76.53it/s]Loading weights:  90%|█████████████████████▋  | 657/729 [00:51<00:00, 78.24it/s]Loading weights:  90%|█████████████████████▋  | 657/729 [00:51<00:00, 78.23it/s]Loading weights:  91%|█████████████████████▉  | 667/729 [00:52<00:00, 79.48it/s]Loading weights:  91%|█████████████████████▉  | 667/729 [00:52<00:00, 79.48it/s]Loading weights:  93%|██████████████████████▎ | 676/729 [00:52<00:00, 81.35it/s]Loading weights:  93%|██████████████████████▎ | 676/729 [00:52<00:00, 81.30it/s]Loading weights:  94%|██████████████████████▌ | 685/729 [00:52<00:00, 72.84it/s]Loading weights:  94%|██████████████████████▌ | 685/729 [00:52<00:00, 72.84it/s]Loading weights:  95%|██████████████████████▉ | 695/729 [00:52<00:00, 75.73it/s]Loading weights:  95%|██████████████████████▉ | 695/729 [00:52<00:00, 75.73it/s]Loading weights:  97%|███████████████████████▏| 705/729 [00:52<00:00, 78.42it/s]Loading weights:  97%|███████████████████████▏| 705/729 [00:52<00:00, 78.42it/s]Loading weights:  98%|███████████████████████▌| 715/729 [00:52<00:00, 79.88it/s]Loading weights:  98%|███████████████████████▌| 715/729 [00:52<00:00, 79.89it/s]Loading weights:  99%|███████████████████████▊| 724/729 [00:52<00:00, 81.65it/s]Loading weights:  99%|███████████████████████▊| 724/729 [00:52<00:00, 81.65it/s]Loading weights: 100%|████████████████████████| 729/729 [00:53<00:00, 13.72it/s]
+1064.0s 39 Loading weights: 100%|████████████████████████| 729/729 [00:53<00:00, 13.72it/s]
+1066.2s 40 ✓ Model: 4-bit on 2 GPUs; LoRA on 196 language-model projections, vision tower untouched; 6.5 GB on GPU 0
+1070.3s 41 ✓ Longest example: 3,092 tokens, 2,738 of them image tokens; the loss covers its last 315
+1070.4s 42 ⏳ Training 7,018 examples in about 28 optimizer steps of 256, continuing from /kaggle/working/L0S2-train/checkpoints/checkpoint-25
+1132.4s 43 0%|                                                    | 0/28 [00:00<?, ?it/s][transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+1132.4s 44 [transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+3593.1s 45 93%|███████████████████████████████████████▉   | 26/28 [41:56<03:13, 96.79s/it]                                                                                {'loss': '0.4905', 'grad_norm': '0.02802', 'learning_rate': '6.031e-06', 'epoch': '0.9484'}
+6033.6s 46 93%|███████████████████████████████████████▉   | 26/28 [41:56<03:13, 96.79s/it] 96%|██████████████████████████████████████▌ | 27/28 [1:22:36<03:38, 218.85s/it]                                                                                {'loss': '0.5365', 'grad_norm': '0.03229', 'learning_rate': '2.696e-06', 'epoch': '0.9849'}
+7004.0s 47 96%|██████████████████████████████████████▌ | 27/28 [1:22:36<03:38, 218.85s/it]100%|████████████████████████████████████████| 28/28 [1:38:47<00:00, 270.90s/it]                                                                                {'loss': '0.5335', 'grad_norm': '0.05153', 'learning_rate': '6.762e-07', 'epoch': '1'}
+7005.4s 48 100%|████████████████████████████████████████| 28/28 [1:38:47<00:00, 270.90s/it]Found 10 files to upload
+7005.9s 49 [K  Preparing   ████████████████████  10 / 10 ✓
+7005.9s 50 [K  Uploading   ████████████████████  -
+7005.9s 51 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7006.4s 52 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7006.4s 53 [K  Uploading   █████░░░░░░░░░░░░░░░  2 / 7 files
+7006.4s 54 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7006.8s 55 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7006.8s 56 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  1.06MB · 2.12MB/s
+7006.8s 57 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7007.4s 58 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7007.4s 59 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  43.4MB · 26.9MB/s
+7007.4s 60 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7007.9s 61 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7007.9s 62 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  89.1MB · 46.2MB/s
+7007.9s 63 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7008.4s 64 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7008.4s 65 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  138MB · 61.7MB/s
+7008.4s 66 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7008.9s 67 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7008.9s 68 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  220MB · 92.3MB/s
+7008.9s 69 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7009.3s 70 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7009.3s 71 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  303MB · 114MB/s
+7009.3s 72 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7009.9s 73 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7009.9s 74 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  364MB · 116MB/s
+7009.9s 75 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7010.4s 76 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7010.4s 77 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  406MB · 107MB/s
+7010.4s 78 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7010.9s 79 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7010.9s 80 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  470MB · 113MB/s
+7010.9s 81 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7011.3s 82 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7011.3s 83 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  523MB · 111MB/s
+7011.3s 84 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7011.9s 85 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7011.9s 86 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  568MB · 105MB/s
+7011.9s 87 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7012.4s 88 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7012.4s 89 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  608MB · 97.1MB/s
+7012.4s 90 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7012.9s 91 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7012.9s 92 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  671MB · 106MB/s
+7012.9s 93 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7013.3s 94 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7013.3s 95 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  723MB · 105MB/s
+7013.3s 96 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7013.9s 97 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7013.9s 98 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  755MB · 92.9MB/s
+7013.9s 99 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7014.4s 100 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7014.4s 101 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  805MB · 95.1MB/s
+7014.4s 102 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7014.9s 103 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7014.9s 104 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  857MB · 97.9MB/s
+7014.9s 105 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7015.4s 106 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7015.4s 107 [K  Uploading   ████████░░░░░░░░░░░░  3 / 7 files  942MB · 119MB/s
+7015.4s 108 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7015.8s 109 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7015.8s 110 [K  Uploading   ███████████░░░░░░░░░  4 / 7 files  972MB · 102MB/s
+7015.8s 111 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7016.3s 112 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7016.3s 113 [K  Uploading   ███████████░░░░░░░░░  4 / 7 files  974MB · 72.5MB/s
+7016.3s 114 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7016.9s 115 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7016.9s 116 [K  Uploading   ████████████████████  7 / 7 files  974MB · 50.8MB/s ✓
+7016.9s 117 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7017.4s 118 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7017.4s 119 [K  Uploading   ████████████████████  7 / 7 files  974MB · 35.5MB/s ✓
+7017.4s 120 [K  Committing  ░░░░░░░░░░░░░░░░░░░░  0 / 10
+7017.4s 121 [3A[K  Preparing   ████████████████████  10 / 10 ✓
+7017.4s 122 [K  Uploading   ████████████████████  7 / 7 files  974MB · 35.5MB/s ✓
+7017.4s 123 [K  Committing  ████████████████████  10 / 10 ✓
+7017.4s 124 ✓ Pushed checkpoint-28 to AbrarAlam/disasterm3-qwen25vl7b-qlora/l0s2/checkpoints
+7017.4s 125 {'train_runtime': '5941', 'train_samples_per_second': '1.181', 'train_steps_per_second': '0.005', 'train_loss': '0.05573', 'epoch': '1'}
+7017.4s 126 100%|████████████████████████████████████████| 28/28 [1:39:00<00:00, 270.90s/it]100%|████████████████████████████████████████| 28/28 [1:39:00<00:00, 212.17s/it]
+7017.4s 127 [GPU 0] peak memory 14.4 GB
+7017.4s 128 [GPU 1] peak memory 14.3 GB
+7017.5s 129 ✓ Step 28 of 28 (complete); 3.8 s per example on the last step
+7018.7s 130 [rank0]:[W1026 04:32:53.654954126 ProcessGroupNCCL.cpp:1575] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+7026.7s 131 - Steps: 28 of 28 (complete)
+7026.7s 132 - Examples: 7,018 (full run: 7,018, {'Disaster Type Recognition': 1627, 'relational reasoning': 1882, 'disaster restoration advice': 533, 'Disaster Bearing Bodies Recognition': 510, 'Disaster Scene Recognition': 477, 'Building Damage Counting': 958, 'disaster caption': 535, 'Road Damage Counting': 496}); missing images: 0
+7026.7s 133 - Longest example: 3,092 tokens; peak GPU memory on GPU 0: 14.4 GB
+7026.7s 134 - Losses: [0.563, 0.538, 0.566, 0.577, 0.563, 0.546, 0.549, 0.555, 0.555, 0.522, 0.573, 0.576, 0.545, 0.532, 0.557, 0.52, 0.547, 0.596, 0.572, 0.546, 0.551, 0.537, 0.532, 0.52, 0.537, 0.491, 0.537, 0.533]
+7026.7s 135 - Last step: 3.79 s per example on both GPUs; projected for all 7,018 examples: 7.4 h
+7026.7s 136 - Versions: {'torch': '2.11.0+cu128', 'transformers': '5.16.1', 'peft': '0.21.2', 'bitsandbytes': '0.50.2', 'accelerate': '1.14.0'}
+7026.7s 137 
+7026.7s 138 ✓ Wrote README.md and loss_curve.png to /kaggle/working/L0S2-train
+7047.0s 139 ⏳ Merging checkpoint-28 into AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP (fp16, on the CPU, as the first merge was done)...
+7052.1s 140 Traceback (most recent call last):
+7052.1s 141 File "<string>", line 1, in <module>
+7052.1s 142 import sys;import papermill as pm;pm.execute_notebook("__notebook__.ipynb","__notebook__.ipynb",progress_bar=False,log_output=True,stdout_file=sys.stdout,stderr_file=sys.stderr,allow_errors=False,timeout=43200)
+7052.1s 143 ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7052.1s 144 File "/usr/local/lib/python3.13/dist-packages/papermill/execute.py", line 131, in execute_notebook
+7052.1s 145 raise_for_execution_errors(nb, output_path)
+7052.1s 146 ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+7052.1s 147 File "/usr/local/lib/python3.13/dist-packages/papermill/execute.py", line 251, in raise_for_execution_errors
+7052.1s 148 raise error
+7052.1s 149 papermill.exceptions.PapermillExecutionError:
+7052.1s 150 ---------------------------------------------------------------------------
+7052.1s 151 Exception encountered at "In [6]":
+7052.1s 152 ---------------------------------------------------------------------------
+7052.1s 153 ImportError                               Traceback (most recent call last)
+7052.1s 154 /tmp/ipykernel_22/3183782360.py in <cell line: 0>()
+7052.1s 155 12     print(f"⏳ Merging {saved[-1].name} into {CFG['start_model']} (fp16, on the CPU, as the first merge was done)...")
+7052.1s 156 13     base = Qwen2_5_VLForConditionalGeneration.from_pretrained(CFG["start_model"], dtype=torch.float16, device_map="cpu")
+7052.1s 157 ---> 14     merged = PeftModel.from_pretrained(base, str(saved[-1])).merge_and_unload()
+7052.1s 158 15     MERGED_DIR = Path("/tmp/l0s2_merged")          # 16 GB: /kaggle/working keeps only the outputs
+7052.1s 159 16     merged.save_pretrained(MERGED_DIR)
+7052.1s 160 
+7052.1s 161 /usr/local/lib/python3.13/dist-packages/peft/peft_model.py in from_pretrained(cls, model, model_id, adapter_name, is_trainable, config, autocast_adapter_dtype, ephemeral_gpu_offload, low_cpu_mem_usage, key_mapping, **kwargs)
+7052.1s 162 591             )
+7052.1s 163 592         else:
+7052.1s 164 --> 593             model = MODEL_TYPE_TO_PEFT_MODEL_MAPPING[config.task_type](
+7052.1s 165 594                 model,
+7052.1s 166 595                 config,
+7052.1s 167 
+7052.1s 168 /usr/local/lib/python3.13/dist-packages/peft/peft_model.py in __init__(self, model, peft_config, adapter_name, **kwargs)
+7052.1s 169 2080         self, model: torch.nn.Module, peft_config: PeftConfig, adapter_name: str = "default", **kwargs
+7052.1s 170 2081     ) -> None:
+7052.1s 171 -> 2082         super().__init__(model, peft_config, adapter_name, **kwargs)
+7052.1s 172 2083         self.base_model_prepare_inputs_for_generation = self.base_model.prepare_inputs_for_generation
+7052.1s 173 2084
+7052.1s 174 
+7052.1s 175 /usr/local/lib/python3.13/dist-packages/peft/peft_model.py in __init__(self, model, peft_config, adapter_name, autocast_adapter_dtype, low_cpu_mem_usage)
+7052.1s 176 175             ctx = init_empty_weights if low_cpu_mem_usage else nullcontext
+7052.1s 177 176             with ctx():
+7052.1s 178 --> 177                 self.base_model = cls(model, {adapter_name: peft_config}, adapter_name)
+7052.1s 179 178
+7052.1s 180 179         if hasattr(self.base_model, "_cast_adapter_dtype"):
+7052.1s 181 
+7052.1s 182 /usr/local/lib/python3.13/dist-packages/peft/tuners/tuners_utils.py in __init__(self, model, peft_config, adapter_name, low_cpu_mem_usage, state_dict)
+7052.1s 183 342         self._pre_injection_hook(self.model, self.peft_config[adapter_name], adapter_name)
+7052.1s 184 343         if peft_config != PeftType.XLORA or peft_config[adapter_name] != PeftType.XLORA:
+7052.1s 185 --> 344             self.inject_adapter(self.model, adapter_name, low_cpu_mem_usage=low_cpu_mem_usage, state_dict=state_dict)
+7052.1s 186 345
+7052.1s 187 346         self._post_injection_hook(self.model, self.peft_config[adapter_name], adapter_name)
+7052.1s 188 
+7052.1s 189 /usr/local/lib/python3.13/dist-packages/peft/tuners/tuners_utils.py in inject_adapter(self, model, adapter_name, autocast_adapter_dtype, low_cpu_mem_usage, state_dict)
+7052.1s 190 976                     ctx = init_empty_weights if low_cpu_mem_usage else nullcontext
+7052.1s 191 977                     with ctx():
+7052.1s 192 --> 978                         self._create_and_replace(
+7052.1s 193 979                             peft_config, adapter_name, target, target_name, parent, current_key=key
+7052.1s 194 980                         )
+7052.1s 195 
+7052.1s 196 /usr/local/lib/python3.13/dist-packages/peft/tuners/lora/model.py in _create_and_replace(self, lora_config, adapter_name, target, target_name, parent, current_key, parameter_name)
+7052.1s 197 387                 )
+7052.1s 198 388             device_map = get_device_map(self.model)
+7052.1s 199 --> 389             new_module = self._create_new_module(lora_config, adapter_name, target, device_map=device_map, **kwargs)
+7052.1s 200 390             if adapter_name not in self.active_adapters:
+7052.1s 201 391                 # adding an additional adapter: it is not automatically trainable
+7052.1s 202 
+7052.1s 203 /usr/local/lib/python3.13/dist-packages/peft/tuners/lora/model.py in _create_new_module(lora_config, adapter_name, target, **kwargs)
+7052.1s 204 550         new_module = None
+7052.1s 205 551         for dispatcher in dispatchers:
+7052.1s 206 --> 552             new_module = dispatcher(target, adapter_name, config=lora_config, **kwargs)
+7052.1s 207 553             if new_module is not None:  # first match wins
+7052.1s 208 554                 break
+7052.1s 209 
+7052.1s 210 /usr/local/lib/python3.13/dist-packages/peft/tuners/lora/torchao.py in dispatch_torchao(target, adapter_name, config, **kwargs)
+7052.1s 211 158         return new_module
+7052.1s 212 159
+7052.1s 213 --> 160     if not is_torchao_available():
+7052.1s 214 161         return new_module
+7052.1s 215 162
+7052.1s 216 
+7052.1s 217 /usr/local/lib/python3.13/dist-packages/peft/import_utils.py in is_torchao_available()
+7052.1s 218 160
+7052.1s 219 161     if torchao_version < TORCHAO_MINIMUM_VERSION:
+7052.1s 220 --> 162         raise ImportError(
+7052.1s 221 163             f"Found an incompatible version of torchao. Found version {torchao_version}, "
+7052.1s 222 164             f"but only versions above {TORCHAO_MINIMUM_VERSION} are supported"
+7052.1s 223 
+7052.1s 224 ImportError: Found an incompatible version of torchao. Found version 0.10.0, but only versions above 0.16.0 are supported
+7052.1s 225 
+7055.1s 226 /usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+7055.1s 227 cells[i][c] = re.sub('\\\\\|', '|', cell)
+7055.4s 228 /usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+7055.4s 229 text = re.sub(r'_', '\_', text) # Escape underscores in display text
+7056.3s 230 [NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+7056.5s 231 [NbConvertApp] Writing 227998 bytes to __notebook__.ipynb
+7059.3s 232 [NbConvertApp] Converting notebook __notebook__.ipynb to html
+7060.3s 233 [NbConvertApp] Support files will be in __results___files/
+7060.3s 234 [NbConvertApp] Making directory __results___files
+7060.3s 235 [NbConvertApp] Writing 513227 bytes to __results__.html

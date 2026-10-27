@@ -4,6 +4,11 @@
 
 **Last updated:** 18 October 2026 (final fine-tuning results in §1 and §9; BDAChat repo details in §8). Venues and figures were checked against the papers, project pages or official repositories (links in [Sources](#11-sources)). Items marked *preprint* are not yet peer-reviewed; check them before citing. Our own numbers come from the D4 champion notebooks in `Champion_Task/`.
 
+> **Status, 26 Oct:**
+> - Since this was written, lever 1 (before + after input, R11) and find-then-grade with SAM 3 (§7, R16c) passed the gate on all 645 validation images.
+> - E5 then found leaked validation pairs, Without the 40 leaked pairs, R16c steps 2 and 3 score 0.2838–0.2980, so their claim doesn't hold on clean data. Only R16c step 5's SAM 3-only map passes there (0.3161 and 0.3051), narrowly (26 Oct).
+> - The current status is in [Progress_Tracker.md](Progress_Tracker.md).
+
 **Related docs:** [Segmentation_Model_Explained.md](Segmentation_Model_Explained.md) (how our U-Net and dataset work) · [segmentation_improvement_guide.md](segmentation_improvement_guide.md) (Tiers 1–6) · [team_task_assignments.md](team_task_assignments.md) (Phase Gate, Task D5) · [Ablation_Study_Reference_and_QA_Prep.md](Ablation_Study_Reference_and_QA_Prep.md) (verified sprint numbers and errata).
 
 ## Contents

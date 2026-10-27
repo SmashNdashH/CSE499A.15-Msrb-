@@ -1,6 +1,31 @@
 # CSE499B progress tracker
 
-**Last updated:** 26 Oct 2026, 06:06.
+**Last updated:** 27 Oct 2026.
+- **R12 checked by content (27 Oct): two of its 1,619 extra xBD tiles share a before-image with validation pairs that aren't among E5's 40.** So R12 trained on 42 leaked pairs. A leak can only flatter R12, which still didn't beat R11, so its verdict stands. E2's and E3's decisions also hold on clean data. Found while re-checking Phase A for the supervisor update; details in [E5-results/E5/](Champion_Task/E5-results/E5/README.md).
+- **L0's merge done (run 2, account 3, a 10-min CPU session, 27 Oct): the new 7B is on Hugging Face** as `AbrarAlam/disasterm3-qwen2.5vl7b-l0s2-mergedFP` (public, 16.6 GB).
+  - **Checks, all passed:** exactly the 196 adapted projections changed, of 729 weight tensors (none outside them, none left unchanged); no inf or NaN; all 7 files on the Hub have their local sizes; checkpoint-28's last three losses match session 3b's log.
+  - The run notebook's code matches the build cell by cell. Results in [L0-step2-results/merge/](Champion_Task/L0-step2-results/merge/L0S2-merge/README.md).
+  - Run 1 had stopped in Cell 2 on a check of mine: peft saves the 196 adapted modules as 88 name patterns. Cell 2 now counts the 196 LoRA pairs.
+- **Start now: the new 7B's part A on account 4 and part B on account 2** (steps under "Needs you now"). **Running: R16c step 5b (account 1).** Account 3 is free.
+- **Account 4 (Tamanna's, 28.5 GPU h) added;** it takes part A.
+- **Built on your go ("build 1 and 2") and dry-run checked on your PC:**
+  - [l0-step2-merge.ipynb](Champion_Task/l0-step2-merge.ipynb): L0's merge without torchao, on a CPU session (done, above);
+  - [r16c-step5b-third-grader-seed.ipynb](Champion_Task/r16c-step5b-third-grader-seed.ipynb): a third grader seed for O1's clean-data claim (running).
+- **E5 done (account 2): 40 leaked validation pairs, confirmed three ways, and every affected score re-scored.**
+  - **O1 on clean data:** only R16c step 5's SAM 3-only map passes (0.3161 and 0.3051), narrowly. A third grader seed is proposed before claiming it.
+  - The leak helped the before + after models twice as much: R11 is now 0.018 below R9 on Destroyed IoU.
+  - **O2:** 186 of 10,675 optical benchmark questions use a copied after-image. Without them, counting is 32.47% (was 32.96%), and every score drops by at most 0.7 points.
+  - Tables: [E5-results/E5/](Champion_Task/E5-results/E5/README.md).
+- **R16c step 5 done (account 1, 3.8 h):**
+  - It doesn't replace step 2: its SAM 3 + R11 map scores 0.2434 and 0.2158.
+  - Its SAM 3-only map passes O1's gate on all 645 pairs (0.3347 and 0.3242) and on clean data.
+  - Results: [R16c-results/step5/](Champion_Task/R16c-results/step5/README.md).
+- **L0 session 3b (account 3, 2.0 h): the training is complete (28 of 28 steps; checkpoint-28 on Hugging Face), but the merge failed** on a library version (torchao). The fix is a merge-only copy, needing no GPU and no retraining; it needs your go.
+- **Ridita pushed `audit_outputs/`.** It matches what she sent. Her README quotes temporary-folder paths from her PC (see "Needs you now").
+- **Files moved into the usual pattern:**
+  - `E5-step1-results/` and `E5-step2-results/` became `E5-results/step1/` and `step2/`;
+  - `R16c-step5-results/` became `R16c-results/step5/`;
+  - the L0 log went to `L0-step2-results/train-session3b/`.
 - **H2b done (Noman's account, 23 Oct, 47 min): no model passes, so by the rule fixed before the run, the system ships fixed queries only, with no free-form questions.**
   - **The bar:** at least 90% test-suite accuracy and RS(10) above 0 (points per 100 items). The best accuracy was 73.9% (Coder-3B in fp16), and every RS(10) was negative: every model gives too many wrong answers.
   - **Our 7B in 4-bit:** 69.0% [57.1, 80.5], RS(10) −89.6. It refused 94% of the unanswerable questions, the most of any model. It's level with the separate Coder-3B (72.0%; the difference, −3.0 points [−10.7, 3.8], isn't clear), and it adds no memory (5.8 GB, 3.3 s per question on a T4).
@@ -77,6 +102,7 @@
   - Both sanity checks pass.
   - Not kept against R11s7 with TTA, because mIoU falls by 0.007–0.008 (the rule allows 0.005).
   - So O1 is met on two U-Net seeds (mean of the four combinations 0.585 / 0.309), narrowly on one of them.
+  - **26 Oct update (E5): not on clean data.** Without the 40 leaked validation pairs, the four combinations score 0.2838–0.2980 Destroyed IoU (mean 0.2917).
 - **L0 training, session 1 done (account 3):**
   - 15 of 28 steps, about 42 min each; no out-of-memory error (peak 14.2 GB);
   - checkpoints 4, 8, 12 and 15 are on Hugging Face;
@@ -164,7 +190,7 @@
   - Account 3 (30 h) starts with the old 7B's full-size re-score, then L0 step 2's training.
 - **New:** [Task_Ledger.md](Task_Ledger.md) records every finished task and your decisions so far. For each task it gives what it was, why it was planned, how, how it ran, the expectation before the run, the result and what it led to.
 
-Kept by Claude for Abrar. Claude updates this file whenever a task starts running, finishes, or needs a re-run. The task IDs follow [Next_Steps_Roadmap.md](Next_Steps_Roadmap.md); results come from the folders in [Champion_Task/](Champion_Task/). Why each task ran and what it decided: [Task_Ledger.md](Task_Ledger.md).
+Kept for Abrar, and updated whenever a task starts running, finishes, or needs a re-run. The task IDs follow [Next_Steps_Roadmap.md](Next_Steps_Roadmap.md); results come from the folders in [Champion_Task/](Champion_Task/). Why each task ran and what it decided: [Task_Ledger.md](Task_Ledger.md).
 
 **Status words:** Done · Running · Ready to run (notebook built, not started) · Needs your decision · Needs rerun · Not started.
 
@@ -172,7 +198,7 @@ Kept by Claude for Abrar. Claude updates this file whenever a task starts runnin
 
 | Done | Running | Ready to run | Needs your decision | Needs rerun | Not started |
 |---|---|---|---|---|---|
-| 23 | 0 | 1 | 1 | 1 | 13 |
+| 24 | 2 | 0 | 0 | 0 | 13 |
 
 ## Pace since Phase A, and the timeline to the showcase (measured 24 Oct)
 
@@ -230,24 +256,25 @@ At the measured rate that's about a week of GPU time, and up to 120 hours a week
 
 Every notebook run so far, on Kaggle or on your PC, and every planned run. Updated with each change; details under "Needs you now" and in the task tables.
 
-**Running now**
-
-| What | Notebook | Account | Started | Time |
-|---|---|---|---|---|
-Nothing is running on Kaggle (22 Oct, 08:40).
-
-**Ready to run now**
+**Running now** (27 Oct)
 
 | What | Notebook | Account | Time |
 |---|---|---|---|
+| R16c step 5b: a third grader seed (44) for step 5's SAM 3 map | [r16c-step5b-third-grader-seed.ipynb](Champion_Task/r16c-step5b-third-grader-seed.ipynb) | 1 | about 2.5–3.5 h, plus the smoke test |
+
+Accounts 2, 3 and 4 are free.
+
+**Ready to run now: the merge pushed the new 7B on 27 Oct** (the notebook's own two parts; run steps under "Needs you now")
+
+| What | Notebook | Account | Time |
+|---|---|---|---|
+| L0 step 2: the new 7B, part A (BDC, BBR) | [l0-step2-full-size-rescore.ipynb](Champion_Task/l0-step2-full-size-rescore.ipynb), `MODEL = "new"` | 4 | about 8.6 h (the old 7B's part A took 8.6 h) |
+| L0 step 2: the new 7B, part B (DRE, DSR, DTR, ORR) | the same notebook, `MODEL = "new"` | 2 | about 5.2 h (DRE and DSR took 4.1 h; DTR and ORR add about 1.1 h at full size) |
 
 **Waiting: built, runs when its input or account frees up**
 
 | What | Notebook | Account | Waits for | Time |
 |---|---|---|---|---|
-| R16c step 5 (was 3b): the grader trained on SAM 3's outlines | [r16c-step5-grader-on-sam3-outlines.ipynb](Champion_Task/r16c-step5-grader-on-sam3-outlines.ipynb) | 1, or any account its inputs are shared with | account 1's quota reset (its first try stopped when the hours ran out) | 1.5–2 h |
-| L0 step 2: the full training, session 3b (steps 26–28), then the merge | the training notebook, Cell 2 with `time_limit_h = 5.0` (session 3a's was 0.3) | 3 or any account with the HF token | next week's GPU quota | about 2.1 h of training (3 steps of about 40 min) + about 1 h merge; plan on 3.5–4 h |
-| L0 step 2: the new 7B on all six tasks | the re-score notebook, `MODEL = "new"`, in parts | 3, plus 2 if needed | the training and merge | about 14.5 h (BDC + BBR 8.6 h, DRE + DSR 4.1 h, DTR + ORR about 1.7 h, as the old 7B took) |
 | L0 step 2: the verdict, all parts scored together | a short scoring notebook on your PC, built when the parts arrive | your PC | both models' answers | minutes |
 
 **Later: not built yet**
@@ -295,8 +322,13 @@ Nothing is running on Kaggle (22 Oct, 08:40).
 | L0 step 2: the old 7B's full-size re-score, part A (BDC, BBR) | `l0-step2-full-size-rescore-old-partA.ipynb`; results in [L0-step2-results/old-partA/](Champion_Task/L0-step2-results/old-partA/L0S2/README.md) | account 3, 20 Oct | 8.6 h |
 | L0 step 2: part B (DRE, DSR) | `l0-step2-full-size-rescore-old-partB.ipynb`; results in [L0-step2-results/old-partB/](Champion_Task/L0-step2-results/old-partB/L0S2/README.md) | account 2, 20 Oct | 4.1 h |
 | R16c step 4: SAM 3 on the training images | `r16c-step4-sam3-training-images.ipynb`; results in [R16c-results/step4/](Champion_Task/R16c-results/step4/README.md) | account 1, 20 Oct | 4.6 h |
+| R16c step 5: the grader trained on SAM 3's outlines (the re-run) | `r16c-step5-grader-on-sam3-outlines.ipynb`; results in [R16c-results/step5/](Champion_Task/R16c-results/step5/README.md) | account 1, 26 Oct | 3.8 h |
+| L0 step 2: the full training, session 3b (steps 26–28; the merge then failed) | `l0-step2-topup-training.ipynb`; log in [L0-step2-results/train-session3b/](Champion_Task/L0-step2-results/train-session3b/l0-step2-topup-training.log) | account 3, 26 Oct | 2.0 h |
+| E5 step 1: the hash check, CPU only | `e5-step1-hash-check.ipynb`; results in [E5-results/step1/](Champion_Task/E5-results/step1/README.md) | account 2, 26 Oct | 0.5 h, no GPU |
+| E5 step 2: per-image pixel counts for R11, R11s7, R9 and R1 | `e5-step2-per-image-counts.ipynb`; results in [E5-results/step2/](Champion_Task/E5-results/step2/README.md) | account 2, 26 Oct | 0.9 h |
+| L0 step 2: the merge, run 2 (run 1 stopped in Cell 2 on a check of mine) | `l0-step2-merge.ipynb`; results in [L0-step2-results/merge/](Champion_Task/L0-step2-results/merge/L0S2-merge/README.md) | account 3, CPU session, 27 Oct | 10 min, no GPU |
 
-**Done on your PC (CPU), run by Claude:** these wrote their results into `Champion_Task`, and the notebooks keep their outputs.
+**Done on your PC (CPU):** these wrote their results into `Champion_Task`, and the notebooks keep their outputs.
 
 | What | Notebook | Results |
 |---|---|---|
@@ -306,23 +338,157 @@ Nothing is running on Kaggle (22 Oct, 08:40).
 | R16b: the grader's prior correction | `r16b-grader-prior-correction.ipynb` | `R16b-results/` |
 | R16c step 1: the ceiling and counting | `r16c-step1-ceiling-and-counting.ipynb` | `R16c-results/step1/` |
 
-Claude also ran read-only checks on your PC: the Turkey and counting breakdowns, dry runs of the new notebooks, and the folder audit. They read the results and write nothing into the project (only to Claude's temporary folder).
+Read-only checks also ran on your PC: the Turkey and counting breakdowns, dry runs of the new notebooks, and the folder audit. They read the results and write nothing into the project (only to a temporary folder).
 
 ## Needs you now
 
-- **E5, the validation leak (26 Oct), needs your decision.** Ridita's audit found validation pairs that are near-copies of training pairs (`socal_fire` and `woolsey_fire` share before-images). A local check found 21 such pairs (the audit says 40), and without them R16c drops to 0.2915–0.3070, so O1 isn't shown on clean images. Details: [E5-results/E5/README.md](Champion_Task/E5-results/E5/README.md).
-  1. Ask Ridita for `val_train_leaks.csv` (named in her report, not committed), or approve hashing DisasterM3's before-images on Kaggle.
-  2. Approve a Kaggle re-score of R11 and R11s7 (and R9, R1) on the clean pairs; R16c can be re-scored on your PC.
-- **The repository is public,** and Ridita's commit added `Offline_RAG_KR2/guidelines/Sphere_Handbook_2018_EN.pdf`, which her own README says needs Sphere's permission to put online. Decide whether to remove it (and whether to purge it from the history).
+- **CSE499B 5th class (Wed 28 Oct): two deliverables ready.**
+  - **Regular progress report, update 2:** [others/CSE499B_update_2.pdf](../others/CSE499B_update_2.pdf), with its source [.tex](../others/CSE499B_update_2.tex).
+    - Format: update 1's (2 pages, compiled with MiKTeX).
+    - Content: the period since 14 Oct, with the leak and the clean-data scores stated, one section per member.
+    - **To do:** check each member's section, print it double-sided (no top page, no spiral binding), and push the PDF to GitHub.
+  - **Literature review presentation:** the deck "CSE499B Literature Review" (21 slides) is a private web deck for now.
+    - It follows the faculty's brief: one slide per paper (16 papers), no per-member attribution, the Group 5 footer on every slide.
+    - **To do:** open it, export it as PowerPoint, save it as `others/CSE499B_Literature_Review.pptx`, and push it before the class.
+  - **Next week (6th class):** the proposed solution report (printed and PDF).
+- **Start now on accounts 4 and 2 (27 Oct): the new 7B's six tasks. The merge pushed the model at 00:37 (run 2 passed every check).**
+  - **What and why:** L0 step 2's keep rule (fixed 19 Oct): keep the new 7B only if disaster type (DTR) and relational reasoning (ORR) rise, and no other task drops by more than 1 point, against the old 7B at full size. It will be judged on all questions and on E5's clean ones.
+  - **Expectation, fixed before the run:** DTR and ORR rise by about 1–4 points; the other four stay within about a point.
+  - **How:** the same notebook that scored the old 7B ([l0-step2-full-size-rescore.ipynb](Champion_Task/l0-step2-full-size-rescore.ipynb)), with `MODEL = "new"`, in its own two parts. Both parts ask the 10,675 optical questions at full size with greedy decoding.
+  - **Part A on account 4 (Tamanna's), about 8.6 h:**
+    1. Sign in as Tamanna's account. If Kaggle asks for it, finish phone verification (**Settings → Phone verification**); GPU and internet need it.
+    2. **Create → New Notebook → File → Import Notebook → Browse**, pick `D:\CSE499AB_project\Essential_task_delegation\Champion_Task\l0-step2-full-size-rescore.ipynb`, then **Import**.
+    3. **Session options:** GPU **T4 x2** (the 7B needs both), Internet **On**.
+    4. **Input → + Add Input:** `disasterm3-bench-mirror-v2` (by redwannewaz). If it doesn't show up, it's private: on account 3, open the dataset's **Settings → Sharing** and add Tamanna's account.
+    5. No secret is needed: the merged 7B's repo is public, so don't put the write token on this account.
+    6. In the cell starting `# ── Cell 2: Configuration`, set `MODEL = "new"`, `RUN_TASKS = ["BDC", "BBR"]` and `SMOKE_TEST = True`. **Run → Run All**, about 15 min with the 16 GB download. Check:
+       - Cell 1: `GPUs: ['Tesla T4', 'Tesla T4']`;
+       - Cell 2: `✓ L0 step 2  [SMOKE TEST]: model 'new' (AbrarAlam/disasterm3-qwen2.5vl7b-l0s2-mergedFP)`;
+       - Cell 4: `✓ Model 'new' loaded … full size checked (1036 px)`;
+       - Cell 5: `✓ All questions answered`;
+       - Cell 6: a results table, then `✓ Wrote l0_step2_new_results.csv …`.
+
+       Any red error: stop and send me a screenshot.
+    7. Set `SMOKE_TEST = False`. **Save Version → Save & Run All (Commit) → Save.** Stop the editor session. It stops cleanly at 11 h if it runs long.
+    8. When it's finished:
+       - **Output:** download the `L0S2` folder so that `D:\CSE499AB_project\Essential_task_delegation\Champion_Task\L0-step2-results\new-partA\L0S2\README.md` exists.
+       - Save the run notebook as `Champion_Task\l0-step2-full-size-rescore-new-partA.ipynb`.
+       - Tell me "new part A done".
+  - **Part B on account 2 (abrar2222864642), about 5.2 h:** the same steps, with these differences:
+    - account 2 already has the bench mirror and `HF_TOKEN`;
+    - in Cell 2 set `MODEL = "new"`, `RUN_TASKS = ["DRE", "DSR", "DTR", "ORR"]`, `SMOKE_TEST = True`, and expect `✓ Wrote l0_step2_new_results.csv …` at the end of the smoke test;
+    - then the full run;
+    - results to `...\Champion_Task\L0-step2-results\new-partB\L0S2\README.md`, the run notebook saved as `l0-step2-full-size-rescore-new-partB.ipynb`;
+    - tell me "new part B done".
+  - **Then on your PC:** the verdict from all parts together, against the old 7B's full-size answers, on all questions and on E5's clean ones. I'll build that scoring step when the answers arrive.
+- **Running now (27 Oct): R16c step 5b on account 1.** The merge (item 1) is done; its steps stay as the record of how it ran.
+  1. **L0 step 2: the merge** ([l0-step2-merge.ipynb](Champion_Task/l0-step2-merge.ipynb)).
+     - **Done 27 Oct (run 2, account 3, 10 min): merged, checked and pushed, as expected below.**
+       - Cell 2: checkpoint-28 restored, step 28 of 28, 196 LoRA pairs (88 saved name patterns), last three losses as in session 3b's log.
+       - Cell 3: 196 of 729 weight tensors changed, exactly the adapted projections, with no inf or NaN (merge 4.3 min). The new 7B, 7 files and 16.6 GB, is public on Hugging Face, every file at its local size (upload 2.4 min).
+       - Faster than the 30–45 min expected. The run notebook's code matches the build cell by cell, and it replaced the output-free copy.
+       - Results in [L0-step2-results/merge/](Champion_Task/L0-step2-results/merge/L0S2-merge/README.md). Its README says parts A, B and C; the plan is the two parts above.
+     - **What and why:** session 3b finished the training (28 of 28 steps; checkpoint-28 is on Hugging Face). Its merge stopped on `ImportError: Found an incompatible version of torchao`: Kaggle ships torchao 0.10.0, and the upgraded peft checks it only when merging into an fp16 model.
+     - **The copy:** a named copy of the training notebook's Cells 1, 2 and 6. It removes torchao, pins peft 0.21.2 (the version that trained the adapter), downloads only checkpoint-28's adapter, merges on the CPU and pushes `AbrarAlam/disasterm3-qwen2.5vl7b-l0s2-mergedFP`.
+     - **Checks inside:** exactly the 196 adapted projections change and nothing else; no inf or NaN; every pushed file has its local size. The weight checks run before the push.
+     - **Dry run on your PC:** a tiny Qwen2.5-VL with a random adapter and a stand-in Hugging Face.
+       - The 14 projections changed and nothing else.
+       - The merged weight equals base + 2·B·A to within 3e-5.
+       - Only the adapter files were downloaded.
+       - An adapter with one projection left at zero was caught, and nothing was pushed.
+     - **Expectation, fixed before the run:** 196 tensors change, all of them language-model projections; about 16.6 GB pushed; 30–45 min.
+     - **Run 1 (27 Oct, account 3, 35 s): stopped in Cell 2 on a check of mine, not on a fault in the adapter.**
+       - Cell 1 worked: peft 0.21.2, torchao gone, 34 GB of RAM, 1,126 GB of free disk.
+       - Cell 2 then raised `AssertionError: the adapter targets 88 modules, not 196`.
+         - Given more than 20 module names, peft saves the shortest name patterns that pick the same modules: q/k/v/o_proj plus each layer's three MLP names, 4 + 28 × 3 = 88. The adapter still holds one LoRA pair for each of the 196 modules.
+         - My dry run's 2-layer model had only 14 targets, under peft's threshold, so it never showed this.
+       - Nothing was merged or pushed.
+       - Log: [L0-step2-results/merge/run1-stopped-at-cell2/](Champion_Task/L0-step2-results/merge/run1-stopped-at-cell2/l0-step2-merge.log).
+     - **Fixed (27 Oct):**
+       - Cell 2 now counts the adapter's LoRA pairs (must be 196) instead of the saved name patterns. `merge_check.json` records both numbers.
+       - Dry-run again with a 4-layer model, where peft does shorten the names (28 pairs saved as 16 patterns): it merged exactly the 28 projections, and the broken adapter was still stopped before any push.
+       - Cell 3's own check (exactly the 196 projections change) was already right.
+     - **Run steps (run 2):**
+       1. On Kaggle as redwannewaz (account 3), open the merge notebook that stopped. Use **File → Import Notebook → Browse**, pick the fixed `D:\CSE499AB_project\Essential_task_delegation\Champion_Task\l0-step2-merge.ipynb`, then **Import**. This replaces the notebook's cells; its settings and secrets stay.
+       2. Check the settings: Accelerator **None**, Internet **On**, **Add-ons → Secrets:** `HF_TOKEN` ticked.
+       3. **Save Version → Save & Run All (Commit) → Save.** About 30–45 min.
+       4. A good run's log shows:
+          - Cell 1: `peft: 0.21.2`, `torchao: not installed`, then the RAM and free-disk line.
+          - Cell 2: `✓ checkpoint-28 restored: step 28 of 28; LoRA rank 64, alpha 16, 196 LoRA pairs (88 saved name patterns); last three losses [0.4905, 0.5365, 0.5335]`.
+          - Cell 3: `changed 196 (expected 196); outside the targets 0; targets unchanged 0; with inf or NaN 0`, then `✓ Pushed AbrarAlam/disasterm3-qwen2.5vl7b-l0s2-mergedFP (… files, about 16.6 GB) … every file on the Hub has its local size`.
+       5. When it's finished:
+          - **Output:** download the `L0S2-merge` folder and unzip it so that `D:\CSE499AB_project\Essential_task_delegation\Champion_Task\L0-step2-results\merge\L0S2-merge\README.md` exists.
+          - Download the run notebook too, and save it over `Champion_Task\l0-step2-merge.ipynb`.
+          - Tell me "merge done".
+       6. **Then:** the new 7B's six tasks in the notebook's two parts: A (BDC and BBR, about 8.6 h) on account 4, B (DRE, DSR, DTR and ORR, about 5.2 h) on account 2. Their steps are in the item above.
+  2. **R16c step 5b: a third grader seed (44)** ([r16c-step5b-third-grader-seed.ipynb](Champion_Task/r16c-step5b-third-grader-seed.ipynb)).
+     - **What and why:** O1 on clean data rests on step 5's SAM 3-only map (0.3161 and 0.3051), and seed 43 clears 0.30 by only 0.005. A third seed tests that before O1 is claimed.
+     - **The copy:** step 5's notebook with seed 44 only and its own output folder (`step5b`). Every score is also computed on the 605 clean pairs (E5's 40 listed in Cell 2). The log-probabilities are saved with 6 decimals, and a rebuild check compares the saved rows with the maps' own counts (step 5's seed 43 rebuilt only to within 0.0012).
+     - **Dry run on your PC:**
+       - Cell 10 on step 5's real per-building data, relabelled as seed 44:
+         - R11 reproduces its D4 CSV;
+         - "seed 44" gives seed 42's published 0.552 / 0.3347 and its clean 0.5469 / 0.3161;
+         - the verdict follows the rule in all three cases;
+         - the rebuild matches exactly.
+       - Cells 9 and 10 end to end on synthetic images:
+         - the clean counts equal a run without the leaked images;
+         - the saved rows rebuild the maps exactly.
+     - **Expectation, fixed before the run:** seed 44's SAM 3-only map scores about 0.30–0.32 Destroyed IoU on the clean pairs. **O1's verdict:**
+       - every seed (42, 43, 44) above 0.52 mIoU and 0.30 Destroyed IoU: met on clean data on three seeds;
+       - otherwise, if the three-seed mean passes: met on the mean only, narrowly;
+       - otherwise: not met on clean data.
+     - **Run steps:**
+       1. Sign in as abrarmohammedtanzim (account 1, where E3's and step 4's outputs are). **Create → New Notebook → File → Import Notebook → Browse**, pick `D:\CSE499AB_project\Essential_task_delegation\Champion_Task\r16c-step5b-third-grader-seed.ipynb`, then **Import**.
+       2. **Session options:** GPU **T4 x2** (one is used), Internet **On**.
+       3. **Input → + Add Input:**
+          - `disasterm3-mirror` (by abrarmohammedtanzim);
+          - **Your Work → `e3-sam3-building-finding`**;
+          - **Your Work → `r16c-step4-sam3-training-images`**.
+       4. **Add-ons → Secrets:** `HF_TOKEN` ticked (R11's checkpoint is private).
+       5. **Smoke test:** in the cell starting `# ── Cell 2: Configuration and inputs`, set `SMOKE_TEST = True`, then **Run → Run All**. If Cell 1 says "RESTART THE KERNEL NOW", do **Run → Restart & clear cell outputs**, then **Run All** again. Cell 3 still builds all 6,443 masks, so allow 15–75 min. Check:
+          - Cell 2: `✓ R16c step 5b … [SMOKE TEST] … 2 epochs; seeds (44,)`, then `(645 maps)` and `(5,798 maps)`;
+          - Cell 3: `✓ Built 6,443 valid (image, mask) pairs` and `Before-image not found: 0`;
+          - Cell 4: `✓ Grader training images: 20; held out: 4; validation: 8`;
+          - Cell 7: `✓ Seed 44: kept epoch …`;
+          - Cell 10: `The saved rows rebuild the maps' scores: yes`, then `✓ Wrote /kaggle/working/step5b: …`.
+
+          Any red error: stop and send me a screenshot.
+       6. Set `SMOKE_TEST = False`. **Save Version → Save & Run All (Commit) → Save.** Stop the editor session. About 2.5–3.5 h.
+       7. When it's finished:
+          - **Output:** download the `step5b` folder so that `D:\CSE499AB_project\Essential_task_delegation\Champion_Task\R16c-results\step5b\README.md` exists.
+          - Save the run notebook over `Champion_Task\r16c-step5b-third-grader-seed.ipynb`.
+          - Tell me "step 5b done". I'll check that R11 reproduces and the rebuild check says yes, then read O1's verdict by the rule above.
+- **Ridita pushed `audit_outputs/` (commit `74d44059e`, pulled 26 Oct).**
+  - Checked: its `val_train_leaks.csv` matches ours; its README is the copy she sent; there are no secrets.
+  - Two things for you:
+    - **Tool traces in a committed file:** her README's lines 245 and 253–255 quote temporary-folder paths from her PC that name the tool she used. If your rule on tool traces in committed files covers teammates' files too, ask her to remove those paths.
+    - The same commit removed the Sphere handbook PDF and git-ignored it (next item).
+- **The repository is public,** and Ridita's commit added `Offline_RAG_KR2/guidelines/Sphere_Handbook_2018_EN.pdf`, which her own README says needs Sphere's permission to put online. *(26 Oct: her commit `74d44059e` removed it from the current files and git-ignored it. It is still in the history, commit `0bf593a13`.)* Decide whether to purge it from the history. *(27 Oct: the handbook's text is also still in the public repo. `Offline_RAG_KR2/guideline_chunks.jsonl`, which is tracked, holds 61 chunks of it, about 100 KB, for the offline search. If Sphere's permission matters, those chunks need the same decision as the PDF.)*
+- **Open offers waiting for your answer** (listed here so none gets lost):
+  - reword the old mentions of the coding assistant in the tracker (5 lines) and the ledger (1 line);
+  - a Contributions section for the report;
+  - how many hours a week you can give the website (T3's timeline assumes about 3 weeks part-time);
+  - continue the task-by-task walkthrough for your supervisor update (A2 next);
+  - CraftX: record it in Paper_Audit and delete its saved page;
+  - Noman as an extra GPU account (paused by you, 22 Oct).
 
 - **Final showcase: about 15 Dec** (tentative, given 24 Oct), about 7 weeks away.
 - **Order agreed 24 Oct:** T2, T3, L0 and L2 before any work on Layers 2–4; the 3D damage city goes into T3's website. H2c follows L2. Layer 3: decide in mid-November.
 - **H2b is done (23 Oct):** no model passes, so the system ships fixed queries only (the rule fixed 22 Oct). Say if you want a follow-up: a menu of fixed question templates, or question–SQL pairs in L2's training. Either one needs a new question bank for its test.
 
-GPU now (20 Oct, about 12:10): **account 1** (`abrarmohammedtanzim`): R16c step 5 running, 3 h 30 min when it started; **account 2** (`abrar2222864642`): free, 3 h 20 min; **account 3** (`redwannewaz`): the smoke test running, 21 h when it started.
-- **Account 1:** R16c step 5 now (about 1.5–2 h), then R16c step 3 (about 0.5 h). Step 4 is done.
-- **Account 3:** the training's smoke test now (about 25 min). Then the full training (7–14 h, set by the smoke test), then the new 7B's evaluation (about 14.5 h, shared with account 2 and next week's quota).
-- **Account 2:** the spare. Parts A and B are done.
+GPU now (27 Oct): four accounts.
+- **Account 4 joined on 27 Oct:** Tamanna's Kaggle account, with 28.5 GPU hours.
+  - **Before its first run it needs:**
+    - the `HF_TOKEN` secret (AbrarAlam), for the private model repos;
+    - access to the datasets `abrarmohammedtanzim/disasterm3-mirror` and `redwannewaz/disasterm3-bench-mirror-v2` (attach them by name; if they're private, share them with the account first);
+    - a phone-verified account, which Kaggle requires for GPU and internet.
+  - It can't run step 5b, which reads account 1's own notebook outputs (E3, step 4).
+- This week so far: **account 1** (`abrarmohammedtanzim`) 3.8 h for R16c step 5; **account 2** (`abrar2222864642`) about 1.5 h for E5 (step 1 used no GPU); **account 3** (`redwannewaz`) 2.0 h for L0 session 3b, plus a 35 s CPU session for the merge's first run.
+- **Now (27 Oct):** the merge's run 2 on account 3 (CPU), and R16c step 5b on account 1. Accounts 2 and 4 are free.
+- **Next:**
+  - after the merge, the new 7B's part A on account 4 (about 8.6 h) and part B on account 2 (about 5.2 h);
+  - later, L2's 3B distillation (about 28 h): account 4's remaining hours and the others'.
+- *(The plan below, from 20 Oct, is kept for the record.)*
 - Kaggle offers T4s only in pairs ("GPU T4 x2"). The R16c notebooks use one of the two, and the quota counts session hours either way.
 - Account 3 needs the `HF_TOKEN` secret (AbrarAlam, write access) and the benchmark mirror `redwannewaz/disasterm3-bench-mirror-v2`.
 
@@ -479,8 +645,15 @@ GPU now (20 Oct, about 12:10): **account 1** (`abrarmohammedtanzim`): R16c step 
 
 | Goal | Target | Where we are | Status |
 |---|---|---|---|
-| O1 Segmentation champion | mIoU above 0.52 and Destroyed IoU above 0.30, on two seeds | mIoU 0.581 (R11). Destroyed IoU 0.300 on one seed (R9 with TTA); the two-seed mean is 0.297. R12's 8,021 extra destroyed buildings changed nothing (TTA: 0.588 and 0.295). E4: almost all of the gap is Turkey's earthquake (37% of destroyed pixels, Destroyed IoU 0.000). Without it, R11 reaches 0.410. **R16c (SAM 3 + the U-Net's pieces, the stronger grader) passes the gate on both U-Net seeds and both grader seeds:** with R11, 0.587 / 0.316 and 0.585 / 0.311 (step 2); with R11s7, 0.584 / 0.309 and 0.583 / 0.301 (step 3, 21 Oct); mean of the four 0.585 / 0.309. Caveats: the weakest combination clears 0.30 by only 0.0006, and against R11s7 the keep rule fails, because it costs about 0.007 mIoU. **26 Oct: a train/validation leak** (Ridita's corrected audit; checked in [E5](Champion_Task/E5-results/E5/README.md)): `socal_fire` and `woolsey_fire` share before-images, so some validation pairs are near-copies of training pairs. Removing only the 21 leaked pairs found locally puts R16c at 0.2915–0.3070 (one of four below 0.30); the audit counts 40. | **At risk:** met on all 645 images, not yet shown on clean images (E5) |
-| O2 Counting and six tasks (KR2) | Building counting above the base model's 34.2%; all six tasks re-scored | Like for like with the DisasterM3 paper's Table 2, which scores optical after-images only: our 7B (greedy) averages 36.1% on the six tasks against the base model's 31.2%. It counts buildings at 32.0% against 34.2%, 2.2 points short. With the radar questions included, which the paper's table leaves out, our scores are 35.6% and 30.5%. The paper's own fine-tune of the same 7B reaches 40.4% (counting 34.3%). These are at 512 px. At the paper's full image size (L0 step 1), our 7B scores 75.6% on disaster type and 31.1% on relational (71.1% and 23.3% at 512 px); the other four tasks haven't been re-scored at full size yet. | Half met |
+| O1 Segmentation champion | mIoU above 0.52 and Destroyed IoU above 0.30, on two seeds | mIoU 0.581 (R11). Destroyed IoU 0.300 on one seed (R9 with TTA); the two-seed mean is 0.297. R12's 8,021 extra destroyed buildings changed nothing (TTA: 0.588 and 0.295). E4: almost all of the gap is Turkey's earthquake (37% of destroyed pixels, Destroyed IoU 0.000). Without it, R11 reaches 0.410. **R16c (SAM 3 + the U-Net's pieces, the stronger grader) passes the gate on both U-Net seeds and both grader seeds:** with R11, 0.587 / 0.316 and 0.585 / 0.311 (step 2); with R11s7, 0.584 / 0.309 and 0.583 / 0.301 (step 3, 21 Oct); mean of the four 0.585 / 0.309. Caveats: the weakest combination clears 0.30 by only 0.0006, and against R11s7 the keep rule fails, because it costs about 0.007 mIoU. **26 Oct: a train/validation leak** (Ridita's corrected audit; checked in [E5](Champion_Task/E5-results/E5/README.md)): `socal_fire` and `woolsey_fire` share before-images, so some validation pairs are near-copies of training pairs. Removing only the 21 leaked pairs found locally puts R16c at 0.2915–0.3070 (one of four below 0.30); the audit counts 40. **26 Oct, E5 done (40 pairs, three checks agree):**
+- **Clean (605 pairs):** R16c steps 2 and 3 score 0.2838–0.2980, so they fail. R16c step 5's SAM 3-only map scores **0.3161 and 0.3051** (mIoU 0.547), the only map that passes, on two grader seeds.
+- R11 and R11s7 lose 0.027 Destroyed IoU to the leak (the after-only U-Nets 0.012–0.013). With TTA, R11 is now 0.2692 against R9's 0.2874.
+
+Caveats on the SAM 3 map: it was singled out after seeing the scores; seed 43 clears 0.30 by 0.005; seed 43's file rebuilds its maps only to within 0.0012. | **Met on clean data by one map, narrowly; a third grader seed is proposed before claiming it** (your decision) |
+| O2 Counting and six tasks (KR2) | Building counting above the base model's 34.2%; all six tasks re-scored | Like for like with the DisasterM3 paper's Table 2, which scores optical after-images only: our 7B (greedy) averages 36.1% on the six tasks against the base model's 31.2%. It counts buildings at 32.0% against 34.2%, 2.2 points short. With the radar questions included, which the paper's table leaves out, our scores are 35.6% and 30.5%. The paper's own fine-tune of the same 7B reaches 40.4% (counting 34.3%). These are at 512 px. At the paper's full image size (L0 step 1), our 7B scores 75.6% on disaster type and 31.1% on relational (71.1% and 23.3% at 512 px); the other four tasks haven't been re-scored at full size yet. *(Later: all six were re-scored at full size on 20 Oct, mean 38.37%.)* Our best counting is R11's counts (H2), at 32.96% on the optical questions. **26 Oct, E5:**
+- 186 of the 10,675 optical questions use an after-image copied from Instruct.
+- Without them, R11's counting is 32.47%, so the gap to 34.2% grows from 1.24 to 1.73 points. The bar is the paper's base model, which never saw Instruct, so it's unaffected.
+- The old 7B's six tasks at full size: mean 38.37% → 38.14%. Every score drops by at most 0.7 points. | Half met (counting about 1.7 points short on clean questions) |
 | O3 Offline report system | DisasTeller on our model, with damage map, counts and survivability heatmap | Damage map, counts and heatmap are done. DisasTeller on local models is not started (T2). | 3 of 4 parts |
 | O4 Edge model and distilled 3B | An edge-ready segmenter and a distilled 3B model | Edge segmenter done: the INT8 version (L1b) is 4× smaller (33 MB) and 1.43× faster than ONNX FP32, with Destroyed IoU down only 0.0003. The 3B distillation's step 1 is done (1,085 checked teacher answers); step 2 is next. | Half met |
 
@@ -497,6 +670,7 @@ TTA means averaging the predictions of 8 flipped or rotated copies of each image
 | D5 | xBD converter and the 1,007 extra tiles | Done | Your PC | 447 of the tiles are benchmark images, and they hold 3,466 of the 3,472 destroyed buildings. The other 560 tiles hold only 6. | Feeds R12. |
 | D5b | xBD tier3 check and masks | Done | Your PC: the check took 2 s, the masks 2.3 min | Of tier3's 6,369 tiles, 2,635 are already in our segmentation data (5,786 destroyed buildings) and 612 are benchmark images (4,549 destroyed, in 227 tiles). The other 3,122 hold no destroyed building at all (2,455 outlines: 1,208 intact, 2 major damage, the rest un-classified). So no clean source of destroyed buildings exists: as in tier1, DisasterM3 put every damaged tile into its training data or its benchmark. Masks for the 612 exam tiles are made with [d5b-xbd-tier3-converter.ipynb](Champion_Task/d5b-xbd-tier3-converter.ipynb), outputs in `D5b-results/`. Its lookup table matches D5's, with 97.2% pixel agreement against DisasterM3's masks. | Upload with `D5-results/` for R12. |
 | E3 | SAM 3 building finding | Done | Kaggle GPU | SAM 3 on the before-image finds buildings better than R9 (building IoU 0.630 against 0.591). Combined with R9, it covers 86% of destroyed buildings' footprints. | R16's finding. |
+| E5 | Train/validation leak and the benchmark's copies | Done (26 Oct: steps 1 and 2 on account 2, then every affected score re-scored on your PC) | Step 1 Kaggle CPU, 0.54 h; step 2 Kaggle T4, 0.91 h, account 2 | 40 leaked pairs, confirmed by three checks. Clean, R16c step 5's SAM 3-only map is the only map passing O1's gate (0.3161 and 0.3051); steps 2 and 3 fail (0.2838–0.2980). R11 and R11s7 lose 0.027 Destroyed IoU, twice the after-only U-Nets' loss, so R11 falls 0.018 below R9 on clean data. Benchmark: 186 of 10,675 optical questions use a copied after-image; scores drop by at most 0.7 points; O2 counting 32.96% → 32.47%. Tables in [E5-results/E5/](Champion_Task/E5-results/E5/README.md). | Group every future split by before-image fingerprint. Report both numbers (all and clean) from now on. |
 | E4 | R12 against R11, by image source and by event | Done | Kaggle account 2, T4, 18 min | Go given 19 Oct; evaluation only. Built 19 Oct: [e4-r12-vs-r11-by-source.ipynb](Champion_Task/e4-r12-vs-r11-by-source.ipynb). Its results cell was checked on synthetic data on your PC.
 
 - **What it tests:** why R12's extra data didn't help.
@@ -570,7 +744,7 @@ Results in [R16-results/](Champion_Task/R16-results/R16/README.md). | Grader cor
 - On the 85 non-xBD images, SAM 3 + R11's pieces reach Destroyed IoU 0.187, against R11's 0.071.
 
 Results in [R16b-results/](Champion_Task/R16b-results/README.md). | Counting with the corrected grades (H1 V3) needs SAM 3 and the grader run on the benchmark images. |
-| R16c | A stronger R16 grader, tested rigorously | Needs rerun (step 5 stopped on 21 Oct when account 1's hours ran out; it runs again after the reset. Steps 1–4 done, step 2 kept) | Step 1 your PC (2.6 min); step 2 Kaggle account 1, T4, 1.4 h; steps 4 and 5 account 1, about 5–6 h; step 3 account 1, about 0.5 h | Go given 19 Oct. Steps renumbered 1–5 on 20 Oct (your decision): step 3 was 2b, step 4 was 3a, step 5 was 3b.
+| R16c | A stronger R16 grader, tested rigorously | Running (step 5b, a third grader seed for step 5's SAM 3 map, on account 1 since 27 Oct; all five steps done, step 5 finished 26 Oct) | Step 1 your PC (2.6 min); step 2 Kaggle account 1, T4, 1.4 h; steps 4 and 5 account 1, about 5–6 h; step 3 account 1, about 0.5 h | Go given 19 Oct. Steps renumbered 1–5 on 20 Oct (your decision): step 3 was 2b, step 4 was 3a, step 5 was 3b.
 
 **Step 1 done** (19 Oct): [r16c-step1-ceiling-and-counting.ipynb](Champion_Task/r16c-step1-ceiling-and-counting.ipynb), results in [R16c-results/step1/](Champion_Task/R16c-results/step1/README.md).
 - The ceiling: give each found building its main true grade. SAM 3 + R11's pieces would then reach mIoU 0.766 and Destroyed IoU 0.614 (0.798 and 0.661 if the grader may also reject non-buildings). Our corrected grader gets 0.541 and 0.208 on the same outlines, so the grader loses most of the score.
@@ -604,7 +778,19 @@ Results in [R16b-results/](Champion_Task/R16b-results/README.md). | Counting wit
   - xBD images: 0.456 → 0.383 and 0.346;
   - everything except Turkey: 0.410 → 0.353 and 0.327.
 - Counting on the 1,055 validation questions: 36.8–39.1%, against 39.2% for R11's blobs and about 50% with a perfect grader. So counting from it on the benchmark (H1 V3) isn't worth GPU time yet.
-- The two seeds are the grader's. R11 (seed 42) is the same in both. | Decided 20 Oct: steps 4 and 5 run now on account 1, as a stretch (step 5 replaces step 2 only if it beats it by the keep margin on both seeds). Step 3, the same graders with R11s7's pieces, follows R11s7. See "Needs you now". |
+- The two seeds are the grader's. R11 (seed 42) is the same in both.
+
+**Step 5 done (26 Oct, account 1, T4, 3.8 h against the planned 1.5–2 h; the graders took 1 h and validation 36 min).**
+- **It doesn't replace step 2.** Its SAM 3 + R11 map scores 0.2434 and 0.2158, against step 2's 0.3159 and 0.3106. This grader learned on SAM 3's outlines and over-calls R11's pieces as destroyed.
+- **Its SAM 3-only map passes O1's gate on both grader seeds:**
+  - all 645 pairs: 0.552 / 0.3347 and 0.552 / 0.3242;
+  - E5's clean 605 pairs: 0.547 / 0.3161 and 0.547 / 0.3051.
+  - It's the only map that passes on clean data.
+  - It isn't kept against R11, because its mIoU is 0.035 lower.
+- On the true buildings, macro F1 is 0.737 and 0.730 (step 2: 0.778 and 0.784).
+- The Destroyed bias hit the search grid's edge (−4.0) in 38 of 40 epoch searches.
+- Seed 43's per-building file rebuilds its maps only to within 0.0012 (seed 42's exactly); its clean score uses the lower value.
+- Results in [R16c-results/step5/](Champion_Task/R16c-results/step5/README.md); the ledger has the details. | Decided 20 Oct: steps 4 and 5 run now on account 1, as a stretch (step 5 replaces step 2 only if it beats it by the keep margin on both seeds). Step 3, the same graders with R11s7's pieces, follows R11s7. **26 Oct:** all five steps done. Step 5b, a third grader seed (44) for step 5's SAM 3 map, was built and dry-run checked after your go; it checks that seed 43's narrow clean pass isn't luck (about 2.5–3.5 h on account 1). Run steps under "Needs you now". |
 
 ### System track
 
@@ -617,7 +803,7 @@ Results in [R16b-results/](Champion_Task/R16b-results/README.md). | Counting wit
 | H4 | GEOBench-VLM external counting test | Not started | Kaggle GPU | — | — |
 | T2 | DisasTeller on local models | Not started | Kaggle T4 ×2 | — | The biggest missing O3 piece. |
 | T3 | Offline demo and public showcase (Vercel website) | Not started | — | — | Re-planned 24 Oct: a public showcase site and an interactive demo website on Vercel, with a live offline mode at the booth. You build it and choose the name and look later. In-browser feasibility test passed 24 Oct, in two runs: INT8 on WebAssembly took 2.1–5.5 s per image in Chrome and Edge, with output identical to the native run (System_Design_Notes §4.3; kit in `Champion_Task/T3-browser-test/`). The rest after T2. |
-| L0 | A better 7B teacher before distilling | Ready to run (step 2: the old 7B's full-size re-score and the training's smoke test were done on 20 Oct. The full training: session 1 did steps 1–15 (21 Oct), session 2 did steps 16–24 (22 Oct) after its first try crashed, and session 3a did step 25 (22 Oct). Next is session 3b next week: steps 26–28 and the merge) | Step 1: Kaggle account 1, T4 ×2, 1.7 h. Step 2: the old 7B's re-score of four tasks (about 11 h, account 3 then account 2), training (about 7–14 h on T4 ×2, account 3), then the new 7B on six tasks (about 12 h) | Decided 19 Oct: improve the 7B before distilling.
+| L0 | A better 7B teacher before distilling | Running (the new 7B's parts A and B start on accounts 4 and 2, 27 Oct. Step 2's training is complete: session 3b did steps 26–28 on 26 Oct, and checkpoint-28 is on Hugging Face. Its merge stopped on a library version clash (torchao), so a merge-only copy, `l0-step2-merge.ipynb`, merged it on 27 Oct (run 2, 10 min): exactly the 196 adapted projections changed, and `AbrarAlam/disasterm3-qwen2.5vl7b-l0s2-mergedFP` is on Hugging Face. Earlier: the old 7B's full-size re-score and the smoke test on 20 Oct; sessions 1, 2 and 3a did steps 1–25 on 21–22 Oct) | Step 1: Kaggle account 1, T4 ×2, 1.7 h. Step 2: the old 7B's re-score of four tasks (about 11 h, account 3 then account 2), training (about 7–14 h on T4 ×2, account 3), then the new 7B on six tasks (about 12 h) | Decided 19 Oct: improve the 7B before distilling.
 
 **Step 1 done (19 Oct):** [l0-step1-image-size-check.ipynb](Champion_Task/l0-step1-image-size-check.ipynb), results in [L0-step1-results/](Champion_Task/L0-step1-results/L0S1/README.md). The 1,211 optical questions, at three sizes for a 1024 px image (disaster type, 353 questions / relational, 858):
 - 504 px, H1 V2's size, as the control: 71.1% / 23.3%;
@@ -637,7 +823,7 @@ Background:
   - images capped at about 512 tokens in training;
   - tested at 512 px (about 324 tokens), where the paper used full size (about 1,300).
 - The answer format isn't the cause: our 7B answers with letters only on 99.9–100% of questions.
-- Gaps to the paper's fine-tune at 512 px were −12.5 (disaster type) and −12.9 (relational); at full size they are −8.0 and −5.1. | Decided 19 Oct: step 2, a short extra training of our adapter at full size (1036 px) on disaster type and relational plus an equal replay sample (about 7,000 samples). Both models are then scored on every optical question. Its notebooks are being built. |
+- Gaps to the paper's fine-tune at 512 px were −12.5 (disaster type) and −12.9 (relational); at full size they are −8.0 and −5.1. | Decided 19 Oct: step 2, a short extra training of our adapter at full size (1036 px) on disaster type and relational plus an equal replay sample (about 7,000 samples). Both models are then scored on every optical question. Next: the new 7B's parts A and B, then the verdict on your PC (all questions and E5-clean). |
 | L2 step 1 | Teacher answers for the 7B → 3B distillation | Done | Kaggle account 1, T4 ×2 | 4,000 answers generated; 1,085 (27%) match their label and are kept: disaster type 89.4%, land use 50.9%, bearing bodies 42.7%, building counting 15.6%, relational 13.3%, road counting 0%. Road counting labels are road-area percentages such as 5.22%, which the teacher can't hit exactly without the options; those 735 fall back to their labels. Cell 7's push failed: the dataset title already existed, and the code missed Kaggle's wording ("already in use") but still printed "Pushed". So the dataset `disasterm3-teacher-cot` doesn't hold this run's file. | If L0 changes the 7B, re-run it with the new teacher. Step 2 reads the manifest from the run's notebook output, not from that dataset. |
 | L2b | Explanations as a second skill ("why?" on request) | Not started | Kaggle T4 ×2, about 3–5 h | Planned 19 Oct (roadmap L2b, Paper_Audit §4.12): explanations written from the correct answer plus true mask facts, checked against those facts, then trained as a second task in step 2. | Build after step 1. |
 | L2 step 2 | Train the 3B | Not started | Kaggle GPU | Its notebook still has the old installs that fail on today's Kaggle. | Fix it, as a copy, after L0. How the 3B learns is still to choose (a, b or c; soft labels recommended). |
@@ -648,10 +834,90 @@ Background:
 
 | ID | Task | Status | Where | Result | Next step |
 |---|---|---|---|---|---|
-| — | Commit this week's work to git | Done | Your PC, pushed 19 Oct as `1b33574`, then 22 Oct as `a736299` and `56df1c5` | `Essential_task_delegation\` and `others\`, plus `.gitignore`, `README.md` and `UPDATE.md` whenever they're modified (your rule, 19 Oct). The `.gitignore` was updated 19 Oct, so these stay local: bulk masks and maps that no notebook reads, L2 step 1's 71 MB training file, personal samples, the next report's draft and Claude's local settings. | Next commit: same scope, when you ask. |
+| — | Commit this week's work to git | Done | Your PC, pushed 19 Oct as `1b33574`, 22 Oct as `a736299` and `56df1c5`, and 26 Oct as `5ff744c` | `Essential_task_delegation\` and `others\`, plus `.gitignore`, `README.md` and `UPDATE.md` whenever they're modified (your rule, 19 Oct). The `.gitignore` was updated 19 Oct, so these stay local: bulk masks and maps that no notebook reads, L2 step 1's 71 MB training file, personal samples, the next report's draft and the editor's local settings. | Next commit: same scope, when you ask. |
 | — | Update the roadmap and README with these results | Not started | — | — | Say when. |
 
 ## Change log
+
+- **27 Oct 2026: Phase A re-checked for the supervisor update.**
+  - E1's numbers all reproduce from its per-image counts. On the 605 clean pairs, 57.7% of R9's misses are called background (58.4% with TTA), so Gate G2 holds.
+  - R12's extra tiles, checked by content against all 645 validation pairs: 2 twins outside E5's 40, so R12 trained on 42 leaked pairs. Its verdict stands. Recorded in the E5 README, the ledger (R12) and the roadmap (E5, R12).
+  - E3 on clean data: SAM 3 0.6302 against R9's 0.5905, so Gate G3 holds. E2's verdict can't change (its drop is five times the leak's effect).
+- **27 Oct 2026 (night, later): L0's merge done (run 2, account 3, 10 min).**
+  - Every check passed: exactly the 196 adapted projections changed, of 729 weight tensors; no inf or NaN; the new 7B (7 files, 16.6 GB) is public on Hugging Face with every file's size matching.
+  - Results moved from `l0-step2-merge-results/` to `L0-step2-results/merge/`. The downloaded run notebook replaced `l0-step2-merge.ipynb`; its code matches the build.
+  - The new 7B's parts A (account 4) and B (account 2) can start now. Account 3 is free.
+- **27 Oct 2026 (night): 5th-class deliverables.**
+  - `others/CSE499B_update_2.tex` and `.pdf`: progress report update 2, 2 pages, in update 1's format.
+  - The literature review deck: 21 slides, one per paper for 16 papers, as a web deck to export as PPTX.
+  - Both are listed under "Needs you now" with the remaining steps (print, export, push).
+- **27 Oct 2026 (later):** the merge's run 2 is running on account 3 and R16c step 5b on account 1. Accounts 2 and 4 are free.
+  - The new 7B's evaluation now uses the re-score notebook's own two parts, so account 3 isn't needed: A (BDC, BBR) on account 4, B (DRE, DSR, DTR, ORR) on account 2.
+  - Both start once the merge has pushed the model. Their run steps are under "Needs you now".
+  - The run board is updated.
+- **27 Oct 2026:** the merge's run 1 (account 3) stopped in Cell 2 on a check of mine.
+  - Peft saves the 196 adapted modules as 88 name patterns, so the check misread a correct adapter. Nothing was merged or pushed.
+  - Cell 2 now counts the adapter's 196 LoRA pairs. It was dry-run again on a model where peft shortens the names, and run 2's steps are under "Needs you now".
+  - Run 1's log moved to `L0-step2-results/merge/run1-stopped-at-cell2/`. The fixed, output-free notebook replaced the downloaded run version.
+  - **Account 4 (Tamanna's, 28.5 GPU h) added.** The new 7B's evaluation parts move to accounts 4, 2 and 3.
+  - Sphere item: its text is still in the tracked `guideline_chunks.jsonl` (61 chunks).
+  - Updated: the ledger, the roadmap and System_Design_Notes.
+- **26 Oct 2026, 17:30:** your go ("build 1 and 2"). Two named copies were built, dry-run checked on your PC, and marked ready to run.
+  - `l0-step2-merge.ipynb`: the training notebook's Cells 1, 2 and 6, with torchao removed and peft pinned to 0.21.2.
+    - It downloads checkpoint-28's adapter only, and checks the weights before pushing.
+    - Its dry run: a tiny model, a random adapter and a stand-in Hugging Face. It merged correctly; a bad adapter was stopped before the push.
+  - `r16c-step5b-third-grader-seed.ipynb`: step 5 with seed 44.
+    - Additions: clean scores, 6-decimal log-probabilities, a rebuild check and O1's verdict rule.
+    - Its dry run: Cell 10 on step 5's real data reproduced R11 and seed 42's clean 0.3161; Cells 9 and 10 ran end to end on synthetic images.
+  - **Correction:** step 5b takes about 2.5–3.5 h, not 1 h. Step 5's masks and crops alone took about 2 h.
+  - Updated: the run board, Needs you now (with run steps), the R16c and L0 rows, the ledger, the roadmap and the E5 README.
+- **26 Oct 2026, 15:45:** checked the downloads of E5 steps 1 and 2, R16c step 5 and L0 session 3b, plus Ridita's pushed `audit_outputs/`.
+  - **Moved into the pattern:** `E5-step1-results/E5-step1/` → `E5-results/step1/`; `E5-step2-results/` → `E5-results/step2/`; `R16c-step5-results/` → `R16c-results/step5/` (each with its `__huggingface_repos__.json`); the L0 log → `L0-step2-results/train-session3b/`. The run notebooks replaced their output-free versions, as before.
+  - **E5 done.** Every affected score was re-scored, with two numbers each.
+    - O1 on clean data rests on R16c step 5's SAM 3 map (0.3161 and 0.3051).
+    - R11 lost twice as much to the leak as the after-only U-Nets.
+    - O2's counting is 32.47% on clean questions.
+  - **R16c step 5:** doesn't replace step 2. Seed 43's file rebuilds its maps only to within 0.0012; the cause is unknown, and the lower value is used.
+  - **L0:** training complete; the merge failed on torchao. A merge-only copy is proposed.
+  - **Decisions added to "Needs you now":** O1's claim (step 5b recommended), the merge copy, and the AI-trace lines in Ridita's README. The Sphere item now notes that her commit removed the PDF.
+  - Also updated: the run board, goals, task rows for E5, R16c and L0, the ledger, the roadmap, the E5 README, System_Design_Notes, Paper_Audit, Phase2_Plan and Research_Directions.
+  - Graders (`*.pth`) stay local and git-ignored. No checkpoints were downloaded, so nothing to delete.
+- **26 Oct 2026, 10:45:** Ridita's `val_train_leaks.csv` arrived. It matches `leaked_pairs_40.csv` exactly (40 pairs, the same twins and destroyed pixels), so the clean scores of 10:30 stand. Noted in the E5 README, the ledger and Ridita's prompt file.
+- **26 Oct 2026, 10:30:** Ridita's audit README settles E5's count at 40: our 21 plus 19 whose socal_fire side isn't in xBD tier 1.
+  - The list is saved as `E5-results/E5/leaked_pairs_40.csv`. It matches her 155,812 destroyed pixels and E1's per-image ground truth.
+  - Clean scores without the 40: R16c 0.2838–0.2980 (O1 not met on clean data), R9 with TTA 0.2874; G2 still holds.
+  - Still to come: step 2 (R11 and R11s7) and step 1 (the benchmark).
+  - Updated: the E5 README, ledger, roadmap, System_Design_Notes, Paper_Audit, Phase2_Plan and Research_Directions.
+- **26 Oct 2026, 10:00:** E5's re-score widened: every score a leak touched gets a clean version, with no 1% threshold (validation leak: R16c steps 2/3/5, R16, R11, R11s7, R9, R1, R9s7, E2; benchmark copies: L0 steps 1 and 2, H1 V1/V2/V2b, H2, R16c step 1's counting). R2–R8 and R10 aren't re-scored, reason in the ledger's E5. Roadmap E5 step 3 and the ledger updated.
+- **26 Oct 2026, 09:30:** E5 extended with no GPU run, using E1's saved per-image counts:
+  - **Clean scores:** R9, R1 and R9s7 have clean scores now. R9 with TTA goes from 0.3001 to 0.2937 without the 21 leaked pairs.
+  - **E1's decision still holds:** 58.7% of missed destroyed pixels are called background without the 21 pairs, against the 40% rule, so R11 would still have gone first.
+  - Recorded in [E5-results/E5/README.md](Champion_Task/E5-results/E5/README.md) and the ledger's E5 section.
+
+- **26 Oct 2026, 09:25:** E5 step 1 ([e5-step1-hash-check.ipynb](Champion_Task/e5-step1-hash-check.ipynb)) and step 2 ([e5-step2-per-image-counts.ipynb](Champion_Task/e5-step2-per-image-counts.ipynb)) built, and both dry-run checked on your PC.
+  - **The data:** your real `train_release.json` and DisasterM3 masks, with stand-in images.
+  - **The split check passes:** 6,443 pairs; 645 validation pairs, 560 of them from xBD; 1,808,111 destroyed pixels. All of the PC check's 21 pairs are in validation.
+  - **Planted copies:** every one was found as designed and nothing else matched. They were the known twin, an identical after-image, a recompressed before-image (listed as a near-copy, not counted), and benchmark copies flagged on the right questions.
+  - **Step 2** ran with a stand-in model, since `segmentation_models_pytorch` isn't installed on your PC, and wrote all its files.
+  - **Ready to run** on account 2; the run steps are under "Needs you now".
+
+- **26 Oct 2026, 09:00:**
+  - **Running:** L0 session 3b on account 3, and R16c step 5 on account 1.
+  - **E5:** go given for step 1 (hash check) and step 2 (per-image counts), both being built for account 2. E5 now has a row here, a section in the ledger and one in the roadmap.
+  - **The leak caveat carried everywhere O1 was stated:**
+    - the ledger and roadmap (R16c steps 2 and 3);
+    - System_Design_Notes §5;
+    - snapshot notes at the top of Paper_Audit §2, the roadmap's §1, Phase2_Plan and Research_Directions.
+  - **T2:** step 4 now names Ridita's hybrid search (meaning plus keywords), and a new step 4b tests it against each half alone before it's wired in. System_Design_Notes §1 and §2.1 updated to match.
+  - **Open offers** are now listed under "Needs you now".
+
+- **26 Oct 2026, 08:17:**
+  - Teammates' pushes reviewed file by file. What's useful from each (Ridita's offline search and audit findings, Aryan's counts-in-the-prompt results, Tamanna's crop idea and two lessons) is recorded in [Task_Ledger §9](Task_Ledger.md), with pointers in the roadmap's T2, R11 and R13.
+  - No number from Tamanna's Plan 2 is used: none traces back to a recorded run of the committed code.
+
+- **26 Oct 2026, 07:18:** The prompt for Ridita (collect the leak and BRIGHT audit files, above all `val_train_leaks.csv`) saved as [Ridita_Task/E5_leak_audit_prompt.md](Ridita_Task/E5_leak_audit_prompt.md) and linked from E5 under "Needs you now".
+
+- **26 Oct 2026, 07:10:** The work since 22 Oct pushed as `5ff744c` (39 files): H2b's results in their new folder, E5's leak check, the T3 browser test kit, System_Design_Notes and the doc updates, plus the TimeSpot PDF (added with `-f` past the lit-review folder's ignore rule; arXiv licenses it CC BY 4.0). No teammate had pushed since `a33aa8b`, so nothing was rebased. The saved LinkedIn post (`.mhtml`) stays local.
 
 - **26 Oct 2026, 06:06:**
   - Teammates' pushes since 22 Oct, checked:
@@ -705,7 +971,7 @@ Background:
   - H2b's smoke test now also loads the base VL-3B.
   - R16c's status was corrected from "Running" to "Needs rerun".
 
-- **22 Oct 2026, 01:20:** H2b built in `Champion_Task/` and added to the roadmap (§7, after H2). The local check's scripts are in Claude's scratchpad, not the project.
+- **22 Oct 2026, 01:20:** H2b built in `Champion_Task/` and added to the roadmap (§7, after H2). The local check's scripts are in a temporary folder, not the project.
 - **22 Oct 2026:** the 8 papers H2b cites were added to `others/lit review_research papers/` as PDFs named by their titles:
   - Zhong et al. (EMNLP 2020) and DAIL-SQL (VLDB 2024), in their published versions;
   - TrustSQL, EHRSQL 2024, Dr.Spider, Rajkumar et al., Self-Debugging and Qwen2.5-Coder, from arXiv.
@@ -755,7 +1021,7 @@ Background:
   - **Fix:**
     - a `Trainer` subclass whose `get_batch_samples` moves each batch to the CPU as it's collected, with `pixel_values` in fp16, which the model casts them to anyway (`pixel_values.type(self.visual.dtype)`);
     - `training_step` moves each batch back to the GPU in turn.
-  - **Tested on your PC:** `l0s2_cpu_batches_check.py` in the scratchpad confirmed CPU batches, 16 of 16 micro-batches trained, 2 steps of 8, and loss tokens counted.
+  - **Tested on your PC:** `l0s2_cpu_batches_check.py`, a temporary script outside the project, confirmed CPU batches, 16 of 16 micro-batches trained, 2 steps of 8, and loss tokens counted.
   - L0 marked "Needs rerun".
 
 - **20 Oct 2026, 13:15:** your decision: L0 step 2's training keeps the equal replay (A, 7,018 examples, about 19.5 h). L0 marked "Ready to run", with session 1 on account 3.

@@ -1,0 +1,54 @@
+{
+ "task": "L0 step 2: the merge",
+ "start_model": "AbrarAlam/disasterm3-qwen2.5vl7b-mergedFP",
+ "merged_repo": "AbrarAlam/disasterm3-qwen2.5vl7b-l0s2-mergedFP",
+ "merged_public": true,
+ "adapter_repo": "AbrarAlam/disasterm3-qwen25vl7b-qlora",
+ "hub_dir": "l0s2/checkpoints",
+ "max_steps": 28,
+ "projections": [
+  "q_proj",
+  "k_proj",
+  "v_proj",
+  "o_proj",
+  "gate_proj",
+  "up_proj",
+  "down_proj"
+ ],
+ "lora_targets": 196,
+ "checkpoint": "checkpoint-28",
+ "versions": {
+  "torch": "2.11.0+cu128",
+  "transformers": "5.16.1",
+  "peft": "0.21.2",
+  "safetensors": "0.8.0",
+  "huggingface_hub": "1.29.0"
+ },
+ "trainer_state": {
+  "global_step": 28,
+  "max_steps": 28,
+  "last_losses": [
+   0.4905,
+   0.5365,
+   0.5335
+  ]
+ },
+ "adapter": {
+  "r": 64,
+  "lora_alpha": 16,
+  "lora_pairs": 196,
+  "saved_name_patterns": 88
+ },
+ "checks": {
+  "weights": 729,
+  "changed": 196,
+  "targets": 196,
+  "changed_outside_targets": [],
+  "targets_unchanged": [],
+  "non_finite": []
+ },
+ "files": 7,
+ "size_gb": 16.6,
+ "merge_minutes": 4.3,
+ "upload_minutes": 2.4
+}
