@@ -1,0 +1,122 @@
+{
+ "task": "R16c step 5b",
+ "train_outlines": "sam3",
+ "labels": [
+  "Intact",
+  "Damaged",
+  "Destroyed",
+  "None"
+ ],
+ "smoke_test": false,
+ "fit_images": 5218,
+ "held_out_images": 580,
+ "val_images": 645,
+ "clean_val_images": 605,
+ "leaked_pairs": 40,
+ "sam3_dir": "/kaggle/input/notebooks/abrarmohammedtanzim/e3-sam3-building-finding/E3/masks/pre_grid2",
+ "sam3_train_dir": "/kaggle/input/notebooks/abrarmohammedtanzim/r16c-step4-sam3-training-images/step4/masks/pre_grid2_train",
+ "unet": "R11",
+ "unet_checkpoint": "/root/.cache/huggingface/hub/models--AbrarAlam--disasterm3-d4-R11/snapshots/31974dacfee2125a66639858433a113704edf9b3/final_model.pth",
+ "unet_reproduces_csv": "yes",
+ "crop": 128,
+ "margin": 32,
+ "min_area": 20,
+ "max_per_image": {
+  "Intact": 12,
+  "None": 4
+ },
+ "epochs": 20,
+ "batch": 256,
+ "lr": 0.0003,
+ "weight_decay": 0.0001,
+ "seeds": [
+  44
+ ],
+ "fit_buildings": {
+  "Intact": 35259,
+  "Damaged": 32847,
+  "Destroyed": 11725,
+  "None": 9286
+ },
+ "held_out_buildings": {
+  "Intact": 16514,
+  "Damaged": 3475,
+  "Destroyed": 1420,
+  "None": 1750
+ },
+ "real_share": {
+  "Intact": 0.713,
+  "Damaged": 0.1501,
+  "Destroyed": 0.0613,
+  "None": 0.0756
+ },
+ "chosen": {
+  "44": {
+   "epoch": 10,
+   "held_out_grade_iou": 0.6051,
+   "bias": {
+    "Intact": 0.0,
+    "Damaged": -2.0,
+    "Destroyed": -4.0,
+    "None": -3.5
+   }
+  }
+ },
+ "grader_minutes": 29.8,
+ "validation_minutes": 25.8,
+ "missing_sam3_maps": 0,
+ "true_buildings_macro_f1": {
+  "44": 0.7541
+ },
+ "keep": {
+  "R16c_s44_sam3": false,
+  "R16c_s44_sam3+r11": false,
+  "R16c_s44_vote": false
+ },
+ "phase_gate": {
+  "R16c_s44_sam3": true,
+  "R16c_s44_sam3+r11": false,
+  "R16c_s44_vote": false
+ },
+ "phase_gate_clean": {
+  "R16c_s44_sam3": false,
+  "R16c_s44_sam3+r11": false,
+  "R16c_s44_vote": false
+ },
+ "gap_closed": {
+  "R16c_s44_sam3": 0.268,
+  "R16c_s44_sam3+r11": -0.065
+ },
+ "o1_clean": {
+  "seeds": [
+   {
+    "seed": 42,
+    "source": "step 5, E5's clean re-score",
+    "miou": 0.5469,
+    "destroyed_iou": 0.3161,
+    "gate": true
+   },
+   {
+    "seed": 43,
+    "source": "step 5, E5's clean re-score",
+    "miou": 0.547,
+    "destroyed_iou": 0.3051,
+    "gate": true
+   },
+   {
+    "seed": 44,
+    "source": "this run",
+    "miou": 0.548,
+    "destroyed_iou": 0.2982,
+    "gate": false
+   }
+  ],
+  "mean_miou": 0.5473,
+  "mean_destroyed_iou": 0.3065,
+  "verdict": "met on the mean of the 3 grader seeds only, narrowly"
+ },
+ "rebuild_check": {
+  "rebuilds": "yes",
+  "largest_gap": 2.4e-05
+ }
+}

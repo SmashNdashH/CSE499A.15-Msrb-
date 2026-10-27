@@ -15,7 +15,8 @@ What each finished task found, and the decisions it led to, are in [Task_Ledger.
 > - R11 became the champion U-Net, and R16c passed the O1 gate on all 645 validation images (20–21 Oct).
 > - E5 (26 Oct) found 40 leaked validation pairs.
 >   - Without them, R16c steps 2 and 3 score 0.2838–0.2980.
->   - **Only R16c step 5's SAM 3-only map passes O1's gate on clean data (0.3161 and 0.3051), narrowly.** A third grader seed is proposed before claiming it.
+>   - **Only R16c step 5's SAM 3-only map passes O1's gate on clean data (0.3161 and 0.3051), narrowly.** With the third grader seed (28 Oct, 0.2982), it's met on the three-seed mean only (0.3065).
+>   - **L0 (28 Oct): the new 7B is kept** (ORR +3.5, DTR +1.1 points at full size, BBR −0.95, inside the limit). It is L2's teacher.
 >   - Benchmark copies cost at most 0.7 points; O2's counting is 32.47% on clean questions.
 >   - L0's training is complete; its merge needs a fix (proposed).
 
@@ -240,7 +241,7 @@ These apply to every task, so an agent doesn't have to rediscover them.
     - R11 and R11s7 lose 0.027 to the leak, twice what the after-only U-Nets lose, because the leaked pairs share their before-image. With TTA, R11 is 0.2692 against R9's 0.2874.
     - **Benchmark:** 186 of 10,675 optical questions (1.74%) use a copied after-image. Without them, scores drop by at most 0.7 points; O2's counting goes from 32.96% to 32.47%.
     - Tables and caveats: [E5-results/E5/](Champion_Task/E5-results/E5/README.md).
-    - **Next:** group future splits by before-image fingerprint. A third step-5 grader seed (proposed) before claiming O1.
+    - **Next:** group future splits by before-image fingerprint. A third step-5 grader seed (proposed) before claiming O1. *(Ran 27 Oct: O1 met on the three-seed mean only, 0.3065.)*
   - **27 Oct:** R12's 1,619 extra xBD tiles, checked by content for the first time: two share a before-image with validation pairs outside the 40, so R12 trained on 42 leaked pairs. Its verdict (not kept) stands. E2's and E3's decisions also hold on clean data.
 
 ### H1 · KR2 evaluation harness: U-Net counting and counts-as-text
@@ -496,7 +497,7 @@ R16's two parts are **the finding** (which buildings are there) and **the gradin
     - **Its SAM 3-only map passes O1's gate on all 645 pairs (0.3347 and 0.3242) and on clean data (0.3161 and 0.3051), at mIoU 0.547.** It isn't kept against R11, because its mIoU is 0.035 lower.
     - The Destroyed bias hit the search grid's edge (−4.0) in 38 of 40 epoch searches, so a wider grid is a possible next try.
     - Results in `Champion_Task/R16c-results/step5/`.
-    - **Step 5b, a third grader seed (44): built and dry-run checked 26 Oct, ready to run on account 1 (about 2.5–3.5 h).** It checks that seed 43's narrow clean pass isn't luck.
+    - **Step 5b, a third grader seed (44): done 27 Oct (account 1, 2.3 h).** Seed 44 scores 0.2982 on the clean pairs (0.3156 on all 645), so O1 on clean data is met on the three-seed mean only (0.3065), narrowly. Results in [R16c-results/step5b/](Champion_Task/R16c-results/step5b/README.md).
       - Its verdict rule, fixed before the run: all three seeds above 0.30 on clean data means met; otherwise met on the mean only; otherwise not met.
       - [r16c-step5b-third-grader-seed.ipynb](Champion_Task/r16c-step5b-third-grader-seed.ipynb).
 
@@ -675,13 +676,13 @@ R16's two parts are **the finding** (which buildings are there) and **the gradin
        - **Built and dry-run checked 26 Oct: [l0-step2-merge.ipynb](Champion_Task/l0-step2-merge.ipynb),** a named copy that removes torchao, restores checkpoint-28 and merges on the CPU. No GPU and no retraining.
        - **27 Oct:** run 1 stopped in Cell 2 on my own over-strict check (peft saves the 196 modules as 88 name patterns). The adapter is fine. Fixed and dry-run again.
        - **Merged 27 Oct (run 2, account 3, 10 min):** exactly the 196 adapted projections changed, and none holds an inf or NaN. `AbrarAlam/disasterm3-qwen2.5vl7b-l0s2-mergedFP` (16.6 GB, public) is on Hugging Face, every file's size checked. Results in [L0-step2-results/merge/](Champion_Task/L0-step2-results/merge/L0S2-merge/README.md).
-       - **Next:** the new 7B's six tasks in the re-score notebook's two parts, A (BDC, BBR) on account 4 (Tamanna's, 28.5 GPU h, joined 27 Oct) and B (DRE, DSR, DTR, ORR) on account 2. Then the verdict on your PC, reported both ways (all and E5-clean).
+       - **Done 28 Oct: kept.** The new 7B's six tasks ran in the re-score notebook's two parts (7.8 h and 5.9 h). Against the old 7B at full size: ORR +3.50, DTR +1.13, BBR −0.95 (inside the 1-point limit), the others +0.22 to +0.64. The same verdict on E5's clean and strict sets. Details in the [ledger](Task_Ledger.md).
 - **Done when:** the 7B's six-task scores are re-measured at the paper's setting, and L2 uses the better of the two models as its teacher.
 
 ### L2 · 7B → 3B distillation
 - **Source:** [Plan] CSE499A future work and KR4; [Paper] QLoRA (we already use it via Unsloth).
 - **Goal:** O4.
-- **Waits for L0** (decided 19 Oct): the teacher is improved first.
+- **Waits for L0** (decided 19 Oct): the teacher is improved first. *(L0 done 28 Oct: the new 7B is kept and is the teacher, so L2 step 1 runs again with it.)*
 - **Base:** the two ready notebooks in `support/Abrar/Implementation_DisasterM3/`, kept unchanged as the originals:
   - `generate_teacher_cot_train_3b_distill.ipynb` has never been run. Step 1 runs as its fixed copy, [Champion_Task/l2-step1-teacher-rationales.ipynb](Champion_Task/l2-step1-teacher-rationales.ipynb) (19 Oct; named `l2-stage1-teacher-rationales` until 20 Oct): Kaggle's own torch, fp16 on 2×T4 in batches, 4,000 checkable examples, and only answers that match the label kept;
   - `train_qwen_disasterm3_3b_distill.ipynb` needs the same environment fix, as a copy, and **its outputs cleared**, because they're left over from the 7B run.

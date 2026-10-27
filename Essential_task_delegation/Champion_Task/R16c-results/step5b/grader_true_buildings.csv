@@ -1,0 +1,4 @@
+seed,grade,buildings,precision,recall,f1,graded_intact,graded_damaged,graded_destroyed,graded_none
+44,Intact,19624,0.9256,0.911,0.9182,17878,806,339,601
+44,Damaged,4370,0.733,0.6501,0.6891,1230,2841,178,121
+44,Destroyed,1600,0.666,0.6444,0.655,208,229,1031,132

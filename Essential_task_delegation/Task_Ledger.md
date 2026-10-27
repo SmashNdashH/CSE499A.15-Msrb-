@@ -392,7 +392,7 @@ Status is kept in [Progress_Tracker.md](Progress_Tracker.md); the plans are in [
     - Everything else drops by 0.0–0.7 points, and no decision changes.
   - Full tables, review notes, and how it was scored: [E5-results/E5/](Champion_Task/E5-results/E5/README.md). Step outputs: [step1/](Champion_Task/E5-results/step1/README.md) and [step2/](Champion_Task/E5-results/step2/README.md), moved there from `E5-step1-results/` and `E5-step2-results/`.
   - **What it leads to:**
-    - O1 rests on step 5's SAM 3 map on clean data. A third grader seed is proposed to confirm seed 43's narrow pass.
+    - O1 rests on step 5's SAM 3 map on clean data. A third grader seed is proposed to confirm seed 43's narrow pass. *(Done 27 Oct: seed 44 scores 0.2982 clean, so O1 is met on the three-seed mean only, 0.3065. See step 5b below.)*
     - O2's counting still needs about 2 points.
     - Every future split is grouped by before-image fingerprint.
     - The new 7B's scores will be reported both ways.
@@ -587,6 +587,15 @@ R16c's steps were renumbered 1–5 on 20 Oct (your decision): step 3 was first c
     - **O1's verdict rule, fixed before the run:** every seed above 0.52 / 0.30 on the clean pairs means met on three seeds; otherwise a passing three-seed mean means met on the mean only, narrowly; otherwise not met.
     - **Dry-run checked on your PC:** Cell 10 on step 5's real data reproduced R11 and seed 42's clean 0.5469 / 0.3161. Cells 9 and 10 ran end to end on synthetic images, and their clean counts and rebuild check were exact.
     - About 2.5–3.5 h on account 1 (my first estimate of 1 h left out the masks and crops).
+  - **Step 5b's result (27 Oct, account 1, 2.3 h): seed 44 misses the gate on clean data by 0.002.**
+    - Seed 44's SAM 3-only map: 0.5527 / 0.3156 on all 645 pairs (gate passed), 0.548 / 0.2982 on the 605 clean ones (failed).
+    - **Expectation, fixed before the run:** about 0.30–0.32 on the clean pairs. Just under it.
+    - **O1's verdict by the rule:** seeds 42 and 43 pass, 44 doesn't, and the three-seed mean passes (0.5473 / 0.3065). **Met on the mean only, narrowly.**
+    - **Checks:** R11 reproduces its D4 CSV; the saved rows rebuild the maps exactly (step 5's seed 43 rebuilt only to within 0.0012); the run notebook matches the build cell by cell.
+    - The grader on true buildings: macro F1 0.754, the best of the three seeds (0.737 and 0.730), below step 2's 0.778 and 0.784.
+    - The other maps repeat step 5's pattern: SAM 3 + R11's pieces 0.1813 and the vote map 0.2805 (all 645). None is kept against R11 (the SAM 3 map's mIoU is 0.553 against R11's 0.588).
+    - Results in [R16c-results/step5b/](Champion_Task/R16c-results/step5b/README.md); the grader (`grader_seed44.pth`) stays local and git-ignored.
+  - **What it leads to:** O1 is reported as met on clean data on the mean of three grader seeds, narrowly, with both numbers (all 645, and clean). More seeds aren't recommended: adding them until one passes would bend the rule fixed before the run.
 
 ## 7. The 7B and distillation
 
@@ -726,7 +735,28 @@ R16c's steps were renumbered 1–5 on 20 Oct (your decision): step 3 was first c
     - The log is in [L0-step2-results/train-session3b/](Champion_Task/L0-step2-results/train-session3b/l0-step2-topup-training.log).
     - The run notebook replaced `l0-step2-topup-training.ipynb`, as with the earlier sessions.
     - The session's `L0S2-train/` outputs (README, loss curve, `train_summary.json`) weren't downloaded. The notebook's Cell 5 output holds the same numbers.
-  - **Left:** the new 7B's six tasks at full size (the re-score notebook, `MODEL = "new"`, in two parts: A on account 4, B on account 2; the merge's README still says A, B and C). Its scores get the same E5 filter: all questions and clean.
+  - **The new 7B's six tasks (27 Oct) and the verdict (28 Oct): kept.**
+    - **How:** the re-score notebook with `MODEL = "new"` in two parts, A (BDC, BBR; 7.8 h) and B (DRE, DSR, DTR, ORR; 5.9 h), on the 10,675 optical questions at full size with greedy decoding. Each run notebook differs from the output-free one only in `MODEL` and `RUN_TASKS`. The old 7B's answers come from its own two parts (20 Oct) and, for DTR and ORR, from L0 step 1, which used the same settings (greedy, batch 8, 32 new tokens, transformers 5.16.1). The merge's README had said parts A, B and C; two parts covered all six tasks.
+    - **Expectation, fixed before the run:** DTR and ORR rise by about 1–4 points; the other four stay within about a point.
+    - **Result,** against the old 7B at full size:
+
+      | Task | Old | New | Change | Change, clean |
+      |---|---|---|---|---|
+      | DTR | 75.64 | 76.77 | +1.13 | +1.17 |
+      | ORR | 31.12 | 34.62 | +3.50 | +3.52 |
+      | BBR | 20.94 | 19.99 | −0.95 | −0.91 |
+      | BDC | 30.09 | 30.31 | +0.22 | +0.20 |
+      | DRE | 32.39 | 33.03 | +0.64 | +0.71 |
+      | DSR | 40.06 | 40.46 | +0.40 | +0.41 |
+      | Mean of six | 38.37 | 39.20 | +0.83 | +0.85 |
+
+    - **The verdict, by the rule fixed 19 Oct:** DTR and ORR rise and no other task drops by more than 1 point, so **the new 7B is kept**, on all questions, on E5's clean set (186 questions with a copied after-image dropped) and on the strict set (all 386 flagged optical questions dropped).
+    - **How sure, paired over the same questions:** ORR's gain is clear (33 gained, 3 lost, McNemar p < 0.001; 95% bootstrap interval +2.2 to +4.9). DTR's is 4 questions net (5 gained, 1 lost, p = 0.22; 0.0 to +2.6), within noise. BBR's drop is real (24 gained, 43 lost, p = 0.03; −1.7 to −0.2) and sits just inside the limit.
+    - **Why this way, and the alternatives:** the point-based rule was fixed before the run, so it decides. The paired tests and intervals only show how much of each change could be noise. A significance-based rule would call DTR's rise unproven; the mean of the six (+0.83) is the simplest single summary. Both are reported here, neither changes the verdict.
+    - **Counting (BDC) is 30.31%,** still under the base model's 34.2%: the 7B alone still misses the counting half of KR2.
+    - **Checks:** every published accuracy reproduces from the per-question answers for both models, and the old 7B's clean and strict numbers match E5's table; both models answer the same 10,675 questions; the 8 questions with unreadable images count as wrong for both.
+    - **What it leads to:** `AbrarAlam/disasterm3-qwen2.5vl7b-l0s2-mergedFP` is our 7B and L2's teacher. L2 step 1 runs again with it, on your go.
+    - Results in [L0-step2-results/new-partA/](Champion_Task/L0-step2-results/new-partA/L0S2/README.md) and [new-partB/](Champion_Task/L0-step2-results/new-partB/L0S2/README.md). The verdict was computed on your PC with a short read-only script; its numbers are all in this entry.
 
 ### L2 step 1 · Teacher answers for the 3B
 - **What:** the 7B answers 4,000 training questions, and only answers checked correct against their labels are kept.

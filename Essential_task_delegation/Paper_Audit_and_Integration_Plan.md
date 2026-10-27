@@ -34,7 +34,7 @@ The CSE499A final presentation ended with a Future Work list ([final_presentatio
 ## 2. Where we stand (17 October 2026)
 
 > **This table is the 17 Oct snapshot.** The current status of every goal is in [Progress_Tracker.md, Goals](Progress_Tracker.md#goals). The changes since:
-> - **O1:** R16c (SAM 3 + R11's pieces, then a stronger grader) passed the gate on all 645 validation images, on two U-Net seeds (20–21 Oct). E5 (26 Oct) then found validation pairs that are near-copies of training pairs, Without the 40 leaked pairs, R16c steps 2 and 3 score 0.2838–0.2980. Only R16c step 5's SAM 3-only map passes on clean data (0.3161 and 0.3051), narrowly; a third grader seed is proposed before claiming it (26 Oct; see the tracker). Benchmark copies move the 7B's and the counting scores by at most 0.7 points.
+> - **O1:** R16c (SAM 3 + R11's pieces, then a stronger grader) passed the gate on all 645 validation images, on two U-Net seeds (20–21 Oct). E5 (26 Oct) then found validation pairs that are near-copies of training pairs, Without the 40 leaked pairs, R16c steps 2 and 3 score 0.2838–0.2980. Only R16c step 5's SAM 3-only map passes on clean data (0.3161 and 0.3051), narrowly; with a third grader seed (28 Oct, 0.2982) it's met on the three-seed mean only (0.3065). Benchmark copies move the 7B's and the counting scores by at most 0.7 points.
 > - **O2:** counting with R11's per-building table (H2) is 32.96%, 1.2 points under 34.2%.
 > - **O3:** the heatmap is done (T1 v3), and an offline guideline search is built (Ridita, 25 Oct).
 > - **O4:** the INT8 edge segmenter is done (L1b).
@@ -390,7 +390,7 @@ Across these papers, specialist models are good at finding and counting, VLMs ar
    - when the user asks "why?", it explains.
 3. **The 3B is not trained to reason before every answer.** That is slower in the field, clashes with the benchmark's letters-only answers, and risks teaching invented evidence.
 
-**Update, 19 October 2026: improve the teacher first.** Like for like with the DisasterM3 paper (§4.13), our fine-tuned 7B beats the base model (36.1% against 31.2% on optical questions) but trails the authors' fine-tune of the same model (40.4%). A student learns from its teacher, so roadmap task L0 improves the 7B before L2 runs. How the 3B learns from it (answers only, or soft labels) is still to choose.
+**Update, 19 October 2026: improve the teacher first.** Like for like with the DisasterM3 paper (§4.13), our fine-tuned 7B beats the base model (36.1% against 31.2% on optical questions) but trails the authors' fine-tune of the same model (40.4%). A student learns from its teacher, so roadmap task L0 improves the 7B before L2 runs. How the 3B learns from it (answers only, or soft labels) is still to choose. *(28 Oct: L0's new 7B is kept by its rule, with ORR +3.5 and DTR +1.1 points at full size. It is L2's teacher.)*
 
 ## 6. What not to adopt
 - **GeoPixel's single big model:** too heavy, and it has no before image.

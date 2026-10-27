@@ -295,7 +295,7 @@ The day-1 proposal stacked five layers and marked only Layer 1 as this project:
 | 1 | VLM aerial image to textual rescue guidance | this project |
 
 Layer 1 grew well beyond the day-1 arrow (image, VLM, text). The VLM alone couldn't read damage reliably (our 7B counts buildings at about 30–32%), so Layer 1 now includes:
-- the damage segmenter (O1 met on all 645 validation images. On the 605 left after E5 removed 40 leaked pairs, only R16c step 5's SAM 3-only map passes: 0.3161 and 0.3051 Destroyed IoU, narrowly. A third grader seed, step 5b, is built and ready to run (27 Oct). SAM 3 + R11's pieces scores 0.2838–0.2980, 26 Oct);
+- the damage segmenter (O1 met on all 645 validation images. On the 605 left after E5 removed 40 leaked pairs, only R16c step 5's SAM 3-only map passes: 0.3161 and 0.3051 Destroyed IoU, narrowly. A third grader seed, step 5b, scores 0.2982, so it's met on the three-seed mean only, 0.3065 (28 Oct). SAM 3 + R11's pieces scores 0.2838–0.2980, 26 Oct);
 - per-building counts from a table (H2), and the H2b test of free-form questions;
 - the heatmap (T1) and the edge segmenter (L1b);
 - the stronger 7B and the 3B path (L0, L2).

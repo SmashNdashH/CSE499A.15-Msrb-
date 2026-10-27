@@ -24,7 +24,7 @@ Drafted 2026-10-05, while R4, R5 and R8 are still running. Nothing here needs th
 
 > **Update 2026-10-26:**
 > - R16c (find-then-grade: SAM 3 and R11's pieces, then a stronger grader) passed the gate on all 645 validation images, on two U-Net seeds (20–21 Oct).
-> - E5 then found validation pairs that are near-copies of training pairs, Without the 40 leaked pairs, R16c steps 2 and 3 score 0.2838–0.2980, so their claim doesn't hold on clean data. Only R16c step 5's SAM 3-only map passes there (0.3161 and 0.3051), narrowly (26 Oct). The leak also helped the before + after U-Nets (R11) twice as much as the after-only ones.
+> - E5 then found validation pairs that are near-copies of training pairs, Without the 40 leaked pairs, R16c steps 2 and 3 score 0.2838–0.2980, so their claim doesn't hold on clean data. Only R16c step 5's SAM 3-only map passes there (0.3161 and 0.3051), narrowly (26 Oct); with a third grader seed (0.2982), on the three-seed mean only (0.3065, 28 Oct). The leak also helped the before + after U-Nets (R11) twice as much as the after-only ones.
 > - The current status is in [Progress_Tracker.md](Progress_Tracker.md) (Goals).
 
 ## 1. Why Phase 2 is (almost certainly) needed

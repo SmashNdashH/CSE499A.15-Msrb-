@@ -220,6 +220,6 @@ The 40 pairs are twins inside DisasterM3. R12 also trained on 1,619 xBD tiles fr
 2. ~~Re-score on the clean pairs.~~ Done 26 Oct, for every affected score (the tables at the top).
 3. ~~Update O1's status and the core documents.~~ Done 26 Oct. The report needs both numbers (all 645, and clean) when it's next updated.
 4. Group future splits by before-image fingerprint, so twins stay on one side, and fingerprint every extra training source against validation before using it (R12's tiles were checked by ID only; see above).
-5. A third grader seed (44) for step 5's SAM 3 map, to check that seed 43's narrow pass on clean data (0.3051) isn't luck.
+5. ~~A third grader seed (44) for step 5's SAM 3 map, to check that seed 43's narrow pass on clean data (0.3051) isn't luck.~~ Done 27 Oct: seed 44 scores 0.2982 on the clean pairs, so O1 on clean data is met on the three-seed mean only (0.3065), narrowly. Results in `R16c-results/step5b/`.
    - Built and dry-run checked 26 Oct as `r16c-step5b-third-grader-seed.ipynb`; about 2.5–3.5 h on account 1.
    - It also computes every score on the 605 clean pairs itself, and checks that its saved rows rebuild its maps.
