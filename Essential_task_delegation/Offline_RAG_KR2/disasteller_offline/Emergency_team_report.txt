@@ -1,0 +1,43 @@
+**Emergency Service Team: Post-Earthquake Deployment and Recovery Report**
+
+### 1. Executive Summary
+Following the structural assessment provided by the Expert Team and the directives issued by the Alerts Team, the Emergency Service Team has finalized the deployment plan for shelters, triage centers, and transportation recovery. We have leveraged the structural integrity data (G1-G5 grades) to ensure that relief operations are positioned in safe, stable areas while prioritizing the restoration of critical infrastructure.
+
+---
+
+### 2. Emergency Shelter and Hospital Strategy
+Based on the safety assessments, we have designated the **G1-rated zones** as the primary hubs for medical and relief support. These areas are stable and structurally sound, making them the only viable locations for long-term emergency facilities.
+
+*   **Total Emergency Shelters:** **3 Locations**
+    *   **Primary Location:** **Wajima Drama Memorial Hall** (G1). Due to its modern structural design and status as an unaffected, large-scale facility, this will serve as the Central Coordination and Major Medical Triage Center.
+    *   **Secondary Location:** **Central Nishikigawa Street (North Sector)** (G1). Planned construction/open space area utilized for high-capacity tented shelter housing for displaced residents.
+    *   **Tertiary Location:** **Central Nishikigawa Street (South Sector)** (G1). Additional overflow shelter to maintain population density safety levels within the safe zone.
+
+*   **Total Emergency Hospitals/Triage Centers:** **2 Locations**
+    *   **Primary Trauma Center:** **Wajima Drama Memorial Hall**. Equipped for high-acuity surgical and trauma care.
+    *   **Secondary Triage/Clinic:** **Central Nishikigawa Street**. Focused on outpatient care, stabilizing patients, and managing minor injuries to prevent overwhelming the Primary Trauma Center.
+
+*Historical reference logic:* In high-density urban disaster zones, establishing a 2:3 ratio of medical triage centers to shelter hubs within the immediate "Safe Zone" is prioritized to ensure medical aid is accessible within a 5-10 minute transit radius for sheltered populations.
+
+---
+
+### 3. Immediate Transportation Recovery
+The assessment identifies the **Concrete Bridge** as the primary bottleneck for all relief operations. Its total collapse (G5) prevents essential supplies from reaching the southern districts.
+
+*   **Priority 1: Concrete Bridge Restoration (Critical)**
+    *   **Action:** Immediate deployment of an engineering task force to assess the feasibility of installing a temporary Bailey bridge or pontoon crossing.
+    *   **Reason:** Without this crossing, the "South Central Asaichi Street" (G5) disaster zone remains inaccessible to heavy machinery required for rescue and debris removal.
+*   **Priority 2: Hama Street Clearing**
+    *   **Action:** Debris removal and site clearance of rubble blocking the street.
+    *   **Reason:** This serves as the secondary arterial road connecting the safe zones to the northern affected districts.
+
+---
+
+### 4. Operational Directives
+*   **No-Go Zones:** All personnel and civilian traffic are strictly prohibited from entering **South Central Asaichi Street** (G5) unless part of an authorized search and rescue mission.
+*   **Traffic Management:** The corridor between **Central Nishikigawa Street** and the **Wajima Drama Memorial Hall** is designated as an "Emergency Exclusive Route." All non-essential civilian vehicles must be diverted away from this path to facilitate rapid ambulance and supply chain movement.
+
+---
+
+### 5. Conclusion
+Resources are currently being concentrated within the G1 zones to minimize risk to survivors and medical staff. The restoration of the Concrete Bridge is the single most important variable in transitioning from an emergency response phase to a recovery phase. Regular monitoring of the G3 zones (North Asaichi Street) will continue, as structural integrity in that area remains fragile and subject to further decline.

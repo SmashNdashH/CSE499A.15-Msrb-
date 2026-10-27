@@ -1,0 +1,10 @@
+{
+  "name": "t3-browser-test",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Runs the edge segmenter in Chrome and Edge with ONNX Runtime Web and compares it with a native run",
+  "dependencies": {
+    "onnxruntime-node": "1.20.1",
+    "onnxruntime-web": "1.20.1"
+  }
+}

@@ -1,0 +1,9 @@
+# Transcribed word for word from the xBD paper (Gupta et al., 2019, arXiv:1911.09296),
+# page 4, Figure 4. The figure is an image in the PDF, so its text cannot be extracted.
+# Lines starting with # are not indexed; the chunk heading comes from guideline_index.py.
+Figure 4: Joint Damage Scale descriptions on a four-level granularity scheme.
+Disaster Level: Structure Description
+0 (No Damage): Undisturbed. No sign of water, structural or shingle damage, or burn marks.
+1 (Minor Damage): Building partially burnt, water surrounding structure, volcanic flow nearby, roof elements missing, or visible cracks.
+2 (Major Damage): Partial wall or roof collapse, encroaching volcanic flow, or surrounded by water/mud.
+3 (Destroyed): Scorched, completely collapsed, partially/completely covered with water/mud, or otherwise no longer present.

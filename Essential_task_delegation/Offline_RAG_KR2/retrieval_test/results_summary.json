@@ -1,0 +1,817 @@
+{
+  "date": "2026-10-27",
+  "backend": "chroma",
+  "chunks": 405,
+  "k": 3,
+  "pass_rule": "at least 24 of 30 questions with an expected section in the top 3 of search_guidelines(q, k=3)",
+  "passed": true,
+  "hybrid": {
+    "hits": 27,
+    "out_of": 30,
+    "per_source": {
+      "EMS98": "4/5",
+      "XBD": "4/4",
+      "IWGSEM": "4/4",
+      "INSARAG2B": "5/6",
+      "INSARAG3": "3/4",
+      "SPHERE": "7/7"
+    }
+  },
+  "semantic_only": {
+    "hits": 20,
+    "out_of": 30,
+    "per_source": {
+      "EMS98": "3/5",
+      "XBD": "2/4",
+      "IWGSEM": "4/4",
+      "INSARAG2B": "3/6",
+      "INSARAG3": "3/4",
+      "SPHERE": "5/7"
+    }
+  },
+  "bm25_only": {
+    "hits": 25,
+    "out_of": 30,
+    "per_source": {
+      "EMS98": "4/5",
+      "XBD": "4/4",
+      "IWGSEM": "4/4",
+      "INSARAG2B": "6/6",
+      "INSARAG3": "1/4",
+      "SPHERE": "6/7"
+    }
+  },
+  "semantic_alone_as_good_as_hybrid": false,
+  "misses": [
+    {
+      "question": "A brick house has walls that have broken apart and part of its roof has fallen in. What EMS-98 damage grade is that?",
+      "source": "EMS98",
+      "expected_ids": [
+        "EMS98-masonry-grade-4",
+        "EMS98-simple-stone-masonry-montenegro-2",
+        "EMS98-adobe-masonry-tadjikistan-1985",
+        "EMS98-adobe-masonry-carpathia-1986",
+        "EMS98-field-stone-masonry-north",
+        "EMS98-friuli-italy-1976-braulins"
+      ],
+      "top3": [
+        {
+          "id": "EMS98-unreinforced-masonry-roermond-the",
+          "section": "Unreinforced masonry Roermond, The Nether- lands 1992 / Heinsberg"
+        },
+        {
+          "id": "EMS98-masonry-grade-3",
+          "section": "Classification of damage to masonry buildings: Grade 3: Substantial to heavy damage (moderate structural damage, heavy non-structural damage)"
+        },
+        {
+          "id": "EMS98-rc-frame-mexico-city",
+          "section": "RC frame Mexico City 1985"
+        }
+      ]
+    },
+    {
+      "question": "One collapsed building has three people confirmed alive; at another, neighbours say people are missing. Which should rescuers go to first?",
+      "source": "INSARAG2B",
+      "expected_ids": [
+        "INSARAG2B-5.8.1-p1"
+      ],
+      "top3": [
+        {
+          "id": "INSARAG2B-5.8.1-p2",
+          "section": "5.8 Worksite Triage > 5.8.1 First order of priority: Triage Categories with victim information"
+        },
+        {
+          "id": "INSARAG2B-6.4",
+          "section": "6 INSARAG Marking and Signalling System > 6.4 INSARAG Signalling"
+        },
+        {
+          "id": "INSARAG2B-5.7.1-p6",
+          "section": "5.7 Assessment, Search and Rescue Levels > 5.7.1 The Levels"
+        }
+      ]
+    },
+    {
+      "question": "Must medium and heavy USAR teams keep operations running 24 hours a day?",
+      "source": "INSARAG3",
+      "expected_ids": [
+        "INSARAG3-3.2-p3"
+      ],
+      "top3": [
+        {
+          "id": "INSARAG2B-3.8-p1",
+          "section": "3 Roles and Responsibilities in International USAR Response > 3.8 International USAR Teams"
+        },
+        {
+          "id": "INSARAG3-2",
+          "section": "2 Checklists"
+        },
+        {
+          "id": "INSARAG2B-4.3-p1",
+          "section": "4 USAR Detailed Operations Following the Response Cycle > 4.3 Operation"
+        }
+      ]
+    }
+  ],
+  "per_question": [
+    {
+      "question": "A brick house has walls that have broken apart and part of its roof has fallen in. What EMS-98 damage grade is that?",
+      "source": "EMS98",
+      "expected_ids": "EMS98-masonry-grade-4;EMS98-simple-stone-masonry-montenegro-2;EMS98-adobe-masonry-tadjikistan-1985;EMS98-adobe-masonry-carpathia-1986;EMS98-field-stone-masonry-north;EMS98-friuli-italy-1976-braulins",
+      "hybrid_top3": [
+        "EMS98-unreinforced-masonry-roermond-the",
+        "EMS98-masonry-grade-3",
+        "EMS98-rc-frame-mexico-city"
+      ],
+      "hybrid_hit": false,
+      "semantic_top3": [
+        "EMS98-masonry-grade-4",
+        "EMS98-masonry-grade-5",
+        "EMS98-adobe-masonry-tadjikistan-1985"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "EMS98-skaln",
+        "EMS98-unreinforced-masonry-roermond-the",
+        "EMS98-rc-walls-great-hanshin-2"
+      ],
+      "bm25_hit": false
+    },
+    {
+      "question": "In a reinforced concrete building one upper storey has collapsed, but the floors below it still stand. Is that EMS-98 damage grade 4 or grade 5?",
+      "source": "EMS98",
+      "expected_ids": "EMS98-rc-grade-4;EMS98-rc-frame-mexico-city-2",
+      "hybrid_top3": [
+        "EMS98-rc-frame-mexico-city-2",
+        "EMS98-rc-grade-4",
+        "EMS98-steel-frame-great-hanshin"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "EMS98-rc-frame-mexico-city-2",
+        "EMS98-masonry-grade-5",
+        "EMS98-rc-grade-5"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "EMS98-rc-frame-mexico-city-2",
+        "EMS98-steel-frame-great-hanshin",
+        "EMS98-rc-grade-4"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "Many adobe houses in a village have very heavy damage and a few have collapsed completely. Which EMS-98 intensity does that point to?",
+      "source": "EMS98",
+      "expected_ids": "EMS98-intensity-VIII;EMS98-analysis-p2;EMS98-viii-heavily-damaging",
+      "hybrid_top3": [
+        "EMS98-2.2-p5",
+        "EMS98-analysis-p2",
+        "EMS98-introduction-p8"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "EMS98-1.2-p3",
+        "EMS98-1.2-p4",
+        "EMS98-4.6-p1"
+      ],
+      "semantic_hit": false,
+      "bm25_top3": [
+        "EMS98-ii-scarcely-felt",
+        "EMS98-2.2-p5",
+        "EMS98-analysis-p2"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "Why are buildings already damaged by the main shock dangerous during aftershocks?",
+      "source": "EMS98",
+      "expected_ids": "EMS98-2.3-p2;EMS98-1.2-p5;INSARAG3-4.2-p1",
+      "hybrid_top3": [
+        "EMS98-2.3-p2",
+        "EMS98-commentary-p2",
+        "EMS98-1.2-p3"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "EMS98-2.3-p2",
+        "EMS98-vii-damaging",
+        "EMS98-intensity-XII"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "EMS98-2.3-p2",
+        "INSARAG2B-3.10-p2",
+        "EMS98-1.5"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "Why do buildings with an open ground floor, such as shops or parking, often collapse in earthquakes?",
+      "source": "EMS98",
+      "expected_ids": "EMS98-2.3-p3;EMS98-2.3-p4;EMS98-2.2-p11",
+      "hybrid_top3": [
+        "EMS98-2.3-p2",
+        "EMS98-rc-frame-north-pelopponissos",
+        "EMS98-2.3-p3"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "EMS98-2.3-p2",
+        "EMS98-intensity-V",
+        "EMS98-rc-walls-great-hanshin"
+      ],
+      "semantic_hit": false,
+      "bm25_top3": [
+        "EMS98-rc-grade-5",
+        "EMS98-2.3-p3",
+        "EMS98-2.3-p4"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "Which xBD damage level is a house that is surrounded by flood water or mud?",
+      "source": "XBD",
+      "expected_ids": "XBD-joint-damage-scale",
+      "hybrid_top3": [
+        "XBD-joint-damage-scale",
+        "XBD-5.2.4",
+        "XBD-3.1"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "XBD-joint-damage-scale",
+        "XBD-3.1",
+        "XBD-3.4"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "XBD-joint-damage-scale",
+        "XBD-5.2.4",
+        "XBD-intro"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "A house is partly burnt after a wildfire. Which xBD damage label does it get?",
+      "source": "XBD",
+      "expected_ids": "XBD-joint-damage-scale",
+      "hybrid_top3": [
+        "XBD-joint-damage-scale",
+        "XBD-3.1",
+        "XBD-3.4"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "XBD-joint-damage-scale",
+        "XBD-3.1",
+        "XBD-4-p2"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "XBD-3.1",
+        "XBD-joint-damage-scale",
+        "XBD-4-p1"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "Which damage class did the xBD baseline model most often get wrong, and what did it call it instead?",
+      "source": "XBD",
+      "expected_ids": "XBD-7.4",
+      "hybrid_top3": [
+        "XBD-7.4",
+        "XBD-3.1",
+        "XBD-1-p2"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "XBD-joint-damage-scale",
+        "XBD-3.1",
+        "XBD-1-p2"
+      ],
+      "semantic_hit": false,
+      "bm25_top3": [
+        "XBD-7.4",
+        "XBD-7",
+        "EMS98-1.5"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "Is the xBD Joint Damage Scale an official damage rating, and which existing scales was it built from?",
+      "source": "XBD",
+      "expected_ids": "XBD-4-p1",
+      "hybrid_top3": [
+        "XBD-joint-damage-scale",
+        "XBD-4-p2",
+        "XBD-4-p1"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "XBD-joint-damage-scale",
+        "XBD-4-p2",
+        "XBD-3.1"
+      ],
+      "semantic_hit": false,
+      "bm25_top3": [
+        "XBD-4-p1",
+        "XBD-4-p2",
+        "XBD-joint-damage-scale"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "In Copernicus EMS satellite damage mapping, how much of a building must have collapsed for it to count as Destroyed?",
+      "source": "IWGSEM",
+      "expected_ids": "IWGSEM-2.1-p1",
+      "hybrid_top3": [
+        "IWGSEM-2.1-p1",
+        "IWGSEM-1",
+        "XBD-4-p1"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "IWGSEM-2.1-p1",
+        "IWGSEM-1",
+        "EMS98-published-with-the-support"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "IWGSEM-1",
+        "IWGSEM-2.1-p1",
+        "IWGSEM-2-p2"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "A building's roof looks intact, but there is a lot of rubble and sand around it. Which Copernicus damage class fits?",
+      "source": "IWGSEM",
+      "expected_ids": "IWGSEM-2.1-p1",
+      "hybrid_top3": [
+        "IWGSEM-2.1-p1",
+        "IWGSEM-1",
+        "IWGSEM-2.1-p2"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "IWGSEM-2.1-p1",
+        "IWGSEM-2.1-p2",
+        "EMS98-simple-stone-masonry-montenegro"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "IWGSEM-2.1-p1",
+        "IWGSEM-1",
+        "EMS98-2.2-p5"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "What image resolution is needed to tell minor from major building damage?",
+      "source": "IWGSEM",
+      "expected_ids": "IWGSEM-2.1-p1;XBD-3.2",
+      "hybrid_top3": [
+        "IWGSEM-2.1-p1",
+        "XBD-3.2",
+        "IWGSEM-2.1-p2"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "IWGSEM-2.1-p1",
+        "IWGSEM-2-p2",
+        "IWGSEM-2.1-p2"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "IWGSEM-2.1-p1",
+        "XBD-7.4",
+        "XBD-joint-damage-scale"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "Can a building marked 'No visible damage' on satellite images still be structurally damaged?",
+      "source": "IWGSEM",
+      "expected_ids": "IWGSEM-2-p2;IWGSEM-2.1-p2;EMS98-1.2-p4;EMS98-skaln",
+      "hybrid_top3": [
+        "IWGSEM-2.1-p1",
+        "IWGSEM-2-p2",
+        "IWGSEM-2.1-p2"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "IWGSEM-2.1-p1",
+        "IWGSEM-2.1-p2",
+        "IWGSEM-2-p2"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "IWGSEM-2-p2",
+        "IWGSEM-2.1-p1",
+        "IWGSEM-2-p1"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "What is done at ASR level 3, and how does it differ from ASR level 4?",
+      "source": "INSARAG2B",
+      "expected_ids": "INSARAG2B-5.7.1-p4;INSARAG2B-5.7.1-p5;INSARAG2B-5.7.1-p6",
+      "hybrid_top3": [
+        "INSARAG2B-5.7.1-p3",
+        "INSARAG2B-5.7.1-p7",
+        "INSARAG2B-5.7.1-p6"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "INSARAG2B-5.7.1-p9",
+        "INSARAG2B-5.7.1-p3",
+        "INSARAG2B-5.7.1-p1"
+      ],
+      "semantic_hit": false,
+      "bm25_top3": [
+        "INSARAG2B-5.7.1-p3",
+        "INSARAG2B-5.7.1-p7",
+        "INSARAG2B-5.7.1-p6"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "A collapsed building has people confirmed alive inside, but reaching them will take more than 12 hours. Which INSARAG triage category is it?",
+      "source": "INSARAG2B",
+      "expected_ids": "INSARAG2B-5.8.1-p1",
+      "hybrid_top3": [
+        "INSARAG2B-5.8.2-p1",
+        "INSARAG2B-5.8.1-p1",
+        "INSARAG2B-5.8.1-p2"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "INSARAG2B-5.8.2-p1",
+        "INSARAG2B-5.8.1-p2",
+        "INSARAG2B-5.8.1-p1"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "INSARAG2B-5.8.1-p1",
+        "INSARAG2B-5.8.1-p2",
+        "INSARAG2B-5.8.2-p1"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "One collapsed building has three people confirmed alive; at another, neighbours say people are missing. Which should rescuers go to first?",
+      "source": "INSARAG2B",
+      "expected_ids": "INSARAG2B-5.8.1-p1",
+      "hybrid_top3": [
+        "INSARAG2B-5.8.1-p2",
+        "INSARAG2B-6.4",
+        "INSARAG2B-5.7.1-p6"
+      ],
+      "hybrid_hit": false,
+      "semantic_top3": [
+        "INSARAG2B-5.7.1-p5",
+        "INSARAG2B-5.8.1-p2",
+        "SPHERE-appendix-4-p4"
+      ],
+      "semantic_hit": false,
+      "bm25_top3": [
+        "INSARAG2B-5.8.1-p2",
+        "EMS98-4.8-p2",
+        "INSARAG2B-5.8.1-p1"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "Do trapped people have a better chance of survival in big or small voids in a collapsed building?",
+      "source": "INSARAG2B",
+      "expected_ids": "INSARAG2B-5.8.2-p1;INSARAG2B-5.8.2-p2",
+      "hybrid_top3": [
+        "INSARAG2B-5.8.2-p2",
+        "INSARAG2B-5.8.2-p1",
+        "EMS98-intensity-V"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "SPHERE-3-p2",
+        "EMS98-viii-heavily-damaging",
+        "SPHERE-3-p3"
+      ],
+      "semantic_hit": false,
+      "bm25_top3": [
+        "INSARAG2B-5.8.2-p1",
+        "INSARAG2B-5.8.2-p2",
+        "IWGSEM-2.1-p1"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "How should a large affected city be divided into sectors for rescue teams, and how are the sectors named?",
+      "source": "INSARAG2B",
+      "expected_ids": "INSARAG2B-5.5.1;INSARAG2B-5.5.2;INSARAG2B-5.5.3",
+      "hybrid_top3": [
+        "INSARAG2B-5.5.1",
+        "INSARAG2B-5.5.3",
+        "INSARAG2B-5.5.2"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "INSARAG2B-5.5.1",
+        "INSARAG2B-5.5.2",
+        "INSARAG2B-5.7.1-p4"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "INSARAG2B-5.5.1",
+        "INSARAG2B-5.5.3",
+        "INSARAG2B-5.7.1-p5"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "What should a wide area assessment of the affected area find out, and what should it produce?",
+      "source": "INSARAG2B",
+      "expected_ids": "INSARAG2B-5.7.1-p1;INSARAG2B-5.7.1-p2;INSARAG2B-5.5.2;INSARAG2B-5.9-p4",
+      "hybrid_top3": [
+        "INSARAG2B-5.7.1-p1",
+        "INSARAG2B-5.7.1-p3",
+        "SPHERE-2-p2"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "EMS98-3.3",
+        "EMS98-4.4-p2",
+        "INSARAG2B-5.7.1-p1"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "INSARAG2B-5.7.1-p3",
+        "INSARAG2B-5.7.1-p1",
+        "INSARAG2B-5.5.2"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "How should rescuers approach a collapsed site where a chemical leak is suspected?",
+      "source": "INSARAG3",
+      "expected_ids": "INSARAG3-9-p1;INSARAG3-9.1-p2;INSARAG2B-7.1;INSARAG2B-7.3",
+      "hybrid_top3": [
+        "INSARAG2B-7.1",
+        "INSARAG3-9-p1",
+        "INSARAG2B-7.3"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "INSARAG2B-7.1",
+        "INSARAG3-4.2-p1",
+        "INSARAG2B-5.7.1-p5"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "INSARAG2B-7.1",
+        "INSARAG3-9-p1",
+        "INSARAG2B-7.3"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "What should rescue teams agree with local health services before handing injured survivors over to them?",
+      "source": "INSARAG3",
+      "expected_ids": "INSARAG3-6.2-p2;INSARAG3-6.1-p2;INSARAG3-3.2-p1;INSARAG2B-4.3-p3",
+      "hybrid_top3": [
+        "INSARAG3-6.3",
+        "INSARAG3-6.2-p2",
+        "INSARAG3-6.2-p1"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "INSARAG3-5.2-p1",
+        "INSARAG3-5.2-p2",
+        "INSARAG3-6.2-p2"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "INSARAG3-6.3",
+        "INSARAG3-5.1",
+        "INSARAG2B-5.7.1-p6"
+      ],
+      "bm25_hit": false
+    },
+    {
+      "question": "Who should be consulted before rescuers work inside or right next to damaged buildings?",
+      "source": "INSARAG3",
+      "expected_ids": "INSARAG3-5.1;INSARAG3-3.2-p4;INSARAG3-4.2-p1",
+      "hybrid_top3": [
+        "INSARAG3-5.2-p2",
+        "INSARAG2B-5.7.1-p6",
+        "INSARAG3-5.1"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "INSARAG3-5.1",
+        "INSARAG3-5.2-p2",
+        "INSARAG3-4.2-p1"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "EMS98-timber-structure-great-hanshin",
+        "INSARAG3-5.2-p2",
+        "INSARAG2B-5.7.1-p6"
+      ],
+      "bm25_hit": false
+    },
+    {
+      "question": "Must medium and heavy USAR teams keep operations running 24 hours a day?",
+      "source": "INSARAG3",
+      "expected_ids": "INSARAG3-3.2-p3",
+      "hybrid_top3": [
+        "INSARAG2B-3.8-p1",
+        "INSARAG3-2",
+        "INSARAG2B-4.3-p1"
+      ],
+      "hybrid_hit": false,
+      "semantic_top3": [
+        "INSARAG2B-3.8-p1",
+        "INSARAG3-2",
+        "INSARAG2B-4.1-p2"
+      ],
+      "semantic_hit": false,
+      "bm25_top3": [
+        "INSARAG2B-5.7.1-p5",
+        "INSARAG2B-3.8-p1",
+        "INSARAG2B-7.1"
+      ],
+      "bm25_hit": false
+    },
+    {
+      "question": "A family of five will live in one tent in a cold mountain area. How much floor space should the tent have?",
+      "source": "SPHERE",
+      "expected_ids": "SPHERE-3-p1;SPHERE-3-p2",
+      "hybrid_top3": [
+        "SPHERE-3-p3",
+        "SPHERE-3-p2",
+        "SPHERE-3-p1"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "SPHERE-2-p4",
+        "SPHERE-3-p2",
+        "SPHERE-3-p3"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "SPHERE-3-p3",
+        "SPHERE-4-p2",
+        "SPHERE-3-p1"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "How much total site area per person does a planned camp need, including roads and services?",
+      "source": "SPHERE",
+      "expected_ids": "SPHERE-2-p2;SPHERE-2-p4",
+      "hybrid_top3": [
+        "SPHERE-2-p4",
+        "SPHERE-2-p2",
+        "SPHERE-2-p1"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "SPHERE-2-p4",
+        "SPHERE-2-p2",
+        "SPHERE-2-p3"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "SPHERE-2-p4",
+        "SPHERE-2-p2",
+        "XBD-6.2"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "How many cooking pots and blankets should each household receive?",
+      "source": "SPHERE",
+      "expected_ids": "SPHERE-4-p2",
+      "hybrid_top3": [
+        "SPHERE-4-p2",
+        "SPHERE-appendix-1-p5",
+        "SPHERE-2-p4"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "SPHERE-4-p2",
+        "SPHERE-4-p4",
+        "SPHERE-2-p4"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "SPHERE-appendix-1-p5",
+        "SPHERE-4-p2",
+        "SPHERE-4-p3"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "When should a damaged house be repaired, when retrofitted, and when demolished and rebuilt?",
+      "source": "SPHERE",
+      "expected_ids": "SPHERE-appendix-4-p1;SPHERE-appendix-4-p3",
+      "hybrid_top3": [
+        "EMS98-2.3-p2",
+        "SPHERE-appendix-4-p1",
+        "EMS98-analysis-p1"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "EMS98-commentary-p1",
+        "EMS98-2.3-p2",
+        "EMS98-analysis-p1"
+      ],
+      "semantic_hit": false,
+      "bm25_top3": [
+        "SPHERE-appendix-4-p1",
+        "SPHERE-5-p2",
+        "EMS98-introduction-p3"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "How should debris from destroyed buildings be handled during recovery?",
+      "source": "SPHERE",
+      "expected_ids": "SPHERE-1-p4;SPHERE-7-p1;SPHERE-7-p3;SPHERE-appendix-4-p4",
+      "hybrid_top3": [
+        "SPHERE-1-p4",
+        "EMS98-published-with-the-support",
+        "IWGSEM-2.1-p1"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "SPHERE-1-p4",
+        "INSARAG2B-5.7.1-p8",
+        "SPHERE-appendix-4-p4"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "EMS98-3.5",
+        "EMS98-published-with-the-support",
+        "EMS98-intensity-XII"
+      ],
+      "bm25_hit": false
+    },
+    {
+      "question": "What should a reconstruction programme do about building codes and safer building practices?",
+      "source": "SPHERE",
+      "expected_ids": "SPHERE-5-p1;SPHERE-5-p2;SPHERE-5-p4;SPHERE-5-p5",
+      "hybrid_top3": [
+        "SPHERE-5-p4",
+        "SPHERE-5-p2",
+        "SPHERE-5-p1"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "SPHERE-5-p4",
+        "SPHERE-5-p2",
+        "SPHERE-appendix-4-p4"
+      ],
+      "semantic_hit": true,
+      "bm25_top3": [
+        "SPHERE-5-p1",
+        "SPHERE-5-p4",
+        "SPHERE-appendix-1-p3"
+      ],
+      "bm25_hit": true
+    },
+    {
+      "question": "Can schools or other public buildings be used as emergency shelters, and what must be checked before people move in?",
+      "source": "SPHERE",
+      "expected_ids": "SPHERE-2-p6;SPHERE-appendix-4-p1;SPHERE-appendix-4-p3;SPHERE-appendix-1-p4;SPHERE-appendix-2-p2",
+      "hybrid_top3": [
+        "SPHERE-appendix-1-p3",
+        "SPHERE-appendix-1-p4",
+        "SPHERE-5-p5"
+      ],
+      "hybrid_hit": true,
+      "semantic_top3": [
+        "SPHERE-3-p2",
+        "SPHERE-5-p4",
+        "SPHERE-appendix-1-p3"
+      ],
+      "semantic_hit": false,
+      "bm25_top3": [
+        "SPHERE-1-p4",
+        "SPHERE-2-p5",
+        "SPHERE-appendix-1-p4"
+      ],
+      "bm25_hit": true
+    }
+  ],
+  "numpy_backend": {
+    "backend": "numpy + torch",
+    "hybrid_hits": 27,
+    "semantic_hits": 20,
+    "bm25_hits": 25,
+    "same_hybrid_top3": 30,
+    "same_semantic_top3": 30,
+    "same_bm25_top3": 30,
+    "different_hybrid_top3": []
+  }
+}

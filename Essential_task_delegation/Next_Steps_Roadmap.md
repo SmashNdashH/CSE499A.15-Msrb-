@@ -79,10 +79,11 @@ What each finished task found, and the decisions it led to, are in [Task_Ledger.
 | **System track: in parallel** | | | | | | | |
 | H2 | Per-building table + SQL counting agent | Paper: DamageScope, Change-Agent | O2, O3 | CPU / light GPU | ~1 | E1 | Noman |
 | H2b | Graded test of the SQL agent: which model, if any, writes the SQL | Paper: test suites (Zhong et al.), TrustSQL / EHRSQL 2024, Dr.Spider, DAIL-SQL | O2, O3, O4 | Eval notebook (2×T4) | ~1–1.5 | H2 | Abrar |
+| H2c | Free-form questions, second try: question–SQL pairs, fine-tuning, an agreement gate, a new test (fallback: the system as it was) | Paper: EHRSQL 2024, TrustSQL | O3, O4 | Data (CPU) + adapter training + eval notebook | ~5–10 | L2 (or the 7B), H2b | Abrar |
 | H3 | VLM input upgrades (before + after, numbered marks, crops) | Paper: TEOChat, GeoPixel, ImageRAG; Tamanna Plan 2 | O2 | Variants in H1 | ~6 each | H1 | Tamanna |
 | H4 | GEOBench-VLM external counting test | Paper: GEOBench-VLM | O2 | Eval notebook | ~1 | H1 | Aryan |
 | T2 | DisasTeller on local models | Plan | O3 | GPU notebook | ~2 | — | Ridita |
-| T3 | Unified offline demo | Plan + Tamanna Plan 3 | O3 | App notebook | ~1 | H1, T1, T2 | Tamanna |
+| T3 | Unified offline demo and public showcase (Vercel website) | Plan + Tamanna Plan 3 | O3 | Website (Vercel) + local API | ~1 | H2, T1, T2 | Abrar (decided 24 Oct) |
 | L0 | A better 7B teacher before distilling (decided 19 Oct) | Paper: DisasterM3 (Table 2, Appendix B.3) | O4, O2 | Eval notebook, then a top-up run only if needed | ~2–3, then ~10–20 | H1 V2 | Abrar |
 | L2 | 7B → 3B distillation (after L0) | Plan + Paper: QLoRA | O4 | 2 notebooks | heavy (~15–25) | L0; 3rd account | Noman |
 | L2b | Explanations as a second skill ("why?" on request) | Paper: Distilling Step-by-Step, BDAChat, ImageRAG | O4, O3 | Generation notebook + L2 step 2 change | ~3–5 | L2 step 1 | Noman |
@@ -478,6 +479,26 @@ R16's two parts are **the finding** (which buildings are there) and **the gradin
   - If nothing passes, fixed queries only.
   - Re-run on the distilled 3B after L2.
 - **Outputs:** `summary.csv`, `by_group.csv`, `pairwise.csv`, `decision.md`, `README.md`.
+- **Result (23 Oct, Noman's account, 47 min): done; no configuration passes, so the system answers through fixed queries only.**
+  - Our 7B in 4-bit: 69.0% [57.1, 80.5], RS(10) −89.6, with the most refusals of unanswerable questions (94%). The best accuracy was Coder-3B in fp16's 73.9%, and every RS(10) was negative. The base VL-3B in 4-bit: 46.4%.
+  - Weak for every model: pairs of buildings, the "no destroyed building nearby" NULL case, positions and distances.
+  - The re-run on the distilled 3B is needed only if free-form questions come back. Details in [Task_Ledger.md](Task_Ledger.md) and [H2b-results/H2b/](Champion_Task/H2b-results/H2b/README.md).
+  - Why a framework's SQL agent (LangChain's) wouldn't change this, and what could bring free-form questions back: [System_Design_Notes.md §3](System_Design_Notes.md).
+
+### H2c · Free-form questions, second try (added 24 Oct)
+- **Why:** H2b's models failed the bar zero-shot. In the literature, models passed a similar bar only with in-domain training and an abstention gate. In EHRSQL 2024, fine-tuned 3B and 7B models scored 44 at RS(10), while a prompted-only 7B scored −713 ([System_Design_Notes.md §3.5](System_Design_Notes.md)).
+- **Source:** [Paper] the EHRSQL 2024 shared task (fine-tuning plus a gate); TrustSQL (retrieved examples, and the five-sample agreement gate).
+- **Goal:** O3 and O4: free-form numeric questions in the system, if they can be made reliable.
+- **Build:**
+  1. **Question–SQL pairs for our table** (CPU): question templates times paraphrases, each checked by running its reference query on H2's table. Paraphrase writing can go to teammates, since a script checks every pair.
+  2. **Fine-tuning:** a separate LoRA adapter on the final 3B (after L2), or on the 7B if L2 isn't ready. The main model stays untouched.
+  3. **Retrieval:** similar solved pairs go into the prompt (TrustSQL's SQLPROMPT).
+  4. **Agreement gate:** sample five queries, and answer only if they agree (TrustSQL's VOTING); otherwise refuse.
+  5. **A new question set,** written before any run, with unseen question types and unanswerable questions, graded like H2b (test suites, five table versions).
+- **Decision rule (fixed 24 Oct, before any run):** it passes with at least 90% test-suite accuracy and RS(10) above 0 on the new set. Also reported: RS at 0, 5 and 10, a risk–coverage curve with its RC-AUC (as defined in TimeSpot, ICML 2026; [Paper_Audit §4.15](Paper_Audit_and_Integration_Plan.md)), and first-try accuracy.
+- **If it passes:** free-form numeric questions ship with the gate, labelled as model answers.
+- **If it fails: fall back to the system as it was.** Fixed queries and the question templates stay; the adapter is dropped; nothing else changes.
+- **Order:** after L2 (the agreed order is T2, T3, L0, L2 first). The question–SQL pairs can be built earlier, on CPU.
 
 ### H3 · VLM input upgrades (variants in the H1 harness)
 - **Source:**
@@ -509,21 +530,32 @@ R16's two parts are **the finding** (which buildings are there) and **the gradin
   3. Replace the three image tools' `genai.GenerativeModel` calls with local Qwen calls.
   4. Replace `gemini-embedding-001` with a local sentence-transformers model, and rebuild the Chroma database of guidelines.
   5. Feed the agents per-building facts (H2) and hot spots (T1) as text.
+  6. Offline by default: no web tools and no "search the internet" wording unless an online switch is turned on, and new offline wording for tasks 3–6. Details and the test rule: [System_Design_Notes.md §2](System_Design_Notes.md) (recommended 24 Oct).
+  7. Consistency check (added 26 Oct, after TimeSpot's consistency-violation rates; [Paper_Audit §4.15](Paper_Audit_and_Integration_Plan.md)): every number in each report is compared with the fixed queries on H2's table, and the run passes only with zero contradictions.
 - **Outputs:** the same 6 report files as the Gemini run, a log proving no external API calls (run once with internet off after setup), and `README.md` comparing them with the Gemini reports from 20 July.
 
-### T3 · Unified offline demo
-- **Source:** [Plan] the CSE499A future work "unified deployment" and O3; Tamanna's [Plan 3](Tamanna_task_2/Plan_3/Plan_3_Offline_Interactive_Demo.md).
-- **Goal:** O3 — one offline system.
-- **Base:** `support/Abrar/Implementation_DisasterM3/gradio_app.py` (already loads a U-Net and Qwen).
-- **Build:** one Gradio app with this chain:
-  1. upload before and after images;
-  2. R9 segmentation (damage map);
-  3. per-building counts (H2);
-  4. heatmap (T1);
-  5. a question box answered by the VLM with counts as text (H1 V2);
-  6. a DisasTeller report on local models (T2).
+### T3 · Unified offline demo and public showcase
+- **Source:** [Plan] the CSE499A future work "unified deployment" and O3; Tamanna's [Plan 3](Tamanna_task_2/Plan_3/Plan_3_Offline_Interactive_Demo.md); the showcase plan agreed 24 Oct, with its reasoning and what last season's winner showed in [System_Design_Notes.md §4](System_Design_Notes.md).
+- **Goal:** O3 — one offline system, and a showcase the public can use.
+- **Owner:** Abrar (decided 24 Oct), who also chooses the name and look later.
+- **Two pieces (agreed 24 Oct):**
+  1. **Public showcase site:** the project's story, from results computed in advance: before/after sliders with the damage map, videos of the live run, a building map where clicking a building shows its facts, the benchmark panel, the limitations and the team.
+  2. **Interactive demo website, deployed on Vercel:** animated, with current UI/UX, running the chain below. Both pieces can be one Next.js project (a story page and a demo page).
+- **3D damage city (agreed 24 Oct):** a view in the website where each building outline from the damage map is raised into a 3D block, coloured by damage class. Heights are schematic (for example, destroyed buildings drawn as low slabs), and the view is labelled as a 3D view of our 2D results, not a reconstruction. About a week, no GPU; it uses the building outlines from the gallery export.
+- **Order (agreed 24 Oct):** T2, T3, L0 and L2 come before any work on Layers 2–4 of the day-1 vision ([System_Design_Notes.md §5](System_Design_Notes.md)).
+- **The chain** (live at the booth with internet off; the public site shows the same steps from results computed in advance):
+  1. pick a gallery image, or upload a before and after pair;
+  2. the damage map (R11 with TTA on a GPU, or the INT8 edge model on a CPU);
+  3. per-building counts by fixed queries (H2), linked to their buildings on the map;
+  4. the heatmap (T1);
+  5. fixed question templates instead of a free-form question box (H2b);
+  6. the DisasTeller report on local models (T2), shown as it's written;
+  7. the benchmark panel.
+- **How the website runs the models:** Vercel has no GPU, so the public site works from results computed in advance. At the booth, the same front end runs on the laptop and calls a local Python API that runs the chain offline. Stretch, to be tried (decided 24 Oct): the INT8 segmenter in the visitor's browser (ONNX Runtime Web), so uploads work with no server. A feasibility test comes first ([System_Design_Notes.md §4.3](System_Design_Notes.md)).
+- **Base:** `support/Abrar/Implementation_DisasterM3/gradio_app.py` (already loads a U-Net and Qwen) becomes the local API's test page and the fallback if the website isn't ready. Its `share=True` opens a public tunnel, so it must be off offline.
+- **Before building:** T2's reports; a gallery export (4–6 validation pairs with masks, building facts, heatmaps and each image's accuracy); L1 repeated on R11 (R11's own INT8 export); the browser test ([Champion_Task/T3-browser-test/](Champion_Task/T3-browser-test/README.md)) repeated on the booth laptop, and on a mid-range phone once the site is on Vercel with the COOP and COEP headers; a Vercel account linked to the repository; Abrar's choice of name and look.
 
-  It must run with internet off after setup. A container is optional, not a key result.
+  Live mode must run with internet off after setup. A container is optional, not a key result.
 
 ### L0 · A better 7B teacher before distilling
 - **Decided 19 Oct:** improve the 7B first, then distil (L2). A student learns from its teacher, and ours trails the paper's own fine-tune of the same model.
@@ -609,7 +641,8 @@ R16's two parts are **the finding** (which buildings are there) and **the gradin
   1. Quantise the distilled 3B with AutoAWQ. Also check whether Qwen publishes an official AWQ build to compare against.
   2. Measure memory, tokens per second and six-task accuracy.
   3. Handoff: compute the geometric mean of the probabilities of the generated tokens (`output_scores=True`). Below a threshold, send the question to the 7B.
-  4. Report the share answered by the 3B, the accuracy against the 7B alone, and the latency.
+  4. **Before choosing the threshold, check the confidence** (added 26 Oct, from TimeSpot, ICML 2026; [Paper_Audit §4.15](Paper_Audit_and_Integration_Plan.md)): the 3B's expected calibration error and its risk–coverage curve with RC-AUC on the six tasks. TimeSpot found open VLMs overconfident, so calibrate on validation data first (for example, temperature scaling), then pick the threshold from the curve.
+  5. Report the share answered by the 3B, the accuracy against the 7B alone, and the latency.
 
 ### L4 · EfficientSAM3 against SAM 3
 - **Source:** [Paper] EfficientSAM3 (its paper reports no results yet, so we measure) and [Plan] the edge step of the SAM 3 test plan (Research_Directions §7.4).

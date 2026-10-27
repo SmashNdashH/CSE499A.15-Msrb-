@@ -1,0 +1,851 @@
+uid,image,cls,ground_truth,gt_option,pred_option,correct,count_used,response
+0,test_images\bata_explosion_post_0.png,Damaged building counting.,2,B,E,False,,The answer is E.
+3,test_images\bata_explosion_post_3.png,Damaged building counting.,31,C,A,False,,The answer is A.
+6,test_images\beriut_explosion_post_10.png,Damaged building counting.,5,A,?,False,,"There are no buildings in the image provided that match the description of being moderately damaged but not completely destroyed. The image shows a port with ships and containers, but"
+9,test_images\beriut_explosion_post_18.png,Damaged building counting.,47,D,D,True,,D
+13,test_images\beriut_explosion_post_26.png,Damaged building counting.,1,B,E,False,,E
+16,test_images\guatemala_volcano_00000004_post_disaster.png,Damaged building counting.,14,B,D,False,,D
+19,test_images\guatemala_volcano_00000016_post_disaster.png,Damaged building counting.,2,A,D,False,,D.
+23,test_images\guatemala_volcano_00000022_post_disaster.png,Damaged building counting.,1,E,E,True,,The answer is E.
+26,test_images\hawaii_wildfire_post_633.png,Damaged building counting.,1,B,?,False,,"There are no buildings visible in the image provided. Therefore, it is not possible to count any buildings that were partially damaged. The correct answer is:
+
+The answer"
+29,test_images\hawaii_wildfire_post_640.png,Damaged building counting.,3,C,A,False,,The answer is A.
+33,test_images\hawaii_wildfire_post_644.png,Damaged building counting.,2,E,E,True,,E
+36,test_images\hawaii_wildfire_post_647.png,Damaged building counting.,27,D,?,False,,The image provided does not contain any information about buildings being partially harmed or compromised. It appears to be an aerial view of a road and surrounding areas with no visible
+39,test_images\hawaii_wildfire_post_652.png,Damaged building counting.,1,C,E,False,,E
+43,test_images\hurricane_florence_00000080_post_disaster.png,Damaged building counting.,5,B,C,False,,The answer is C.
+46,test_images\hurricane_florence_00000135_post_disaster.png,Damaged building counting.,5,B,E,False,,The answer is E.
+49,test_images\hurricane_florence_00000183_post_disaster.png,Damaged building counting.,8,B,C,False,,The answer is C.
+53,test_images\hurricane_florence_00000313_post_disaster.png,Damaged building counting.,1,D,D,True,,D.
+56,test_images\hurricane_florence_00000402_post_disaster.png,Damaged building counting.,5,C,A,False,,The answer is A.
+59,test_images\hurricane_florence_00000429_post_disaster.png,Damaged building counting.,5,B,A,False,,The answer is A.
+62,test_images\hurricane_florence_00000456_post_disaster.png,Damaged building counting.,4,C,A,False,,The answer is A.
+66,test_images\hurricane_florence_00000491_post_disaster.png,Damaged building counting.,9,C,C,True,,The answer is C.
+69,test_images\hurricane_florence_00000518_post_disaster.png,Damaged building counting.,1,D,D,True,,The answer is D.
+72,test_images\hurricane_harvey_00000000_post_disaster.png,Damaged building counting.,28,C,D,False,,D
+76,test_images\hurricane_harvey_00000062_post_disaster.png,Damaged building counting.,6,C,A,False,,The answer is A.
+79,test_images\hurricane_harvey_00000087_post_disaster.png,Damaged building counting.,16,E,D,False,,D
+82,test_images\hurricane_harvey_00000114_post_disaster.png,Damaged building counting.,64,E,D,False,,The answer is D.
+86,test_images\hurricane_harvey_00000149_post_disaster.png,Damaged building counting.,279,E,?,False,,"The image provided does not contain any numerical data or labels that can be used to determine the number of buildings that were moderately damaged but not completely destroyed. Therefore,"
+89,test_images\hurricane_harvey_00000201_post_disaster.png,Damaged building counting.,1,A,B,False,,B.
+92,test_images\hurricane_harvey_00000272_post_disaster.png,Damaged building counting.,4,E,E,True,,The answer is E.
+96,test_images\hurricane_harvey_00000328_post_disaster.png,Damaged building counting.,31,D,?,False,,The image provided does not contain any information about the number of buildings that were moderately damaged but not completely destroyed. It shows an aerial view of a residential area with
+99,test_images\hurricane_harvey_00000354_post_disaster.png,Damaged building counting.,18,A,C,False,,The answer is C.
+102,test_images\hurricane_harvey_00000404_post_disaster.png,Damaged building counting.,152,C,E,False,,E
+106,test_images\hurricane_harvey_00000463_post_disaster.png,Damaged building counting.,92,B,C,False,,The answer is C.
+109,test_images\hurricane_harvey_00000488_post_disaster.png,Damaged building counting.,24,D,E,False,,E
+112,test_images\hurricane_harvey_00000513_post_disaster.png,Damaged building counting.,8,D,D,True,,The answer is D.
+116,test_images\hurricane_matthew_00000023_post_disaster.png,Damaged building counting.,47,E,C,False,,The answer is C.
+119,test_images\hurricane_matthew_00000043_post_disaster.png,Damaged building counting.,31,C,C,True,,The answer is C.
+122,test_images\hurricane_matthew_00000062_post_disaster.png,Damaged building counting.,17,C,D,False,,D.
+125,test_images\hurricane_matthew_00000088_post_disaster.png,Damaged building counting.,28,B,D,False,,D.
+129,test_images\hurricane_matthew_00000114_post_disaster.png,Damaged building counting.,5,C,E,False,,The answer is E.
+132,test_images\hurricane_matthew_00000134_post_disaster.png,Damaged building counting.,16,E,C,False,,C
+135,test_images\hurricane_matthew_00000153_post_disaster.png,Damaged building counting.,13,D,C,False,,The answer is C.
+139,test_images\hurricane_matthew_00000180_post_disaster.png,Damaged building counting.,4,A,B,False,,B.
+142,test_images\hurricane_matthew_00000201_post_disaster.png,Damaged building counting.,2,B,C,False,,The answer is C.
+145,test_images\hurricane_matthew_00000220_post_disaster.png,Damaged building counting.,11,D,B,False,,B
+149,test_images\hurricane_matthew_00000248_post_disaster.png,Damaged building counting.,8,D,B,False,,The answer is B.
+152,test_images\hurricane_matthew_00000268_post_disaster.png,Damaged building counting.,5,C,B,False,,The answer is B.
+155,test_images\hurricane_matthew_00000301_post_disaster.png,Damaged building counting.,2,B,A,False,,The answer is A.
+159,test_images\hurricane_matthew_00000327_post_disaster.png,Damaged building counting.,8,E,E,True,,The answer is E.
+162,test_images\hurricane_matthew_00000347_post_disaster.png,Damaged building counting.,21,D,A,False,,The answer is A.
+165,test_images\hurricane_matthew_00000367_post_disaster.png,Damaged building counting.,13,A,D,False,,D.
+169,test_images\hurricane_michael_00000009_post_disaster.png,Damaged building counting.,5,D,D,True,,D.
+172,test_images\hurricane_michael_00000039_post_disaster.png,Damaged building counting.,8,E,E,True,,E
+175,test_images\hurricane_michael_00000067_post_disaster.png,Damaged building counting.,5,C,B,False,,B
+178,test_images\hurricane_michael_00000095_post_disaster.png,Damaged building counting.,34,A,C,False,,The answer is C.
+182,test_images\hurricane_michael_00000140_post_disaster.png,Damaged building counting.,20,A,C,False,,The answer is C.
+185,test_images\hurricane_michael_00000167_post_disaster.png,Damaged building counting.,19,D,E,False,,E
+188,test_images\hurricane_michael_00000194_post_disaster.png,Damaged building counting.,35,D,D,True,,D
+192,test_images\hurricane_michael_00000230_post_disaster.png,Damaged building counting.,30,B,C,False,,C
+195,test_images\hurricane_michael_00000258_post_disaster.png,Damaged building counting.,4,E,C,False,,C
+198,test_images\hurricane_michael_00000285_post_disaster.png,Damaged building counting.,2,C,C,True,,The answer is C.
+202,test_images\hurricane_michael_00000321_post_disaster.png,Damaged building counting.,3,D,B,False,,B
+205,test_images\hurricane_michael_00000348_post_disaster.png,Damaged building counting.,5,E,D,False,,D
+208,test_images\hurricane_michael_00000387_post_disaster.png,Damaged building counting.,8,A,A,True,,The answer is A.
+212,test_images\hurricane_michael_00000432_post_disaster.png,Damaged building counting.,19,B,B,True,,The answer is B.
+215,test_images\hurricane_michael_00000459_post_disaster.png,Damaged building counting.,11,B,B,True,,B
+218,test_images\hurricane_michael_00000486_post_disaster.png,Damaged building counting.,6,A,B,False,,B
+222,test_images\hurricane_michael_00000522_post_disaster.png,Damaged building counting.,2,B,?,False,,"There are no buildings in the image that appear to be moderately damaged but not completely destroyed. The image shows a natural landscape with water and some structures, but no"
+225,test_images\ian_hurricane_post_661.png,Damaged building counting.,1,C,E,False,,The answer is E.
+228,test_images\ian_hurricane_post_672.png,Damaged building counting.,1,E,E,True,,E
+232,test_images\ian_hurricane_post_681.png,Damaged building counting.,1,D,E,False,,E
+235,test_images\ian_hurricane_post_691.png,Damaged building counting.,1,D,E,False,,E
+238,test_images\ian_hurricane_post_706.png,Damaged building counting.,7,E,E,True,,E
+241,test_images\ian_hurricane_post_714.png,Damaged building counting.,2,E,C,False,,The answer is C.
+245,test_images\ian_hurricane_post_719.png,Damaged building counting.,2,E,E,True,,E
+248,test_images\ian_hurricane_post_722.png,Damaged building counting.,9,D,?,False,,There are no buildings in the image that appear to be moderately damaged but not completely destroyed. The image shows a satellite view of a waterway with some green areas
+251,test_images\ian_hurricane_post_725.png,Damaged building counting.,1,A,A,True,,The answer is A.
+255,test_images\ian_hurricane_post_731.png,Damaged building counting.,41,B,B,True,,The answer is B.
+258,test_images\ian_hurricane_post_735.png,Damaged building counting.,7,C,C,True,,The answer is C.
+261,test_images\ian_hurricane_post_739.png,Damaged building counting.,24,C,B,False,,B
+265,test_images\ian_hurricane_post_743.png,Damaged building counting.,29,A,C,False,,The answer is C.
+268,test_images\ian_hurricane_post_746.png,Damaged building counting.,19,C,A,False,,The answer is A.
+271,test_images\ian_hurricane_post_749.png,Damaged building counting.,2,E,B,False,,B
+275,test_images\ian_hurricane_post_754.png,Damaged building counting.,67,B,B,True,,The answer is B.
+278,test_images\ian_hurricane_post_758.png,Damaged building counting.,30,B,A,False,,The answer is A.
+281,test_images\ian_hurricane_post_761.png,Damaged building counting.,1,B,E,False,,E
+285,test_images\joplin_tornado_00000003_post_disaster.png,Damaged building counting.,75,D,A,False,,The answer is A.
+288,test_images\joplin_tornado_00000006_post_disaster.png,Damaged building counting.,1,A,B,False,,B.
+291,test_images\joplin_tornado_00000011_post_disaster.png,Damaged building counting.,48,A,C,False,,The answer is C.
+295,test_images\joplin_tornado_00000016_post_disaster.png,Damaged building counting.,46,B,B,True,,The answer is B.
+298,test_images\joplin_tornado_00000020_post_disaster.png,Damaged building counting.,27,A,E,False,,E
+301,test_images\joplin_tornado_00000025_post_disaster.png,Damaged building counting.,39,B,C,False,,The answer is C.
+304,test_images\joplin_tornado_00000031_post_disaster.png,Damaged building counting.,87,D,D,True,,D
+308,test_images\joplin_tornado_00000036_post_disaster.png,Damaged building counting.,6,E,E,True,,The answer is E.
+311,test_images\joplin_tornado_00000039_post_disaster.png,Damaged building counting.,36,B,E,False,,E
+314,test_images\joplin_tornado_00000042_post_disaster.png,Damaged building counting.,5,C,?,False,,"The image provided does not show any signs of damage to buildings or structures. Therefore, it is impossible to count the number of buildings that were partially damaged based on"
+318,test_images\joplin_tornado_00000047_post_disaster.png,Damaged building counting.,3,A,B,False,,B
+321,test_images\joplin_tornado_00000050_post_disaster.png,Damaged building counting.,3,D,E,False,,E
+324,test_images\joplin_tornado_00000054_post_disaster.png,Damaged building counting.,1,C,C,True,,C.
+328,test_images\joplin_tornado_00000060_post_disaster.png,Damaged building counting.,5,B,C,False,,The answer is C.
+331,test_images\joplin_tornado_00000065_post_disaster.png,Damaged building counting.,18,E,B,False,,B
+334,test_images\joplin_tornado_00000071_post_disaster.png,Damaged building counting.,5,B,C,False,,The answer is C.
+338,test_images\joplin_tornado_00000075_post_disaster.png,Damaged building counting.,20,B,C,False,,The answer is C.
+341,test_images\joplin_tornado_00000078_post_disaster.png,Damaged building counting.,20,A,B,False,,B
+344,test_images\joplin_tornado_00000083_post_disaster.png,Damaged building counting.,70,C,E,False,,E
+348,test_images\joplin_tornado_00000087_post_disaster.png,Damaged building counting.,17,A,E,False,,E
+351,test_images\joplin_tornado_00000090_post_disaster.png,Damaged building counting.,26,D,E,False,,E
+354,test_images\joplin_tornado_00000093_post_disaster.png,Damaged building counting.,9,B,B,True,,The answer is B.
+357,test_images\joplin_tornado_00000096_post_disaster.png,Damaged building counting.,4,B,E,False,,E
+361,test_images\joplin_tornado_00000108_post_disaster.png,Damaged building counting.,18,A,B,False,,B.
+364,test_images\joplin_tornado_00000111_post_disaster.png,Damaged building counting.,3,C,A,False,,The answer is A.
+367,test_images\joplin_tornado_00000114_post_disaster.png,Damaged building counting.,82,D,D,True,,D.
+371,test_images\joplin_tornado_00000118_post_disaster.png,Damaged building counting.,151,E,E,True,,E
+374,test_images\joplin_tornado_00000121_post_disaster.png,Damaged building counting.,28,D,A,False,,The answer is A.
+377,test_images\joplin_tornado_00000124_post_disaster.png,Damaged building counting.,6,E,E,True,,E
+381,test_images\joplin_tornado_00000131_post_disaster.png,Damaged building counting.,15,C,E,False,,E
+384,test_images\joplin_tornado_00000134_post_disaster.png,Damaged building counting.,10,E,E,True,,The answer is E.
+387,test_images\joplin_tornado_00000138_post_disaster.png,Damaged building counting.,4,B,E,False,,The answer is E.
+391,test_images\joplin_tornado_00000143_post_disaster.png,Damaged building counting.,20,A,D,False,,D
+394,test_images\joplin_tornado_00000146_post_disaster.png,Damaged building counting.,30,C,A,False,,The answer is A.
+397,test_images\kalehe_flooding_post_773.png,Damaged building counting.,9,B,B,True,,The answer is B.
+401,test_images\libya_flood_post_80.png,Damaged building counting.,69,A,C,False,,The answer is C.
+404,test_images\libya_flood_post_83.png,Damaged building counting.,89,E,B,False,,The answer is B.
+407,test_images\libya_flood_post_86.png,Damaged building counting.,34,D,C,False,,C
+411,test_images\libya_flood_post_90.png,Damaged building counting.,46,C,E,False,,E
+414,test_images\libya_flood_post_96.png,Damaged building counting.,15,B,D,False,,The answer is D.
+417,test_images\libya_flood_post_102.png,Damaged building counting.,4,B,E,False,,E
+420,test_images\libya_flood_post_115.png,Damaged building counting.,9,C,A,False,,The answer is A.
+424,test_images\lower_puna_volcano_00000255_post_disaster.png,Damaged building counting.,1,C,C,True,,C.
+427,test_images\mexico_earthquake_00000006_post_disaster.png,Damaged building counting.,7,E,E,True,,The answer is E.
+430,test_images\mexico_earthquake_00000048_post_disaster.png,Damaged building counting.,3,B,E,False,,The answer is E.
+434,test_images\mexico_earthquake_00000055_post_disaster.png,Damaged building counting.,6,D,E,False,,The answer is E.
+437,test_images\mexico_earthquake_00000059_post_disaster.png,Damaged building counting.,2,A,B,False,,B.
+440,test_images\mexico_earthquake_00000065_post_disaster.png,Damaged building counting.,1,A,E,False,,The answer is E.
+444,test_images\mexico_earthquake_00000075_post_disaster.png,Damaged building counting.,2,B,A,False,,The answer is A.
+447,test_images\mexico_earthquake_00000082_post_disaster.png,Damaged building counting.,4,D,D,True,,D.
+450,test_images\mexico_earthquake_00000086_post_disaster.png,Damaged building counting.,1,C,C,True,,C.
+454,test_images\mexico_earthquake_00000095_post_disaster.png,Damaged building counting.,4,B,A,False,,The answer is A.
+457,test_images\mexico_earthquake_00000117_post_disaster.png,Damaged building counting.,4,A,?,False,,The image provided does not contain any information about buildings being moderately damaged or destroyed. It appears to be an aerial view of a densely populated urban area with no visible
+460,test_images\mexico_earthquake_00000128_post_disaster.png,Damaged building counting.,2,D,?,False,,The image provided does not contain any information about buildings being moderately damaged or destroyed. It appears to be an aerial view of a residential area with no visible signs of
+464,test_images\mexico_earthquake_00000151_post_disaster.png,Damaged building counting.,4,B,E,False,,The answer is E.
+467,test_images\mexico_earthquake_00000169_post_disaster.png,Damaged building counting.,1,E,E,True,,E
+470,test_images\mexico_earthquake_00000183_post_disaster.png,Damaged building counting.,9,D,E,False,,The answer is E.
+473,test_images\midwest_flooding_00000050_post_disaster.png,Damaged building counting.,1,A,E,False,,E
+477,test_images\midwest_flooding_00000157_post_disaster.png,Damaged building counting.,1,D,D,True,,D.
+480,test_images\midwest_flooding_00000232_post_disaster.png,Damaged building counting.,1,C,C,True,,C.
+483,test_images\midwest_flooding_00000286_post_disaster.png,Damaged building counting.,7,B,B,True,,The answer is B.
+487,test_images\midwest_flooding_00000342_post_disaster.png,Damaged building counting.,1,E,A,False,,The answer is A.
+490,test_images\midwest_flooding_00000369_post_disaster.png,Damaged building counting.,8,D,D,True,,The answer is D.
+493,test_images\midwest_flooding_00000424_post_disaster.png,Damaged building counting.,1,B,B,True,,B.
+497,test_images\moore_tornado_00000045_post_disaster.png,Damaged building counting.,62,A,C,False,,The answer is C.
+500,test_images\moore_tornado_00000097_post_disaster.png,Damaged building counting.,52,C,A,False,,The answer is A.
+503,test_images\moore_tornado_00000119_post_disaster.png,Damaged building counting.,2,D,D,True,,"The image provided does not contain any visible signs of incomplete damage to buildings. All structures appear intact and undamaged. Therefore, the correct answer is:
+
+D."
+507,test_images\moore_tornado_00000197_post_disaster.png,Damaged building counting.,1,E,E,True,,E
+510,test_images\moore_tornado_00000215_post_disaster.png,Damaged building counting.,2,D,E,False,,The answer is E.
+513,test_images\nepal_flooding_00000031_post_disaster.png,Damaged building counting.,28,B,A,False,,The answer is A.
+517,test_images\nepal_flooding_00000075_post_disaster.png,Damaged building counting.,2,C,E,False,,E
+520,test_images\nepal_flooding_00000106_post_disaster.png,Damaged building counting.,6,A,B,False,,B.
+523,test_images\nepal_flooding_00000147_post_disaster.png,Damaged building counting.,41,A,C,False,,The answer is C.
+527,test_images\nepal_flooding_00000201_post_disaster.png,Damaged building counting.,12,B,C,False,,The answer is C.
+530,test_images\nepal_flooding_00000241_post_disaster.png,Damaged building counting.,1,E,C,False,,The answer is C.
+533,test_images\nepal_flooding_00000271_post_disaster.png,Damaged building counting.,2,B,B,True,,The answer is B.
+536,test_images\nepal_flooding_00000302_post_disaster.png,Damaged building counting.,3,E,E,True,,E
+540,test_images\nepal_flooding_00000342_post_disaster.png,Damaged building counting.,15,E,B,False,,The answer is B.
+543,test_images\nepal_flooding_00000372_post_disaster.png,Damaged building counting.,5,B,A,False,,The answer is A.
+546,test_images\nepal_flooding_00000413_post_disaster.png,Damaged building counting.,19,C,D,False,,The answer is D.
+550,test_images\nepal_flooding_00000455_post_disaster.png,Damaged building counting.,3,C,E,False,,The answer is E.
+553,test_images\nepal_flooding_00000487_post_disaster.png,Damaged building counting.,17,B,B,True,,The answer is B.
+556,test_images\nepal_flooding_00000517_post_disaster.png,Damaged building counting.,7,A,C,False,,The answer is C.
+560,test_images\nepal_flooding_00000558_post_disaster.png,Damaged building counting.,1,A,?,False,,"The image provided does not contain any visible buildings or structures that appear to be partially damaged. The image shows an aerial view of agricultural fields and some trees, but"
+563,test_images\nepal_flooding_00000598_post_disaster.png,Damaged building counting.,5,C,A,False,,The answer is A.
+566,test_images\noto_earthquake_post_126.png,Damaged building counting.,2,C,B,False,,The answer is B.
+570,test_images\noto_earthquake_post_157.png,Damaged building counting.,3,C,B,False,,The answer is B.
+573,test_images\noto_earthquake_post_162.png,Damaged building counting.,31,E,E,True,,E
+576,test_images\noto_earthquake_post_170.png,Damaged building counting.,2,A,E,False,,The answer is E.
+580,test_images\noto_earthquake_post_174.png,Damaged building counting.,2,B,E,False,,E
+583,test_images\noto_earthquake_post_179.png,Damaged building counting.,7,D,E,False,,E
+586,test_images\noto_earthquake_post_182.png,Damaged building counting.,4,E,E,True,,The answer is E.
+590,test_images\noto_earthquake_post_187.png,Damaged building counting.,3,E,E,True,,The answer is E.
+593,test_images\noto_earthquake_post_190.png,Damaged building counting.,1,C,E,False,,E
+596,test_images\palu_tsunami_00000002_post_disaster.png,Damaged building counting.,9,E,E,True,,The answer is E.
+599,test_images\palu_tsunami_00000013_post_disaster.png,Damaged building counting.,4,B,E,False,,E
+603,test_images\palu_tsunami_00000019_post_disaster.png,Damaged building counting.,4,D,E,False,,E
+606,test_images\palu_tsunami_00000025_post_disaster.png,Damaged building counting.,7,B,B,True,,B
+609,test_images\palu_tsunami_00000033_post_disaster.png,Damaged building counting.,4,E,E,True,,The answer is E.
+613,test_images\palu_tsunami_00000046_post_disaster.png,Damaged building counting.,2,D,D,True,,D.
+616,test_images\palu_tsunami_00000051_post_disaster.png,Damaged building counting.,1,C,C,True,,C.
+619,test_images\palu_tsunami_00000057_post_disaster.png,Damaged building counting.,3,A,C,False,,The answer is C.
+623,test_images\palu_tsunami_00000069_post_disaster.png,Damaged building counting.,12,E,E,True,,E
+626,test_images\palu_tsunami_00000079_post_disaster.png,Damaged building counting.,2,C,D,False,,The answer is D.
+629,test_images\palu_tsunami_00000090_post_disaster.png,Damaged building counting.,2,A,E,False,,The answer is E.
+633,test_images\palu_tsunami_00000108_post_disaster.png,Damaged building counting.,1,A,C,False,,The answer is C.
+636,test_images\palu_tsunami_00000117_post_disaster.png,Damaged building counting.,5,C,D,False,,The answer is D.
+639,test_images\palu_tsunami_00000131_post_disaster.png,Damaged building counting.,18,C,D,False,,D.
+643,test_images\palu_tsunami_00000143_post_disaster.png,Damaged building counting.,22,C,E,False,,E
+646,test_images\palu_tsunami_00000148_post_disaster.png,Damaged building counting.,2,B,?,False,,"The image provided does not contain any visible buildings that appear to be partially damaged. Therefore, the correct answer cannot be determined from the given options based on the image"
+649,test_images\palu_tsunami_00000158_post_disaster.png,Damaged building counting.,2,E,E,True,,E
+652,test_images\palu_tsunami_00000163_post_disaster.png,Damaged building counting.,5,D,E,False,,E
+656,test_images\palu_tsunami_00000167_post_disaster.png,Damaged building counting.,5,B,E,False,,The answer is E.
+659,test_images\palu_tsunami_00000178_post_disaster.png,Damaged building counting.,1,A,D,False,,D.
+662,test_images\palu_tsunami_00000189_post_disaster.png,Damaged building counting.,3,E,E,True,,E
+666,test_images\pinery_bushfire_00000117_post_disaster.png,Damaged building counting.,3,C,E,False,,The answer is E.
+669,test_images\pinery_bushfire_00000582_post_disaster.png,Damaged building counting.,6,E,A,False,,The answer is A.
+672,test_images\pinery_bushfire_00000901_post_disaster.png,Damaged building counting.,1,B,E,False,,"There are no buildings in the image that have suffered incomplete damage. The correct answer is:
+
+E."
+676,test_images\pinery_bushfire_00001785_post_disaster.png,Damaged building counting.,1,A,A,True,,The answer is A.
+679,test_images\portugal_wildfire_00000285_post_disaster.png,Damaged building counting.,1,D,E,False,,The answer is E.
+682,test_images\portugal_wildfire_00000827_post_disaster.png,Damaged building counting.,2,C,B,False,,The answer is B.
+686,test_images\portugal_wildfire_00001301_post_disaster.png,Damaged building counting.,1,A,C,False,,C.
+689,test_images\portugal_wildfire_00001518_post_disaster.png,Damaged building counting.,1,B,B,True,,B.
+692,test_images\portugal_wildfire_00001654_post_disaster.png,Damaged building counting.,1,B,B,True,,B.
+696,test_images\santa_rosa_wildfire_00000012_post_disaster.png,Damaged building counting.,1,E,E,True,,E
+699,test_images\santa_rosa_wildfire_00000074_post_disaster.png,Damaged building counting.,2,E,E,True,,E
+702,test_images\santa_rosa_wildfire_00000155_post_disaster.png,Damaged building counting.,1,B,A,False,,The answer is A.
+706,test_images\santa_rosa_wildfire_00000230_post_disaster.png,Damaged building counting.,1,A,C,False,,The answer is C.
+709,test_images\santa_rosa_wildfire_00000306_post_disaster.png,Damaged building counting.,2,D,C,False,,The answer is C.
+712,test_images\santa_rosa_wildfire_00000370_post_disaster.png,Damaged building counting.,1,A,B,False,,The answer is B.
+715,test_images\socal_fire_00000488_post_disaster.png,Damaged building counting.,2,E,E,True,,E
+719,test_images\sunda_tsunami_00000041_post_disaster.png,Damaged building counting.,2,B,?,False,,The image provided does not contain any visible signs of damage to buildings that would allow for an accurate count of moderately damaged structures. The image appears to be taken from
+723,test_images\sunda_tsunami_00000079_post_disaster.png,Damaged building counting.,2,E,A,False,,The answer is A.
+726,test_images\sunda_tsunami_00000140_post_disaster.png,Damaged building counting.,9,E,E,True,,The answer is E.
+730,test_images\turkey_earthquake1_post_227.png,Damaged building counting.,2,A,B,False,,B.
+733,test_images\turkey_earthquake1_post_238.png,Damaged building counting.,1,C,E,False,,The answer is E.
+736,test_images\turkey_earthquake1_post_241.png,Damaged building counting.,7,E,C,False,,The answer is C.
+740,test_images\turkey_earthquake1_post_247.png,Damaged building counting.,6,D,E,False,,E
+743,test_images\turkey_earthquake1_post_250.png,Damaged building counting.,2,D,C,False,,The answer is C.
+746,test_images\turkey_earthquake3_post_266.png,Damaged building counting.,6,C,E,False,,E
+750,test_images\turkey_earthquake3_post_270.png,Damaged building counting.,1,A,E,False,,E
+753,test_images\turkey_earthquake3_post_279.png,Damaged building counting.,3,E,D,False,,The answer is D.
+756,test_images\turkey_earthquake4_post_284.png,Damaged building counting.,26,E,E,True,,E
+760,test_images\turkey_earthquake4_post_290.png,Damaged building counting.,1,C,D,False,,D.
+763,test_images\turkey_earthquake4_post_293.png,Damaged building counting.,1,C,E,False,,The answer is E.
+766,test_images\turkey_earthquake4_post_297.png,Damaged building counting.,22,D,D,True,,D.
+769,test_images\turkey_earthquake4_post_301.png,Damaged building counting.,3,E,B,False,,B
+773,test_images\turkey_earthquake4_post_305.png,Damaged building counting.,13,D,C,False,,The answer is C.
+776,test_images\turkey_earthquake4_post_308.png,Damaged building counting.,10,B,D,False,,D
+779,test_images\turkey_earthquake4_post_312.png,Damaged building counting.,14,E,D,False,,D.
+783,test_images\turkey_earthquake4_post_317.png,Damaged building counting.,7,E,D,False,,D
+786,test_images\turkey_earthquake4_post_321.png,Damaged building counting.,24,E,A,False,,The answer is A.
+789,test_images\turkey_earthquake4_post_324.png,Damaged building counting.,3,E,C,False,,C.
+793,test_images\turkey_earthquake4_post_328.png,Damaged building counting.,9,E,D,False,,The answer is D.
+796,test_images\turkey_earthquake4_post_332.png,Damaged building counting.,22,C,B,False,,The answer is B.
+799,test_images\turkey_earthquake5_post_353.png,Damaged building counting.,4,A,D,False,,D.
+803,test_images\turkey_earthquake6_post_367.png,Damaged building counting.,4,A,D,False,,The answer is D.
+806,test_images\turkey_earthquake6_post_372.png,Damaged building counting.,4,E,C,False,,C.
+809,test_images\turkey_earthquake6_post_377.png,Damaged building counting.,1,B,C,False,,The answer is C.
+813,test_images\turkey_earthquake6_post_381.png,Damaged building counting.,6,A,C,False,,The answer is C.
+816,test_images\turkey_earthquake6_post_386.png,Damaged building counting.,9,A,B,False,,B.
+819,test_images\turkey_earthquake6_post_389.png,Damaged building counting.,1,B,C,False,,C.
+823,test_images\turkey_earthquake6_post_403.png,Damaged building counting.,9,D,A,False,,The answer is A.
+826,test_images\turkey_earthquake6_post_406.png,Damaged building counting.,1,B,B,True,,B.
+829,test_images\turkey_earthquake6_post_417.png,Damaged building counting.,1,D,E,False,,E
+832,test_images\turkey_earthquake6_post_421.png,Damaged building counting.,2,D,D,True,,D.
+836,test_images\turkey_earthquake6_post_425.png,Damaged building counting.,3,C,A,False,,The answer is A.
+839,test_images\turkey_earthquake6_post_439.png,Damaged building counting.,1,B,C,False,,The answer is C.
+842,test_images\turkey_earthquake6_post_442.png,Damaged building counting.,15,D,E,False,,E
+846,test_images\turkey_earthquake6_post_457.png,Damaged building counting.,1,D,C,False,,The answer is C.
+849,test_images\turkey_earthquake6_post_467.png,Damaged building counting.,9,B,E,False,,E
+852,test_images\turkey_earthquake6_post_471.png,Damaged building counting.,1,B,B,True,,B.
+856,test_images\turkey_earthquake6_post_478.png,Damaged building counting.,1,E,D,False,,D.
+859,test_images\turkey_earthquake6_post_483.png,Damaged building counting.,23,A,C,False,,The answer is C.
+862,test_images\turkey_earthquake6_post_487.png,Damaged building counting.,2,A,E,False,,The answer is E.
+866,test_images\turkey_earthquake6_post_496.png,Damaged building counting.,1,C,E,False,,E
+869,test_images\turkey_earthquake6_post_500.png,Damaged building counting.,18,B,C,False,,The answer is C.
+872,test_images\turkey_earthquake6_post_507.png,Damaged building counting.,1,A,E,False,,E
+877,test_images\turkey_earthquake6_post_516.png,Damaged building counting.,35,B,C,False,,The answer is C.
+880,test_images\turkey_earthquake6_post_520.png,Damaged building counting.,3,E,E,True,,E
+883,test_images\turkey_earthquake6_post_530.png,Damaged building counting.,5,D,E,False,,The answer is E.
+887,test_images\turkey_earthquake6_post_534.png,Damaged building counting.,13,D,E,False,,E
+890,test_images\turkey_earthquake6_post_538.png,Damaged building counting.,2,C,C,True,,The answer is C.
+893,test_images\turkey_earthquake6_post_548.png,Damaged building counting.,4,D,E,False,,E
+896,test_images\turkey_earthquake6_post_551.png,Damaged building counting.,1,A,E,False,,E
+900,test_images\turkey_earthquake6_post_555.png,Damaged building counting.,1,C,D,False,,The answer is D.
+903,test_images\turkey_earthquake6_post_558.png,Damaged building counting.,2,B,E,False,,The answer is E.
+906,test_images\turkey_earthquake6_post_563.png,Damaged building counting.,1,A,C,False,,The answer is C.
+910,test_images\turkey_earthquake6_post_567.png,Damaged building counting.,4,B,E,False,,E
+913,test_images\turkey_earthquake7_post_571.png,Damaged building counting.,1,D,B,False,,B
+916,test_images\turkey_earthquake7_post_608.png,Damaged building counting.,7,A,E,False,,The answer is E.
+920,test_images\tuscaloosa_tornado_00000022_post_disaster.png,Damaged building counting.,1,A,E,False,,E
+923,test_images\tuscaloosa_tornado_00000042_post_disaster.png,Damaged building counting.,1,E,C,False,,C
+926,test_images\tuscaloosa_tornado_00000059_post_disaster.png,Damaged building counting.,7,D,?,False,,"There are no buildings in the image that appear to have suffered incomplete damage. The image shows a mix of residential areas and a large forested area, but no"
+930,test_images\tuscaloosa_tornado_00000090_post_disaster.png,Damaged building counting.,35,B,C,False,,The answer is C.
+933,test_images\tuscaloosa_tornado_00000156_post_disaster.png,Damaged building counting.,33,A,C,False,,C
+936,test_images\tuscaloosa_tornado_00000183_post_disaster.png,Damaged building counting.,15,A,E,False,,The answer is E.
+940,test_images\tuscaloosa_tornado_00000231_post_disaster.png,Damaged building counting.,1,A,B,False,,B.
+943,test_images\tuscaloosa_tornado_00000256_post_disaster.png,Damaged building counting.,84,B,B,True,,The answer is B.
+946,test_images\tuscaloosa_tornado_00000278_post_disaster.png,Damaged building counting.,1,C,C,True,,C.
+949,test_images\tuscaloosa_tornado_00000316_post_disaster.png,Damaged building counting.,11,C,B,False,,B
+953,test_images\woolsey_fire_00000084_post_disaster.png,Damaged building counting.,1,C,C,True,,C
+956,test_images\woolsey_fire_00000206_post_disaster.png,Damaged building counting.,1,C,C,True,,C
+959,test_images\woolsey_fire_00000246_post_disaster.png,Damaged building counting.,3,B,D,False,,D.
+963,test_images\woolsey_fire_00000409_post_disaster.png,Damaged building counting.,2,B,D,False,,The answer is D.
+966,test_images\woolsey_fire_00000480_post_disaster.png,Damaged building counting.,2,D,A,False,,The answer is A.
+969,test_images\woolsey_fire_00000585_post_disaster.png,Damaged building counting.,4,E,E,True,,E
+973,test_images\woolsey_fire_00000833_post_disaster.png,Damaged building counting.,4,B,D,False,,D.
+976,test_images\bata_explosion_post_2.png,Totally-destroyed building counting.,4,B,E,False,,The answer is E.
+979,test_images\beriut_explosion_post_8.png,Totally-destroyed building counting.,1,B,B,True,,B.
+985,test_images\guatemala_volcano_00000003_post_disaster.png,Totally-destroyed building counting.,1,E,E,True,,E
+988,test_images\guatemala_volcano_00000014_post_disaster.png,Totally-destroyed building counting.,1,B,B,True,,The answer is B.
+991,test_images\guatemala_volcano_00000025_post_disaster.png,Totally-destroyed building counting.,14,B,C,False,,The answer is C.
+998,test_images\hawaii_wildfire_post_639.png,Totally-destroyed building counting.,4,C,C,True,,The answer is C.
+1001,test_images\hawaii_wildfire_post_642.png,Totally-destroyed building counting.,14,E,E,True,,The answer is E.
+1004,test_images\hawaii_wildfire_post_646.png,Totally-destroyed building counting.,164,A,B,False,,The answer is B.
+1012,test_images\hawaii_wildfire_post_657.png,Totally-destroyed building counting.,131,A,C,False,,The answer is C.
+1015,test_images\hurricane_harvey_00000071_post_disaster.png,Totally-destroyed building counting.,2,E,E,True,,E
+1018,test_images\hurricane_harvey_00000141_post_disaster.png,Totally-destroyed building counting.,1,A,E,False,,The answer is E.
+1021,test_images\hurricane_harvey_00000309_post_disaster.png,Totally-destroyed building counting.,5,B,A,False,,The answer is A.
+1025,test_images\hurricane_harvey_00000387_post_disaster.png,Totally-destroyed building counting.,2,D,D,True,,The answer is D.
+1028,test_images\hurricane_harvey_00000496_post_disaster.png,Totally-destroyed building counting.,2,C,C,True,,The answer is C.
+1031,test_images\hurricane_matthew_00000030_post_disaster.png,Totally-destroyed building counting.,1,B,B,True,,B.
+1035,test_images\hurricane_matthew_00000062_post_disaster.png,Totally-destroyed building counting.,2,E,E,True,,E
+1038,test_images\hurricane_matthew_00000101_post_disaster.png,Totally-destroyed building counting.,14,B,?,False,,There are no buildings in the image provided for evaluation. The image shows a coastal area with water and land but no structures that can be counted as demolished. Therefore
+1041,test_images\hurricane_matthew_00000134_post_disaster.png,Totally-destroyed building counting.,1,D,D,True,,D.
+1045,test_images\hurricane_matthew_00000160_post_disaster.png,Totally-destroyed building counting.,16,C,E,False,,The answer is E.
+1048,test_images\hurricane_matthew_00000180_post_disaster.png,Totally-destroyed building counting.,7,C,?,False,,"There are no buildings in the image provided. The image shows a landscape with greenery and some patches of lighter color, possibly indicating dry areas or cleared land,"
+1051,test_images\hurricane_matthew_00000201_post_disaster.png,Totally-destroyed building counting.,2,C,E,False,,The answer is E.
+1055,test_images\hurricane_matthew_00000227_post_disaster.png,Totally-destroyed building counting.,5,C,A,False,,The answer is A.
+1058,test_images\hurricane_matthew_00000248_post_disaster.png,Totally-destroyed building counting.,9,D,B,False,,The answer is B.
+1061,test_images\hurricane_matthew_00000275_post_disaster.png,Totally-destroyed building counting.,11,D,E,False,,The answer is E.
+1065,test_images\hurricane_matthew_00000314_post_disaster.png,Totally-destroyed building counting.,7,D,D,True,,The answer is D.
+1068,test_images\hurricane_matthew_00000334_post_disaster.png,Totally-destroyed building counting.,2,E,E,True,,E
+1071,test_images\hurricane_matthew_00000353_post_disaster.png,Totally-destroyed building counting.,1,E,E,True,,E
+1074,test_images\hurricane_matthew_00000382_post_disaster.png,Totally-destroyed building counting.,32,B,D,False,,The answer is D.
+1078,test_images\hurricane_michael_00000048_post_disaster.png,Totally-destroyed building counting.,1,A,E,False,,E
+1081,test_images\hurricane_michael_00000076_post_disaster.png,Totally-destroyed building counting.,4,D,C,False,,The answer is C.
+1084,test_images\hurricane_michael_00000104_post_disaster.png,Totally-destroyed building counting.,1,E,E,True,,E
+1088,test_images\hurricane_michael_00000167_post_disaster.png,Totally-destroyed building counting.,5,E,E,True,,E
+1091,test_images\hurricane_michael_00000194_post_disaster.png,Totally-destroyed building counting.,7,C,B,False,,B
+1094,test_images\hurricane_michael_00000221_post_disaster.png,Totally-destroyed building counting.,5,D,D,True,,D
+1098,test_images\hurricane_michael_00000258_post_disaster.png,Totally-destroyed building counting.,1,C,C,True,,C.
+1101,test_images\hurricane_michael_00000294_post_disaster.png,Totally-destroyed building counting.,1,E,E,True,,E
+1104,test_images\hurricane_michael_00000321_post_disaster.png,Totally-destroyed building counting.,3,C,E,False,,E
+1108,test_images\hurricane_michael_00000414_post_disaster.png,Totally-destroyed building counting.,1,C,C,True,,C.
+1111,test_images\hurricane_michael_00000477_post_disaster.png,Totally-destroyed building counting.,2,D,D,True,,D.
+1114,test_images\hurricane_michael_00000540_post_disaster.png,Totally-destroyed building counting.,1,C,C,True,,C.
+1119,test_images\ian_hurricane_post_730.png,Totally-destroyed building counting.,1,C,B,False,,The answer is B.
+1122,test_images\ian_hurricane_post_742.png,Totally-destroyed building counting.,1,E,E,True,,E
+1125,test_images\joplin_tornado_00000001_post_disaster.png,Totally-destroyed building counting.,69,D,D,True,,The answer is D.
+1129,test_images\joplin_tornado_00000008_post_disaster.png,Totally-destroyed building counting.,20,A,D,False,,D
+1132,test_images\joplin_tornado_00000016_post_disaster.png,Totally-destroyed building counting.,81,A,B,False,,The answer is B.
+1135,test_images\joplin_tornado_00000022_post_disaster.png,Totally-destroyed building counting.,4,C,D,False,,D
+1138,test_images\joplin_tornado_00000030_post_disaster.png,Totally-destroyed building counting.,8,D,D,True,,D
+1142,test_images\joplin_tornado_00000035_post_disaster.png,Totally-destroyed building counting.,8,D,D,True,,D
+1145,test_images\joplin_tornado_00000041_post_disaster.png,Totally-destroyed building counting.,5,E,E,True,,E
+1148,test_images\joplin_tornado_00000047_post_disaster.png,Totally-destroyed building counting.,6,C,C,True,,C
+1152,test_images\joplin_tornado_00000053_post_disaster.png,Totally-destroyed building counting.,1,D,C,False,,The answer is C.
+1155,test_images\joplin_tornado_00000062_post_disaster.png,Totally-destroyed building counting.,3,E,E,True,,E
+1158,test_images\joplin_tornado_00000071_post_disaster.png,Totally-destroyed building counting.,34,A,D,False,,D
+1162,test_images\joplin_tornado_00000083_post_disaster.png,Totally-destroyed building counting.,37,A,E,False,,E
+1165,test_images\joplin_tornado_00000086_post_disaster.png,Totally-destroyed building counting.,94,C,E,False,,The answer is E.
+1168,test_images\joplin_tornado_00000089_post_disaster.png,Totally-destroyed building counting.,62,C,A,False,,The answer is A.
+1172,test_images\joplin_tornado_00000096_post_disaster.png,Totally-destroyed building counting.,5,B,C,False,,The answer is C.
+1175,test_images\joplin_tornado_00000108_post_disaster.png,Totally-destroyed building counting.,1,B,B,True,,B
+1178,test_images\joplin_tornado_00000112_post_disaster.png,Totally-destroyed building counting.,8,B,E,False,,E
+1182,test_images\joplin_tornado_00000116_post_disaster.png,Totally-destroyed building counting.,20,D,E,False,,E
+1185,test_images\joplin_tornado_00000119_post_disaster.png,Totally-destroyed building counting.,57,A,C,False,,The answer is C.
+1188,test_images\joplin_tornado_00000122_post_disaster.png,Totally-destroyed building counting.,43,C,D,False,,D
+1192,test_images\joplin_tornado_00000129_post_disaster.png,Totally-destroyed building counting.,99,E,A,False,,The answer is A.
+1195,test_images\joplin_tornado_00000135_post_disaster.png,Totally-destroyed building counting.,4,E,E,True,,E
+1198,test_images\joplin_tornado_00000141_post_disaster.png,Totally-destroyed building counting.,73,E,E,True,,E
+1201,test_images\joplin_tornado_00000144_post_disaster.png,Totally-destroyed building counting.,152,E,E,True,,E
+1206,test_images\kalehe_flooding_post_788.png,Totally-destroyed building counting.,4,C,D,False,,The answer is D.
+1209,test_images\libya_flood_post_80.png,Totally-destroyed building counting.,17,B,C,False,,The answer is C.
+1212,test_images\libya_flood_post_85.png,Totally-destroyed building counting.,36,A,D,False,,The answer is D.
+1216,test_images\libya_flood_post_91.png,Totally-destroyed building counting.,36,A,E,False,,The answer is E.
+1219,test_images\libya_flood_post_102.png,Totally-destroyed building counting.,2,E,E,True,,E
+1222,test_images\lower_puna_volcano_00000068_post_disaster.png,Totally-destroyed building counting.,3,C,D,False,,D.
+1226,test_images\lower_puna_volcano_00000137_post_disaster.png,Totally-destroyed building counting.,3,A,D,False,,The answer is D.
+1229,test_images\lower_puna_volcano_00000160_post_disaster.png,Totally-destroyed building counting.,21,C,?,False,,"There are no buildings in the image that appear to be utterly demolished. The image shows a large area covered with what looks like volcanic ash or lava, but no"
+1232,test_images\lower_puna_volcano_00000243_post_disaster.png,Totally-destroyed building counting.,60,E,?,False,,"There are no buildings visible in the image provided. The image shows smoke and what appears to be a river or water body, but no buildings are clearly identifiable as"
+1236,test_images\mexico_earthquake_00000142_post_disaster.png,Totally-destroyed building counting.,1,A,B,False,,B.
+1239,test_images\midwest_flooding_00000050_post_disaster.png,Totally-destroyed building counting.,1,A,B,False,,B.
+1242,test_images\midwest_flooding_00000252_post_disaster.png,Totally-destroyed building counting.,1,C,C,True,,C.
+1246,test_images\midwest_flooding_00000404_post_disaster.png,Totally-destroyed building counting.,1,B,B,True,,B
+1249,test_images\moore_tornado_00000056_post_disaster.png,Totally-destroyed building counting.,45,D,A,False,,The answer is A.
+1252,test_images\moore_tornado_00000104_post_disaster.png,Totally-destroyed building counting.,24,A,E,False,,E
+1255,test_images\moore_tornado_00000201_post_disaster.png,Totally-destroyed building counting.,1,D,D,True,,D.
+1259,test_images\nepal_flooding_00000115_post_disaster.png,Totally-destroyed building counting.,5,D,E,False,,The answer is E.
+1262,test_images\nepal_flooding_00000232_post_disaster.png,Totally-destroyed building counting.,1,A,C,False,,The answer is C.
+1265,test_images\nepal_flooding_00000333_post_disaster.png,Totally-destroyed building counting.,5,E,C,False,,The answer is C.
+1269,test_images\nepal_flooding_00000423_post_disaster.png,Totally-destroyed building counting.,5,A,B,False,,B.
+1272,test_images\nepal_flooding_00000487_post_disaster.png,Totally-destroyed building counting.,2,D,E,False,,The answer is E.
+1275,test_images\nepal_flooding_00000527_post_disaster.png,Totally-destroyed building counting.,2,A,E,False,,The answer is E.
+1282,test_images\noto_earthquake_post_152.png,Totally-destroyed building counting.,35,E,C,False,,The answer is C.
+1286,test_images\noto_earthquake_post_160.png,Totally-destroyed building counting.,6,D,D,True,,The answer is D.
+1289,test_images\noto_earthquake_post_163.png,Totally-destroyed building counting.,35,B,C,False,,The answer is C.
+1295,test_images\noto_earthquake_post_173.png,Totally-destroyed building counting.,18,A,B,False,,B
+1300,test_images\noto_earthquake_post_179.png,Totally-destroyed building counting.,7,B,E,False,,E
+1303,test_images\noto_earthquake_post_182.png,Totally-destroyed building counting.,7,B,A,False,,The answer is A.
+1307,test_images\noto_earthquake_post_188.png,Totally-destroyed building counting.,10,B,C,False,,The answer is C.
+1310,test_images\palu_tsunami_00000000_post_disaster.png,Totally-destroyed building counting.,9,E,E,True,,The answer is E.
+1313,test_images\palu_tsunami_00000004_post_disaster.png,Totally-destroyed building counting.,2,B,B,True,,B.
+1317,test_images\palu_tsunami_00000016_post_disaster.png,Totally-destroyed building counting.,4,B,?,False,,"There are no buildings in the image provided. The image shows a coastal area with water and some land, but no structures are visible. Therefore, the answer is"
+1320,test_images\palu_tsunami_00000020_post_disaster.png,Totally-destroyed building counting.,29,B,D,False,,D
+1323,test_images\palu_tsunami_00000026_post_disaster.png,Totally-destroyed building counting.,21,B,D,False,,The answer is D.
+1326,test_images\palu_tsunami_00000034_post_disaster.png,Totally-destroyed building counting.,4,D,D,True,,The answer is D.
+1330,test_images\palu_tsunami_00000039_post_disaster.png,Totally-destroyed building counting.,4,B,E,False,,E
+1333,test_images\palu_tsunami_00000048_post_disaster.png,Totally-destroyed building counting.,7,E,E,True,,E
+1336,test_images\palu_tsunami_00000056_post_disaster.png,Totally-destroyed building counting.,32,E,C,False,,The answer is C.
+1340,test_images\palu_tsunami_00000064_post_disaster.png,Totally-destroyed building counting.,6,A,B,False,,B
+1343,test_images\palu_tsunami_00000069_post_disaster.png,Totally-destroyed building counting.,66,A,E,False,,The answer is E.
+1346,test_images\palu_tsunami_00000079_post_disaster.png,Totally-destroyed building counting.,2,B,E,False,,The answer is E.
+1350,test_images\palu_tsunami_00000096_post_disaster.png,Totally-destroyed building counting.,21,C,D,False,,D
+1353,test_images\palu_tsunami_00000104_post_disaster.png,Totally-destroyed building counting.,1,E,E,True,,E
+1356,test_images\palu_tsunami_00000110_post_disaster.png,Totally-destroyed building counting.,32,A,?,False,,"There are no buildings visible in the image provided. The image shows an aerial view of a coastline with water and some structures on land, but no buildings appear to"
+1360,test_images\palu_tsunami_00000124_post_disaster.png,Totally-destroyed building counting.,21,B,D,False,,D.
+1363,test_images\palu_tsunami_00000131_post_disaster.png,Totally-destroyed building counting.,29,E,E,True,,E
+1366,test_images\palu_tsunami_00000138_post_disaster.png,Totally-destroyed building counting.,13,A,C,False,,The answer is C.
+1370,test_images\palu_tsunami_00000145_post_disaster.png,Totally-destroyed building counting.,5,B,A,False,,The answer is A.
+1373,test_images\palu_tsunami_00000152_post_disaster.png,Totally-destroyed building counting.,1,D,D,True,,D
+1376,test_images\palu_tsunami_00000163_post_disaster.png,Totally-destroyed building counting.,67,D,C,False,,C
+1379,test_images\palu_tsunami_00000166_post_disaster.png,Totally-destroyed building counting.,24,B,A,False,,The answer is A.
+1383,test_images\palu_tsunami_00000171_post_disaster.png,Totally-destroyed building counting.,5,D,D,True,,D.
+1386,test_images\palu_tsunami_00000180_post_disaster.png,Totally-destroyed building counting.,82,C,A,False,,The answer is A.
+1389,test_images\palu_tsunami_00000186_post_disaster.png,Totally-destroyed building counting.,7,D,D,True,,D.
+1393,test_images\palu_tsunami_00000191_post_disaster.png,Totally-destroyed building counting.,54,E,C,False,,The answer is C.
+1396,test_images\palu_tsunami_00000195_post_disaster.png,Totally-destroyed building counting.,3,C,D,False,,The answer is D.
+1399,test_images\pinery_bushfire_00000081_post_disaster.png,Totally-destroyed building counting.,4,A,B,False,,B.
+1403,test_images\pinery_bushfire_00000582_post_disaster.png,Totally-destroyed building counting.,4,A,B,False,,B
+1406,test_images\pinery_bushfire_00001062_post_disaster.png,Totally-destroyed building counting.,3,C,A,False,,The answer is A.
+1409,test_images\pinery_bushfire_00001523_post_disaster.png,Totally-destroyed building counting.,2,A,A,True,,The answer is A.
+1413,test_images\portugal_wildfire_00000407_post_disaster.png,Totally-destroyed building counting.,1,C,C,True,,C.
+1416,test_images\portugal_wildfire_00000774_post_disaster.png,Totally-destroyed building counting.,1,A,A,True,,The answer is A.
+1419,test_images\portugal_wildfire_00001265_post_disaster.png,Totally-destroyed building counting.,5,C,A,False,,The answer is A.
+1423,test_images\portugal_wildfire_00001412_post_disaster.png,Totally-destroyed building counting.,1,B,B,True,,B
+1426,test_images\portugal_wildfire_00001572_post_disaster.png,Totally-destroyed building counting.,17,C,?,False,,The image provided does not contain any information about buildings being destroyed or the number of buildings that were affected. It appears to be an aerial view of a rural area
+1429,test_images\portugal_wildfire_00001842_post_disaster.png,Totally-destroyed building counting.,3,B,D,False,,The answer is D.
+1433,test_images\santa_rosa_wildfire_00000024_post_disaster.png,Totally-destroyed building counting.,4,D,D,True,,The answer is D.
+1436,test_images\santa_rosa_wildfire_00000049_post_disaster.png,Totally-destroyed building counting.,75,E,A,False,,The answer is A.
+1439,test_images\santa_rosa_wildfire_00000074_post_disaster.png,Totally-destroyed building counting.,9,A,B,False,,B
+1442,test_images\santa_rosa_wildfire_00000098_post_disaster.png,Totally-destroyed building counting.,37,C,E,False,,E
+1446,test_images\santa_rosa_wildfire_00000130_post_disaster.png,Totally-destroyed building counting.,49,D,A,False,,The answer is A.
+1449,test_images\santa_rosa_wildfire_00000186_post_disaster.png,Totally-destroyed building counting.,22,C,D,False,,The answer is D.
+1452,test_images\santa_rosa_wildfire_00000230_post_disaster.png,Totally-destroyed building counting.,17,A,B,False,,B.
+1456,test_images\santa_rosa_wildfire_00000263_post_disaster.png,Totally-destroyed building counting.,4,D,?,False,,"There are no buildings in the image that appear to be totally destroyed. The image shows a landscape with a pond and some vegetation, but no buildings are visible."
+1459,test_images\santa_rosa_wildfire_00000287_post_disaster.png,Totally-destroyed building counting.,5,E,E,True,,E
+1462,test_images\santa_rosa_wildfire_00000306_post_disaster.png,Totally-destroyed building counting.,12,B,C,False,,The answer is C.
+1466,test_images\santa_rosa_wildfire_00000340_post_disaster.png,Totally-destroyed building counting.,2,A,B,False,,B.
+1469,test_images\santa_rosa_wildfire_00000370_post_disaster.png,Totally-destroyed building counting.,12,C,E,False,,The answer is E.
+1473,test_images\socal_fire_00000468_post_disaster.png,Totally-destroyed building counting.,5,B,C,False,,C
+1477,test_images\socal_fire_00000713_post_disaster.png,Totally-destroyed building counting.,1,C,C,True,,C
+1480,test_images\socal_fire_00000821_post_disaster.png,Totally-destroyed building counting.,23,E,C,False,,The answer is C.
+1483,test_images\socal_fire_00001086_post_disaster.png,Totally-destroyed building counting.,5,E,?,False,,"There are no buildings in the image provided for analysis. The image shows a landscape with a road and some vegetation, but no structures that can be identified as buildings"
+1487,test_images\sunda_tsunami_00000009_post_disaster.png,Totally-destroyed building counting.,23,D,C,False,,The answer is C.
+1491,test_images\sunda_tsunami_00000052_post_disaster.png,Totally-destroyed building counting.,17,D,A,False,,The answer is A.
+1494,test_images\sunda_tsunami_00000140_post_disaster.png,Totally-destroyed building counting.,21,C,D,False,,The answer is D.
+1498,test_images\turkey_earthquake1_post_237.png,Totally-destroyed building counting.,4,C,C,True,,The answer is C.
+1501,test_images\turkey_earthquake1_post_241.png,Totally-destroyed building counting.,4,E,C,False,,The answer is C.
+1505,test_images\turkey_earthquake1_post_246.png,Totally-destroyed building counting.,8,C,E,False,,The answer is E.
+1508,test_images\turkey_earthquake1_post_249.png,Totally-destroyed building counting.,12,B,D,False,,The answer is D.
+1512,test_images\turkey_earthquake3_post_271.png,Totally-destroyed building counting.,7,E,E,True,,E
+1517,test_images\turkey_earthquake4_post_282.png,Totally-destroyed building counting.,2,E,B,False,,B
+1521,test_images\turkey_earthquake4_post_286.png,Totally-destroyed building counting.,2,E,E,True,,E
+1525,test_images\turkey_earthquake4_post_301.png,Totally-destroyed building counting.,9,B,B,True,,B
+1528,test_images\turkey_earthquake4_post_305.png,Totally-destroyed building counting.,1,B,B,True,,B.
+1531,test_images\turkey_earthquake4_post_310.png,Totally-destroyed building counting.,2,A,E,False,,E
+1535,test_images\turkey_earthquake4_post_317.png,Totally-destroyed building counting.,26,B,C,False,,The answer is C.
+1538,test_images\turkey_earthquake4_post_322.png,Totally-destroyed building counting.,20,E,A,False,,The answer is A.
+1541,test_images\turkey_earthquake4_post_325.png,Totally-destroyed building counting.,4,B,C,False,,The answer is C.
+1545,test_images\turkey_earthquake4_post_330.png,Totally-destroyed building counting.,9,A,E,False,,E
+1548,test_images\turkey_earthquake4_post_334.png,Totally-destroyed building counting.,5,A,C,False,,The answer is C.
+1553,test_images\turkey_earthquake5_post_358.png,Totally-destroyed building counting.,3,D,D,True,,D.
+1559,test_images\turkey_earthquake6_post_378.png,Totally-destroyed building counting.,1,B,B,True,,B.
+1562,test_images\turkey_earthquake6_post_386.png,Totally-destroyed building counting.,2,C,C,True,,C.
+1569,test_images\turkey_earthquake6_post_419.png,Totally-destroyed building counting.,1,D,D,True,,D.
+1572,test_images\turkey_earthquake6_post_422.png,Totally-destroyed building counting.,2,B,A,False,,The answer is A.
+1579,test_images\turkey_earthquake6_post_429.png,Totally-destroyed building counting.,6,A,B,False,,B
+1583,test_images\turkey_earthquake6_post_441.png,Totally-destroyed building counting.,13,B,A,False,,The answer is A.
+1587,test_images\turkey_earthquake6_post_447.png,Totally-destroyed building counting.,1,E,E,True,,E
+1592,test_images\turkey_earthquake6_post_459.png,Totally-destroyed building counting.,5,E,E,True,,E
+1595,test_images\turkey_earthquake6_post_472.png,Totally-destroyed building counting.,1,E,E,True,,E
+1600,test_images\turkey_earthquake6_post_483.png,Totally-destroyed building counting.,3,A,B,False,,B
+1605,test_images\turkey_earthquake6_post_495.png,Totally-destroyed building counting.,2,B,E,False,,E
+1608,test_images\turkey_earthquake6_post_500.png,Totally-destroyed building counting.,5,C,E,False,,The answer is E.
+1611,test_images\turkey_earthquake6_post_509.png,Totally-destroyed building counting.,1,A,E,False,,E
+1615,test_images\turkey_earthquake6_post_520.png,Totally-destroyed building counting.,1,C,C,True,,C
+1618,test_images\turkey_earthquake6_post_533.png,Totally-destroyed building counting.,31,E,E,True,,E
+1621,test_images\turkey_earthquake6_post_537.png,Totally-destroyed building counting.,2,E,E,True,,E
+1626,test_images\turkey_earthquake6_post_551.png,Totally-destroyed building counting.,1,E,E,True,,E
+1629,test_images\turkey_earthquake6_post_557.png,Totally-destroyed building counting.,3,E,E,True,,E
+1632,test_images\turkey_earthquake7_post_604.png,Totally-destroyed building counting.,1,B,E,False,,The answer is E.
+1639,test_images\tuscaloosa_tornado_00000037_post_disaster.png,Totally-destroyed building counting.,43,B,E,False,,E
+1642,test_images\tuscaloosa_tornado_00000076_post_disaster.png,Totally-destroyed building counting.,1,C,C,True,,C
+1645,test_images\tuscaloosa_tornado_00000096_post_disaster.png,Totally-destroyed building counting.,2,A,E,False,,E
+1648,test_images\tuscaloosa_tornado_00000183_post_disaster.png,Totally-destroyed building counting.,5,D,E,False,,The answer is E.
+1652,test_images\tuscaloosa_tornado_00000256_post_disaster.png,Totally-destroyed building counting.,35,A,C,False,,The answer is C.
+1655,test_images\tuscaloosa_tornado_00000316_post_disaster.png,Totally-destroyed building counting.,5,D,D,True,,D
+1658,test_images\woolsey_fire_00000000_post_disaster.png,Totally-destroyed building counting.,3,C,C,True,,The answer is C.
+1662,test_images\woolsey_fire_00000052_post_disaster.png,Totally-destroyed building counting.,2,D,D,True,,The answer is D.
+1665,test_images\woolsey_fire_00000093_post_disaster.png,Totally-destroyed building counting.,51,D,A,False,,The answer is A.
+1668,test_images\woolsey_fire_00000127_post_disaster.png,Totally-destroyed building counting.,1,B,B,True,,B.
+1672,test_images\woolsey_fire_00000235_post_disaster.png,Totally-destroyed building counting.,9,C,?,False,,"There are no buildings in the image provided. The image shows an aerial view of a landscape with fields and a small body of water, but no buildings are visible"
+1675,test_images\woolsey_fire_00000271_post_disaster.png,Totally-destroyed building counting.,2,D,E,False,,The answer is E.
+1678,test_images\woolsey_fire_00000352_post_disaster.png,Totally-destroyed building counting.,1,A,B,False,,B.
+1682,test_images\woolsey_fire_00000464_post_disaster.png,Totally-destroyed building counting.,6,A,B,False,,B.
+1685,test_images\woolsey_fire_00000489_post_disaster.png,Totally-destroyed building counting.,2,B,A,False,,The answer is A.
+1688,test_images\woolsey_fire_00000555_post_disaster.png,Totally-destroyed building counting.,10,E,E,True,,The answer is E.
+1692,test_images\woolsey_fire_00000622_post_disaster.png,Totally-destroyed building counting.,3,D,D,True,,D.
+1695,test_images\woolsey_fire_00000728_post_disaster.png,Totally-destroyed building counting.,25,A,?,False,,The image provided does not contain any visible buildings or structures that have been demolished. It appears to be an aerial view of a natural landscape with no man-made structures
+1698,test_images\woolsey_fire_00000780_post_disaster.png,Totally-destroyed building counting.,1,B,A,False,,The answer is A.
+1702,test_images\woolsey_fire_00000863_post_disaster.png,Totally-destroyed building counting.,6,A,B,False,,The answer is B.
+10,test_images\beriut_explosion_post_23.png,Damaged building counting.,37,B,B,True,,B
+17,test_images\guatemala_volcano_00000011_post_disaster.png,Damaged building counting.,1,A,A,True,,The answer is A.
+20,test_images\guatemala_volcano_00000018_post_disaster.png,Damaged building counting.,2,C,C,True,,The answer is C.
+27,test_images\hawaii_wildfire_post_638.png,Damaged building counting.,4,C,B,False,,The answer is B.
+30,test_images\hawaii_wildfire_post_641.png,Damaged building counting.,22,A,E,False,,E
+34,test_images\hawaii_wildfire_post_645.png,Damaged building counting.,10,D,D,True,,The answer is D.
+37,test_images\hawaii_wildfire_post_648.png,Damaged building counting.,7,D,A,False,,The answer is A.
+40,test_images\hawaii_wildfire_post_657.png,Damaged building counting.,3,D,C,False,,The answer is C.
+44,test_images\hurricane_florence_00000089_post_disaster.png,Damaged building counting.,15,A,D,False,,D.
+47,test_images\hurricane_florence_00000145_post_disaster.png,Damaged building counting.,1,A,A,True,,The answer is A.
+51,test_images\hurricane_florence_00000259_post_disaster.png,Damaged building counting.,9,C,C,True,,C.
+54,test_images\hurricane_florence_00000321_post_disaster.png,Damaged building counting.,2,D,D,True,,The answer is D.
+57,test_images\hurricane_florence_00000411_post_disaster.png,Damaged building counting.,19,D,C,False,,The answer is C.
+61,test_images\hurricane_florence_00000447_post_disaster.png,Damaged building counting.,5,B,A,False,,The answer is A.
+64,test_images\hurricane_florence_00000473_post_disaster.png,Damaged building counting.,6,D,D,True,,The answer is D.
+68,test_images\hurricane_florence_00000509_post_disaster.png,Damaged building counting.,1,A,B,False,,B.
+71,test_images\hurricane_florence_00000536_post_disaster.png,Damaged building counting.,4,D,?,False,,"There are no buildings in the image provided. The image shows agricultural fields and some greenery, but no structures that could be considered buildings. Therefore, the question"
+74,test_images\hurricane_harvey_00000041_post_disaster.png,Damaged building counting.,3,C,A,False,,The answer is A.
+78,test_images\hurricane_harvey_00000079_post_disaster.png,Damaged building counting.,1,B,E,False,,E
+81,test_images\hurricane_harvey_00000106_post_disaster.png,Damaged building counting.,4,A,B,False,,The answer is B.
+85,test_images\hurricane_harvey_00000141_post_disaster.png,Damaged building counting.,11,C,C,True,,The answer is C.
+88,test_images\hurricane_harvey_00000184_post_disaster.png,Damaged building counting.,130,B,E,False,,E
+91,test_images\hurricane_harvey_00000264_post_disaster.png,Damaged building counting.,6,C,A,False,,The answer is A.
+95,test_images\hurricane_harvey_00000319_post_disaster.png,Damaged building counting.,7,C,A,False,,The answer is A.
+98,test_images\hurricane_harvey_00000345_post_disaster.png,Damaged building counting.,1,D,B,False,,B
+105,test_images\hurricane_harvey_00000438_post_disaster.png,Damaged building counting.,45,E,E,True,,E
+115,test_images\hurricane_matthew_00000017_post_disaster.png,Damaged building counting.,9,C,B,False,,B
+126,test_images\hurricane_matthew_00000095_post_disaster.png,Damaged building counting.,18,E,D,False,,D.
+136,test_images\hurricane_matthew_00000160_post_disaster.png,Damaged building counting.,5,B,A,False,,The answer is A.
+143,test_images\hurricane_matthew_00000207_post_disaster.png,Damaged building counting.,12,A,E,False,,E
+146,test_images\hurricane_matthew_00000227_post_disaster.png,Damaged building counting.,2,A,B,False,,B.
+153,test_images\hurricane_matthew_00000282_post_disaster.png,Damaged building counting.,13,D,B,False,,The answer is B.
+156,test_images\hurricane_matthew_00000308_post_disaster.png,Damaged building counting.,9,D,D,True,,The answer is D.
+160,test_images\hurricane_matthew_00000334_post_disaster.png,Damaged building counting.,1,C,C,True,,C.
+163,test_images\hurricane_matthew_00000353_post_disaster.png,Damaged building counting.,6,A,C,False,,The answer is C.
+166,test_images\hurricane_matthew_00000382_post_disaster.png,Damaged building counting.,11,C,B,False,,The answer is B.
+170,test_images\hurricane_michael_00000018_post_disaster.png,Damaged building counting.,32,A,C,False,,The answer is C.
+173,test_images\hurricane_michael_00000048_post_disaster.png,Damaged building counting.,14,E,E,True,,E
+177,test_images\hurricane_michael_00000085_post_disaster.png,Damaged building counting.,20,C,A,False,,The answer is A.
+180,test_images\hurricane_michael_00000113_post_disaster.png,Damaged building counting.,9,A,A,True,,The answer is A.
+183,test_images\hurricane_michael_00000149_post_disaster.png,Damaged building counting.,3,A,B,False,,B.
+187,test_images\hurricane_michael_00000185_post_disaster.png,Damaged building counting.,20,D,C,False,,C
+190,test_images\hurricane_michael_00000212_post_disaster.png,Damaged building counting.,31,C,C,True,,The answer is C.
+194,test_images\hurricane_michael_00000249_post_disaster.png,Damaged building counting.,31,C,D,False,,D.
+197,test_images\hurricane_michael_00000276_post_disaster.png,Damaged building counting.,14,A,D,False,,D.
+201,test_images\hurricane_michael_00000312_post_disaster.png,Damaged building counting.,2,C,D,False,,D.
+204,test_images\hurricane_michael_00000339_post_disaster.png,Damaged building counting.,6,D,D,True,,D.
+207,test_images\hurricane_michael_00000376_post_disaster.png,Damaged building counting.,3,D,D,True,,D.
+211,test_images\hurricane_michael_00000423_post_disaster.png,Damaged building counting.,1,B,E,False,,E
+214,test_images\hurricane_michael_00000450_post_disaster.png,Damaged building counting.,15,B,D,False,,D
+221,test_images\hurricane_michael_00000513_post_disaster.png,Damaged building counting.,26,A,C,False,,The answer is C.
+224,test_images\ian_hurricane_post_660.png,Damaged building counting.,4,D,D,True,,D.
+231,test_images\ian_hurricane_post_680.png,Damaged building counting.,3,B,E,False,,E
+252,test_images\ian_hurricane_post_728.png,Damaged building counting.,40,C,A,False,,The answer is A.
+262,test_images\ian_hurricane_post_740.png,Damaged building counting.,41,A,C,False,,The answer is C.
+269,test_images\ian_hurricane_post_747.png,Damaged building counting.,3,C,?,False,,"The image provided does not show any signs of damage to buildings. It appears to be an undamaged residential area with waterways and houses. Therefore, there are"
+272,test_images\ian_hurricane_post_751.png,Damaged building counting.,2,E,C,False,,C
+279,test_images\ian_hurricane_post_759.png,Damaged building counting.,15,E,A,False,,The answer is A.
+282,test_images\joplin_tornado_00000000_post_disaster.png,Damaged building counting.,70,D,B,False,,B
+286,test_images\joplin_tornado_00000004_post_disaster.png,Damaged building counting.,84,C,E,False,,E
+289,test_images\joplin_tornado_00000007_post_disaster.png,Damaged building counting.,4,A,?,False,,The image provided does not show any signs of damage or partial damage to buildings. It appears to be a typical residential area with no visible indications of an incident affecting
+292,test_images\joplin_tornado_00000012_post_disaster.png,Damaged building counting.,1,A,E,False,,The answer is E.
+296,test_images\joplin_tornado_00000018_post_disaster.png,Damaged building counting.,9,D,B,False,,B
+299,test_images\joplin_tornado_00000022_post_disaster.png,Damaged building counting.,2,E,E,True,,E
+303,test_images\joplin_tornado_00000030_post_disaster.png,Damaged building counting.,7,D,E,False,,E
+306,test_images\joplin_tornado_00000033_post_disaster.png,Damaged building counting.,101,E,A,False,,The answer is A.
+310,test_images\joplin_tornado_00000038_post_disaster.png,Damaged building counting.,10,D,D,True,,The answer is D.
+313,test_images\joplin_tornado_00000041_post_disaster.png,Damaged building counting.,8,D,B,False,,B
+316,test_images\joplin_tornado_00000044_post_disaster.png,Damaged building counting.,23,B,E,False,,E
+320,test_images\joplin_tornado_00000049_post_disaster.png,Damaged building counting.,7,B,C,False,,The answer is C.
+323,test_images\joplin_tornado_00000053_post_disaster.png,Damaged building counting.,16,D,E,False,,E
+327,test_images\joplin_tornado_00000058_post_disaster.png,Damaged building counting.,12,B,B,True,,B
+330,test_images\joplin_tornado_00000063_post_disaster.png,Damaged building counting.,4,D,D,True,,D.
+333,test_images\joplin_tornado_00000068_post_disaster.png,Damaged building counting.,9,E,B,False,,The answer is B.
+337,test_images\joplin_tornado_00000074_post_disaster.png,Damaged building counting.,7,D,D,True,,D.
+340,test_images\joplin_tornado_00000077_post_disaster.png,Damaged building counting.,11,C,E,False,,The answer is E.
+347,test_images\joplin_tornado_00000086_post_disaster.png,Damaged building counting.,27,D,A,False,,The answer is A.
+350,test_images\joplin_tornado_00000089_post_disaster.png,Damaged building counting.,43,A,C,False,,The answer is C.
+378,test_images\joplin_tornado_00000125_post_disaster.png,Damaged building counting.,14,D,E,False,,E
+388,test_images\joplin_tornado_00000139_post_disaster.png,Damaged building counting.,35,E,D,False,,D
+395,test_images\joplin_tornado_00000147_post_disaster.png,Damaged building counting.,22,D,A,False,,The answer is A.
+398,test_images\libya_flood_post_77.png,Damaged building counting.,2,D,D,True,,The answer is D.
+402,test_images\libya_flood_post_81.png,Damaged building counting.,53,E,E,True,,E
+405,test_images\libya_flood_post_84.png,Damaged building counting.,74,D,B,False,,The answer is B.
+408,test_images\libya_flood_post_87.png,Damaged building counting.,1,D,D,True,,D.
+412,test_images\libya_flood_post_91.png,Damaged building counting.,58,D,E,False,,E
+415,test_images\libya_flood_post_97.png,Damaged building counting.,89,E,C,False,,The answer is C.
+419,test_images\libya_flood_post_108.png,Damaged building counting.,1,D,E,False,,E
+422,test_images\lower_puna_volcano_00000121_post_disaster.png,Damaged building counting.,14,B,A,False,,The answer is A.
+425,test_images\mexico_earthquake_00000000_post_disaster.png,Damaged building counting.,2,D,A,False,,The answer is A.
+429,test_images\mexico_earthquake_00000039_post_disaster.png,Damaged building counting.,1,B,A,False,,The answer is A.
+432,test_images\mexico_earthquake_00000052_post_disaster.png,Damaged building counting.,5,B,E,False,,The answer is E.
+436,test_images\mexico_earthquake_00000058_post_disaster.png,Damaged building counting.,4,B,E,False,,The answer is E.
+439,test_images\mexico_earthquake_00000062_post_disaster.png,Damaged building counting.,3,B,C,False,,The answer is C.
+442,test_images\mexico_earthquake_00000073_post_disaster.png,Damaged building counting.,5,E,E,True,,E
+446,test_images\mexico_earthquake_00000081_post_disaster.png,Damaged building counting.,4,A,B,False,,B.
+449,test_images\mexico_earthquake_00000085_post_disaster.png,Damaged building counting.,3,E,E,True,,E
+453,test_images\mexico_earthquake_00000092_post_disaster.png,Damaged building counting.,9,B,E,False,,The answer is E.
+456,test_images\mexico_earthquake_00000116_post_disaster.png,Damaged building counting.,4,B,E,False,,The answer is E.
+459,test_images\mexico_earthquake_00000124_post_disaster.png,Damaged building counting.,3,B,E,False,,E
+463,test_images\mexico_earthquake_00000146_post_disaster.png,Damaged building counting.,3,C,E,False,,The answer is E.
+466,test_images\mexico_earthquake_00000162_post_disaster.png,Damaged building counting.,1,E,E,True,,E
+476,test_images\midwest_flooding_00000133_post_disaster.png,Damaged building counting.,1,E,E,True,,E
+504,test_images\moore_tornado_00000145_post_disaster.png,Damaged building counting.,2,A,E,False,,The answer is E.
+511,test_images\nepal_flooding_00000011_post_disaster.png,Damaged building counting.,3,C,A,False,,The answer is A.
+514,test_images\nepal_flooding_00000043_post_disaster.png,Damaged building counting.,1,B,B,True,,B
+521,test_images\nepal_flooding_00000125_post_disaster.png,Damaged building counting.,2,D,E,False,,E
+524,test_images\nepal_flooding_00000158_post_disaster.png,Damaged building counting.,8,B,B,True,,The answer is B.
+528,test_images\nepal_flooding_00000212_post_disaster.png,Damaged building counting.,1,D,D,True,,D.
+531,test_images\nepal_flooding_00000251_post_disaster.png,Damaged building counting.,32,A,C,False,,The answer is C.
+534,test_images\nepal_flooding_00000282_post_disaster.png,Damaged building counting.,1,E,E,True,,E
+538,test_images\nepal_flooding_00000323_post_disaster.png,Damaged building counting.,27,A,C,False,,The answer is C.
+541,test_images\nepal_flooding_00000352_post_disaster.png,Damaged building counting.,4,C,E,False,,The answer is E.
+545,test_images\nepal_flooding_00000403_post_disaster.png,Damaged building counting.,23,D,A,False,,The answer is A.
+548,test_images\nepal_flooding_00000436_post_disaster.png,Damaged building counting.,66,B,C,False,,The answer is C.
+551,test_images\nepal_flooding_00000467_post_disaster.png,Damaged building counting.,24,D,B,False,,The answer is B.
+555,test_images\nepal_flooding_00000507_post_disaster.png,Damaged building counting.,1,C,C,True,,The answer is C.
+558,test_images\nepal_flooding_00000537_post_disaster.png,Damaged building counting.,5,D,E,False,,The answer is E.
+562,test_images\nepal_flooding_00000589_post_disaster.png,Damaged building counting.,7,B,B,True,,The answer is B.
+565,test_images\noto_earthquake_post_124.png,Damaged building counting.,1,C,C,True,,The answer is C.
+568,test_images\noto_earthquake_post_152.png,Damaged building counting.,38,A,E,False,,E
+572,test_images\noto_earthquake_post_161.png,Damaged building counting.,39,B,C,False,,The answer is C.
+575,test_images\noto_earthquake_post_165.png,Damaged building counting.,3,A,C,False,,The answer is C.
+579,test_images\noto_earthquake_post_173.png,Damaged building counting.,11,E,E,True,,The answer is E.
+582,test_images\noto_earthquake_post_177.png,Damaged building counting.,1,E,B,False,,B
+585,test_images\noto_earthquake_post_181.png,Damaged building counting.,1,E,B,False,,B
+589,test_images\noto_earthquake_post_186.png,Damaged building counting.,5,C,E,False,,The answer is E.
+592,test_images\noto_earthquake_post_189.png,Damaged building counting.,7,B,E,False,,E
+620,test_images\palu_tsunami_00000063_post_disaster.png,Damaged building counting.,11,B,C,False,,The answer is C.
+630,test_images\palu_tsunami_00000096_post_disaster.png,Damaged building counting.,10,D,C,False,,The answer is C.
+637,test_images\palu_tsunami_00000124_post_disaster.png,Damaged building counting.,5,D,C,False,,The answer is C.
+640,test_images\palu_tsunami_00000135_post_disaster.png,Damaged building counting.,8,E,C,False,,The answer is C.
+647,test_images\palu_tsunami_00000149_post_disaster.png,Damaged building counting.,8,A,B,False,,B.
+650,test_images\palu_tsunami_00000161_post_disaster.png,Damaged building counting.,5,E,B,False,,B
+654,test_images\palu_tsunami_00000165_post_disaster.png,Damaged building counting.,2,D,E,False,,E
+657,test_images\palu_tsunami_00000171_post_disaster.png,Damaged building counting.,1,A,E,False,,E
+660,test_images\palu_tsunami_00000180_post_disaster.png,Damaged building counting.,1,E,E,True,,The answer is E.
+664,test_images\palu_tsunami_00000195_post_disaster.png,Damaged building counting.,1,E,E,True,,E
+667,test_images\pinery_bushfire_00000446_post_disaster.png,Damaged building counting.,1,A,A,True,,The answer is A.
+671,test_images\pinery_bushfire_00000830_post_disaster.png,Damaged building counting.,1,B,B,True,,B
+674,test_images\pinery_bushfire_00001319_post_disaster.png,Damaged building counting.,3,E,E,True,,E
+677,test_images\portugal_wildfire_00000071_post_disaster.png,Damaged building counting.,1,A,?,False,,"The image provided does not contain any information about buildings being moderately damaged or destroyed. It shows an aerial view of a rural area with roads and some structures, but"
+681,test_images\portugal_wildfire_00000651_post_disaster.png,Damaged building counting.,1,D,C,False,,The answer is C.
+684,test_images\portugal_wildfire_00001228_post_disaster.png,Damaged building counting.,2,E,E,True,,E
+688,test_images\portugal_wildfire_00001412_post_disaster.png,Damaged building counting.,2,B,B,True,,B
+691,test_images\portugal_wildfire_00001623_post_disaster.png,Damaged building counting.,1,C,C,True,,C.
+694,test_images\portugal_wildfire_00001842_post_disaster.png,Damaged building counting.,4,B,C,False,,The answer is C.
+698,test_images\santa_rosa_wildfire_00000055_post_disaster.png,Damaged building counting.,1,B,B,True,,B.
+701,test_images\santa_rosa_wildfire_00000104_post_disaster.png,Damaged building counting.,1,E,D,False,,D.
+705,test_images\santa_rosa_wildfire_00000217_post_disaster.png,Damaged building counting.,4,C,D,False,,The answer is D.
+708,test_images\santa_rosa_wildfire_00000255_post_disaster.png,Damaged building counting.,1,D,D,True,,D.
+718,test_images\sunda_tsunami_00000009_post_disaster.png,Damaged building counting.,6,C,E,False,,The answer is E.
+747,test_images\turkey_earthquake3_post_267.png,Damaged building counting.,11,C,E,False,,E
+757,test_images\turkey_earthquake4_post_286.png,Damaged building counting.,13,D,D,True,,The answer is D.
+764,test_images\turkey_earthquake4_post_294.png,Damaged building counting.,3,E,C,False,,C.
+767,test_images\turkey_earthquake4_post_298.png,Damaged building counting.,9,D,E,False,,E
+770,test_images\turkey_earthquake4_post_302.png,Damaged building counting.,17,D,D,True,,D.
+774,test_images\turkey_earthquake4_post_306.png,Damaged building counting.,25,B,A,False,,The answer is A.
+777,test_images\turkey_earthquake4_post_310.png,Damaged building counting.,1,D,C,False,,C.
+781,test_images\turkey_earthquake4_post_314.png,Damaged building counting.,1,C,B,False,,B
+784,test_images\turkey_earthquake4_post_318.png,Damaged building counting.,10,D,D,True,,D.
+787,test_images\turkey_earthquake4_post_322.png,Damaged building counting.,15,A,E,False,,E
+791,test_images\turkey_earthquake4_post_326.png,Damaged building counting.,15,D,E,False,,E
+794,test_images\turkey_earthquake4_post_330.png,Damaged building counting.,13,B,E,False,,E
+798,test_images\turkey_earthquake4_post_335.png,Damaged building counting.,30,B,C,False,,The answer is C.
+801,test_images\turkey_earthquake5_post_358.png,Damaged building counting.,1,B,E,False,,E
+805,test_images\turkey_earthquake6_post_371.png,Damaged building counting.,13,E,E,True,,E
+808,test_images\turkey_earthquake6_post_376.png,Damaged building counting.,5,A,B,False,,B.
+811,test_images\turkey_earthquake6_post_379.png,Damaged building counting.,24,E,E,True,,E
+815,test_images\turkey_earthquake6_post_385.png,Damaged building counting.,4,E,E,True,,The answer is E.
+818,test_images\turkey_earthquake6_post_388.png,Damaged building counting.,6,D,E,False,,E
+822,test_images\turkey_earthquake6_post_402.png,Damaged building counting.,4,C,C,True,,The answer is C.
+825,test_images\turkey_earthquake6_post_405.png,Damaged building counting.,6,D,D,True,,D.
+828,test_images\turkey_earthquake6_post_415.png,Damaged building counting.,4,E,C,False,,C
+835,test_images\turkey_earthquake6_post_424.png,Damaged building counting.,1,E,E,True,,E
+845,test_images\turkey_earthquake6_post_452.png,Damaged building counting.,1,B,E,False,,The answer is E.
+873,test_images\turkey_earthquake6_post_508.png,Damaged building counting.,1,E,D,False,,D.
+884,test_images\turkey_earthquake6_post_531.png,Damaged building counting.,2,A,B,False,,B.
+891,test_images\turkey_earthquake6_post_542.png,Damaged building counting.,2,E,E,True,,E
+894,test_images\turkey_earthquake6_post_549.png,Damaged building counting.,11,E,D,False,,D.
+897,test_images\turkey_earthquake6_post_552.png,Damaged building counting.,7,D,D,True,,D.
+901,test_images\turkey_earthquake6_post_556.png,Damaged building counting.,3,D,D,True,,D.
+904,test_images\turkey_earthquake6_post_561.png,Damaged building counting.,1,B,B,True,,B.
+908,test_images\turkey_earthquake6_post_565.png,Damaged building counting.,4,E,C,False,,C.
+911,test_images\turkey_earthquake6_post_568.png,Damaged building counting.,1,D,D,True,,D.
+915,test_images\turkey_earthquake7_post_605.png,Damaged building counting.,2,B,C,False,,C.
+918,test_images\turkey_earthquake7_post_614.png,Damaged building counting.,5,A,E,False,,E
+921,test_images\tuscaloosa_tornado_00000031_post_disaster.png,Damaged building counting.,6,E,E,True,,The answer is E.
+925,test_images\tuscaloosa_tornado_00000054_post_disaster.png,Damaged building counting.,4,E,E,True,,E
+928,test_images\tuscaloosa_tornado_00000076_post_disaster.png,Damaged building counting.,7,A,C,False,,The answer is C.
+932,test_images\tuscaloosa_tornado_00000107_post_disaster.png,Damaged building counting.,5,E,C,False,,The answer is C.
+935,test_images\tuscaloosa_tornado_00000167_post_disaster.png,Damaged building counting.,1,A,B,False,,B.
+938,test_images\tuscaloosa_tornado_00000210_post_disaster.png,Damaged building counting.,2,D,D,True,,D.
+942,test_images\tuscaloosa_tornado_00000241_post_disaster.png,Damaged building counting.,3,A,B,False,,B.
+945,test_images\tuscaloosa_tornado_00000272_post_disaster.png,Damaged building counting.,6,A,C,False,,The answer is C.
+952,test_images\woolsey_fire_00000011_post_disaster.png,Damaged building counting.,2,C,C,True,,C.
+955,test_images\woolsey_fire_00000146_post_disaster.png,Damaged building counting.,1,A,A,True,,The answer is A.
+962,test_images\woolsey_fire_00000328_post_disaster.png,Damaged building counting.,4,E,?,False,,"There are no buildings in the image provided. The image shows an aerial view of a landscape with a river and some roads, but no buildings are visible. Therefore"
+972,test_images\woolsey_fire_00000817_post_disaster.png,Damaged building counting.,3,C,C,True,,The answer is C.
+983,test_images\beriut_explosion_post_24.png,Totally-destroyed building counting.,5,C,D,False,,D.
+986,test_images\guatemala_volcano_00000004_post_disaster.png,Totally-destroyed building counting.,4,D,D,True,,D
+989,test_images\guatemala_volcano_00000019_post_disaster.png,Totally-destroyed building counting.,1,C,C,True,,C.
+993,test_images\hawaii_wildfire_post_631.png,Totally-destroyed building counting.,68,C,A,False,,The answer is A.
+996,test_images\hawaii_wildfire_post_637.png,Totally-destroyed building counting.,51,B,E,False,,The answer is E.
+1000,test_images\hawaii_wildfire_post_641.png,Totally-destroyed building counting.,50,D,E,False,,E
+1003,test_images\hawaii_wildfire_post_645.png,Totally-destroyed building counting.,44,E,C,False,,The answer is C.
+1007,test_images\hawaii_wildfire_post_650.png,Totally-destroyed building counting.,97,D,C,False,,The answer is C.
+1010,test_images\hawaii_wildfire_post_654.png,Totally-destroyed building counting.,33,D,D,True,,The answer is D.
+1013,test_images\hurricane_florence_00000035_post_disaster.png,Totally-destroyed building counting.,1,B,B,True,,B.
+1017,test_images\hurricane_harvey_00000124_post_disaster.png,Totally-destroyed building counting.,13,A,B,False,,B
+1020,test_images\hurricane_harvey_00000283_post_disaster.png,Totally-destroyed building counting.,1,A,?,False,,"There are no buildings in the image provided. The image shows a forested area with a body of water, but no structures or buildings are visible. Therefore,"
+1024,test_images\hurricane_harvey_00000362_post_disaster.png,Totally-destroyed building counting.,12,D,E,False,,E
+1027,test_images\hurricane_harvey_00000463_post_disaster.png,Totally-destroyed building counting.,4,B,E,False,,E
+1030,test_images\hurricane_matthew_00000023_post_disaster.png,Totally-destroyed building counting.,2,D,D,True,,D.
+1034,test_images\hurricane_matthew_00000056_post_disaster.png,Totally-destroyed building counting.,1,D,D,True,,D.
+1037,test_images\hurricane_matthew_00000082_post_disaster.png,Totally-destroyed building counting.,10,B,C,False,,The answer is C.
+1044,test_images\hurricane_matthew_00000153_post_disaster.png,Totally-destroyed building counting.,23,A,E,False,,The answer is E.
+1047,test_images\hurricane_matthew_00000174_post_disaster.png,Totally-destroyed building counting.,24,A,A,True,,The answer is A.
+1054,test_images\hurricane_matthew_00000220_post_disaster.png,Totally-destroyed building counting.,5,A,A,True,,The answer is A.
+1064,test_images\hurricane_matthew_00000308_post_disaster.png,Totally-destroyed building counting.,11,E,A,False,,The answer is A.
+1075,test_images\hurricane_matthew_00000390_post_disaster.png,Totally-destroyed building counting.,24,D,?,False,,"There are no buildings in the image provided. The image shows an aerial view of a beach and water body. Therefore, the question cannot be answered based on the"
+1085,test_images\hurricane_michael_00000113_post_disaster.png,Totally-destroyed building counting.,9,D,D,True,,The answer is D.
+1092,test_images\hurricane_michael_00000203_post_disaster.png,Totally-destroyed building counting.,4,C,E,False,,E
+1095,test_images\hurricane_michael_00000230_post_disaster.png,Totally-destroyed building counting.,1,C,C,True,,C.
+1102,test_images\hurricane_michael_00000303_post_disaster.png,Totally-destroyed building counting.,24,A,C,False,,The answer is C.
+1105,test_images\hurricane_michael_00000330_post_disaster.png,Totally-destroyed building counting.,2,B,A,False,,The answer is A.
+1109,test_images\hurricane_michael_00000441_post_disaster.png,Totally-destroyed building counting.,1,D,D,True,,D.
+1112,test_images\hurricane_michael_00000486_post_disaster.png,Totally-destroyed building counting.,1,D,D,True,,D.
+1116,test_images\ian_hurricane_post_725.png,Totally-destroyed building counting.,1,B,B,True,,B
+1126,test_images\joplin_tornado_00000002_post_disaster.png,Totally-destroyed building counting.,14,E,E,True,,E
+1133,test_images\joplin_tornado_00000018_post_disaster.png,Totally-destroyed building counting.,17,E,B,False,,B
+1136,test_images\joplin_tornado_00000025_post_disaster.png,Totally-destroyed building counting.,51,C,E,False,,E
+1139,test_images\joplin_tornado_00000031_post_disaster.png,Totally-destroyed building counting.,33,E,A,False,,The answer is A.
+1143,test_images\joplin_tornado_00000037_post_disaster.png,Totally-destroyed building counting.,3,E,D,False,,D.
+1146,test_images\joplin_tornado_00000043_post_disaster.png,Totally-destroyed building counting.,59,A,B,False,,The answer is B.
+1150,test_images\joplin_tornado_00000050_post_disaster.png,Totally-destroyed building counting.,11,E,E,True,,E
+1153,test_images\joplin_tornado_00000057_post_disaster.png,Totally-destroyed building counting.,23,B,E,False,,E
+1156,test_images\joplin_tornado_00000063_post_disaster.png,Totally-destroyed building counting.,34,C,E,False,,The answer is E.
+1160,test_images\joplin_tornado_00000075_post_disaster.png,Totally-destroyed building counting.,44,C,E,False,,E
+1163,test_images\joplin_tornado_00000084_post_disaster.png,Totally-destroyed building counting.,79,C,A,False,,The answer is A.
+1167,test_images\joplin_tornado_00000088_post_disaster.png,Totally-destroyed building counting.,60,C,A,False,,The answer is A.
+1170,test_images\joplin_tornado_00000093_post_disaster.png,Totally-destroyed building counting.,9,C,C,True,,The answer is C.
+1173,test_images\joplin_tornado_00000099_post_disaster.png,Totally-destroyed building counting.,2,A,B,False,,B
+1177,test_images\joplin_tornado_00000111_post_disaster.png,Totally-destroyed building counting.,2,B,D,False,,D
+1180,test_images\joplin_tornado_00000114_post_disaster.png,Totally-destroyed building counting.,21,C,E,False,,E
+1184,test_images\joplin_tornado_00000118_post_disaster.png,Totally-destroyed building counting.,51,C,E,False,,E
+1187,test_images\joplin_tornado_00000121_post_disaster.png,Totally-destroyed building counting.,37,D,D,True,,The answer is D.
+1190,test_images\joplin_tornado_00000125_post_disaster.png,Totally-destroyed building counting.,57,A,B,False,,The answer is B.
+1194,test_images\joplin_tornado_00000134_post_disaster.png,Totally-destroyed building counting.,3,D,A,False,,The answer is A.
+1197,test_images\joplin_tornado_00000139_post_disaster.png,Totally-destroyed building counting.,11,B,D,False,,D
+1204,test_images\joplin_tornado_00000147_post_disaster.png,Totally-destroyed building counting.,285,C,A,False,,The answer is A.
+1208,test_images\libya_flood_post_79.png,Totally-destroyed building counting.,2,E,E,True,,E
+1211,test_images\libya_flood_post_84.png,Totally-destroyed building counting.,20,D,C,False,,C
+1214,test_images\libya_flood_post_89.png,Totally-destroyed building counting.,4,E,E,True,,E
+1218,test_images\libya_flood_post_101.png,Totally-destroyed building counting.,19,A,C,False,,The answer is C.
+1221,test_images\libya_flood_post_115.png,Totally-destroyed building counting.,4,A,?,False,,"There are no buildings visible in the image provided. The image shows an aerial view of a landscape with smoke and a road, but no buildings are fully devastated or"
+1225,test_images\lower_puna_volcano_00000133_post_disaster.png,Totally-destroyed building counting.,1,B,B,True,,B.
+1228,test_images\lower_puna_volcano_00000149_post_disaster.png,Totally-destroyed building counting.,11,B,A,False,,The answer is A.
+1231,test_images\lower_puna_volcano_00000223_post_disaster.png,Totally-destroyed building counting.,2,A,?,False,,"There are no buildings visible in the image provided. The image shows a large body of water and some green landmasses, but no structures that can be identified"
+1235,test_images\mexico_earthquake_00000076_post_disaster.png,Totally-destroyed building counting.,1,E,E,True,,E
+1238,test_images\midwest_flooding_00000006_post_disaster.png,Totally-destroyed building counting.,4,B,A,False,,The answer is A.
+1245,test_images\midwest_flooding_00000383_post_disaster.png,Totally-destroyed building counting.,1,C,C,True,,C.
+1248,test_images\moore_tornado_00000045_post_disaster.png,Totally-destroyed building counting.,92,B,C,False,,The answer is C.
+1276,test_images\noto_earthquake_post_124.png,Totally-destroyed building counting.,1,D,D,True,,The answer is D.
+1279,test_images\noto_earthquake_post_140.png,Totally-destroyed building counting.,1,E,E,True,,E
+1293,test_images\noto_earthquake_post_171.png,Totally-destroyed building counting.,53,A,D,False,,The answer is D.
+1296,test_images\noto_earthquake_post_174.png,Totally-destroyed building counting.,2,B,D,False,,The answer is D.
+1299,test_images\noto_earthquake_post_178.png,Totally-destroyed building counting.,1,E,E,True,,E
+1306,test_images\noto_earthquake_post_186.png,Totally-destroyed building counting.,6,C,E,False,,The answer is E.
+1327,test_images\palu_tsunami_00000035_post_disaster.png,Totally-destroyed building counting.,2,A,B,False,,B.
+1334,test_images\palu_tsunami_00000051_post_disaster.png,Totally-destroyed building counting.,9,C,A,False,,The answer is A.
+1337,test_images\palu_tsunami_00000057_post_disaster.png,Totally-destroyed building counting.,19,A,C,False,,The answer is C.
+1344,test_images\palu_tsunami_00000070_post_disaster.png,Totally-destroyed building counting.,28,C,D,False,,D
+1347,test_images\palu_tsunami_00000085_post_disaster.png,Totally-destroyed building counting.,20,C,D,False,,D
+1351,test_images\palu_tsunami_00000100_post_disaster.png,Totally-destroyed building counting.,2,A,B,False,,The answer is B.
+1354,test_images\palu_tsunami_00000108_post_disaster.png,Totally-destroyed building counting.,4,E,E,True,,E
+1357,test_images\palu_tsunami_00000112_post_disaster.png,Totally-destroyed building counting.,51,A,A,True,,The answer is A.
+1361,test_images\palu_tsunami_00000129_post_disaster.png,Totally-destroyed building counting.,2,C,A,False,,The answer is A.
+1364,test_images\palu_tsunami_00000135_post_disaster.png,Totally-destroyed building counting.,17,D,C,False,,The answer is C.
+1368,test_images\palu_tsunami_00000143_post_disaster.png,Totally-destroyed building counting.,33,B,C,False,,The answer is C.
+1371,test_images\palu_tsunami_00000148_post_disaster.png,Totally-destroyed building counting.,14,C,A,False,,The answer is A.
+1374,test_images\palu_tsunami_00000158_post_disaster.png,Totally-destroyed building counting.,7,D,D,True,,The answer is D.
+1378,test_images\palu_tsunami_00000165_post_disaster.png,Totally-destroyed building counting.,83,A,A,True,,The answer is A.
+1381,test_images\palu_tsunami_00000169_post_disaster.png,Totally-destroyed building counting.,24,D,C,False,,The answer is C.
+1385,test_images\palu_tsunami_00000178_post_disaster.png,Totally-destroyed building counting.,68,D,C,False,,The answer is C.
+1388,test_images\palu_tsunami_00000185_post_disaster.png,Totally-destroyed building counting.,25,C,D,False,,D
+1391,test_images\palu_tsunami_00000188_post_disaster.png,Totally-destroyed building counting.,20,A,D,False,,D
+1395,test_images\palu_tsunami_00000193_post_disaster.png,Totally-destroyed building counting.,26,C,D,False,,The answer is D.
+1398,test_images\pinery_bushfire_00000048_post_disaster.png,Totally-destroyed building counting.,7,D,A,False,,The answer is A.
+1402,test_images\pinery_bushfire_00000388_post_disaster.png,Totally-destroyed building counting.,1,B,A,False,,The answer is A.
+1405,test_images\pinery_bushfire_00000830_post_disaster.png,Totally-destroyed building counting.,1,B,B,True,,B.
+1412,test_images\portugal_wildfire_00000285_post_disaster.png,Totally-destroyed building counting.,2,A,E,False,,The answer is E.
+1415,test_images\portugal_wildfire_00000651_post_disaster.png,Totally-destroyed building counting.,1,E,E,True,,E
+1422,test_images\portugal_wildfire_00001378_post_disaster.png,Totally-destroyed building counting.,3,D,A,False,,The answer is A.
+1432,test_images\santa_rosa_wildfire_00000018_post_disaster.png,Totally-destroyed building counting.,7,C,A,False,,The answer is A.
+1443,test_images\santa_rosa_wildfire_00000104_post_disaster.png,Totally-destroyed building counting.,18,D,C,False,,The answer is C.
+1453,test_images\santa_rosa_wildfire_00000242_post_disaster.png,Totally-destroyed building counting.,54,E,E,True,,E
+1460,test_images\santa_rosa_wildfire_00000293_post_disaster.png,Totally-destroyed building counting.,2,E,E,True,,E
+1463,test_images\santa_rosa_wildfire_00000318_post_disaster.png,Totally-destroyed building counting.,9,A,B,False,,The answer is B.
+1470,test_images\shovi_landslide_post_781.png,Totally-destroyed building counting.,3,D,D,True,,D.
+1490,test_images\sunda_tsunami_00000042_post_disaster.png,Totally-destroyed building counting.,11,C,A,False,,The answer is A.
+1497,test_images\turkey_earthquake1_post_236.png,Totally-destroyed building counting.,3,C,E,False,,E
+1500,test_images\turkey_earthquake1_post_240.png,Totally-destroyed building counting.,18,B,E,False,,The answer is E.
+1504,test_images\turkey_earthquake1_post_245.png,Totally-destroyed building counting.,2,E,E,True,,E
+1507,test_images\turkey_earthquake1_post_248.png,Totally-destroyed building counting.,10,E,E,True,,E
+1511,test_images\turkey_earthquake3_post_269.png,Totally-destroyed building counting.,10,B,C,False,,The answer is C.
+1514,test_images\turkey_earthquake3_post_274.png,Totally-destroyed building counting.,1,E,E,True,,E
+1518,test_images\turkey_earthquake4_post_283.png,Totally-destroyed building counting.,11,E,B,False,,The answer is B.
+1524,test_images\turkey_earthquake4_post_297.png,Totally-destroyed building counting.,2,D,C,False,,The answer is C.
+1552,test_images\turkey_earthquake5_post_353.png,Totally-destroyed building counting.,1,A,B,False,,B.
+1555,test_images\turkey_earthquake5_post_363.png,Totally-destroyed building counting.,1,B,B,True,,B.
+1558,test_images\turkey_earthquake6_post_376.png,Totally-destroyed building counting.,2,E,E,True,,E
+1565,test_images\turkey_earthquake6_post_403.png,Totally-destroyed building counting.,2,D,D,True,,D.
+1575,test_images\turkey_earthquake6_post_425.png,Totally-destroyed building counting.,3,A,E,False,,The answer is E.
+1582,test_images\turkey_earthquake6_post_439.png,Totally-destroyed building counting.,11,A,E,False,,E
+1586,test_images\turkey_earthquake6_post_446.png,Totally-destroyed building counting.,7,C,E,False,,E
+1589,test_images\turkey_earthquake6_post_452.png,Totally-destroyed building counting.,3,B,A,False,,The answer is A.
+1596,test_images\turkey_earthquake6_post_475.png,Totally-destroyed building counting.,1,D,D,True,,D.
+1599,test_images\turkey_earthquake6_post_482.png,Totally-destroyed building counting.,1,E,E,True,,E
+1603,test_images\turkey_earthquake6_post_490.png,Totally-destroyed building counting.,2,C,E,False,,E
+1606,test_images\turkey_earthquake6_post_497.png,Totally-destroyed building counting.,3,D,D,True,,D.
+1610,test_images\turkey_earthquake6_post_508.png,Totally-destroyed building counting.,2,E,E,True,,E
+1613,test_images\turkey_earthquake6_post_517.png,Totally-destroyed building counting.,12,B,D,False,,D.
+1616,test_images\turkey_earthquake6_post_521.png,Totally-destroyed building counting.,1,E,E,True,,E
+1620,test_images\turkey_earthquake6_post_535.png,Totally-destroyed building counting.,10,A,E,False,,E
+1623,test_images\turkey_earthquake6_post_548.png,Totally-destroyed building counting.,1,C,C,True,,C.
+1627,test_images\turkey_earthquake6_post_552.png,Totally-destroyed building counting.,3,C,D,False,,D.
+1630,test_images\turkey_earthquake6_post_565.png,Totally-destroyed building counting.,2,C,C,True,,C.
+1633,test_images\turkey_earthquake7_post_605.png,Totally-destroyed building counting.,4,B,D,False,,D.
+1637,test_images\turkey_earthquake7_post_615.png,Totally-destroyed building counting.,1,D,D,True,,D.
+1640,test_images\tuscaloosa_tornado_00000042_post_disaster.png,Totally-destroyed building counting.,19,C,D,False,,D.
+1644,test_images\tuscaloosa_tornado_00000090_post_disaster.png,Totally-destroyed building counting.,11,B,E,False,,E
+1647,test_images\tuscaloosa_tornado_00000161_post_disaster.png,Totally-destroyed building counting.,1,B,B,True,,B
+1650,test_images\tuscaloosa_tornado_00000210_post_disaster.png,Totally-destroyed building counting.,4,B,B,True,,B
+1654,test_images\tuscaloosa_tornado_00000272_post_disaster.png,Totally-destroyed building counting.,6,D,D,True,,D
+1657,test_images\tuscaloosa_tornado_00000333_post_disaster.png,Totally-destroyed building counting.,2,D,A,False,,The answer is A.
+1661,test_images\woolsey_fire_00000033_post_disaster.png,Totally-destroyed building counting.,2,B,?,False,,The image provided does not contain any visible buildings or structures that have been demolished. It appears to be an aerial view of a natural landscape with no man-made structures
+1664,test_images\woolsey_fire_00000078_post_disaster.png,Totally-destroyed building counting.,4,A,B,False,,The answer is B.
+1667,test_images\woolsey_fire_00000121_post_disaster.png,Totally-destroyed building counting.,1,A,?,False,,"There are no buildings visible in the image provided. The image appears to be an aerial view of a natural landscape with no structures or buildings present. Therefore, it"
+1671,test_images\woolsey_fire_00000206_post_disaster.png,Totally-destroyed building counting.,2,E,E,True,,E
+1674,test_images\woolsey_fire_00000262_post_disaster.png,Totally-destroyed building counting.,11,E,E,True,,The answer is E.
+1681,test_images\woolsey_fire_00000440_post_disaster.png,Totally-destroyed building counting.,1,B,A,False,,The answer is A.
+1684,test_images\woolsey_fire_00000480_post_disaster.png,Totally-destroyed building counting.,10,C,A,False,,The answer is A.
+1691,test_images\woolsey_fire_00000598_post_disaster.png,Totally-destroyed building counting.,56,E,C,False,,C

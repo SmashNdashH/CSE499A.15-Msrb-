@@ -1,6 +1,15 @@
 # CSE499B progress tracker
 
-**Last updated:** 22 Oct 2026, 09:50.
+**Last updated:** 26 Oct 2026, 06:06.
+- **H2b done (Noman's account, 23 Oct, 47 min): no model passes, so by the rule fixed before the run, the system ships fixed queries only, with no free-form questions.**
+  - **The bar:** at least 90% test-suite accuracy and RS(10) above 0 (points per 100 items). The best accuracy was 73.9% (Coder-3B in fp16), and every RS(10) was negative: every model gives too many wrong answers.
+  - **Our 7B in 4-bit:** 69.0% [57.1, 80.5], RS(10) −89.6. It refused 94% of the unanswerable questions, the most of any model. It's level with the separate Coder-3B (72.0%; the difference, −3.0 points [−10.7, 3.8], isn't clear), and it adds no memory (5.8 GB, 3.3 s per question on a T4).
+  - **The base VL-3B, standing in for the distilled 3B, is far weaker:** 46.4% in 4-bit, RS(10) −365.7, refusing only 36%; 22.6 points below our 7B [9.2, 36.8].
+  - **Where every model fails:** pairs of buildings (6–28%), the "no destroyed building nearby" NULL case (0–22%), positions (0–52%) and distances (44–70%). Our 7B in 4-bit gets counts, percentages, rankings and size thresholds 89–100% right.
+  - **Responder wording costs the most:** our 7B in 4-bit scores 52.9% on it, against 74.7% on plain wording.
+  - **Retries never fixed a query:** in all 200 retried items the model then refused or failed again, so first-try accuracy equals the final one.
+  - **4-bit costs our 7B 4.6 points** [0.8, 8.8] and the VL-3B 9.9 [3.4, 17.6]; the coders lose nothing measurable.
+  - **Checks:** the run notebook's code matches ours cell by cell; R11's table (117,687 buildings in 2,652 images); all 8 configurations ran; batched and one-at-a-time replies agreed on 96–100%. Results in [H2b-results/H2b/](Champion_Task/H2b-results/H2b/README.md).
 - **L0 training, session 3a done (account 3): step 25 of 28.**
   - It resumed from checkpoint-24, trained one step (2,541 s, about 42 min), then stopped at its time limit as planned.
   - **Loss:** 0.537; the learning rate is down to 1.1e-5.
@@ -163,7 +172,59 @@ Kept by Claude for Abrar. Claude updates this file whenever a task starts runnin
 
 | Done | Running | Ready to run | Needs your decision | Needs rerun | Not started |
 |---|---|---|---|---|---|
-| 22 | 0 | 2 | 0 | 1 | 12 |
+| 23 | 0 | 1 | 1 | 1 | 13 |
+
+## Pace since Phase A, and the timeline to the showcase (measured 24 Oct)
+
+**Measured from the run board** (Phase A started 18 Oct; each run counted on the day it finished):
+
+| Day | Kaggle runs finished | GPU hours |
+|---|---|---|
+| 18 Oct | 5 (2 on CPU) | 2.0 |
+| 19 Oct | 10 (1 on CPU) | 27.1 |
+| 20 Oct | 4 | 24.1 |
+| 21 Oct | 2 | 11.5 |
+| 22 Oct | 4 | 10.0 |
+| 23 Oct | 1 (Noman's account) | 0.8 |
+| **6 days** | **26** | **75.5** |
+
+Plus 6 runs on your PC, on 18–19 Oct: D5, D5b, T1 v2, T1 v3, R16b and R16c step 1.
+
+- **About 24 tasks finished in 6 days,** about 4 a day: Phase A, Phase B, R16 to R16c step 4, L0 step 1, L2 step 1, H2 and H2b.
+- **GPU quota set the pace, not your speed.** 75.5 GPU hours in 6 days is close to the three accounts' 90 hours a week. The drop after 20 Oct is accounts running out: account 1 hit zero on 21 Oct.
+- **About 1 run in 8 failed and was re-run:** R12's first try, L1b's first run, L0 session 2's first try, and R16c step 5 (out of quota).
+- **A notebook task took about a day to build and check, and a day to run** (for example, H2b was built on 22 Oct and finished on 23 Oct).
+
+**Remaining work in the same units** (estimates from the roadmap; Layer 3 left out):
+
+| Work | GPU hours | Depends on |
+|---|---|---|
+| L0 session 3b and the merge | 3.5–4 | quota |
+| L0: the new 7B on all six tasks | about 14.5 | the merge |
+| R16c step 5, the re-run | 1.5–2 | account 1's quota |
+| L2 step 1 again (only if the new 7B is kept) | about 2 | L0's verdict |
+| L2 step 2: train the 3B, then its six-task evaluation | about 20 + about 8 | L2 step 1 |
+| T2 (DisasTeller on local models) and the gallery export | about 4 | — |
+| H2c: adapter training and the new test | 5–10 | L2 |
+| **Total** | **about 60 (50–75)** | |
+
+At the measured rate that's about a week of GPU time, and up to 120 hours a week are available with Noman's account. **The limit is the chain L0, then L2, then H2c, which must run in order:** about 7–9 working days with no failures, or 2–3 weeks with the observed failure rate and weekly quota resets.
+
+**Projected timeline** (the model work follows the measured pace; the website and T2 are new kinds of work with no recorded pace, so their times are assumptions):
+
+| Week | Model work (measured pace) | Website and showcase (assumed) |
+|---|---|---|
+| 25–31 Oct | L0 session 3b and merge; the new 7B's six-task evaluation; R16c step 5; gallery export; R11's INT8 export (CPU) | T2 built and run offline; H2c's question set written (CPU) |
+| 1–7 Nov | L0's verdict; L2 step 1 again if needed; L2 step 2 training starts | Website: the story page |
+| 8–14 Nov | L2 training ends; the 3B's six-task evaluation; H2c's adapter | Website: the demo page; mid-November decision on Layer 3 |
+| 15–21 Nov | H2c's test: ship or fall back | Website: 3D damage city and live mode; booth-laptop browser test |
+| 22–28 Nov | Layer 3 on teammates' GPUs, only if chosen | Vercel deployment and phone test; report and poster drafts |
+| 29 Nov–5 Dec | — | Video, poster, final report |
+| 6–14 Dec | Buffer for failures | Rehearsal; showcase about 15 Dec |
+
+- **Model work should be done by about mid-November** at this pace, leaving about 3–4 weeks for the website, the report and buffer.
+- **The biggest unknown is the website,** since there's no recorded pace for it. The plan assumes about 3 weeks part-time (1–21 Nov). How many hours a week you can give it decides whether that holds.
+- Re-measure the pace each week from the run board, and update this section.
 
 ## Run board: what ran, what's running, what's next
 
@@ -188,7 +249,6 @@ Nothing is running on Kaggle (22 Oct, 08:40).
 | L0 step 2: the full training, session 3b (steps 26–28), then the merge | the training notebook, Cell 2 with `time_limit_h = 5.0` (session 3a's was 0.3) | 3 or any account with the HF token | next week's GPU quota | about 2.1 h of training (3 steps of about 40 min) + about 1 h merge; plan on 3.5–4 h |
 | L0 step 2: the new 7B on all six tasks | the re-score notebook, `MODEL = "new"`, in parts | 3, plus 2 if needed | the training and merge | about 14.5 h (BDC + BBR 8.6 h, DRE + DSR 4.1 h, DTR + ORR about 1.7 h, as the old 7B took) |
 | L0 step 2: the verdict, all parts scored together | a short scoring notebook on your PC, built when the parts arrive | your PC | both models' answers | minutes |
-| H2b: graded test of the SQL agent (which model, if any, writes the SQL), the full run | [h2b-sql-agent-graded-test.ipynb](Champion_Task/h2b-sql-agent-graded-test.ipynb) | 2, where H2's output is (or any account it's shared with), with the HF token | the smoke test, and next week's GPU quota | about 1–1.5 h |
 
 **Later: not built yet**
 
@@ -198,7 +258,7 @@ Nothing is running on Kaggle (22 Oct, 08:40).
 | L2 step 2: train the 3B; L2 step 1 again if L0's new 7B is kept | L0's verdict |
 | L2b: explanations as a second skill | L2 step 1 with the final teacher |
 | T2: DisasTeller on local models (O3's missing part) | GPU time; not started |
-| T3: offline demo app | T2 |
+| T3: offline demo and public showcase (Vercel website) | T2, and a gallery export |
 | L1 again on the final champion | the final champion |
 | R13 (BRIGHT footprints), R14 (rubble crops, optional), R15 (only if a change beyond R11 passes) | results and spare GPU |
 | H3, H4, L3, L4 | not scheduled |
@@ -230,6 +290,7 @@ Nothing is running on Kaggle (22 Oct, 08:40).
 | H2: R11's per-building table and the SQL agent | `h2-sql-counting-agent.ipynb`; results in [H2-results/H2/](Champion_Task/H2-results/H2/README.md) | account 2, 22 Oct | about 1.5 h with the smoke test |
 | L0 step 2: the full training, session 3a (step 25) | `l0-step2-topup-training.ipynb`; results in [L0-step2-results/train-session3a/](Champion_Task/L0-step2-results/train-session3a/L0S2-train/README.md) | account 3, 22 Oct | about 1 h |
 | H2b: two smoke tests (VL-3B and Coder-1.5B in 4-bit; the second confirmed Cell 9's fix) | `h2b-sql-agent-graded-test-smoke.ipynb` | account 2, 22 Oct | about 15 min each |
+| H2b: the full run (4 models, each in 4-bit and fp16) | `h2b-sql-agent-graded-test.ipynb`; results in [H2b-results/H2b/](Champion_Task/H2b-results/H2b/README.md) | Noman's account, 23 Oct | 47 min |
 | R11s7: R11 with seed 7 | `d4-champion-model-R11s7.ipynb` | account 2, 20 Oct | 6.8 h |
 | L0 step 2: the old 7B's full-size re-score, part A (BDC, BBR) | `l0-step2-full-size-rescore-old-partA.ipynb`; results in [L0-step2-results/old-partA/](Champion_Task/L0-step2-results/old-partA/L0S2/README.md) | account 3, 20 Oct | 8.6 h |
 | L0 step 2: part B (DRE, DSR) | `l0-step2-full-size-rescore-old-partB.ipynb`; results in [L0-step2-results/old-partB/](Champion_Task/L0-step2-results/old-partB/L0S2/README.md) | account 2, 20 Oct | 4.1 h |
@@ -248,6 +309,15 @@ Nothing is running on Kaggle (22 Oct, 08:40).
 Claude also ran read-only checks on your PC: the Turkey and counting breakdowns, dry runs of the new notebooks, and the folder audit. They read the results and write nothing into the project (only to Claude's temporary folder).
 
 ## Needs you now
+
+- **E5, the validation leak (26 Oct), needs your decision.** Ridita's audit found validation pairs that are near-copies of training pairs (`socal_fire` and `woolsey_fire` share before-images). A local check found 21 such pairs (the audit says 40), and without them R16c drops to 0.2915–0.3070, so O1 isn't shown on clean images. Details: [E5-results/E5/README.md](Champion_Task/E5-results/E5/README.md).
+  1. Ask Ridita for `val_train_leaks.csv` (named in her report, not committed), or approve hashing DisasterM3's before-images on Kaggle.
+  2. Approve a Kaggle re-score of R11 and R11s7 (and R9, R1) on the clean pairs; R16c can be re-scored on your PC.
+- **The repository is public,** and Ridita's commit added `Offline_RAG_KR2/guidelines/Sphere_Handbook_2018_EN.pdf`, which her own README says needs Sphere's permission to put online. Decide whether to remove it (and whether to purge it from the history).
+
+- **Final showcase: about 15 Dec** (tentative, given 24 Oct), about 7 weeks away.
+- **Order agreed 24 Oct:** T2, T3, L0 and L2 before any work on Layers 2–4; the 3D damage city goes into T3's website. H2c follows L2. Layer 3: decide in mid-November.
+- **H2b is done (23 Oct):** no model passes, so the system ships fixed queries only (the rule fixed 22 Oct). Say if you want a follow-up: a menu of fixed question templates, or question–SQL pairs in L2's training. Either one needs a new question bank for its test.
 
 GPU now (20 Oct, about 12:10): **account 1** (`abrarmohammedtanzim`): R16c step 5 running, 3 h 30 min when it started; **account 2** (`abrar2222864642`): free, 3 h 20 min; **account 3** (`redwannewaz`): the smoke test running, 21 h when it started.
 - **Account 1:** R16c step 5 now (about 1.5–2 h), then R16c step 3 (about 0.5 h). Step 4 is done.
@@ -409,7 +479,7 @@ GPU now (20 Oct, about 12:10): **account 1** (`abrarmohammedtanzim`): R16c step 
 
 | Goal | Target | Where we are | Status |
 |---|---|---|---|
-| O1 Segmentation champion | mIoU above 0.52 and Destroyed IoU above 0.30, on two seeds | mIoU 0.581 (R11). Destroyed IoU 0.300 on one seed (R9 with TTA); the two-seed mean is 0.297. R12's 8,021 extra destroyed buildings changed nothing (TTA: 0.588 and 0.295). E4: almost all of the gap is Turkey's earthquake (37% of destroyed pixels, Destroyed IoU 0.000). Without it, R11 reaches 0.410. **R16c (SAM 3 + the U-Net's pieces, the stronger grader) passes the gate on both U-Net seeds and both grader seeds:** with R11, 0.587 / 0.316 and 0.585 / 0.311 (step 2); with R11s7, 0.584 / 0.309 and 0.583 / 0.301 (step 3, 21 Oct); mean of the four 0.585 / 0.309. Caveats: the weakest combination clears 0.30 by only 0.0006, and against R11s7 the keep rule fails, because it costs about 0.007 mIoU. | **Met** (gate on two U-Net seeds; narrow on one) |
+| O1 Segmentation champion | mIoU above 0.52 and Destroyed IoU above 0.30, on two seeds | mIoU 0.581 (R11). Destroyed IoU 0.300 on one seed (R9 with TTA); the two-seed mean is 0.297. R12's 8,021 extra destroyed buildings changed nothing (TTA: 0.588 and 0.295). E4: almost all of the gap is Turkey's earthquake (37% of destroyed pixels, Destroyed IoU 0.000). Without it, R11 reaches 0.410. **R16c (SAM 3 + the U-Net's pieces, the stronger grader) passes the gate on both U-Net seeds and both grader seeds:** with R11, 0.587 / 0.316 and 0.585 / 0.311 (step 2); with R11s7, 0.584 / 0.309 and 0.583 / 0.301 (step 3, 21 Oct); mean of the four 0.585 / 0.309. Caveats: the weakest combination clears 0.30 by only 0.0006, and against R11s7 the keep rule fails, because it costs about 0.007 mIoU. **26 Oct: a train/validation leak** (Ridita's corrected audit; checked in [E5](Champion_Task/E5-results/E5/README.md)): `socal_fire` and `woolsey_fire` share before-images, so some validation pairs are near-copies of training pairs. Removing only the 21 leaked pairs found locally puts R16c at 0.2915–0.3070 (one of four below 0.30); the audit counts 40. | **At risk:** met on all 645 images, not yet shown on clean images (E5) |
 | O2 Counting and six tasks (KR2) | Building counting above the base model's 34.2%; all six tasks re-scored | Like for like with the DisasterM3 paper's Table 2, which scores optical after-images only: our 7B (greedy) averages 36.1% on the six tasks against the base model's 31.2%. It counts buildings at 32.0% against 34.2%, 2.2 points short. With the radar questions included, which the paper's table leaves out, our scores are 35.6% and 30.5%. The paper's own fine-tune of the same 7B reaches 40.4% (counting 34.3%). These are at 512 px. At the paper's full image size (L0 step 1), our 7B scores 75.6% on disaster type and 31.1% on relational (71.1% and 23.3% at 512 px); the other four tasks haven't been re-scored at full size yet. | Half met |
 | O3 Offline report system | DisasTeller on our model, with damage map, counts and survivability heatmap | Damage map, counts and heatmap are done. DisasTeller on local models is not started (T2). | 3 of 4 parts |
 | O4 Edge model and distilled 3B | An edge-ready segmenter and a distilled 3B model | Edge segmenter done: the INT8 version (L1b) is 4× smaller (33 MB) and 1.43× faster than ONNX FP32, with Destroyed IoU down only 0.0003. The 3B distillation's step 1 is done (1,085 checked teacher answers); step 2 is next. | Half met |
@@ -541,11 +611,12 @@ Results in [R16b-results/](Champion_Task/R16b-results/README.md). | Counting wit
 | ID | Task | Status | Where | Result | Next step |
 |---|---|---|---|---|---|
 | H2 | Per-building table and SQL counting agent | Done (22 Oct) | Kaggle T4 ×2, account 2, about 1.5 h | **R11's counting on the benchmark: 32.96% on the optical questions** (27.46% overall), against 26.51% for R9's tuned counter and 34.2% for the base 7B. Both models wrote valid SQL for all 100 sampled questions, and their counts matched the table on 99 and 100. Results in [H2-results/H2/](Champion_Task/H2-results/H2/README.md). | Its table feeds H2b, T2 and T3. Counting is still 1.2 points under KR2's bar. |
-| H2b | Graded test of the SQL agent | Ready to run | Kaggle T4 ×2, about 1–1.5 h | Built 22 Oct and checked end to end on your PC with stand-in models, on a synthetic table and on H2's real one: 297 items on 90 real images, with all 6 near-miss queries caught. It covers 5 versions of H2's table, and 4 models in 4-bit and fp16. The decision rule was fixed before any run. | Smoke test on account 2 now, the full run next week, and again on the distilled 3B after L2. |
+| H2b | Graded test of the SQL agent | Done | Noman's Kaggle account, 23 Oct, 47 min | No configuration passes (bar: 90% test-suite accuracy and RS(10) above 0). Best: Coder-3B in fp16, 73.9%. Our 7B in 4-bit: 69.0% [57.1, 80.5], RS(10) −89.6, with the most refusals of unanswerable questions (94%). The base VL-3B in 4-bit: 46.4%, RS(10) −365.7. Results in [H2b-results/H2b/](Champion_Task/H2b-results/H2b/README.md). | By the rule fixed 22 Oct: fixed queries only, no free-form questions. Any follow-up is your call; the re-run on the distilled 3B is needed only if free-form questions come back. |
+| H2c | Free-form questions, second try | Not started | CPU (data), Kaggle (adapter and test) | — | After L2: question–SQL pairs, a fine-tuned adapter, a five-sample agreement gate, a new test. Pass rule fixed 24 Oct (90% and RS(10) above 0); if it fails, the system stays as it was. Steps in the roadmap. |
 | H3 | VLM input upgrades (before + after, numbered marks, crops) | Not started | Kaggle GPU | — | After H1 V2. |
 | H4 | GEOBench-VLM external counting test | Not started | Kaggle GPU | — | — |
 | T2 | DisasTeller on local models | Not started | Kaggle T4 ×2 | — | The biggest missing O3 piece. |
-| T3 | Offline demo app | Not started | — | — | After H1, T1 and T2. |
+| T3 | Offline demo and public showcase (Vercel website) | Not started | — | — | Re-planned 24 Oct: a public showcase site and an interactive demo website on Vercel, with a live offline mode at the booth. You build it and choose the name and look later. In-browser feasibility test passed 24 Oct, in two runs: INT8 on WebAssembly took 2.1–5.5 s per image in Chrome and Edge, with output identical to the native run (System_Design_Notes §4.3; kit in `Champion_Task/T3-browser-test/`). The rest after T2. |
 | L0 | A better 7B teacher before distilling | Ready to run (step 2: the old 7B's full-size re-score and the training's smoke test were done on 20 Oct. The full training: session 1 did steps 1–15 (21 Oct), session 2 did steps 16–24 (22 Oct) after its first try crashed, and session 3a did step 25 (22 Oct). Next is session 3b next week: steps 26–28 and the merge) | Step 1: Kaggle account 1, T4 ×2, 1.7 h. Step 2: the old 7B's re-score of four tasks (about 11 h, account 3 then account 2), training (about 7–14 h on T4 ×2, account 3), then the new 7B on six tasks (about 12 h) | Decided 19 Oct: improve the 7B before distilling.
 
 **Step 1 done (19 Oct):** [l0-step1-image-size-check.ipynb](Champion_Task/l0-step1-image-size-check.ipynb), results in [L0-step1-results/](Champion_Task/L0-step1-results/L0S1/README.md). The 1,211 optical questions, at three sizes for a 1024 px image (disaster type, 353 questions / relational, 858):
@@ -577,10 +648,49 @@ Background:
 
 | ID | Task | Status | Where | Result | Next step |
 |---|---|---|---|---|---|
-| — | Commit this week's work to git | Done | Your PC, pushed 19 Oct as `1b33574` | `Essential_task_delegation\` and `others\`, plus `.gitignore`, `README.md` and `UPDATE.md` whenever they're modified (your rule, 19 Oct). The `.gitignore` was updated 19 Oct, so these stay local: bulk masks and maps that no notebook reads, L2 step 1's 71 MB training file, personal samples, the next report's draft and Claude's local settings. | Next commit: same scope, when you ask. |
+| — | Commit this week's work to git | Done | Your PC, pushed 19 Oct as `1b33574`, then 22 Oct as `a736299` and `56df1c5` | `Essential_task_delegation\` and `others\`, plus `.gitignore`, `README.md` and `UPDATE.md` whenever they're modified (your rule, 19 Oct). The `.gitignore` was updated 19 Oct, so these stay local: bulk masks and maps that no notebook reads, L2 step 1's 71 MB training file, personal samples, the next report's draft and Claude's local settings. | Next commit: same scope, when you ask. |
 | — | Update the roadmap and README with these results | Not started | — | — | Say when. |
 
 ## Change log
+
+- **26 Oct 2026, 06:06:**
+  - Teammates' pushes since 22 Oct, checked:
+    - Ridita added `Offline_RAG_KR2/` (offline guideline search for DisasTeller, combining meaning and keyword search over six guideline sources, plus a building counter for R1's masks) and the corrected audit PDF, and deleted four files in her BRIGHT folder (no links in our docs broke).
+    - Aryan added `BDC_PIPELINE_REPORT_v3.md` and a TEOChat notebook. Given counts from ground-truth masks, the fine-tuned 7B answers 96.5% of 1,701 optical counting questions; with counts from the old B1 U-Net, 24.0%.
+  - E5 opened: the audit's train/validation leak was checked locally (21 leaked pairs against the audit's 40), and R16c was re-scored without them; O1 is now "at risk". Results in `Champion_Task/E5-results/E5/`.
+
+- **26 Oct 2026, 03:06:** TimeSpot (ICML 2026) recorded in Paper_Audit §4.15, with its citation and BibTeX, and its PDF added to the lit review folder. Its methods were added where they'll be used and cited: L3 (a calibration check before the handoff threshold), H2c (RC-AUC) and T2 (a consistency check of report numbers); also System_Design_Notes §2.4 and §3.6, and the ledger.
+
+- **24 Oct 2026, 06:19:** new section "Pace since Phase A, and the timeline to the showcase": the pace measured from the run board (26 Kaggle runs and 75.5 GPU hours in 6 days, limited by quota), the remaining work in GPU hours, and a projected week-by-week timeline to about 15 Dec.
+
+- **24 Oct 2026, 06:08:**
+  - New task H2c (your go): a second try at free-form questions, with its pass rule fixed now and a fallback to the system as it was. Roadmap, ledger and tracker updated.
+  - The browser test kit is in `Champion_Task/T3-browser-test/` for teammates and their AI helpers (scripts, pinned packages, results, a README with caveats and an audit checklist). It was re-run end to end from a fresh copy: same output, slower timings (INT8 4.0–5.5 s per image), still within the limit.
+  - Final showcase about 15 Dec (tentative). Layer 3 to be decided in mid-November.
+
+- **24 Oct 2026, 06:05:** System_Design_Notes §3.7 added: how eight remote-sensing VLM projects handle and score free-form questions, and what H2b did and didn't rule out (descriptive questions answered by the VLM were never tested).
+
+- **24 Oct 2026, 05:56:**
+  - T3's in-browser feasibility test passed on this PC: L1b's INT8 model ran in Chrome and Edge with ONNX Runtime Web in 2.1–3.7 s per image, with output identical to the native run. INT8 on WebGPU failed (an unsupported operation); full precision on WebGPU took 1.1–1.4 s. Details in System_Design_Notes §4.3.
+  - System_Design_Notes §3.5–3.6 added: what the literature shows on reliable text-to-SQL, and how H2b scored, with the alternatives and the penalty sensitivity table.
+
+- **24 Oct 2026, 05:44:** your decisions recorded: T2, T3, L0 and L2 come before Layers 2–4, and a 3D damage city goes into the T3 website. The layer estimates and the open choices (Layer 3 if time allows; Layer 4 and real 3D as future work) are in System_Design_Notes §5.
+
+- **24 Oct 2026, 05:42:** your T3 decisions recorded: you build the website, you choose the name and look later, and the in-browser segmenter will be tried after a feasibility test (pass rule fixed in System_Design_Notes §4.3). Roadmap, ledger and design notes updated.
+
+- **24 Oct 2026, 05:34:** T3 re-planned (your go): a public showcase site, and an interactive, animated demo website on Vercel with a live offline mode at the booth. The reasoning, including what last season's winner (DhakaDriveX) showed, is in [System_Design_Notes.md](System_Design_Notes.md) §4; the build steps are in the roadmap's T3 section.
+
+- **24 Oct 2026, 04:32:** new [System_Design_Notes.md](System_Design_Notes.md): the agent frameworks (LangChain, LangGraph, LangSmith), DisasTeller's offline and online modes for T2, and why free-form SQL waits after H2b. Linked from the roadmap (T2 step 6, H2b) and the ledger (H2b).
+
+- **23 Oct 2026, 15:41:** H2b added to [Task_Ledger.md](Task_Ledger.md) and marked done in the roadmap (§7, with its result).
+
+- **23 Oct 2026, 15:35:**
+  - H2b done on Noman's account (47 min, all 8 configurations). Checked: the run notebook's code matches ours cell by cell, the table is R11's (117,687 buildings), and the package versions match the smoke tests.
+  - Noman pushed the results as `Champion_Task/H2b - Results/` and the run notebook as `Noman_task/h2b-task-notebook-with-output.ipynb`. They were moved to [H2b-results/H2b/](Champion_Task/H2b-results/H2b/README.md) and over the output-free `h2b-sql-agent-graded-test.ipynb`, as with H2's run.
+
+- **22 Oct 2026, 18:26:**
+  - H2b's full run handed to Noman, on his own Kaggle account. The notebook (`SMOKE_TEST = False`) and H2's table on GitHub match the local copies.
+  - This week's work pushed as `a736299` and `56df1c5`. The second push was first rejected because Tamanna had pushed three commits (her Plan_2 and DisasterVQA folders only). It was rebased onto them; no files in common.
 
 - **22 Oct 2026, 09:50:** session 3a's download `L0-step2-results/results` was renamed to `L0-step2-results/train-session3a/`. Its `checkpoints/` (checkpoint-24 and checkpoint-25, 1.9 GB) were deleted after the log's push line and a sha256 match with Hugging Face.
 

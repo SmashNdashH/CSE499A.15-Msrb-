@@ -1,0 +1,55 @@
+dm3_image,bright_tile,inliers,raw_matches,scale,rotation_deg,dm3_share_in_tile,bright_event,split
+beriut_explosion_pre_29.png,beirut-explosion_00000021_pre_disaster.tif,26,44,0.9949,-0.41,0.3102,beirut-explosion,train
+hawaii_wildfire_pre_992.png,hawaii-wildfire_00000037_pre_disaster.tif,40,60,1.4805,1.19,0.2944,hawaii-wildfire,train
+libya_flood_pre_100.png,libya-flood_00000090_pre_disaster.tif,3854,3854,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_101.png,libya-flood_00000092_pre_disaster.tif,3860,3860,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_102.png,libya-flood_00000094_pre_disaster.tif,3875,3875,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_103.png,libya-flood_00000084_pre_disaster.tif,3839,3839,1.0,0.0,1.0,libya-flood,not in pool
+libya_flood_pre_104.png,libya-flood_00000086_pre_disaster.tif,3846,3846,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_105.png,libya-flood_00000088_pre_disaster.tif,3828,3828,1.0,0.0,1.0,libya-flood,val
+libya_flood_pre_54.png,libya-flood_00000101_pre_disaster.tif,3845,3845,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_55.png,libya-flood_00000103_pre_disaster.tif,3871,3871,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_56.png,libya-flood_00000096_pre_disaster.tif,3838,3838,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_57.png,libya-flood_00000098_pre_disaster.tif,3841,3841,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_58.png,libya-flood_00000108_pre_disaster.tif,3844,3844,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_59.png,libya-flood_00000106_pre_disaster.tif,3834,3834,1.0,-0.0,1.0,libya-flood,not in pool
+libya_flood_pre_60.png,libya-flood_00000115_pre_disaster.tif,3824,3824,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_61.png,libya-flood_00000111_pre_disaster.tif,3806,3806,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_62.png,libya-flood_00000119_pre_disaster.tif,3829,3829,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_63.png,libya-flood_00000121_pre_disaster.tif,3789,3791,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_64.png,libya-flood_00000000_pre_disaster.tif,1669,1670,1.0,-0.0,1.0,libya-flood,not in pool
+libya_flood_pre_65.png,libya-flood_00000002_pre_disaster.tif,3712,3713,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_66.png,libya-flood_00000004_pre_disaster.tif,3802,3803,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_67.png,libya-flood_00000007_pre_disaster.tif,3852,3852,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_68.png,libya-flood_00000009_pre_disaster.tif,2047,2047,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_69.png,libya-flood_00000010_pre_disaster.tif,3807,3807,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_70.png,libya-flood_00000012_pre_disaster.tif,3838,3838,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_71.png,libya-flood_00000014_pre_disaster.tif,3844,3844,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_72.png,libya-flood_00000016_pre_disaster.tif,3838,3838,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_73.png,libya-flood_00000018_pre_disaster.tif,3812,3813,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_74.png,libya-flood_00000020_pre_disaster.tif,3853,3855,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_75.png,libya-flood_00000022_pre_disaster.tif,3846,3846,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_76.png,libya-flood_00000024_pre_disaster.tif,3863,3863,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_77.png,libya-flood_00000028_pre_disaster.tif,3813,3813,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_78.png,libya-flood_00000038_pre_disaster.tif,3144,3146,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_79.png,libya-flood_00000029_pre_disaster.tif,3846,3847,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_80.png,libya-flood_00000032_pre_disaster.tif,3863,3863,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_81.png,libya-flood_00000035_pre_disaster.tif,3857,3857,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_82.png,libya-flood_00000050_pre_disaster.tif,3850,3850,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_83.png,libya-flood_00000052_pre_disaster.tif,708,708,1.0,0.0,1.0,libya-flood,not in pool
+libya_flood_pre_84.png,libya-flood_00000043_pre_disaster.tif,3872,3872,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_85.png,libya-flood_00000045_pre_disaster.tif,3876,3876,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_86.png,libya-flood_00000048_pre_disaster.tif,3859,3859,1.0,-0.0,1.0,libya-flood,val
+libya_flood_pre_87.png,libya-flood_00000062_pre_disaster.tif,3866,3866,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_88.png,libya-flood_00000064_pre_disaster.tif,3841,3841,1.0,-0.0,1.0,libya-flood,val
+libya_flood_pre_89.png,libya-flood_00000066_pre_disaster.tif,3795,3795,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_90.png,libya-flood_00000068_pre_disaster.tif,775,775,1.0,0.0,1.0,libya-flood,not in pool
+libya_flood_pre_91.png,libya-flood_00000056_pre_disaster.tif,3831,3831,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_92.png,libya-flood_00000058_pre_disaster.tif,3853,3853,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_93.png,libya-flood_00000061_pre_disaster.tif,3847,3847,1.0,-0.0,1.0,libya-flood,val
+libya_flood_pre_94.png,libya-flood_00000077_pre_disaster.tif,3843,3844,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_95.png,libya-flood_00000079_pre_disaster.tif,3841,3841,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_96.png,libya-flood_00000081_pre_disaster.tif,3815,3815,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_97.png,libya-flood_00000070_pre_disaster.tif,3824,3824,1.0,-0.0,1.0,libya-flood,train
+libya_flood_pre_98.png,libya-flood_00000072_pre_disaster.tif,3857,3857,1.0,0.0,1.0,libya-flood,train
+libya_flood_pre_99.png,libya-flood_00000075_pre_disaster.tif,3839,3839,1.0,-0.0,1.0,libya-flood,train

@@ -58,6 +58,11 @@ Status is kept in [Progress_Tracker.md](Progress_Tracker.md); the plans are in [
 | 20 Oct | L0 step 2's training keeps the equal replay (option A): 7,018 examples, about 19.5 h in 2–3 sessions, rather than half the replay (about 15 h) | The replay protects the other four tasks, and the keep rule fails if any of them drops by more than 1 point | L0 step 2: session 1 on account 3 |
 | 22 Oct | H2 builds its table from R11 with 8-view TTA, not R9 | R11's blobs of at least 20 px are our best counter on validation (39.24% against R9's 33.3%), and R11's counting on the benchmark had never been measured | `Champion_Task/h2-sql-counting-agent.ipynb` (Noman's original unchanged) |
 | 22 Oct | Set Soup (trysoup.dev, a fine-tuning tool) aside for now, and record that it's barely usable for us | Its docs (v0.76.0) don't list Qwen2.5-VL, and don't cover the vision encoder freeze, the image-size cap, two-GPU training or Kaggle resumes that our recipe needs. Its only possible uses here are text-only (a local server for T2; GGUF export or a refusal fine-tune of a text model) | [Paper_Audit_and_Integration_Plan.md §4.14](Paper_Audit_and_Integration_Plan.md); our training notebook stays the recipe for every Qwen2.5-VL fine-tune |
+| 24 Oct | T3 becomes two pieces: a public showcase site, and an interactive, animated demo website deployed on Vercel, with a live offline mode at the booth. You build it, and choose its name and look later | Last season's winner showed a designed site, results in motion and one interactive proof of its claim. Vercel can't run our models, so the live part runs on the booth laptop | Roadmap T3; [System_Design_Notes.md §4](System_Design_Notes.md) |
+| 24 Oct | Finish T2, T3, L0 and L2 before any work on Layers 2–4 of the day-1 vision, and add a "3D damage city" view to the T3 website (building outlines raised into 3D blocks coloured by damage, labelled as a view of our 2D results) | O3 and O4 need T2, T3, L0 and L2, and Layers 2–4 aren't in O1–O4. The 3D view takes about a week with no GPU | Roadmap T3; [System_Design_Notes.md §5](System_Design_Notes.md) |
+| 26 Oct | Record TimeSpot (ICML 2026) and use its evaluation methods, citing it wherever they're used: calibration error and risk–coverage curves for L3's handoff and H2c's gate, and a consistency check for T2's reports. Its dataset isn't used | Its methods measure whether a model's confidence can be trusted and catch answers that contradict facts, both needed before the system acts on a model's answer | [Paper_Audit §4.15](Paper_Audit_and_Integration_Plan.md); roadmap L3, H2c and T2 |
+| 24 Oct | Add H2c, a second try at free-form questions: question–SQL pairs for our table, a fine-tuned adapter, a five-sample agreement gate, and a new test with unseen question types. If it fails, fall back to the system as it was | In the literature, models passed a similar bar only with in-domain training and an abstention gate, which H2b didn't have | Roadmap H2c; [System_Design_Notes.md §3.5](System_Design_Notes.md) |
+| 24 Oct | Try running the INT8 segmenter in the visitor's browser (ONNX Runtime Web) | Uploads would work on the public site with no server, and images never leave the visitor's device | A feasibility test first, with its pass rule fixed in advance ([System_Design_Notes.md §4.3](System_Design_Notes.md)) |
 | 22 Oct | Build H2b, a graded test of the SQL agent. The deployment rule was fixed before any run: benchmark counting uses a fixed query, our VLM writes the SQL if it passes in 4-bit, and a separate model is only a fallback | H2's counting questions can't separate the models, and a second model works against the low-resource target | [h2b-sql-agent-graded-test.ipynb](Champion_Task/h2b-sql-agent-graded-test.ipynb), after H2 |
 
 **Standing working rules** (from you, kept in memory):
@@ -203,6 +208,39 @@ Status is kept in [Progress_Tracker.md](Progress_Tracker.md); the plans are in [
   - R11's blobs are now our best benchmark counter, but the counting half of KR2 is still not met.
   - The open-question failure confirmed the need for H2b's graded test.
   - Its table is H2b's input.
+
+### H2b · Graded test of the SQL agent
+- **What:** a graded test of which model, if any, should turn free-form questions into SQL over H2's per-building table in the deployed system.
+- **Why it was planned:**
+  - O3 and O4: H2's 100 counting questions all need the same query, so they couldn't separate the models, and counting needs no model at all.
+  - A second model costs memory on low-resource hardware, so a separate SQL model had to earn its place.
+- **How:**
+  - 297 items on 90 images of R11's table: 29 answerable questions in 12 groups, each in 3 phrasings on up to 3 images (261 items), plus 12 unanswerable questions in 3 phrasings (36 items). The questions, the prompt and the rule were fixed before any run.
+  - An answer counts only if its query matches the reference on 5 versions of the table (test-suite accuracy, Zhong et al. 2020).
+  - RS(10) scores reliability, in points per 100 items: +1 for a right answer or a correct refusal, 0 for refusing an answerable question, −10 for a wrong answer (TrustSQL; EHRSQL 2024).
+  - 95% intervals come from a cluster bootstrap over questions.
+  - 4 models, each in 4-bit and fp16: our 7B and the base VL-3B (text only, no extra memory), and Qwen2.5-Coder 1.5B and 3B (separate models). One prompt, greedy decoding, up to 2 retries with the error message.
+- **How it ran:** Noman's Kaggle account, T4 ×2, 23 Oct, 47 min, after two smoke tests on account 2 on 22 Oct. [h2b-sql-agent-graded-test.ipynb](Champion_Task/h2b-sql-agent-graded-test.ipynb); the run's code matches the built notebook cell by cell.
+- **Expectation before the run:**
+  - The rule: a configuration passes with test-suite accuracy of at least 90% and RS(10) above 0.
+  - Our VLM writes the SQL if it passes in 4-bit, a separate model is only a fallback, and if nothing passes, fixed queries only.
+  - No accuracy number was predicted. The smoke test's 6 items had shown both small models answering unanswerable questions and missing the NULL case.
+- **Result:**
+  - **No configuration passes.** The best accuracy was Coder-3B in fp16's 73.9%, and every RS(10) was negative.
+  - **Our 7B in 4-bit:** 69.0% [57.1, 80.5], RS(10) −89.6. It refused 94% of the unanswerable questions, the most of any model, and adds no memory (5.8 GB, 3.3 s per question on a T4). It's level with Coder-3B in 4-bit (72.0%; the difference, −3.0 points [−10.7, 3.8], isn't clear).
+  - **The base VL-3B in 4-bit:** 46.4%, RS(10) −365.7, refusing 36%; 22.6 points below our 7B [9.2, 36.8].
+  - **The separate coders in 4-bit:** Coder-1.5B 56.7% (RS(10) −283.8, +1.1 GB) and Coder-3B 72.0% (RS(10) −162.6, +2.0 GB).
+  - **Weak for every model:** pairs of buildings (6–28%), the "no destroyed building nearby" NULL case (0–22%), positions (0–52%) and distances (44–70%). Our 7B in 4-bit gets counts, percentages, rankings and size thresholds 89–100% right.
+  - **Wording:** with responder words, our 7B in 4-bit drops to 52.9%, from 74.7% with plain words.
+  - **The five table versions mattered:** on the real table alone, every model scores 4–6 points higher.
+  - **Retries never fixed a query:** all 200 retried items ended refused or failed again.
+  - **4-bit** costs our 7B 4.6 points [0.8, 8.8] and the VL-3B 9.9 [3.4, 17.6]; the coders lose nothing measurable.
+  - Results in [H2b-results/H2b/](Champion_Task/H2b-results/H2b/README.md).
+- **What it led to:**
+  - By the rule fixed 22 Oct, the system answers through fixed queries only, with no free-form questions. Benchmark counting already used the fixed query, so O2's numbers don't change.
+  - DisasTeller (T2) takes its facts from fixed queries, as planned.
+  - The re-run on the distilled 3B is needed only if free-form questions come back. The follow-ups (a menu of fixed question templates, or question–SQL pairs in L2's training) wait on your call, and either needs a new question bank for its test.
+  - The full reasoning, including why LangChain's SQL agent wouldn't change the result: [System_Design_Notes.md §3](System_Design_Notes.md).
 
 ### H1 V2 · Counts as text, and all six tasks re-scored
 - **What:** our fine-tuned 7B on all six benchmark tasks, with and without a U-Net fact line before each question.

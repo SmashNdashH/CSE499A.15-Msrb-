@@ -1,0 +1,31 @@
+question,top3_ids,hit
+A brick house has walls that have broken apart and part of its roof has fallen in. What EMS-98 damage grade is that?,EMS98-unreinforced-masonry-roermond-the;EMS98-masonry-grade-3;EMS98-rc-frame-mexico-city,no
+"In a reinforced concrete building one upper storey has collapsed, but the floors below it still stand. Is that EMS-98 damage grade 4 or grade 5?",EMS98-rc-frame-mexico-city-2;EMS98-rc-grade-4;EMS98-steel-frame-great-hanshin,yes
+Many adobe houses in a village have very heavy damage and a few have collapsed completely. Which EMS-98 intensity does that point to?,EMS98-2.2-p5;EMS98-analysis-p2;EMS98-introduction-p8,yes
+Why are buildings already damaged by the main shock dangerous during aftershocks?,EMS98-2.3-p2;EMS98-commentary-p2;EMS98-1.2-p3,yes
+"Why do buildings with an open ground floor, such as shops or parking, often collapse in earthquakes?",EMS98-2.3-p2;EMS98-rc-frame-north-pelopponissos;EMS98-2.3-p3,yes
+Which xBD damage level is a house that is surrounded by flood water or mud?,XBD-joint-damage-scale;XBD-5.2.4;XBD-3.1,yes
+A house is partly burnt after a wildfire. Which xBD damage label does it get?,XBD-joint-damage-scale;XBD-3.1;XBD-3.4,yes
+"Which damage class did the xBD baseline model most often get wrong, and what did it call it instead?",XBD-7.4;XBD-3.1;XBD-1-p2,yes
+"Is the xBD Joint Damage Scale an official damage rating, and which existing scales was it built from?",XBD-joint-damage-scale;XBD-4-p2;XBD-4-p1,yes
+"In Copernicus EMS satellite damage mapping, how much of a building must have collapsed for it to count as Destroyed?",IWGSEM-2.1-p1;IWGSEM-1;XBD-4-p1,yes
+"A building's roof looks intact, but there is a lot of rubble and sand around it. Which Copernicus damage class fits?",IWGSEM-2.1-p1;IWGSEM-1;IWGSEM-2.1-p2,yes
+What image resolution is needed to tell minor from major building damage?,IWGSEM-2.1-p1;XBD-3.2;IWGSEM-2.1-p2,yes
+Can a building marked 'No visible damage' on satellite images still be structurally damaged?,IWGSEM-2.1-p1;IWGSEM-2-p2;IWGSEM-2.1-p2,yes
+"What is done at ASR level 3, and how does it differ from ASR level 4?",INSARAG2B-5.7.1-p3;INSARAG2B-5.7.1-p7;INSARAG2B-5.7.1-p6,yes
+"A collapsed building has people confirmed alive inside, but reaching them will take more than 12 hours. Which INSARAG triage category is it?",INSARAG2B-5.8.2-p1;INSARAG2B-5.8.1-p1;INSARAG2B-5.8.1-p2,yes
+"One collapsed building has three people confirmed alive; at another, neighbours say people are missing. Which should rescuers go to first?",INSARAG2B-5.8.1-p2;INSARAG2B-6.4;INSARAG2B-5.7.1-p6,no
+Do trapped people have a better chance of survival in big or small voids in a collapsed building?,INSARAG2B-5.8.2-p2;INSARAG2B-5.8.2-p1;EMS98-intensity-V,yes
+"How should a large affected city be divided into sectors for rescue teams, and how are the sectors named?",INSARAG2B-5.5.1;INSARAG2B-5.5.3;INSARAG2B-5.5.2,yes
+"What should a wide area assessment of the affected area find out, and what should it produce?",INSARAG2B-5.7.1-p1;INSARAG2B-5.7.1-p3;SPHERE-2-p2,yes
+How should rescuers approach a collapsed site where a chemical leak is suspected?,INSARAG2B-7.1;INSARAG3-9-p1;INSARAG2B-7.3,yes
+What should rescue teams agree with local health services before handing injured survivors over to them?,INSARAG3-6.3;INSARAG3-6.2-p2;INSARAG3-6.2-p1,yes
+Who should be consulted before rescuers work inside or right next to damaged buildings?,INSARAG3-5.2-p2;INSARAG2B-5.7.1-p6;INSARAG3-5.1,yes
+Must medium and heavy USAR teams keep operations running 24 hours a day?,INSARAG2B-3.8-p1;INSARAG3-2;INSARAG2B-4.3-p1,no
+A family of five will live in one tent in a cold mountain area. How much floor space should the tent have?,SPHERE-3-p3;SPHERE-3-p2;SPHERE-3-p1,yes
+"How much total site area per person does a planned camp need, including roads and services?",SPHERE-2-p4;SPHERE-2-p2;SPHERE-2-p1,yes
+How many cooking pots and blankets should each household receive?,SPHERE-4-p2;SPHERE-appendix-1-p5;SPHERE-2-p4,yes
+"When should a damaged house be repaired, when retrofitted, and when demolished and rebuilt?",EMS98-2.3-p2;SPHERE-appendix-4-p1;EMS98-analysis-p1,yes
+How should debris from destroyed buildings be handled during recovery?,SPHERE-1-p4;EMS98-published-with-the-support;IWGSEM-2.1-p1,yes
+What should a reconstruction programme do about building codes and safer building practices?,SPHERE-5-p4;SPHERE-5-p2;SPHERE-5-p1,yes
+"Can schools or other public buildings be used as emergency shelters, and what must be checked before people move in?",SPHERE-appendix-1-p3;SPHERE-appendix-1-p4;SPHERE-5-p5,yes

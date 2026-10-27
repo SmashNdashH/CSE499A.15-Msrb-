@@ -1,0 +1,11 @@
+{
+  "internet": "off",
+  "search_backend": "numpy + torch",
+  "same_top3_as_laptop": "16/16",
+  "counter_test": {
+    "intact": 3,
+    "damaged": 2,
+    "destroyed": 1,
+    "total_damaged": 3
+  }
+}
