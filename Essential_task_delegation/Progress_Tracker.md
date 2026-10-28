@@ -1,6 +1,9 @@
 # CSE499B progress tracker
 
 **Last updated:** 28 Oct 2026.
+- **L2 step 1 again, with the new 7B as teacher: built on your go and dry-run checked (28 Oct), ready to run on account 1 (about 5.5 h).** [l2-step1-new-teacher.ipynb](Champion_Task/l2-step1-new-teacher.ipynb): full size, greedy, the plain training prompt, and the first run's entries minus road counting (3,265). Run steps under "Needs you now".
+- **Guideline licences checked (28 Oct): none of the six documents allows posting it online.** Sphere's copyright page requires written permission for "posting online"; EMS-98 is copyright with no reuse grant; the xBD paper is on arXiv under arXiv's own licence; INSARAG and IWG-SEM carry no licence at all. Parked by you: not a concern while the work is in progress.
+- **Teammates' 27 Oct pushes reviewed (28 Oct).** Ridita's guideline search and offline DisasTeller copy hold up (T2 steps 4, 4b and 6). Aryan's v4 needs three corrections, and its data show that R11's table alone (37.0%) beats feeding its counts to the 7B (27.0%). Tamanna's rebuilt demo is honest; it shows the fine-tuned 7B calling every inspected building Intact. Feedback under "Needs you now"; details in the ledger, §9.
 - **L0 step 2 done: the new 7B is kept** by the rule fixed 19 Oct, on all questions and on E5's clean and strict sets. Against the old 7B at full size, on the 10,675 optical questions:
 
   | Task | Old | New | Change | Questions gained / lost |
@@ -222,7 +225,7 @@ Kept for Abrar, and updated whenever a task starts running, finishes, or needs a
 
 | Done | Running | Ready to run | Needs your decision | Needs rerun | Not started |
 |---|---|---|---|---|---|
-| 26 | 0 | 0 | 0 | 0 | 13 |
+| 25 | 0 | 1 | 0 | 0 | 13 |
 
 ## Pace since Phase A, and the timeline to the showcase (measured 24 Oct)
 
@@ -282,14 +285,18 @@ Every notebook run so far, on Kaggle or on your PC, and every planned run. Updat
 
 **Running now** (28 Oct): nothing. All four accounts are free.
 
-**Ready to run:** nothing built yet. The next runs need your go (see "Needs you now").
+**Ready to run** (28 Oct; run steps under "Needs you now")
+
+| What | Notebook | Account | Time |
+|---|---|---|---|
+| L2 step 1 again: teacher answers from the new 7B | [l2-step1-new-teacher.ipynb](Champion_Task/l2-step1-new-teacher.ipynb) | 1 | about 5.5 h, plus a 15–20 min smoke test |
 
 **Later: not built yet**
 
 | What | Waits for |
 |---|---|
 | H1 V3: counting from R16c's per-building grades | counting beating R11's on validation (now 37–39% against 39.2%) |
-| L2 step 1 again with the new 7B as teacher, then L2 step 2: train the 3B | your go (L0's verdict, 28 Oct: kept) |
+| L2 step 2: train the 3B | L2 step 1 again (ready to run), a fixed copy of its notebook, and your choice of how the 3B learns |
 | L2b: explanations as a second skill | L2 step 1 with the final teacher |
 | T2: DisasTeller on local models (O3's missing part) | GPU time; not started |
 | T3: offline demo and public showcase (Vercel website) | T2, and a gallery export |
@@ -353,11 +360,38 @@ Read-only checks also ran on your PC: the Turkey and counting breakdowns, dry ru
 ## Needs you now
 
 - **Next on the four free accounts (28 Oct): your pick.**
-  1. **L2 step 1 again, with the new 7B as teacher** (about 2 GPU h). The old run's 4,000 answers came from the old 7B. It's a named copy of `l2-step1-teacher-rationales.ipynb` with the new model's ID. Ready to build on your go.
+  1. **L2 step 1 again, with the new 7B as teacher: built 28 Oct, ready on account 1** (about 5.5 h; run steps in the next item).
   2. **L2 step 2: train the 3B** (about 20 GPU h, then about 8 h to evaluate). Its notebook needs a fixed copy first (its old installs fail on today's Kaggle), and how the 3B learns is still your choice (L2 step 2's row).
   3. **O1:** report it as met on clean data on the mean of three grader seeds, narrowly (0.3065). More seeds aren't recommended: adding them until one passes would bend the rule fixed before the run.
   4. **T2, DisasTeller on local models (O3's missing part):** Ridita's offline DisasTeller copy arrived on 27 Oct in `Offline_RAG_KR2/`. Reviewing it comes first.
-  5. **Your teammates' new work** (Aryan's BDC v4, Ridita's offline RAG, Tamanna's Plan 2 demos) isn't reviewed yet.
+- **Run now: L2 step 1 again, teacher answers from the new 7B** ([l2-step1-new-teacher.ipynb](Champion_Task/l2-step1-new-teacher.ipynb)).
+  - **What and why:** L0 kept the new 7B on 28 Oct, so it becomes the 3B's teacher. The notebook asks it the first run's training questions (minus road counting, 3,265) at full size, greedy, with the plain training prompt, and keeps only answers that match their label.
+  - **Expectation, fixed before the run:** more kept answers for disaster type (first run 89.4%) and relational reasoning (13.3%), partly from memory, since L0's top-up trained on these entries again; building counting, bearing bodies and land use within about 3 points of 15.6%, 42.7% and 50.9%; at least the first run's 1,085 kept in all.
+  - **Steps:**
+    1. Sign in as account 1 (`abrarmohammedtanzim`). **Create → New Notebook → File → Import Notebook → Browse**, pick `D:\CSE499AB_project\Essential_task_delegation\Champion_Task\l2-step1-new-teacher.ipynb`, then **Import**.
+    2. **Session options:** GPU **T4 x2**, Internet **On**.
+    3. **Input → + Add Input:** `abrarmohammedtanzim/disasterm3-mirror`.
+    4. No secret is needed: the new 7B's repo is public (`HF_TOKEN` only speeds up the 16 GB download).
+    5. **Smoke test:** in the cell starting `# ── Cell 2: Configuration`, set `SMOKE_TEST = True`, then **Run → Run All** (15–20 min with the download). Check:
+       - Cell 3: `full size checked (1036 px)`;
+       - Cell 4: `Same entries as the first run: 4,000 drawn with seed 42 from 40,233 checkable entries; 735 road-counting entries left out` and `self-checks passed`;
+       - Cell 5: three answers, each one sentence, some matching their label;
+       - Cell 6: a table by task, then `✓ Wrote /kaggle/working/L2S1-new-teacher`.
+
+       Any red error: stop and send me a screenshot.
+    6. Set `SMOKE_TEST = False`. **Save Version → Save & Run All (Commit) → Save.** Stop the editor session. About 5.5 h; it stops cleanly at 11 h.
+    7. When it's finished:
+       - **Output:** download the `L2S1-new-teacher` folder so that `D:\CSE499AB_project\Essential_task_delegation\Champion_Task\L2-step1-results\new-teacher\L2S1-new-teacher\README.md` exists.
+       - Save the run notebook over `Champion_Task\l2-step1-new-teacher.ipynb`.
+       - Tell me "L2 step 1 done".
+- **Feedback for your teammates (their 27 Oct pushes, checked 28 Oct; details in the ledger, §9):**
+  - **Ridita:** the guideline search passed its retrieval test (27 of 30, recounted), the Kaggle run with the internet off is real, and the DisasTeller copy is offline by default. Next: T2 steps 1–3 (local LLM and image tools). Ask her to git-ignore `local_chroma_db/` (it changes on every search). The guideline licences are parked by you (28 Oct).
+  - **Aryan:** three corrections for v4.
+    1. The U-Net row is a copy of the image-only file; the real U-Net number is v2's 23.96%.
+    2. His criterion 2, as written before the run, fails (the intervals overlap); a paired test shows R11 ahead (p = 0.01). He should report both instead of switching the comparison after the run.
+    3. R11's table alone (the option nearest R11's count) scores 37.0% on his 1,701 questions, 10 points above the VLM given that count (27.0%). That reverses his conclusion: counts should skip the VLM.
+    - Also: his subset isn't O2's measure (34.2% includes intact questions); E5's duplicate check is done (36 of his questions; nothing moves by more than 0.4); the TEOChat blockquote's second sentence isn't from the paper as far as our notes go.
+  - **Tamanna:** the rebuild is honest and clean (validation tiles, none leaked; committed runs; no hints in the prompts). The demo shows the fine-tuned 7B calling all 30 buildings Intact, and its one-word class contradicting its own EMS-98 grade on half the crops. For Part B: score against the true validation buildings and compare with R16c's grader (F1 0.754) on the same buildings, and mark the building in each crop. Her audit response still quotes an AI prompt (line 250); your call.
 - **CSE499B 5th class (Wed 28 Oct): two deliverables ready.**
   - **Regular progress report, update 2:** [others/CSE499B_update_2.pdf](../others/CSE499B_update_2.pdf), with its source [.tex](../others/CSE499B_update_2.tex).
     - Format: update 1's (2 pages, compiled with MiKTeX).
@@ -366,6 +400,9 @@ Read-only checks also ran on your PC: the Turkey and counting breakdowns, dry ru
   - **Literature review presentation:** the deck "CSE499B Literature Review" (21 slides) is a private web deck for now.
     - It follows the faculty's brief: one slide per paper (16 papers), no per-member attribution, the Group 5 footer on every slide.
     - **Exported and pushed 28 Oct** as `others/CSE499B_Literature_Review.pptx` (`bd934391b`). Its properties and text were checked for tool traces first: none.
+  - **Faux versions (28 Oct): your part covers Phase A only (E1, E2, D5/D5b, E3), and the rest of it is held for next week. The four teammates' sections are kept word for word from update 2, since each presents their own part.** The originals above are unchanged.
+    - [others/CSE499B_update_2_faux.pdf](../others/CSE499B_update_2_faux.pdf) and its [.tex](../others/CSE499B_update_2_faux.tex): 2 pages, a results table (test, question, result, decision), terms explained where they first appear, every number in your part checked against the Phase A briefing page.
+    - `others/CSE499B_Literature_Review_faux.pptx`: 11 slides, keeping the six papers behind those tests (DisasterM3, BRIGHT, SAM 3, BDAChat, EfficientSAM3, TEOChat), with the overview, synthesis and references cut to match. Both checked for tool traces: none.
   - **Next week (6th class):** the proposed solution report (printed and PDF).
 - **Done 27–28 Oct: the new 7B's six tasks and the verdict (kept; the table is at the top of this file).** The steps below stay as the record of how they ran.
   - **What and why:** L0 step 2's keep rule (fixed 19 Oct): keep the new 7B only if disaster type (DTR) and relational reasoning (ORR) rise, and no other task drops by more than 1 point, against the old 7B at full size. It will be judged on all questions and on E5's clean ones.
@@ -480,7 +517,20 @@ Read-only checks also ran on your PC: the Turkey and counting breakdowns, dry ru
   - Two things for you:
     - **Tool traces in a committed file:** her README's lines 245 and 253–255 quote temporary-folder paths from her PC that name the tool she used. If your rule on tool traces in committed files covers teammates' files too, ask her to remove those paths.
     - The same commit removed the Sphere handbook PDF and git-ignored it (next item).
-- **The repository is public,** and Ridita's commit added `Offline_RAG_KR2/guidelines/Sphere_Handbook_2018_EN.pdf`, which her own README says needs Sphere's permission to put online. *(26 Oct: her commit `74d44059e` removed it from the current files and git-ignored it. It is still in the history, commit `0bf593a13`.)* Decide whether to purge it from the history. *(27 Oct: the handbook's text is also still in the public repo. `Offline_RAG_KR2/guideline_chunks.jsonl`, which is tracked, holds 61 chunks of it, about 100 KB, for the offline search. If Sphere's permission matters, those chunks need the same decision as the PDF.)*
+- **The guideline texts in the public repo (licences checked 28 Oct). Parked by you on 28 Oct: licences of the guideline documents and the literature-review papers aren't a concern while the work is in progress.**
+  - **What each document allows:**
+    - **Sphere Handbook 2018:** its copyright page says it "may be reproduced without fee for educational purposes … provided that the copyright holder is acknowledged", but "for … posting online … prior written permission must be obtained" (info@spherestandards.org). Its PDF is in the public history (added in `0bf593a13` on 25 Oct, removed on 26 Oct), and 61 sections of its text are in the current files.
+    - **EMS-98 (1998):** © Centre Européen de Géodynamique et de Séismologie, Luxembourg, with no reuse grant. Three copies are tracked (`Offline_RAG_KR2/guidelines/`, `disasteller_offline/Guidelines/` and `support/…/DisasTeller/Guidelines/`).
+    - **xBD paper (2019):** © Carnegie Mellon University, on arXiv under arXiv's own licence, which lets only arXiv distribute it. Its "unlimited distribution" line is a US defence release marking that points back to the copyright notice.
+    - **INSARAG Guidelines 2020 (Vol II Manual B, Vol III) and IWG-SEM v1.0:** no licence or copyright notice in the PDFs or on the publishers' sites, so ordinary copyright applies.
+    - All six also sit, as text, in `guideline_chunks.jsonl` and `local_chroma_db/`.
+  - **Options:**
+    1. **Ask for permission,** Sphere first (a student, non-commercial project is the use most likely to be allowed). Until an answer comes, the texts stay up.
+    2. **Take the PDFs and their text out of the current public files.** Keep the search code, a list of official links, and a script that rebuilds the index from copies each user downloads. The Kaggle runs keep the private `offline-rag-kr2` dataset, which already holds the index. Old commits still hold the files.
+    3. **Option 2, and remove them from the history** (a rewrite and a force-push): every teammate must clone again, and the commit hashes quoted in these docs change.
+    4. **Make the repository private** until a clean public copy is made for the showcase.
+  - **Recommended:** option 2 for all six now (the search loses nothing), and for Sphere also option 1 or 3, since its terms name posting online. The 30 research papers in `others/lit review_research papers/` raise the same question; papers under CC BY may be shared, those under arXiv's own licence may not.
+- *(Earlier note, kept for the record.)* **The repository is public,** and Ridita's commit added `Offline_RAG_KR2/guidelines/Sphere_Handbook_2018_EN.pdf`, which her own README says needs Sphere's permission to put online. *(26 Oct: her commit `74d44059e` removed it from the current files and git-ignored it. It is still in the history, commit `0bf593a13`.)* Decide whether to purge it from the history. *(27 Oct: the handbook's text is also still in the public repo. `Offline_RAG_KR2/guideline_chunks.jsonl`, which is tracked, holds 61 chunks of it, about 100 KB, for the offline search. If Sphere's permission matters, those chunks need the same decision as the PDF.)*
 - **Open offers waiting for your answer** (listed here so none gets lost):
   - a Contributions section for the report;
   - how many hours a week you can give the website (T3's timeline assumes about 3 weeks part-time);
@@ -815,7 +865,7 @@ Results in [R16b-results/](Champion_Task/R16b-results/README.md). | Counting wit
 | H2c | Free-form questions, second try | Not started | CPU (data), Kaggle (adapter and test) | — | After L2: question–SQL pairs, a fine-tuned adapter, a five-sample agreement gate, a new test. Pass rule fixed 24 Oct (90% and RS(10) above 0); if it fails, the system stays as it was. Steps in the roadmap. |
 | H3 | VLM input upgrades (before + after, numbered marks, crops) | Not started | Kaggle GPU | — | After H1 V2. |
 | H4 | GEOBench-VLM external counting test | Not started | Kaggle GPU | — | — |
-| T2 | DisasTeller on local models | Not started | Kaggle T4 ×2 | — | The biggest missing O3 piece. |
+| T2 | DisasTeller on local models | Not started (steps 4, 4b and 6 done by Ridita on 27 Oct, checked 28 Oct) | Kaggle T4 ×2 | The guideline search passed its retrieval test (27 of 30) and runs on Kaggle with the internet off; the DisasTeller copy is offline by default. | The biggest missing O3 piece: steps 1–3 (the LLM and the three image tools still call Gemini), then 5 and 7. |
 | T3 | Offline demo and public showcase (Vercel website) | Not started | — | — | Re-planned 24 Oct: a public showcase site and an interactive demo website on Vercel, with a live offline mode at the booth. You build it and choose the name and look later. In-browser feasibility test passed 24 Oct, in two runs: INT8 on WebAssembly took 2.1–5.5 s per image in Chrome and Edge, with output identical to the native run (System_Design_Notes §4.3; kit in `Champion_Task/T3-browser-test/`). The rest after T2. |
 | L0 | A better 7B teacher before distilling | Done (28 Oct: the new 7B is kept by the rule fixed 19 Oct, on all questions and on E5's clean and strict sets: ORR +3.50, DTR +1.13, BBR −0.95, the others +0.22 to +0.64. It is L2's teacher. Step 2's training is complete: session 3b did steps 26–28 on 26 Oct, and checkpoint-28 is on Hugging Face. Its merge stopped on a library version clash (torchao), so a merge-only copy, `l0-step2-merge.ipynb`, merged it on 27 Oct (run 2, 10 min): exactly the 196 adapted projections changed, and `AbrarAlam/disasterm3-qwen2.5vl7b-l0s2-mergedFP` is on Hugging Face. Earlier: the old 7B's full-size re-score and the smoke test on 20 Oct; sessions 1, 2 and 3a did steps 1–25 on 21–22 Oct) | Step 1: Kaggle account 1, T4 ×2, 1.7 h. Step 2: the old 7B's re-score of four tasks (about 11 h, account 3 then account 2), training (about 7–14 h on T4 ×2, account 3), then the new 7B on six tasks (about 12 h) | Decided 19 Oct: improve the 7B before distilling.
 
@@ -838,7 +888,7 @@ Background:
   - tested at 512 px (about 324 tokens), where the paper used full size (about 1,300).
 - The answer format isn't the cause: our 7B answers with letters only on 99.9–100% of questions.
 - Gaps to the paper's fine-tune at 512 px were −12.5 (disaster type) and −12.9 (relational); at full size they are −8.0 and −5.1. | Decided 19 Oct: step 2, a short extra training of our adapter at full size (1036 px) on disaster type and relational plus an equal replay sample (about 7,000 samples). Both models are then scored on every optical question. Done 28 Oct: kept. Next: L2 step 1 again with the new teacher. |
-| L2 step 1 | Teacher answers for the 7B → 3B distillation | Done | Kaggle account 1, T4 ×2 | 4,000 answers generated; 1,085 (27%) match their label and are kept: disaster type 89.4%, land use 50.9%, bearing bodies 42.7%, building counting 15.6%, relational 13.3%, road counting 0%. Road counting labels are road-area percentages such as 5.22%, which the teacher can't hit exactly without the options; those 735 fall back to their labels. Cell 7's push failed: the dataset title already existed, and the code missed Kaggle's wording ("already in use") but still printed "Pushed". So the dataset `disasterm3-teacher-cot` doesn't hold this run's file. | If L0 changes the 7B, re-run it with the new teacher. Step 2 reads the manifest from the run's notebook output, not from that dataset. |
+| L2 step 1 | Teacher answers for the 7B → 3B distillation | Ready to run (again, with the new 7B: `l2-step1-new-teacher.ipynb`, built 28 Oct; the first run is done) | Kaggle account 1, T4 ×2 | 4,000 answers generated; 1,085 (27%) match their label and are kept: disaster type 89.4%, land use 50.9%, bearing bodies 42.7%, building counting 15.6%, relational 13.3%, road counting 0%. Road counting labels are road-area percentages such as 5.22%, which the teacher can't hit exactly without the options; those 735 fall back to their labels. Cell 7's push failed: the dataset title already existed, and the code missed Kaggle's wording ("already in use") but still printed "Pushed". So the dataset `disasterm3-teacher-cot` doesn't hold this run's file. | L0 kept the new 7B, so run `l2-step1-new-teacher.ipynb` on account 1 (steps under "Needs you now"). Step 2 reads the manifest from the run's notebook output, not from a dataset. |
 | L2b | Explanations as a second skill ("why?" on request) | Not started | Kaggle T4 ×2, about 3–5 h | Planned 19 Oct (roadmap L2b, Paper_Audit §4.12): explanations written from the correct answer plus true mask facts, checked against those facts, then trained as a second task in step 2. | Build after step 1. |
 | L2 step 2 | Train the 3B | Not started | Kaggle GPU | Its notebook still has the old installs that fail on today's Kaggle. | Fix it, as a copy, after L0. How the 3B learns is still to choose (a, b or c; soft labels recommended). |
 | L3 | 4-bit 3B with handoff to the 7B | Not started | Kaggle GPU | — | After L2. |
@@ -853,6 +903,15 @@ Background:
 
 ## Change log
 
+- **28 Oct 2026 (update day): faux update 2 PDF and faux literature deck built.** Your part of the PDF covers Phase A only (E1, E2, D5/D5b, E3); the teammates' sections are kept from update 2. Details under the 5th-class item in "Needs you now".
+- **28 Oct 2026 (night): L2 step 1 again built; guideline licences checked.**
+  - `l2-step1-new-teacher.ipynb`, a named copy of the first run's notebook, built on your go and dry-run checked on your PC (the first run's subset reproduced, its 1,085 kept answers re-kept, resume and outputs tested). L2 step 1 marked Ready to run; the run board and "Needs you now" updated.
+  - Licences read from each document's own copyright page or text, the arXiv page and the publishers' sites. The Sphere item became the guideline-texts decision, with four options.
+- **28 Oct 2026 (later): teammates' 27 Oct pushes reviewed.**
+  - Ridita: retrieval test recounted (27, 20 and 25 of 30), the internet-off Kaggle run's metadata and outputs checked, the offline DisasTeller copy compared with the original. No secrets or tool traces in her folder.
+  - Aryan: v4's per-question files rescored on your PC, with R11's table alone, paired tests and E5's clean filter. No secrets or tool traces.
+  - Tamanna: the two committed demo runs, their tiles against the validation split and E5's list, and the VLM's answers checked. No secrets.
+  - Recorded in the ledger (§9), the roadmap (T2 steps 4, 4b and 6), System_Design_Notes §2.2 (why counts skip the VLM), the T2 row and "Needs you now".
 - **28 Oct 2026: L0 step 2's verdict (kept) and R16c step 5b (O1 met on the three-seed mean only).**
   - The new 7B's parts A and B and step 5b downloaded and checked: every run notebook matches its build except the settings it was told to change; R11 reproduces; step 5b's rows rebuild its maps.
   - Moved into the pattern: `L0-step2-new-2results/` → `L0-step2-results/new-partA/`, `L0-step2-new-results/` → `new-partB/`, `R16c-step5b-third-grade-results/step5b/` → `R16c-results/step5b/`; the run notebooks renamed `l0-step2-full-size-rescore-new-partA.ipynb` and `-new-partB.ipynb`.

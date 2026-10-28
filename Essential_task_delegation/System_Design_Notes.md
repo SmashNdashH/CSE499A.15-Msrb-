@@ -57,6 +57,7 @@ Related: [Next_Steps_Roadmap.md](Next_Steps_Roadmap.md) (T2 and H2b), [Task_Ledg
 2. **New wording for those four tasks.**
    - EMS-98 grades damage. It holds no historical costs, staffing levels or hospital counts, so pointing these tasks at the PDF would not work.
    - Offline, the agents work only from the facts the system gives them: building counts and grades (H2's table, through fixed queries), the damage map, the hot spots (T1) and the EMS-98 grades.
+     - Why counts never pass through the VLM (checked 28 Oct on Aryan's BDC v4): given R11's count in its prompt, the fine-tuned 7B answered 27.0% of 1,701 damaged and destroyed counting questions, while the option nearest R11's count, read straight from the table, is right on 37.0% of the same questions.
    - A figure that needs outside data, such as a reconstruction budget, is written as "not available offline", never estimated.
 3. **Optional, if the team wants those figures offline:** a small local table of past disasters (costs, staffing), with a source for each row, given to the Emergency service and Assignment teams as a tool.
 4. **Each report states the mode** that produced it.

@@ -771,6 +771,18 @@ R16c's steps were renumbered 1–5 on 20 Oct (your decision): step 3 was first c
   - 1,085 of 4,000 (27%) were kept: disaster type 89.4%, land use 50.9%, bearing bodies 42.7%, building counting 15.6%, relational 13.3%, road counting 0%.
   - The push to the Kaggle dataset failed silently.
 - **What it led to:** step 2 waits for L0; if L0 changes the 7B, this step reruns with the new teacher. Explanations became L2b.
+- **Again with the new teacher (built 28 Oct, on your go "build L2 step 1"):** [l2-step1-new-teacher.ipynb](Champion_Task/l2-step1-new-teacher.ipynb), a named copy; the first notebook stays as it ran.
+  - **Why:** L0 kept the new 7B on 28 Oct, so it is the 3B's teacher.
+  - **What changed, and why:**
+    - the new 7B, at full size, as L0 trained and measured it;
+    - greedy decoding with every sampling setting explicit, since the answers are one sentence and sampling only adds noise;
+    - the plain training prompt, without the "think step by step" instruction the 7B ignored, so the teacher answers the prompt the 3B will see;
+    - the first run's 4,000 entries minus road counting (3,265): none of the 735 first-run road answers could match an exact-percentage label;
+    - no Kaggle push (step 2 reads the notebook output), and progress rows that carry the teacher's ID, so a resume never mixes teachers.
+
+    The answer check is unchanged.
+  - **Dry run on your PC (28 Oct):** with the first run's output manifest as stand-in data, the first run's subset was reproduced exactly; the unchanged check re-kept the first run's 1,085 answers; resume and the output files worked. The first run's longest answer (177 characters) fits the new 96-token limit.
+  - **Expectation, fixed before the run:** more kept answers for disaster type (89.4%) and relational reasoning (13.3%), partly from memory, since L0's top-up trained on these entries again; building counting, bearing bodies and land use within about 3 points of 15.6%, 42.7% and 50.9%; at least 1,085 kept in all; about 5.5 h on account 1.
 
 ## 8. Housekeeping
 
@@ -786,7 +798,7 @@ R16c's steps were renumbered 1–5 on 20 Oct (your decision): step 3 was first c
   You ran the commands.
 - **Result:** pushed as `1b33574`.
 
-## 9. Teammates' work: what we use (reviewed 26 Oct)
+## 9. Teammates' work: what we use (reviewed 26 Oct; follow-ups checked 28 Oct)
 
 Every push since 22 Oct was read file by file, and each number was checked against its notebook's outputs or its data. Only what holds up is used.
 
@@ -803,6 +815,13 @@ Every push since 22 Oct was read file by file, and each number was checked again
 - **Not used:** the counter's `r1` mode. H2's table already holds R11's buildings one by one, while the counter counts blobs, so touching buildings merge into one.
 - **Open:** Sphere's text is in the public repo three times: the PDF, the chunks file and the database. Your decision.
 - **Next:** wire it into a copy of DisasTeller, offline by default, and test it on 30 report questions with their expected sections, with the pass rule fixed first (an expected section in the top 3 for at least 24 of 30).
+- **28 Oct, the follow-up (pushed 27 Oct), checked:**
+  - **Retrieval test passed, 27 of 30** (bar 24; meaning alone 20, keywords alone 25). Her README says the questions and expected sections were fixed before any search ran; the files can't prove the order. Recounted on your PC from `questions.csv` and the returned sections: 27, 20 and 25 again. The Kaggle path gives the same top 3 on all 30. The hybrid beats meaning alone (8 questions won, 1 lost, p = 0.04) but can't be told apart from keywords alone (3 won, 1 lost).
+  - **The Kaggle run with the internet off is real:** Kaggle's own metadata says internet off and no GPU, the committed run finished without errors in 69 s, and the search matched the laptop on 16 of 16.
+  - **The DisasTeller copy is offline by default:** offline, the web tools aren't imported or given to any agent, CrewAI's telemetry is off, and tasks 3–6 point at the guideline search. Checked line by line against the original.
+  - **Still Gemini:** the four agents' LLM and the three image tools (T2 steps 1–3), so it can't run without a key and the internet yet. Her README says so.
+  - **Open:** `local_chroma_db/` (8 MB, rebuilt from the chunks) is tracked and changes on every search, so it belongs in `.gitignore`. Five more guideline PDFs (EMS-98 twice, xBD, IWG-SEM, INSARAG Vol II and III) are now in the public repo. *(Licences checked 28 Oct: none of the six documents allows posting it online. Sphere's copyright page requires written permission for it, EMS-98 grants no reuse, the xBD paper is under arXiv's own licence, and INSARAG and IWG-SEM carry no licence. The options are in the tracker.)* Her miss on Q1 (masonry grade 4 found as grade 3) matters for task1, which grades buildings with this search.
+  - **Next:** T2 steps 1–3, the local LLM and the local image tools.
 
 ### Ridita · The DisasterM3–BRIGHT audit (corrected 22 Oct, pushed 25 Oct)
 - **What we use:**
@@ -838,6 +857,16 @@ Every push since 22 Oct was read file by file, and each number was checked again
     - A CPU check of our 7B's counting answers would show how much of its gap is format rather than counting.
 - **Not usable for O2:** the run with a real segmenter used B1 (24.0%), not R11. The next run takes R11's counts from H2's table.
 - **Not checked yet:** whether benchmark images are copies of training images. E5's hash check covers it.
+- **28 Oct, v4 (pushed 27 Oct), checked:** R11's counts in the prompt (`r11_image`, from H2's table) on 1,701 questions, the base 7B on 500.
+  - **Reported:** the fine-tuned 7B with R11's counts scores 27.0% [25.0, 29.2], against 15.6% with the image alone; O2's bar (34.2%) isn't reached.
+  - **What the check found:**
+    - **R11's table alone beats every VLM condition.** The option nearest R11's own count (from his file's `r11_count`) is right on 37.0% of the same 1,701 questions (35.4% if ties count as wrong), and on 39.4% of the 500. Passing that count through the fine-tuned 7B loses 10 points: 290 questions only the table gets right, 121 only the VLM (p < 10⁻¹⁶). The 7B picks the option nearest the count it was given only 56% of the time. On the 500, the base 7B alone (35.2%) also beats the base 7B with R11's counts (30.2%). So counts should go from the table to the answer, as H2's fixed queries and the system design already do.
+    - **The U-Net row in v4 is a copy:** `bdc_ft_unet-B1cls_image.csv` is byte-identical to `bdc_ft_image_only.csv`, so v4's U-Net numbers (15.56%) are the image-only ones. The real U-Net result is v2's 23.96%.
+    - **Criterion 2, as written before the run, fails:** R11's 27.04% [25.0, 29.2] and the U-Net's 23.96% [22.0, 26.0] have overlapping Wilson intervals. After the run the report judged a comparison on the 500 instead, without intervals (they overlap there too). A paired test, the better test, does show R11 ahead (230 questions against 177, p = 0.01).
+    - **Not O2's measure:** 34.2% is on all 3,583 optical counting questions, intact ones included; this subset leaves intact out. Comparing its 27.0% with H2's 32.96% (all optical) mixes question sets too.
+    - **The duplicate check is done (E5):** 36 of the 1,703 questions use a copied after-image. Without them every number moves by 0.4 points or less.
+    - **Smaller points:** the TEOChat blockquote's second sentence ("Injecting U-Net findings … closes this gap") isn't in the paper as far as our notes go; the 23.58% fine-tuned baseline in §2 doesn't match our measurements (30.09% at full size, 32.01% at 512 px, optical); everything ran in 4-bit, which cost our 7B 4.6 points in H2b; the empty `result` file can go.
+  - **What we use:** the evidence that counts must not pass through the VLM ([System_Design_Notes §2.2](System_Design_Notes.md)), and the oracle ceiling (96.5%) as before.
 
 ### Tamanna · Plan 2, building-by-building crop inspection (`Tamanna_task_2/Plan_2/`, pushed 17–22 Oct)
 - **What we use:**
@@ -850,3 +879,7 @@ Every push since 22 Oct was read file by file, and each number was checked again
   - Several numbers were typed in.
   - The tiles used were training or radar images.
 - **Next:** a clean re-run, then a test against ground truth on the benchmark's test images: does a zoomed crop let the 7B grade buildings better than R11?
+- **28 Oct, the rebuilt demo (pushed 27 Oct), checked:** both notebooks are committed Kaggle runs that finished without errors; the 10 tiles are validation pairs, none of them leaked; no prompt shows the segmenter's class. The README and the audit response now label everything "demo, not an evaluation" and list what was wrong.
+  - **What the demo shows (agreement, not accuracy):** the fine-tuned 7B called all 30 inspected buildings Intact, the base 7B 24 of 30, while the segmenter said 19 Damaged, 9 Intact and 2 Destroyed. The VLM's one-word class matches its own EMS-98 grade on only 15 of 30 crops (base: 8 of 30), so its two answers often contradict each other.
+  - **For Part B:** score against the true validation buildings (E1's masks), and compare with R16c's grader on the same buildings (macro F1 0.754 in step 5b), so the question becomes whether the 7B grades better than our trained grader. Mark the building in the crop: its longest side is 46 px at the median (7 of 30 under 32 px) in a 256 px window, so other buildings fill most of it.
+  - **Open:** the older part of the audit response quotes what reads as a prompt to an AI assistant ("To answer the prompt's core question…", line 250). Your call, as with Ridita's README.

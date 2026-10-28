@@ -585,14 +585,15 @@ R16's two parts are **the finding** (which buildings are there) and **the gradin
   4. Replace `gemini-embedding-001` with a local sentence-transformers model, and rebuild the Chroma database of guidelines. **Built by Ridita (25 Oct) as hybrid search:** [Offline_RAG_KR2/](Offline_RAG_KR2/README.md) holds 405 cited sections from six sources.
      - Each question is ranked by meaning (MiniLM embeddings) and by keywords (BM25), and the two rankings are merged by reciprocal rank fusion.
      - Keywords catch exact terms ("ASR level", "possible damage") that a long section's embedding can blur.
-     - It isn't wired in or tested on report questions yet ([Task_Ledger §9](Task_Ledger.md)).
+     - It isn't wired in or tested on report questions yet ([Task_Ledger §9](Task_Ledger.md)). *(27 Oct: wired into Ridita's offline DisasTeller copy, `Offline_RAG_KR2/disasteller_offline/`, and tested in 4b.)*
   4b. **Retrieval test before wiring it in** (added 26 Oct):
      - 30 real report questions, each with the sections that should come back, written before any search runs.
      - Pass: an expected section in the top 3 for at least 24 of 30.
      - Report the hits for meaning alone, keywords alone and the hybrid, so the hybrid's gain is measured rather than assumed.
      - If meaning alone does as well, the simpler search is kept.
+     - **Done 27 Oct (Ridita), checked 28 Oct: passed, 27 of 30** (meaning alone 20, keywords alone 25, so the hybrid stays). The Kaggle path gives the same top 3 on all 30, and a Kaggle run with the internet off found everything it needed.
   5. Feed the agents per-building facts (H2) and hot spots (T1) as text.
-  6. Offline by default: no web tools and no "search the internet" wording unless an online switch is turned on, and new offline wording for tasks 3–6. Details and the test rule: [System_Design_Notes.md §2](System_Design_Notes.md) (recommended 24 Oct).
+  6. Offline by default: no web tools and no "search the internet" wording unless an online switch is turned on, and new offline wording for tasks 3–6. Details and the test rule: [System_Design_Notes.md §2](System_Design_Notes.md) (recommended 24 Oct). **Done 27 Oct (Ridita) in the copy, checked 28 Oct:** offline, the web tools aren't imported or given to any agent, and CrewAI's telemetry is off. Steps 1–3 (the LLM and the three image tools still call Gemini), 5 and 7 are left.
   7. Consistency check (added 26 Oct, after TimeSpot's consistency-violation rates; [Paper_Audit §4.15](Paper_Audit_and_Integration_Plan.md)): every number in each report is compared with the fixed queries on H2's table, and the run passes only with zero contradictions.
 - **Outputs:** the same 6 report files as the Gemini run, a log proving no external API calls (run once with internet off after setup), and `README.md` comparing them with the Gemini reports from 20 July.
 
@@ -682,7 +683,7 @@ R16's two parts are **the finding** (which buildings are there) and **the gradin
 ### L2 · 7B → 3B distillation
 - **Source:** [Plan] CSE499A future work and KR4; [Paper] QLoRA (we already use it via Unsloth).
 - **Goal:** O4.
-- **Waits for L0** (decided 19 Oct): the teacher is improved first. *(L0 done 28 Oct: the new 7B is kept and is the teacher, so L2 step 1 runs again with it.)*
+- **Waits for L0** (decided 19 Oct): the teacher is improved first. *(L0 done 28 Oct: the new 7B is kept and is the teacher, so L2 step 1 runs again with it. Its copy is built and dry-run checked: [l2-step1-new-teacher.ipynb](Champion_Task/l2-step1-new-teacher.ipynb), about 5.5 h on account 1.)*
 - **Base:** the two ready notebooks in `support/Abrar/Implementation_DisasterM3/`, kept unchanged as the originals:
   - `generate_teacher_cot_train_3b_distill.ipynb` has never been run. Step 1 runs as its fixed copy, [Champion_Task/l2-step1-teacher-rationales.ipynb](Champion_Task/l2-step1-teacher-rationales.ipynb) (19 Oct; named `l2-stage1-teacher-rationales` until 20 Oct): Kaggle's own torch, fp16 on 2×T4 in batches, 4,000 checkable examples, and only answers that match the label kept;
   - `train_qwen_disasterm3_3b_distill.ipynb` needs the same environment fix, as a copy, and **its outputs cleared**, because they're left over from the 7B run.
